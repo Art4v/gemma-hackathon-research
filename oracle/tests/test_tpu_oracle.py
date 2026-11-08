@@ -300,7 +300,14 @@ class Verdict(unittest.TestCase):
 
     def test_bar_is_a_parameter(self):
         self.assertEqual(o.final_verdict(seed_rows(True, True, True), t_kernel=1.0, t_xla=1.25, speed_bar=1.5)[0], "correct_slow")
-        self.assertEqual(o.SPEED_BAR, 0.8)
+        self.assertEqual(o.SPEED_BAR, 0.7)
+
+    def test_default_bar_is_0_7_inclusive(self):
+        """The policy bar (oracle/DESCRIPTION.md): exactly 0.7x XLA passes, just under it is correct_slow."""
+        rows = seed_rows(True, True, True)
+        self.assertEqual(o.final_verdict(rows, t_kernel=1.0, t_xla=0.7, speed_bar=o.SPEED_BAR)[0], "pass")
+        v, fb, _ = o.final_verdict(rows, t_kernel=1.0, t_xla=0.69, speed_bar=o.SPEED_BAR)
+        self.assertEqual((v, fb), ("correct_slow", "correct but too slow: 0.69x XLA, need >= 0.70x"))
 
     def test_wrong_on_any_seed_is_wrong_and_names_the_seed_and_error(self):
         v, fb, speed = o.final_verdict(seed_rows(True, False, True), t_kernel=1.0, t_xla=5.0, speed_bar=0.8)
@@ -394,10 +401,10 @@ class EndToEnd(unittest.TestCase):
             for k in ("id", "task", "verdict", "feedback", "seeds", "device_kind", "jax", "oracle_commit", "speed_bar", "teacher"):
                 self.assertIn(k, r, (k, r))
             self.assertEqual(r["seeds"], [0, 1, 2])
-            self.assertEqual(r["speed_bar"], 0.8)
+            self.assertEqual(r["speed_bar"], 0.7)
         m = self.metas[0]
         self.assertTrue(m["meta"] and m["oracle"])
-        self.assertEqual((m["seeds"], m["speed_bar"]), ([0, 1, 2], 0.8))
+        self.assertEqual((m["seeds"], m["speed_bar"]), ([0, 1, 2], 0.7))
 
     def test_plain_jnp_is_not_a_kernel_and_never_runs(self):
         r = self.rows["plain_jnp"]
@@ -1122,7 +1129,7 @@ class IntInputsVary(unittest.TestCase):
             man = d / "manifest.json"
             man.write_text(json.dumps({"tasks": [{"task": n, "plain_ref": f"level1/{n}/baseline.py", "human_kernel": None}
                                                  for n in ("t", PAGED, "broken")]}))
-            p = subprocess.run([PY, str(HERE / "int_inputs.py"), "--manifest", str(man), "--bench", str(d)], capture_output=True,
+            p = subprocess.run([PY, str(HERE.parent / "curation" / "int_inputs.py"), "--manifest", str(man), "--bench", str(d)], capture_output=True,
                                text=True, timeout=600, env={**os.environ, "JAX_PLATFORMS": "cpu"})
         self.assertEqual(p.returncode, 0, p.stderr[-1500:])
         rows = {r["task"]: r for r in map(json.loads, p.stdout.splitlines())}

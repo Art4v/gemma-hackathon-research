@@ -1,6 +1,6 @@
 """Build a self-contained TPU oracle job directory: everything a Cloud TPU VM with no git checkout needs to run and reproduce the job.
 
-  python oracle/make_pack.py ITEMS.jsonl OUT_DIR --job-id ID --owner NAME --step STEP [--seeds 3] [--speed-bar 0.8] [--shards 1]
+  python oracle/make_pack.py ITEMS.jsonl OUT_DIR --job-id ID --owner NAME --step STEP [--seeds 3] [--speed-bar 0.7] [--shards 1]
                              [--reference-only] [--sensitivity [--sensitivity-seed 1] [--sensitivity-bar X]] [--groups G1,G2]
   python oracle/make_pack.py oracle/manifest.json OUT_DIR ... --reference-only --groups final_exam [--bench benchmarks/jaxbench]
 

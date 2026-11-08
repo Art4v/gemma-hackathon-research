@@ -1,6 +1,6 @@
 """A CPU reject-only pre-filter for kernels, and its validation against kernels the chip has already judged (clanker, issue #1 6713940244).
 
-  python oracle/lower_filter.py validate --py <JAX 0.10.2 python> --out REPORT.json [--workers 3] [--limit N] [--timeout 180]
+  python curation/lower_filter.py validate --py <JAX 0.10.2 python> --out REPORT.json [--workers 3] [--limit N] [--timeout 180]
 
 The filter cross-lowers a candidate for TPU v6e on a CPU host (lower_vmem.py's method: JAX_PLATFORMS=cpu, v6e chip info registered for the CPU
 device, jax.jit(workload).trace(*abstract).lower(lowering_platforms=("tpu",))). Pallas's TPU lowering enforces the block-shape rules and
@@ -23,7 +23,8 @@ NONE of the kernels that ran. One wrong rejection and it's out.
 """
 import argparse, collections, concurrent.futures as cf, glob, json, os, pathlib, re, subprocess, sys, tempfile
 
-HERE = pathlib.Path(__file__).resolve().parent  # the oracle folder
+HERE = pathlib.Path(__file__).resolve().parent  # the curation folder (its sandbox/ sits beside it)
+ORACLE = HERE.parent / "oracle"  # where the chip's judged kernels live (results/, queue/, round2/)
 CHILD_FLAG = "--lower-one"
 RAN = {"pass", "correct_slow", "wrong"}
 FAILED = {"compile", "vmem", "mosaic", "timeout"}
@@ -199,7 +200,7 @@ def read_jsonl(path):
     return [json.loads(line) for line in open(path) if line.strip()]
 
 
-def validation_set(root=HERE):
+def validation_set(root=ORACLE):
     labels = read_jsonl(root / "round2/labels/train_r2_v6e_labels.jsonl")
     train = read_jsonl(root / "round2/data/train_r2.jsonl")
     results = [r for f in sorted(glob.glob(str(root / "results/*/*.jsonl"))) for r in read_jsonl(f)]

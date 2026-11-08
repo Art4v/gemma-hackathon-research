@@ -25,7 +25,7 @@ batch-norm running means, running variances that are ones (43k, 48k: U[0.5, 1.5]
 multiplies an instance norm over one element (always 0), and 28k's conv_bias is constant along the axis its LayerNorm subtracts.
 
 Tasks whose seeds >= 1 differ from JAXBench as written, beyond fold_in's new PRNG draws: 3p, 6p, 7p, 11p, 51p-54p, 58p, 62p, 63p (above); 17p (mask); 22k, 25k,
-26k, 28k, 29k, 31k, 34k, 40k, 43k, 45k, 46k, 48k (constant float leaves), as listed by oracle/int_inputs.py's const_float_leaves.
+26k, 28k, 29k, 31k, 34k, 40k, 43k, 45k, 46k, 48k (constant float leaves), as listed by curation/int_inputs.py's const_float_leaves.
 Imports without JAX; jax is imported inside the transforms.
 """
 import functools
