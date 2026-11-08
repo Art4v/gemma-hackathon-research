@@ -16,7 +16,8 @@
 set -euo pipefail
 : "${PROJECT:?export PROJECT=<project id>}" "${ZONE:?export ZONE=<zone with v6e>}"
 NAME=${NAME:-oracle-v6e}
-G=(gcloud compute tpus tpu-vm --project="$PROJECT" --zone="$ZONE")
+export CLOUDSDK_COMPUTE_ZONE="$ZONE"  # gcloud rejects --zone before the ssh/scp subcommand
+G=(gcloud compute tpus tpu-vm --project="$PROJECT")
 OH=/home/oracle
 PY=$OH/venv/bin/python
 # libtpu can't ask the blocked metadata server for the topology, so it comes from the environment (QUEUE.md step 4)
