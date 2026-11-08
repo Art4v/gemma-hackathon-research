@@ -148,6 +148,21 @@ class Pack(unittest.TestCase):
             self.assertIn("container socket", p.stderr)
             self.assertFalse((out / "shards").exists())
 
+    def test_on_colab_the_vm_checks_are_skipped_and_said_but_the_file_check_still_holds(self):
+        # Colab runs as root and holds no credentials of ours (approved Nov 8): ORACLE_ON_COLAB=1 skips only the Cloud VM checks
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d); out = build(d, three_items(d))
+            py = PY or sys.executable
+            stub = {"curl": "printf 200", "sudo": "exit 0", "id": "echo root",  # every VM check would refuse
+                    "py": f'case "$1" in -c|-) exec {shlex.quote(py)} "$@";; *) exit 0;; esac'}  # hash check and pin run; the oracle is a no-op
+            p = self._run_with_fakes(d, out, stub, extra_env={"ORACLE_ON_COLAB": "1"})
+            self.assertNotIn("refusing to run", p.stderr)
+            self.assertIn("VM security checks skipped", p.stdout + p.stderr)
+            self.assertTrue((out / "shards").exists())
+            (out / "pack.json").write_text("{}")
+            p = self._run_with_fakes(d, out, stub, extra_env={"ORACLE_ON_COLAB": "1"})
+            self.assertIn("changed or missing since the pack was built", p.stdout + p.stderr)
+
     def test_run_sh_socket_override_cannot_empty_the_list(self):
         with tempfile.TemporaryDirectory() as d:
             d = pathlib.Path(d); out = build(d, three_items(d))

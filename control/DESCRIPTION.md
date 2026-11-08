@@ -47,7 +47,16 @@ python3 control/bench.py items --out control/runs/items_t0.jsonl      # both arm
 python3 oracle/make_pack.py control/runs/items_t0.jsonl oracle/jobs/control-t0 --job-id control-t0 --owner hruday --step t0
 python3 control/verify_refs.py build oracle/jobs/verify-refs-1 --job-id verify-refs-1 --owner hruday    # once
 ```
-On the v6e VM, as the locked-down user (`oracle/QUEUE.md`, "VM security"), with `oracle/vm.sh` from a machine with gcloud:
+On a Colab TPU v6e session (compute units from `colab pay`), with `oracle/colab.sh`:
+```bash
+bash oracle/colab.sh start && bash oracle/colab.sh setup
+bash oracle/colab.sh push oracle/jobs/verify-refs-1 oracle/jobs/control-t0
+bash oracle/colab.sh run verify-refs-1      # then status until it's done; one job at a time on the one chip
+bash oracle/colab.sh run control-t0
+bash oracle/colab.sh fetch verify-refs-1 && bash oracle/colab.sh fetch control-t0
+bash oracle/colab.sh stop                   # always: an idle session burns compute units
+```
+Or on a Cloud TPU VM, as the locked-down user (`oracle/QUEUE.md`, "VM security"), with `oracle/vm.sh` from a machine with gcloud:
 ```bash
 export PROJECT=<project id> ZONE=<zone with v6e> SPOT=1
 bash oracle/vm.sh create && bash oracle/vm.sh bootstrap && bash oracle/vm.sh check

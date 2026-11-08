@@ -57,6 +57,13 @@ run, status, fetch, delete):
    and the results fetch, which must expand its globs as root. Delete the VM when the queue is empty:
    `gcloud compute tpus tpu-vm list --zone=ZONE` must show 0 items.
 
+## On Colab instead (approved 2026-11-08)
+
+A Colab TPU v6e session (`colab new --tpu v6e1`) runs the same job directory with `oracle/colab.sh` (start, setup, push, run, status,
+fetch, stop). There the oracle runs directly: `ORACLE_ON_COLAB=1` makes `run.sh` skip the Cloud VM checks above, and says so in its log,
+because Colab runs as root and a session holds no credentials of ours. Never mount Drive or log in inside the session. `run.sh`'s file
+check and JAX pin still run, and rows say `stack: colab-tpu`. Stop the session when done: an idle one still burns compute units.
+
 ## Where results appear
 
 The operator commits `results/<job_id>.jsonl` and `summary.json` to `oracle/results/<job_id>/` and replies to your request.
