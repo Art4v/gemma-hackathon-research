@@ -1,0 +1,1212 @@
+{
+ "jaxbench_commit": "480692d8ab853c21ee14e811c5c462bbbb01b3ac",
+ "tasks": [
+  {
+   "task": "1p_Flash_Attention",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/1p_Flash_Attention/baseline.py",
+   "plain_ref_sha256": "bbc0f8d89389c0541a98717324ec439ff760ea578e1b62296d659f052d296775",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/1p_Flash_Attention/baseline.py",
+   "human_kernel_sha256": "94e7ee38380857bc6b5d59110617ab41bdf6318fc3df6162a28312b997f35e16",
+   "input_bytes": 805306368,
+   "input_elements": 402653184,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "2p_GQA_Attention",
+   "kind": "p",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/2p_GQA_Attention/baseline.py",
+   "plain_ref_sha256": "abbdde3f6ae193ed94b657ace0f8aeda7ef7a967baf777437bbe509ceb72b4c9",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/2p_GQA_Attention/baseline.py",
+   "human_kernel_sha256": "64073ad3dc2cc496c7b26b195adbd76b3d2081e2f1b11f87596b133f2718e015",
+   "input_bytes": 603979776,
+   "input_elements": 301989888,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "3p_MLA_Attention",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": "level1/3p_MLA_Attention/baseline.py",
+   "plain_ref_sha256": "79422d2a938f2699f48a60f7ebddc89031fd2de2c2266306a0a081496ce092da",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/3p_MLA_Attention/baseline.py",
+   "human_kernel_sha256": "cd09cc387e0f5cb56e832a6f6440a648848e424c5e0a5dd428780c5fd5287e2c",
+   "input_bytes": 1570933776,
+   "input_elements": 785462020,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "4p_Sparse_Attention",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": "level1/4p_Sparse_Attention/baseline.py",
+   "plain_ref_sha256": "cafd84038e5d0d6aba1b4e68f1cd52e4bfd2cb8b6d8256bfa5b9436de65d82db",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/4p_Sparse_Attention/baseline.py",
+   "human_kernel_sha256": "8adf315d56f1e81a1e646456a18d7633b6cf5765ad12319622eedc6c5ddfd164",
+   "input_bytes": 335544320,
+   "input_elements": 167772160,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "5p_Flex_Attention",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": "level1/5p_Flex_Attention/baseline.py",
+   "plain_ref_sha256": "5262ccfa806ecf2f26042d29c317a0aa6ea545c1fc22d3195939cc4dc3ed960a",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 2952790016,
+   "input_elements": 1476395008,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "6p_Paged_Attention",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": "level1/6p_Paged_Attention/baseline.py",
+   "plain_ref_sha256": "7014504d1147019b0df3ea8e2bd2296b192be8c653bd6ff269534b70dbc3bf89",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/6p_Paged_Attention/baseline.py",
+   "human_kernel_sha256": "16db1e60f8336f14d6b6789acadf9da2b4158e4bb534fa3c1575d2f1657cf189",
+   "input_bytes": 1074856452,
+   "input_elements": 537411713,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "7p_Ragged_Paged_Attention",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/7p_Ragged_Paged_Attention/baseline.py",
+   "plain_ref_sha256": "92918c43f302028799836d4bedd0c9f189c1a1ac78a725ce9876be6060681202",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/7p_Ragged_Paged_Attention/baseline.py",
+   "human_kernel_sha256": "45d2f8e63d93dd1e363e5d0e4bd1555732c0d9904c3f6bf0dc60bce210e3443e",
+   "input_bytes": 1140916744,
+   "input_elements": 570441858,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "8p_GEMM",
+   "kind": "p",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/8p_GEMM/baseline.py",
+   "plain_ref_sha256": "88d698bbbc254cc69fa1206801274247506711b8db48daef71b7c81b281ca442",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/8p_GEMM/baseline.py",
+   "human_kernel_sha256": "322415aaa7d35d7fe6216b98987a1c7530e288207d4f197a9c525a1592ace5c9",
+   "input_bytes": 603979776,
+   "input_elements": 301989888,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "9p_SwiGLU_MLP",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/9p_SwiGLU_MLP/baseline.py",
+   "plain_ref_sha256": "0a08d8a55a72b55e714610e0c4e09092d2d18f7a44abfdda751eaa3a82d6b708",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 1543503872,
+   "input_elements": 771751936,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "10p_Sparse_MoE",
+   "kind": "p",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/10p_Sparse_MoE/baseline.py",
+   "plain_ref_sha256": "882a28fc2dcddf5f1fdc7bae4b4225c03df079f5f5a5ea76f831de5d1a59d483",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 2885746688,
+   "input_elements": 1442873344,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "11p_Megablox_GMM",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/11p_Megablox_GMM/baseline.py",
+   "plain_ref_sha256": "203dd497a692c3500332f0d78307cdac8b5d36e5d4e8b7c6a6b85e407daedd5a",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": "level2/11p_Megablox_GMM/baseline.py",
+   "human_kernel_sha256": "9c38501828ba96ecf3097d701103457837c9cbdeb9d851d4b4e441973dd9e6d9",
+   "input_bytes": 1879048708,
+   "input_elements": 939524225,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "12p_RMSNorm",
+   "kind": "p",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/12p_RMSNorm/baseline.py",
+   "plain_ref_sha256": "1ab768b9b50c457db4fc17ad0af0264751062b1bc1d032913310cce539056856",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 536887296,
+   "input_elements": 268443648,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "13p_Cross_Entropy",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/13p_Cross_Entropy/baseline.py",
+   "plain_ref_sha256": "bf43cf63404a97b8277feefffbeac0ae918d4eaaa8ab4a987328040e7d229779",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 1117814784,
+   "input_elements": 558899200,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "14p_Ragged_Dot",
+   "kind": "p",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/14p_Ragged_Dot/baseline.py",
+   "plain_ref_sha256": "a8af545bc717df3d9e9657ca24b8144be87b8256b9951006f56a5db47acc8285",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 1006632960,
+   "input_elements": 503316480,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "15p_RetNet_Retention",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/15p_RetNet_Retention/baseline.py",
+   "plain_ref_sha256": "56616b60350c73b66fa81487dd77136686a51d8fcf9f255ac4da895cc0c08830",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402653184,
+   "input_elements": 201326592,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "16p_Mamba2_SSD",
+   "kind": "p",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/16p_Mamba2_SSD/baseline.py",
+   "plain_ref_sha256": "383c1160d8dfeb4e5a69d81bfadfc3ab8bc28b7bf972c7c3545dae0b6f44d2b1",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 406847488,
+   "input_elements": 202375168,
+   "input_dtypes": [
+    "bfloat16",
+    "float32"
+   ]
+  },
+  {
+   "task": "17p_Triangle_Multiplication",
+   "kind": "p",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/17p_Triangle_Multiplication/baseline.py",
+   "plain_ref_sha256": "fc6140b0a6788d7dcbbb45f6cb9ce118956153ca092f1d0ae95b555f16403f3c",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 608895232,
+   "input_elements": 304447616,
+   "input_dtypes": [
+    "bfloat16"
+   ]
+  },
+  {
+   "task": "18k_Conv2D_ReLU_BiasAdd",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/18k_Conv2D_ReLU_BiasAdd/baseline.py",
+   "plain_ref_sha256": "8359c663f3e4762dc64f71ea692513ce7136722f776ebcc1d6dda701b99c08eb",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 537166848,
+   "input_elements": 134291712,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "19k_Matmul_Subtract_Multiply_ReLU",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/19k_Matmul_Subtract_Multiply_ReLU/baseline.py",
+   "plain_ref_sha256": "d7edde32d634be80859f6d6029751a5a0956e3a124af9e2b8f77a50b7ac7af00",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "20k_Gemm_Multiply_LeakyReLU",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/20k_Gemm_Multiply_LeakyReLU/baseline.py",
+   "plain_ref_sha256": "5397987e28d0094e6cdc993c52ecf6a68de120937bc9b221568c479aa641de68",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "21k_Gemm_Divide_Sum_Scaling",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/21k_Gemm_Divide_Sum_Scaling/baseline.py",
+   "plain_ref_sha256": "2d6595827ee682756b6f31ed07aa8693cc9f388443da13b9cb35473b709ea279",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402653184,
+   "input_elements": 100663296,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "22k_Conv2d_InstanceNorm_Divide",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/22k_Conv2d_InstanceNorm_Divide/baseline.py",
+   "plain_ref_sha256": "6bafacad7c8f5679732c4cd2a645a664053d9bcbbba79f52e5d0ce6c5fea9272",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 537167360,
+   "input_elements": 134291840,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp/baseline.py",
+   "plain_ref_sha256": "36148a5759434aa4d0a846ff95b5ba1052a822517600dd44d2b2e2da1ebcb113",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish/baseline.py",
+   "plain_ref_sha256": "43c090b5ec1733038760cf80fa95e217bb4f6dd6902ca3c9ffd9830c0623c497",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "25k_Conv3d_GroupNorm_Mean",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/25k_Conv3d_GroupNorm_Mean/baseline.py",
+   "plain_ref_sha256": "a0e7917c9a64a2af532b7de980ed955df62f70476fe0172aad5ab85dee2cc1c3",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 37756800,
+   "input_elements": 9439200,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply/baseline.py",
+   "plain_ref_sha256": "92348bb64150e44a13a8aacb36339912ab8fa90dbd47d8fc5b44daad319c8c9a",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 536969216,
+   "input_elements": 134242304,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "27k_Matmul_Mish_Mish",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/27k_Matmul_Mish_Mish/baseline.py",
+   "plain_ref_sha256": "928b0f8d24ebced6bda4f6060932e17a1dc65229c0df01adebd304e5b567a48c",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "28k_ConvTranspose3d_LayerNorm_GELU_Scaling",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/28k_ConvTranspose3d_LayerNorm_GELU_Scaling/baseline.py",
+   "plain_ref_sha256": "d997fc6c89d04a0ec11634e4a7ec4bbc6c24085679bf7dab87179d5f17102296",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 67633920,
+   "input_elements": 16908480,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "29k_Matmul_Swish_Sum_GroupNorm",
+   "kind": "k",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": "level1/29k_Matmul_Swish_Sum_GroupNorm/baseline.py",
+   "plain_ref_sha256": "6116a158bee5613f8928683a5e227ca67fcc3e00fc83b6bd2e4701506b9551ba",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 201375744,
+   "input_elements": 50343936,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "30k_Matmul_Scaling_ResidualAdd",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/30k_Matmul_Scaling_ResidualAdd/baseline.py",
+   "plain_ref_sha256": "8b98f83a104ba5ba02cf616dc2e57deac4eb96678e33e9041431b5ab7081755b",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 335560704,
+   "input_elements": 83890176,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "31k_Gemm_BatchNorm_GELU_ReLU",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/31k_Gemm_BatchNorm_GELU_ReLU/baseline.py",
+   "plain_ref_sha256": "6f5185c1b2994deb913b061fe366ad8a10eda87c00f1230b9d87ce2e3cbb675b",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 805404672,
+   "input_elements": 201351168,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "32k_Gemm_Sigmoid_LogSumExp",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/32k_Gemm_Sigmoid_LogSumExp/baseline.py",
+   "plain_ref_sha256": "95ac3aa01f8d99488a38005811d9e94470bd5b29e10b465ae39c76a5eda6bb1e",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 184569856,
+   "input_elements": 46142464,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "33k_Conv3d_Mish_Tanh",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/33k_Conv3d_Mish_Tanh/baseline.py",
+   "plain_ref_sha256": "2367119301d57271b9e77028c82b0869760d33be585adaeddccad7d7be1875c1",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 268656896,
+   "input_elements": 67164224,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "34k_Conv2d_Activation_BatchNorm",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/34k_Conv2d_Activation_BatchNorm/baseline.py",
+   "plain_ref_sha256": "416ad805da833562b014a20120b6fe1e246c2237eb9c4cf6543c9a5183c4934f",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 268731904,
+   "input_elements": 67182976,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "35k_Gemm_Scaling_Hardtanh_GELU",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/35k_Gemm_Scaling_Hardtanh_GELU/baseline.py",
+   "plain_ref_sha256": "c4b2193eef6f06d27a993e0adc03c8897f8166c18bde5c02597f6f2a3705f953",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "36k_Matmul_Sigmoid_Sum",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/36k_Matmul_Sigmoid_Sum/baseline.py",
+   "plain_ref_sha256": "4ce76676270cddbfbbdda34eef57a2f7bfd1980082fdcd2952f6ee29eb65fbf3",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "37k_Matmul_Swish_Scaling",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/37k_Matmul_Swish_Scaling/baseline.py",
+   "plain_ref_sha256": "db7f764804925ae397683749fb6fec38e94b68d6b05180c08f11e8b45f6adab5",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "38k_Matmul_Dropout_Softmax",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/38k_Matmul_Dropout_Softmax/baseline.py",
+   "plain_ref_sha256": "a906f7a5d3baa6b0c660470eb7851811adfcef80089ac99aef732e925367e4ce",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "39k_Conv2d_GELU_GlobalAvgPool",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/39k_Conv2d_GELU_GlobalAvgPool/baseline.py",
+   "plain_ref_sha256": "0157656086d766afb8f24d95dd673cd12d5e7c3385449b7cf96213ddd83e542e",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 268454144,
+   "input_elements": 67113536,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "40k_Gemm_GroupNorm_Min_BiasAdd",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/40k_Gemm_GroupNorm_Min_BiasAdd/baseline.py",
+   "plain_ref_sha256": "2a313cb7d7cb7fde61d35872fa64abf0ae06c1b5ed7c2e976929a7f7fd5c589d",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402784256,
+   "input_elements": 100696064,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "41k_Gemm_Add_ReLU",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/41k_Gemm_Add_ReLU/baseline.py",
+   "plain_ref_sha256": "aabbb9f673167105402cee9f68a952bd032299f0c9c01b05cf8ee3185b99d220",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "42k_Gemm_Max_Subtract_GELU",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/42k_Gemm_Max_Subtract_GELU/baseline.py",
+   "plain_ref_sha256": "4ed4129bf57adf52848a1fc31387fe059844c6296d30f542e28b6710e4ed752a",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "43k_Gemm_BatchNorm_Scaling_Softmax",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/43k_Gemm_BatchNorm_Scaling_Softmax/baseline.py",
+   "plain_ref_sha256": "c56b44aa4ae0c80efd481a238adb4bd86668c41c446daf80d0434ed5b7ffdc3f",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402817028,
+   "input_elements": 100704257,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "44k_Matmul_Divide_GELU",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/44k_Matmul_Divide_GELU/baseline.py",
+   "plain_ref_sha256": "dbacb22e1d148e5b8c6313dd5e6a0bb4ad93d01bf2117064bbf2660eb75fb0d9",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "45k_Gemm_GroupNorm_Swish_Multiply_Swish",
+   "kind": "k",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": "level1/45k_Gemm_GroupNorm_Swish_Multiply_Swish/baseline.py",
+   "plain_ref_sha256": "a7bf75935833ebf026d1f2771b3830bdc3dfa17e5bb580e4fad119cc38c81787",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402784256,
+   "input_elements": 100696064,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp/baseline.py",
+   "plain_ref_sha256": "ec2fc2bbd99ed996d5cf4dea054d0c3f37435eca05dc9729e816fc0b1c34ada1",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 67128064,
+   "input_elements": 16782016,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+   "kind": "k",
+   "group": "final_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/baseline.py",
+   "plain_ref_sha256": "b7afe86bcb22f284c8b0eab14c393d62337ef1bfba74a34cc345da13ca740f5c",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402718720,
+   "input_elements": 100679680,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/baseline.py",
+   "plain_ref_sha256": "9420946d2629aebf42a4b9c006a768fc70d2a09edaa17114e99a7cee6ff343a2",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402817028,
+   "input_elements": 100704257,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "49k_Matmul_AvgPool_GELU_Scale_Max",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/49k_Matmul_AvgPool_GELU_Scale_Max/baseline.py",
+   "plain_ref_sha256": "4125737a23ceed917538887099d351e4c62d9cd1c93039234d1ca6687cb41110",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "50k_Matmul_GELU_Softmax",
+   "kind": "k",
+   "group": "practice_exam",
+   "train_allowed": false,
+   "teacher_allowed": false,
+   "plain_ref": "level1/50k_Matmul_GELU_Softmax/baseline.py",
+   "plain_ref_sha256": "0083d2a3ad83bed1aa918295182b98cef583e4abf08868525682548729026dd0",
+   "plain_ref_has_pallas": false,
+   "needs_plain_ref": false,
+   "human_kernel": null,
+   "human_kernel_sha256": null,
+   "input_bytes": 402685952,
+   "input_elements": 100671488,
+   "input_dtypes": [
+    "float32"
+   ]
+  },
+  {
+   "task": "51p_DeepSeek_V4_CSA",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/51p_DeepSeek_V4_CSA/baseline.py",
+   "human_kernel_sha256": "a360b0dbcb5db430f7df2f84592c908327152329826b5f710e6b5e408c0fadbb",
+   "input_bytes": 8160208,
+   "input_elements": 6037748,
+   "input_dtypes": [
+    "bfloat16",
+    "float32",
+    "int32",
+    "uint8"
+   ]
+  },
+  {
+   "task": "52p_DeepSeek_V4_HCA",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/52p_DeepSeek_V4_HCA/baseline.py",
+   "human_kernel_sha256": "af8f5149a0ac7e40949f5a7c7c1f96b95f95de6c371a6ae43c852657fb30ffcf",
+   "input_bytes": 4408400,
+   "input_elements": 2298132,
+   "input_dtypes": [
+    "bfloat16",
+    "float32",
+    "int32",
+    "uint8"
+   ]
+  },
+  {
+   "task": "53p_DeepSeek_V4_MLA_SWA",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/53p_DeepSeek_V4_MLA_SWA/baseline.py",
+   "human_kernel_sha256": "1a587fb65fdd0a0ca17927f2cc3eb699a962e1f51afd58f5050ca09a65b64981",
+   "input_bytes": 23086352,
+   "input_elements": 22028612,
+   "input_dtypes": [
+    "bfloat16",
+    "float32",
+    "int32",
+    "uint8"
+   ]
+  },
+  {
+   "task": "54p_DeepSeek_V4_Masked_Dense_MLA",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/54p_DeepSeek_V4_Masked_Dense_MLA/baseline.py",
+   "human_kernel_sha256": "649961604c5dfc499169b069be89005e159abce57c5160c5d110ea8dd2c20cc7",
+   "input_bytes": 8160272,
+   "input_elements": 6037764,
+   "input_dtypes": [
+    "bfloat16",
+    "float32",
+    "int32",
+    "uint8"
+   ]
+  },
+  {
+   "task": "55p_DeepSeek_V4_StreamIndex_TopK",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/55p_DeepSeek_V4_StreamIndex_TopK/baseline.py",
+   "human_kernel_sha256": "6972447c42626a94842de0cb9d3899e857d985e769911f96d7b5ca2a173ff862",
+   "input_bytes": 1183952,
+   "input_elements": 1180724,
+   "input_dtypes": [
+    "float32",
+    "float8_e4m3fn",
+    "int32",
+    "uint8"
+   ]
+  },
+  {
+   "task": "56p_DeepSeek_V4_MHC",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/56p_DeepSeek_V4_MHC/baseline.py",
+   "human_kernel_sha256": "01955867667347f56666073c58c5f5f4f69cb82cea9c19e4626872011c539ce4",
+   "input_bytes": 21123180,
+   "input_elements": 9868315,
+   "input_dtypes": [
+    "bfloat16",
+    "float32"
+   ]
+  },
+  {
+   "task": "57p_SparseCore_Ragged_Gather",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/57p_SparseCore_Ragged_Gather/baseline.py",
+   "human_kernel_sha256": "bdd1ad40da6d55a9da156d5c502772583e8fe68459c9287ddac921aa924052cd",
+   "input_bytes": 117473288,
+   "input_elements": 58728450,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "58p_DeepSeek_V4_KV_Compressor",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/58p_DeepSeek_V4_KV_Compressor/baseline.py",
+   "human_kernel_sha256": "4bea970aaeb874f2250f0184986d72481952cb24822a757b70813c751d7ad0b4",
+   "input_bytes": 334020,
+   "input_elements": 329265,
+   "input_dtypes": [
+    "float32",
+    "int32",
+    "uint8"
+   ]
+  },
+  {
+   "task": "59p_Megablox_GMM_v2",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/59p_Megablox_GMM_v2/baseline.py",
+   "human_kernel_sha256": "ba9f1ff96ee99fa875c5efdf7ebfb26c4ed6f4584b40234b36e5aa468b7c6757",
+   "input_bytes": 25198852,
+   "input_elements": 20979777,
+   "input_dtypes": [
+    "bfloat16",
+    "float32",
+    "float4_e2m1fn",
+    "int32"
+   ]
+  },
+  {
+   "task": "60p_RPAv3",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/60p_RPAv3/baseline.py",
+   "human_kernel_sha256": "738885e0c02eaab3b9471cd34302d1fd688e591a57a1e9eac1aad4f956af8783",
+   "input_bytes": 1157693968,
+   "input_elements": 578830468,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "61p_Batched_RPA",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/61p_Batched_RPA/baseline.py",
+   "human_kernel_sha256": "22c47c9f41b9692080c5c5ea75e12b7a0a00b2291a5f95e272355a2c4ac6d51d",
+   "input_bytes": 1074594320,
+   "input_elements": 537280644,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "62p_Causal_Conv1d_GDN",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/62p_Causal_Conv1d_GDN/baseline.py",
+   "human_kernel_sha256": "712700a55baf057006cdc081159864999ebdf9653f5ca6403b371ef58a08bd14",
+   "input_bytes": 18416080,
+   "input_elements": 4882548,
+   "input_dtypes": [
+    "bfloat16",
+    "float32",
+    "int32"
+   ]
+  },
+  {
+   "task": "63p_GDN",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/63p_GDN/baseline.py",
+   "human_kernel_sha256": "24475d8556053a6e4d0b063c706bc29c9ae69e7a24de75ccac406e3bbe81ea58",
+   "input_bytes": 18096496,
+   "input_elements": 4722804,
+   "input_dtypes": [
+    "bfloat16",
+    "bool",
+    "float32",
+    "int32"
+   ]
+  },
+  {
+   "task": "64p_Linear_Softmax_Cross_Entropy",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/64p_Linear_Softmax_Cross_Entropy/baseline.py",
+   "human_kernel_sha256": "4747d70b8d6c21a69185a02ad3ca3094aade3a6961b7b2294dfdf522d94fe923",
+   "input_bytes": 69210112,
+   "input_elements": 34604032,
+   "input_dtypes": [
+    "bfloat16",
+    "int32"
+   ]
+  },
+  {
+   "task": "65p_Quantized_Splash_Attention",
+   "kind": "p",
+   "group": "practice_problem",
+   "train_allowed": true,
+   "teacher_allowed": true,
+   "plain_ref": null,
+   "plain_ref_sha256": null,
+   "plain_ref_has_pallas": null,
+   "needs_plain_ref": true,
+   "human_kernel": "level2/65p_Quantized_Splash_Attention/baseline.py",
+   "human_kernel_sha256": "fa9beb463555bb1df03e515f1569ba36ed30fcbf65ae825bd1fd7e178912add8",
+   "input_bytes": 173015040,
+   "input_elements": 169082880,
+   "input_dtypes": [
+    "float32",
+    "float8_e4m3fn"
+   ]
+  }
+ ]
+}
