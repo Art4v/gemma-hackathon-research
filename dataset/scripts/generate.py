@@ -11,10 +11,10 @@ candidates/B/r<r>.jsonl; raw responses to candidates/raw_responses/ (gitignored)
 """
 from __future__ import annotations
 
-import argparse, pathlib, sys
+import argparse, pathlib, re, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from common import CANDIDATES, KERNEL_FAULT, PRESCREEN, PROBLEMS, TRAJECTORIES, candidate_id, now, read_jsonl, sha256, validate, write_jsonl  # noqa: E402
+from common import CANDIDATES, KERNEL_FAULT, PRESCREEN, PROBLEMS, TRAJECTORIES, VERDICTS, candidate_id, now, read_jsonl, sha256, validate, write_jsonl  # noqa: E402
 from constructor import Request, get_constructor, save_raw  # noqa: E402
 from constructor.prompts import PROMPT_VERSION, kernel_system, kernel_user  # noqa: E402
 from render_chat import unfence  # noqa: E402
@@ -36,14 +36,55 @@ def plan_round1(problems: dict, cands: dict, only: set | None) -> list:
     return [(p, 1, 0, None, None, None, None, []) for p in problems.values() if p["task_name"] not in have and (only is None or p["problem_id"] in only)]
 
 
+HELD = PROBLEMS / "held_for_ref_check.jsonl"
+INDEX_PRIMS = {"top_k", "argmax", "argmin", "sort", "argsort"}
+INDEX_NAME = re.compile(r"top_?k|top2|router|argmax|argmin|argsort|load_balance|dispatch|capacity|bincount|ring_update", re.I)
+QUANT_DTYPES = ("int8", "uint8", "int4", "float8")
+QUANT_NAME = re.compile(r"int8|int4|fp8|float8|dequant|quant", re.I)
+
+
+def hold_reason(p: dict, row: dict | None) -> str | None:
+    """Why a repair would be wasted, or None. Only when the latest verdict is wrong on every seed AND the problem is a kind whose
+    reference, not the kernel, is the likely cause: index outputs compared element by element (the 55p problem: a correct kernel that
+    breaks a near-tie differently flips an index) or a quantized reference far from the float32 answer key (the blockwise_kernel case).
+    Wrong on only some seeds, or any other problem, repairs as usual."""
+    if not row or row.get("verdict") != "wrong" or not row.get("per_seed") or any(s.get("ok") for s in row["per_seed"]):
+        return None
+    sig, name = p.get("signature") or {}, p["task_name"]
+    if INDEX_PRIMS & set(sig.get("op_chain") or []) or INDEX_NAME.search(name):
+        return "index_output"
+    if any(d.startswith(QUANT_DTYPES) for d in sig.get("input_dtypes") or []) or QUANT_NAME.search(name):
+        return "quantized"
+    return None
+
+
+def verdict_row(job_id: str, candidate_id: str, cache: dict) -> dict | None:
+    if job_id not in cache:
+        cache[job_id] = {v["candidate_id"]: v.get("row") for v in read_jsonl(VERDICTS / f"{job_id}.jsonl")}
+    return cache[job_id].get(candidate_id)
+
+
 def plan_repair(batch: str, rnd: int, problems: dict, cands: dict, only: set | None) -> list:
-    jobs = []
+    jobs, rows, held = [], {}, {h["problem_id"] for h in read_jsonl(HELD)}
     for t in read_jsonl(TRAJECTORIES / f"{batch}.jsonl"):
         p = problems.get(t["problem_id"])
         if p is None or t.get("status") != "open" or (only is not None and p["problem_id"] not in only):
             continue
         attempts = [x for x in t.get("attempts", []) if cands.get(x["candidate_id"], {}).get("constructor", {}).get("backend") != "human"]
         if len(attempts) != rnd - 1 or attempts[-1]["verdict"] not in KERNEL_FAULT:
+            continue
+        if p["problem_id"] in held:
+            continue
+        last_row = verdict_row(attempts[-1]["job_id"], attempts[-1]["candidate_id"], rows)
+        why = hold_reason(p, last_row)
+        if why:  # held for a reference check (exclude like 55p, or switch to an order-invariant output); no repair is sent
+            held.add(p["problem_id"])
+            write_jsonl(HELD, [{"problem_id": p["problem_id"], "task_name": p["task_name"], "batch": batch, "round": rnd, "reason": why,
+                                "candidate_id": attempts[-1]["candidate_id"], "job_id": attempts[-1]["job_id"],
+                                "feedback": attempts[-1]["feedback"], "per_seed": [{k: s.get(k) for k in ("seed", "err_kernel", "err_xla_default")}
+                                                                                   for s in last_row["per_seed"]],
+                                "input_dtypes": (p.get("signature") or {}).get("input_dtypes"), "held_at": now()}], append=True)
+            print(f"  held for reference check ({why}): {p['problem_id']}", flush=True)
             continue
         if any(c["task_name"] == p["task_name"] and c["attempt"] == rnd for c in cands.values()):
             continue
