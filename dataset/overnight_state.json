@@ -1,9 +1,9 @@
 {
  "batches": {
   "pilot": {
-   "collected": 1,
+   "collected": 2,
    "done": false,
-   "submitted": 2
+   "submitted": 3
   }
  },
  "finished": false,

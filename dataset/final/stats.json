@@ -1,0 +1,67 @@
+{
+ "by_kind": {
+  "repair": 1,
+  "single": 26
+ },
+ "by_n_repairs": {
+  "0": 26,
+  "1": 1
+ },
+ "by_source": {
+  "authored": 10,
+  "kernelbench": 16,
+  "scraped": 1
+ },
+ "by_split": {
+  "train": 25,
+  "val": 2
+ },
+ "by_target_origin": {
+  "constructor": 27
+ },
+ "code_chars": {
+  "n": 27,
+  "p10": 1388.6,
+  "p50": 2720,
+  "p90": 3687.6
+ },
+ "n_chains": 26,
+ "n_examples": 27,
+ "n_harness_blocked": 0,
+ "n_problems_judged": 32,
+ "n_unsolved": 0,
+ "parity_share": 0.7692,
+ "pass_at_k": {
+  "all": {
+   "pass@1": 0.7812,
+   "pass@2": 0.8125,
+   "pass@3": 0.8125
+  },
+  "authored": {
+   "pass@1": 1.0,
+   "pass@2": 1.0,
+   "pass@3": 1.0
+  },
+  "kernelbench": {
+   "pass@1": 0.7368,
+   "pass@2": 0.7895,
+   "pass@3": 0.7895
+  },
+  "scraped": {
+   "pass@1": 0.3333,
+   "pass@2": 0.3333,
+   "pass@3": 0.3333
+  }
+ },
+ "repaired_verdicts": {
+  "attempt1": {
+   "compile": 1
+  }
+ },
+ "speed_vs_xla": {
+  "n": 26,
+  "p10": 0.8774226536222383,
+  "p50": 1.2182785608696611,
+  "p90": 2.0423143575208607
+ }
+}
