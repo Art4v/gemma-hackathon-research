@@ -1,6 +1,13 @@
 {
- "batches": {},
+ "batches": {
+  "g1": {
+   "collected": 0,
+   "done": false,
+   "n": 50,
+   "submitted": 0
+  }
+ },
  "finished": false,
- "next_batch": 1,
+ "next_batch": 2,
  "production": 6
 }

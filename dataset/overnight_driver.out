@@ -1,10 +1,8 @@
-[17:48:49] overnight driver start; state {"finished": false, "next_batch": 1, "production": 3}, batches {}
-[17:48:49] production stage filter1 starting
-[17:48:49] $ fetch -q origin ... -> rc 0 | 
-[17:53:49] production stage filter1 finished rc 0
-[17:53:49] $ add -A dataset ... -> rc 128 | 
-[17:53:49]   stderr: fatal: pathspec 'oracle/queue' did not match any files
-[17:53:49] production stage neardup1 starting
-[17:53:50] $ fetch -q origin ... -> rc 0 | 
-[17:58:50] $ fetch -q origin ... -> rc 0 | 
-[18:03:50] production stage neardup1 finished rc 0
+[18:24:10] overnight driver start; state {"finished": false, "next_batch": 1, "production": 6}, batches {}
+[18:24:10] formed batches ['g1'] from 50 new problems
+[18:26:19] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 50 candidates (63102 output tokens), 0 failed -> candidates/g1/r1.jsonl
+[18:26:58] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject authored__attention_linear_elu__linear_attention_elu_noncausal.a1.s0 [static] None compile error: Block shape for args[0] (= (Blocked(block_size=512), Blocked(block_size=16), Blocked(block
+[18:28:24] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 28 candidates (35280 output tokens), 0 failed -> candidates/g1/r1.jsonl
+[18:28:24] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject authored__attention_cross__encoder_decoder_cross_attention_3.a1.s1 [static] None compile error: Block shape for args[1] (= (Blocked(block_size=128), Blocked(block_size=128))) must have t
+[18:28:26] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_submit.py --batch ... -> rc 0 | dataset-g1-r1: 50 items over 50 tasks, 0 probes; estimate 27.9 min -> max_chip_minutes 42; ENQUEUED to oracle/queue
+[18:28:26] $ /Users/hrudaynara/Projects/gemma-dataset-gen/oracle/jobq.py estimate dataset-g1-r1 ... -> rc 0 | dataset-g1-r1  OK: estimate 27.89 of 42 chip minutes (ESTIMATE)

@@ -1,0 +1,362 @@
+{
+ "created_at": "2026-11-08T23:28:26+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 402653312,
+    "n": 1,
+    "seconds": 40.55268332592,
+    "task": "authored__attention_alibi__attention_alibi_causal"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326720,
+    "n": 1,
+    "seconds": 33.0496380984,
+    "task": "authored__attention_alibi__attention_alibi_causal_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 301989920,
+    "n": 1,
+    "seconds": 35.14708026380001,
+    "task": "authored__attention_chunked_prefill__chunked_prefill_gqa_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326656,
+    "n": 1,
+    "seconds": 32.53234819096,
+    "task": "authored__attention_cross__encoder_decoder_cross_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 469762112,
+    "n": 1,
+    "seconds": 31.94278780952,
+    "task": "authored__attention_cross__encoder_decoder_cross_attention_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 671088704,
+    "n": 1,
+    "seconds": 34.52096245784,
+    "task": "authored__attention_cross__encoder_decoder_cross_attention_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 537395712,
+    "n": 1,
+    "seconds": 30.22903793472,
+    "task": "authored__attention_decode_mqa__gemma2_mqa_decode_softcap"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201327104,
+    "n": 1,
+    "seconds": 39.56055836864,
+    "task": "authored__attention_gqa_sink__gqa_sliding_window_sink"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326720,
+    "n": 1,
+    "seconds": 37.233001452,
+    "task": "authored__attention_gqa_sink__gqa_sliding_window_sink_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326720,
+    "n": 1,
+    "seconds": 38.377207583200004,
+    "task": "authored__attention_gqa_sink__gqa_sliding_window_sink_attention_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402653184,
+    "n": 1,
+    "seconds": 32.10305511424,
+    "task": "authored__attention_linear_elu__linear_attention_elu"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402653184,
+    "n": 1,
+    "seconds": 32.10305511424,
+    "task": "authored__attention_linear_elu__linear_attention_elu_noncausal"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402655232,
+    "n": 1,
+    "seconds": 34.557996613120004,
+    "task": "authored__attention_relative_bias__t5_bucketed_rel_pos_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201328640,
+    "n": 1,
+    "seconds": 32.6727539584,
+    "task": "authored__attention_relative_bias__t5_bucketed_rel_pos_attention_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402655232,
+    "n": 1,
+    "seconds": 35.14970804992,
+    "task": "authored__attention_relative_bias__t5_bucketed_relative_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100663360,
+    "n": 1,
+    "seconds": 31.155934978799998,
+    "task": "authored__attention_sliding_window__gemma2_softcap_sliding_window_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 32.000157982720005,
+    "task": "authored__attention_softcap__gemma2_softcap_causal_mha"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 32.02791247872,
+    "task": "authored__attention_softcap__gemma2_softcap_causal_mha_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 32.02784038912,
+    "task": "authored__attention_softcap__gemma2_softcap_causal_mha_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 113278976,
+    "n": 1,
+    "seconds": 30.336956047359998,
+    "task": "authored__cross_entropy_chunked_softcap__gemma2_2b_fused_linear_softcap_cross_entropy"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 335609856,
+    "n": 1,
+    "seconds": 33.26638544896,
+    "task": "authored__kv_cache_update__reshape_and_cache"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 553664512,
+    "n": 1,
+    "seconds": 36.52009482752,
+    "task": "authored__kv_cache_update__reshape_and_cache_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 285229056,
+    "n": 1,
+    "seconds": 33.26095284736,
+    "task": "authored__kv_cache_update__reshape_and_cache_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268492800,
+    "n": 1,
+    "seconds": 31.54859240512251,
+    "task": "authored__kv_quantized_dequant_matmul__w8a16_per_channel_dequant_matmul"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 302047232,
+    "n": 1,
+    "seconds": 32.99704430194447,
+    "task": "authored__kv_quantized_dequant_matmul__w8a16_per_channel_dequant_matmul_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 302047232,
+    "n": 1,
+    "seconds": 33.097391348354506,
+    "task": "authored__kv_quantized_dequant_matmul__w8a16_per_channel_dequant_matmul_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 238552064,
+    "n": 1,
+    "seconds": 30.03759990064,
+    "task": "authored__moe_topk_routing__deepseek_v3_group_limited_router"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 238552064,
+    "n": 1,
+    "seconds": 30.036013929440003,
+    "task": "authored__moe_topk_routing__moe_group_limited_topk_router"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269746176,
+    "n": 1,
+    "seconds": 30.039701544959996,
+    "task": "authored__moe_topk_routing__moe_topk_router"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536879104,
+    "n": 1,
+    "seconds": 33.84213277184,
+    "task": "authored__norm_gated__mamba2_gated_rmsnorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 302008320,
+    "n": 1,
+    "seconds": 34.0143868288,
+    "task": "authored__norm_residual_fusion__gemma2_27b_post_norm_residual_pre_norm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536887296,
+    "n": 1,
+    "seconds": 36.85975049216,
+    "task": "authored__norm_residual_fusion__llama3_70b_fused_add_rmsnorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326600,
+    "n": 1,
+    "seconds": 31.06443056515,
+    "task": "authored__quant_fp8_amax_scaling__fp8_delayed_scaling_gemm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 161520128,
+    "n": 1,
+    "seconds": 33.10554909489945,
+    "task": "authored__quantized_fp8_matmul__deepseek_v3_blockwise_fp8_gemm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 162430464,
+    "n": 1,
+    "seconds": 32.073704233384156,
+    "task": "authored__quantized_fp8_matmul__deepseek_v3_blockwise_fp8_gemm_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 80760064,
+    "n": 1,
+    "seconds": 30.83033578374902,
+    "task": "authored__quantized_fp8_matmul__deepseek_v3_blockwise_fp8_gemm_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 168821248,
+    "n": 1,
+    "seconds": 32.363497796480004,
+    "task": "authored__rope_qk_norm__qk_rmsnorm_rope"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 336593408,
+    "n": 1,
+    "seconds": 34.72479250368,
+    "task": "authored__rope_qk_norm__qk_rmsnorm_rope_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 336593408,
+    "n": 1,
+    "seconds": 34.72479250368,
+    "task": "authored__rope_qk_norm__rope_qk_rmsnorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 43.717390443519996,
+    "task": "authored__softcapped_logits__gemma2_softcapped_log_softmax_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 43.717390443519996,
+    "task": "authored__softcapped_logits__gemma2_softcapped_log_softmax_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 202522624,
+    "n": 1,
+    "seconds": 31.063060464640003,
+    "task": "authored__ssm_scan_step__mamba1_selective_scan"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 203644928,
+    "n": 1,
+    "seconds": 30.87458263168,
+    "task": "authored__ssm_scan_step__vim_bidirectional_selective_scan"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135561216,
+    "n": 1,
+    "seconds": 30.583695879360004,
+    "task": "authored__ssm_scan_step__vim_bidirectional_selective_scan_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 367001600,
+    "n": 1,
+    "seconds": 31.402988900271687,
+    "task": "authored__swiglu_variant_geglu__gemma2_geglu_mlp"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 367001600,
+    "n": 1,
+    "seconds": 31.402988900271687,
+    "task": "authored__swiglu_variant_geglu__gemma2_geglu_mlp_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 367001600,
+    "n": 1,
+    "seconds": 31.402988900271687,
+    "task": "authored__swiglu_variant_geglu__gemma2_geglu_mlp_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268468224,
+    "n": 1,
+    "seconds": 30.120971783039998,
+    "task": "kb__l1__100_HingeLoss"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.84231377297569,
+    "task": "kb__l1__14_Matmul_for_upper_triangular_matrices"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 36.518283960320005,
+    "task": "kb__l1__19_ReLU"
+   }
+  ],
+  "total_s": 1673.334481419635
+ },
+ "job_id": "dataset-g1-r1",
+ "n_items": 50,
+ "n_tasks": 50,
+ "probe_ids": []
+}
