@@ -1,4 +1,0 @@
-{"candidate_id": "kb__l1__33_BatchNorm.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
-{"candidate_id": "kb__l1__34_InstanceNorm.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
-{"candidate_id": "kb__l1__35_GroupNorm_.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
-{"candidate_id": "kb__l1__50_conv_standard_2D__square_input__square_kernel.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}

@@ -13,7 +13,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from common import REPO, sha256  # noqa: E402
 from render_chat import fence, render_feedback, render_problem  # noqa: E402
 
-PROMPT_VERSION = "prompts-1"
+PROMPT_VERSION = "prompts-2"  # Nov 8: Gemini constructor; VMEM 32 MiB default (chip-measured), conv and fixed-offset rules from the study header
 DOCS_PATH = REPO / "pallas_guides" / "teacher_docs.md"
 
 
@@ -36,10 +36,13 @@ ORACLE_RULES = """You write Pallas TPU kernels that are judged by an automatic o
 Rules that follow from this:
 - One self-contained module: import jax, jax.numpy as jnp, from jax.experimental import pallas as pl, from jax.experimental.pallas import tpu as pltpu, functools as needed. No other modules.
 - Sizes from the input arrays' shapes (x.shape), never from literals, so the same code works when the reference's CONFIG changes.
-- Block shapes: last two dims multiples of (8, 128) for f32, (16, 128) for bf16, or equal to the full array dims. Keep per-step VMEM well under 16 MiB on v6e (default scoped limit): a 512x512 f32 tile is 1 MiB; count inputs, outputs and scratch, times 2 for double buffering.
+- Block shapes: last two dims multiples of (8, 128) for f32, (16, 128) for bf16, or equal to the full array dims. Memory: each pallas_call gets 32 MiB of scoped VMEM by default on v6e. Input and output blocks are double-buffered, so each counts twice (a 512x512 f32 tile is 1 MiB; count inputs, outputs and scratch). You may raise the limit with compiler_params=pltpu.CompilerParams(vmem_limit_bytes=...) up to about 100 MiB; the chip has 128 MiB.
 - Accumulate matmuls in float32 (preferred_element_type=jnp.float32) and cast on store. Reductions over a tiled axis need a scratch accumulator (pltpu.VMEM) or an output block that is resident across the reduction axis.
 - Fuse the whole reference into one pallas_call when the shapes allow; a second pallas_call is fine when a global reduction needs two passes. Never finish the computation in plain jnp outside the kernel.
 - Do not use interpret=True. Do not call the reference. Do not read CONFIG from the reference; the reference module is not importable from the solution.
+- Slicing outside the kernel is layout only at fixed offsets; an offset computed from the inputs counts as work (metadata rule above).
+- A convolution can't be called inside a kernel: write it as matmuls over shifted slices of the input, or over im2col patches, inside the kernel.
+- Your kernel runs on several sets of inputs that differ in values and, where the task has them, in lengths, group sizes and index tables. Don't specialise to the example inputs.
 - Keep weights of shape (in, out) as the reference passes them; transpose inside the kernel or via a layout op outside if you must.
 """
 

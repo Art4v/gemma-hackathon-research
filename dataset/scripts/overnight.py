@@ -27,18 +27,23 @@ from common import DATASET, ORACLE, PROBLEMS, REPO, TRAJECTORIES, read_json, rea
 PY = str(DATASET / ".venv" / "bin" / "python")
 STATE = DATASET / "overnight_state.json"
 LOG = DATASET / "overnight.log"
-BRANCH, ISSUE, ORACLE_SHA = "dataset-gen", "3", "c9a07d9298a1"
+BRANCH, ISSUE, ORACLE_SHA = "dataset-gemini", "3", "c9a07d9298a1"
+# Gemini constructor (Nov 8): every model call goes to gemini-4-argon; batches are g1, g2, ... so job ids never collide with the
+# Claude-era dataset-b*/dataset-pilot-* jobs and their oracle-results branches.
+CONSTRUCTOR = ["--backend", "gemini_api", "--model", "gemini-4-argon"]
+BATCH_PREFIX = "g"
 PRODUCTION = [
-    ("port", [PY, "-u", str(HERE / "port_kernelbench.py"), "--level", "1,2", "--pick", "all", "--limit", "0", "--workers", "3", "--check-workers", "1", "--reuse-raw"]),
-    ("author", [PY, "-u", str(HERE / "author_problems.py"), "--per-category", "3", "--workers", "3"]),
+    ("port", [PY, "-u", str(HERE / "port_kernelbench.py"), "--level", "1,2", "--pick", "all", "--limit", "0", "--workers", "3", "--check-workers", "1", "--reuse-raw", *CONSTRUCTOR]),
+    ("author", [PY, "-u", str(HERE / "author_problems.py"), "--per-category", "3", "--workers", "3", *CONSTRUCTOR]),
+    ("wrap", [PY, "-u", str(HERE / "wrap_scraped.py"), "--limit", "0", "--batch", "scraped", "--workers", "3", *CONSTRUCTOR]),
     ("filter1", [PY, "-u", str(HERE / "filter_contamination.py")]),
     ("neardup1", [PY, "-u", str(HERE / "filter_neardup.py")]),
-    ("cpu1", [PY, "-u", str(HERE / "cpu_check.py"), "--timeout", "600"]),
+    ("cpu1", [PY, "-u", str(HERE / "cpu_check_parallel.py"), "--workers", "3", "--timeout", "600"]),
     ("batches", None),   # ports + authored + scraped go to the TPU before the variants are built (Nov 8 04:xx reorder)
     ("variants", [PY, "-u", str(HERE / "make_variants.py")]),
     ("filter2", [PY, "-u", str(HERE / "filter_contamination.py")]),
     ("neardup2", [PY, "-u", str(HERE / "filter_neardup.py")]),
-    ("cpu2", [PY, "-u", str(HERE / "cpu_check.py"), "--timeout", "600"]),
+    ("cpu2", [PY, "-u", str(HERE / "cpu_check_parallel.py"), "--workers", "3", "--timeout", "600"]),
     ("batches_variants", None),
 ]
 
@@ -100,7 +105,7 @@ def submit_round(batch: str, rnd: int, st: dict) -> bool:
     if (ORACLE / "queue" / f"{job}.json").exists() or (DATASET / "submissions" / f"{job}.request.json").exists():
         log(f"{job} already built; skipping (job ids must be unique)")
         return True
-    g = [PY, "-u", str(HERE / "generate.py"), "--batch", batch, "--round", str(rnd), "--workers", "3", "--reuse-raw"]
+    g = [PY, "-u", str(HERE / "generate.py"), "--batch", batch, "--round", str(rnd), "--workers", "16", "--reuse-raw", *CONSTRUCTOR, "--effort", "24000"]
     for attempt in range(3):  # constructor failures (rate limits) leave slots empty; generate.py is idempotent, so just rerun
         p = sh(g, timeout=6 * 3600)
         if "0 failed" in p.stdout or "0 requests" in p.stdout:
@@ -180,7 +185,7 @@ def form_batches(st: dict, size: int) -> list:
     ready.sort(key=lambda r: (order.get(r["source"], 2), r["problem_id"].endswith("__bf16"), r["problem_id"]))
     names = []
     for i in range(0, len(ready), size):
-        name = f"b{st['next_batch']}"
+        name = f"{BATCH_PREFIX}{st['next_batch']}"
         st["next_batch"] += 1
         ids = {r["problem_id"] for r in ready[i:i + size]}
         for r in rows:

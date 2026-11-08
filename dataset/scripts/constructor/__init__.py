@@ -58,6 +58,9 @@ def get_constructor(backend: str = "claude_cli", model: str | None = None, **kw)
     if backend == "anthropic_batch":
         from constructor.anthropic_batch import AnthropicBatch
         return AnthropicBatch(model=model or "claude-opus-5-5", **kw)
+    if backend == "gemini_api":
+        from constructor.gemini_api import GeminiAPI
+        return GeminiAPI(model=model, **kw)
     raise ValueError(f"unknown constructor backend {backend!r}")
 
 
