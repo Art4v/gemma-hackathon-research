@@ -1,0 +1,2 @@
+# Stage 2 (port_kernelbench.py) only: the torch side of the port equivalence check.
+torch==2.15.0
