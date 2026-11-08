@@ -1,4 +1,4 @@
-# Dependencies, from planningGemma (hnaracodes/planningGemma):
+# Dependencies, from planningGemma (hnaracodes/planningGemma), plus what JAXBench's references import:
 #   cloud-gemma/sera-e4b/requirements-jax.txt   (the JAX environment; verified there Nov 6 2026)
 #   cloud-gemma/requirements.txt                (Modal and dotenv)
 #
@@ -14,6 +14,10 @@ numpy==2.5.4
 ml-dtypes==0.6.0
 opt-einsum==3.4.0
 scipy==1.18.1
+
+# JAXBench references: 64p_Linear_Softmax_Cross_Entropy imports both (not in planningGemma's files)
+jaxtyping==0.3.11
+pydantic==2.14.3
 
 # Cloud
 modal==1.6.3
