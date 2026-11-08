@@ -1,0 +1,20 @@
+{
+ "repo": "jax-ml/jax",
+ "tag": "jax-v0.10.2",
+ "commit": "990e6a0b84138346e6a38785412f36356e0e5dc3",
+ "licence": "Apache-2.0",
+ "path": {
+  "details.rst": "docs/pallas/tpu/details.rst",
+  "matmul.md": "docs/pallas/tpu/matmul.md",
+  "sparse.md": "docs/pallas/tpu/sparse.md",
+  "quickstart.md": "docs/pallas/quickstart.md",
+  "LICENSE": "LICENSE"
+ },
+ "files": {
+  "details.rst": "e4ec9e3b3e8e275e561f2a93a46beff51c35773ea9e9bea85aab5969800d948e",
+  "matmul.md": "f51415101752fd788cdbf77c6bd3779532e75507a6723012c4903a454ab29ea8",
+  "sparse.md": "c8e2dc10e0891cb7d6aff5edc6caf3fe04a3a4e33943be2f05b76e95ccea96e8",
+  "quickstart.md": "e4123df287b4a5da180fd6a7ab7b63ec2810e9943d3e39c261fa5359b34b62c3",
+  "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+ }
+}
