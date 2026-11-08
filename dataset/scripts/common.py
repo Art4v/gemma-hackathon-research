@@ -52,6 +52,22 @@ def read_jsonl(path) -> list:
     return [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
 
 
+import contextlib as _contextlib, fcntl as _fcntl
+
+
+@_contextlib.contextmanager
+def problems_lock():
+    """Cross-process lock for read-modify-write of problems.jsonl. Rewrites are atomic, but two processes that each read, change
+    and rewrite the file (the CPU check recording results, the driver tagging batches) would drop each other's change without it."""
+    PROBLEMS.mkdir(parents=True, exist_ok=True)
+    with open(PROBLEMS / ".problems.lock", "w") as f:
+        _fcntl.flock(f, _fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            _fcntl.flock(f, _fcntl.LOCK_UN)
+
+
 def write_jsonl(path, rows, append: bool = False) -> None:
     """Rewrites are atomic (temp file + rename): the overnight driver runs stages in parallel with readers of the same files."""
     p = pathlib.Path(path)

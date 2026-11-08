@@ -22,7 +22,7 @@ import argparse, datetime as dt, hashlib, json, pathlib, subprocess, sys, time, 
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from common import DATASET, ORACLE, PROBLEMS, REPO, TRAJECTORIES, read_json, read_jsonl, write_json, write_jsonl  # noqa: E402
+from common import DATASET, ORACLE, PROBLEMS, REPO, TRAJECTORIES, problems_lock, read_json, read_jsonl, write_json, write_jsonl  # noqa: E402
 
 PY = str(DATASET / ".venv" / "bin" / "python")
 STATE = DATASET / "overnight_state.json"
@@ -185,7 +185,13 @@ def assemble_verify() -> None:
         sh([PY, "-u", str(HERE / "verify_dataset.py"), str(DATASET / "final")], timeout=1800)
 
 
-def form_batches(st: dict, size: int) -> list:
+def form_batches(st: dict, size: int, full_only: bool = False) -> list:
+    """full_only: form only batches of exactly `size` (used while a CPU check is still running; the remainder waits)."""
+    with problems_lock():
+        return _form_batches(st, size, full_only)
+
+
+def _form_batches(st: dict, size: int, full_only: bool) -> list:
     rows = read_jsonl(PROBLEMS / "problems.jsonl")
     ready = [r for r in rows if r["status"] == "ok" and not r.get("batch") and (r.get("cpu_check") or {}).get("passed")]
     # group by source so each job is homogeneous: authored + scraped first (the exam's hard families), then ports, then variants
@@ -193,6 +199,8 @@ def form_batches(st: dict, size: int) -> list:
     ready.sort(key=lambda r: (order.get(r["source"], 2), r["problem_id"].endswith("__bf16"), r["problem_id"]))
     names = []
     for i in range(0, len(ready), size):
+        if full_only and len(ready[i:i + size]) < size:
+            break
         name = f"{BATCH_PREFIX}{st['next_batch']}"
         st["next_batch"] += 1
         ids = {r["problem_id"] for r in ready[i:i + size]}
@@ -238,6 +246,14 @@ def main(argv=None) -> None:
                 else:
                     log(f"production stage {stage} starting")
                     proc = subprocess.Popen(cmd, cwd=REPO, stdout=open(DATASET / f"overnight_{stage}.log", "w"), stderr=subprocess.STDOUT)
+            # Nov 8 (option A): while a CPU check runs, every full batch of checked problems goes out at once instead of
+            # waiting for the whole check (~3 min per problem on this Mac)
+            if proc is not None and stage in ("cpu1b", "cpu2"):
+                for name in form_batches(st, a.batch_size, full_only=True):
+                    write_json(STATE, st)
+                    if not submit_round(name, 1, st):
+                        st["batches"][name]["done"] = True
+                    write_json(STATE, st)
             handle_results(st, a.max_round)
             write_json(STATE, st)
             if proc is None and st["production"] >= len(PRODUCTION) and all(b["done"] for b in st["batches"].values()):

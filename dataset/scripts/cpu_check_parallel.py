@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse, concurrent.futures as cf, json, sys, threading
 
 import cpu_check as cc  # noqa: E402  (same directory)
-from common import ORACLE, PROBLEMS, Isolated, now, read_jsonl, write_jsonl  # noqa: E402
+from common import ORACLE, PROBLEMS, Isolated, now, problems_lock, read_jsonl, write_jsonl  # noqa: E402
 
 
 def main(argv=None) -> None:
@@ -33,7 +33,7 @@ def main(argv=None) -> None:
         line = next((l for l in res.stdout.splitlines() if l.startswith("{")), None)
         rec = cc.fold(json.loads(line) if line else None, res.returncode, res.stderr, getattr(res, "peak_rss_gb", None))
         rec.update(oracle_sha=sha, ref_sha256=r["ref_sha256"], checked_at=now())
-        with lock:
+        with lock, problems_lock():
             rows = read_jsonl(path)
             for row in rows:
                 if row["problem_id"] == r["problem_id"] and row["ref_sha256"] == r["ref_sha256"]:
