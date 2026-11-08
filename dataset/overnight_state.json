@@ -5,9 +5,21 @@
    "done": false,
    "n": 50,
    "submitted": 1
+  },
+  "g2": {
+   "collected": 0,
+   "done": false,
+   "n": 60,
+   "submitted": 0
+  },
+  "g3": {
+   "collected": 0,
+   "done": false,
+   "n": 60,
+   "submitted": 0
   }
  },
  "finished": false,
- "next_batch": 2,
+ "next_batch": 4,
  "production": 7
 }
