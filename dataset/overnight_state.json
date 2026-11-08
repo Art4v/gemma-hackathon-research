@@ -4,7 +4,7 @@
    "collected": 0,
    "done": false,
    "n": 120,
-   "submitted": 0
+   "submitted": 1
   },
   "b2": {
    "collected": 0,
@@ -13,8 +13,8 @@
    "submitted": 0
   },
   "pilot": {
-   "collected": 2,
-   "done": false,
+   "collected": 3,
+   "done": true,
    "submitted": 3
   }
  },

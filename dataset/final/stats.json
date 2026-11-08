@@ -1,41 +1,42 @@
 {
  "by_kind": {
-  "repair": 1,
-  "single": 26
+  "repair": 4,
+  "single": 29
  },
  "by_n_repairs": {
-  "0": 26,
-  "1": 1
+  "0": 29,
+  "1": 1,
+  "2": 3
  },
  "by_source": {
   "authored": 10,
-  "kernelbench": 16,
+  "kernelbench": 22,
   "scraped": 1
  },
  "by_split": {
-  "train": 25,
+  "train": 31,
   "val": 2
  },
  "by_target_origin": {
-  "constructor": 27
+  "constructor": 33
  },
  "code_chars": {
-  "n": 27,
-  "p10": 1388.6,
-  "p50": 2720,
-  "p90": 3687.6
+  "n": 33,
+  "p10": 1594.8,
+  "p50": 2859,
+  "p90": 3499.4
  },
- "n_chains": 26,
- "n_examples": 27,
+ "n_chains": 29,
+ "n_examples": 33,
  "n_harness_blocked": 0,
  "n_problems_judged": 32,
- "n_unsolved": 0,
- "parity_share": 0.7692,
+ "n_unsolved": 1,
+ "parity_share": 0.7931,
  "pass_at_k": {
   "all": {
    "pass@1": 0.7812,
    "pass@2": 0.8125,
-   "pass@3": 0.8125
+   "pass@3": 0.9062
   },
   "authored": {
    "pass@1": 1.0,
@@ -45,7 +46,7 @@
   "kernelbench": {
    "pass@1": 0.7368,
    "pass@2": 0.7895,
-   "pass@3": 0.7895
+   "pass@3": 0.9474
   },
   "scraped": {
    "pass@1": 0.3333,
@@ -55,13 +56,17 @@
  },
  "repaired_verdicts": {
   "attempt1": {
-   "compile": 1
+   "compile": 1,
+   "correct_slow": 3
+  },
+  "attempt2": {
+   "correct_slow": 3
   }
  },
  "speed_vs_xla": {
-  "n": 26,
-  "p10": 0.8774226536222383,
-  "p50": 1.2182785608696611,
-  "p90": 2.0423143575208607
+  "n": 29,
+  "p10": 0.887344121129912,
+  "p50": 1.228655837605132,
+  "p90": 1.975336738769426
  }
 }
