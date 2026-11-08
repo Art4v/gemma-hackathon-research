@@ -1,0 +1,58 @@
+{
+ "by_source": {
+  "authored": 10,
+  "kernelbench": 19,
+  "scraped": 3
+ },
+ "by_split": {
+  "train": 30,
+  "val": 2
+ },
+ "created_at": "2026-11-08T08:11:41+00:00",
+ "files": {
+  "excluded.jsonl": "03b5d2da57705ae5fa90098ba5c66ae5e9a1761e99ea90e912054d39a858a0e5",
+  "problems.jsonl": "f3465ec4b04bdda56db8e275871f9f8180d5919b8819509f2495d26ae28c9294",
+  "problems/authored__attention_alibi__alibi_causal_mha/baseline.py": "18eb2278ccb1693b534058425542e8dcda9ff8b066a4ddaee17be2abe6e33204",
+  "problems/authored__attention_gqa_sink__gqa_sink_sliding_window_attention/baseline.py": "5fd199bf645e73628c89c417f07a0feac78f14bfc5f2607491c6e7b8b4b9fb95",
+  "problems/authored__attention_sliding_window__gemma3_sliding_window_gqa_attention/baseline.py": "0911c62622c675bced2b8ac2be7d55473d817f600af13759658873b6f5ed824e",
+  "problems/authored__kv_cache_update__paged_kv_cache_scatter_update/baseline.py": "648e095affb085ca8aeaaa43a3e7ba32467716f44198c6dec0bb6f2e36a6bdc4",
+  "problems/authored__kv_quantized_dequant_matmul__int8_per_channel_dequant_matmul/baseline.py": "5025eeb1295e5dad15597a8a164d04aca8afe23d3850e69e70d398edd3a05820",
+  "problems/authored__moe_topk_routing__moe_router_softmax_topk_renorm/baseline.py": "648c3f91b1077b3879a02a6c16ce86f216c7d78e4061944847fdd7bd6cb96217",
+  "problems/authored__norm_gated__gated_rmsnorm_per_head/baseline.py": "a626b3dc67f249a241c0848fe72c0f2bbf3aab71c3d63a896b10a8da9daa69eb",
+  "problems/authored__norm_residual_fusion__fused_add_rmsnorm_residual/baseline.py": "d6496f2fcaa7c7cc842e318ce90ffc1a125ad4359304c2991b198c5d67fddf8e",
+  "problems/authored__quantized_fp8_matmul__blockwise_fp8_scaled_matmul/baseline.py": "7c7fc2acde1d389fde861ae147fe20353e85be00a1e52686c5259b0a806f9f80",
+  "problems/authored__rope_qk_norm__qk_rmsnorm_rope_gqa/baseline.py": "87498fdf6f1556a656a775a8c35d2070a6f0063dedcd50ab1ddeccdcff5b58b8",
+  "problems/kb__l1__23_Softmax/baseline.py": "3bf7128884d11d341e41633fe5da41ba7dfd28cd7a1e1a1c58809de70050a17e",
+  "problems/kb__l1__24_LogSoftmax/baseline.py": "b6ecf35f61fa054c22ee7f3ce7683c5ef2f239fa885e553a9eb6bd6cb611bef6",
+  "problems/kb__l1__26_GELU_/baseline.py": "7922376b320e522fa36b1a58cfa2c7f0d14bc574759388c89db7b7cd6cfa228f",
+  "problems/kb__l1__33_BatchNorm/baseline.py": "26f46ccb56db4b5061547d1b78d6ff756c5ff10deb77fac469c43ec066679064",
+  "problems/kb__l1__34_InstanceNorm/baseline.py": "d0cdc67d1184555a3cd66d0b7d00d0aff763dd28ff4473c2c9c1e321eb2b218c",
+  "problems/kb__l1__35_GroupNorm_/baseline.py": "d5483b2d48153debc7fea70f5b81cf0556220c5f5c944c6c51882a8e4e46cbac",
+  "problems/kb__l1__39_L2Norm_/baseline.py": "756122a215ab34a37cf9fd8e571a7771aca6461c528dd51db59c0fa718a36ce6",
+  "problems/kb__l1__40_LayerNorm/baseline.py": "6255376e00983fd9dc1397407dd7130d19489e4b0f677fc5cc2ca67e919e2f05",
+  "problems/kb__l1__50_conv_standard_2D__square_input__square_kernel/baseline.py": "f9f16871048008632795b1da2526400a97c00d2dacaededcaac042c831353777",
+  "problems/kb__l1__54_conv_standard_3D__square_input__square_kernel/baseline.py": "31c7f6ac10a0d27645cd9cc7db62e95113a6f88dd287f9edb5068c7e1f902a1a",
+  "problems/kb__l1__94_MSELoss/baseline.py": "ca62a67a73ee165c541237f5bfcb30f0c474d97a43cdedbe7df5c3b473451749",
+  "problems/kb__l2__30_Gemm_GroupNorm_Hardtanh/baseline.py": "9561464c56ca1b6a133ee53d3b8d0b3c7a7f6cd62dd20d65c9b4c64e0939ccbd",
+  "problems/kb__l2__33_Gemm_Scale_BatchNorm/baseline.py": "5895c33e8480963bf729453565c6f32cfa81c69e15cab5547784962722976a89",
+  "problems/kb__l2__39_Gemm_Scale_BatchNorm/baseline.py": "35e0f2fb5b05bd6aa4e3bdd074efef60e0943fa300830b91592dd6b0ab7e4f07",
+  "problems/kb__l2__62_Matmul_GroupNorm_LeakyReLU_Sum/baseline.py": "a1233b0b6e15068e5763056fdaae2bfe8312e4cdb195c93b2609bba12958f485",
+  "problems/kb__l2__63_Gemm_ReLU_Divide/baseline.py": "773a6b51b94c3fb96b50cd5ef58561881146d433a596aff4cc7de902e252391f",
+  "problems/kb__l2__64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU/baseline.py": "f31b35830d15b5406e8306d4851c84af0f158903a8e9f33333de39b78ac4c96a",
+  "problems/kb__l2__81_Gemm_Swish_Divide_Clamp_Tanh_Clamp/baseline.py": "c3e083194eceb5b0ec722a27246b5e9b11e9eb0e37033313247e4a6cc4a20b74",
+  "problems/kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm/baseline.py": "e9ed93e75a4f4ad68fe0cb60591844b67b5dc57c8501728e4ecbe3c3aace3f36",
+  "problems/scraped__maxtext__ragged_attention/baseline.py": "d4417f90e358303770393e3fb20273ee52e9161354833d7bfaa2073c9aebcff8",
+  "problems/scraped__tpu-inference__blockwise_kernel/baseline.py": "e67fbb360b787a32029c2373b82363c6b77915bb76c27b0b5eeb3d29e053407b",
+  "problems/scraped__tpu-inference__spmm/baseline.py": "4c623970c076818721216a82b5943972d669466570e21aed1c724c9855b38988"
+ },
+ "jax": [
+  "0.10.2"
+ ],
+ "n_excluded": 5,
+ "n_problems": 32,
+ "oracle_sha": [
+  "c9a07d9298a1"
+ ],
+ "pipeline_version": "pilot-1",
+ "val_frac": 0.1
+}

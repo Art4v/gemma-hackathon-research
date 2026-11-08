@@ -1,0 +1,5 @@
+.venv/
+raw/
+candidates/raw_responses/
+__pycache__/
+*.pyc

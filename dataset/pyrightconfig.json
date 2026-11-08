@@ -1,0 +1,7 @@
+{
+  "extraPaths": ["scripts", "../oracle"],
+  "venvPath": ".",
+  "venv": ".venv",
+  "exclude": ["raw", ".venv", "candidates/raw_responses"],
+  "reportMissingImports": "warning"
+}

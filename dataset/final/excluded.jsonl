@@ -1,0 +1,5 @@
+{"problem_id": "kb/l2/68_Matmul_Min_Subtract", "reason": "contamination:neardup:42k_Gemm_Max_Subtract_GELU:j=0.425,r=0.824", "source": "kernelbench"}
+{"problem_id": "kb/l2/70_Gemm_Sigmoid_Scaling_ResidualAdd", "reason": "contamination:neardup:44k_Matmul_Divide_GELU:j=0.447,r=0.838", "source": "kernelbench"}
+{"problem_id": "scraped/tpu-inference/router_topk", "reason": "wrap_ref_check:inputs too small: 1 MB (< 20 MB)", "source": "scraped"}
+{"problem_id": "kb/l1/37_FrobeniusNorm_", "reason": "port_failed:0.0014840694586106063", "source": "kernelbench"}
+{"problem_id": "kb/l1/55_conv_standard_2D__asymmetric_input__square_kernel", "reason": "port_failed:[memory cap: 5.1 GB > 5.0 GB]", "source": "kernelbench"}
