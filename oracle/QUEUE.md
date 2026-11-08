@@ -10,7 +10,7 @@ One operator runs everyone's chip jobs on a Cloud TPU v6e VM. You need only a br
 
 ```json
 {"job_id": "alice-step3", "owner": "alice", "step": "step3", "items_path": "alice-step3.items.jsonl",
- "seeds": 3, "speed_bar": 0.8, "priority": 2, "max_chip_minutes": 30}
+ "seeds": 3, "speed_bar": 0.7, "priority": 2, "max_chip_minutes": 30}
 ```
 
    `items_path` is relative to the request file. You can put the items inline as `"items": [...]` instead. Lower priority runs

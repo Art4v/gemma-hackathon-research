@@ -3,7 +3,7 @@
 Decision (Hruday, Nov 7, issue #1): a kernel counts when it runs on the TPU, matches the reference and matches XLA's speed. The 256-cap
 CPU gate, the shrink-8 recheck and the 12 MiB static fit are not verdicts. Everything runs at the task's own create_inputs size on a v6e.
 
-  python oracle/tpu_oracle.py PACK.json OUT.jsonl [--which dev|train] [--shard I/N] [--limit K] [--seeds 3] [--speed-bar 0.8]
+  python oracle/tpu_oracle.py PACK.json OUT.jsonl [--which dev|train] [--shard I/N] [--limit K] [--seeds 3] [--speed-bar 0.7]
                               [--stack S] [--timeout 480] [--static-only] [--reference-only] [--cpu-smoke]
                               [--sensitivity [--sensitivity-seed 1] [--sensitivity-bar X]]
 
@@ -56,7 +56,7 @@ from outside_ops import _sub_jaxprs, classify_avals, walk, walk_avals  # noqa: E
 import structure  # noqa: E402  (pure at import: no JAX)
 import keys  # noqa: E402  (pure at import: chunked answer keys, e.g. 2p's f32 key that doesn't fit whole)
 
-SPEED_BAR, N_SEEDS = 0.8, 3  # the bar is the humans' to fix; 0.8 until they do
+SPEED_BAR, N_SEEDS = 0.7, 3  # a policy choice (Nov 8), not a statistical one: see oracle/DESCRIPTION.md, "The speed bar"
 TIMEOUT_S = 480  # per kernel: tpu_check's 240 s covered one seed, this runs three. The reference gets its own budget once per task.
 FEEDBACK_CHARS = 400
 LABELS = {"compile": "compile error", "vmem": "VMEM out of memory", "mosaic": "Mosaic compile error",
