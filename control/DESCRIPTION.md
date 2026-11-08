@@ -47,8 +47,17 @@ python3 control/bench.py items --out control/runs/items_t0.jsonl      # both arm
 python3 oracle/make_pack.py control/runs/items_t0.jsonl oracle/jobs/control-t0 --job-id control-t0 --owner hruday --step t0
 python3 control/verify_refs.py build oracle/jobs/verify-refs-1 --job-id verify-refs-1 --owner hruday    # once
 ```
-On the v6e VM, as the locked-down user (`oracle/QUEUE.md`, "VM security"): `bash run.sh` in each job directory, the reference check
-first. Back on the Mac:
+On the v6e VM, as the locked-down user (`oracle/QUEUE.md`, "VM security"), with `oracle/vm.sh` from a machine with gcloud:
+```bash
+export PROJECT=<project id> ZONE=<zone with v6e> SPOT=1
+bash oracle/vm.sh create && bash oracle/vm.sh bootstrap && bash oracle/vm.sh check
+bash oracle/vm.sh push oracle/jobs/verify-refs-1 oracle/jobs/control-t0
+bash oracle/vm.sh run verify-refs-1      # the reference check first; status shows progress, fetch brings the results back
+bash oracle/vm.sh run control-t0         # after verify-refs-1 finishes (one chip, one job at a time)
+bash oracle/vm.sh fetch verify-refs-1 && bash oracle/vm.sh fetch control-t0
+bash oracle/vm.sh delete                 # when the round is done: the VM bills idle
+```
+Back on the Mac:
 ```bash
 python3 control/verify_refs.py report oracle/jobs/verify-refs-1/results/verify-refs-1.jsonl
 python3 oracle/collect.py oracle/jobs/control-t0

@@ -30,7 +30,8 @@ oracle_sha and the seeds match. It then writes `summary.json`: counts per verdic
 
 Every job runs model-written code, so that code must not be able to get a credential. Sessions 0 and 1 ran it on VMs with the
 default compute service account and the `cloud-platform` scope (roles/editor on the project), and as a user with passwordless
-sudo. Session 2 (2026-11-07) used the recipe below, which works:
+sudo. Session 2 (2026-11-07) used the recipe below, which works. `oracle/vm.sh` runs it step by step (create, bootstrap, check, push,
+run, status, fetch, delete):
 
 1. **Create** with the logging and read-only storage scopes, and nothing broader:
    `gcloud compute tpus tpu-vm create NAME --zone=ZONE --accelerator-type=v6e-1 --version=v2-alpha-tpuv6e --scopes=https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/devstorage.read_only`
