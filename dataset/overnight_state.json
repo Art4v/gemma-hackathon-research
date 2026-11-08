@@ -17,9 +17,15 @@
    "done": false,
    "n": 60,
    "submitted": 1
+  },
+  "g4": {
+   "collected": 0,
+   "done": true,
+   "n": 30,
+   "submitted": 0
   }
  },
  "finished": false,
- "next_batch": 4,
- "production": 8
+ "next_batch": 5,
+ "production": 9
 }
