@@ -1,7 +1,22 @@
 # oracle
 
 The oracle runs a solution on a real TPU and says whether it is a Pallas kernel, whether it compiles and runs, whether its output
-is correct, and how fast it is compared with XLA.
+is correct, and how fast it is compared with XLA. That is the whole definition of the oracle. Dataset curation (the CPU
+pre-filter, teacher evaluation of kernels, filtering the dataset) is separate and comes later: see `curation/`.
+
+What is here:
+
+| file | role |
+|---|---|
+| `tpu_oracle.py` | the verdict on one solution (the four steps below) |
+| `tpu_check.py`, `outside_ops.py`, `structure.py`, `keys.py` | what `tpu_oracle.py` imports; with it, the five files whose hash is `oracle_sha` |
+| `make_pack.py` | builds a self-contained job directory (oracle files, `pack.json`, `run.sh`, `MANIFEST.json`) |
+| `collect.py` | checks a job's results against its manifest and writes `summary.json` |
+| `jobq.py`, `estimate.py` | the request queue and a rough chip-time estimate per job |
+| `QUEUE.md` | how jobs are run, and the VM security every TPU run needs |
+| `manifest.json` | JAXBench's tasks; only `make_pack.py`'s `human_target` check reads it |
+| `sandbox/` | the sandbox the `outside_ops` integration test runs in |
+| `tests/` | the oracle's tests |
 
 ## Current job (Nov 8)
 
@@ -52,9 +67,9 @@ python oracle/collect.py oracle/jobs/JOB                                        
 ### Not needed for this job
 
 The manifest's groups and `--groups`; `human_target` and `ADAPTERS` (JAXBench's level 2 kernels as speed targets);
-`--sensitivity`; `int_inputs.py`; `lower_filter.py` (an optional CPU pre-filter, it never decides a verdict). `structure.py`
-and `keys.py` act only on JAXBench task names, so they do nothing for new tasks unless the names match. They stay in the code
-and still pass their tests.
+`--sensitivity`. `structure.py` and `keys.py` act only on JAXBench task names, so they do nothing for new tasks unless the names
+match. They stay in the code and still pass their tests. The CPU pre-filter (`lower_filter.py`) and the JAXBench seed audit
+(`int_inputs.py`) moved to `curation/`: neither decides a verdict.
 
 ## The speed bar: 0.7x XLA
 

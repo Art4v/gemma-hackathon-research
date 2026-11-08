@@ -1129,7 +1129,7 @@ class IntInputsVary(unittest.TestCase):
             man = d / "manifest.json"
             man.write_text(json.dumps({"tasks": [{"task": n, "plain_ref": f"level1/{n}/baseline.py", "human_kernel": None}
                                                  for n in ("t", PAGED, "broken")]}))
-            p = subprocess.run([PY, str(HERE / "int_inputs.py"), "--manifest", str(man), "--bench", str(d)], capture_output=True,
+            p = subprocess.run([PY, str(HERE.parent / "curation" / "int_inputs.py"), "--manifest", str(man), "--bench", str(d)], capture_output=True,
                                text=True, timeout=600, env={**os.environ, "JAX_PLATFORMS": "cpu"})
         self.assertEqual(p.returncode, 0, p.stderr[-1500:])
         rows = {r["task"]: r for r in map(json.loads, p.stdout.splitlines())}

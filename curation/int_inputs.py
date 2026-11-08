@@ -1,6 +1,6 @@
 """Which manifest tasks have integer, bool or static inputs that never change across the oracle's seeds. CPU only, no chip time.
 
-  python oracle/int_inputs.py [--manifest oracle/manifest.json] [--bench benchmarks/jaxbench] [--seeds 3]
+  python curation/int_inputs.py [--manifest oracle/manifest.json] [--bench benchmarks/jaxbench] [--seeds 3]
 
 One JSON line per task: int_inputs_vary (after the task's structure transform, exactly as the oracle's rows compute it), n_int_leaves,
 constant (each constant leaf: index, dtype, shape, summary), structure_seed, const_float_leaves (the floating leaves seeds >= 1
@@ -12,10 +12,10 @@ listing computes only the leaves that depend on no PRNG draw (a drawn leaf is no
 """
 import argparse, json, pathlib, sys, tempfile
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "oracle"))  # the oracle it audits
 import tpu_oracle as o  # noqa: E402
 
-ROOT = o.ROOT
+ROOT = o.ROOT  # the oracle folder: --manifest and --bench defaults resolve against it
 
 
 def _draws(jaxpr) -> bool:
