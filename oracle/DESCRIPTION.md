@@ -1,21 +1,21 @@
 # oracle
 
 The oracle runs a solution on a real TPU and says whether it is a Pallas kernel, whether it compiles and runs, whether its output
-is correct, and how fast it is compared with XLA. That is the whole definition of the oracle. Dataset curation (the CPU
-pre-filter, teacher evaluation of kernels, filtering the dataset) is separate and comes later: see `curation/`.
+is correct, and how fast it is compared with XLA. That is the whole definition of the oracle, and the code does nothing else.
+Dataset curation (the CPU pre-filter, teacher evaluation of kernels, filtering the dataset) is separate and comes later: see
+`curation/`.
 
 What is here:
 
 | file | role |
 |---|---|
 | `tpu_oracle.py` | the verdict on one solution (the four steps below) |
-| `tpu_check.py`, `outside_ops.py`, `structure.py`, `keys.py` | what `tpu_oracle.py` imports; with it, the five files whose hash is `oracle_sha` |
+| `tpu_check.py` | its helpers: load a module, compare outputs, time a function, read a pack |
+| `outside_ops.py` | the kernel check's rule: what may run outside `pallas_call` |
 | `make_pack.py` | builds a self-contained job directory (oracle files, `pack.json`, `run.sh`, `MANIFEST.json`) |
 | `collect.py` | checks a job's results against its manifest and writes `summary.json` |
 | `jobq.py`, `estimate.py` | the request queue and a rough chip-time estimate per job |
 | `QUEUE.md` | how jobs are run, and the VM security every TPU run needs |
-| `manifest.json` | JAXBench's tasks; only `make_pack.py`'s `human_target` check reads it |
-| `sandbox/` | the sandbox the `outside_ops` integration test runs in |
 | `tests/` | the oracle's tests |
 
 ## Current job (Nov 8)
@@ -52,6 +52,11 @@ The first failure is the verdict.
 4. **Is it fast enough?** Timed on seed 0 (3 warm-ups, median of 20 calls) against `jax.jit(reference)` at default precision.
    `speed_vs_xla = t_xla / t_kernel`. `pass` if `speed_vs_xla >= 0.7`, otherwise `correct_slow`.
 
+Seed 0 is the task's `create_inputs()` as written. Seeds 1 and 2 fold the seed into every random key `create_inputs` makes, so the
+shapes and dtypes stay the same and only the random values change. A task too large for the chip (3x its input bytes over 28 GB)
+gets `too_large_for_chip` and is not run. `tpu_oracle.py`, `tpu_check.py` and `outside_ops.py` are the code that decides a verdict;
+`oracle_sha` is their hash.
+
 Each row also records the error per seed (`err_kernel`, `err_xla_default`), the times (`t_kernel_s`, `t_xla_s`, and their p10 and
 p90), the `oracle_sha` of the code that judged it, and the chip and JAX version.
 
@@ -64,12 +69,14 @@ bash run.sh                          # on the v6e VM, as the locked-down user (Q
 python oracle/collect.py oracle/jobs/JOB                                                        # checks the results, writes summary.json
 ```
 
-### Not needed for this job
+### Removed (Nov 8)
 
-The manifest's groups and `--groups`; `human_target` and `ADAPTERS` (JAXBench's level 2 kernels as speed targets);
-`--sensitivity`. `structure.py` and `keys.py` act only on JAXBench task names, so they do nothing for new tasks unless the names
-match. They stay in the code and still pass their tests. The CPU pre-filter (`lower_filter.py`) and the JAXBench seed audit
-(`int_inputs.py`) moved to `curation/`: neither decides a verdict.
+Everything we had not discussed and verified for this job was removed; it stays in git history:
+JAXBench's task manifest and its groups; Google's level 2 kernels as speed targets (`human_target`, adapters); the structure seeds
+(scrambled page tables and group sizes) and redrawn constant float inputs (`structure.py`); the chunked answer for 2p (`keys.py`);
+the `--reference-only`, `--sensitivity`, `--input-dtype` and `--which` modes; the old two-sided accuracy rule and the "tight"
+tolerance; the old standalone `tpu_check.py` script and the old outside-ops scorer; and the JAXBench input audit
+(`curation/int_inputs.py`).
 
 ## The speed bar: 0.7x XLA
 
@@ -105,6 +112,7 @@ From 13 earlier oracle jobs on a real TPU v6e with JAX 0.10.2 (`Gemma-jaxbench-s
   work on the chip.
 - XLA and the solution are timed at different moments in a run, not alternately. Drift between the two would show in the
   ratio; across sessions it stayed under 3.5%.
-- One reference-only job on the v6e (about 30 to 40 minutes of chip time) would tighten these numbers if needed.
+- A calibration run on the v6e (about 30 to 40 minutes of chip time) would tighten these numbers if needed; the oracle has no
+  mode for it now.
 
 `--speed-bar` changes the bar for a job; each row and the job's MANIFEST.json record the bar it was judged with.

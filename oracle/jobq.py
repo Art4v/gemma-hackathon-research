@@ -6,7 +6,7 @@ Not named queue.py: in oracle/ that would shadow the stdlib queue module that JA
   python oracle/jobq.py build    [JOB_ID ...] [--queue ...] [--jobs-dir ...] [--shards N]    estimate, then pack every job not yet built
 
 A request: {"job_id", "owner", "step", "items_path" (relative to the request file) or "items" (inline), "seeds", "speed_bar",
-"priority" (lower runs first), "max_chip_minutes", optional "reference_only"}. Items are make_pack.py's.
+"priority" (lower runs first), "max_chip_minutes"}. Items are make_pack.py's.
 The estimate is estimate.py's roofline per task: each task that fits the HBM budget costs its reference once (ref_only_s) plus, per
 kernel, kernel_eval_s; tasks that do not fit never reach the chip. A job whose estimate exceeds max_chip_minutes, or whose references
 cannot be estimated, is refused and never built.
@@ -36,9 +36,8 @@ def load_requests(queue: pathlib.Path, only: list) -> list:
             if not (num("max_chip_minutes") and num("speed_bar") and isinstance(req["priority"], (int, float))
                     and isinstance(req["seeds"], int) and req["seeds"] >= 1):
                 raise ValueError(f"{p.name}: need max_chip_minutes > 0, speed_bar > 0, a numeric priority, seeds an int >= 1")
-            ro = bool(req.get("reference_only"))
-            items = (make_pack.load_items(req["items"], p.parent, reference_only=ro) if "items" in req else
-                     make_pack.load_items(p.parent / req["items_path"], reference_only=ro))
+            items = (make_pack.load_items(req["items"], p.parent) if "items" in req else
+                     make_pack.load_items(p.parent / req["items_path"]))
         except (ValueError, OSError, KeyError, TypeError) as e:
             items = ValueError(str(e))
         out.append((req, items))
@@ -62,7 +61,7 @@ def estimate(req: dict, items: list) -> tuple:
         except Exception as e:  # a reference that cannot be traced cannot be bounded
             return None, f"could not estimate task {t}: {type(e).__name__}: {str(e)[-200:]}"
         if c["fits_hbm"]:
-            total += c["ref_only_s"] + (0 if req.get("reference_only") else n * c["kernel_eval_s"])
+            total += c["ref_only_s"] + n * c["kernel_eval_s"]
     mins = total / 60
     return mins, (f"estimate {mins:.2f} min > max_chip_minutes {req['max_chip_minutes']}" if mins > req["max_chip_minutes"] else "")
 
@@ -100,8 +99,7 @@ def main(argv=None) -> None:
             print(f"{jid}  OK: estimate {mins:.2f} of {req['max_chip_minutes']} chip minutes (ESTIMATE)")
             continue
         m = make_pack.build(items, d, job_id=jid, owner=req["owner"], step=req["step"], seeds=req["seeds"], speed_bar=req["speed_bar"],
-                            shards=a.shards, reference_only=bool(req.get("reference_only")),
-                            extra={"priority": req["priority"], "max_chip_minutes": req["max_chip_minutes"],
+                            shards=a.shards, extra={"priority": req["priority"], "max_chip_minutes": req["max_chip_minutes"],
                                    "estimate_chip_minutes": round(mins, 3)})
         print(f"{jid}  built {d}: {m['n_items']} items, {m['shards']} shards, estimate {mins:.2f} chip min")
     sys.exit(1 if failed else 0)

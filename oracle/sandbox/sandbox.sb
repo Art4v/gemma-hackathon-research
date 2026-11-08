@@ -1,6 +1,0 @@
-(version 1)
-(allow default)
-(deny network*)
-(deny file-write*)
-(allow file-write* (subpath "/private/tmp") (subpath "/private/var/folders") (subpath "/dev"))
-(deny file-read* (subpath (param "HOME_SSH")) (subpath (param "HOME_AWS")) (subpath (param "HOME_MODAL")) (literal (param "ENV_FILE")) (literal (param "HOME_MODAL_TOML")))

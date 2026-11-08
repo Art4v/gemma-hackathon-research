@@ -2,7 +2,6 @@
 check on returned results. Pack and collect tests are pure. The run.sh tests run the packed oracle on CPU (--cpu-smoke, Pallas interpret
 mode) on test_tpu_oracle.py's small hand-written kernels only."""
 import hashlib, json, os, pathlib, shlex, shutil, subprocess, sys, tempfile, unittest
-from unittest import mock
 
 HERE = pathlib.Path(__file__).resolve().parent.parent
 sys.path[:0] = [str(HERE), str(HERE / "tests")]
@@ -31,8 +30,8 @@ def three_items(d: pathlib.Path) -> pathlib.Path:
 
 def build(d: pathlib.Path, items_path, job_id="j1", **kw) -> pathlib.Path:
     out = d / "jobs" / job_id
-    make_pack.build(make_pack.load_items(items_path, reference_only=kw.get("reference_only", False)), out, job_id=job_id,
-                    owner="alice", **{"step": "s1", "seeds": 3, "speed_bar": 0.8, "shards": 1, **kw})
+    make_pack.build(make_pack.load_items(items_path), out, job_id=job_id,
+                    owner="alice", **{"step": "s1", "seeds": 3, "speed_bar": 0.7, "shards": 1, **kw})
     return out
 
 
@@ -42,14 +41,14 @@ class Pack(unittest.TestCase):
             d = pathlib.Path(d)
             job = build(d, three_items(d), shards=2)
             m = json.loads((job / "MANIFEST.json").read_text())
-            for k, v in {"job_id": "j1", "owner": "alice", "step": "s1", "seeds": [0, 1, 2], "speed_bar": 0.8, "n_items": 3,
-                         "shards": 2, "reference_only": False}.items():
+            for k, v in {"job_id": "j1", "owner": "alice", "step": "s1", "seeds": [0, 1, 2], "speed_bar": 0.7, "n_items": 3,
+                         "shards": 2}.items():
                 self.assertEqual(m[k], v, k)
             self.assertIn("oracle_commit", m)
             on_disk = {str(p.relative_to(job)) for p in job.rglob("*") if p.is_file()} - {"MANIFEST.json"}
             self.assertEqual(set(m["files"]), on_disk)
             self.assertTrue({"run.sh", "pack.json", *make_pack.ORACLE_FILES} <= on_disk)
-            self.assertIn("keys.py", make_pack.ORACLE_FILES)  # the chunked 2p key ships with the oracle
+            self.assertEqual(make_pack.ORACLE_FILES, ("tpu_oracle.py", "tpu_check.py", "outside_ops.py"))
             for rel, h in m["files"].items():
                 self.assertEqual(hashlib.sha256((job / rel).read_bytes()).hexdigest(), h, rel)
             for rel in make_pack.ORACLE_FILES:  # verbatim
@@ -59,9 +58,9 @@ class Pack(unittest.TestCase):
             self.assertEqual({i["id"]: (i["task"], i["code_sha256"], i["ref_sha256"]) for i in m["items"]},
                              {"a": ("t", sha(KERNELS["good"]), sha(REF)), "b": ("t2", sha(KERNELS["plain_jnp"]), sha(REF2)),
                               "c": ("t", sha(KERNELS["raises"]), sha(REF))})
-            pack = json.loads((job / "pack.json").read_text())  # the oracle's input format, items in "dev"
-            self.assertEqual((pack["dev_refs"], pack["train_refs"], pack["train"]), ({"t": REF, "t2": REF2}, {}, []))
-            self.assertEqual([(i["id"], i["code"], i["ref_sha256"]) for i in pack["dev"]],
+            pack = json.loads((job / "pack.json").read_text())  # the oracle's input format
+            self.assertEqual((set(pack), pack["refs"]), ({"refs", "items"}, {"t": REF, "t2": REF2}))
+            self.assertEqual([(i["id"], i["code"], i["ref_sha256"]) for i in pack["items"]],
                              [("a", KERNELS["good"], sha(REF)), ("b", KERNELS["plain_jnp"], sha(REF2)), ("c", KERNELS["raises"], sha(REF))])
 
     def test_bad_items_are_refused(self):
@@ -73,34 +72,6 @@ class Pack(unittest.TestCase):
             for name, rows in cases.items():
                 with self.subTest(name), self.assertRaises(ValueError):
                     make_pack.load_items(write_items(pathlib.Path(d), rows))
-
-    def test_human_target_passes_through_to_the_pack_and_only_as_true(self):
-        with tempfile.TemporaryDirectory() as d:
-            d = pathlib.Path(d)
-            rows = [{"id": "h", "task": "t", "ref_code": REF, "code": KERNELS["good"], "human_target": True},
-                    {"id": "m", "task": "t", "ref_code": REF, "code": KERNELS["good"]}]
-            known = {"t": hashlib.sha256(KERNELS["good"].encode()).hexdigest()}  # stands in for the manifest's human_kernel_sha256
-            with mock.patch.object(make_pack, "human_kernel_hashes", lambda: known):
-                pack = json.loads((build(d, write_items(d, rows)) / "pack.json").read_text())
-                self.assertEqual([i.get("human_target") for i in pack["dev"]], [True, None])
-                with self.assertRaises(ValueError):
-                    make_pack.load_items([{**rows[0], "human_target": "yes"}])
-
-    def test_human_target_on_code_that_is_not_the_tasks_human_kernel_is_refused(self):
-        # Lebron James 6705030345: the flag switches off is_kernel and can skip structure seeds, so it must be tied to the manifest
-        known = {"t": hashlib.sha256(b"the real human kernel").hexdigest()}
-        row = {"id": "x", "task": "t", "ref_code": REF, "code": KERNELS["good"], "human_target": True}
-        with mock.patch.object(make_pack, "human_kernel_hashes", lambda: known):
-            with self.assertRaises(ValueError):
-                make_pack.load_items([row])
-            with self.assertRaises(ValueError):
-                make_pack.load_items([{**row, "task": "no_such_task"}])
-
-    def test_the_real_manifest_admits_its_own_human_kernels(self):
-        hashes = make_pack.human_kernel_hashes()
-        self.assertIn("11p_Megablox_GMM", hashes)
-        code = (HERE.parent / "benchmarks/jaxbench/level2/11p_Megablox_GMM/baseline.py").read_text()
-        self.assertEqual(hashlib.sha256(code.encode()).hexdigest(), hashes["11p_Megablox_GMM"])
 
     def test_run_sh_header_names_the_oracle_sha_to_pin(self):
         # Lebron James 6705338278: build_rows --oracle-sha must be the judging oracle's sha, so every pack states it up front
@@ -195,40 +166,11 @@ class Pack(unittest.TestCase):
             d = pathlib.Path(d)
             items = make_pack.load_items(three_items(d))
             with self.assertRaises(ValueError):
-                make_pack.build(items, d / "x", job_id="../evil", owner="a", step="s", seeds=3, speed_bar=0.8, shards=1)
+                make_pack.build(items, d / "x", job_id="../evil", owner="a", step="s", seeds=3, speed_bar=0.7, shards=1)
             build(d, d / "items.jsonl")
             with self.assertRaises(FileExistsError):
                 build(d, d / "items.jsonl")
 
-
-    def test_sensitivity_job_from_a_manifest_by_group_final_exam_first(self):
-        with tempfile.TemporaryDirectory() as d:
-            d = pathlib.Path(d)
-            (d / "level1/a").mkdir(parents=True); (d / "level1/a/baseline.py").write_text(REF)
-            (d / "level2/b").mkdir(parents=True); (d / "level2/b/baseline.py").write_text(REF2)
-            (d / "level1/c").mkdir(parents=True); (d / "level1/c/baseline.py").write_text(REF)
-            man = d / "manifest.json"
-            man.write_text(json.dumps({"tasks": [{"task": "a", "group": "practice_exam", "plain_ref": "level1/a/baseline.py"},
-                                                 {"task": "b", "group": "final_exam", "plain_ref": None, "human_kernel": "level2/b/baseline.py"},
-                                                 {"task": "c", "group": "practice_problem", "plain_ref": "level1/c/baseline.py"}]}))
-            items = make_pack.manifest_items(man, ["final_exam", "practice_exam"], d)
-            self.assertEqual([(i["id"], i["task"], i["ref_code"]) for i in items], [("ref/b", "b", REF2), ("ref/a", "a", REF)])
-            with self.assertRaises(ValueError):
-                make_pack.manifest_items(man, ["no_such_group"], d)
-            out = d / "jobs/sens"
-            make_pack.main([str(man), str(out), "--job-id", "sens", "--owner", "alice", "--step", "s1", "--bench", str(d),
-                            "--groups", "final_exam", "--sensitivity", "--sensitivity-bar", "0.05"])
-            m = json.loads((out / "MANIFEST.json").read_text())
-            self.assertEqual((m["reference_only"], m["sensitivity"], m["groups"], [i["id"] for i in m["items"]]),
-                             (True, {"seed": 1, "bar": 0.05}, ["final_exam"], ["ref/b"]))
-            self.assertIn("--reference-only --sensitivity --sensitivity-seed 1 --sensitivity-bar 0.05", (out / "run.sh").read_text())
-
-    def test_without_sensitivity_the_manifest_and_flags_are_unchanged(self):
-        with tempfile.TemporaryDirectory() as d:
-            d = pathlib.Path(d)
-            job = build(d, three_items(d))
-            self.assertNotIn("sensitivity", json.loads((job / "MANIFEST.json").read_text()))
-            self.assertNotIn("--sensitivity", (job / "run.sh").read_text())
 
 
 def run_sh(job: pathlib.Path) -> subprocess.CompletedProcess:
@@ -292,30 +234,6 @@ class RunSh(unittest.TestCase):
             self.assertNotEqual(p.returncode, 0)
             self.assertIn("pack.json", p.stdout + p.stderr)
 
-    def test_reference_only_writes_reference_rows(self):
-        with tempfile.TemporaryDirectory() as d:
-            d = pathlib.Path(d)
-            items = write_items(d, [{"id": "a", "task": "t", "ref_code": REF}, {"id": "b", "task": "t2", "ref_code": REF2},
-                                    {"id": "c", "task": "t", "ref_code": REF, "code": "ignored"}])
-            job = build(d, items, job_id="refs1", reference_only=True)
-            m = json.loads((job / "MANIFEST.json").read_text())
-            self.assertEqual((m["reference_only"], m["n_items"]), (True, 2))
-            self.assertEqual([(i["id"], i["code_sha256"]) for i in m["items"]], [("ref/t", None), ("ref/t2", None)])
-            p = run_sh(job)
-            self.assertEqual(p.returncode, 0, p.stderr[-1500:])
-            rows = {r["id"]: r for r in rows_of(job / "results/refs1.jsonl")}
-            self.assertEqual(set(rows), {"ref/t", "ref/t2"})
-            for r, n in ((rows["ref/t"], 16), (rows["ref/t2"], 8)):
-                self.assertEqual(r["verdict"], "reference_ok", r)
-                self.assertEqual((r["full_input_bytes"], r["output_bytes"]), (n * 128 * 4 + 128 * 4, n * 128 * 4))
-                self.assertTrue(r["fits_hbm"])
-                self.assertGreater(r["t_xla_s"], 0)
-                self.assertTrue(0 < r["t_xla_p10_s"] <= r["t_xla_s"] <= r["t_xla_p90_s"], r)
-                self.assertEqual([s["seed"] for s in r["per_seed"]], [0, 1, 2])
-                self.assertTrue(r["seeds_distinct"])
-                self.assertNotIn("is_kernel", r)
-            self.assertTrue(collect.check(job)["valid"])
-
 
 @unittest.skipUnless(PY, "needs a JAX interpreter (set SERA_JAX_PY)")
 class Queue(unittest.TestCase):
@@ -324,7 +242,7 @@ class Queue(unittest.TestCase):
             d = pathlib.Path(d)
             q = d / "queue"; q.mkdir()
             three_items(q)
-            base = {"owner": "alice", "step": "s1", "items_path": "items.jsonl", "seeds": 3, "speed_bar": 0.8}
+            base = {"owner": "alice", "step": "s1", "items_path": "items.jsonl", "seeds": 3, "speed_bar": 0.7}
             (q / "small.json").write_text(json.dumps({**base, "job_id": "small", "priority": 2, "max_chip_minutes": 60}))
             # the roofline estimate's declared compiles alone (2 for the reference, 1 per kernel, 10 s each) exceed 0.01 min
             (q / "over.json").write_text(json.dumps({**base, "job_id": "over", "priority": 1, "max_chip_minutes": 0.01}))
@@ -390,18 +308,6 @@ class Collect(unittest.TestCase):
         self.assertTrue(s["valid"], s)
         self.assertEqual(s["verdicts"], {"correct_slow": 1, "pass": 1, "wrong": 1})
         self.assertEqual((s["n_correct"], s["median_speed_vs_xla_correct"]), (2, 1.25))
-
-    def test_a_sensitivity_job_may_have_several_rows_per_item(self):
-        with tempfile.TemporaryDirectory() as d:
-            job = pathlib.Path(d)
-            (job / "results").mkdir()
-            (job / "MANIFEST.json").write_text(json.dumps({"job_id": "s", "oracle_sha": "x", "seeds": [0], "sensitivity": {"seed": 1, "bar": None},
-                                                           "items": [{"id": "ref/t"}]}))
-            rows = [{"id": "ref/t", "leaf": i, "oracle_sha": "x", "seeds": [0], "verdict": "sensitivity"} for i in range(3)]
-            (job / "results/s.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
-            s = collect.check(job)
-            self.assertTrue(s["valid"], s)
-            self.assertEqual(s["duplicate"], [])
 
     def test_a_meta_line_from_another_oracle_is_a_mismatch(self):
         a, b, c = self.m["items"]

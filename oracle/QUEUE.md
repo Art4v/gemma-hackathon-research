@@ -14,7 +14,7 @@ One operator runs everyone's chip jobs on a Cloud TPU v6e VM. You need only a br
 ```
 
    `items_path` is relative to the request file. You can put the items inline as `"items": [...]` instead. Lower priority runs
-   first. Add `"reference_only": true` for the reference speed table: then no code is needed, and each task's reference is timed alone.
+   first.
 3. Check the estimate yourself (JAX on CPU is enough): `python oracle/jobq.py estimate alice-step3`. A job whose estimate is over
    `max_chip_minutes` is refused and never built. It is a roofline: an order of magnitude.
 4. Commit both files on your branch, or post them, and tell the operator.
@@ -59,5 +59,5 @@ sudo. Session 2 (2026-11-07) used the recipe below, which works:
 ## Where results appear
 
 The operator commits `results/<job_id>.jsonl` and `summary.json` to `oracle/results/<job_id>/` and replies to your request.
-Each row is one oracle verdict (`pass`, `correct_slow`, `wrong`, `not_a_kernel`, a failure class, or `reference_ok`) with its
+Each row is one oracle verdict (`pass`, `correct_slow`, `wrong`, `not_a_kernel`, `too_large_for_chip` or a failure class) with its
 feedback line.

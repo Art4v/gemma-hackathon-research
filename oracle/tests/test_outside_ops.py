@@ -1,11 +1,9 @@
-"""Jaxpr-level outside-kernel check (reviewer item 4): the AST heavy-op list can be bypassed by aliases, getattr, `.sum()`, lax.reduce_sum,
-or a product stored in a variable. At the jaxpr level every contraction is `dot_general`, every reduction is `reduce_*`, and the only
-primitives allowed outside `pallas_call` are layout and dtype ones. The walk is tested on a fake jaxpr; the JAX integration test runs only
-where JAX is installed."""
+"""outside_ops.py, the kernel check's rule, on fake jaxprs (no JAX). The same rule on real kernels, including the five ways of hiding a
+matmul outside the kernel, is in test_tpu_oracle.py (CheatsAreNotKernels, OutsideMetadata)."""
 import pathlib, sys, unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
-from outside_ops import ALLOWED, ORACLE_ALLOWED, classify, classify_avals, walk, walk_avals
+from outside_ops import ALLOWED, classify_avals, walk, walk_avals
 
 
 class P:
@@ -38,95 +36,11 @@ class Walk(unittest.TestCase):
         self.assertEqual(walk(Jaxpr([Eqn("dot_general")])), ({"dot_general": 1}, 0))
 
 
-class Shrink(unittest.TestCase):
-    """The trace must see the same program the checker ran: check.py slices every array input to at most 256 per dimension."""
-
-    def test_dims_are_capped_at_256_and_scalars_are_left_alone(self):
-        from outside_ops import shrink_shape
-        self.assertEqual(shrink_shape((8192, 8192)), (256, 256))
-        self.assertEqual(shrink_shape((16, 300, 32)), (16, 256, 32))
-        self.assertEqual(shrink_shape(()), ())
-
-
-class Classify(unittest.TestCase):
-    def test_layout_and_dtype_ops_outside_are_fine(self):
-        ok, bad = classify({"reshape": 2, "pad": 1, "convert_element_type": 1, "broadcast_in_dim": 1, "transpose": 1, "slice": 1})
-        self.assertEqual((ok, bad), (True, []))
-
-    def test_any_arithmetic_or_contraction_outside_is_flagged_and_named(self):
-        ok, bad = classify({"reshape": 1, "dot_general": 1, "mul": 2, "reduce_sum": 1})
-        self.assertEqual((ok, bad), (False, ["dot_general", "mul", "reduce_sum"]))
-
-    def test_allowed_set_has_no_compute(self):
-        for name in ("dot_general", "mul", "add", "reduce_sum", "reduce_max", "exp", "logistic", "select_n", "conv_general_dilated"):
+class Allowed(unittest.TestCase):
+    def test_allowed_set_has_no_compute_and_no_gather(self):
+        for name in ("dot_general", "mul", "add", "reduce_sum", "reduce_max", "exp", "logistic", "select_n", "conv_general_dilated",
+                     "gather", "scatter", "scatter-add"):
             self.assertNotIn(name, ALLOWED)
-
-
-class Integration(unittest.TestCase):
-    """The real thing: a cheat kernel that does the matmul outside and copies it through a tiled kernel, and an honest kernel. Needs JAX."""
-    REF = ("import jax, jax.numpy as jnp\n"
-           "def create_inputs(dtype):\n    k = jax.random.PRNGKey(0)\n    return jax.random.normal(k, (64, 128), dtype), jax.random.normal(k, (128, 128), dtype)\n"
-           "def workload(x, w):\n    return x @ w\n")
-    HDR = "import jax, jax.numpy as jnp\nfrom jax import lax\nfrom jax.experimental import pallas as pl\n"
-    COPY = ("def _copy(y):\n    def k(y_ref, o_ref):\n        o_ref[...] = y_ref[...]\n"
-            "    return pl.pallas_call(k, out_shape=jax.ShapeDtypeStruct(y.shape, y.dtype), grid=(y.shape[0] // 8,),\n"
-            "        in_specs=[pl.BlockSpec((8, y.shape[1]), lambda i: (i, 0))], out_specs=pl.BlockSpec((8, y.shape[1]), lambda i: (i, 0)))(y)\n")
-    CHEATS = {
-        "alias": "d = lax.dot_general\ndef workload(x, w):\n    return _copy(d(x, w, (((1,), (0,)), ((), ()))))\n",
-        "getattr": "def workload(x, w):\n    return _copy(getattr(jnp, 'mat' + 'mul')(x, w))\n",
-        "product_then_sum": "def workload(x, w):\n    p = x[:, :, None] * w[None]\n    return _copy(p.sum(axis=1))\n",
-        "reduce_sum": "def workload(x, w):\n    return _copy(lax.reduce_sum(x[:, :, None] * w[None], axes=(1,)))\n",
-        "add_reduce": "def workload(x, w):\n    return _copy(jnp.add.reduce(x[:, :, None] * w[None], axis=1))\n",
-    }
-    HONEST = ("def workload(x, w):\n    def k(x_ref, w_ref, o_ref):\n        o_ref[...] = jnp.dot(x_ref[...], w_ref[...])\n"
-              "    xp = x.astype(jnp.float32).reshape(x.shape)\n"
-              "    return pl.pallas_call(k, out_shape=jax.ShapeDtypeStruct((x.shape[0], w.shape[1]), jnp.float32), grid=(x.shape[0] // 8,),\n"
-              "        in_specs=[pl.BlockSpec((8, x.shape[1]), lambda i: (i, 0)), pl.BlockSpec(w.shape, lambda i: (0, 0))],\n"
-              "        out_specs=pl.BlockSpec((8, w.shape[1]), lambda i: (i, 0)))(xp, w)\n")
-
-    def run_script(self, cand):
-        import json, os, subprocess, tempfile
-        py = os.environ.get("SERA_JAX_PY", "")
-        if not py or not pathlib.Path(py).exists():
-            self.skipTest("JAX interpreter not available here")
-        sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "sandbox"))
-        from sandbox_args import wrap
-        script = pathlib.Path(__file__).parent.parent / "outside_ops.py"
-        with tempfile.TemporaryDirectory(dir="/private/tmp") as d:
-            p = pathlib.Path(d); (p / "ref.py").write_text(self.REF); (p / "cand.py").write_text(self.HDR + self.COPY + cand); (p / "outside_ops.py").write_text(script.read_text())
-            out = subprocess.run(wrap([str(py), "-I", "outside_ops.py", "ref.py", "cand.py"]), cwd=d, capture_output=True, text=True, timeout=240)
-        line = [l for l in out.stdout.splitlines() if l.startswith("RESULT ")]
-        self.assertTrue(line, out.stderr[-400:])
-        return json.loads(line[-1][7:])
-
-    def test_every_cheat_is_caught_and_the_honest_kernel_passes(self):
-        for name, cheat in self.CHEATS.items():
-            r = self.run_script(cheat)
-            self.assertFalse(r["outside_ok"], (name, r))
-            self.assertTrue(set(r["outside_disallowed"]) & {"dot_general", "mul", "reduce_sum"}, (name, r))
-        r = self.run_script(self.HONEST)
-        self.assertEqual((r["outside_ok"], r["outside_disallowed"], r["pallas_calls"]), (True, [], 1), r)
-
-    def test_batch_mode_scores_many_kernels_in_one_process_and_survives_a_broken_one(self):
-        """--batch pack.json out.jsonl: one JSON line per item, in order, with the item's id; a candidate that fails at import is a row, not a crash."""
-        import json, os, subprocess, tempfile
-        py = os.environ.get("SERA_JAX_PY", "")
-        if not py or not pathlib.Path(py).exists():
-            self.skipTest("JAX interpreter not available here")
-        sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "sandbox"))
-        from sandbox_args import wrap
-        script = pathlib.Path(__file__).parent.parent / "outside_ops.py"
-        pack = [{"id": "cheat", "ref": self.REF, "cand": self.HDR + self.COPY + self.CHEATS["alias"]},
-                {"id": "broken", "ref": self.REF, "cand": "import nonexistent_module_xyz\n"},
-                {"id": "honest", "ref": self.REF, "cand": self.HDR + self.COPY + self.HONEST}]
-        with tempfile.TemporaryDirectory(dir="/private/tmp") as d:
-            p = pathlib.Path(d); (p / "pack.json").write_text(json.dumps(pack)); (p / "outside_ops.py").write_text(script.read_text())
-            out = subprocess.run(wrap([str(py), "-I", "outside_ops.py", "--batch", "pack.json", "out.jsonl"]), cwd=d, capture_output=True, text=True, timeout=300)
-            self.assertEqual(out.returncode, 0, out.stderr[-400:])
-            rows = [json.loads(l) for l in (p / "out.jsonl").read_text().splitlines()]
-        self.assertEqual([r["id"] for r in rows], ["cheat", "broken", "honest"])
-        self.assertEqual([r["outside_ok"] for r in rows], [False, False, True])
-        self.assertEqual(rows[1]["error"], "ModuleNotFoundError")
 
 
 class Aval:
@@ -156,7 +70,7 @@ def b1(*shape): return AVar("bool", shape)
 
 
 class Metadata(unittest.TestCase):
-    """R2 (the oracle's rule): metadata = small values computed only from non-float inputs. A primitive outside ORACLE_ALLOWED
+    """The metadata rule: small values computed only from non-float inputs. A primitive outside ALLOWED
     (gather and scatter* included) is allowed only if none of its operands is tainted (derived from a floating workload input) and
     every operand and result has at most 2**16 elements. Dtype does not matter for untainted values: float bin edges computed from
     int group sizes are metadata (Megablox's make_group_metadata, via jnp.histogram)."""
@@ -213,7 +127,6 @@ class Metadata(unittest.TestCase):
         # Google's 54p wraps its operands in with_memory_space_constraint, 53p stacks: placement and layout, no arithmetic
         x, y = f32(4096, 128), f32(2, 4096, 128)
         self.assertEqual(self.check([x], AEqn("with_memory_space_constraint", [x], [x]), AEqn("stack", [x, x], [y])), (True, [], []))
-        self.assertTrue({"stack", "with_memory_space_constraint"}.isdisjoint(ALLOWED))  # the frozen study's list is unchanged
 
     def test_a_dynamic_slice_at_data_derived_offsets_is_a_gather(self):
         # Lebron James 6711257577: a Python loop of lax.dynamic_slice(kv_pages, (page_indices[i], 0, 0)) is the paged-gather shortcut
@@ -240,8 +153,7 @@ class Metadata(unittest.TestCase):
         self.assertEqual(r, (True, [], ["dynamic_slice(dynamic start)"]))
 
     def test_gather_and_scatter_follow_the_same_rule(self):
-        self.assertNotIn("gather", ORACLE_ALLOWED)
-        self.assertIn("gather", ALLOWED)  # the frozen study's rule is unchanged
+        self.assertNotIn("gather", ALLOWED)
         pages, idx, kv = f32(16, 8, 128), i32(4, 1), f32(4, 8, 128)
         self.assertEqual(self.check([pages, idx], AEqn("gather", [pages, idx], [kv])), (False, ["gather"], []))
         buf, upd, out = f32(64), f32(4), f32(64)

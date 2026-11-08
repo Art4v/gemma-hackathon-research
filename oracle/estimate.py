@@ -74,7 +74,7 @@ def main(argv=None) -> None:
               f"{r['gflop']:9.1f} {r['run_default_ms']:8.2f} {r['ref_only_s']:7.1f} {r['kernel_eval_s']:8.1f}")
     for f in failed:
         print(f"{f['task_failed']:58} could not estimate: {f['error']}: {f['msg']}")
-    print(f"total over {total['fit']} of {total['tasks']} tasks that fit: reference-only {total['ref_only_s'] / 60:.1f} min, "
+    print(f"total over {total['fit']} of {total['tasks']} tasks that fit: references {total['ref_only_s'] / 60:.1f} min, "
           f"one kernel per task {total['one_kernel_per_task_s'] / 60:.1f} min (ESTIMATE)")
 
 
