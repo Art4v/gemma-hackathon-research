@@ -13,7 +13,7 @@ import concurrent.futures as cf, json, pathlib, random, sys, time
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from constructor import Request, Response  # noqa: E402
 
-DEFAULT_MODEL = "gemini-3.1-pro-preview"
+DEFAULT_MODEL = "gemini-4-argon"  # what the team's paid keys list (Nov 8); gemini-3.1-pro-preview is not available to them
 RETRY_CODES = {408, 429, 500, 502, 503, 504}
 # Gemini 3 counts thinking against max_output_tokens; Request.max_tokens (16k) was sized for the answer alone.
 # ponytail: one fixed floor; raise it if responses come back with finish_reason MAX_TOKENS
