@@ -101,7 +101,8 @@ def main(argv=None) -> None:
     if a.resample:
         jobs = plan_resample(a.batch, a.round, problems, cands)
     elif a.round == 1:
-        jobs = plan_round1(problems, cands, only)
+        # each problem belongs to one batch (problem.batch; pilot problems predate the field); round 1 only takes this batch's
+        jobs = plan_round1({k: v for k, v in problems.items() if v.get("batch", "pilot") == a.batch}, cands, only)
     else:
         jobs = plan_repair(a.batch, a.round, problems, cands, only)
     jobs = jobs[:a.limit] if a.limit else jobs

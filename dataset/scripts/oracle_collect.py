@@ -148,7 +148,18 @@ def collect(job_id: str, root: pathlib.Path, jobs_dir: pathlib.Path, results_dir
     if (job_dir / "MANIFEST.json").exists():
         sys.path.insert(0, str(common.ORACLE))
         import collect as oracle_collect  # noqa: E402  (oracle/collect.py)
-        s = oracle_collect.check(job_dir)
+        if (job_dir / "results").is_dir():
+            s = oracle_collect.check(job_dir)
+        else:
+            # The Colab watcher's result branches keep the rows next to MANIFEST.json (oracle/results/<job>/<job>.jsonl), not under
+            # results/. Give oracle/collect.py its expected layout in a temp dir instead of moving the operator's files.
+            import shutil, tempfile
+            with tempfile.TemporaryDirectory() as d:
+                shutil.copy(job_dir / "MANIFEST.json", pathlib.Path(d) / "MANIFEST.json")
+                (pathlib.Path(d) / "results").mkdir()
+                for f in job_dir.glob("*.jsonl"):
+                    shutil.copy(f, pathlib.Path(d) / "results" / f.name)
+                s = oracle_collect.check(pathlib.Path(d))
         if not s["valid"]:
             problems.append(f"oracle/collect.py says the job is not valid: " +
                             ", ".join(f"{k}={s[k]}" for k in ("missing", "duplicate", "unexpected", "oracle_sha_mismatch", "seeds_mismatch") if s[k]))

@@ -88,7 +88,12 @@ bad = [p for p, h in m["files"].items() if not pathlib.Path(p).is_file() or hash
 sys.exit(f"refusing to run: changed or missing since the pack was built: {bad}" if bad else 0)
 EOF
 export ORACLE_COMMIT=__COMMIT__ PYTHONDONTWRITEBYTECODE=1
-if [ -z "$SMOKE" ]; then  # model-written code must not reach the VM's service-account token (QUEUE.md, "VM security")
+VM_CHECKS=1
+if [ "${ORACLE_ON_COLAB:-}" = 1 ]; then  # Colab runs as root and holds no credentials of ours; approved Nov 8 (oracle/colab.sh)
+  echo "ORACLE_ON_COLAB=1: Cloud VM security checks skipped (no project credentials in a Colab session); file check done above" >&2
+  VM_CHECKS=""
+fi
+if [ -z "$SMOKE" ] && [ -n "$VM_CHECKS" ]; then  # model-written code must not reach the VM's service-account token (QUEUE.md, "VM security")
   command -v curl >/dev/null || { echo "refusing to run: no curl to verify the metadata block" >&2; exit 1; }
   for u in http://169.254.169.254 http://metadata.google.internal "http://[fd20:ce::254]"; do
     if [ "$(curl -s -m 4 -o /dev/null -w '%{http_code}' -H 'Metadata-Flavor: Google' \

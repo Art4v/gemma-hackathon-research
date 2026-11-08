@@ -3,3 +3,6 @@ raw/
 candidates/raw_responses/
 __pycache__/
 *.pyc
+overnight.log
+overnight_*.log
+.*.tmp

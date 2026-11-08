@@ -30,7 +30,8 @@ oracle_sha and the seeds match. It then writes `summary.json`: counts per verdic
 
 Every job runs model-written code, so that code must not be able to get a credential. Sessions 0 and 1 ran it on VMs with the
 default compute service account and the `cloud-platform` scope (roles/editor on the project), and as a user with passwordless
-sudo. Session 2 (2026-11-07) used the recipe below, which works:
+sudo. Session 2 (2026-11-07) used the recipe below, which works. `oracle/vm.sh` runs it step by step (create, bootstrap, check, push,
+run, status, fetch, delete):
 
 1. **Create** with the logging and read-only storage scopes, and nothing broader:
    `gcloud compute tpus tpu-vm create NAME --zone=ZONE --accelerator-type=v6e-1 --version=v2-alpha-tpuv6e --scopes=https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/devstorage.read_only`
@@ -55,6 +56,13 @@ sudo. Session 2 (2026-11-07) used the recipe below, which works:
 6. **Reading results** in oracle's home (mode 750) needs `sudo` from the default user. That includes stop-condition scripts
    and the results fetch, which must expand its globs as root. Delete the VM when the queue is empty:
    `gcloud compute tpus tpu-vm list --zone=ZONE` must show 0 items.
+
+## On Colab instead (approved 2026-11-08)
+
+A Colab TPU v6e session (`colab new --tpu v6e1`) runs the same job directory with `oracle/colab.sh` (start, setup, push, run, status,
+fetch, stop). There the oracle runs directly: `ORACLE_ON_COLAB=1` makes `run.sh` skip the Cloud VM checks above, and says so in its log,
+because Colab runs as root and a session holds no credentials of ours. Never mount Drive or log in inside the session. `run.sh`'s file
+check and JAX pin still run, and rows say `stack: colab-tpu`. Stop the session when done: an idle one still burns compute units.
 
 ## Where results appear
 

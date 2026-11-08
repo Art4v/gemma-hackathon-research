@@ -1,1 +1,0 @@
-{"at": "2026-11-08T06:53:18+00:00", "jaccard": 0.8, "nearest_exam": "30k_Matmul_Scaling_ResidualAdd", "op_chain": ["dot_general", "add", "sigmoid", "mul", "add"], "problem_id": "kb/l2/70_Gemm_Sigmoid_Scaling_ResidualAdd"}
