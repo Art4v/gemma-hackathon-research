@@ -9,3 +9,13 @@
 [18:48:18] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject authored__ssm_s4d_conv__s4d_causal_direct_conv.a1.s1 [static] None compile error: Block shape for args[0] (= (Blocked(block_size=2048), Blocked(block_size=128))) must have
 [18:48:19] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_submit.py --batch ... -> rc 0 | dataset-g2-r1: 59 items over 59 tasks, 0 probes; estimate 34.0 min -> max_chip_minutes 52; ENQUEUED to oracle/queue
 [18:48:20] $ /Users/hrudaynara/Projects/gemma-dataset-gen/oracle/jobq.py estimate dataset-g2-r1 ... -> rc 0 | dataset-g2-r1  OK: estimate 34.01 of 52 chip minutes (ESTIMATE)
+[18:48:20] $ add -A dataset ... -> rc 0 | 
+[18:48:20] $ commit -q -m ... -> rc 0 | 
+[18:48:22] $ push -q origin ... -> rc 0 | 
+[18:48:23] $ issue comment 3 ... -> rc 0 | https://github.com/Art4v/gemma-hackathon-research/issues/3#issuecomment-6728879420
+[18:51:13] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 60 candidates (52876 output tokens), 0 failed -> candidates/g3/r1.jsonl
+[18:51:15] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject kb__l2__38_ConvTranspose3d_AvgPool_Clamp_Softmax_Multiply.a1.s0 [static] None compile error: Block shape for args[0] (= (Blocked(block_size=32), Blocked(block_size=32), Blocked(block_
+[18:53:19] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 35 candidates (29828 output tokens), 0 failed -> candidates/g3/r1.jsonl
+[18:53:20] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject kb__l2__48_Conv3d_Scaling_Tanh_Multiply_Sigmoid.a1.s1 [static] None compile error: `indices` must not be longer than `shape`: indices=(slice(None, None, None), 0, 0, 0), sha
+[18:53:21] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_submit.py --batch ... -> rc 0 | dataset-g3-r1: 60 items over 60 tasks, 0 probes; estimate 35.0 min -> max_chip_minutes 53; ENQUEUED to oracle/queue
+[18:53:22] $ /Users/hrudaynara/Projects/gemma-dataset-gen/oracle/jobq.py estimate dataset-g3-r1 ... -> rc 0 | dataset-g3-r1  OK: estimate 34.97 of 53 chip minutes (ESTIMATE)
