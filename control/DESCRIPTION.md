@@ -23,6 +23,11 @@ thing each.
 
 ## Settings (every arm)
 
+- Backend: every arm is generated on Modal (`control/modal_gemma.py`, workspace splashgaming532): Ollama 0.40.14, the same model file
+  as the Mac (`gemma4:e4b-it-qat`, digest `ee6656371218…`), one A10G GPU type for every container, one request per container
+  (`OLLAMA_NUM_PARALLEL=1`), flash attention off. The same model on different hardware gives different temperature-0 answers, so
+  arms are only compared on one backend; `bench.py --backend modal` keeps its rows in `control/runs/<model>__modal/`, and every row
+  records the GPU, Ollama version and model digest. (`--backend local` is Ollama on this Mac, kept apart in `control/runs/<model>/`.)
 - One sample per task, Ollama `/api/chat`, thinking off, temperature 0, seed `crc32("<task>/0/<turn>")` (the same for every arm),
   context 65,536 tokens, at most 8,192 output tokens (a reply is 1-2k tokens; at temperature 0 a reply can repeat itself until the
   cap, which then counts as a reply with no code).
@@ -41,9 +46,10 @@ template's sha256, seed, sampling settings, token counts, finish reason, time, t
 
 On the Mac (Ollama running):
 ```bash
-python3 control/bench.py generate --arm bare      # every task's next attempt; resumable
-python3 control/bench.py generate --arm docs
-python3 control/bench.py items --out control/runs/items_t0.jsonl      # both arms' attempts waiting for the oracle
+export MODAL_PROFILE=splashgaming532   # once: modal run control/modal_gemma.py::pull && modal deploy control/modal_gemma.py
+python3 control/bench.py --backend modal generate --arm bare --workers 3 &   # every task's next attempt; resumable
+python3 control/bench.py --backend modal generate --arm docs --workers 3
+python3 control/bench.py --backend modal items --out control/runs/items_t0.jsonl      # both arms' attempts waiting for the oracle
 python3 oracle/make_pack.py control/runs/items_t0.jsonl oracle/jobs/control-t0 --job-id control-t0 --owner hruday --step t0
 python3 control/verify_refs.py build oracle/jobs/verify-refs-1 --job-id verify-refs-1 --owner hruday    # once
 ```
@@ -70,9 +76,9 @@ Back on the Mac:
 ```bash
 python3 control/verify_refs.py report oracle/jobs/verify-refs-1/results/verify-refs-1.jsonl
 python3 oracle/collect.py oracle/jobs/control-t0
-python3 control/bench.py ingest oracle/jobs/control-t0/results/control-t0.jsonl
-python3 control/bench.py generate --arm bare && python3 control/bench.py generate --arm docs    # turn 1, then items, a job, ingest; turn 2 the same
-python3 control/bench.py summary
+python3 control/bench.py --backend modal ingest oracle/jobs/control-t0/results/control-t0.jsonl
+python3 control/bench.py --backend modal generate --arm bare --workers 3   # and docs; turn 1, then items, a job, ingest; turn 2 the same
+python3 control/bench.py --backend modal summary
 ```
 A level 2-only task whose reference fails the check is left out of the results until its reference is fixed.
 

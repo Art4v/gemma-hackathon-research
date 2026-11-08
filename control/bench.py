@@ -16,7 +16,7 @@ Prompts are planningGemma's rounds.conversation and rollouts.repair_turn, word f
 Sampling: Ollama /api/chat, thinking off, temperature 0, seed crc32("<task>/0/<turn>") (the same for both arms), num_ctx 65536 for both
 arms, at most MAX_TOKENS output tokens. Every row records the prompt's sha256 (template only), token counts, finish reason and time.
 """
-import argparse, collections, hashlib, json, pathlib, re, statistics, sys, time, urllib.request, zlib
+import argparse, collections, concurrent.futures as cf, hashlib, json, pathlib, re, statistics, sys, threading, time, urllib.request, zlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BENCH = ROOT / "benchmarks/jaxbench"
@@ -29,6 +29,8 @@ OLLAMA = "http://localhost:11434/api/chat"
 NUM_CTX, MAX_TOKENS, TURNS = 65536, 8192, 3  # 8192: a reply is 1-2k tokens; a repetition loop at temperature 0 stops sooner
 ARMS = ("bare", "docs")
 TERMINAL = {"pass", "too_large_for_chip", "harness_oom"}
+BACKENDS = ("local", "modal")  # local: Ollama on this Mac; modal: the same Ollama and model on one Modal GPU type (control/modal_gemma.py)
+BACKEND = "local"  # set by --backend; each backend has its own run directory, so attempts from two backends never mix
 
 # planningGemma, cloud-gemma/sera-e4b/jaxbench/rounds.py (Gemini's wording, Nov 7 2026) and rollouts.repair_turn, verbatim
 SYSTEM = ("You are a code model that writes TPU kernels in JAX Pallas. Given a reference JAX function, reply with one Python code block only. Define "
@@ -78,7 +80,7 @@ def item_id(arm: str, task: str, turn: int) -> str:
 
 
 def run_dir(model: str) -> pathlib.Path:
-    return RUNS / re.sub(r"[^A-Za-z0-9._-]", "_", model)
+    return RUNS / (re.sub(r"[^A-Za-z0-9._-]", "_", model) + ("" if BACKEND == "local" else f"__{BACKEND}"))
 
 
 def read_jsonl(p: pathlib.Path) -> list:
@@ -110,22 +112,34 @@ def pending(arm: str, rows: list, vs: dict, all_tasks: dict) -> list:
     return jobs
 
 
-def chat(messages: list, seed: int, url=OLLAMA, model=MODEL, timeout=1800) -> dict:
-    body = {"model": model, "messages": messages, "stream": False, "think": False,
+def request_body(messages: list, seed: int, model=MODEL) -> dict:
+    return {"model": model, "messages": messages, "stream": False, "think": False,
             "options": {"temperature": 0, "seed": seed, "num_ctx": NUM_CTX, "num_predict": MAX_TOKENS}}
-    req = urllib.request.Request(url, json.dumps(body).encode(), {"Content-Type": "application/json"})
-    return json.load(urllib.request.urlopen(req, timeout=timeout))
 
 
-def generate(arm: str, model: str, only=(), limit=0, chat_fn=chat, log=print) -> int:
+def chat(messages: list, seed: int, url=OLLAMA, model=MODEL, timeout=1800) -> dict:
+    req = urllib.request.Request(url, json.dumps(request_body(messages, seed, model)).encode(), {"Content-Type": "application/json"})
+    return {**json.load(urllib.request.urlopen(req, timeout=timeout)), "backend": {"host": "local"}}
+
+
+def modal_chat(model=MODEL):
+    """chat() on the deployed Modal app (modal deploy control/modal_gemma.py): the same request body, served there."""
+    import modal
+    gemma = modal.Cls.from_name("gemma-bench", "Gemma")()
+    return lambda messages, seed: gemma.chat.remote(request_body(messages, seed, model))
+
+
+def generate(arm: str, model: str, only=(), limit=0, chat_fn=chat, log=print, workers=1) -> int:
     all_tasks = tasks()
     if only:
         all_tasks = {t: v for t, v in all_tasks.items() if t in only}
     out = run_dir(model) / f"{arm}.jsonl"
     out.parent.mkdir(parents=True, exist_ok=True)
     jobs = pending(arm, read_jsonl(out), verdicts(model), all_tasks)[: limit or None]
-    docs, sha = docs_for(arm), prompt_sha256(arm)
-    for i, (task, turn, history) in enumerate(jobs):
+    docs, sha, lock, n = docs_for(arm), prompt_sha256(arm), threading.Lock(), [0]
+
+    def one(job):
+        task, turn, history = job
         ref, source = all_tasks[task]
         seed, t0 = seed_for(task, turn), time.time()
         r = chat_fn(conversation(ref, history, docs), seed)
@@ -134,11 +148,16 @@ def generate(arm: str, model: str, only=(), limit=0, chat_fn=chat, log=print) ->
                "ref_sha256": hashlib.sha256(ref.encode()).hexdigest(), "prompt_sha256": sha, "seed": seed, "temperature": 0,
                "thinking": False, "num_ctx": NUM_CTX, "max_tokens": MAX_TOKENS, "finish": r.get("done_reason"),
                "prompt_tokens": r.get("prompt_eval_count"), "output_tokens": r.get("eval_count"), "gen_s": round(time.time() - t0, 1),
-               "has_thinking": bool(r.get("message", {}).get("thinking")), "response": text, "code": extract_code(text)}
-        with out.open("a") as f:
-            f.write(json.dumps(row) + "\n")
-        log(f"[{i + 1}/{len(jobs)}] {row['id']}: {row['output_tokens']} tokens, {row['gen_s']} s, finish {row['finish']}, "
-            f"{'code' if row['code'] else 'NO CODE'}")
+               "has_thinking": bool(r.get("message", {}).get("thinking")), "backend": r.get("backend"), "response": text,
+               "code": extract_code(text)}
+        with lock:
+            with out.open("a") as f:
+                f.write(json.dumps(row) + "\n")
+            n[0] += 1
+            log(f"[{n[0]}/{len(jobs)}] {row['id']}: {row['output_tokens']} tokens, {row['gen_s']} s, finish {row['finish']}, "
+                f"{'code' if row['code'] else 'NO CODE'}", flush=True) if log is print else log(row["id"])
+    with cf.ThreadPoolExecutor(max(1, workers)) as ex:
+        list(ex.map(one, jobs))
     return len(jobs)
 
 
@@ -195,20 +214,25 @@ def summary(model: str) -> dict:
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--model", default=MODEL)
+    ap.add_argument("--backend", choices=BACKENDS, default="local")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("tasks")
     g = sub.add_parser("generate"); g.add_argument("--arm", choices=ARMS, required=True)
     g.add_argument("--tasks", nargs="*", default=()); g.add_argument("--limit", type=int, default=0)
+    g.add_argument("--workers", type=int, default=1, help="parallel requests (modal: one per container, up to its max_containers)")
     i = sub.add_parser("items"); i.add_argument("--out")
     n = sub.add_parser("ingest"); n.add_argument("results", nargs="+")
     sub.add_parser("summary")
     a = ap.parse_args(argv)
+    global BACKEND
+    BACKEND = a.backend
     if a.cmd == "tasks":
         for t, (_, src) in tasks().items():
             print(f"{t:60} {src}")
         print(f"{len(tasks())} tasks")
     elif a.cmd == "generate":
-        print(f"{generate(a.arm, a.model, a.tasks, a.limit)} attempts generated")
+        chat_fn = modal_chat(a.model) if a.backend == "modal" else chat
+        print(f"{generate(a.arm, a.model, a.tasks, a.limit, chat_fn, workers=a.workers)} attempts generated")
     elif a.cmd == "items":
         rows = items(a.model)
         text = "".join(json.dumps(r) + "\n" for r in rows)
