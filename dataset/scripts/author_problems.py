@@ -77,7 +77,7 @@ def record(cat: str, name: str, code: str, chk: dict, status: str, reason: str |
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--categories", default=",".join(CATEGORIES)); ap.add_argument("--per-category", type=int, default=1)
-    ap.add_argument("--limit", type=int, default=0); ap.add_argument("--backend", default="claude_cli"); ap.add_argument("--model", default=None)
+    ap.add_argument("--limit", type=int, default=0); ap.add_argument("--backend", default=None, help="claude_cli | anthropic_batch | gemini (default: $CONSTRUCTOR_BACKEND, else claude_cli)"); ap.add_argument("--model", default=None)
     ap.add_argument("--workers", type=int, default=3); ap.add_argument("--python", default=None); ap.add_argument("--retries", type=int, default=2)
     a = ap.parse_args(argv)
     existing = read_jsonl(PROBLEMS / "problems.jsonl")

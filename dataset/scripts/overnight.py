@@ -18,7 +18,7 @@ feedback turns come verbatim from oracle rows (oracle_collect/generate); jobs st
 """
 from __future__ import annotations
 
-import argparse, datetime as dt, hashlib, json, pathlib, subprocess, sys, time, traceback
+import argparse, datetime as dt, hashlib, json, os, pathlib, subprocess, sys, time, traceback
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -27,7 +27,9 @@ from common import DATASET, ORACLE, PROBLEMS, REPO, TRAJECTORIES, read_json, rea
 PY = str(DATASET / ".venv" / "bin" / "python")
 STATE = DATASET / "overnight_state.json"
 LOG = DATASET / "overnight.log"
-BRANCH, ISSUE, ORACLE_SHA = "dataset-gen", "3", "c9a07d9298a1"
+BRANCH, ISSUE, ORACLE_SHA = os.environ.get("DATASET_BRANCH", "dataset-gen"), os.environ.get("DATASET_ISSUE", "3"), "c9a07d9298a1"
+# a fresh run on another constructor (the Gemini rerun uses "g") must not reuse the Claude run's job ids (dataset-b1-r1, ...)
+BATCH_PREFIX = os.environ.get("DATASET_BATCH_PREFIX", "b")
 PRODUCTION = [
     ("port", [PY, "-u", str(HERE / "port_kernelbench.py"), "--level", "1,2", "--pick", "all", "--limit", "0", "--workers", "3", "--check-workers", "1", "--reuse-raw"]),
     ("author", [PY, "-u", str(HERE / "author_problems.py"), "--per-category", "3", "--workers", "3"]),
@@ -180,7 +182,7 @@ def form_batches(st: dict, size: int) -> list:
     ready.sort(key=lambda r: (order.get(r["source"], 2), r["problem_id"].endswith("__bf16"), r["problem_id"]))
     names = []
     for i in range(0, len(ready), size):
-        name = f"b{st['next_batch']}"
+        name = f"{BATCH_PREFIX}{st['next_batch']}"
         st["next_batch"] += 1
         ids = {r["problem_id"] for r in ready[i:i + size]}
         for r in rows:

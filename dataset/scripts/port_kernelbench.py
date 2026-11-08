@@ -137,13 +137,17 @@ def check_port(code: str, adapter: str, kb_source: str, python: str | None, max_
     return {"ok": False, "reason": (r.stderr.strip().splitlines() or ["no output"])[-1][-400:], "peak_rss_gb": peak}
 
 
-def saved_response(raw_dir: pathlib.Path, key: str):
-    """The newest saved constructor response for `key` (from a run that was interrupted before it wrote its records), or None."""
+def saved_response(raw_dir: pathlib.Path, key: str, backend: str | None = None):
+    """The newest saved constructor response for `key` (from a run that was interrupted before it wrote its records), or None.
+    With `backend`, only that backend's responses count: keys are problem and candidate ids, which a rerun on another backend
+    shares, so without it a Gemini run would silently reuse cached Claude answers."""
     best = None
     for f in raw_dir.glob("*.json"):
         try:
             d = json.loads(f.read_text())
         except json.JSONDecodeError:
+            continue
+        if backend and d.get("backend", "claude_cli") != backend:
             continue
         if d.get("key") == key and d.get("raw", "").startswith("{"):
             raw = json.loads(d["raw"])
@@ -183,7 +187,7 @@ def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--level", default="1,2"); ap.add_argument("--pick", choices=["easy", "conv", "all"], default="easy")
     ap.add_argument("--stems", default=""); ap.add_argument("--limit", type=int, default=20)
-    ap.add_argument("--batch", default="pilot"); ap.add_argument("--backend", default="claude_cli"); ap.add_argument("--model", default=None)
+    ap.add_argument("--batch", default="pilot"); ap.add_argument("--backend", default=None, help="claude_cli | anthropic_batch | gemini (default: $CONSTRUCTOR_BACKEND, else claude_cli)"); ap.add_argument("--model", default=None)
     ap.add_argument("--workers", type=int, default=2); ap.add_argument("--check-workers", type=int, default=1, help="parallel torch/JAX checks; keep at 1 on a 17 GB machine")
     ap.add_argument("--max-rss-gb", type=float, default=5.0, help="kill a check above this resident size")
     ap.add_argument("--reuse-raw", action="store_true", help="use saved constructor responses from candidates/raw_responses when present")
@@ -229,7 +233,7 @@ def main(argv=None) -> None:
         return out
 
     if a.reuse_raw:
-        have = {r.key: r for r in (saved_response(raw_dir, r.key) for r in reqs) if r is not None}
+        have = {r.key: r for r in (saved_response(raw_dir, r.key, con.name) for r in reqs) if r is not None}
         fresh = [r for r in reqs if r.key not in have]
         print(f"reusing {len(have)} saved constructor responses, asking for {len(fresh)}", flush=True)
         responses = list(have.values()) + (con.generate(fresh) if fresh else [])

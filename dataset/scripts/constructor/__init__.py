@@ -1,15 +1,16 @@
 """The constructor agent: the model that writes candidate kernels, ports KernelBench problems, authors p-style problems and wraps
-scraped kernels. One protocol, two backends:
+scraped kernels. One protocol, three backends:
 
   claude_cli        `claude -p` headless under the user's Max plan (default)
   anthropic_batch   Anthropic Message Batches API (fallback for throughput; needs ANTHROPIC_API_KEY and the `anthropic` package)
+  gemini            the Gemini API via google-genai (GEMINI_API_KEY or Vertex AI env; see gemini_api.py)
 
 Every request is a system prompt plus one user message and a JSON schema; every response is the parsed structured output plus usage.
 Not called "teacher": that word belongs to other parts of the study.
 """
 from __future__ import annotations
 
-import dataclasses, json, pathlib, sys, typing
+import dataclasses, json, os, pathlib, sys, typing
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from common import sha256  # noqa: E402
@@ -51,7 +52,13 @@ class Constructor(typing.Protocol):
     def generate(self, requests: list) -> list: ...
 
 
-def get_constructor(backend: str = "claude_cli", model: str | None = None, **kw) -> Constructor:
+def get_constructor(backend: str | None = None, model: str | None = None, **kw) -> Constructor:
+    # unset flags fall back to CONSTRUCTOR_BACKEND / CONSTRUCTOR_MODEL, so overnight.py's subprocesses switch backend by env alone
+    backend = backend or os.environ.get("CONSTRUCTOR_BACKEND") or "claude_cli"
+    model = model or os.environ.get("CONSTRUCTOR_MODEL") or None
+    if backend == "gemini":
+        from constructor.gemini_api import GeminiAPI
+        return GeminiAPI(model=model, **kw)
     if backend == "claude_cli":
         from constructor.claude_cli import ClaudeCLI
         return ClaudeCLI(model=model, **kw)

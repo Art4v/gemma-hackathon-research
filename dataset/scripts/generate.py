@@ -91,7 +91,7 @@ def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--batch", required=True); ap.add_argument("--round", type=int, required=True); ap.add_argument("--resample", action="store_true")
     ap.add_argument("--problems", default=""); ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--backend", default="claude_cli"); ap.add_argument("--model", default=None); ap.add_argument("--workers", type=int, default=3)
+    ap.add_argument("--backend", default=None, help="claude_cli | anthropic_batch | gemini (default: $CONSTRUCTOR_BACKEND, else claude_cli)"); ap.add_argument("--model", default=None); ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--effort", default=None); ap.add_argument("--no-docs", action="store_true"); ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--reuse-raw", action="store_true", help="use saved responses in candidates/raw_responses before asking the constructor")
     a = ap.parse_args(argv)
@@ -126,7 +126,7 @@ def main(argv=None) -> None:
     if a.reuse_raw:  # a run interrupted after the constructor answered but before records were written costs no calls
         from port_kernelbench import saved_response
         for r in reqs:
-            s = saved_response(CANDIDATES / "raw_responses", r.key)
+            s = saved_response(CANDIDATES / "raw_responses", r.key, con.name)
             if s is not None:
                 responses.append(s)
         got = {r.key for r in responses}
