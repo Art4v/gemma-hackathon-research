@@ -1,43 +1,44 @@
-"""Mamba2 gate-first grouped RMSNorm: rmsnorm_group(x * silu(z)) * w, followed by out_proj matmul."""
+"""Mamba2 gated group RMSNorm (gate-before-norm: y*silu(z) -> per-group RMSNorm -> weight) fused with out_proj matmul."""
 import jax
 import jax.numpy as jnp
 
 CONFIG = {
     'name': 'mamba2_gate_first_group_rmsnorm_outproj',
     'batch': 4,
-    'seq_len': 2048,
-    'd_inner': 8192,
-    'd_model': 4096,
-    'n_groups': 8,
+    'seq_len': 4096,
+    'd_inner': 5120,
+    'ngroups': 8,
+    'd_model': 2560,
     'eps': 1e-5,
 }
 
 
 def create_inputs(dtype=jnp.bfloat16):
     key = jax.random.key(0)
-    kx, kz, kw = jax.random.split(key, 3)
-    B, L = CONFIG['batch'], CONFIG['seq_len']
-    D, M = CONFIG['d_inner'], CONFIG['d_model']
-    x = jax.random.normal(kx, (B, L, D), dtype)
-    z = jax.random.normal(kz, (B, L, D), dtype)
+    k_y, k_z, k_w = jax.random.split(key, 3)
+    B, L, D, M = CONFIG['batch'], CONFIG['seq_len'], CONFIG['d_inner'], CONFIG['d_model']
+    y = jax.random.normal(k_y, (B, L, D), dtype)
+    z = jax.random.normal(k_z, (B, L, D), dtype)
     norm_weight = jnp.ones((D,), dtype)
-    w_out = jax.random.normal(kw, (D, M), dtype) * 0.02
-    return x, z, norm_weight, w_out
+    w_out = jax.random.normal(k_w, (D, M), dtype) * 0.02
+    return y, z, norm_weight, w_out
 
 
-def workload(x, z, norm_weight, w_out):
-    B, L, D = x.shape
-    G = CONFIG['n_groups']
+def workload(y, z, norm_weight, w_out):
+    out_dtype = y.dtype
+    G = CONFIG['ngroups']
     eps = CONFIG['eps']
-    xf = x.astype(jnp.float32)
+    B, L, D = y.shape
+    gs = D // G
+    # Gate first (norm_before_gate=False), in float32.
     zf = z.astype(jnp.float32)
-    # Gate before normalization (norm_before_gate=False).
-    h = xf * (zf * jax.nn.sigmoid(zf))
-    hg = h.reshape(B, L, G, D // G)
-    var = jnp.mean(hg * hg, axis=-1, keepdims=True)
-    hg = hg * jax.lax.rsqrt(var + eps)
-    h = hg.reshape(B, L, D) * norm_weight.astype(jnp.float32)
-    h = h.astype(x.dtype)
-    out = jnp.einsum('bld,dm->blm', h, w_out,
-                     preferred_element_type=jnp.float32)
-    return out.astype(x.dtype)
+    g = y.astype(jnp.float32) * (zf * jax.nn.sigmoid(zf))
+    # Per-group RMS normalization.
+    g = g.reshape(B, L, G, gs)
+    var = jnp.mean(g * g, axis=-1, keepdims=True)
+    g = g * jax.lax.rsqrt(var + eps)
+    g = g.reshape(B, L, D) * norm_weight.astype(jnp.float32)
+    h = g.astype(out_dtype)
+    # Output projection with float32 accumulation.
+    out = jnp.einsum('bld,dm->blm', h, w_out, preferred_element_type=jnp.float32)
+    return out.astype(out_dtype)

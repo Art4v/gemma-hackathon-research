@@ -1,48 +1,46 @@
-"""Jagged segment softmax: scale -> per-segment max -> exp -> per-segment sum -> normalize over packed variable-length segments."""
+"""Jagged segment softmax: per-head softmax within variable-length segments of packed scores (offsets-delimited)."""
 import jax
 import jax.numpy as jnp
 
 CONFIG = {
     'name': 'jagged_segment_softmax',
-    'batch': 8,
-    'total_len': 4194304,
-    'num_segments': 4096,
+    'num_heads': 32,
+    'total_len': 1048576,
+    'num_segments': 512,
     'head_dim': 128,
     'scale': 1.0 / (128 ** 0.5),
+    'score_std': 4.0,
 }
 
 
 def create_inputs(dtype=jnp.bfloat16):
-    B = CONFIG['batch']
-    T = CONFIG['total_len']
-    S = CONFIG['num_segments']
     key = jax.random.key(0)
     k_scores, k_cuts = jax.random.split(key)
-    scores = (jax.random.normal(k_scores, (B, T), jnp.float32) * 4.0).astype(dtype)
-    cuts = jax.random.randint(k_cuts, (B, S - 1), 0, T + 1, dtype=jnp.int32)
-    cuts = jnp.sort(cuts, axis=-1)
-    zeros = jnp.zeros((B, 1), jnp.int32)
-    ends = jnp.full((B, 1), T, jnp.int32)
-    offsets = jnp.concatenate([zeros, cuts, ends], axis=-1)  # (B, S+1)
+    H = CONFIG['num_heads']
+    T = CONFIG['total_len']
+    B = CONFIG['num_segments']
+    scores = (jax.random.normal(k_scores, (H, T), jnp.float32) * CONFIG['score_std']).astype(dtype)
+    cuts = jnp.sort(jax.random.randint(k_cuts, (B - 1,), 0, T + 1, dtype=jnp.int32))
+    offsets = jnp.concatenate([
+        jnp.zeros((1,), jnp.int32),
+        cuts,
+        jnp.full((1,), T, jnp.int32),
+    ])
     return scores, offsets
 
 
 def workload(scores, offsets):
-    B, T = scores.shape
-    S = offsets.shape[1] - 1
-    scale = CONFIG['scale']
-
+    H, T = scores.shape
+    B = offsets.shape[0] - 1
     pos = jnp.arange(T, dtype=jnp.int32)
-    # Segment id for every packed position: offsets[s] <= pos < offsets[s+1].
-    seg = jax.vmap(lambda o: jnp.searchsorted(o, pos, side='right'))(offsets) - 1
-    seg = jnp.clip(seg, 0, S - 1).astype(jnp.int32)
-    gid = (seg + jnp.arange(B, dtype=jnp.int32)[:, None] * S).reshape(-1)
+    seg_ids = jnp.searchsorted(offsets, pos, side='right').astype(jnp.int32) - 1
+    seg_ids = jnp.clip(seg_ids, 0, B - 1)
 
-    x = scores.astype(jnp.float32).reshape(-1) * scale
-    seg_max = jax.ops.segment_max(x, gid, num_segments=B * S,
-                                  indices_are_sorted=True)
-    e = jnp.exp(x - seg_max[gid])
-    seg_sum = jax.ops.segment_sum(e, gid, num_segments=B * S,
-                                  indices_are_sorted=True)
-    out = e / seg_sum[gid]
-    return out.reshape(B, T).astype(scores.dtype)
+    x = scores.astype(jnp.float32).T * CONFIG['scale']  # (T, H)
+    seg_max = jax.ops.segment_max(x, seg_ids, num_segments=B, indices_are_sorted=True)  # (B, H)
+    seg_max = jnp.where(jnp.isfinite(seg_max), seg_max, 0.0)
+    e = jnp.exp(x - seg_max[seg_ids])
+    seg_sum = jax.ops.segment_sum(e, seg_ids, num_segments=B, indices_are_sorted=True)  # (B, H)
+    seg_sum = jnp.where(seg_sum > 0.0, seg_sum, 1.0)
+    out = e / seg_sum[seg_ids]
+    return out.T.astype(scores.dtype)

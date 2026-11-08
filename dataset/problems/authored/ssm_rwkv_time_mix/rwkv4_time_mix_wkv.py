@@ -1,4 +1,4 @@
-"""RWKV-4 time mixing: token shift -> R/K/V projections -> WKV exponential-decay recurrence (f32 state) -> sigmoid(r) gating -> output projection."""
+"""RWKV-4 time-mix: token shift -> r/k/v projections -> stable WKV exponential-decay recurrence (f32 state) -> sigmoid(r) gating -> output projection."""
 import jax
 import jax.numpy as jnp
 from jax import lax
@@ -9,88 +9,83 @@ CONFIG = {
     'seq_len': 2048,
     'd_model': 2048,
     'weight_scale': 0.02,
-    'decay_lo': -5.0,
-    'decay_span': 8.0,
-    'decay_pow_base': 0.7,
-    'decay_pow_scale': 1.3,
-    'layer_ratio': 0.5,
-    'first_base': 0.3,
-    'first_zigzag': 0.5,
-    'p_init': -1e38,
+    'decay_min': -5.0,
+    'decay_max': 1.0,
+    'first_bonus': 0.5,
+    'init_pp': -1e38,
 }
 
 
 def create_inputs(dtype=jnp.bfloat16):
     B, T, C = CONFIG['batch'], CONFIG['seq_len'], CONFIG['d_model']
+    s = CONFIG['weight_scale']
     key = jax.random.key(0)
     kx, kk, kv, kr, ko = jax.random.split(key, 5)
-    x = jax.random.normal(kx, (B, T, C), dtype=jnp.float32).astype(dtype)
-    s = CONFIG['weight_scale']
-    w_k = (jax.random.normal(kk, (C, C), dtype=jnp.float32) * s).astype(dtype)
-    w_v = (jax.random.normal(kv, (C, C), dtype=jnp.float32) * s).astype(dtype)
-    w_r = (jax.random.normal(kr, (C, C), dtype=jnp.float32) * s).astype(dtype)
-    w_o = (jax.random.normal(ko, (C, C), dtype=jnp.float32) * s).astype(dtype)
-
-    ratio = CONFIG['layer_ratio']
-    ramp = jnp.arange(C, dtype=jnp.float32) / jnp.float32(C)
-    mix_k = jnp.power(ramp, 1.0 - ratio)
-    mix_v = jnp.power(ramp, 1.0 - ratio) + 0.3 * ratio
-    mix_r = jnp.power(ramp, 0.5 * (1.0 - ratio))
-
-    idx = jnp.arange(C, dtype=jnp.float32) / jnp.float32(C - 1)
-    time_decay = CONFIG['decay_lo'] + CONFIG['decay_span'] * jnp.power(
-        idx, CONFIG['decay_pow_base'] + CONFIG['decay_pow_scale'] * ratio)
-    zigzag = (jnp.mod(jnp.arange(C) + 1, 3).astype(jnp.float32) - 1.0) * CONFIG['first_zigzag']
-    time_first = jnp.log(jnp.float32(CONFIG['first_base'])) + zigzag
-
-    return (x, mix_k, mix_v, mix_r, time_decay, time_first, w_k, w_v, w_r, w_o)
+    x = jax.random.normal(kx, (B, T, C), dtype)
+    w_k = jax.random.normal(kk, (C, C), dtype) * s
+    w_v = jax.random.normal(kv, (C, C), dtype) * s
+    w_r = jax.random.normal(kr, (C, C), dtype) * s
+    w_o = jax.random.normal(ko, (C, C), dtype) * s
+    ratio = jnp.linspace(0.0, 1.0, C, dtype=jnp.float32)
+    time_mix_k = ratio.astype(dtype)
+    time_mix_v = (ratio * 0.7 + 0.3 * ratio ** 0.5).astype(dtype)
+    time_mix_r = (ratio ** 0.5).astype(dtype)
+    time_decay = jnp.linspace(CONFIG['decay_min'], CONFIG['decay_max'], C,
+                              dtype=jnp.float32)
+    zigzag = (jnp.arange(C) % 3 - 1).astype(jnp.float32) * 0.5
+    time_first = jnp.full((C,), jnp.log(0.3), jnp.float32) + CONFIG['first_bonus'] * zigzag
+    return (x, w_k, w_v, w_r, w_o, time_mix_k, time_mix_v, time_mix_r,
+            time_decay, time_first)
 
 
 def _wkv(w, u, k, v):
-    # k, v: (B, T, C) float32; w, u: (C,) float32. Returns (B, T, C) float32.
-    B, _, C = k.shape
-    kt = jnp.swapaxes(k, 0, 1)
-    vt = jnp.swapaxes(v, 0, 1)
-    a0 = jnp.zeros((B, C), jnp.float32)
-    b0 = jnp.zeros((B, C), jnp.float32)
-    p0 = jnp.full((B, C), CONFIG['p_init'], jnp.float32)
+    # k, v: (B, T, C) float32; w, u: (C,) float32. Stable RWKV-4 recurrence.
+    B, T, C = k.shape
+    k_t = jnp.swapaxes(k, 0, 1)
+    v_t = jnp.swapaxes(v, 0, 1)
 
-    def step(carry, kv_t):
-        a, b, p = carry
-        k_t, v_t = kv_t
-        ww = u + k_t
-        q = jnp.maximum(p, ww)
-        e1 = jnp.exp(p - q)
-        e2 = jnp.exp(ww - q)
-        y = (e1 * a + e2 * v_t) / (e1 * b + e2)
-        ww2 = p + w
-        q2 = jnp.maximum(ww2, k_t)
-        e1 = jnp.exp(ww2 - q2)
-        e2 = jnp.exp(k_t - q2)
-        a = e1 * a + e2 * v_t
-        b = e1 * b + e2
-        return (a, b, q2), y
+    def step(carry, kv):
+        aa, bb, pp = carry
+        kk, vv = kv
+        ww = u + kk
+        p = jnp.maximum(pp, ww)
+        e1 = jnp.exp(pp - p)
+        e2 = jnp.exp(ww - p)
+        out = (e1 * aa + e2 * vv) / (e1 * bb + e2)
+        ww = pp + w
+        p = jnp.maximum(ww, kk)
+        e1 = jnp.exp(ww - p)
+        e2 = jnp.exp(kk - p)
+        aa = e1 * aa + e2 * vv
+        bb = e1 * bb + e2
+        return (aa, bb, p), out
 
-    _, ys = lax.scan(step, (a0, b0, p0), (kt, vt))
-    return jnp.swapaxes(ys, 0, 1)
+    init = (jnp.zeros((B, C), jnp.float32),
+            jnp.zeros((B, C), jnp.float32),
+            jnp.full((B, C), CONFIG['init_pp'], jnp.float32))
+    _, out = lax.scan(step, init, (k_t, v_t))
+    return jnp.swapaxes(out, 0, 1)
 
 
-def workload(x, mix_k, mix_v, mix_r, time_decay, time_first, w_k, w_v, w_r, w_o):
-    dt = x.dtype
+def workload(x, w_k, w_v, w_r, w_o, time_mix_k, time_mix_v, time_mix_r,
+             time_decay, time_first):
     xf = x.astype(jnp.float32)
     xx = jnp.pad(xf, ((0, 0), (1, 0), (0, 0)))[:, :-1, :]
-    xk = (xf * mix_k + xx * (1.0 - mix_k)).astype(dt)
-    xv = (xf * mix_v + xx * (1.0 - mix_v)).astype(dt)
-    xr = (xf * mix_r + xx * (1.0 - mix_r)).astype(dt)
+    mk = time_mix_k.astype(jnp.float32)
+    mv = time_mix_v.astype(jnp.float32)
+    mr = time_mix_r.astype(jnp.float32)
+    xk = (xf * mk + xx * (1.0 - mk)).astype(x.dtype)
+    xv = (xf * mv + xx * (1.0 - mv)).astype(x.dtype)
+    xr = (xf * mr + xx * (1.0 - mr)).astype(x.dtype)
 
-    k = jnp.einsum('btc,cd->btd', xk, w_k, preferred_element_type=jnp.float32)
-    v = jnp.einsum('btc,cd->btd', xv, w_v, preferred_element_type=jnp.float32)
-    r = jnp.einsum('btc,cd->btd', xr, w_r, preferred_element_type=jnp.float32)
+    k = jnp.matmul(xk, w_k, preferred_element_type=jnp.float32)
+    v = jnp.matmul(xv, w_v, preferred_element_type=jnp.float32)
+    r = jax.nn.sigmoid(jnp.matmul(xr, w_r, preferred_element_type=jnp.float32))
 
     w = -jnp.exp(time_decay.astype(jnp.float32))
     u = time_first.astype(jnp.float32)
     wkv = _wkv(w, u, k, v)
 
-    rwkv = (jax.nn.sigmoid(r) * wkv).astype(dt)
-    out = jnp.einsum('btc,cd->btd', rwkv, w_o, preferred_element_type=jnp.float32)
-    return out.astype(dt)
+    gated = (r * wkv).astype(x.dtype)
+    out = jnp.matmul(gated, w_o, preferred_element_type=jnp.float32)
+    return out.astype(x.dtype)

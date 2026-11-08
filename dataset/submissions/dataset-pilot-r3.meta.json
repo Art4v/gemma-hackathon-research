@@ -1,0 +1,40 @@
+{
+ "created_at": "2026-11-08T19:16:37+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 268436480,
+    "n": 1,
+    "seconds": 33.416009710400004,
+    "task": "kb__l1__33_BatchNorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.34219328256,
+    "task": "kb__l1__34_InstanceNorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268436480,
+    "n": 1,
+    "seconds": 33.4529193216,
+    "task": "kb__l1__35_GroupNorm_"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 154280448,
+    "n": 1,
+    "seconds": 33.62542762128,
+    "task": "kb__l1__50_conv_standard_2D__square_input__square_kernel"
+   }
+  ],
+  "total_s": 133.83654993584003
+ },
+ "job_id": "dataset-pilot-r3",
+ "n_items": 4,
+ "n_tasks": 4,
+ "probe_ids": []
+}

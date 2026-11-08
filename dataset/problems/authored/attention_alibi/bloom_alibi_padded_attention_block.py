@@ -1,4 +1,4 @@
-"""BLOOM attention block: fused QKV projection -> padding-aware ALiBi (cumsum positions) + causal mask -> f32 softmax attention -> output projection."""
+"""BLOOM attention block: fused QKV proj -> padding-aware ALiBi (non-pow2 heads) causal softmax attention -> output proj."""
 import jax
 import jax.numpy as jnp
 
@@ -6,77 +6,77 @@ CONFIG = {
     'name': 'bloom_alibi_padded_attention_block',
     'batch': 2,
     'seq_len': 2048,
-    'hidden': 4096,
-    'num_heads': 32,
+    'num_heads': 40,
     'head_dim': 128,
-    'min_len_frac': 0.5,
+    'hidden': 5120,
+    'min_len': 1024,
+    'weight_scale': 0.02,
 }
 
 
-def _alibi_slopes(num_heads):
-    # BLOOM / ALiBi slopes, handling non-power-of-2 head counts.
-    import math
-    closest = 2 ** math.floor(math.log2(num_heads))
-    base = 2.0 ** (-(2.0 ** -(math.log2(closest) - 3)))
-    slopes = [base ** (i + 1) for i in range(closest)]
+def _bloom_alibi_slopes(num_heads):
+    closest = 1 << (num_heads.bit_length() - 1)
+    base = 2.0 ** (-8.0 / closest)
+    slopes = base ** jnp.arange(1, closest + 1, dtype=jnp.float32)
     if closest != num_heads:
-        extra_base = 2.0 ** (-(2.0 ** -(math.log2(2 * closest) - 3)))
+        extra_base = 2.0 ** (-8.0 / (2 * closest))
         n_rem = min(closest, num_heads - closest)
-        slopes += [extra_base ** (2 * i + 1) for i in range(n_rem)]
-    return jnp.asarray(slopes, dtype=jnp.float32)
+        extra = extra_base ** jnp.arange(1, 1 + 2 * n_rem, 2, dtype=jnp.float32)
+        slopes = jnp.concatenate([slopes, extra], axis=0)
+    return slopes
 
 
 def create_inputs(dtype=jnp.float32):
-    B, S, D = CONFIG['batch'], CONFIG['seq_len'], CONFIG['hidden']
-    H, Dh = CONFIG['num_heads'], CONFIG['head_dim']
-    key = jax.random.key(0)
-    k_x, k_len, k_wqkv, k_bqkv, k_wo, k_bo = jax.random.split(key, 6)
-    hidden_states = jax.random.normal(k_x, (B, S, D), dtype)
-    min_len = int(S * CONFIG['min_len_frac'])
-    lengths = jax.random.randint(k_len, (B,), min_len, S + 1, dtype=jnp.int32)
-    w_qkv = jax.random.normal(k_wqkv, (D, 3 * H * Dh), dtype) * 0.02
-    b_qkv = jax.random.normal(k_bqkv, (3 * H * Dh,), dtype) * 0.02
-    w_o = jax.random.normal(k_wo, (H * Dh, D), dtype) * 0.02
-    b_o = jax.random.normal(k_bo, (D,), dtype) * 0.02
-    return hidden_states, lengths, w_qkv, b_qkv, w_o, b_o
+    B, S, H = CONFIG['batch'], CONFIG['seq_len'], CONFIG['hidden']
+    ws = CONFIG['weight_scale']
+    k = jax.random.split(jax.random.key(0), 6)
+    x = jax.random.normal(k[0], (B, S, H), dtype)
+    lengths = jax.random.randint(k[1], (B,), CONFIG['min_len'], S + 1, dtype=jnp.int32)
+    w_qkv = jax.random.normal(k[2], (H, 3 * H), dtype) * ws
+    b_qkv = jax.random.normal(k[3], (3 * H,), dtype) * ws
+    w_o = jax.random.normal(k[4], (H, H), dtype) * ws
+    b_o = jax.random.normal(k[5], (H,), dtype) * ws
+    return x, lengths, w_qkv, b_qkv, w_o, b_o
 
 
-def workload(hidden_states, lengths, w_qkv, b_qkv, w_o, b_o):
-    B, S, D = hidden_states.shape
-    H, Dh = CONFIG['num_heads'], CONFIG['head_dim']
-    dtype = hidden_states.dtype
+def workload(x, lengths, w_qkv, b_qkv, w_o, b_o):
+    B, S, H = x.shape
+    nh = CONFIG['num_heads']
+    hd = H // nh
+    dtype = x.dtype
 
-    # Fused QKV projection (f32 accumulate), BLOOM interleaved layout [H, 3, Dh].
-    qkv = jnp.einsum('bsd,de->bse', hidden_states, w_qkv,
-                     preferred_element_type=jnp.float32) + b_qkv.astype(jnp.float32)
-    qkv = qkv.astype(dtype).reshape(B, S, H, 3, Dh)
-    q = qkv[..., 0, :]
-    k = qkv[..., 1, :]
-    v = qkv[..., 2, :]
-
-    # Left-padding attention mask and BLOOM cumsum-based ALiBi positions.
+    # Left-padded attention mask: valid tokens are the last `lengths[b]` positions.
     pos = jnp.arange(S, dtype=jnp.int32)
-    attn_mask = pos[None, :] >= (S - lengths)[:, None]  # [B, S] True = valid
+    attn_mask = (pos[None, :] >= (S - lengths)[:, None])  # [B, S]
     mask_i = attn_mask.astype(jnp.int32)
-    key_pos = ((jnp.cumsum(mask_i, axis=-1) - 1) * mask_i).astype(jnp.float32)  # [B, S]
-    slopes = _alibi_slopes(H)  # [H]
-    alibi = slopes[None, :, None, None] * key_pos[:, None, None, :]  # [B, H, 1, S]
 
-    scale = 1.0 / jnp.sqrt(jnp.float32(Dh))
-    scores = jnp.einsum('bqhd,bkhd->bhqk', q, k,
-                        preferred_element_type=jnp.float32) * scale
-    scores = scores + alibi
+    # Fused QKV projection, BLOOM interleaved layout [B, S, nh, 3, hd].
+    qkv = jnp.dot(x, w_qkv, preferred_element_type=jnp.float32) + b_qkv.astype(jnp.float32)
+    qkv = qkv.astype(dtype).reshape(B, S, nh, 3, hd)
+    q = qkv[:, :, :, 0, :]
+    k = qkv[:, :, :, 1, :]
+    v = qkv[:, :, :, 2, :]
+
+    # Padding-aware ALiBi (key-position based, as in HF BLOOM).
+    slopes = _bloom_alibi_slopes(nh)  # [nh]
+    key_pos = ((jnp.cumsum(mask_i, axis=-1) - 1) * mask_i).astype(jnp.float32)  # [B, S]
+    alibi = slopes[None, :, None, None] * key_pos[:, None, None, :]  # [B, nh, 1, S]
+
+    scale = 1.0 / (hd ** 0.5)
+    scores = jnp.einsum('bqhd,bkhd->bhqk', q, k, preferred_element_type=jnp.float32)
+    scores = scores * scale + alibi
 
     causal = pos[:, None] >= pos[None, :]  # [S, S]
     allowed = causal[None, None, :, :] & attn_mask[:, None, None, :]
     neg = jnp.finfo(jnp.float32).min
     scores = jnp.where(allowed, scores, neg)
-
     probs = jax.nn.softmax(scores, axis=-1)
+    probs = jnp.where(allowed, probs, 0.0)
+
     ctx = jnp.einsum('bhqk,bkhd->bqhd', probs.astype(dtype), v,
                      preferred_element_type=jnp.float32)
-    ctx = ctx.astype(dtype).reshape(B, S, H * Dh)
+    ctx = ctx * attn_mask[:, :, None, None].astype(jnp.float32)  # zero padded query rows
+    ctx = ctx.astype(dtype).reshape(B, S, H)
 
-    out = jnp.einsum('bse,ed->bsd', ctx, w_o,
-                     preferred_element_type=jnp.float32) + b_o.astype(jnp.float32)
+    out = jnp.dot(ctx, w_o, preferred_element_type=jnp.float32) + b_o.astype(jnp.float32)
     return out.astype(dtype)

@@ -1,0 +1,57 @@
+{
+ "job_id": "dataset-pilot-r2",
+ "owner": "aarav",
+ "step": "dataset-r2",
+ "oracle_commit": "963c0e3",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 5,
+ "shards": 1,
+ "priority": 2,
+ "max_chip_minutes": 5,
+ "estimate_chip_minutes": 2.731,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "a1748b953785fe12a81f98fa3f7ca46bfec7620cddd72fc87c34e8d7ec180543",
+  "run.sh": "e5b505e2717dcf5957566dd9cbe2e9e7e580f7667920c3dcde512e0e0346c26f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kb__l1__33_BatchNorm.a2.s0",
+   "task": "kb__l1__33_BatchNorm",
+   "code_sha256": "9413b919656079fb6a73a2c125acfafabc94db78040863ee94a213943e42b85d",
+   "ref_sha256": "26f46ccb56db4b5061547d1b78d6ff756c5ff10deb77fac469c43ec066679064"
+  },
+  {
+   "id": "kb__l1__34_InstanceNorm.a2.s0",
+   "task": "kb__l1__34_InstanceNorm",
+   "code_sha256": "aacb05c10ca0de33ce5e925db942ff389b42346946517ce0c60deaa605dfefc3",
+   "ref_sha256": "d0cdc67d1184555a3cd66d0b7d00d0aff763dd28ff4473c2c9c1e321eb2b218c"
+  },
+  {
+   "id": "kb__l1__35_GroupNorm_.a2.s0",
+   "task": "kb__l1__35_GroupNorm_",
+   "code_sha256": "78ea683b5969d38f3da1c1daade86ba395fe2903b0b6666dbefe9f40fbba40b7",
+   "ref_sha256": "d5483b2d48153debc7fea70f5b81cf0556220c5f5c944c6c51882a8e4e46cbac"
+  },
+  {
+   "id": "kb__l1__50_conv_standard_2D__square_input__square_kernel.a2.s0",
+   "task": "kb__l1__50_conv_standard_2D__square_input__square_kernel",
+   "code_sha256": "309fd6723d8c5d77710eb9a59340710a644217dec692ef101933fdb3d61a41ed",
+   "ref_sha256": "f9f16871048008632795b1da2526400a97c00d2dacaededcaac042c831353777"
+  },
+  {
+   "id": "kb__l2__64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU.a2.s0",
+   "task": "kb__l2__64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU",
+   "code_sha256": "0efb4bfeda5d0c1ce0ff43cc1a211ce9a02cc3c67933e6b306ecf1780b1983a9",
+   "ref_sha256": "f31b35830d15b5406e8306d4851c84af0f158903a8e9f33333de39b78ac4c96a"
+  }
+ ]
+}

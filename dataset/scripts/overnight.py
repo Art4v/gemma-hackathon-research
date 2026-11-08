@@ -10,8 +10,8 @@ next round, prescreen.py, one --resample pass for prescreen rejects, prescreen.p
 `oracle/jobq.py estimate`, commit + push to dataset-gen, and comment on issue #3. After every collection: assemble.py + verify_dataset.py.
 
 Production loop (one stage at a time, as a subprocess, so heavy CPU work never overlaps): port_kernelbench (all L1+L2 survivors) ->
-author_problems (3 per category) -> filters -> cpu_check -> make_variants -> filters -> cpu_check -> form batches of new problems that
-passed everything (<= --batch-size) -> per batch: round 1 generate/prescreen/resample/submit/push/comment.
+author_problems (3 per category) -> filters -> cpu_check -> form batches (<= --batch-size) and submit round 1 for each -> make_variants
+-> filters -> cpu_check -> form batches for the variants and submit their round 1.
 
 Rules held here: oracle files are never edited (oracle_sha checked before every submit); job ids dataset-<batch>-r<round> are unique;
 feedback turns come verbatim from oracle rows (oracle_collect/generate); jobs stay near or under 60 chip-minutes via batch size.
@@ -33,12 +33,13 @@ PRODUCTION = [
     ("author", [PY, "-u", str(HERE / "author_problems.py"), "--per-category", "3", "--workers", "3"]),
     ("filter1", [PY, "-u", str(HERE / "filter_contamination.py")]),
     ("neardup1", [PY, "-u", str(HERE / "filter_neardup.py")]),
-    ("cpu1", [PY, "-u", str(HERE / "cpu_check.py")]),
+    ("cpu1", [PY, "-u", str(HERE / "cpu_check.py"), "--timeout", "600"]),
+    ("batches", None),   # ports + authored + scraped go to the TPU before the variants are built (Nov 8 04:xx reorder)
     ("variants", [PY, "-u", str(HERE / "make_variants.py")]),
     ("filter2", [PY, "-u", str(HERE / "filter_contamination.py")]),
     ("neardup2", [PY, "-u", str(HERE / "filter_neardup.py")]),
-    ("cpu2", [PY, "-u", str(HERE / "cpu_check.py")]),
-    ("batches", None),
+    ("cpu2", [PY, "-u", str(HERE / "cpu_check.py"), "--timeout", "600"]),
+    ("batches_variants", None),
 ]
 
 
