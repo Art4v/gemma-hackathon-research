@@ -1,0 +1,9 @@
+[17:48:49] overnight driver start; state {"finished": false, "next_batch": 1, "production": 3}, batches {}
+[17:48:49] production stage filter1 starting
+[17:48:49] $ fetch -q origin ... -> rc 0 | 
+[17:53:49] production stage filter1 finished rc 0
+[17:53:49] $ add -A dataset ... -> rc 128 | 
+[17:53:49]   stderr: fatal: pathspec 'oracle/queue' did not match any files
+[17:53:49] production stage neardup1 starting
+[17:53:50] $ fetch -q origin ... -> rc 0 | 
+[17:58:50] $ fetch -q origin ... -> rc 0 | 
