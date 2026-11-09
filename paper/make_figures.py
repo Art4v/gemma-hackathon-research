@@ -92,7 +92,7 @@ if __name__ == "__main__":
     d, out = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2]); out.mkdir(parents=True, exist_ok=True)
     r1 = rows(d, "b1-r1") + rows(d, "b2-r1") + rows(d, "k1-r1")
     # bare and docs are identical (0 at every k), so one labeled line; the LoRA arm is added after the eval
-    fig_attempts(out, {"Gemini Flash + docs": [1, 4, 8], "Gemma 4 E4B (bare, + docs)": [0, 0, 0]})
+    fig_attempts(out, {"Gemini Flash + docs": [1, 4, 8], "Gemma 4 E4B (bare, + docs, + LoRA v1)": [0, 0, 0]})
     fig_speed(out, r1)
     fig_by_type(out, r1)
     print("wrote", sorted(p.name for p in out.iterdir()))

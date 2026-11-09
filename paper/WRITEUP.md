@@ -20,7 +20,7 @@ We build three things:
 3. **A pre-registered evaluation.** Base Gemma, Gemma with 25k tokens of Pallas docs, Gemma with a LoRA, and Gemini Flash with docs
    all get the same attempt budget on JAXBench's 64 tasks.
 
-Base Gemma solves 0 of 64. Gemini Flash with docs solves TBD(4+) of 64. The LoRA solves TBD.
+Base Gemma solves 0 of 64 and Gemini Flash with docs solves 8 of 64. The pre-registered LoRA also solves 0 of 64. It learns the format: no repetition loops, the right length, `pallas_call` in every reply. It does not learn Pallas's API semantics, and every attempt fails the oracle's first check.
 
 ## 1. Introduction
 
@@ -210,7 +210,8 @@ of 255 judged:
 |---|---|---|---|---|
 | `bare` (Gemma 4 E4B) | 0/64 | 0/64 | 0 | n/a |
 | `docs` (Gemma 4 E4B + 25k docs) | 0/64 | 0/64 | 0 | n/a |
-| `flash_docs` (Gemini Flash + docs) | 1/64 | TBD(>= 4)/64 | TBD | TBD (0.31x after turn 0, 0.53x after turn 1) |
+| `flash_docs` (Gemini Flash + docs) | 1/64 | 8/64 | 37/64 | 0.41x |
+| `lora` (Gemma 4 E4B + `v1_r64`) | 0/64 | 0/64 | 0 | n/a |
 
 **Base Gemma** never gets past the kernel check. Its replies loop to the token cap, misname APIs, or skip `pallas_call`.
 
@@ -221,11 +222,30 @@ of 255 judged:
 
 ### 4.3 The fine-tuned model
 
+**The pre-registered adapter, `v1_r64`, solves 0 of 64.** That holds on the primary set (58 tasks) and on the S-p subset (25
+verified p-tasks). Against `bare_stack` (the same GGUF without the adapter) there are no discordant tasks.
+
+| Verdict | turn 0 | turn 1 | turn 2 |
+|---|---|---|---|
+| `compile` | 61 | 63 | 64 |
+| `not_a_kernel` | 3 | 1 | 0 |
+| passes step 1 | 0 | 0 | 0 |
+
+All 192 attempts were decided at the oracle's first check (trace and kernel check, on CPU).
+
+**The adapter learned the format.** No reply loops to the token cap (the base model's main failure), reply lengths match the
+training targets (1.2-1.8k tokens), and every reply contains a fenced module with `pallas_call`.
+
+**It did not learn the API's semantics.** Its errors include:
+- index maps that return slices (`lambda b, h: (b, h, :, :)`, a syntax error)
+- grid and index-map arity mismatches
+- `out_specs` / `out_shape` structure mismatches
+
+The oracle's verbatim feedback on these does not lead to a fix in the next turn.
+
 TBD:
-- the main table with all arms on the primary set
-- the funnel (passes step 1, reaches the chip, correct, pass)
-- success vs attempts
-- cost per solved task (local inference vs API)
+- the 4-bit-fold diagnostic: bf16 vs folded adapter vs base, on val
+- the secondary `v2` adapter (on-policy repairs), if it clears val
 
 ## 5. Discussion and limitations
 
