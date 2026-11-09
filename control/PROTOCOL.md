@@ -122,3 +122,10 @@ Any of these makes a result invalid or reportable only with a caveat:
   - the greedy single-chain `bare`/`docs` results already run, reported as before
 - **Fallback if Gemini credit runs short:** 2 chains for every arm. Decided before the first `lora` attempt.
 - Flash's turn-0 attempts generated on Nov 9 (API defaults) are its chain 0.
+
+**A3 (Nov 9, 07:10 UTC, before any `lora` verdict): A2 rejected.** Hruday's decision. Every Gemma arm (`bare`, `docs`, `lora`,
+`bare_stack`) keeps 1 greedy chain x 3 turns, exactly as the existing bare/docs baselines ran: same Ollama stack and settings. The
+primary comparison stays `lora` vs `bare_stack`, an exact McNemar test on per-task solved/not over the task set. `bare_stack` is the
+official `gemma4:e4b-it-qat` GGUF with no LoRA folded in (`training/to_ollama.py` folds the adapter into a copy of that GGUF), so in
+practice it is the existing `bare` arm. The Gemini Flash arm (A1) samples at its own defaults because Gemini loops at temperature 0;
+that asymmetry is stated in the writeup's limitations, next to the equal attempt budget.
