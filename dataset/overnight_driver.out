@@ -1,2 +1,17 @@
 [22:07:12] overnight driver start; state {"finished": false, "next_batch": 3, "production": 5}, batches {'b1': {'collected': 1, 'done': False, 'n': 120, 'submitted': 2}, 'b2': {'collected': 0, 'done': False, 'n': 89, 'submitted': 1}, 'pilot': {'collected': 3, 'done': True, 'submitted': 3}}
 [22:07:12] formed batches [] from 0 new problems
+[22:07:12] $ add -A dataset ... -> rc 0 | 
+[22:07:12] $ commit -q -m ... -> rc 0 | 
+[22:07:14] $ push -q origin ... -> rc 0 | 
+[22:07:14] $ fetch -q origin ... -> rc 0 | 
+[22:12:14] production stage variants starting
+[22:12:14] $ fetch -q origin ... -> rc 0 | 
+[22:12:14] results for dataset-b1-r2
+[22:12:14] $ checkout origin/oracle-results/dataset-b1-r2 -- ... -> rc 0 | 
+[22:12:14] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-b1-r2 ... -> rc 0 | dataset-b1-r2: 11 verdicts {'correct_slow': 2, 'pass': 9}; trajectories/b1.jsonl: {'open': 2, 'solved': 117}
+[22:15:39] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 2 candidates (39238 output tokens), 0 failed -> candidates/b1/r3.jsonl
+[22:15:40] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/prescreen.py --batch ... -> rc 0 | prescreen: {'pass': 2, 'reject': 0, 'abstain': 0} -> /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/prescreen/b1/r3.jsonl
+[22:15:40] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/generate.py --batch ... -> rc 0 | 0 requests for b1 round 3 (resample)
+[22:15:40] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/prescreen.py --batch ... -> rc 0 | prescreen 0 candidates in b1 round 3
+[22:15:40] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_submit.py --batch ... -> rc 0 | dataset-b1-r3: 2 items over 2 tasks, 0 probes; estimate 1.1 min -> max_chip_minutes 2; ENQUEUED to oracle/queue
+[22:15:41] $ /Users/hrudaynara/Projects/gemma-dataset-claude/oracle/jobq.py estimate dataset-b1-r3 ... -> rc 0 | dataset-b1-r3  OK: estimate 1.11 of 2 chip minutes (ESTIMATE)

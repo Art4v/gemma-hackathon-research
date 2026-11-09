@@ -1,0 +1,2 @@
+{"candidate_id": "authored__attention_gqa_sink__gqa_sink_ring_cache_spec_verify.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kb__l1__41_Max_Pooling_1D.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
