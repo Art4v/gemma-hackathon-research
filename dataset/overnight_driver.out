@@ -31,3 +31,10 @@
 [22:20:47] production stage filter2 starting
 [22:20:47] $ fetch -q origin ... -> rc 0 | 
 [22:25:47] production stage filter2 finished rc 0
+[22:25:47] $ add -A dataset ... -> rc 0 | 
+[22:25:47] $ commit -q -m ... -> rc 0 | 
+[22:25:48] $ push -q origin ... -> rc 0 | 
+[22:25:48] production stage neardup2 starting
+[22:25:48] $ fetch -q origin ... -> rc 0 | 
+[22:30:49] $ fetch -q origin ... -> rc 0 | 
+[22:35:49] production stage neardup2 finished rc 0
