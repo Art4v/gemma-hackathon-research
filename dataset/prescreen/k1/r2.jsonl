@@ -1,0 +1,4 @@
+{"candidate_id": "authored__attention_gqa_sink__gqa_sink_sliding_window_specdecode.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kb__l2__100_ConvTranspose3d_Clamp_Min_Divide.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kb__l2__78_ConvTranspose3d_Max_Max_Sum.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kb__l2__93_ConvTranspose2d_Add_Min_GELU_Multiply.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
