@@ -20,9 +20,10 @@
   },
   "g4": {
    "collected": 0,
-   "done": true,
+   "done": false,
    "n": 30,
-   "submitted": 0
+   "submitted": 0,
+   "pending": 1
   }
  },
  "finished": false,

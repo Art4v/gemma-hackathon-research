@@ -18,7 +18,7 @@ feedback turns come verbatim from oracle rows (oracle_collect/generate); jobs st
 """
 from __future__ import annotations
 
-import argparse, datetime as dt, hashlib, json, pathlib, subprocess, sys, time, traceback
+import argparse, datetime as dt, hashlib, json, pathlib, re, subprocess, sys, time, traceback
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -105,6 +105,10 @@ def open_count(batch: str) -> int:
     return sum(1 for t in read_jsonl(TRAJECTORIES / f"{batch}.jsonl") if t.get("status") == "open")
 
 
+class ConstructorDown(RuntimeError):
+    """The model produced nothing because it was unreachable (no credit, rate limits): retry later, never mark the batch done."""
+
+
 def submit_round(batch: str, rnd: int, st: dict) -> bool:
     """generate -> prescreen -> resample -> prescreen -> enqueue -> estimate -> push -> comment. False if nothing to submit."""
     if oracle_sha() != ORACLE_SHA:
@@ -118,8 +122,14 @@ def submit_round(batch: str, rnd: int, st: dict) -> bool:
         p = sh(g, timeout=6 * 3600)
         if "0 failed" in p.stdout or "0 requests" in p.stdout:
             break
+        if "HTTP 402" in p.stdout + p.stderr:  # prepaid credit exhausted: retrying now can't help
+            break
         time.sleep(120)
     if not read_jsonl(DATASET / "candidates" / batch / f"r{rnd}.jsonl") and not read_jsonl(DATASET / "candidates" / batch / f"r{rnd}-human.jsonl"):
+        out = p.stdout + p.stderr
+        m = re.search(r"(\d+) failed", out)
+        if rnd == 1 or "HTTP 4" in out or "HTTP 5" in out or (m and int(m.group(1)) > 0):
+            raise ConstructorDown(f"{job}: the constructor produced no candidates ({'HTTP 402: credit exhausted' if 'HTTP 402' in out else 'calls failed'})")
         log(f"{job}: no candidates; nothing to submit")
         return False
     sh([PY, "-u", str(HERE / "prescreen.py"), "--batch", batch, "--round", str(rnd)], timeout=3 * 3600)
@@ -159,10 +169,14 @@ def handle_results(st: dict, max_round: int) -> bool:
         log(f"results for {job}")
         sh(["git", "checkout", f"origin/oracle-results/{job}", "--", f"oracle/results/{job}"], check=True)
         p = sh([PY, "-u", str(HERE / "oracle_collect.py"), job, "--jobs-dir", "oracle/results", "--results-dir", "oracle/results"])
-        if p.returncode:
-            comment(f"Collecting `{job}` failed its checks, so its next round was not submitted:\n```\n{(p.stdout + p.stderr)[-1200:]}\n```")
-            b["done"] = True
+        if p.returncode:  # e.g. a partial branch (a shard crashed): wait for the operator's rerun, never drop the batch
+            log(f"{job}: collection failed its checks; will retry when the results branch changes")
+            if b.get("collect_failed") != job:
+                comment(f"`{job}`: the results branch failed collection, so its next round waits. The driver retries every poll, so a rerun "
+                        f"that completes the branch is picked up automatically:\n```\n{(p.stdout + p.stderr)[-800:]}\n```")
+                b["collect_failed"] = job
             continue
+        b.pop("collect_failed", None)
         b["collected"] = b["submitted"]
         summ = (p.stdout.strip().splitlines() or [""])[-1]
         q = (ORACLE / "queue" / f"{job}.json")
@@ -170,8 +184,12 @@ def handle_results(st: dict, max_round: int) -> bool:
             f.unlink()
         did = True
         if b["collected"] < max_round and open_count(batch):
-            if not submit_round(batch, b["collected"] + 1, st):
-                b["done"] = True
+            try:
+                if not submit_round(batch, b["collected"] + 1, st):
+                    b["done"] = True
+            except ConstructorDown as e:
+                log(f"{e}; round {b['collected'] + 1} pending")
+                b["pending"] = b["collected"] + 1
         else:
             b["done"] = True
         assemble_verify()
@@ -236,8 +254,12 @@ def main(argv=None) -> None:
                 if cmd is None:  # batches: form, then round 1 for each, sequentially
                     for name in form_batches(st, a.batch_size):
                         write_json(STATE, st)
-                        if not submit_round(name, 1, st):
-                            st["batches"][name]["done"] = True
+                        try:
+                            if not submit_round(name, 1, st):
+                                st["batches"][name]["done"] = True
+                        except ConstructorDown as e:
+                            log(f"{e}; round 1 pending")
+                            st["batches"][name]["pending"] = 1
                         write_json(STATE, st)
                         handle_results(st, a.max_round)  # do not starve result handling while round-1 jobs are built
                     st["production"] += 1
@@ -251,8 +273,21 @@ def main(argv=None) -> None:
             if proc is not None and stage in ("cpu1b", "cpu2"):
                 for name in form_batches(st, a.batch_size, full_only=True):
                     write_json(STATE, st)
-                    if not submit_round(name, 1, st):
-                        st["batches"][name]["done"] = True
+                    try:
+                        if not submit_round(name, 1, st):
+                            st["batches"][name]["done"] = True
+                    except ConstructorDown as e:
+                        log(f"{e}; round 1 pending")
+                        st["batches"][name]["pending"] = 1
+                    write_json(STATE, st)
+            for name, b in sorted(st["batches"].items()):  # rounds the constructor couldn't produce earlier
+                if b.get("pending") and not b["done"]:
+                    try:
+                        if not submit_round(name, b["pending"], st):
+                            b["done"] = True
+                        b.pop("pending", None)
+                    except ConstructorDown as e:
+                        log(f"{e}; still pending")
                     write_json(STATE, st)
             handle_results(st, a.max_round)
             write_json(STATE, st)
