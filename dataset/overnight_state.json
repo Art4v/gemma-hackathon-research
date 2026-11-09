@@ -1,10 +1,10 @@
 {
  "batches": {
   "b1": {
-   "collected": 1,
+   "collected": 2,
    "done": false,
    "n": 120,
-   "submitted": 2
+   "submitted": 3
   },
   "b2": {
    "collected": 0,
