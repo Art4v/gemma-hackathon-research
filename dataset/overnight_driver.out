@@ -1,34 +1,12 @@
-[18:38:18] overnight driver start; state {"finished": false, "next_batch": 2, "production": 7}, batches {'g1': {'collected': 0, 'done': False, 'n': 50, 'submitted': 1}}
-[18:38:18] production stage cpu1b starting
-[18:38:18] formed batches [] from 40 new problems
-[18:38:18] $ fetch -q origin ... -> rc 0 | 
-[18:43:18] formed batches ['g2', 'g3'] from 131 new problems
-[18:46:03] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 |   failed authored__moe_capacity_dispatch__switch_capacity_dispatch_combine.a1.s0: unparseable output (finishReason MAX_TOKENS, 4418 chars)
-[18:46:14] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject authored__ssm_s4d_conv__s4d_long_conv.a1.s0 [static] None compile error: Invalid shape for `swap`. Ref shape: (1, 8, 1024). Expected shape: (8, 1024). Value shape:
-[18:48:16] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 40 candidates (47152 output tokens), 0 failed -> candidates/g2/r1.jsonl
-[18:48:18] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject authored__ssm_s4d_conv__s4d_causal_direct_conv.a1.s1 [static] None compile error: Block shape for args[0] (= (Blocked(block_size=2048), Blocked(block_size=128))) must have
-[18:48:19] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_submit.py --batch ... -> rc 0 | dataset-g2-r1: 59 items over 59 tasks, 0 probes; estimate 34.0 min -> max_chip_minutes 52; ENQUEUED to oracle/queue
-[18:48:20] $ /Users/hrudaynara/Projects/gemma-dataset-gen/oracle/jobq.py estimate dataset-g2-r1 ... -> rc 0 | dataset-g2-r1  OK: estimate 34.01 of 52 chip minutes (ESTIMATE)
-[18:48:20] $ add -A dataset ... -> rc 0 | 
-[18:48:20] $ commit -q -m ... -> rc 0 | 
-[18:48:22] $ push -q origin ... -> rc 0 | 
-[18:48:23] $ issue comment 3 ... -> rc 0 | https://github.com/Art4v/gemma-hackathon-research/issues/3#issuecomment-6728879420
-[18:51:13] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 60 candidates (52876 output tokens), 0 failed -> candidates/g3/r1.jsonl
-[18:51:15] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject kb__l2__38_ConvTranspose3d_AvgPool_Clamp_Softmax_Multiply.a1.s0 [static] None compile error: Block shape for args[0] (= (Blocked(block_size=32), Blocked(block_size=32), Blocked(block_
-[18:53:19] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | wrote 35 candidates (29828 output tokens), 0 failed -> candidates/g3/r1.jsonl
-[18:53:20] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/prescreen.py --batch ... -> rc 0 |   reject kb__l2__48_Conv3d_Scaling_Tanh_Multiply_Sigmoid.a1.s1 [static] None compile error: `indices` must not be longer than `shape`: indices=(slice(None, None, None), 0, 0, 0), sha
-[18:53:21] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_submit.py --batch ... -> rc 0 | dataset-g3-r1: 60 items over 60 tasks, 0 probes; estimate 35.0 min -> max_chip_minutes 53; ENQUEUED to oracle/queue
-[18:53:22] $ /Users/hrudaynara/Projects/gemma-dataset-gen/oracle/jobq.py estimate dataset-g3-r1 ... -> rc 0 | dataset-g3-r1  OK: estimate 34.97 of 53 chip minutes (ESTIMATE)
-[18:53:22] $ add -A dataset ... -> rc 0 | 
-[18:53:22] $ commit -q -m ... -> rc 0 | 
-[18:53:23] $ push -q origin ... -> rc 0 | 
-[18:53:24] $ issue comment 3 ... -> rc 0 | https://github.com/Art4v/gemma-hackathon-research/issues/3#issuecomment-6728931664
-[18:53:24] $ fetch -q origin ... -> rc 0 | 
-[18:58:24] production stage cpu1b finished rc 0
-[18:58:24] $ add -A dataset ... -> rc 0 | 
-[18:58:24] $ commit -q -m ... -> rc 0 | 
-[18:58:25] $ push -q origin ... -> rc 0 | 
-[18:58:25] formed batches ['g4'] from 30 new problems
-[18:58:26] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | }
-[18:58:26] dataset-g4-r1: no candidates; nothing to submit
-[18:58:27] $ fetch -q origin ... -> rc 0 | 
+[19:03:18] overnight driver start; state {"finished": false, "next_batch": 5, "production": 9}, batches {'g1': {'collected': 0, 'done': False, 'n': 50, 'submitted': 1}, 'g2': {'collected': 0, 'done': False, 'n': 60, 'submitted': 1}, 'g3': {'collected': 0, 'done': False, 'n': 60, 'submitted': 1}, 'g4': {'collected': 0, 'done': False, 'n': 30, 'submitted': 0, 'pending': 1}}
+[19:03:18] production stage variants starting
+[19:03:20] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | }
+[19:03:20] dataset-g4-r1: the constructor produced no candidates (HTTP 402: credit exhausted); still pending
+[19:03:20] $ fetch -q origin ... -> rc 0 | 
+[19:03:20] results for dataset-g1-r1
+[19:03:20] $ checkout origin/oracle-results/dataset-g1-r1 -- ... -> rc 0 | 
+[19:03:20] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_collect.py dataset-g1-r1 ... -> rc 1 | 
+[19:03:20]   stderr:   - missing rows for 12 ids: ['authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0', 'authored__ssm_scan_step__mamba1_selective_scan.a1.s0', 'authored__ssm_scan_step_
+[19:03:20] dataset-g1-r1: collection failed its checks; will retry when the results branch changes
+[19:03:21] $ issue comment 3 ... -> rc 0 | https://github.com/Art4v/gemma-hackathon-research/issues/3#issuecomment-6729036268
+[19:08:21] production stage variants finished rc 0

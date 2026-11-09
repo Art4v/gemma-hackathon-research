@@ -1,6 +1,7 @@
 {
  "batches": {
   "g1": {
+   "collect_failed": "dataset-g1-r1",
    "collected": 0,
    "done": false,
    "n": 50,
@@ -22,11 +23,11 @@
    "collected": 0,
    "done": false,
    "n": 30,
-   "submitted": 0,
-   "pending": 1
+   "pending": 1,
+   "submitted": 0
   }
  },
  "finished": false,
  "next_batch": 5,
- "production": 9
+ "production": 10
 }
