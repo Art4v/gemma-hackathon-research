@@ -71,3 +71,15 @@
 [19:28:44]   stderr:   - missing rows for 12 ids: ['authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0', 'authored__ssm_scan_step__mamba1_selective_scan.a1.s0', 'authored__ssm_scan_step_
 [19:28:44] dataset-g1-r1: collection failed its checks; will retry when the results branch changes
 [19:33:44] production stage cpu2 finished rc 0
+[19:33:44] $ add -A dataset ... -> rc 0 | 
+[19:33:44] $ commit -q -m ... -> rc 0 | 
+[19:33:46] $ push -q origin ... -> rc 0 | 
+[19:33:46] formed batches ['g6'] from 41 new problems
+[19:33:47] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | }
+[19:33:47] dataset-g6-r1: the constructor produced no candidates (HTTP 402: credit exhausted); round 1 pending
+[19:33:48] $ fetch -q origin ... -> rc 0 | 
+[19:33:48] results for dataset-g1-r1
+[19:33:48] $ checkout origin/oracle-results/dataset-g1-r1 -- ... -> rc 0 | 
+[19:33:48] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_collect.py dataset-g1-r1 ... -> rc 1 | 
+[19:33:48]   stderr:   - missing rows for 12 ids: ['authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0', 'authored__ssm_scan_step__mamba1_selective_scan.a1.s0', 'authored__ssm_scan_step_
+[19:33:48] dataset-g1-r1: collection failed its checks; will retry when the results branch changes

@@ -32,9 +32,16 @@
    "n": 60,
    "pending": 1,
    "submitted": 0
+  },
+  "g6": {
+   "collected": 0,
+   "done": false,
+   "n": 41,
+   "pending": 1,
+   "submitted": 0
   }
  },
  "finished": false,
- "next_batch": 6,
- "production": 13
+ "next_batch": 7,
+ "production": 14
 }
