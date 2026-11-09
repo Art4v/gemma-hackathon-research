@@ -16,15 +16,9 @@
    "collected": 3,
    "done": true,
    "submitted": 3
-  },
-  "k1": {
-   "submitted": 1,
-   "collected": 0,
-   "done": false,
-   "n": 17
   }
  },
  "finished": false,
  "next_batch": 3,
- "production": 9
+ "production": 10
 }
