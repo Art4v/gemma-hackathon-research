@@ -154,7 +154,7 @@ We fine-tune Gemma 4 E4B with LoRA:
 - loss on assistant turns only
 
 Training rows are built by the evaluation's own prompt function, so they are **byte-identical** to what the model sees at test time.
-We checked all TBD(258) rows against an independent rebuild, and the diff is empty. The repair feedback is the oracle's line, verbatim.
+We checked all all rows against an independent rebuild, and the diff is empty. The repair feedback is the oracle's line, verbatim.
 
 Lengths, with the Gemma 4 E4B tokenizer:
 - prompt plus target: median 2,140 tokens, maximum 6,957, so nothing is truncated at the 24,576-token cap
@@ -190,12 +190,15 @@ Nothing is tuned on JAXBench.
 
 ### 4.1 The dataset
 
-TBD (final export). Pre-freeze dry run on Nov 9:
-- 172 examples (160 train, 12 val) from 159 solved problems
-- by source: 123 authored, 46 KernelBench, 3 scraped
-- pass@1 0.87, pass@3 0.95
-- 91% of targets at parity (0.97x XLA or faster)
-- the median correct kernel runs at 1.5x XLA
+The final export (`dataset-gen`, Nov 9) has **264 examples** (238 train, 26 val, split by family) from **236 solved problems** out
+of 255 judged:
+- 236 single-turn examples and **28 repair chains** (22 with one repair, 6 with two)
+- by source: 123 authored, 138 KernelBench, 3 scraped
+- constructor pass@1 0.82, pass@2 0.91, pass@3 0.93 (authored 0.98, KernelBench 0.90 within 3)
+- 83% of targets at parity (0.97x XLA or faster)
+- round-1 correct kernels run at a median of 1.29x XLA (Figure 2)
+- KernelBench convolutions are the hard case: 67% pass and 31% are correct but slower than 0.7x, since XLA's convolutions are
+  strong on the v6e (Figure 3)
 
 ### 4.2 Baselines on JAXBench
 
