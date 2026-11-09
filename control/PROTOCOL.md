@@ -90,4 +90,12 @@ Any of these makes a result invalid or reportable only with a caveat:
 
 ## Amendments
 
-(none yet)
+**A1 (Nov 9, 01:15 UTC, before any result for this arm): a Gemini Flash reference arm, `flash_docs`.**
+- Model `gemini-3.5-flash` on the paid Gemini API (served as `gemini-3.6-flash`), through `control/bench_gemini.py`.
+- **Same as the Gemma arms:** the 64 tasks, the docs-arm prompt (`bench.conversation`, word for word), turn 0 plus 2 retries with the
+  oracle's feedback, the stop rule and the oracle (`c9a07d9298a1`, 3 seeds, speed bar 0.7).
+- **Differs only where needed** to run Gemini at its strongest single-sample setting: thinking on, default temperature, no seed, and a
+  64k output budget (thinking counts against it).
+- **Reported:** the same metrics as every arm, on the same primary task set. The comparison of interest is `lora` vs `flash_docs` at
+  equal attempt budget, one sample and at most 3 attempts. It is stated next to the JAXBench paper's Gemini 3 Flash result, which used
+  up to 144 attempts per task (18 chains x 8 turns), so the budgets are not confused.
