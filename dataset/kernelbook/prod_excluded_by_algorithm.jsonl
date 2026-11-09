@@ -1,0 +1,25 @@
+{"stem": "deltanet_chunk_wy", "reason": "63p GDN: ungated delta rule"}
+{"stem": "dplr_generalized_delta_chunk", "reason": "63p GDN: delta-rule family (DPLR)"}
+{"stem": "deltaformer_attention", "reason": "63p GDN: delta rule inside softmax attention"}
+{"stem": "ttt_linear", "reason": "63p GDN: TTT-linear update is a delta-rule family update"}
+{"stem": "gla_recurrent", "reason": "15p RetNet / 16p Mamba2: gated linear attention (decay per channel)"}
+{"stem": "log_linear_attention", "reason": "16p Mamba2 SSD: same segment-sum decay"}
+{"stem": "gated_slot_attention", "reason": "15p/16p: two gated linear-attention recurrences"}
+{"stem": "forgetting_attention", "reason": "1p Flash Attention with a data-dependent decay bias"}
+{"stem": "parallax_attention", "reason": "1p Flash Attention with a second PV accumulation"}
+{"stem": "merge_attention_states_lse", "reason": "1p Flash Attention: its LSE rescale/merge step"}
+{"stem": "attnres_depth_mixing", "reason": "56p MHC: multi-stream residual mixing"}
+{"stem": "gemma3n_altup", "reason": "56p MHC: multi-stream residual mixing"}
+{"stem": "dpo_loss_fused_lm_head", "reason": "64p Linear_Softmax_Cross_Entropy: LM head + log-softmax + gather"}
+{"stem": "jsd_distillation_loss", "reason": "64p/13p: LM-head distributions + divergence"}
+{"stem": "grpo_clipped_policy_loss", "reason": "64p: LM head + log-softmax + gather"}
+{"stem": "orpo_loss", "reason": "64p: includes the LM-head cross entropy"}
+{"stem": "gptoss_moe_clamped_swiglu", "reason": "10p Sparse MoE"}
+{"stem": "qwen2moe_shared_expert_gate", "reason": "10p Sparse MoE (+ shared expert)"}
+{"stem": "llama4_moe_input_scaled", "reason": "10p Sparse MoE / 11p GMM"}
+{"stem": "deepseekv3_group_limited_router", "reason": "10p Sparse MoE router"}
+{"stem": "fused_add_rmsnorm_fp8_group_quant", "reason": "12p RMSNorm (+ residual and quant epilogue)"}
+{"stem": "clip_contrastive_loss", "reason": "13p Cross_Entropy over similarity logits"}
+{"stem": "ntxent_memory_bank_loss", "reason": "13p Cross_Entropy over similarity logits"}
+{"stem": "infonce_explicit_negatives", "reason": "13p Cross_Entropy over similarity logits"}
+{"stem": "kivi_2bit_kv_decode", "reason": "65p quantized attention / 6p decode attention"}

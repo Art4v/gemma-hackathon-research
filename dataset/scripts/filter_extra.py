@@ -11,7 +11,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from common import DATASET, PROBLEMS, now, read_jsonl, write_jsonl  # noqa: E402
 from signature import jaccard  # noqa: E402
 
-BAR, SHAPE_BAR = 0.8, 0.5
+BAR, SHAPE_BAR = 0.8, 0.5  # --bar overrides BAR (prod uses 0.7: chosen near the p-task families)
 
 
 def banned() -> dict:
@@ -22,12 +22,12 @@ def banned() -> dict:
     return out
 
 
-def reason(sig: dict, ban: dict) -> str | None:
+def reason(sig: dict, ban: dict, bar: float = BAR) -> str | None:
     for k, s in ban.items():
         if "op_multiset" not in s:
             continue
         j = jaccard(sig["op_multiset"], s["op_multiset"])
-        if j >= BAR:  # level 1 included: filter_contamination only flags those for review; generated batches drop them outright
+        if j >= bar:  # level 1 included: filter_contamination only flags those for review; generated batches drop them outright
             return f"contamination:extra:{k}:j={j:.2f}"
         if k.startswith("exam:") and s.get("input_shapes") == sig.get("input_shapes") and j >= SHAPE_BAR:
             return f"contamination:shape:{k}:j={j:.2f}"
@@ -36,13 +36,13 @@ def reason(sig: dict, ban: dict) -> str | None:
 
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--batch", required=True); ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--batch", required=True); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--bar", type=float, default=BAR)
     a = ap.parse_args(argv)
     rows, ban, dropped = read_jsonl(PROBLEMS / "problems.jsonl"), banned(), []
     for r in rows:
         if r.get("batch") != a.batch or r["status"] != "ok" or not r.get("signature") or "op_multiset" not in r["signature"]:
             continue
-        why = reason(r["signature"], ban)
+        why = reason(r["signature"], ban, a.bar)
         if why:
             r["status"], r["exclude_reason"] = "excluded", why
             dropped.append({"problem_id": r["problem_id"], "reason": why, "at": now()})
