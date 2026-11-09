@@ -10,7 +10,7 @@
    "collected": 0,
    "done": false,
    "n": 89,
-   "submitted": 0
+   "submitted": 1
   },
   "pilot": {
    "collected": 3,
@@ -20,5 +20,5 @@
  },
  "finished": false,
  "next_batch": 3,
- "production": 5
+ "production": 6
 }

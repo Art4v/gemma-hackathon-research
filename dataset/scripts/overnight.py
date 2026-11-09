@@ -147,8 +147,11 @@ def handle_results(st: dict, max_round: int) -> bool:
         sh(["git", "checkout", f"origin/oracle-results/{job}", "--", f"oracle/results/{job}"], check=True)
         p = sh([PY, "-u", str(HERE / "oracle_collect.py"), job, "--jobs-dir", "oracle/results", "--results-dir", "oracle/results"])
         if p.returncode:
-            comment(f"Collecting `{job}` failed its checks, so its next round was not submitted:\n```\n{(p.stdout + p.stderr)[-1200:]}\n```")
-            b["done"] = True
+            # Nov 8: a partial branch (a shard crashed) gets completed by the operator's rerun: retry every poll, never drop the batch
+            log(f"{job}: collection failed its checks; will retry when the results branch changes")
+            if b.get("collect_failed") != job:
+                comment(f"`{job}`: the results branch failed collection, so its next round waits; the driver retries every poll:\n```\n{(p.stdout + p.stderr)[-800:]}\n```")
+                b["collect_failed"] = job
             continue
         b["collected"] = b["submitted"]
         summ = (p.stdout.strip().splitlines() or [""])[-1]
