@@ -86,7 +86,7 @@ reported. Inference stack for `lora` (filled Nov 9, before any LoRA attempt):
     `claude_code_subagent`, per row.
   - It includes the pilot examples first exported as `dataset-v0`.
   - No JAXBench file, reference or kernel is in it.
-- **Hyperparameters, fixed before training** (`training/train_lora.py`, config `r64`):
+- **Hyperparameters of the first adapter, `v1_r64`** (a record of that run, not a pre-registration; `training/train_lora.py`, config `r64`):
   - base: `google/gemma-4-E4B-it-qat-q4_0-unquantized` @ `476025a01dbf`, bf16
   - LoRA: rank 64, alpha 128, dropout 0, on attention (q, k, v, o) and MLP (gate, up, down)
   - training: learning rate 1e-4, 3 epochs, gradient accumulation 4, max sequence length 24,576, shuffle seed 0
@@ -97,10 +97,12 @@ reported. Inference stack for `lora` (filled Nov 9, before any LoRA attempt):
     - tokens: max 14,840 (prompt + target), max 5,921 (target)
     - no row over 24,576, and every target within the eval's 8,192 The training examples are rendered with `bench.py`'s exact prompts, with no example truncated and the loss on assistant
   turns only.
-- **No selection on JAXBench:** no hyperparameter, checkpoint, epoch, prompt or decoding choice is made using any JAXBench result. If
-  something has to be chosen, it's chosen on the dataset's own val split.
-- **Every LoRA trained gets reported**, each with its training-set size (e.g. a data-size curve). The headline LoRA is named here in
-  advance: **`v1_r64`**, the full `dataset-v1` adapter (238 train rows) with the hyperparameters above.
+- **No adapter is pre-registered as the headline (A5).** The team iterates on the training procedure (data, objective,
+  hyperparameters, quantization handling) and may evaluate successive adapters on JAXBench. The eval itself stays fixed: same tasks,
+  prompts, decoding, turns and oracle for every arm.
+- **Every adapter evaluated on JAXBench gets reported**, in the order it was tried, with its training data, procedure and result, and
+  the writeup states how many JAXBench evaluations were run in total. The dataset's val split is used for cheap checks before a
+  JAXBench run.
 
 ## Invalidating events
 
@@ -109,7 +111,7 @@ Any of these makes a result invalid or reportable only with a caveat:
 - an oracle file change
 - a prompt or setting difference between `lora` and `bare_stack` beyond the adapter
 - a task-set change after the first LoRA attempt
-- a LoRA chosen using JAXBench outcomes
+- an adapter evaluated on JAXBench but left out of the report
 
 ## Amendments
 
@@ -152,3 +154,8 @@ primary comparison stays `lora` vs `bare_stack`, an exact McNemar test on per-ta
 official `gemma4:e4b-it-qat` GGUF with no LoRA folded in (`training/to_ollama.py` folds the adapter into a copy of that GGUF), so in
 practice it is the existing `bare` arm. The Gemini Flash arm (A1) samples at its own defaults because Gemini loops at temperature 0;
 that asymmetry is stated in the writeup's limitations, next to the equal attempt budget.
+
+**A5 (Nov 9, 16:45 UTC, after the `v1_r64` result): no pre-registered headline adapter.** Hruday did not agree to naming `v1_r64`
+as the headline in advance (the TODO was filled in by his agent), so that pre-registration is withdrawn. `v1_r64` (0/64) is reported
+as the first iteration. From here the team iterates on the training procedure and may run successive adapters on JAXBench; every one
+that is run is reported, with the total number of JAXBench evaluations. Eval settings, tasks and oracle are unchanged.
