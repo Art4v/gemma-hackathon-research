@@ -7,15 +7,16 @@
    "submitted": 3
   },
   "b2": {
-   "collected": 1,
+   "collected": 2,
    "done": false,
-   "external": 2,
+   "external": 3,
    "n": 89,
-   "submitted": 1
+   "submitted": 2
   },
   "k1": {
-   "collected": 1,
+   "collected": 2,
    "done": false,
+   "external": 3,
    "n": 17,
    "submitted": 2
   },

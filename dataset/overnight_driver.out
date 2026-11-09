@@ -1,26 +1,5 @@
-[23:34:24] overnight driver start; state {"finished": false, "next_batch": 3, "production": 11}, batches {'b1': {'collected': 2, 'done': False, 'n': 120, 'submitted': 3}, 'b2': {'collected': 0, 'done': False, 'n': 89, 'submitted': 1}, 'k1': {'collected': 1, 'done': False, 'n': 17, 'submitted': 2}, 'pilot': {'collected': 3, 'done': True, 'submitted': 3}}
-[23:34:25] $ fetch -q origin ... -> rc 0 | 
-[23:34:25] results for dataset-b1-r3
-[23:34:25] $ checkout origin/oracle-results/dataset-b1-r3 -- ... -> rc 0 | 
-[23:34:25] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-b1-r3 ... -> rc 0 | dataset-b1-r3: 2 verdicts {'correct_slow': 2}; trajectories/b1.jsonl: {'solved': 117, 'unsolved': 2}
-[23:34:25] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/assemble.py --phase ... -> rc 0 | /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final: 160 train, 12 val, 3 unsolved, 159 kernels to reverify; parity share 0.9057
-[23:34:25] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/verify_dataset.py /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final ... -> rc 1 | verify_dataset: 1 failure(s)
-[23:34:25] $ add -A dataset ... -> rc 0 | 
-[23:34:25] $ commit -q -m ... -> rc 0 | 
-[23:34:26] $ push -q origin ... -> rc 0 | 
-[23:39:26] $ fetch -q origin ... -> rc 0 | 
-[23:44:26] $ fetch -q origin ... -> rc 0 | 
-[23:49:27] $ fetch -q origin ... -> rc 0 | 
-[23:54:27] $ fetch -q origin ... -> rc 0 | 
-[23:59:27] $ fetch -q origin ... -> rc 0 | 
-[00:04:27] $ fetch -q origin ... -> rc 0 | 
-[00:09:27] $ fetch -q origin ... -> rc 0 | 
-[00:14:28] $ fetch -q origin ... -> rc 0 | 
-[00:19:28] $ fetch -q origin ... -> rc 0 | 
-[00:24:28] $ fetch -q origin ... -> rc 0 | 
-[00:24:28] results for dataset-b2-r1
-[00:24:28] $ checkout origin/oracle-results/dataset-b2-r1 -- ... -> rc 0 | 
-[00:24:28] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-b2-r1 ... -> rc 1 | 
-[00:24:28]   stderr:   - missing rows for 2 ids: ['kb__l2__44_ConvTranspose2d_Multiply_GlobalAvgPool_GlobalAvgPool_Mean.a1.s0', 'kb__l2__72_ConvTranspose3d_BatchNorm_AvgPool_AvgPool.a1.s0']
-[00:24:28] dataset-b2-r1: collection failed its checks; will retry when the results branch changes
-[00:24:30] $ issue comment 3 ... -> rc 0 | https://github.com/Art4v/gemma-hackathon-research/issues/3#issuecomment-6732943587
+[00:33:20] overnight driver start; state {"finished": false, "next_batch": 3, "production": 11}, batches {'b1': {'collected': 3, 'done': True, 'n': 120, 'submitted': 3}, 'b2': {'collected': 1, 'done': False, 'n': 89, 'submitted': 2}, 'k1': {'collected': 1, 'done': False, 'n': 17, 'submitted': 2}, 'pilot': {'collected': 3, 'done': True, 'submitted': 3}}
+[00:33:20] $ fetch -q origin ... -> rc 0 | 
+[00:33:20] results for dataset-k1-r2
+[00:33:20] $ checkout origin/oracle-results/dataset-k1-r2 -- ... -> rc 0 | 
+[00:33:20] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-k1-r2 ... -> rc 0 | dataset-k1-r2: 4 verdicts {'correct_slow': 1, 'mosaic': 2, 'pass': 1}; trajectories/k1.jsonl: {'open': 3, 'solved': 14}
