@@ -4,39 +4,40 @@
  },
  "by_final_verdict": {
   "correct_slow": 54,
-  "cpu_verified": 1500,
+  "cpu_verified": 1583,
   "pass": 1405
  },
  "by_verification": {
-  "cpu": 1500,
+  "cpu": 1583,
   "tpu": 1405,
   "tpu_correct_slow": 54
  },
  "capped": {
-  "cap_per_skeleton_generated_rows": 6,
+  "cap_per_skeleton_generated_rows": 11,
   "file": "train_capped.jsonl",
-  "kernels_counted": 297,
-  "n_rows": 1489,
+  "kernels_counted": 405,
+  "n_rows": 1597,
   "skeletons_distinct": 162,
   "skeletons_from": "curation/coverage.py on karthik/coverage",
   "top10_max": 0.3,
-  "top10_share": 0.2896,
+  "top10_share": 0.2988,
   "train_by_kind": {
    "correct_slow": 54,
-   "generated": 30,
+   "generated": 55,
    "repair": 25,
    "repair_injected": 1167,
+   "shape_variant": 83,
    "single": 213
   }
  },
- "complete": false,
- "created_at": "2026-11-09T19:51:07+00:00",
+ "complete": true,
+ "created_at": "2026-11-09T20:27:02+00:00",
  "files": {
-  "coverage.txt": "3609da515f0934e286aef519a2e9930956ed0491f9fe0a34495adb24086ac7e2",
-  "train.jsonl": "7a097eb8ac76772338207919bc15940a2771f06e3f95977acd9b6f5aad748c15",
-  "train_capped.jsonl": "4742a79d05722a6f70514d577cc3a474107a0067ad8e045d63b11495ff878489",
+  "coverage.txt": "737a925299572918e6e6472ba11636bbb8ef5573278f78437564a88ea377fed6",
+  "train.jsonl": "8412c6ab4b3e4e6fc8e542811d11c957ae60f83d41664e592560ff0b0d505293",
+  "train_capped.jsonl": "5aaab35bf49a3f7d18c4d6d624a05d772cc4400e2738b4032e3a6f1497394e59",
   "val.jsonl": "8abc71aecc450f18f5d4cc68409ebc2d8afceb3a25debea2e74cf7a1b9bd078f",
-  "verification.jsonl": "ea3ba8e3e568313b68115240126ad7d95d850365f5b3a1e17d8354f97ee6d20d"
+  "verification.jsonl": "c465978f95981584196aaff0bb107334766fbd777958bf606b1177ca498e4dce"
  },
  "mutations": {
   "block_rank": 187,
@@ -48,12 +49,13 @@
  },
  "n_targets_not_static_ok": 0,
  "n_targets_static_checked": 266,
- "n_train": 2959,
+ "n_train": 3042,
  "n_val": 26,
  "oracle_sha": "c9a07d9298a1",
  "parts_present": [
   "repair_injected",
   "generated",
+  "shape_variant",
   "correct_slow"
  ],
  "tokens_ESTIMATED": {
@@ -67,6 +69,7 @@
   "generated": 1500,
   "repair": 25,
   "repair_injected": 1167,
+  "shape_variant": 83,
   "single": 213
  }
 }

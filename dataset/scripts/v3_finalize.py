@@ -14,7 +14,7 @@ import argparse, ast, collections, multiprocessing, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import filter_contamination as fc  # noqa: E402
 import filter_neardup as fn  # noqa: E402
-from common import FINAL, PROBLEMS, exam_kb_stems, now, read_jsonl, sha256, write_json, write_jsonl  # noqa: E402
+from common import FINAL, PROBLEMS, exam_files, exam_kb_stems, now, read_json, read_jsonl, sha256, write_json, write_jsonl  # noqa: E402
 from signature import exam_signatures, signature_of  # noqa: E402
 from v3_common import ORACLE_SHA, V3  # noqa: E402
 
@@ -29,6 +29,16 @@ def _init_worker(corpus: list) -> None:
 
 def _nearest(tokens: list) -> list:
     return _REAL_NEAREST(tokens, _CORPUS)
+
+
+def level2_signatures(python: str | None) -> dict:
+    """{"l2:<task>": signature} for JAXBench's level 2 references. dataset-v1's op-chain layer read level 1 only (signature.exam_signatures); issue 5 asked for both."""
+    path = V3 / "exam_signatures_level2.json"
+    if path.exists():
+        return read_json(path)
+    out = {f"l2:{task}": signature_of(p.read_text(), python) for task, level, p in exam_files() if level == "level2"}
+    write_json(path, out)
+    return out
 
 
 def val_problems(python: str | None) -> tuple:
@@ -86,7 +96,8 @@ def main(argv=None) -> int:
     recs = [record(c["id"], "generated", c["ref_code"], ver[c["id"]]["signature"]) for c in good]
     recs += [record(v["problem_id"], "shape_variant", v["turns"][0]["ref_code"], v["signature"]) for v in variants]
     print(f"filtering {len(good)} generated and {len(variants)} shape-variant references", flush=True)
-    exam_sigs = exam_signatures(python=a.python)
+    exam_sigs = {**exam_signatures(python=a.python), **level2_signatures(a.python)}
+    print(f"exam signatures: {sum('error' not in s for s in exam_sigs.values())} of {len(exam_sigs)} traced, level 1 + 2", flush=True)
     recs, ex1, review, sig1 = fc.run(recs, exam_kb_stems(), exam_sigs, a.python, log=lambda m: None)
     flagged = {r["problem_id"]: r for r in review}
     for r in recs:  # the "review" tier: dropped without asking, the same call Hruday made for dataset-v1's three

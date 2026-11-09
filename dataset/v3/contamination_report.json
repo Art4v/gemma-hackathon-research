@@ -1,5 +1,5 @@
 {
- "at": "2026-11-09T19:51:00+00:00",
+ "at": "2026-11-09T20:26:55+00:00",
  "diversity": {
   "cap_per_skeleton": 0,
   "largest_skeleton_rows": 24,
@@ -8,7 +8,7 @@
   "top10_share": 0.0727
  },
  "excluded_by_reason": {
-  "contamination:neardup": 14,
+  "contamination:neardup": 47,
   "contamination:opchain": 12,
   "contamination:review": 74,
   "duplicate:gen__matmul_epilogue__00001": 1,
@@ -23,8 +23,8 @@
   "duplicate:gen__row_reduction__00176": 1,
   "duplicate:gen__row_reduction__00230": 1,
   "duplicate:gen__row_reduction__00254": 1,
-  "val_contamination:opchain": 85,
-  "val_contamination:review": 14
+  "val_contamination:opchain": 95,
+  "val_contamination:review": 20
  },
  "generated_after_filters": 2157,
  "generated_candidates": 2400,
@@ -50,9 +50,9 @@
    "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish"
   ],
   "text_jaccard": [
-   0.496,
-   "gen__matmul_epilogue__00397",
-   "val:kb__l2__2_ConvTranspose2d_BiasAdd_Clamp_Scaling_Clamp_Divide"
+   0.499,
+   "kb/l2/74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__shape1",
+   "val:kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid"
   ],
   "text_ratio": [
    0.799,
@@ -62,18 +62,18 @@
  },
  "max_text_vs_val": {
   "jaccard": [
-   0.496,
-   "gen__matmul_epilogue__00397",
-   "val:kb__l2__2_ConvTranspose2d_BiasAdd_Clamp_Scaling_Clamp_Divide"
+   0.499,
+   "kb/l2/74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__shape1",
+   "val:kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid"
   ],
   "ratio": [
-   0.701,
-   "gen__elementwise__00238",
-   "val:kb__l1__29_Softplus"
+   0.75,
+   "kb/l2/74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__shape1",
+   "val:kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid"
   ]
  },
- "shape_variants_in": 0,
- "shape_variants_kept": 0,
+ "shape_variants_in": 132,
+ "shape_variants_kept": 83,
  "thresholds": {
   "op_multiset_jaccard_dropped_at": 0.8,
   "text_jaccard": 0.5,
