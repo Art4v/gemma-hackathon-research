@@ -1,0 +1,61 @@
+{
+ "created_at": "2026-11-09T22:49:59+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 688321536,
+    "n": 1,
+    "seconds": 38.43968167296,
+    "task": "authored__norm_residual_fusion__fused_add_rmsnorm_residual__m1_ragged"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 670699520,
+    "n": 1,
+    "seconds": 34.832948723200005,
+    "task": "authored__ssm_short_conv_gate__short_conv_silu_gate__m1_ragged"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 234882048,
+    "n": 1,
+    "seconds": 33.02130448608,
+    "task": "kb__l1__35_GroupNorm___m1_ragged"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 235929600,
+    "n": 1,
+    "seconds": 32.6751632064,
+    "task": "kb__l1__40_LayerNorm__m1_ragged"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 196608000,
+    "n": 1,
+    "seconds": 30.009082060799997,
+    "task": "kb__l1__47_Sum_reduction_over_a_dimension__m1_ragged"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 196608000,
+    "n": 1,
+    "seconds": 30.0480562656,
+    "task": "kb__l1__99_TripletMarginLoss__m1_ragged"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 537166336,
+    "n": 1,
+    "seconds": 33.74723583936,
+    "task": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch"
+   }
+  ],
+  "total_s": 232.7734722544
+ },
+ "job_id": "dataset-m1-r2",
+ "n_items": 7,
+ "n_tasks": 7,
+ "probe_ids": []
+}

@@ -1,0 +1,7 @@
+{"candidate_id": "authored__norm_residual_fusion__fused_add_rmsnorm_residual__m1_ragged.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "authored__ssm_short_conv_gate__short_conv_silu_gate__m1_ragged.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kb__l1__35_GroupNorm___m1_ragged.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kb__l1__40_LayerNorm__m1_ragged.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kb__l1__47_Sum_reduction_over_a_dimension__m1_ragged.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kb__l1__99_TripletMarginLoss__m1_ragged.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
