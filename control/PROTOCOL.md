@@ -6,7 +6,7 @@ seen yet. Fields marked `TODO(Hruday)` must be filled in before the first LoRA a
 
 ## Question
 
-Does a LoRA trained on `dataset-v1` (Gemini-constructed, TPU-verified Pallas kernels for problems filtered against all 65 JAXBench
+Does a LoRA trained on `dataset-v1` (Claude-constructed, TPU-verified Pallas kernels for problems filtered against all 65 JAXBench
 tasks) make Gemma 4 E4B write correct, fast Pallas kernels for JAXBench tasks it never saw? The comparisons are against the same model
 without the adapter (`bare`) and with about 25k tokens of Pallas docs in context (`docs`).
 
@@ -20,7 +20,17 @@ without the adapter (`bare`) and with about 25k tokens of Pallas docs in context
 | `bare_stack` | the LoRA's inference stack with the adapter off | identical to `bare` | to run, **required if the LoRA is served by anything other than the same Ollama model** |
 
 The primary comparison is `lora` vs `bare_stack`, which differ only in the adapter. `lora` vs `bare` and `lora` vs `docs` are also
-reported. Inference stack for `lora`: `TODO(Hruday)` (engine, weights file, quantization, chat template source).
+reported. Inference stack for `lora` (filled Nov 9, before any LoRA attempt):
+- **Engine:** Ollama 0.40.14 on Modal (workspace `codecraftacademy981`, A10G, the `control/modal_gemma.py` image), the same engine,
+  options and `bench.py` loop as `bare`/`docs`.
+- **Weights:** the official `gemma4:e4b-it-qat` GGUF (digest `ee665637121887cf3befff38abbb1be4ee117c7db867d97a67e29049ecd7e15f`, the
+  one the `bare`/`docs` rows record), with the LoRA folded in by `training/to_ollama.py`. For each LoRA target tensor: Q4_0(W +
+  (alpha/r)·B·A); every other tensor byte-identical.
+- **Quantization:** Q4_0, as the official file.
+- **Chat template:** Ollama's built-in `gemma4:e4b-it-qat` template, carried over unchanged.
+- **`bare_stack`:** the same file with a zero adapter. The pilot's check showed Q4_0(bf16 base) reproduces the official file on 100%
+  of blocks, so `bare_stack` is the official model and its rows are the `bare` rows. This is re-verified on the folded `dataset-v1`
+  file before eval.
 
 ## Tasks
 
@@ -69,15 +79,28 @@ reported. Inference stack for `lora`: `TODO(Hruday)` (engine, weights file, quan
 
 ## Training data and model selection
 
-- **Data:** the LoRA is trained only on `dataset-v1`: Gemini constructor, frozen Nov 11 12:00 UTC, `verify_dataset.py` passing. No
-  Claude-generated data (`dataset-v0`) and no JAXBench file, reference or kernel.
-- **Hyperparameters, fixed before training:** `TODO(Hruday)` (rank, alpha, target modules, learning rate, epochs, max sequence length,
-  seed). The training examples are rendered with `bench.py`'s exact prompts, with no example truncated and the loss on assistant
+- **Data (corrected Nov 9; the earlier text said Gemini, which the team reversed on Nov 9 01:03 UTC, #3):** the LoRA is trained only
+  on `dataset-v1`, tag on `dataset-gen` (commit a0e6770), frozen Nov 9 ~07:05 UTC, `verify_dataset.py` OK, contamination and
+  near-dup filters clean.
+  - 264 examples (238 train / 26 val; 28 repair chains). Kernels are by **Claude**: `constructor.backend` is `claude_cli` or
+    `claude_code_subagent`, per row.
+  - It includes the pilot examples first exported as `dataset-v0`.
+  - No JAXBench file, reference or kernel is in it.
+- **Hyperparameters, fixed before training** (`training/train_lora.py`, config `r64`):
+  - base: `google/gemma-4-E4B-it-qat-q4_0-unquantized` @ `476025a01dbf`, bf16
+  - LoRA: rank 64, alpha 128, dropout 0, on attention (q, k, v, o) and MLP (gate, up, down)
+  - training: learning rate 1e-4, 3 epochs, gradient accumulation 4, max sequence length 24,576, shuffle seed 0
+  - loss only on the final assistant turn (the graded kernel); earlier repair turns are prompt
+  - the checkpoint is the end of epoch 3, with no early stopping. Val loss on the 26 val rows is logged, not used to select.
+  - checked on `dataset-v1` before training:
+    - rows render byte-identical to `bench.conversation` (264/264, feedback verbatim)
+    - tokens: max 14,840 (prompt + target), max 5,921 (target)
+    - no row over 24,576, and every target within the eval's 8,192 The training examples are rendered with `bench.py`'s exact prompts, with no example truncated and the loss on assistant
   turns only.
 - **No selection on JAXBench:** no hyperparameter, checkpoint, epoch, prompt or decoding choice is made using any JAXBench result. If
   something has to be chosen, it's chosen on the dataset's own val split.
 - **Every LoRA trained gets reported**, each with its training-set size (e.g. a data-size curve). The headline LoRA is named here in
-  advance: `TODO(Hruday)` (expected: the full `dataset-v1` adapter).
+  advance: **`v1_r64`**, the full `dataset-v1` adapter (238 train rows) with the hyperparameters above.
 
 ## Invalidating events
 
