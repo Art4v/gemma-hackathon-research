@@ -19,7 +19,7 @@ from signature import _SIGPURE  # noqa: E402
 from v3_common import ORACLE_FILES  # noqa: E402
 
 CHILD = r'''
-import json, signal, sys, tempfile, time
+import json, os, signal, sys, tempfile, threading, time
 sys.path.insert(0, ".")
 import tpu_oracle as o
 o.init(cpu_smoke=True)
@@ -87,8 +87,15 @@ def check(it):
             return {**r, "ok": False, "error": f"wrong on {len(wrong)} of 3 seeds, max err {max((p['err'] or 0) for p in wrong):.3g}"}
     return {**r, "ok": True, "stage": "done"}
 
+def out_of_time():  # the alarm can't interrupt native code, so a watchdog ends the process; the parent charges the item it was on and carries on after it
+    print(f"[budget: over {BUDGET}s]", file=sys.stderr, flush=True)
+    os._exit(9)
+
 for it in json.load(open("items.json")):
     signal.alarm(BUDGET)
+    guard = threading.Timer(BUDGET, out_of_time)
+    guard.daemon = True
+    guard.start()
     t0 = time.time()
     r = {"id": it["id"], "stage": "?"}
     try:
@@ -98,6 +105,7 @@ for it in json.load(open("items.json")):
             raise
         r = {"id": it["id"], "ok": False, "stage": "timeout" if isinstance(e, tc.Timeout) else "error", "error": f"{type(e).__name__}: {str(e)[:400]}"}
     signal.alarm(0)
+    guard.cancel()
     r["seconds"] = round(time.time() - t0, 2)
     print("@@" + json.dumps(r), flush=True)
     jax.clear_caches()
@@ -112,7 +120,7 @@ def run_batch(batch: list, python: str | None, budget: int, max_rss_gb: float) -
     return rows, (r.stderr.strip().splitlines() or [f"exit {r.returncode}"])[-1][-200:]
 
 
-def verify(items: list, out: pathlib.Path, python: str | None, *, batch: int = 25, budget: int = 150, max_rss_gb: float = 6.0, log=print) -> dict:
+def verify(items: list, out: pathlib.Path, python: str | None, *, batch: int = 25, budget: int = 30, max_rss_gb: float = 6.0, log=print) -> dict:
     """{id: result} for every item, resuming from `out`. A child that dies charges the crash to the item it was on and continues after it."""
     done = {r["id"]: r for r in read_jsonl(out)}
     todo = [i for i in items if i["id"] not in done]

@@ -18,6 +18,7 @@ from v3_common import ORACLE_SHA, V3, checked_in_batches  # noqa: E402
 
 CHARS_PER_TOKEN = 2.44  # dataset-v1: median target 2,985 chars, 1,221 tokens by Hruday's tokenizer run on issue 5
 MAX_TARGET_TOKENS = 8192
+TEACHER = {"repair_injected": "injected", "generated": "generator"}  # who wrote the target or the failure; everything else is a Claude-written kernel
 
 
 def bench():
@@ -36,7 +37,7 @@ def training_row(e: dict, kind: str, conversation) -> dict:
     target = e["turns"][-1]["code"]
     msgs = conversation(e["turns"][0]["ref_code"], history_of(e["turns"]), None)
     msgs.append({"role": "assistant", "content": f"```python\n{target}\n```", "reasoning": ""})
-    return {"messages": msgs, "thinking": False, "task": e["task_name"], "example_id": e["example_id"], "kind": kind, "source": e["source"]}
+    return {"messages": msgs, "thinking": False, "task": e["task_name"], "example_id": e["example_id"], "kind": kind, "source": e["source"], "teacher": TEACHER.get(kind, "claude")}
 
 
 PARTS = (("repairs.jsonl", "repair_injected"), ("generated.jsonl", "generated"), ("shape_variants.jsonl", "shape_variant"), ("correct_slow.jsonl", "correct_slow"))

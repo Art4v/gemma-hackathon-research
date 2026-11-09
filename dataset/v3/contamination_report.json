@@ -1,0 +1,83 @@
+{
+ "at": "2026-11-09T19:51:00+00:00",
+ "diversity": {
+  "cap_per_skeleton": 0,
+  "largest_skeleton_rows": 24,
+  "skeletons_distinct": 1216,
+  "survivors_skeletons_distinct": 1686,
+  "top10_share": 0.0727
+ },
+ "excluded_by_reason": {
+  "contamination:neardup": 14,
+  "contamination:opchain": 12,
+  "contamination:review": 74,
+  "duplicate:gen__matmul_epilogue__00001": 1,
+  "duplicate:gen__matmul_epilogue__00339": 1,
+  "duplicate:gen__matmul_epilogue__00472": 1,
+  "duplicate:gen__matmul_epilogue__00552": 1,
+  "duplicate:gen__matmul_epilogue__00664": 1,
+  "duplicate:gen__reduction__00023": 1,
+  "duplicate:gen__reduction__00238": 1,
+  "duplicate:gen__row_reduction__00050": 1,
+  "duplicate:gen__row_reduction__00099": 1,
+  "duplicate:gen__row_reduction__00176": 1,
+  "duplicate:gen__row_reduction__00230": 1,
+  "duplicate:gen__row_reduction__00254": 1,
+  "val_contamination:opchain": 85,
+  "val_contamination:review": 14
+ },
+ "generated_after_filters": 2157,
+ "generated_candidates": 2400,
+ "generated_kept": 1500,
+ "generated_kept_by_family": {
+  "bmm_epilogue": 161,
+  "conv1d_im2col": 44,
+  "conv2d_im2col": 143,
+  "conv3d_im2col": 50,
+  "elementwise": 258,
+  "matmul_epilogue": 375,
+  "reduction": 257,
+  "row_reduction": 212
+ },
+ "generated_verify_failed_at": {
+  "error": 32
+ },
+ "generated_verify_ok": 2368,
+ "max_similarity_kept": {
+  "op_multiset_jaccard": [
+   0.794,
+   "gen__reduction__00090",
+   "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish"
+  ],
+  "text_jaccard": [
+   0.496,
+   "gen__matmul_epilogue__00397",
+   "val:kb__l2__2_ConvTranspose2d_BiasAdd_Clamp_Scaling_Clamp_Divide"
+  ],
+  "text_ratio": [
+   0.799,
+   "gen__row_reduction__00268",
+   "50k_Matmul_GELU_Softmax"
+  ]
+ },
+ "max_text_vs_val": {
+  "jaccard": [
+   0.496,
+   "gen__matmul_epilogue__00397",
+   "val:kb__l2__2_ConvTranspose2d_BiasAdd_Clamp_Scaling_Clamp_Divide"
+  ],
+  "ratio": [
+   0.701,
+   "gen__elementwise__00238",
+   "val:kb__l1__29_Softplus"
+  ]
+ },
+ "shape_variants_in": 0,
+ "shape_variants_kept": 0,
+ "thresholds": {
+  "op_multiset_jaccard_dropped_at": 0.8,
+  "text_jaccard": 0.5,
+  "text_ratio": 0.8,
+  "within_set_duplicate_jaccard": 0.9
+ }
+}

@@ -3,17 +3,40 @@
   "compile": 1167
  },
  "by_final_verdict": {
+  "correct_slow": 54,
+  "cpu_verified": 1500,
   "pass": 1405
  },
  "by_verification": {
-  "tpu": 1405
+  "cpu": 1500,
+  "tpu": 1405,
+  "tpu_correct_slow": 54
+ },
+ "capped": {
+  "cap_per_skeleton_generated_rows": 6,
+  "file": "train_capped.jsonl",
+  "kernels_counted": 297,
+  "n_rows": 1489,
+  "skeletons_distinct": 162,
+  "skeletons_from": "curation/coverage.py on karthik/coverage",
+  "top10_max": 0.3,
+  "top10_share": 0.2896,
+  "train_by_kind": {
+   "correct_slow": 54,
+   "generated": 30,
+   "repair": 25,
+   "repair_injected": 1167,
+   "single": 213
+  }
  },
  "complete": false,
- "created_at": "2026-11-09T18:00:21+00:00",
+ "created_at": "2026-11-09T19:51:07+00:00",
  "files": {
-  "train.jsonl": "7821c9105b309ed04deacff8882f84f000fb9520424bc3d21ac6a1e8226cbf89",
-  "val.jsonl": "8cd25e21fd563ee06842568d899d94094270c7d3f8e54c71b38469dfbba170de",
-  "verification.jsonl": "4aec64329b839afe8bbf184889922cc324f77222869dc90f778cb7b091dd60f6"
+  "coverage.txt": "3609da515f0934e286aef519a2e9930956ed0491f9fe0a34495adb24086ac7e2",
+  "train.jsonl": "7a097eb8ac76772338207919bc15940a2771f06e3f95977acd9b6f5aad748c15",
+  "train_capped.jsonl": "4742a79d05722a6f70514d577cc3a474107a0067ad8e045d63b11495ff878489",
+  "val.jsonl": "8abc71aecc450f18f5d4cc68409ebc2d8afceb3a25debea2e74cf7a1b9bd078f",
+  "verification.jsonl": "ea3ba8e3e568313b68115240126ad7d95d850365f5b3a1e17d8354f97ee6d20d"
  },
  "mutations": {
   "block_rank": 187,
@@ -24,12 +47,14 @@
   "out_shape_int": 185
  },
  "n_targets_not_static_ok": 0,
- "n_targets_static_checked": 212,
- "n_train": 1405,
+ "n_targets_static_checked": 266,
+ "n_train": 2959,
  "n_val": 26,
  "oracle_sha": "c9a07d9298a1",
  "parts_present": [
-  "repair_injected"
+  "repair_injected",
+  "generated",
+  "correct_slow"
  ],
  "tokens_ESTIMATED": {
   "how": "chars / 2.44: not a tokenizer run. Confirm with build_rows' tokenizer before training.",
@@ -38,6 +63,8 @@
   "max_target_limit": 8192
  },
  "train_by_kind": {
+  "correct_slow": 54,
+  "generated": 1500,
   "repair": 25,
   "repair_injected": 1167,
   "single": 213
