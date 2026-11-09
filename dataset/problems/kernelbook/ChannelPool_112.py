@@ -1,0 +1,27 @@
+"""ChannelPool: concat(max over channels, mean over channels) along dim 1."""
+import jax
+import jax.numpy as jnp
+
+CONFIG = {
+    'name': 'ChannelPool_112',
+    'batch': 16,
+    'channels': 128,
+    'height': 128,
+    'width': 128,
+}
+
+
+def create_inputs(dtype=jnp.float32):
+    key = jax.random.key(0)
+    x = jax.random.uniform(
+        key,
+        (CONFIG['batch'], CONFIG['channels'], CONFIG['height'], CONFIG['width']),
+        dtype=dtype,
+    )
+    return (x,)
+
+
+def workload(x):
+    mx = jnp.max(x, axis=1, keepdims=True)
+    mn = jnp.mean(x, axis=1, keepdims=True)
+    return jnp.concatenate((mx, mn), axis=1)
