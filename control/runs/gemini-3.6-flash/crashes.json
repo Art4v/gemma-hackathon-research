@@ -1,0 +1,1 @@
+{"crash": "docs/19k_Matmul_Subtract_Multiply_ReLU/t1", "note": "oracle process died twice (batch + alone); recorded as crash = not correct per PROTOCOL; no retry"}
