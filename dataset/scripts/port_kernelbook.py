@@ -64,6 +64,14 @@ def main(argv=None) -> None:
     cli = {"claude_bin": shutil.which("claude") or "/opt/homebrew/bin/claude"} if a.backend == "claude_cli" else {}
     con = get_constructor(a.backend, a.model, workers=a.workers, **cli)
     raw_dir = CANDIDATES / "raw_responses"
+    # ponytail: chunks of 6x workers, each written before the next starts, so a crash hours in loses one chunk, not the run
+    size = 6 * a.workers
+    for k in range(0, len(sels), size):
+        port_chunk(sels[k:k + size], con, raw_dir, a)
+        print(f"-- {min(k + size, len(sels))} of {len(sels)} done", flush=True)
+
+
+def port_chunk(sels, con, raw_dir, a):
     by_key = {f"port/kbk/{s['stem']}": s for s in sels}
     kept, excluded = [], []
 
