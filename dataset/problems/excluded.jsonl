@@ -22,3 +22,4 @@
 {"at": "2026-11-09T20:55:26+00:00", "problem_id": "authored/attention_differential/differential_attention__m1_aux", "reason": "duplicate:authored/attention_differential/differential_attention"}
 {"at": "2026-11-09T20:55:26+00:00", "problem_id": "kb/l2/58_ConvTranspose3d_LogSumExp_HardSwish_Subtract_Clamp__m1_aux", "reason": "duplicate:kb/l2/58_ConvTranspose3d_LogSumExp_HardSwish_Subtract_Clamp"}
 {"at": "2026-11-09T20:55:26+00:00", "problem_id": "kb/l2/65_Conv2d_AvgPool_Sigmoid_Sum__m1_aux", "reason": "duplicate:kb/l2/65_Conv2d_AvgPool_Sigmoid_Sum"}
+{"at": "2026-11-09T22:13:33+00:00", "problem_id": "authored/ragged_jagged_softmax/jagged_segment_softmax_3__m1_aux", "reason": "reference_nonfinite: cpu_check finite failed (aarav/m1-cpu-check abdfa88)"}
