@@ -60,8 +60,8 @@ def main(argv=None) -> None:
     sels = [s for s in read_jsonl(SELECTION) if s["shard"] in a.shards.split(",") and s.get("import_ok", True) and f"kernelbook/{s['stem']}" not in done]
     sels = sels[:a.limit] if a.limit else sels
     print(f"{len(sels)} KernelBook modules to port (shards {a.shards})", flush=True)
-    # an absolute claude path: the CLI backend's subprocess can't always resolve a bare `claude` on PATH
-    cli = {"claude_bin": shutil.which("claude") or "/opt/homebrew/bin/claude"} if a.backend == "claude_cli" else {}
+    # CLAUDE_BIN: a stable copy of the binary; the installed one is rewritten every ~10 min and an exec during the rewrite fails
+    cli = {"claude_bin": __import__("os").environ.get("CLAUDE_BIN") or shutil.which("claude") or "/opt/homebrew/bin/claude"} if a.backend == "claude_cli" else {}
     con = get_constructor(a.backend, a.model, workers=a.workers, **cli)
     raw_dir = CANDIDATES / "raw_responses"
     # ponytail: chunks of 6x workers, each written before the next starts, so a crash hours in loses one chunk, not the run
