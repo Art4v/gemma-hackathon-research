@@ -30,7 +30,7 @@
  "n_examples": 172,
  "n_harness_blocked": 0,
  "n_problems_judged": 168,
- "n_unsolved": 1,
+ "n_unsolved": 3,
  "parity_share": 0.9057,
  "pass_at_k": {
   "all": {

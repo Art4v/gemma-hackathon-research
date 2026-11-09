@@ -28,6 +28,8 @@ PY = str(DATASET / ".venv" / "bin" / "python")
 STATE = DATASET / "overnight_state.json"
 LOG = DATASET / "overnight.log"
 BRANCH, ISSUE, ORACLE_SHA = "dataset-gen", "3", "c9a07d9298a1"
+import os as _os
+EXTERNAL_GEN = set(filter(None, _os.environ.get("EXTERNAL_GEN", "b2").split(",")))
 PRODUCTION = [
     ("port", [PY, "-u", str(HERE / "port_kernelbench.py"), "--level", "1,2", "--pick", "all", "--limit", "0", "--workers", "3", "--check-workers", "1", "--reuse-raw"]),
     ("author", [PY, "-u", str(HERE / "author_problems.py"), "--per-category", "3", "--workers", "3"]),
@@ -159,7 +161,12 @@ def handle_results(st: dict, max_round: int) -> bool:
         for f in (ORACLE / "queue").glob(f"{job}*"):  # the job ran: take it off the queue so the watcher never sees it again
             f.unlink()
         did = True
-        if b["collected"] < max_round and open_count(batch):
+        if b["collected"] < max_round and open_count(batch) and batch in EXTERNAL_GEN:
+            # Nov 8: this batch's repairs are written by subagents outside the driver (claude -p on this account is too slow);
+            # repair_package.py submits the round. Never marked done here.
+            b["external"] = b["collected"] + 1
+            log(f"{batch}: round {b['external']} left to external generation ({open_count(batch)} open)")
+        elif b["collected"] < max_round and open_count(batch):
             if not submit_round(batch, b["collected"] + 1, st):
                 b["done"] = True
         else:
