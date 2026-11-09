@@ -1,0 +1,4 @@
+Merged from one process per crash-free stretch on an on-demand TPU v6e-1 (europe-west4-a), oracle_sha c9a07d9298a1:
+  b2-r1 (57), b2-r1-rest (1), b2-r1-crash (1), plus 30 single-item runs (28 rows).
+Excluded: kb__l2__44_ConvTranspose2d_Multiply_GlobalAvgPool_GlobalAvgPool_Mean.a1.s0 (harness_crash: the oracle process died inside XLA's TPU compiler, SIGSEGV stack overflow, twice, run alone), left out of MANIFEST.
+Excluded: kb__l2__72_ConvTranspose3d_BatchNorm_AvgPool_AvgPool.a1.s0 (harness_crash: the oracle process died inside XLA's TPU compiler, SIGSEGV stack overflow, twice, run alone), left out of MANIFEST.

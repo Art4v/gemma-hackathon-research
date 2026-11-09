@@ -7,8 +7,9 @@
    "submitted": 3
   },
   "b2": {
-   "collected": 0,
+   "collected": 1,
    "done": false,
+   "external": 2,
    "n": 89,
    "submitted": 1
   },
