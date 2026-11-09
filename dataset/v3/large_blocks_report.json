@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-09T20:48:10+00:00",
+ "dropped_by_family": {
+  "elementwise": 86,
+  "reduction": 79
+ },
+ "evidence": "oracle-results/v3-gen-sample",
+ "families": [
+  "elementwise",
+  "reduction"
+ ],
+ "kept_by_family": {
+  "bmm_epilogue": 161,
+  "conv1d_im2col": 44,
+  "conv2d_im2col": 143,
+  "conv3d_im2col": 50,
+  "elementwise": 172,
+  "matmul_epilogue": 375,
+  "reduction": 178,
+  "row_reduction": 212
+ },
+ "limit_bytes": 8388608,
+ "n_before": 1500,
+ "n_dropped": 165,
+ "n_kept": 1335
+}

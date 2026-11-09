@@ -4,11 +4,11 @@
  },
  "by_final_verdict": {
   "correct_slow": 54,
-  "cpu_verified": 1583,
+  "cpu_verified": 1418,
   "pass": 1405
  },
  "by_verification": {
-  "cpu": 1583,
+  "cpu": 1418,
   "tpu": 1405,
   "tpu_correct_slow": 54
  },
@@ -31,13 +31,13 @@
   }
  },
  "complete": true,
- "created_at": "2026-11-09T20:27:02+00:00",
+ "created_at": "2026-11-09T20:48:18+00:00",
  "files": {
-  "coverage.txt": "737a925299572918e6e6472ba11636bbb8ef5573278f78437564a88ea377fed6",
-  "train.jsonl": "8412c6ab4b3e4e6fc8e542811d11c957ae60f83d41664e592560ff0b0d505293",
-  "train_capped.jsonl": "5aaab35bf49a3f7d18c4d6d624a05d772cc4400e2738b4032e3a6f1497394e59",
+  "coverage.txt": "3ab6b539999bc92ccca5defc3926e96d800a4b5eede511193e461a8391b7e41d",
+  "train.jsonl": "fdd2722ef883637646f8827f5aa9a7d938b98c010dc937ba6ff9de0c75f3bfb9",
+  "train_capped.jsonl": "4293b61c3d07efcbad4e7b7f2e6f5bd3a357859a9b2232a97233d9d2a3c1a5b8",
   "val.jsonl": "8abc71aecc450f18f5d4cc68409ebc2d8afceb3a25debea2e74cf7a1b9bd078f",
-  "verification.jsonl": "c465978f95981584196aaff0bb107334766fbd777958bf606b1177ca498e4dce"
+  "verification.jsonl": "b109a886abc0cd5e3404f599d5fcfa14cd08359904c056de777cbd0d45bea055"
  },
  "mutations": {
   "block_rank": 187,
@@ -49,7 +49,7 @@
  },
  "n_targets_not_static_ok": 0,
  "n_targets_static_checked": 266,
- "n_train": 3042,
+ "n_train": 2877,
  "n_val": 26,
  "oracle_sha": "c9a07d9298a1",
  "parts_present": [
@@ -66,7 +66,7 @@
  },
  "train_by_kind": {
   "correct_slow": 54,
-  "generated": 1500,
+  "generated": 1335,
   "repair": 25,
   "repair_injected": 1167,
   "shape_variant": 83,

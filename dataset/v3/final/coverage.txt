@@ -1,26 +1,26 @@
 
-== /private/tmp/claude-501/-Users-aarav-Documents-GitHub-gemma-hackathon-research/66df349f-ad0e-439d-9993-9c5ca7c606ac/scratchpad/v3/dataset/v3/final/train.jsonl: 1850 kernels
-  grid_rank        0:1  1:967  2:292  3:443  4:175
-  index_map_arity  1:949  2:282  3:465  4:174  5:2
-  n_outputs        1:1804  2:46  3:17  4:12  6:2
+== /private/tmp/claude-501/-Users-aarav-Documents-GitHub-gemma-hackathon-research/66df349f-ad0e-439d-9993-9c5ca7c606ac/scratchpad/v3/dataset/v3/final/train.jsonl: 1685 kernels
+  grid_rank        0:1  1:802  2:292  3:443  4:175
+  index_map_arity  1:784  2:282  3:465  4:174  5:2
+  n_outputs        1:1639  2:46  3:17  4:12  6:2
   multi pallas_call  50
-  accumulator_scratch   834   45.1%
-  arbitrary_axis        832   45.0%
-  pl_when               822   44.4%
-  scalar_prefetch        87    4.7%
-  manual_dma             18    1.0%
-  smem                   27    1.5%
-  masking_iota          176    9.5%
-  cdiv_grid              71    3.8%
-  in_kernel_loop        104    5.6%
-  dynamic_slice         112    6.1%
-  aliasing               13    0.7%
-  mxu_dot              1128   61.0%
-  f32_accumulate       1128   61.0%
-  vmem_limit            286   15.5%
+  accumulator_scratch   834   49.5%
+  arbitrary_axis        832   49.4%
+  pl_when               822   48.8%
+  scalar_prefetch        87    5.2%
+  manual_dma             18    1.1%
+  smem                   27    1.6%
+  masking_iota          176   10.4%
+  cdiv_grid              71    4.2%
+  in_kernel_loop        104    6.2%
+  dynamic_slice         112    6.6%
+  aliasing               13    0.8%
+  mxu_dot              1128   66.9%
+  f32_accumulate       1128   66.9%
+  vmem_limit            286   17.0%
   emit_pipeline           0    0.0%
-  bf16                  197   10.6%
-  distinct skeletons 162; top-10 skeletons hold 1566 rows (85%)
+  bf16                  197   11.7%
+  distinct skeletons 162; top-10 skeletons hold 1401 rows (83%)
 
 == /private/tmp/claude-501/-Users-aarav-Documents-GitHub-gemma-hackathon-research/66df349f-ad0e-439d-9993-9c5ca7c606ac/scratchpad/v3/dataset/v3/final/train_capped.jsonl: 405 kernels
   grid_rank        0:1  1:130  2:198  3:79  4:25
