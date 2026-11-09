@@ -9,7 +9,7 @@ Resumable: stems already in problems.jsonl or excluded.jsonl are skipped. Run on
 """
 from __future__ import annotations
 
-import argparse, concurrent.futures as cf, json, pathlib, sys
+import argparse, concurrent.futures as cf, json, pathlib, shutil, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import port_kernelbench as pk  # noqa: E402
@@ -60,7 +60,9 @@ def main(argv=None) -> None:
     sels = [s for s in read_jsonl(SELECTION) if s["shard"] in a.shards.split(",") and f"kernelbook/{s['stem']}" not in done]
     sels = sels[:a.limit] if a.limit else sels
     print(f"{len(sels)} KernelBook modules to port (shards {a.shards})", flush=True)
-    con = get_constructor(a.backend, a.model, workers=a.workers)
+    # an absolute claude path: the CLI backend's subprocess can't always resolve a bare `claude` on PATH
+    cli = {"claude_bin": shutil.which("claude") or "/opt/homebrew/bin/claude"} if a.backend == "claude_cli" else {}
+    con = get_constructor(a.backend, a.model, workers=a.workers, **cli)
     raw_dir = CANDIDATES / "raw_responses"
     by_key = {f"port/kbk/{s['stem']}": s for s in sels}
     kept, excluded = [], []
