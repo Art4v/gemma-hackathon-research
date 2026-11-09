@@ -1,0 +1,45 @@
+{
+ "broken_verdicts": {
+  "compile": 1167
+ },
+ "by_final_verdict": {
+  "pass": 1405
+ },
+ "by_verification": {
+  "tpu": 1405
+ },
+ "complete": false,
+ "created_at": "2026-11-09T18:00:21+00:00",
+ "files": {
+  "train.jsonl": "7821c9105b309ed04deacff8882f84f000fb9520424bc3d21ac6a1e8226cbf89",
+  "val.jsonl": "8cd25e21fd563ee06842568d899d94094270c7d3f8e54c71b38469dfbba170de",
+  "verification.jsonl": "4aec64329b839afe8bbf184889922cc324f77222869dc90f778cb7b091dd60f6"
+ },
+ "mutations": {
+  "block_rank": 187,
+  "in_specs_count": 187,
+  "index_map_arity": 182,
+  "invented_kwarg": 213,
+  "missing_workload": 213,
+  "out_shape_int": 185
+ },
+ "n_targets_not_static_ok": 0,
+ "n_targets_static_checked": 212,
+ "n_train": 1405,
+ "n_val": 26,
+ "oracle_sha": "c9a07d9298a1",
+ "parts_present": [
+  "repair_injected"
+ ],
+ "tokens_ESTIMATED": {
+  "how": "chars / 2.44: not a tokenizer run. Confirm with build_rows' tokenizer before training.",
+  "max_row": 14940,
+  "max_target": 5809,
+  "max_target_limit": 8192
+ },
+ "train_by_kind": {
+  "repair": 25,
+  "repair_injected": 1167,
+  "single": 213
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "n_kernels": 213,
+ "n_mutants": 1167,
+ "n_rows": 1167,
+ "not_applicable": {
+  "block_rank": 26,
+  "in_specs_count": 26,
+  "index_map_arity": 31,
+  "out_shape_int": 28
+ },
+ "oracle_sha": "c9a07d9298a1",
+ "outcome": {
+  "block_rank:compile": 187,
+  "in_specs_count:compile": 187,
+  "index_map_arity:compile": 182,
+  "invented_kwarg:compile": 213,
+  "missing_workload:compile": 213,
+  "out_shape_int:compile": 185
+ }
+}
