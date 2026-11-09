@@ -243,9 +243,28 @@ training targets (1.2-1.8k tokens), and every reply contains a fenced module wit
 
 The oracle's verbatim feedback on these does not lead to a fix in the next turn.
 
-TBD:
-- the 4-bit-fold diagnostic: bf16 vs folded adapter vs base, on val
-- the secondary `v2` adapter (on-policy repairs), if it clears val
+**Most of the adapter never reached the served model.** After the JAXBench run we checked the fold. The LoRA was trained against
+bf16 weights and then rounded into Q4_0. The median LoRA change to a weight is 2% of one Q4_0 rounding step, and none exceeds half
+a step, so rounding keeps only a sparse, random part of the adapter. An earlier check (93.5% of blocks changed) measured changed
+bytes, not surviving effect, and missed this. A mixed-precision fold fixes it: the 258 LoRA-touched tensors are stored at F16 as
+`dequant(Q4_0) + delta`, and every other tensor stays byte-identical. On the 23 val problems:
+
+| `v1_r64` served as | uses `ShapeDtypeStruct` | median similarity to target | passes step 1 (CPU) |
+|---|---|---|---|
+| Q4_0 fold (the JAXBench run above) | 6/23 | 0.28 | 1/23 |
+| bf16 adapter in HF (reference) | 19/23 | 0.47 | 4/23 |
+| F16 fold in Ollama | 18/23 | 0.51 | 3/23 |
+
+The F16 fold matches the unquantized adapter, so the serving bug is fixed. But even intact, `v1_r64` gets only 3 of 23 val
+kernels past step 1. A second adapter trained longer on the same data (`v2`) reached a lower training loss (0.07 vs 0.18) and a
+higher val loss (0.35 to 0.47): with 238 training rows it memorizes. Published kernel models trained on 2k to 60k verified examples.
+
+**Deviation from the protocol.** The serving bug was found after the pre-registered result, so `v1_r64` at 0/64 stays reported as
+the first iteration. Later adapters change the data and the serving fold, are selected on val only, and are all reported with
+the total number of JAXBench runs (amendment A5).
+
+TBD: the `v3` adapter (dataset-v1 plus about 1.2k injected-error repair pairs and about 1.5k CPU-verified generated kernels, trained
+with MLX on the exact Q4_0 weights), its val numbers, and its JAXBench result.
 
 ## 5. Discussion and limitations
 
@@ -260,8 +279,9 @@ TBD:
 - **Decoding asymmetry.** Gemma arms decode greedily (temperature 0, one chain), while Gemini Flash samples at its own defaults,
   because Gemini loops at temperature 0. The attempt budget is equal, but the decoding is not.
 - **Greedy loops.** Greedy small models can repeat until the token cap; this was the pilot LoRA's main failure mode.
-- **Quantized serving.** The LoRA is trained at full precision and folded into the 4-bit QAT GGUF that Ollama serves, so
-  re-quantization may blunt part of its effect.
+- **Quantized serving.** Folding a bf16-trained LoRA into a Q4_0 GGUF erased most of it (Section 4.3). Anyone shipping a LoRA
+  on a 4-bit on-device model should check the effect that survives the fold, not just which bytes changed, or train on the
+  quantized weights directly.
 - **Repair data.** Most constructor kernels pass at once, so repair examples are few (TBD(n)).
 
 ## 6. Conclusion
