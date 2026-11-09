@@ -1,0 +1,11 @@
+{"candidate_id": "kb__l1__65_conv_transposed_2D__square_input__asymmetric_kernel.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l1__69_conv_transposed_2D__asymmetric_input__asymmetric_kernel.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__57_Conv2d_ReLU_HardSwish.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__5_ConvTranspose2d_Subtract_Tanh.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__61_ConvTranspose3d_ReLU_GroupNorm.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__69_Conv2d_HardSwish_ReLU.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__71_Conv2d_Divide_LeakyReLU.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
+{"candidate_id": "kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.1, "stage": "static"}
