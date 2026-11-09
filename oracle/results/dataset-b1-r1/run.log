@@ -1,0 +1,3 @@
+Merged from three runs on an on-demand TPU v6e-1 (europe-west4-a), oracle_sha c9a07d9298a1:
+  dataset-b1-r1 (11 rows), dataset-b1-r1-rest (7), dataset-b1-r1-rest2 (101).
+Excluded: authored__attention_differential__diff_attention_causal_subln.a1.s0 (harness_crash: the oracle process died inside XLA's TPU compiler, SIGSEGV stack overflow, twice), left out of MANIFEST so collection validates.

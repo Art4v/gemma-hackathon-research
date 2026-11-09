@@ -1,0 +1,2 @@
+[21:24:35] takeover on Hruday's machine; state {'batches': {'b1': {'collected': 0, 'done': False, 'n': 120, 'submitted': 1}, 'b2': {'collected': 0, 'done': False, 'n': 89, 'submitted': 0}, 'pilot': {'collected': 3, 'done': True, 'submitted': 3}}, 'finished': False, 'next_batch': 3, 'production': 5}
+[21:24:35] b2: formed but round 1 never submitted; submitting now

@@ -1,7 +1,7 @@
 {
  "batches": {
   "b1": {
-   "collected": 0,
+   "collected": 1,
    "done": false,
    "n": 120,
    "submitted": 1
