@@ -5,3 +5,13 @@
 [01:39:23] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-k1-r3 ... -> rc 0 | dataset-k1-r3: 3 verdicts {'correct_slow': 3}; trajectories/k1.jsonl: {'solved': 14, 'unsolved': 3}
 [01:39:23] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/assemble.py --phase ... -> rc 0 | /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final: 234 train, 24 val, 6 unsolved, 233 kernels to reverify; parity share 0.8412
 [01:39:23] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/verify_dataset.py /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final ... -> rc 0 | verify_dataset: OK
+[01:39:23] $ add -A dataset ... -> rc 0 | 
+[01:39:23] $ commit -q -m ... -> rc 0 | 
+[01:39:25] $ push -q origin ... -> rc 0 | 
+[01:44:25] $ fetch -q origin ... -> rc 0 | 
+[01:49:25] $ fetch -q origin ... -> rc 0 | 
+[01:49:25] results for dataset-b2-r3
+[01:49:25] $ checkout origin/oracle-results/dataset-b2-r3 -- ... -> rc 0 | 
+[01:49:25] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-b2-r3 ... -> rc 0 | dataset-b2-r3: 11 verdicts {'correct_slow': 6, 'mosaic': 2, 'pass': 3}; trajectories/b2.jsonl: {'open': 1, 'solved': 78, 'unsolved': 8}
+[01:49:25] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/assemble.py --phase ... -> rc 0 | /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final: 238 train, 26 val, 14 unsolved, 236 kernels to reverify; parity share 0.8347
+[01:49:26] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/verify_dataset.py /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final ... -> rc 0 | verify_dataset: OK

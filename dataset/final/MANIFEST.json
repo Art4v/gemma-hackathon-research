@@ -1,17 +1,17 @@
 {
- "created_at": "2026-11-09T06:39:23+00:00",
+ "created_at": "2026-11-09T06:49:25+00:00",
  "emit_suffix": false,
  "files": {
-  "reverify_items.jsonl": "6ea787eb21fcc2ed948147e2e014ed73292bc846a0f491225b675508cff17f15",
-  "stats.json": "2601427f4455ce3912d10b2b544e70f8f900d939645eebffc7b0485e29e6beed",
-  "train.jsonl": "a28d40a85b89c41206ec9c437c7ee51762a79bca6ec79887ff3452abb15d3647",
-  "unsolved.jsonl": "0675729397ab7afa633bf7827df19d4ae1f963da243f8678805d50567791db31",
-  "val.jsonl": "df686f59f1676401f69f17b3b0f2ca0b392c9bd817d14bb6f6d7cdae7066e1e5"
+  "reverify_items.jsonl": "6d41cb173055b968b1fa437fa34c2b39b1e2e46eedc13c198f00c4d9751c757b",
+  "stats.json": "2dc48eb482ee7cdd1e38ee65f8a358740a2e2c4c6c52d7914a33ae59b73dbcd3",
+  "train.jsonl": "ffb903ba57c3c304e38be325a652e9fe74521c39accf9fbcba7250ada9a3a021",
+  "unsolved.jsonl": "982043436f553fbe892aeda2875d505717398f6bd8fe39dcd3c61fc825f6405a",
+  "val.jsonl": "6ed2c9745a296302e1f95002b36657bc89624e60c6ee5249faf67229e0222824"
  },
  "human_targets": true,
- "n_reverify": 233,
- "n_train": 234,
- "n_val": 24,
+ "n_reverify": 236,
+ "n_train": 238,
+ "n_val": 26,
  "oracle_commits": [
   "18333c0",
   "4e8e61b",
@@ -19,6 +19,7 @@
   "8500a5b",
   "963c0e3",
   "a3211ca",
+  "a3ce08e",
   "bfae1ca",
   "c564fe0"
  ],
