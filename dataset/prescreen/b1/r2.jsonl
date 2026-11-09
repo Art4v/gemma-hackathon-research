@@ -1,0 +1,11 @@
+{"candidate_id": "authored__attention_decode_mqa__mqa_decode_padded_cache.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "authored__attention_gqa_sink__gqa_sink_ring_cache_spec_verify.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "authored__kv_rope_append__kv_rope_append_2.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "authored__kv_rope_append__kv_rope_append_3.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "authored__quantized_fp8_matmul__fp8_act_quant_linear_residual.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "authored__ssm_lru_scan__lru_complex_diag_scan.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "kb__l1__25_Swish.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "kb__l1__41_Max_Pooling_1D.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "kb__l1__42_Max_Pooling_2D.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "scraped__maxtext__ragged_attention_v2.a2.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}

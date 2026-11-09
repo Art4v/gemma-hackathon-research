@@ -1,0 +1,89 @@
+{
+ "created_at": "2026-11-09T03:03:24+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 268726400,
+    "n": 1,
+    "seconds": 30.2874179384,
+    "task": "authored__attention_decode_mqa__mqa_decode_padded_cache"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 807272704,
+    "n": 1,
+    "seconds": 30.09652232424,
+    "task": "authored__attention_gqa_sink__gqa_sink_ring_cache_spec_verify"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 276824096,
+    "n": 1,
+    "seconds": 33.22891835666,
+    "task": "authored__kv_rope_append__kv_rope_append_2"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 285212704,
+    "n": 1,
+    "seconds": 33.22894981284,
+    "task": "authored__kv_rope_append__kv_rope_append_3"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67633152,
+    "n": 1,
+    "seconds": 31.91816939872,
+    "task": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 521154816,
+    "n": 1,
+    "seconds": 33.14052636896,
+    "task": "authored__quantized_fp8_matmul__fp8_act_quant_linear_residual"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 142616576,
+    "n": 1,
+    "seconds": 31.98946602496,
+    "task": "authored__ssm_lru_scan__lru_complex_diag_scan"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.35141666816,
+    "task": "kb__l1__25_Swish"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 36.48009247232,
+    "task": "kb__l1__41_Max_Pooling_1D"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.21549842176,
+    "task": "kb__l1__42_Max_Pooling_2D"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67174432,
+    "n": 1,
+    "seconds": 30.01448038012,
+    "task": "scraped__maxtext__ragged_attention_v2"
+   }
+  ],
+  "total_s": 356.95145816714
+ },
+ "job_id": "dataset-b1-r2",
+ "n_items": 11,
+ "n_tasks": 11,
+ "probe_ids": []
+}
