@@ -147,6 +147,8 @@ def assemble(root: pathlib.Path, phase: str, *, emit_suffix: bool, human_targets
         if p is None:
             errors.append(f"{t['problem_id']}: no problem record")
             continue
+        if p.get("status") != "ok":  # Nov 9: excluded after judging (harness_crash, verify_fail, contamination review): never emitted
+            continue
         try:
             examples += examples_for(t, p, verdicts, candidates, emit_suffix=emit_suffix, human_targets=human_targets, val_frac=val_frac)
         except (KeyError, ValueError) as e:
