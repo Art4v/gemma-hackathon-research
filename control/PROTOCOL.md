@@ -99,3 +99,26 @@ Any of these makes a result invalid or reportable only with a caveat:
 - **Reported:** the same metrics as every arm, on the same primary task set. The comparison of interest is `lora` vs `flash_docs` at
   equal attempt budget, one sample and at most 3 attempts. It is stated next to the JAXBench paper's Gemini 3 Flash result, which used
   up to 144 attempts per task (18 chains x 8 turns), so the budgets are not confused.
+
+**A2 (Nov 9, 02:10 UTC; proposed, pending Hruday's OK; written before any `lora` or `flash_docs` verdict): attempt budget and decoding.**
+- **Budget, every arm** (`bare`, `docs`, `lora`, `bare_stack`, `flash_docs`): **3 independent chains per task**. A chain is turn 0 plus up to
+  2 retries with the oracle's feedback (unchanged), so at most 9 attempts per task. The JAXBench paper's iterative refinement allowed
+  up to 144 (18 chains x 8 turns).
+- **Decoding:** each model's recommended sampling. Gemma: temperature 1.0, top_p 0.95, top_k 64 (Gemma's documented defaults;
+  confirm for Gemma 4). Gemini: API defaults. Seed `crc32("<task>/<chain>/<turn>")` where the engine takes one; chain 0 keeps
+  today's seed. Rationale: Gemini 3 is documented to loop at temperature 0, and greedy Gemma loops to the token cap. One decoding
+  regime per vendor's guidance treats the arms alike.
+- **TPU:** chains are independent, so each turn of all chains is one oracle job, still 3 rounds per arm.
+- **Primary metric** (replaces the single-chain `pass_within_3`): an arm's solve rate = mean over tasks of (chains solved within 3
+  turns) / 3.
+  - **Two pre-specified comparisons:** `lora` vs `bare_stack`, and `lora` vs `flash_docs`. Each uses a two-sided paired permutation
+    test on per-task solved counts (10,000 permutations), Holm-corrected, with 95% paired-bootstrap intervals.
+- **Secondary:**
+  - any of the 9 attempts (pass@3 chains)
+  - turn-0 pass@1 (unbiased, from 3 chains)
+  - success vs attempt budget (1 to 9)
+  - cost per solved task (API dollars vs local)
+  - wall time
+  - the greedy single-chain `bare`/`docs` results already run, reported as before
+- **Fallback if Gemini credit runs short:** 2 chains for every arm. Decided before the first `lora` attempt.
+- Flash's turn-0 attempts generated on Nov 9 (API defaults) are its chain 0.
