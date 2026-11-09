@@ -57,7 +57,7 @@ def main(argv=None) -> None:
     ap.add_argument("--python", default=None)
     a = ap.parse_args(argv)
     done = {r["problem_id"] for r in read_jsonl(PROBLEMS / "problems.jsonl")} | {r["problem_id"] for r in read_jsonl(PROBLEMS / "excluded.jsonl")}
-    sels = [s for s in read_jsonl(SELECTION) if s["shard"] in a.shards.split(",") and f"kernelbook/{s['stem']}" not in done]
+    sels = [s for s in read_jsonl(SELECTION) if s["shard"] in a.shards.split(",") and s.get("import_ok", True) and f"kernelbook/{s['stem']}" not in done]
     sels = sels[:a.limit] if a.limit else sels
     print(f"{len(sels)} KernelBook modules to port (shards {a.shards})", flush=True)
     # an absolute claude path: the CLI backend's subprocess can't always resolve a bare `claude` on PATH
