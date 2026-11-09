@@ -36,16 +36,26 @@ def get_init_inputs():
 
 
 def kb_source(sel: dict) -> str:
+    """KernelBook rows get the adapter; rows already in KernelBench format (needs_adapter false, e.g. GitHub references) don't."""
+    if not sel.get("needs_adapter", True):
+        return sel["python_code"]
     return sel["python_code"].rstrip() + "\n" + ADAPTER.format(cls=sel["module_name"])
+
+
+def pid_of(sel: dict) -> str:
+    return f"{sel.get('src', 'kernelbook')}/{sel['stem']}"
 
 
 def record(sel: dict, code: str, check: dict, status: str, reason: str | None, plan: str) -> dict:
     rec = pk.record(0, sel["stem"], code, check, "", status, reason, plan)
-    pid = f"kernelbook/{sel['stem']}"
-    rec.update(problem_id=pid, family_id=pid, task_name=task_name(pid), source="kernelbook",
-               source_ref={"dataset": "GPUMODE/KernelBook", "dataset_license": "June 9 Researcher Reciprocity License", "uuid": sel["uuid"],
-                           "repo": sel["repo_name"], "commit": sel["sha"], "repo_link": sel["repo_link"], "license": sel["license_checked"],
-                           "module_name": sel["module_name"], "family_hint": sel["family"]})
+    pid, src = pid_of(sel), sel.get("src", "kernelbook")
+    ref = {"repo": sel["repo_name"], "commit": sel["sha"], "repo_link": sel["repo_link"], "license": sel["license_checked"],
+           "module_name": sel["module_name"], "family_hint": sel["family"]}
+    if src == "kernelbook":
+        ref.update(dataset="GPUMODE/KernelBook", dataset_license="June 9 Researcher Reciprocity License", uuid=sel["uuid"])
+    if sel.get("why_not_p_task"):
+        ref["why_not_p_task"] = sel["why_not_p_task"]
+    rec.update(problem_id=pid, family_id=pid, task_name=task_name(pid), source=src, source_ref=ref)
     return rec
 
 
@@ -54,10 +64,10 @@ def main(argv=None) -> None:
     ap.add_argument("--shards", default="A"); ap.add_argument("--limit", type=int, default=0); ap.add_argument("--batch", default="kbk")
     ap.add_argument("--backend", default="claude_cli"); ap.add_argument("--model", default=None); ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--check-workers", type=int, default=2); ap.add_argument("--max-rss-gb", type=float, default=5.0)
-    ap.add_argument("--python", default=None)
+    ap.add_argument("--python", default=None); ap.add_argument("--selection", default=str(SELECTION))
     a = ap.parse_args(argv)
     done = {r["problem_id"] for r in read_jsonl(PROBLEMS / "problems.jsonl")} | {r["problem_id"] for r in read_jsonl(PROBLEMS / "excluded.jsonl")}
-    sels = [s for s in read_jsonl(SELECTION) if s["shard"] in a.shards.split(",") and s.get("import_ok", True) and f"kernelbook/{s['stem']}" not in done]
+    sels = [s for s in read_jsonl(pathlib.Path(a.selection)) if s["shard"] in a.shards.split(",") and s.get("import_ok", True) and pid_of(s) not in done]
     sels = sels[:a.limit] if a.limit else sels
     print(f"{len(sels)} KernelBook modules to port (shards {a.shards})", flush=True)
     # CLAUDE_BIN: a stable copy of the binary; the installed one is rewritten every ~10 min and an exec during the rewrite fails

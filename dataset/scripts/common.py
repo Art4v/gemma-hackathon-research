@@ -30,7 +30,7 @@ N_SEEDS = 3
 HBM_BUDGET_BYTES = 28e9  # oracle/tpu_check.py; a task runs only when 3 x input bytes fits
 TASK_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 
-SOURCES = ("kernelbench", "authored", "scraped", "kernelbook")
+SOURCES = ("kernelbench", "authored", "scraped", "kernelbook", "github")
 VERDICTS_ALL = ("pass", "correct_slow", "wrong", "not_a_kernel", "compile", "vmem", "mosaic", "timeout", "runtime", "harness_oom",
                 "too_large_for_chip")
 KERNEL_FAULT = ("wrong", "not_a_kernel", "compile", "vmem", "mosaic", "timeout", "runtime", "correct_slow")  # consume an attempt
