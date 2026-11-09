@@ -1,52 +1,52 @@
 {
  "by_kind": {
   "repair": 13,
-  "single": 146
+  "single": 159
  },
  "by_n_repairs": {
-  "0": 146,
+  "0": 159,
   "1": 10,
   "2": 3
  },
  "by_source": {
-  "authored": 118,
-  "kernelbench": 38,
+  "authored": 123,
+  "kernelbench": 46,
   "scraped": 3
  },
  "by_split": {
-  "train": 147,
+  "train": 160,
   "val": 12
  },
  "by_target_origin": {
-  "constructor": 159
+  "constructor": 172
  },
  "code_chars": {
-  "n": 159,
-  "p10": 1538.8,
-  "p50": 2985,
-  "p90": 4549.2
+  "n": 172,
+  "p10": 1678.1,
+  "p50": 2969.5,
+  "p90": 4879.8
  },
- "n_chains": 146,
- "n_examples": 159,
+ "n_chains": 159,
+ "n_examples": 172,
  "n_harness_blocked": 0,
- "n_problems_judged": 151,
+ "n_problems_judged": 168,
  "n_unsolved": 1,
- "parity_share": 0.9041,
+ "parity_share": 0.9057,
  "pass_at_k": {
   "all": {
-   "pass@1": 0.8808,
-   "pass@2": 0.947,
-   "pass@3": 0.9669
+   "pass@1": 0.869,
+   "pass@2": 0.9286,
+   "pass@3": 0.9464
   },
   "authored": {
-   "pass@1": 0.9381,
-   "pass@2": 0.9912,
-   "pass@3": 0.9912
+   "pass@1": 0.9328,
+   "pass@2": 0.9832,
+   "pass@3": 0.9832
   },
   "kernelbench": {
-   "pass@1": 0.7647,
-   "pass@2": 0.8529,
-   "pass@3": 0.9412
+   "pass@1": 0.7556,
+   "pass@2": 0.8222,
+   "pass@3": 0.8889
   },
   "scraped": {
    "pass@1": 0.25,
@@ -66,9 +66,9 @@
   }
  },
  "speed_vs_xla": {
-  "n": 146,
-  "p10": 0.9794711986347107,
-  "p50": 1.4704601433551852,
-  "p90": 6.950356028870205
+  "n": 159,
+  "p10": 0.9797721316088144,
+  "p50": 1.4776982729280417,
+  "p90": 6.606579357541068
  }
 }

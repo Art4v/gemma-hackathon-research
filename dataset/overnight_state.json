@@ -12,17 +12,11 @@
    "n": 89,
    "submitted": 1
   },
-  "b3": {
-   "collected": 0,
+  "k1": {
+   "collected": 1,
    "done": false,
-   "n": 120,
-   "submitted": 0
-  },
-  "b4": {
-   "collected": 0,
-   "done": false,
-   "n": 3,
-   "submitted": 0
+   "n": 17,
+   "submitted": 2
   },
   "pilot": {
    "collected": 3,
@@ -31,6 +25,6 @@
   }
  },
  "finished": false,
- "next_batch": 5,
- "production": 10
+ "next_batch": 3,
+ "production": 9
 }
