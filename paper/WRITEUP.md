@@ -149,9 +149,13 @@ TBD: the constructor note for the final dataset.
 
 ### 3.5 Training
 
-We fine-tune Gemma 4 E4B with LoRA:
-- rank 64, alpha 128, on the attention and MLP projections, 3 epochs
-- loss on assistant turns only
+We fine-tune Gemma 4 E4B with LoRA on `dataset-v1` (adapter `v1_r64`):
+- rank 64, alpha 128, on the attention and MLP projections: 139.5M trainable parameters
+- learning rate 1e-4, gradient accumulation 4, 3 epochs (714 steps), seed 0, no early stopping
+- loss on the final assistant turn only
+
+Training took about 20 minutes on one GPU (peak memory 31.5 GB). Validation loss reached its minimum of 0.350 at step 400 and
+ended at 0.354, so it was flat with no sign of overfitting.
 
 Training rows are built by the evaluation's own prompt function, so they are **byte-identical** to what the model sees at test time.
 We checked all all rows against an independent rebuild, and the diff is empty. The repair feedback is the oracle's line, verbatim.
@@ -161,7 +165,7 @@ Lengths, with the Gemma 4 E4B tokenizer:
 - target alone: maximum 5,921 tokens, so every target fits the evaluation's 8,192-token output limit
 
 **Serving.** Ollama does not load LoRA adapters, so the adapter is folded into a copy of the same 4-bit QAT GGUF
-(`gemma4:e4b-it-qat`, digest `ee665637...`) that the baselines used. That keeps the comparison to a single difference, the adapter.
+(`gemma4:e4b-it-qat`, digest `ee665637...`) that the baselines used. We also checked that Ollama's chat template and the training (HF) template give identical prompt token counts on 6 rows covering single-turn and one- and two-repair chains. That keeps the comparison to a single difference, the adapter.
 
 ### 3.6 Evaluation protocol (pre-registered)
 
