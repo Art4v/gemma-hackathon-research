@@ -39,22 +39,19 @@ def plan_round1(problems: dict, cands: dict, only: set | None) -> list:
 HELD = PROBLEMS / "held_for_ref_check.jsonl"
 INDEX_PRIMS = {"top_k", "argmax", "argmin", "sort", "argsort"}
 INDEX_NAME = re.compile(r"top_?k|top2|router|argmax|argmin|argsort|load_balance|dispatch|capacity|bincount|ring_update", re.I)
-QUANT_DTYPES = ("int8", "uint8", "int4", "float8")
-QUANT_NAME = re.compile(r"int8|int4|fp8|float8|dequant|quant", re.I)
 
 
 def hold_reason(p: dict, row: dict | None) -> str | None:
     """Why a repair would be wasted, or None. Only when the latest verdict is wrong on every seed AND the problem is a kind whose
     reference, not the kernel, is the likely cause: index outputs compared element by element (the 55p problem: a correct kernel that
-    breaks a near-tie differently flips an index) or a quantized reference far from the float32 answer key (the blockwise_kernel case).
+    breaks a near-tie differently flips an index). Quantized problems are NOT held: dataset-b1-r2 fixed one (fp8_act_quant_linear_residual,
+    wrong on 3/3 seeds at 0.2% error in r1) with an ordinary repair.
     Wrong on only some seeds, or any other problem, repairs as usual."""
     if not row or row.get("verdict") != "wrong" or not row.get("per_seed") or any(s.get("ok") for s in row["per_seed"]):
         return None
     sig, name = p.get("signature") or {}, p["task_name"]
     if INDEX_PRIMS & set(sig.get("op_chain") or []) or INDEX_NAME.search(name):
         return "index_output"
-    if any(d.startswith(QUANT_DTYPES) for d in sig.get("input_dtypes") or []) or QUANT_NAME.search(name):
-        return "quantized"
     return None
 
 

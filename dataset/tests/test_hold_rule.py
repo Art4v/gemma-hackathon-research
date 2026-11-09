@@ -25,8 +25,8 @@ class HoldReason(unittest.TestCase):
     def test_index_output_by_name(self):
         self.assertEqual(generate.hold_reason(prob("authored__moe__capacity_dispatch_combine"), row()), "index_output")
 
-    def test_quantized_by_dtype(self):
-        self.assertEqual(generate.hold_reason(prob("authored__q__w8a8_matmul", dtypes=("bfloat16", "int8")), row()), "quantized")
+    def test_quantized_repairs_as_usual(self):  # dataset-b1-r2 repaired a quantized kernel that was wrong on 3/3 seeds
+        self.assertIsNone(generate.hold_reason(prob("authored__q__w8a8_matmul", dtypes=("bfloat16", "int8")), row()))
 
     def test_wrong_on_some_seeds_repairs(self):
         self.assertIsNone(generate.hold_reason(prob("authored__moe__router_x", chain=("top_k",)), row(oks=(True, False, False))))
