@@ -34,7 +34,9 @@ CONSTRUCTOR = ["--backend", "gemini_api", "--model", "gemini-4-argon"]   # curat
 # teacher: the kernels (generate.py). Nov 8: argon was over budget, so kernels moved to a Flash model; argon-written problems kept.
 import os as _os
 KERNEL_MODEL = _os.environ.get("KERNEL_MODEL", "gemini-3.5-flash-lite")
-TEACHER = ["--backend", "gemini_api", "--model", KERNEL_MODEL, "--effort", "16000"]
+KERNEL_BACKEND = _os.environ.get("KERNEL_BACKEND", "gemini_api")   # agy_cli = Antigravity CLI under the Google AI subscription
+KERNEL_WORKERS = _os.environ.get("KERNEL_WORKERS", "16")
+TEACHER = ["--backend", KERNEL_BACKEND, "--model", KERNEL_MODEL, "--effort", "16000"]
 BATCH_PREFIX = "g"
 PRODUCTION = [
     ("port", [PY, "-u", str(HERE / "port_kernelbench.py"), "--level", "1,2", "--pick", "all", "--limit", "0", "--workers", "3", "--check-workers", "1", "--reuse-raw", *CONSTRUCTOR]),
@@ -117,7 +119,7 @@ def submit_round(batch: str, rnd: int, st: dict) -> bool:
     if (ORACLE / "queue" / f"{job}.json").exists() or (DATASET / "submissions" / f"{job}.request.json").exists():
         log(f"{job} already built; skipping (job ids must be unique)")
         return True
-    g = [PY, "-u", str(HERE / "generate.py"), "--batch", batch, "--round", str(rnd), "--workers", "16", "--reuse-raw", *TEACHER]
+    g = [PY, "-u", str(HERE / "generate.py"), "--batch", batch, "--round", str(rnd), "--workers", KERNEL_WORKERS, "--reuse-raw", *TEACHER]
     for attempt in range(3):  # constructor failures (rate limits) leave slots empty; generate.py is idempotent, so just rerun
         p = sh(g, timeout=6 * 3600)
         if "0 failed" in p.stdout or "0 requests" in p.stdout:

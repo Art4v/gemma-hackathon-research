@@ -61,6 +61,9 @@ def get_constructor(backend: str = "claude_cli", model: str | None = None, **kw)
     if backend == "gemini_api":
         from constructor.gemini_api import GeminiAPI
         return GeminiAPI(model=model, **kw)
+    if backend == "agy_cli":
+        from constructor.agy_cli import AgyCLI
+        return AgyCLI(model=model, **kw)
     raise ValueError(f"unknown constructor backend {backend!r}")
 
 
