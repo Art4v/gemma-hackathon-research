@@ -1,5 +1,7 @@
-[00:33:20] overnight driver start; state {"finished": false, "next_batch": 3, "production": 11}, batches {'b1': {'collected': 3, 'done': True, 'n': 120, 'submitted': 3}, 'b2': {'collected': 1, 'done': False, 'n': 89, 'submitted': 2}, 'k1': {'collected': 1, 'done': False, 'n': 17, 'submitted': 2}, 'pilot': {'collected': 3, 'done': True, 'submitted': 3}}
-[00:33:20] $ fetch -q origin ... -> rc 0 | 
-[00:33:20] results for dataset-k1-r2
-[00:33:20] $ checkout origin/oracle-results/dataset-k1-r2 -- ... -> rc 0 | 
-[00:33:20] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-k1-r2 ... -> rc 0 | dataset-k1-r2: 4 verdicts {'correct_slow': 1, 'mosaic': 2, 'pass': 1}; trajectories/k1.jsonl: {'open': 3, 'solved': 14}
+[01:39:23] overnight driver start; state {"finished": false, "next_batch": 3, "production": 11}, batches {'b1': {'collected': 3, 'done': True, 'n': 120, 'submitted': 3}, 'b2': {'collected': 2, 'done': False, 'n': 89, 'submitted': 3}, 'k1': {'collected': 2, 'done': False, 'n': 17, 'submitted': 3}, 'pilot': {'collected': 3, 'done': True, 'submitted': 3}}
+[01:39:23] $ fetch -q origin ... -> rc 0 | 
+[01:39:23] results for dataset-k1-r3
+[01:39:23] $ checkout origin/oracle-results/dataset-k1-r3 -- ... -> rc 0 | 
+[01:39:23] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/oracle_collect.py dataset-k1-r3 ... -> rc 0 | dataset-k1-r3: 3 verdicts {'correct_slow': 3}; trajectories/k1.jsonl: {'solved': 14, 'unsolved': 3}
+[01:39:23] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/assemble.py --phase ... -> rc 0 | /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final: 234 train, 24 val, 6 unsolved, 233 kernels to reverify; parity share 0.8412
+[01:39:23] $ /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts/verify_dataset.py /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/final ... -> rc 0 | verify_dataset: OK

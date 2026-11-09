@@ -9,13 +9,12 @@
   "b2": {
    "collected": 2,
    "done": false,
-   "external": 3,
    "n": 89,
-   "submitted": 2
+   "submitted": 3
   },
   "k1": {
-   "collected": 2,
-   "done": false,
+   "collected": 3,
+   "done": true,
    "n": 17,
    "submitted": 3
   },

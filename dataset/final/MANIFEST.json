@@ -1,22 +1,26 @@
 {
- "created_at": "2026-11-09T04:34:25+00:00",
+ "created_at": "2026-11-09T06:39:23+00:00",
  "emit_suffix": false,
  "files": {
-  "reverify_items.jsonl": "3421de1c307b41240376998865f920a7f680b7ec594c0e51f0bbb608aba3eb9b",
-  "stats.json": "7aedddbc400acb1a82a9f1730442fb873994daaab44d9161c04725717d99111f",
-  "train.jsonl": "361759c0c80eebe2dfa49a78e796ceed645966d554b87953df49814e847eeadd",
-  "unsolved.jsonl": "274a9cf17f803055b7d675894ceb4d5c86df164ea5b27f28dc233c88a24828ac",
-  "val.jsonl": "17f271a6dbe131fe27c9cdde818f8efc1562e0094e6d29dc849ec00da8cb384e"
+  "reverify_items.jsonl": "6ea787eb21fcc2ed948147e2e014ed73292bc846a0f491225b675508cff17f15",
+  "stats.json": "2601427f4455ce3912d10b2b544e70f8f900d939645eebffc7b0485e29e6beed",
+  "train.jsonl": "a28d40a85b89c41206ec9c437c7ee51762a79bca6ec79887ff3452abb15d3647",
+  "unsolved.jsonl": "0675729397ab7afa633bf7827df19d4ae1f963da243f8678805d50567791db31",
+  "val.jsonl": "df686f59f1676401f69f17b3b0f2ca0b392c9bd817d14bb6f6d7cdae7066e1e5"
  },
  "human_targets": true,
- "n_reverify": 159,
- "n_train": 160,
- "n_val": 12,
+ "n_reverify": 233,
+ "n_train": 234,
+ "n_val": 24,
  "oracle_commits": [
   "18333c0",
+  "4e8e61b",
+  "6c072fb",
   "8500a5b",
   "963c0e3",
-  "a3211ca"
+  "a3211ca",
+  "bfae1ca",
+  "c564fe0"
  ],
  "oracle_shas": [
   "c9a07d9298a1"
