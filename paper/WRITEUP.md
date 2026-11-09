@@ -279,6 +279,9 @@ with MLX on the exact Q4_0 weights), its val numbers, and its JAXBench result.
 - **Decoding asymmetry.** Gemma arms decode greedily (temperature 0, one chain), while Gemini Flash samples at its own defaults,
   because Gemini loops at temperature 0. The attempt budget is equal, but the decoding is not.
 - **Greedy loops.** Greedy small models can repeat until the token cap; this was the pilot LoRA's main failure mode.
+- **Repair turns.** v1's repair turns never fixed a kernel. This matches a recent study of 1.5B to 7B code models in which
+  conditioning on the model's own failed attempt cost 6.1 points at 1.5B and execution feedback added nothing over a placebo
+  (arXiv 2607.26117). Our protocol keeps repairs so every arm sees the same budget, which may understate small models.
 - **Quantized serving.** Folding a bf16-trained LoRA into a Q4_0 GGUF erased most of it (Section 4.3). Anyone shipping a LoRA
   on a 4-bit on-device model should check the effect that survives the fold, not just which bytes changed, or train on the
   quantized weights directly.
