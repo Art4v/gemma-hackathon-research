@@ -25,3 +25,9 @@
 [22:15:44] $ commit -q -m ... -> rc 0 | 
 [22:15:45] $ push -q origin ... -> rc 0 | 
 [22:20:45] production stage variants finished rc 0
+[22:20:45] $ add -A dataset ... -> rc 0 | 
+[22:20:45] $ commit -q -m ... -> rc 0 | 
+[22:20:47] $ push -q origin ... -> rc 0 | 
+[22:20:47] production stage filter2 starting
+[22:20:47] $ fetch -q origin ... -> rc 0 | 
+[22:25:47] production stage filter2 finished rc 0
