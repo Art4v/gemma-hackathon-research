@@ -23,3 +23,24 @@
 [19:08:24]   stderr:   - missing rows for 12 ids: ['authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0', 'authored__ssm_scan_step__mamba1_selective_scan.a1.s0', 'authored__ssm_scan_step_
 [19:08:24] dataset-g1-r1: collection failed its checks; will retry when the results branch changes
 [19:13:24] production stage filter2 finished rc 0
+[19:13:24] $ add -A dataset ... -> rc 0 | 
+[19:13:24] $ commit -q -m ... -> rc 0 | 
+[19:13:26] $ push -q origin ... -> rc 0 | 
+[19:13:26] production stage neardup2 starting
+[19:13:27] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | }
+[19:13:27] dataset-g4-r1: the constructor produced no candidates (HTTP 402: credit exhausted); still pending
+[19:13:27] $ fetch -q origin ... -> rc 0 | 
+[19:13:27] results for dataset-g1-r1
+[19:13:27] $ checkout origin/oracle-results/dataset-g1-r1 -- ... -> rc 0 | 
+[19:13:27] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_collect.py dataset-g1-r1 ... -> rc 1 | 
+[19:13:27]   stderr:   - missing rows for 12 ids: ['authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0', 'authored__ssm_scan_step__mamba1_selective_scan.a1.s0', 'authored__ssm_scan_step_
+[19:13:27] dataset-g1-r1: collection failed its checks; will retry when the results branch changes
+[19:18:29] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/generate.py --batch ... -> rc 0 | }
+[19:18:29] dataset-g4-r1: the constructor produced no candidates (HTTP 402: credit exhausted); still pending
+[19:18:29] $ fetch -q origin ... -> rc 0 | 
+[19:18:29] results for dataset-g1-r1
+[19:18:29] $ checkout origin/oracle-results/dataset-g1-r1 -- ... -> rc 0 | 
+[19:18:29] $ /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/scripts/oracle_collect.py dataset-g1-r1 ... -> rc 1 | 
+[19:18:29]   stderr:   - missing rows for 12 ids: ['authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1', 'authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0', 'authored__ssm_scan_step__mamba1_selective_scan.a1.s0', 'authored__ssm_scan_step_
+[19:18:29] dataset-g1-r1: collection failed its checks; will retry when the results branch changes
+[19:23:29] production stage neardup2 finished rc 0
