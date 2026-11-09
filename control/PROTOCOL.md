@@ -152,3 +152,16 @@ primary comparison stays `lora` vs `bare_stack`, an exact McNemar test on per-ta
 official `gemma4:e4b-it-qat` GGUF with no LoRA folded in (`training/to_ollama.py` folds the adapter into a copy of that GGUF), so in
 practice it is the existing `bare` arm. The Gemini Flash arm (A1) samples at its own defaults because Gemini loops at temperature 0;
 that asymmetry is stated in the writeup's limitations, next to the equal attempt budget.
+
+**A4 (Nov 9, posted by Hruday at 09:3x UTC while the `lora` arm was still generating turn 0, before any LoRA verdict): a
+pre-declared secondary metric, S-p.**
+- **S-p:** `pass_within_3` on the 25 verified-reference p-tasks: level 1 `1p`-`17p` (17), plus level 2 `51p 53p 56p 57p 58p 61p 62p
+  63p` (8, the references that matched Google's kernels).
+- **Same treatment as the primary metric:** every arm (`bare`, `docs`, `lora`, `bare_stack`, `flash_docs`) recomputed from the existing
+  rows; `lora` vs `bare_stack` by an exact McNemar test on the paired p-task outcomes; the funnel per stage. Computed with
+  `control/stats.py --tasks-file` on the 25-task list.
+- **Descriptive only:** all 31 p-tasks, adding 52p, 60p, 64p, 54p, 59p and 65p, whose references were not verified before the
+  first LoRA attempt. They stay out of every test.
+- **Unchanged:** the primary metric (58 tasks) and the headline adapter (`v1_r64`).
+- **Rationale:** the p-tasks are the production kernels (flash/GQA/MLA/sparse attention, ragged dot, Megablox, the DeepSeek-V4
+  family) that `dataset-v1`'s authored problems target, so they are the most direct test of transfer.
