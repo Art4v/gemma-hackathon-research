@@ -172,7 +172,7 @@ TPU against Google's kernels. The primary set is the 58 tasks whose references v
 | `flash_docs` | Gemini Flash, with docs, at its default thinking and temperature | the docs-arm prompt |
 
 **Budget.** Every arm gets the same budget: a first attempt plus two repairs, each seeing the oracle's feedback. That's 3 attempts per
-task, against up to 144 in the JAXBench paper. TBD(A2): 3 independent chains per task.
+task, against up to 144 in the JAXBench paper. Gemma arms decode greedily, one chain per task.
 
 **Analysis.** The primary comparisons are `lora` vs `bare_stack` and `lora` vs `flash_docs`, each a paired test on per-task outcomes.
 Nothing is tuned on JAXBench.
@@ -221,6 +221,11 @@ TBD:
 - **Exclusions.** Items that crash the TPU compiler twice are excluded from the data (TBD(n)) and count as failures in evaluation.
 - **Budget.** Our comparisons are at 3 attempts. With far more attempts (JAXBench's 144), stronger models solve almost every task.
   How the gap changes with budget is future work.
+- **Decoding asymmetry.** Gemma arms decode greedily (temperature 0, one chain), while Gemini Flash samples at its own defaults,
+  because Gemini loops at temperature 0. The attempt budget is equal, but the decoding is not.
+- **Greedy loops.** Greedy small models can repeat until the token cap; this was the pilot LoRA's main failure mode.
+- **Quantized serving.** The LoRA is trained at full precision and folded into the 4-bit QAT GGUF that Ollama serves, so
+  re-quantization may blunt part of its effect.
 - **Repair data.** Most constructor kernels pass at once, so repair examples are few (TBD(n)).
 
 ## 6. Conclusion
