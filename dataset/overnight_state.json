@@ -25,9 +25,16 @@
    "n": 30,
    "pending": 1,
    "submitted": 0
+  },
+  "g5": {
+   "collected": 0,
+   "done": false,
+   "n": 60,
+   "pending": 1,
+   "submitted": 0
   }
  },
  "finished": false,
- "next_batch": 5,
- "production": 12
+ "next_batch": 6,
+ "production": 13
 }
