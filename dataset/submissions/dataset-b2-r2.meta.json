@@ -1,0 +1,166 @@
+{
+ "created_at": "2026-11-09T05:33:05+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 269582336,
+    "n": 1,
+    "seconds": 36.287740917202264,
+    "task": "kb__l1__56_conv_standard_2D__asymmetric_input__asymmetric_kernel"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402902016,
+    "n": 1,
+    "seconds": 35.33321550846494,
+    "task": "kb__l1__61_conv_transposed_3D__square_input__square_kernel"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 537214976,
+    "n": 1,
+    "seconds": 36.58770135594165,
+    "task": "kb__l1__65_conv_transposed_2D__square_input__asymmetric_kernel"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 537362432,
+    "n": 1,
+    "seconds": 43.35631359036235,
+    "task": "kb__l1__69_conv_transposed_2D__asymmetric_input__asymmetric_kernel"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135938048,
+    "n": 1,
+    "seconds": 42.9291914970855,
+    "task": "kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268533760,
+    "n": 1,
+    "seconds": 32.1636431104,
+    "task": "kb__l1__76_conv_standard_1D_dilated_strided__"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268460032,
+    "n": 1,
+    "seconds": 42.93209778432,
+    "task": "kb__l1__79_conv_transposed_1D_asymmetric_input_square_kernel___padded____strided____dilated__"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268804096,
+    "n": 1,
+    "seconds": 36.22613807581867,
+    "task": "kb__l1__80_conv_standard_2D_square_input_asymmetric_kernel___dilated____padded__"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67403776,
+    "n": 1,
+    "seconds": 40.003310479359996,
+    "task": "kb__l1__81_conv_transposed_2D_asymmetric_input_square_kernel___dilated____padded____strided__"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135039488,
+    "n": 1,
+    "seconds": 31.34925521728,
+    "task": "kb__l2__11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67330560,
+    "n": 1,
+    "seconds": 43.551861948799996,
+    "task": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134227584,
+    "n": 1,
+    "seconds": 37.31018909424,
+    "task": "kb__l2__21_Conv2d_Add_Scale_Sigmoid_GroupNorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100671168,
+    "n": 1,
+    "seconds": 30.444612665679998,
+    "task": "kb__l2__24_Conv3d_Min_Softmax"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 537166336,
+    "n": 1,
+    "seconds": 33.758782258560004,
+    "task": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100668672,
+    "n": 1,
+    "seconds": 35.68818530912,
+    "task": "kb__l2__48_Conv3d_Scaling_Tanh_Multiply_Sigmoid"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67127552,
+    "n": 1,
+    "seconds": 36.745972854719994,
+    "task": "kb__l2__57_Conv2d_ReLU_HardSwish"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269485056,
+    "n": 1,
+    "seconds": 43.40529497536001,
+    "task": "kb__l2__5_ConvTranspose2d_Subtract_Tanh"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135103488,
+    "n": 1,
+    "seconds": 34.245265089280004,
+    "task": "kb__l2__61_ConvTranspose3d_ReLU_GroupNorm"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67127552,
+    "n": 1,
+    "seconds": 36.745972854719994,
+    "task": "kb__l2__69_Conv2d_HardSwish_ReLU"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67127552,
+    "n": 1,
+    "seconds": 36.59396968032,
+    "task": "kb__l2__71_Conv2d_Divide_LeakyReLU"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67128320,
+    "n": 1,
+    "seconds": 31.087618016,
+    "task": "kb__l2__85_Conv2d_GroupNorm_Scale_MaxPool_Clamp"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134743040,
+    "n": 1,
+    "seconds": 44.447644256000004,
+    "task": "kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid"
+   }
+  ],
+  "total_s": 821.1939765390351
+ },
+ "job_id": "dataset-b2-r2",
+ "n_items": 22,
+ "n_tasks": 22,
+ "probe_ids": []
+}

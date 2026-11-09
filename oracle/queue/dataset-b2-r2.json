@@ -1,0 +1,10 @@
+{
+ "items_path": "dataset-b2-r2.items.jsonl",
+ "job_id": "dataset-b2-r2",
+ "max_chip_minutes": 21,
+ "owner": "aarav",
+ "priority": 2,
+ "seeds": 3,
+ "speed_bar": 0.7,
+ "step": "dataset-r2"
+}
