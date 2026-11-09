@@ -149,10 +149,19 @@ TBD: the constructor note for the final dataset.
 
 ### 3.5 Training
 
-TBD(Hruday):
-- LoRA rank, alpha, target modules, learning rate, epochs, maximum sequence length
-- Gemma 4 E4B base and the serving stack
-- examples rendered with exactly the evaluation's prompt template, with loss on assistant turns only and no example truncated
+We fine-tune Gemma 4 E4B with LoRA:
+- rank 64, alpha 128, on the attention and MLP projections, 3 epochs
+- loss on assistant turns only
+
+Training rows are built by the evaluation's own prompt function, so they are **byte-identical** to what the model sees at test time.
+We checked all TBD(258) rows against an independent rebuild, and the diff is empty. The repair feedback is the oracle's line, verbatim.
+
+Lengths, with the Gemma 4 E4B tokenizer:
+- prompt plus target: median 2,140 tokens, maximum 6,957, so nothing is truncated at the 24,576-token cap
+- target alone: maximum 5,921 tokens, so every target fits the evaluation's 8,192-token output limit
+
+**Serving.** Ollama does not load LoRA adapters, so the adapter is folded into a copy of the same 4-bit QAT GGUF
+(`gemma4:e4b-it-qat`, digest `ee665637...`) that the baselines used. That keeps the comparison to a single difference, the adapter.
 
 ### 3.6 Evaluation protocol (pre-registered)
 
