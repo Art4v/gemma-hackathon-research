@@ -1,0 +1,33 @@
+{
+ "created_at": "2026-11-09T06:31:49+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 537657664,
+    "n": 1,
+    "seconds": 30.19870194744,
+    "task": "authored__attention_gqa_sink__gqa_sink_sliding_window_specdecode"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 227377664,
+    "n": 1,
+    "seconds": 73.25964876224,
+    "task": "kb__l2__100_ConvTranspose3d_Clamp_Min_Divide"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134742528,
+    "n": 1,
+    "seconds": 52.35708604608,
+    "task": "kb__l2__93_ConvTranspose2d_Add_Min_GELU_Multiply"
+   }
+  ],
+  "total_s": 155.81543675576
+ },
+ "job_id": "dataset-k1-r3",
+ "n_items": 3,
+ "n_tasks": 3,
+ "probe_ids": []
+}
