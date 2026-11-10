@@ -2,3 +2,10 @@
 {"candidate_id": "kernelbook__SEModule_13378.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
 {"candidate_id": "kernelbook__UpsampleConvLayer_11372.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
 {"candidate_id": "kernelbook__depthwise_separable_conv_7238.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kernelbook__DisConvModule_13135.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kernelbook__InvConv_294.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kernelbook__LogVarLayer_17377.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kernelbook__StdConv2d_13774.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kernelbook__Visual_Q_Network_13087.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kernelbook___Classifier_4031.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
+{"candidate_id": "kernelbook__merge_layer_17261.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.15, "stage": "static"}
