@@ -7,7 +7,7 @@ Each container runs one Ollama server with one request at a time (OLLAMA_NUM_PAR
 and temperature 0 stays deterministic on a given GPU type. Parallelism comes from several containers (MAX_CONTAINERS), all the same GPU.
 Flash attention stays off, as on the Mac. Every reply carries the backend it ran on: GPU, Ollama version, model digest.
 """
-import json, os, subprocess, time, urllib.request
+import json, os, subprocess, time, urllib.error, urllib.request
 
 import modal
 
@@ -42,6 +42,43 @@ def _api(path, body=None, timeout=3600):
     return json.load(urllib.request.urlopen(req, timeout=timeout))
 
 
+def _chat_streamed(body: dict) -> dict:
+    """/api/chat, streamed and assembled into the stream=False shape. The runner samples the same tokens either way; streaming only
+    changes delivery. It matters when Ollama aborts a looping reply ("prediction aborted, token repeat limit reached", Nov 10, v4 on
+    62p): unstreamed, that is a bare HTTP 500 and the reply is lost; streamed, the reply up to the abort is kept and recorded with
+    done_reason "repeat_limit", like a reply cut at the token cap, so it is judged on what the model wrote (PROTOCOL: code goes to the
+    oracle as is). Any other error is raised as text (urllib's HTTPError can't cross Modal's pickling)."""
+    req = urllib.request.Request("http://127.0.0.1:11434/api/chat", json.dumps({**body, "stream": True}).encode(),
+                                 {"Content-Type": "application/json"})
+    content, thinking, tool_calls, final, model, chunks = [], [], [], None, None, 0
+    try:
+        with urllib.request.urlopen(req, timeout=3600) as resp:
+            for line in resp:
+                c = json.loads(line)
+                model = c.get("model", model)
+                if "error" in c:
+                    if "repeat limit" not in c["error"]:
+                        raise RuntimeError(f"ollama: {c['error']}")
+                    final = {"done": True, "done_reason": "repeat_limit", "error": c["error"], "eval_count": chunks}
+                    break
+                m = c.get("message") or {}
+                content.append(m.get("content") or ""); thinking.append(m.get("thinking") or "")
+                tool_calls += m.get("tool_calls") or []
+                chunks += 1
+                if c.get("done"):
+                    final = {k: v for k, v in c.items() if k != "message"}
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"ollama HTTP {e.code}: {e.read().decode(errors='replace')[:2000]}") from None
+    if final is None:
+        raise RuntimeError("ollama stream ended without a final chunk")
+    msg = {"role": "assistant", "content": "".join(content)}
+    if any(thinking):
+        msg["thinking"] = "".join(thinking)
+    if tool_calls:
+        msg["tool_calls"] = tool_calls
+    return {**final, "model": model, "message": msg}
+
+
 def _digest():
     return next((m["digest"] for m in _api("/api/tags")["models"] if m["name"] == MODEL), None)
 
@@ -66,7 +103,7 @@ class Gemma:
 
     @modal.method()
     def chat(self, body: dict) -> dict:
-        r = _api("/api/chat", body)
+        r = _chat_streamed(body)  # token-identical to stream=False (checked Nov 10: fresh A10G, A/B/C = stored row, 696 tokens)
         tags = {m["name"]: m["digest"] for m in _api("/api/tags")["models"]}
         digest = tags.get(body["model"]) or tags.get(f"{body['model']}:latest")  # the model that answered, not always MODEL (LoRA arms)
         return {**r, "backend": {**self.backend, "digest": digest, "model": body["model"]}}
