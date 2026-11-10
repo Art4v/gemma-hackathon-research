@@ -214,3 +214,13 @@
 {"candidate_id": "kernelbook___Classifier_4031.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
 {"candidate_id": "kernelbook__mfm_59.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
 {"candidate_id": "kernelbook__my_Hingeloss_1635.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.05, "stage": "static"}
+{"candidate_id": "kernelbook__Attention_12916.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__ComplexCnnQAHead_16228.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__CrossNet_523.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__FastRCNNPredictor_4630.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__GRU_8485.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__ImageProcessingModule_6325.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__ResidualBlock_11099.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__SirenLayer_1356.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__StageBlock_5368.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
+{"candidate_id": "kernelbook__output_6021.a1.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.16, "stage": "static"}
