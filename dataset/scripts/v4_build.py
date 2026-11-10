@@ -26,9 +26,22 @@ def main(argv=None) -> int:
     ap.add_argument("--base", required=True, choices=("train", "train_capped")); ap.add_argument("--coverage", default="")
     a = ap.parse_args(argv)
     conv = bench().conversation
-    base = read_jsonl(V3 / "final" / f"{a.base}.jsonl")
+    # families dropped by rule 3, from train and val alike; a training row's family is the first two parts of its task name
+    excl = {l.strip() for l in (V4 / "exclude_families.txt").read_text().splitlines() if l.strip() and not l.startswith("#")}
+    family_of_task = lambda task: "/".join(task.split("__")[:2])
+    dropped_family = collections.Counter()
+
+    def keep(task: str) -> bool:
+        f = family_of_task(task)
+        if f in excl:
+            dropped_family[f] += 1
+            return False
+        return True
+
+    base = [r for r in read_jsonl(V3 / "final" / f"{a.base}.jsonl") if keep(r["task"])]
     base_verif = {v["example_id"]: v for v in read_jsonl(V3 / "final" / "verification.jsonl")}
-    val = read_jsonl(V3 / "final" / "val.jsonl")
+    val_all = read_jsonl(V3 / "final" / "val.jsonl")
+    val = [r for r in val_all if keep(r["task"])]
     val_families = {e["family_id"] for e in read_jsonl(FINAL / "val.jsonl")}
     rows, verif, parts, too_long = list(base), [base_verif[r["example_id"]] for r in base if r["example_id"] in base_verif], {}, []
     for name in PART_ORDER:
@@ -37,6 +50,8 @@ def main(argv=None) -> int:
         for e in part:
             if e["family_id"] in val_families:
                 sys.exit(f"{e['example_id']}: from a val family")
+            if not keep(e["task_name"]):  # by task name, like the base rows: m1 children of an excluded problem go too
+                continue
             if len(e["turns"][-1]["code"]) > MAX_TARGET_CHARS:
                 too_long.append(e["example_id"])
                 continue
@@ -66,6 +81,8 @@ def main(argv=None) -> int:
     total = [sum(len(m["content"]) for m in r["messages"]) for r in rows]
     parts_report = json.loads((V4 / "parts_report.json").read_text()) if (V4 / "parts_report.json").exists() else {}
     manifest = {"created_at": now(), "base": f"v3 {a.base}", "n_train": len(rows), "n_val": len(val), "base_rows": len(base), "part_rows": parts, "dropped_target_over_cap": {"max_chars": MAX_TARGET_CHARS, "ids": too_long},
+                "excluded_families": {"file": "dataset/v4/exclude_families.txt", "families": sorted(excl), "rows_dropped_train_and_val": dict(sorted(dropped_family.items())),
+                                      "val_rows_before": len(val_all), "val_problems": len({r["task"] for r in val})},
                 "part_commits": {k: v.get("commit") for k, v in parts_report.items() if isinstance(v, dict) and "commit" in v},
                 "train_by_kind": dict(collections.Counter(r["kind"] for r in rows)), "by_teacher": dict(collections.Counter(r["teacher"] for r in rows)),
                 "by_verification": dict(collections.Counter(v["verification"] for v in verif)),

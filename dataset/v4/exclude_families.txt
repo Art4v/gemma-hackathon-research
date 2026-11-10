@@ -1,0 +1,15 @@
+# Problem families dropped from v4, train and val alike (Hruday's decision, issue 5, 2026-11-10 06:45 UTC, rule 3 by algorithm):
+# authored attention variants share the core algorithm of JAXBench's attention p-tasks (1p/2p/4p/5p), and chunked softcap
+# cross-entropy mirrors 13p. softcapped_logits stays (elementwise, no JAXBench match).
+authored/attention_alibi
+authored/attention_chunked_prefill
+authored/attention_cross
+authored/attention_decode_mqa
+authored/attention_differential
+authored/attention_gqa_sink
+authored/attention_linear_elu
+authored/attention_local_global
+authored/attention_relative_bias
+authored/attention_sliding_window
+authored/attention_softcap
+authored/cross_entropy_chunked_softcap
