@@ -110,9 +110,11 @@ The final screen kept TBD(378 of 384) problems. We dropped the TBD(3) flagged fo
 
 A constructor model writes each kernel from a fixed prompt: kernel-writing rules plus about 25k tokens of Pallas docs. Every kernel is
 judged by the oracle, and a failing kernel gets at most two repairs, each prompted with its earlier kernels and the oracle's verbatim
-feedback line. **The training targets are passing kernels only.** A chain solved on attempt k becomes one single-turn example
-(problem, then the passing kernel) and, for k > 1, one repair example (problem, failed kernel, feedback, and so on up to the passing
-kernel). `correct_slow` kernels appear only as the failing side of a repair.
+feedback line. From these chains, **only passing kernels become training targets.** A chain solved on attempt k becomes one
+single-turn example (problem, then the passing kernel) and, for k > 1, one repair example (problem, failed kernel, feedback, and so on
+up to the passing kernel); its `correct_slow` kernels appear only as the failing side of a repair. The `v3` base set that `v4` extends
+is mixed: of the TBD(2,949) training rows, TBD(2,781) have a target that passed the oracle, TBD(47) carried over from `v3` are correct
+but slower than 0.7x XLA, and TBD(121) shape variants and generated kernels were checked only by lowering on CPU.
 
 We chose the constructor by measuring candidates through this same pipeline and oracle:
 
