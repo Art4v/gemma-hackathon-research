@@ -15,7 +15,7 @@ from v3_build import CHARS_PER_TOKEN, MAX_TARGET_TOKENS, bench, training_row  # 
 from v3_common import V3  # noqa: E402
 from v4_parts import V4  # noqa: E402
 
-PART_ORDER = ("m1", "kbk", "kbkc", "prod")
+PART_ORDER = ("m1", "kbk", "kbkc", "kbkd", "prod")
 # A target longer than the eval's 8,192-token generation cap teaches output the eval would cut off. chars/2.44 ran ~5% low on the one real case
 # (ConvDenoiser_3791: 19,347 chars, 8,316 tokens by Gemma's tokenizer), so the cap uses a stricter ratio: 2.3 chars per token, i.e. 18,000 chars.
 MAX_TARGET_CHARS = 18000

@@ -17,7 +17,7 @@ from common import DATASET, FINAL, REPO, now, read_jsonl, write_json, write_json
 
 V4 = DATASET / "v4"
 # part -> (branch, batch). Karthik's agent collects every judged round into these canonical branches.
-PARTS = {"m1": ("karthik/m1", "m1"), "kbk": ("karthik/kbk", "kbk"), "kbkc": ("karthik/kbkc", "kbkc"), "prod": ("karthik/kbk", "prod")}
+PARTS = {"m1": ("karthik/m1", "m1"), "kbk": ("karthik/kbk", "kbk"), "kbkc": ("karthik/kbkc", "kbkc"), "prod": ("karthik/kbk", "prod"), "kbkd": ("karthik/kbk", "kbkd")}
 
 
 def git_lines(ref: str, path: str) -> list:
