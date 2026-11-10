@@ -141,7 +141,13 @@ def modal_chat(model=MODEL):
     """chat() on the deployed Modal app (modal deploy control/modal_gemma.py): the same request body, served there."""
     import modal
     gemma = modal.Cls.from_name("gemma-bench", "Gemma")()
-    return lambda messages, seed: gemma.chat.remote(request_body(messages, seed, model))
+
+    def call(messages, seed):
+        r = gemma.chat.remote(request_body(messages, seed, model))
+        d = (r.get("backend") or {}).get("digest")  # rule 9 on Modal too: the requested model answered, and its digest is on the row
+        assert r.get("model") == model and d, f"Modal served {r.get('model')!r} (digest {d}), not the requested {model!r}"
+        return r
+    return call
 
 
 def generate(arm: str, model: str, only=(), limit=0, chat_fn=chat, log=print, workers=1) -> int:
