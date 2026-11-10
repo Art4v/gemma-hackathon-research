@@ -9,7 +9,7 @@ set -u
 D=$(cd "$(dirname "$0")" && pwd); R=$D/repo
 # RUNNER: oracle/vm.sh (a GCP TPU VM; needs ZONE) or oracle/colab.sh (a Colab session; NAME = the session name)
 RUNNER=${RUNNER:-oracle/vm.sh}
-export PROJECT=gen-lang-client-0956375059 ZONE=${ZONE:-} NAME=${NAME:-oracle-v6e}
+export PROJECT=${PROJECT:?set PROJECT: no default, so a run can never touch the wrong account} ZONE=${ZONE:-} NAME=${NAME:-oracle-v6e}
 [ "$RUNNER" = oracle/vm.sh ] && [ -z "$ZONE" ] && { echo "set ZONE for oracle/vm.sh"; exit 1; }
 cd "$R"
 
@@ -30,7 +30,7 @@ publish() {  # $1 job
   cp oracle/jobs/$j/run.log "$wt/oracle/results/$j/" 2>/dev/null
   local n; n=$(grep -c . "$wt/oracle/results/$j/$j.jsonl" 2>/dev/null || echo 0)
   ( cd "$wt" && git add "oracle/results/$j" && git -c user.name=LordKarV -c user.email=kkvattem@gmail.com commit -q \
-      -m "oracle results: $j ($n rows, TPU v6e-1 europe-west4-a)" && git push -q origin "HEAD:refs/heads/oracle-results/$j" )
+      -m "oracle results: $j ($n rows, TPU ${ACCEL:-v6e-1} $ZONE, project $PROJECT)" && git push -q origin "HEAD:refs/heads/oracle-results/$j" )
   local rc=$?
   git worktree remove --force "$wt"
   return $rc
