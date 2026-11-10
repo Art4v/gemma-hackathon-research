@@ -1,5 +1,5 @@
 {
- "at": "2026-11-10T10:41:14+00:00",
+ "at": "2026-11-10T10:45:21+00:00",
  "excluded_list": 0,
  "kbk": {
   "batch": "kbk",
@@ -8,7 +8,7 @@
    "repair": 131,
    "single": 729
   },
-  "commit": "6cbf18e",
+  "commit": "0861d61",
   "errors": [],
   "n_errors": 0,
   "rows": 860,
@@ -17,9 +17,8 @@
   },
   "trajectories": {
    "harness_blocked": 7,
-   "open": 3,
    "solved": 732,
-   "unsolved": 35
+   "unsolved": 38
   }
  },
  "kbkc": {
@@ -47,7 +46,7 @@
    "repair": 30,
    "single": 215
   },
-  "commit": "6cbf18e",
+  "commit": "0861d61",
   "errors": [],
   "n_errors": 0,
   "rows": 245,
@@ -83,7 +82,7 @@
   "by_kind": {
    "single": 21
   },
-  "commit": "6cbf18e",
+  "commit": "0861d61",
   "errors": [],
   "n_errors": 0,
   "rows": 21,
