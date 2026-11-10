@@ -107,3 +107,10 @@ kernelbook__my_Hingeloss_1635
 kernelbook__self_attn_mini_1487
 kernelbook__series_decomp_multi_17652
 kernelbook__up_9766
+# plan carries an authoring aside such as "not compiled" or "not measured" (regex pass after the read-through)
+authored__ssm_s4d_conv__s4d_long_conv
+kernelbook__AffineChannel2d_13241
+kernelbook__DNNModel_12341
+kernelbook__IntegrationModule_16384
+kernelbook__ME_6183
+kernelbook__MultiAccuracy_12813

@@ -5,13 +5,13 @@
  },
  "rows": {
   "train/correct_slow": 30,
-  "train/repair": 230,
-  "train/repair_injected": 934,
-  "train/single": 1472,
+  "train/repair": 229,
+  "train/repair_injected": 928,
+  "train/single": 1466,
   "val/repair": 3,
   "val/single": 21
  },
- "train_rows": 2666,
+ "train_rows": 2653,
  "val_rows": 24,
  "left_out_kinds": [
   "generated",
@@ -21,11 +21,11 @@
  "standalone_rewrites_used": 267,
  "standalone_rewrites_rejected": {},
  "plan_header_chars": {
-  "median": 657,
+  "median": 655,
   "max": 1763
  },
  "files": {
-  "train.jsonl": "f47c28bc6319f0c28ea28c72b9a387af6360c773285a4809f4f89f4bfa2a0d32",
+  "train.jsonl": "b18c87df1cc28d9be302a58f02c9a413ec9ed99575cbc11fca4a83519a7226c4",
   "val.jsonl": "3e34abdd4585bfc7428c049b3de6ba5bfc06454034589b5a09f2c3041aad31cb"
  }
 }
