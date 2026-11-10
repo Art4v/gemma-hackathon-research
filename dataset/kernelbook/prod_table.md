@@ -1,0 +1,35 @@
+| problem | status | closest JAXBench task | op-multiset J | text ratio |
+|---|---|---|---|---|
+| based_chunk | ok | 17p_Triangle_Multiplication | 0.39 | 0.24 |
+| stickbreaking_attention | ok | 27k_Matmul_Mish_Mish | 0.57 | 0.32 |
+| mesanet_cg_decode | ok | 28k_ConvTranspose3d_LayerNorm_GELU_Scaling | 0.50 | 0.25 |
+| wall_attention | ok | 52p_DeepSeek_V4_HCA | 0.40 | 0.19 |
+| dynamic_conv1d | ok | 47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh | 0.52 | 0.29 |
+| hedgehog_linear_attention | ok | 24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish | 0.44 | 0.26 |
+| sparsemax | ok | 43k_Gemm_BatchNorm_Scaling_Softmax | 0.43 | 0.21 |
+| sam_decomposed_relpos_attention | ok | 6p_Paged_Attention | 0.48 | 0.27 |
+| multiscale_deformable_attention | ok | 58p_DeepSeek_V4_KV_Compressor | 0.36 | 0.07 |
+| encodec_residual_vq | ok | 63p_GDN | 0.38 | 0.12 |
+| wav2vec2_product_quantizer | ok | 64p_Linear_Softmax_Cross_Entropy | 0.40 | 0.23 |
+| yarn_rope_partial | ok | 28k_ConvTranspose3d_LayerNorm_GELU_Scaling | 0.36 | 0.21 |
+| bitnet_ternary_bitlinear | ok | 46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp | 0.29 | 0.25 |
+| hadamard_rotation_int4_quant | ok | 43k_Gemm_BatchNorm_Scaling_Softmax | 0.22 | 0.26 |
+| muon_newton_schulz | ok | 28k_ConvTranspose3d_LayerNorm_GELU_Scaling | 0.37 | 0.29 |
+| swin_shifted_window_attention | ok | 52p_DeepSeek_V4_HCA | 0.44 | 0.16 |
+| siglip_sigmoid_contrastive_loss | ok | 34k_Conv2d_Activation_BatchNorm | 0.54 | 0.25 |
+| soft_moe | ok | 45k_Gemm_GroupNorm_Swish_Multiply_Swish | 0.38 | 0.25 |
+| beam_search_step | ok | 64p_Linear_Softmax_Cross_Entropy | 0.50 | 0.19 |
+| fsq_quantizer | ok | 31k_Gemm_BatchNorm_GELU_ReLU | 0.35 | 0.27 |
+| transformerxl_rel_partial_attn | ok | 26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply | 0.50 | 0.27 |
+| music_transformer_skew_relattn | ok | 5p_Flex_Attention | 0.63 | 0.30 |
+| average_attention_network | ok | 48k_Matmul_BatchNorm_BiasAdd_Divide_Swish | 0.53 | 0.32 |
+| aft_full | ok | 48k_Matmul_BatchNorm_BiasAdd_Divide_Swish | 0.47 | 0.29 |
+| linformer_attention | ok | 43k_Gemm_BatchNorm_Scaling_Softmax | 0.63 | 0.31 |
+| grouped_token_attention | ok | 43k_Gemm_BatchNorm_Scaling_Softmax | 0.55 | 0.26 |
+| batch_hard_triplet_loss | ok | 31k_Gemm_BatchNorm_GELU_ReLU | 0.44 | 0.27 |
+| circle_loss | ok | 24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish | 0.47 | 0.29 |
+| capsule_dynamic_routing | ok | 46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp | 0.32 | 0.25 |
+| mixture_synthesizer_attention | ok | 38k_Matmul_Dropout_Softmax | 0.56 | 0.31 |
+| conformer_relpos_mhsa | ok | 5p_Flex_Attention | 0.45 | 0.26 |
+| efficient_attention_softmax_kernel | ok | 43k_Gemm_BatchNorm_Scaling_Softmax | 0.45 | 0.28 |
+| mixture_of_attention_heads_gate | ok | 10p_Sparse_MoE | 0.52 | 0.29 |

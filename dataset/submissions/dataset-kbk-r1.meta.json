@@ -1,0 +1,1998 @@
+{
+ "created_at": "2026-11-10T00:37:29+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.41559271744,
+    "task": "kernelbook__AEBatch_18180"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269488128,
+    "n": 1,
+    "seconds": 33.30535296768,
+    "task": "kernelbook__AFMS_3585"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138418180,
+    "n": 1,
+    "seconds": 31.949776572175004,
+    "task": "kernelbook__AP_122"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.12823710048,
+    "task": "kernelbook__ATLoss_15371"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.689550535680002,
+    "task": "kernelbook__ActNorm2D_1038"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134219776,
+    "n": 1,
+    "seconds": 31.64802669856,
+    "task": "kernelbook__ActNorm_6985"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 68160000,
+    "n": 1,
+    "seconds": 30.9255557232,
+    "task": "kernelbook__ActorNetwork_16682"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 140777984,
+    "n": 1,
+    "seconds": 30.27993815904,
+    "task": "kernelbook__Actor_13039"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67150336,
+    "n": 1,
+    "seconds": 30.87523431136,
+    "task": "kernelbook__Actor_4242"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268468224,
+    "n": 1,
+    "seconds": 33.33296973824,
+    "task": "kernelbook__AdaFM_8536"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268764160,
+    "n": 1,
+    "seconds": 33.4530059104,
+    "task": "kernelbook__AdaIN2d_2953"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.02367507968,
+    "task": "kernelbook__AdaptiveAvgMaxPool2d_13347"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.342216716159996,
+    "task": "kernelbook__AddCoords_14011"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134218240,
+    "n": 1,
+    "seconds": 31.6480260528,
+    "task": "kernelbook__AffineChannel2d_13241"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268439552,
+    "n": 1,
+    "seconds": 33.296053115519996,
+    "task": "kernelbook__AffineConstantFlow_830"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 12288,
+    "n": 1,
+    "seconds": 32.904827754879996,
+    "task": "kernelbook__AffineGridGen_647"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.30527932416,
+    "task": "kernelbook__AlReLU_1691"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.856309104639998,
+    "task": "kernelbook__AlphaChooser_16276"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 136316928,
+    "n": 1,
+    "seconds": 30.025310913279995,
+    "task": "kernelbook__AnyHead_9083"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135790592,
+    "n": 1,
+    "seconds": 31.732504926719997,
+    "task": "kernelbook__ArcMarginProduct_subcenter_1135"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 75505664,
+    "n": 1,
+    "seconds": 30.49091689984,
+    "task": "kernelbook__AttModel_10357"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 76288000,
+    "n": 1,
+    "seconds": 32.120849344,
+    "task": "kernelbook__AttentionConv_10307"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 289423360,
+    "n": 1,
+    "seconds": 31.885498316799996,
+    "task": "kernelbook__AttentionGRUCell_12684"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 28932098,
+    "n": 1,
+    "seconds": 31.6786560025675,
+    "task": "kernelbook__AttentionNet_7188"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100729088,
+    "n": 1,
+    "seconds": 30.043670262880003,
+    "task": "kernelbook__AttentionPool_8898"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33817856,
+    "n": 1,
+    "seconds": 30.43107640256,
+    "task": "kernelbook__AttentionUnit_13009"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 146800640,
+    "n": 1,
+    "seconds": 31.6785399808,
+    "task": "kernelbook__Attention_17819"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 106954752,
+    "n": 1,
+    "seconds": 31.271109634891292,
+    "task": "kernelbook__Attention_8907"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 71340032,
+    "n": 1,
+    "seconds": 30.036651186443294,
+    "task": "kernelbook__Attn_10095"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 272764928,
+    "n": 1,
+    "seconds": 30.069045804479998,
+    "task": "kernelbook__Attn_15410"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67110912,
+    "n": 1,
+    "seconds": 30.814783601920002,
+    "task": "kernelbook__AutoregressiveShift_902"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 111153152,
+    "n": 1,
+    "seconds": 30.01757841152,
+    "task": "kernelbook__AvgPoolHead_905"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.42525037888,
+    "task": "kernelbook__AvgPoolPad_17158"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.42525037888,
+    "task": "kernelbook__AvgPoolPad_5575"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.84581922816,
+    "task": "kernelbook__AvgPool_3288"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.254762048960004,
+    "task": "kernelbook__BCEBlurWithLogitsLoss_256"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.199397260159998,
+    "task": "kernelbook__BCELoss2d_1686"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 36.90583764992,
+    "task": "kernelbook__BILM_1046"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 68160000,
+    "n": 1,
+    "seconds": 30.976306801599996,
+    "task": "kernelbook__BasePolicy_7480"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138424320,
+    "n": 1,
+    "seconds": 32.7879344256,
+    "task": "kernelbook__BertPredictionHeadTransform_17784"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.37909907456,
+    "task": "kernelbook__BetaMish_3429"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 35684608,
+    "n": 1,
+    "seconds": 30.18020046368,
+    "task": "kernelbook__BiaffineScorer_7974"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 30.055905157119998,
+    "task": "kernelbook__BinaryLoss_1496"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.13941871296,
+    "task": "kernelbook__BinaryReg_3980"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 137511936,
+    "n": 1,
+    "seconds": 30.854452351360003,
+    "task": "kernelbook__BlendConv2d_697"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67162112,
+    "n": 1,
+    "seconds": 31.23112800512,
+    "task": "kernelbook__Block_8949"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134430720,
+    "n": 1,
+    "seconds": 32.0772162048,
+    "task": "kernelbook__Bottleneck_nobn_10002"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 270536704,
+    "n": 1,
+    "seconds": 30.544459671040002,
+    "task": "kernelbook__BoxOffsetIntersection_15460"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67112972,
+    "n": 1,
+    "seconds": 31.452582144045,
+    "task": "kernelbook__Brain_1452"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.07641374848,
+    "task": "kernelbook__CELoss_13876"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134283776,
+    "n": 1,
+    "seconds": 33.70114023616,
+    "task": "kernelbook__CMlp_11655"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67124406,
+    "n": 1,
+    "seconds": 30.010615974522498,
+    "task": "kernelbook__CNet_8412"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67109888,
+    "n": 1,
+    "seconds": 31.82772508608,
+    "task": "kernelbook__CReLU_IN_15188"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.417899479040003,
+    "task": "kernelbook__Cartesian_13697"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135268352,
+    "n": 1,
+    "seconds": 30.404297982719996,
+    "task": "kernelbook__CenterIntersection_15454"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134218752,
+    "n": 1,
+    "seconds": 31.732749409920004,
+    "task": "kernelbook__ChanNorm_5651"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.28682523136,
+    "task": "kernelbook__ChannelNorm_8096"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.122143375359997,
+    "task": "kernelbook__ChannelPool_2266"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134250880,
+    "n": 1,
+    "seconds": 31.652643962,
+    "task": "kernelbook__ChannelSELayer3D_13789"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268700164,
+    "n": 1,
+    "seconds": 33.343047787215,
+    "task": "kernelbook__ChannelSpatialSELayer_13777"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.73282091008,
+    "task": "kernelbook__CircularPad_15117"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 150999040,
+    "n": 1,
+    "seconds": 30.423652050642822,
+    "task": "kernelbook__Classifier_18035"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134250496,
+    "n": 1,
+    "seconds": 30.09246488576,
+    "task": "kernelbook__ClusterLayer_758"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435968,
+    "n": 1,
+    "seconds": 30.125077767679997,
+    "task": "kernelbook__CnptAttention_18225"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269486080,
+    "n": 1,
+    "seconds": 36.646502368,
+    "task": "kernelbook__CoSirenModule_6257"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.01966550016,
+    "task": "kernelbook__CombinedPooling_5938"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 270533632,
+    "n": 1,
+    "seconds": 33.52243832591561,
+    "task": "kernelbook__ComplexConvTranspose2d_12328"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 31.65469487104,
+    "task": "kernelbook__CompositeActivation_1340"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.45330382848,
+    "task": "kernelbook__Connection_Combination_16380"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402653184,
+    "n": 1,
+    "seconds": 31.662873763839997,
+    "task": "kernelbook__ContentLoss_2483"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.07201622368,
+    "task": "kernelbook__ContrastiveDistanceLoss_3182"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 30.06356308672,
+    "task": "kernelbook__ContrastiveLoss_3845"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138414080,
+    "n": 1,
+    "seconds": 31.648865714085645,
+    "task": "kernelbook__Conv1d_8318"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135399424,
+    "n": 1,
+    "seconds": 31.93412300544,
+    "task": "kernelbook__Conv2d_GN_ReLUx2_2246"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135266820,
+    "n": 1,
+    "seconds": 31.821265556175,
+    "task": "kernelbook__ConvBlock_15465"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67806924,
+    "n": 1,
+    "seconds": 40.607511395965,
+    "task": "kernelbook__ConvDecoder_13343"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134225920,
+    "n": 1,
+    "seconds": 30.0361958072,
+    "task": "kernelbook__ConvLayer_15055"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 59811796,
+    "n": 1,
+    "seconds": 33.563698700635,
+    "task": "kernelbook__ConvNet_14402"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100996092,
+    "n": 1,
+    "seconds": 30.440147512945003,
+    "task": "kernelbook__ConvNeuralNetwork_4027"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 68174336,
+    "n": 1,
+    "seconds": 30.786675837984628,
+    "task": "kernelbook__CoordConv_1465"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.34221745536,
+    "task": "kernelbook__Coords_8037"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 167772160,
+    "n": 1,
+    "seconds": 33.31999446501898,
+    "task": "kernelbook__CosNorm_Classifier_11486"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134242460,
+    "n": 1,
+    "seconds": 30.023051102225004,
+    "task": "kernelbook__Critic_10668"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 318808064,
+    "n": 1,
+    "seconds": 30.33878462464,
+    "task": "kernelbook__CrossAttentionBlock_14752"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435584,
+    "n": 1,
+    "seconds": 30.15868328624,
+    "task": "kernelbook__CrossEntropyLossTF_302"
+   },
+   {
+    "error": "NotImplementedError: (KeyError(<class 'ml_dtypes.bfloat16'>), 'Unsupported dtype bfloat16.')",
+    "n": 1,
+    "task": "kernelbook__CustomInverse_4048"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 270668928,
+    "n": 1,
+    "seconds": 33.598914378079996,
+    "task": "kernelbook__DDM_Encoder_8523"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 119818496,
+    "n": 1,
+    "seconds": 30.40322428896,
+    "task": "kernelbook__DGN_13801"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.02818591388,
+    "task": "kernelbook__DICELossMultiClass_14299"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 156327936,
+    "n": 1,
+    "seconds": 30.18553962496,
+    "task": "kernelbook__D_phiVpsi_7775"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67558668,
+    "n": 1,
+    "seconds": 30.211949270604997,
+    "task": "kernelbook__Decoder2_6825"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 10372880,
+    "n": 1,
+    "seconds": 32.9108228599,
+    "task": "kernelbook__DecoderSlot_8954"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 101320192,
+    "n": 1,
+    "seconds": 30.91114025632,
+    "task": "kernelbook__Decoder_17735"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134547384,
+    "n": 1,
+    "seconds": 31.89112494629,
+    "task": "kernelbook__Decoder_3059"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.648025927680003,
+    "task": "kernelbook__Decoder_6333"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 107493376,
+    "n": 1,
+    "seconds": 31.517720597759997,
+    "task": "kernelbook__DeeperAutoencoder_10568"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 604242944,
+    "n": 1,
+    "seconds": 36.83646205504,
+    "task": "kernelbook__DenseSAGEConv_6086"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134747136,
+    "n": 1,
+    "seconds": 31.66670406336,
+    "task": "kernelbook__DepthwiseSeparableConv_2111"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.077531733439997,
+    "task": "kernelbook__DiceBCELoss_839"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.045235592640005,
+    "task": "kernelbook__DiceCoefMultilabelLoss_12948"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.063292095359998,
+    "task": "kernelbook__DiceLoss_5958"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.14949196736,
+    "task": "kernelbook__DiffLoss_286"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 30.26960990912,
+    "task": "kernelbook__DilateContourLoss_6433"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138418178,
+    "n": 1,
+    "seconds": 30.090525019294088,
+    "task": "kernelbook__DiscrimNet_10956"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.18555605696,
+    "task": "kernelbook__DiscriminatorLoss_18296"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 1610678276,
+    "n": 1,
+    "seconds": 30.307274219535,
+    "task": "kernelbook__Discriminator_10954"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134750210,
+    "n": 1,
+    "seconds": 30.052232391687497,
+    "task": "kernelbook__Discriminator_14408"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67641346,
+    "n": 1,
+    "seconds": 30.027315824647502,
+    "task": "kernelbook__Discriminator_402"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67404288,
+    "n": 1,
+    "seconds": 34.78561642688,
+    "task": "kernelbook__DisparityConv_15701"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.10306781376,
+    "task": "kernelbook__DistanceWeightedMSELoss_13604"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.12146968928,
+    "task": "kernelbook__DistillKL_404"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 30.020558535120003,
+    "task": "kernelbook__Distribution_Loss_14357"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269616128,
+    "n": 1,
+    "seconds": 33.30293873088,
+    "task": "kernelbook__DoubleConv_8847"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.638798458880004,
+    "task": "kernelbook__Downsample_9405"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33612544,
+    "n": 1,
+    "seconds": 30.441421412639997,
+    "task": "kernelbook__Duel_QNetwork_3783"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 30.371112065920002,
+    "task": "kernelbook__EdgeClassifLoss_818"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 270536704,
+    "n": 1,
+    "seconds": 30.010717283840002,
+    "task": "kernelbook__EmbeddingModule_16872"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.68591867776,
+    "task": "kernelbook__EncoderDecoder_5013"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268436484,
+    "n": 1,
+    "seconds": 30.095135107215,
+    "task": "kernelbook__Encoder_attention_17177"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.814120366079997,
+    "task": "kernelbook__Envelope_12226"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135397888,
+    "n": 1,
+    "seconds": 33.47561692768,
+    "task": "kernelbook__ExpandingBlock_12283"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138412848,
+    "n": 1,
+    "seconds": 30.01508127778,
+    "task": "kernelbook__FC2_5888"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 36658562,
+    "n": 1,
+    "seconds": 30.0923436376075,
+    "task": "kernelbook__FCDiscriminator_4330"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67644416,
+    "n": 1,
+    "seconds": 30.96832690496,
+    "task": "kernelbook__FCUDown_16471"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.02726893568,
+    "task": "kernelbook__FocalLoss_16524"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.182745849279996,
+    "task": "kernelbook__FocalLoss_9710"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108872,
+    "n": 1,
+    "seconds": 31.68931815427,
+    "task": "kernelbook__Forward_Grad_7661"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 272629760,
+    "n": 1,
+    "seconds": 33.3377353728,
+    "task": "kernelbook__FullyConnected_7520"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 271583232,
+    "n": 1,
+    "seconds": 31.690173285119997,
+    "task": "kernelbook__Fusion2_MinusFCLayer_17842"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.74952808448,
+    "task": "kernelbook__GELU_2265"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.74952808448,
+    "task": "kernelbook__GELU__7911"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 53501952,
+    "n": 1,
+    "seconds": 33.34740859392,
+    "task": "kernelbook__GRU_6764"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.156598599680002,
+    "task": "kernelbook__GammaScaleMap_8434"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 31.70389405696,
+    "task": "kernelbook__GatedActivation_3481"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 142614528,
+    "n": 1,
+    "seconds": 31.74984990208,
+    "task": "kernelbook__GatedDense_15172"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217736,
+    "n": 1,
+    "seconds": 31.837189038109997,
+    "task": "kernelbook__GaussActivation_17197"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108872,
+    "n": 1,
+    "seconds": 30.89321897987,
+    "task": "kernelbook__GaussianActivation_18109"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33554534,
+    "n": 1,
+    "seconds": 50.9482625847025,
+    "task": "kernelbook__GaussianSmearing_15962"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.823226579839996,
+    "task": "kernelbook__Gaussian_Distance_9230"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268443648,
+    "n": 1,
+    "seconds": 30.19709239488,
+    "task": "kernelbook__GeneralizedFocalLoss_1323"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138417152,
+    "n": 1,
+    "seconds": 31.99883090112,
+    "task": "kernelbook__Generator_13017"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 140509184,
+    "n": 1,
+    "seconds": 33.24950689944,
+    "task": "kernelbook__GetSegPred_10461"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67109122,
+    "n": 1,
+    "seconds": 30.0239477906075,
+    "task": "kernelbook__GlobalWeightedAvgPool2d_1865"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.14002159616,
+    "task": "kernelbook__GramMatrix_2098"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402653184,
+    "n": 1,
+    "seconds": 30.15102382784,
+    "task": "kernelbook__Hard_Distillation_Loss_793"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135268352,
+    "n": 1,
+    "seconds": 31.819711742719996,
+    "task": "kernelbook__HighwayCNN_10675"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 83197968,
+    "n": 1,
+    "seconds": 30.18725210438,
+    "task": "kernelbook__HighwayMaxoutNetwork_4005"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 37752832,
+    "n": 1,
+    "seconds": 30.44792383232,
+    "task": "kernelbook__Highway_8386"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.36987160576,
+    "task": "kernelbook__Hsigmoid_11203"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.69877700608,
+    "task": "kernelbook__Hswish_11194"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.06156388704,
+    "task": "kernelbook__HyperSphereLoss_7995"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 167772160,
+    "n": 1,
+    "seconds": 30.075602353599997,
+    "task": "kernelbook__IIDIsotropicGaussianUVLoss_2617"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 144986112,
+    "n": 1,
+    "seconds": 32.025960414720004,
+    "task": "kernelbook__ISAB_8416"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 33.26326366208,
+    "task": "kernelbook__ImageLevelFeaturePooling2D_349"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67155808,
+    "n": 1,
+    "seconds": 30.586630301680003,
+    "task": "kernelbook__InceptionA_5869"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 402653184,
+    "n": 1,
+    "seconds": 31.702090506239998,
+    "task": "kernelbook__InstockMask_2326"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268959744,
+    "n": 1,
+    "seconds": 36.56422764544,
+    "task": "kernelbook__ItemInferenceNetwork_12467"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268959744,
+    "n": 1,
+    "seconds": 34.87920943104,
+    "task": "kernelbook__Join_17327"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.12146968928,
+    "task": "kernelbook__KDLoss_13974"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.154845887359997,
+    "task": "kernelbook__KLD_14526"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.12146968928,
+    "task": "kernelbook__KLDivergence_2088"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.114549087680004,
+    "task": "kernelbook__KLLoss_14745"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.61712142208,
+    "task": "kernelbook__MaxPoolStride1_2354"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67181912,
+    "n": 1,
+    "seconds": 30.85616784817,
+    "task": "kernelbook__MyModel_1269"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.88659509248,
+    "task": "kernelbook__NLgate_13812"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.82710634496,
+    "task": "kernelbook__NasAvgPoolBlock_6625"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.10892612288,
+    "task": "kernelbook__NegativeLearningLoss_16953"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67932706,
+    "n": 1,
+    "seconds": 30.0519451296475,
+    "task": "kernelbook__Net4_7283"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 42396110,
+    "n": 1,
+    "seconds": 30.812218460612502,
+    "task": "kernelbook__Net_10577"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 205724456,
+    "n": 1,
+    "seconds": 30.04551831201,
+    "task": "kernelbook__Net_11161"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 51203094,
+    "n": 1,
+    "seconds": 30.2554138580025,
+    "task": "kernelbook__Net_1481"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 52530324,
+    "n": 1,
+    "seconds": 30.031606960515003,
+    "task": "kernelbook__Net_6972"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 142606336,
+    "n": 1,
+    "seconds": 31.62353653800157,
+    "task": "kernelbook__NeuralAccumulatorCell_7228"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268439560,
+    "n": 1,
+    "seconds": 30.02382642435,
+    "task": "kernelbook__NextSentencePrediction_2915"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 272646156,
+    "n": 1,
+    "seconds": 30.093787581485003,
+    "task": "kernelbook__NodeClassifier_7787"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 167772160,
+    "n": 1,
+    "seconds": 30.076755835199997,
+    "task": "kernelbook__NonAttentiveTacotronLoss_17420"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 69206016,
+    "n": 1,
+    "seconds": 30.904878325760002,
+    "task": "kernelbook__NonLocalBlock_8363"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134219776,
+    "n": 1,
+    "seconds": 31.74534738816,
+    "task": "kernelbook__Norm_5"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.703390828480003,
+    "task": "kernelbook__NormalizeImages_7178"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134348800,
+    "n": 1,
+    "seconds": 33.304839604,
+    "task": "kernelbook__OrthogonalFusion_15362"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33641122,
+    "n": 1,
+    "seconds": 30.6471757190075,
+    "task": "kernelbook__OutlookAttention_4230"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 36721926,
+    "n": 1,
+    "seconds": 30.492290465622503,
+    "task": "kernelbook__PAMA_13038"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134238800,
+    "n": 1,
+    "seconds": 31.646008344899997,
+    "task": "kernelbook__PGNetwork_6380"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217732,
+    "n": 1,
+    "seconds": 31.694163271695,
+    "task": "kernelbook__PLU_6486"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 34735104,
+    "n": 1,
+    "seconds": 30.533162234239995,
+    "task": "kernelbook__ParallelDilatedConv_3441"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268568576,
+    "n": 1,
+    "seconds": 31.894288188159997,
+    "task": "kernelbook__PatchMerging_16516"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.66698549248,
+    "task": "kernelbook__PixelNorm_16870"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.29734946816,
+    "task": "kernelbook__PixelNorm_4480"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134348800,
+    "n": 1,
+    "seconds": 31.6296038128,
+    "task": "kernelbook__PositionEmbedder_11333"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.28792979456,
+    "task": "kernelbook__PredictiveEntropy_7060"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 25165824,
+    "n": 1,
+    "seconds": 50.44555689984,
+    "task": "kernelbook__PseudoCoord_13933"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33595904,
+    "n": 1,
+    "seconds": 30.42123563744,
+    "task": "kernelbook__QNetworkSmall_14690"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67633408,
+    "n": 1,
+    "seconds": 30.85617329008,
+    "task": "kernelbook__QuantConv2d_1261"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134219776,
+    "n": 1,
+    "seconds": 31.629578952960003,
+    "task": "kernelbook__QueryEncoding_4551"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33849600,
+    "n": 1,
+    "seconds": 30.4191560664,
+    "task": "kernelbook__RC_6332"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.03330282176,
+    "task": "kernelbook__RMSELoss_471"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.08405390016,
+    "task": "kernelbook__RMSPE_8648"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201342976,
+    "n": 1,
+    "seconds": 30.858294138277646,
+    "task": "kernelbook__RNN_9217"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 137566212,
+    "n": 1,
+    "seconds": 30.116621292494997,
+    "task": "kernelbook__ReadUnit_4676"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 143732768,
+    "n": 1,
+    "seconds": 30.243080023561568,
+    "task": "kernelbook__RegressionModel_2877"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217744,
+    "n": 1,
+    "seconds": 31.71607851014,
+    "task": "kernelbook__Relu_Adpt_5968"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135135232,
+    "n": 1,
+    "seconds": 33.406313144319995,
+    "task": "kernelbook__ResBlock_10456"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 71305216,
+    "n": 1,
+    "seconds": 30.01366795136,
+    "task": "kernelbook__ResHead_11605"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 35523268,
+    "n": 1,
+    "seconds": 30.112504461054996,
+    "task": "kernelbook__ResNetModel_18279"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134220800,
+    "n": 1,
+    "seconds": 31.8007578944,
+    "task": "kernelbook__ResampleNorm_17450"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 34603520,
+    "n": 1,
+    "seconds": 31.825537646127685,
+    "task": "kernelbook__ResizeGatedConv2d_9622"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 276832256,
+    "n": 1,
+    "seconds": 33.43478570496,
+    "task": "kernelbook__ResnetBlockFC_7838"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 33.27017299968,
+    "task": "kernelbook__RevPaddingLayer_17832"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134283264,
+    "n": 1,
+    "seconds": 30.000564433399372,
+    "task": "kernelbook__RewardCriterion_1171"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100663296,
+    "n": 1,
+    "seconds": 30.031519936960002,
+    "task": "kernelbook__RewardCriterion_3114"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 30.04343150272,
+    "task": "kernelbook__RewardCriterion_8829"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.648023674879997,
+    "task": "kernelbook__RollLayer_5620"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134218244,
+    "n": 1,
+    "seconds": 31.635013774415,
+    "task": "kernelbook__SAM_15078"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135270912,
+    "n": 1,
+    "seconds": 31.634362121920002,
+    "task": "kernelbook__SELayer_17170"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67372288,
+    "n": 1,
+    "seconds": 30.826355200480002,
+    "task": "kernelbook__SEModule_8007"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134284032,
+    "n": 1,
+    "seconds": 31.63419219792,
+    "task": "kernelbook__SE_layer_3d_4495"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.08537392768,
+    "task": "kernelbook__SSIM_2414"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.25914282496,
+    "task": "kernelbook__SampaddingMaxPool1D_6195"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268436480,
+    "n": 1,
+    "seconds": 33.2960521056,
+    "task": "kernelbook__Scale_13874"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134219776,
+    "n": 1,
+    "seconds": 31.66660752256,
+    "task": "kernelbook__ScaledL2Norm_6171"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134352900,
+    "n": 1,
+    "seconds": 30.029105761775,
+    "task": "kernelbook__SelfAttentionPooling_17848"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 151027712,
+    "n": 1,
+    "seconds": 30.39810168832,
+    "task": "kernelbook__SelfAttention_241"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 146800640,
+    "n": 1,
+    "seconds": 31.8239176704,
+    "task": "kernelbook__SelfAttention_3012"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67143682,
+    "n": 1,
+    "seconds": 30.0196643872075,
+    "task": "kernelbook__SelfAttnPooler_12096"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67634176,
+    "n": 1,
+    "seconds": 30.031956914560002,
+    "task": "kernelbook__Sentence_Maxpool_2203"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 136314880,
+    "n": 1,
+    "seconds": 31.962994992000002,
+    "task": "kernelbook__SequenceQuantizerSoftEMA_6385"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 205653584,
+    "n": 1,
+    "seconds": 30.083002064940004,
+    "task": "kernelbook__SiameseMLP_391"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 151523840,
+    "n": 1,
+    "seconds": 30.1058760496,
+    "task": "kernelbook__Similarity_3272"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134221824,
+    "n": 1,
+    "seconds": 30.012953352640004,
+    "task": "kernelbook__SimpleAttention_60"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 71307264,
+    "n": 1,
+    "seconds": 30.879538685439996,
+    "task": "kernelbook__SimpleMLPGen_with_meta_feature_13166"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134382080,
+    "n": 1,
+    "seconds": 30.4437853616,
+    "task": "kernelbook__SimpleTextClassifier_4040"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67174400,
+    "n": 1,
+    "seconds": 30.9787210624,
+    "task": "kernelbook__SinkhornDistance_16855"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 31.72465586176,
+    "task": "kernelbook__SmoothL1Loss_7106"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.18501538496,
+    "task": "kernelbook__Smooth_Loss_17740"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 69210112,
+    "n": 1,
+    "seconds": 30.024316296783056,
+    "task": "kernelbook__SoftAttention_11380"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108872,
+    "n": 1,
+    "seconds": 30.14819262467,
+    "task": "kernelbook__SoftHistogram_8586"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201351170,
+    "n": 1,
+    "seconds": 30.125233337732986,
+    "task": "kernelbook__SoftQNetwork_9041"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 69208064,
+    "n": 1,
+    "seconds": 30.86568010624,
+    "task": "kernelbook__SoftmaxAffineLayer_4235"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.665327431680005,
+    "task": "kernelbook__Softmax_12377"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67113026,
+    "n": 1,
+    "seconds": 30.012058133847496,
+    "task": "kernelbook__SpatialAttentionGate_5270"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108900,
+    "n": 1,
+    "seconds": 30.829437706375,
+    "task": "kernelbook__SpatialAttention_15894"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217764,
+    "n": 1,
+    "seconds": 30.056235133214997,
+    "task": "kernelbook__SpatialAttention_5798"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67111170,
+    "n": 1,
+    "seconds": 30.0091746308875,
+    "task": "kernelbook__SpatialGate_8630"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67174400,
+    "n": 1,
+    "seconds": 30.0834208,
+    "task": "kernelbook__SpatialSoftmaxBZ_16837"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135266306,
+    "n": 1,
+    "seconds": 33.3521081350475,
+    "task": "kernelbook__SplitCosineLinear_16039"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217730,
+    "n": 1,
+    "seconds": 31.611215176925,
+    "task": "kernelbook__SplitDim_6311"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134218752,
+    "n": 1,
+    "seconds": 30.445906534720002,
+    "task": "kernelbook__StochasticPool2d_6401"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67109376,
+    "n": 1,
+    "seconds": 30.85630922976,
+    "task": "kernelbook__Swish_13688"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 75497472,
+    "n": 1,
+    "seconds": 30.706577694720004,
+    "task": "kernelbook__TTKernel_16905"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.18519560896,
+    "task": "kernelbook__TVLoss_4504"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 69207040,
+    "n": 1,
+    "seconds": 30.83013987600565,
+    "task": "kernelbook__TemporalBlock_16671"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134742016,
+    "n": 1,
+    "seconds": 31.73109340816,
+    "task": "kernelbook__TemporalRelation_4523"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33554432,
+    "n": 1,
+    "seconds": 35.58416003072,
+    "task": "kernelbook__ThetaEncoder_4616"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134283778,
+    "n": 1,
+    "seconds": 30.0507179321675,
+    "task": "kernelbook__TinyDiscriminator_13761"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.24068704256,
+    "task": "kernelbook__TotalVariationLoss_6524"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 92291072,
+    "n": 1,
+    "seconds": 30.32361234432,
+    "task": "kernelbook__TransformerLayer_11283"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 53689734,
+    "n": 1,
+    "seconds": 35.187166482102505,
+    "task": "kernelbook__Transformer_9945"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100663296,
+    "n": 1,
+    "seconds": 32.60315550976,
+    "task": "kernelbook__TransitionUp_15856"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 243286016,
+    "n": 1,
+    "seconds": 31.72214055980173,
+    "task": "kernelbook__TwoLayerFCBodyWithAction_9096"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269616128,
+    "n": 1,
+    "seconds": 33.75747051968,
+    "task": "kernelbook__UNetModule_3705"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135267840,
+    "n": 1,
+    "seconds": 31.8992122576,
+    "task": "kernelbook__UnpackLayerConv2d_2252"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67141888,
+    "n": 1,
+    "seconds": 33.622878975679996,
+    "task": "kernelbook__Upsample_17972"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 76644864,
+    "n": 1,
+    "seconds": 30.862826756555297,
+    "task": "kernelbook__UsBlockRes_5564"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 50364416,
+    "n": 1,
+    "seconds": 30.023432028160002,
+    "task": "kernelbook__VNMaxPool_3385"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 270538756,
+    "n": 1,
+    "seconds": 30.201246078734997,
+    "task": "kernelbook__ValueNetwork_338"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.097285570559997,
+    "task": "kernelbook__VarianceC_4476"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 32575104,
+    "n": 1,
+    "seconds": 30.209401819954824,
+    "task": "kernelbook__Vgg16_13529"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134219010,
+    "n": 1,
+    "seconds": 30.095971014087503,
+    "task": "kernelbook__Wang_18074"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 33.36626450432,
+    "task": "kernelbook__WeightedL2WithSigmaLoss_13989"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100663296,
+    "n": 1,
+    "seconds": 30.06496979296,
+    "task": "kernelbook__WeightedMCEFocalloss_5298"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 201326592,
+    "n": 1,
+    "seconds": 30.90294976512,
+    "task": "kernelbook__ZeroOneTest_7312"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217730,
+    "n": 1,
+    "seconds": 31.7310731468875,
+    "task": "kernelbook__act_PRT_4984"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67113732,
+    "n": 1,
+    "seconds": 30.392471722895,
+    "task": "kernelbook__convnet_3957"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67257024,
+    "n": 1,
+    "seconds": 30.862594543440004,
+    "task": "kernelbook__discriminator_15107"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 151003136,
+    "n": 1,
+    "seconds": 31.658043079860704,
+    "task": "kernelbook__equalized_linear_7234"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.04735468256,
+    "task": "kernelbook__make_style_10035"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.82362537984,
+    "task": "kernelbook__moving_avg_16583"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.86398468096,
+    "task": "kernelbook__multi_pool_6124"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 50331648,
+    "n": 1,
+    "seconds": 30.024410873280004,
+    "task": "kernelbook__offset_pos_9100"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.866690007040003,
+    "task": "kernelbook__rSoftMax_11978"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.733380014079998,
+    "task": "kernelbook__rSoftMax_9090"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.025987014080002,
+    "task": "kernelbook__rmse_609"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.85958791936,
+    "task": "kernelbook__stack_pool_6133"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.110079556480002,
+    "task": "kernelbook__weighted_mae_windows_9647"
+   }
+  ],
+  "total_s": 8891.574732349469
+ },
+ "job_id": "dataset-kbk-r1",
+ "n_items": 284,
+ "n_tasks": 284,
+ "probe_ids": []
+}
