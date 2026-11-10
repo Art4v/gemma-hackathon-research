@@ -269,6 +269,9 @@ with MLX on the exact Q4_0 weights), its val numbers, and its JAXBench result.
   4-bit on-device model should check the effect that survives the fold, or train on the quantized weights directly.
 - **Repair data.** Most constructor kernels pass at once, so repair examples with real oracle feedback are few: 241 of 2,983
   training rows, against 999 repairs of injected errors.
+- **CPU-only rows and memory.** CPU lowering does not check VMEM. The 121 CPU-only rows rely on a heuristic (generated kernels under
+  8 MiB of input blocks) and on block-footprint ratios (65 of 66 shape variants are no larger than their TPU-verified original; one
+  is 1.02x).
 
 ## 6. Conclusion
 
