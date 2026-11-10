@@ -1,5 +1,5 @@
 {
- "at": "2026-11-10T09:53:08+00:00",
+ "at": "2026-11-10T10:41:14+00:00",
  "excluded_list": 0,
  "kbk": {
   "batch": "kbk",
@@ -8,7 +8,7 @@
    "repair": 131,
    "single": 729
   },
-  "commit": "53c93c7",
+  "commit": "6cbf18e",
   "errors": [],
   "n_errors": 0,
   "rows": 860,
@@ -44,20 +44,20 @@
   "batch": "kbkd",
   "branch": "karthik/kbk",
   "by_kind": {
-   "repair": 28,
-   "single": 213
+   "repair": 30,
+   "single": 215
   },
-  "commit": "53c93c7",
+  "commit": "6cbf18e",
   "errors": [],
   "n_errors": 0,
-  "rows": 241,
+  "rows": 245,
   "skipped": {
    "problem_not_ok": 2
   },
   "trajectories": {
-   "open": 9,
-   "solved": 213,
-   "unsolved": 4
+   "open": 2,
+   "solved": 215,
+   "unsolved": 9
   }
  },
  "m1": {
@@ -83,7 +83,7 @@
   "by_kind": {
    "single": 21
   },
-  "commit": "53c93c7",
+  "commit": "6cbf18e",
   "errors": [],
   "n_errors": 0,
   "rows": 21,
