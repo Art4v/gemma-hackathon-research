@@ -2,16 +2,16 @@
  "base": "v3 train_capped",
  "base_rows": 1371,
  "by_teacher": {
-  "claude": 1802,
+  "claude": 1895,
   "generator": 55,
   "injected": 999
  },
  "by_verification": {
   "cpu": 121,
-  "tpu": 2688,
+  "tpu": 2781,
   "tpu_correct_slow": 47
  },
- "created_at": "2026-11-10T08:51:59+00:00",
+ "created_at": "2026-11-10T09:08:59+00:00",
  "dropped_target_over_cap": {
   "ids": [
    "kernelbook__ConvDenoiser_3791.single.a1",
@@ -55,24 +55,24 @@
   "val_rows_before": 26
  },
  "files": {
-  "coverage.txt": "7512197ade6ad4dc717eaf5ac3ffb01877c4a05a57b3a60790c9e31a30365b14",
-  "train.jsonl": "4eba6f5f9838ddbb4b01bdf5f02655c6aaa5c5391ccad9adb7d10b2c31449c81",
+  "coverage.txt": "30d8824293b58c054c2532b3aa3ab1061a028d1884666f05408a0d6ed8d558ab",
+  "train.jsonl": "7d71a87cd1565f110fcfce559b9e9c76c0a7218183c7dc6d40668516db6f97f2",
   "val.jsonl": "ea667fc895a31bcddf776640d2cd0a4eae49ab55698fdaad51549a1ba75634ff",
-  "verification.jsonl": "a37b38b1238451bb03085a0b28810190be6a861e37f5eac42f047cbd1f7c1c0e"
+  "verification.jsonl": "5d1d98a9aef58325e525d533304b3f5d9c421d79642b5132bcad76ae82479d55"
  },
- "n_train": 2856,
+ "n_train": 2949,
  "n_val": 24,
  "part_commits": {
-  "kbk": "d6b3444",
+  "kbk": "593779e",
   "kbkc": "a6efbc0",
-  "kbkd": "d6b3444",
+  "kbkd": "593779e",
   "m1": "fea374a",
-  "prod": "d6b3444"
+  "prod": "593779e"
  },
  "part_rows": {
   "kbk": 860,
   "kbkc": 413,
-  "kbkd": 118,
+  "kbkd": 211,
   "m1": 91,
   "prod": 21
  },
@@ -88,6 +88,6 @@
   "repair": 224,
   "repair_injected": 999,
   "shape_variant": 66,
-  "single": 1465
+  "single": 1558
  }
 }
