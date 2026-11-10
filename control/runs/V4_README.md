@@ -19,3 +19,27 @@
 **Val (dataset-v1's 23 val problems):** `v4_val/local_val_*.scored.jsonl` (greedy, CPU step 1) and `v4_val/sampled_*.jsonl` (3 samples per problem at temperature 1.0 / top_p 0.95 / top_k 64, each through the three CPU gates: oracle step 1, v6e lowering, TPU-interpret numerics).
 
 **Training:** `v4_training/*_metrics.json` (full loss/val history).
+
+## The real v4 JAXBench run (Modal, Nov 10, from 17:55 UTC)
+
+**Directory:** `gemma4-e4b-lora_v4final-e2__modal/` (bare, greedy, 3 turns). It is generated on the same backend as base bare/docs and v1:
+Modal A10G, Ollama 0.40.14, `control/modal_gemma.py`. The 2 attempts from the paused Mac run are not used.
+
+**Served model, verified before any spend** (`control/modal_v4_create.py`):
+- Every manifest layer and the config blob equal the Mac's: model `342ca428`, projector `c6398448`, template `b507b9c2`, params
+  `56380ca2`, config `0bb8bebca73f`.
+- The Modal digest `0f764d3f6798` differs from the Mac's `2a99a2f97822` only because Ollama 0.40 writes each layer's source path into
+  the manifest.
+- Every row carries `0f764d3f6798`. The runner stops if any row doesn't.
+
+**62p_Causal_Conv1d_GDN t0.** v4 loops at temperature 0 and Ollama aborts the reply ("token repeat limit reached"), which unstreamed is a
+bare HTTP 500. Serving now streams, which gives token-identical output (`control/modal_determinism.py`), and the reply is recorded up to
+the abort with `finish: repeat_limit`. It is judged as written: no closed code block, so the oracle's own verdict. Its turn 0 is
+judged with turn 1's batch, and one catch-up pass gives it its 3 turns.
+
+**Turn 0** (this push: 64 rows, 63 verdicts, CPU step-1 files `cpu_checks/lora-v4final-e2-modal-t0_*`):
+- CPU step 1: 24 of 63 passed (18 k, 6 p). Base bare and v1 had 0 of 64.
+- TPU v6e-1, oracle `c9a07d9298a1`: **1 pass**, `12p_RMSNorm`, at 1.40x XLA. The kernel is a single `pallas_call` with 3 reshapes
+  outside, correct on 3 seeds, with error equal to XLA default's.
+- 2 `correct_slow`: `8p_GEMM` (0.20x) and `48k` (0.16x).
+- 4 `wrong`, 16 `vmem` (whole arrays or oversized blocks in VMEM), 1 `compile` (57p).
