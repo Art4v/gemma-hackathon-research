@@ -1,25 +1,25 @@
 {
- "at": "2026-11-10T07:57:49+00:00",
+ "at": "2026-11-10T08:48:56+00:00",
  "excluded_list": 0,
  "kbk": {
   "batch": "kbk",
   "branch": "karthik/kbk",
   "by_kind": {
-   "repair": 126,
-   "single": 724
+   "repair": 131,
+   "single": 729
   },
-  "commit": "b720bbe",
+  "commit": "d6b3444",
   "errors": [],
   "n_errors": 0,
-  "rows": 850,
+  "rows": 860,
   "skipped": {
    "problem_not_ok": 3
   },
   "trajectories": {
    "harness_blocked": 7,
-   "open": 22,
-   "solved": 727,
-   "unsolved": 21
+   "open": 3,
+   "solved": 732,
+   "unsolved": 35
   }
  },
  "kbkc": {
@@ -45,16 +45,17 @@
   "batch": "kbkd",
   "branch": "karthik/kbk",
   "by_kind": {
-   "single": 92
+   "repair": 13,
+   "single": 105
   },
-  "commit": "b720bbe",
+  "commit": "d6b3444",
   "errors": [],
   "n_errors": 0,
-  "rows": 92,
+  "rows": 118,
   "skipped": {},
   "trajectories": {
-   "open": 18,
-   "solved": 92
+   "open": 5,
+   "solved": 105
   }
  },
  "m1": {
@@ -80,7 +81,7 @@
   "by_kind": {
    "single": 21
   },
-  "commit": "b720bbe",
+  "commit": "d6b3444",
   "errors": [],
   "n_errors": 0,
   "rows": 21,
