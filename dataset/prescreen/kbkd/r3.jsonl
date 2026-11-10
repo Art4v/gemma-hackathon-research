@@ -1,0 +1,4 @@
+{"candidate_id": "kernelbook__BPR_12662.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kernelbook__SEModule_13378.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kernelbook__UpsampleConvLayer_11372.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
+{"candidate_id": "kernelbook__depthwise_separable_conv_7238.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.26, "stage": "static"}
