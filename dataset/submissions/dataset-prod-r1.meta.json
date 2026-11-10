@@ -1,0 +1,166 @@
+{
+ "created_at": "2026-11-10T01:37:19+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 51527680,
+    "n": 1,
+    "seconds": 30.0729478304,
+    "task": "github__beam_search_step"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 123731968,
+    "n": 1,
+    "seconds": 31.29411714048,
+    "task": "github__bitnet_ternary_bitlinear"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67772416,
+    "n": 1,
+    "seconds": 30.60939982336,
+    "task": "github__dynamic_conv1d"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 69206016,
+    "n": 1,
+    "seconds": 34.14226797056,
+    "task": "github__encodec_residual_vq"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33581068,
+    "n": 1,
+    "seconds": 30.819435251005,
+    "task": "github__fsq_quantizer"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33554432,
+    "n": 1,
+    "seconds": 30.442525793902433,
+    "task": "github__hadamard_rotation_int4_quant"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135802880,
+    "n": 1,
+    "seconds": 33.3764122832,
+    "task": "github__mesanet_cg_decode"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 93914880,
+    "n": 1,
+    "seconds": 30.287482835200002,
+    "task": "github__multiscale_deformable_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 35.64947582976,
+    "task": "github__muon_newton_schulz"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 37748740,
+    "n": 1,
+    "seconds": 30.459955544974996,
+    "task": "github__siglip_sigmoid_contrastive_loss"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 164105216,
+    "n": 1,
+    "seconds": 30.367576383360003,
+    "task": "github__soft_moe"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33554432,
+    "n": 1,
+    "seconds": 30.447200286719998,
+    "task": "github__sparsemax"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 100663296,
+    "n": 1,
+    "seconds": 33.84988737536,
+    "task": "github__stickbreaking_attention"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67994880,
+    "n": 1,
+    "seconds": 30.513162412,
+    "task": "github__wav2vec2_product_quantizer"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 167837696,
+    "n": 1,
+    "seconds": 32.14648864256,
+    "task": "github__yarn_rope_partial"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 42994432,
+    "n": 1,
+    "seconds": 30.41928756432,
+    "task": "kernelbook__aft_full"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 75501568,
+    "n": 1,
+    "seconds": 31.737858564116078,
+    "task": "kernelbook__average_attention_network"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33558528,
+    "n": 1,
+    "seconds": 33.03543031648,
+    "task": "kernelbook__batch_hard_triplet_loss"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 41943040,
+    "n": 1,
+    "seconds": 30.2411619584,
+    "task": "kernelbook__capsule_dynamic_routing"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33587200,
+    "n": 1,
+    "seconds": 30.447727486399998,
+    "task": "kernelbook__circle_loss"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 109060096,
+    "n": 1,
+    "seconds": 30.54061180416,
+    "task": "kernelbook__efficient_attention_softmax_kernel"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134234626,
+    "n": 1,
+    "seconds": 30.5033821432897,
+    "task": "kernelbook__mixture_of_attention_heads_gate"
+   }
+  ],
+  "total_s": 691.4037952400082
+ },
+ "job_id": "dataset-prod-r1",
+ "n_items": 22,
+ "n_tasks": 22,
+ "probe_ids": []
+}
