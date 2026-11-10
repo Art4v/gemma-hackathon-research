@@ -1,0 +1,1709 @@
+[
+ {
+  "key": "funnel",
+  "compiled": {
+   "markdown": "## Are the results statistically significant?\n\n**On the pre-registered primary metric, no.** v4's `pass_within_3` is 1 of 58 on primary-58 (12p_RMSNorm, at turn 0), against 0 of 58 for base bare, base docs and v1. That is 1 discordant task, so the exact McNemar p = 1.0. The protocol needs at least 6 one-way discordant tasks for p < 0.05. S-p-25 is the same: 1 vs 0, p = 1.0. The pre-registered comparison arm, `bare_stack`, was not run for v4, so every test below is against base bare, base docs or v1.\n\n**The earlier funnel stages do separate.** These tests were not pre-specified, and the p-values are uncorrected:\n- **Stage (b), passing the kernel check:** v4 reaches it on 23 of 58 tasks, base bare on 0 (p = 2.4e-7). This holds up.\n- **Stage (c), compiles and runs:** 7 vs 0, p = 0.0156. It does not survive a Holm correction across the 5 stages (0.0156 \u00d7 4 = 0.0625).\n- **Stages (d) and (e):** 3 vs 0 (p = 0.25) and 1 vs 0 (p = 1.0). Not significant.\n\nData: 5 runs (`control/runs/*__modal`). Each task has 1 greedy chain of up to 3 turns. Oracle sha `c9a07d9298a1` on every row. Stage definitions:\n- (a) the reply has a code block\n- (b) passed oracle step 1, so it was judged on a TPU v6e\n- (c) compiled and ran: wrong, correct_slow or pass\n- (d) correct: correct_slow or pass\n- (e) pass\n\n### 1. Funnel per arm and turn, with the verdict distribution split by where it was judged\nThe oracle gives a reply with no code block a CPU `compile` verdict, so the CPU compile count is split into \"no code\" and \"code\". No row in any arm has the verdicts mosaic, timeout, runtime, crash, harness_oom or too_large_for_chip.\n\n| arm | turn | attempts | (a) | (b) | (c) | (d) | (e) | CPU compile, no code | CPU compile, code | CPU not_a_kernel | TPU compile | TPU vmem | TPU wrong | TPU correct_slow | TPU pass |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| base bare | t0 | 64 | 52 | 0 | 0 | 0 | 0 | 12 | 50 | 2 | 0 | 0 | 0 | 0 | 0 |\n| base bare | t1 | 64 | 56 | 0 | 0 | 0 | 0 | 8 | 53 | 3 | 0 | 0 | 0 | 0 | 0 |\n| base bare | t2 | 64 | 59 | 0 | 0 | 0 | 0 | 5 | 55 | 4 | 0 | 0 | 0 | 0 | 0 |\n| base bare | **all** | 192 | 167 | 0 | 0 | 0 | 0 | 25 | 158 | 9 | 0 | 0 | 0 | 0 | 0 |\n| base docs | t0 | 64 | 56 | 4 | 0 | 0 | 0 | 8 | 46 | 6 | 1 | 3 | 0 | 0 | 0 |\n| base docs | t1 | 64 | 62 | 3 | 0 | 0 | 0 | 2 | 50 | 9 | 2 | 1 | 0 | 0 | 0 |\n| base docs | t2 | 64 | 62 | 4 | 0 | 0 | 0 | 2 | 57 | 1 | 3 | 1 | 0 | 0 | 0 |\n| base docs | **all** | 192 | 180 | 11 | 0 | 0 | 0 | 12 | 153 | 16 | 6 | 5 | 0 | 0 | 0 |\n| v1 | t0 | 64 | 59 | 0 | 0 | 0 | 0 | 5 | 56 | 3 | 0 | 0 | 0 | 0 | 0 |\n| v1 | t1 | 64 | 61 | 0 | 0 | 0 | 0 | 3 | 60 | 1 | 0 | 0 | 0 | 0 | 0 |\n| v1 | t2 | 64 | 60 | 0 | 0 | 0 | 0 | 4 | 60 | 0 | 0 | 0 | 0 | 0 | 0 |\n| v1 | **all** | 192 | 180 | 0 | 0 | 0 | 0 | 12 | 176 | 4 | 0 | 0 | 0 | 0 | 0 |\n| pilot25 | t0 | 64 | 45 | 0 | 0 | 0 | 0 | 19 | 35 | 10 | 0 | 0 | 0 | 0 | 0 |\n| pilot25 | t1 | 64 | 58 | 0 | 0 | 0 | 0 | 6 | 40 | 18 | 0 | 0 | 0 | 0 | 0 |\n| pilot25 | t2 | 64 | 62 | 0 | 0 | 0 | 0 | 2 | 48 | 14 | 0 | 0 | 0 | 0 | 0 |\n| pilot25 | **all** | 192 | 165 | 0 | 0 | 0 | 0 | 27 | 123 | 42 | 0 | 0 | 0 | 0 | 0 |\n| **v4** | t0 | 64 | 56 | 24 | 7 | 3 | 1 | 8 | 32 | 0 | 1 | 16 | 4 | 2 | 1 |\n| **v4** | t1 | 63 | 60 | 23 | 6 | 1 | 0 | 3 | 36 | 1 | 1 | 16 | 5 | 1 | 0 |\n| **v4** | t2 | 63 | 62 | 23 | 6 | 1 | 0 | 1 | 38 | 1 | 1 | 16 | 5 | 1 | 0 |\n| **v4** | **all** | 190 | 178 | 70 | 19 | 5 | 1 | 12 | 106 | 2 | 3 | 48 | 14 | 4 | 1 |\n\n### 2. \"Within 3\": the best stage each task reached over its turns\nEach cell gives the number of tasks reaching stages a/b/c/d/e.\n\n| arm | all-64 | primary-58 | S-p-25 | k-33 | p-31 |\n|---|---|---|---|---|---|\n| base bare | 59/0/0/0/0 | 53/0/0/0/0 | 24/0/0/0/0 | 29/0/0/0/0 | 30/0/0/0/0 |\n| base docs | 63/6/0/0/0 | 57/6/0/0/0 | 24/3/0/0/0 | 33/3/0/0/0 | 30/3/0/0/0 |\n| v1 | 61/0/0/0/0 | 55/0/0/0/0 | 22/0/0/0/0 | 33/0/0/0/0 | 28/0/0/0/0 |\n| pilot25 | 62/0/0/0/0 | 56/0/0/0/0 | 23/0/0/0/0 | 33/0/0/0/0 | 29/0/0/0/0 |\n| **v4** | 63/24/7/3/1 | 57/23/7/3/1 | 24/5/2/2/1 | 33/18/5/1/0 | 30/6/2/2/1 |\n\n- **pass@1 (turn 0):** v4 1 (12p); every other arm 0.\n- **Base docs, stage (b):** 15p, 38k, 43k, 47k, 8p and 9p. None of them ran: their TPU verdicts are 6 compile and 5 vmem.\n\n### 3. v4 tasks reaching stages (c) to (e)\n| task | sets | best stage | best verdict (turn) | speed_vs_xla | t0 / t1 / t2 |\n|---|---|---|---|---|---|\n| 12p_RMSNorm | P58, Sp25 | e | pass (t0) | 1.402 | pass / - / - (chain stopped on the pass) |\n| 8p_GEMM | P58, Sp25 | d | correct_slow (t1) | 0.336 | correct_slow 0.204 / correct_slow 0.336 / correct_slow 0.336 |\n| 48k_Matmul_BatchNorm_BiasAdd_Divide_Swish | P58 | d | correct_slow (t0) | 0.161 | correct_slow 0.161 / **wrong** / wrong (the repair made it worse) |\n| 21k_Gemm_Divide_Sum_Scaling | P58 | c | wrong | (1.32, not meaningful) | wrong x3, max error 1.54 of max\\|ref\\| |\n| 24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish | P58 | c | wrong | (0.44) | wrong x3, output shape or structure differs from the reference |\n| 36k_Matmul_Sigmoid_Sum | P58 | c | wrong | (3.59) | wrong x3, max error 0.937 |\n| 42k_Gemm_Max_Subtract_GELU | P58 | c | wrong | (4.35) | wrong x3, max error 1 |\n\nThe other 17 v4 tasks reached stage (b) only:\n- 16 failed with **vmem** on all 3 turns: 13p, 14p, 19k, 20k, 26k, 27k, 29k, 30k, 37k, 38k, 41k, 44k, 47k, 49k, 50k and 64p (64p is outside primary-58).\n- 57p failed **compile** on the TPU on all 3 turns.\n\nOf the 23 tasks that were on the TPU at every turn (12p stopped after its turn-0 pass), 15 had byte-identical code at t0, t1 and t2.\n\n**Repair behaviour.** The table counts pairs of consecutive turns for the same task where the code is byte-identical. \"Strip\" ignores leading and trailing whitespace.\n\n| arm | t1 = t0 (bytes, non-empty) | both empty | t1 = t0 after strip | t2 = t1 (bytes, non-empty) | both empty | t2 = t1 after strip | same verdict t0\u2192t1 / t1\u2192t2 |\n|---|---|---|---|---|---|---|---|\n| base bare | 2/64 | 8 | 2 | 8/64 | 5 | 8 | 61 / 59 |\n| v1 | 3/64 | 3 | 3 | 43/64 | 3 | 43 | 62 / 63 |\n| **v4** | **39/63** | 3 | 40 | **39/63** | 1 | **54** | 61 / 63 |\n| base docs | 0/64 | 1 | 0 | 15/64 | 1 | 15 | 51 / 54 |\n| pilot25 | 0/64 | 6 | 0 | 14/64 | 2 | 14 | 50 / 60 |\n\nv4 mostly repeats itself when given feedback. Between t1 and t2, 15 code pairs differ only by one extra trailing newline, so 54 of 63 are effectively unchanged, and no t2 verdict differs from t1. From t0 to t1, 5 tasks moved up a stage (each from a no-code reply to code) and one moved down (48k).\n\n### 4. Replies with no code block, and finish reasons\n| arm | no code / attempts | t0 | t1 | t2 | finish reason of the no-code replies |\n|---|---|---|---|---|---|\n| base bare | 25/192 (13.0%) | 12 | 8 | 5 | length 25 |\n| base docs | 12/192 (6.2%) | 8 | 2 | 2 | length 12 |\n| v1 | 12/192 (6.2%) | 5 | 3 | 4 | length 12 |\n| pilot25 | 27/192 (14.1%) | 19 | 6 | 2 | length 27 |\n| **v4** | 12/190 (6.3%) | 8 | 3 | 1 | length 11, repeat_limit 1 |\n\n- **v4 finish reasons:** stop 178, length 11, repeat_limit 1.\n- **The repeat loop:** the repeat_limit reply is 62p t0 (2,788 output tokens). 62p's t1 and t2 then hit the 8,192-token cap, so 62p is v4's only task with no code in any turn.\n- **The length-cap replies:** 16p t0, 17p t0 and t1, 28k t0, 53p t0, 54p t0, 58p t0 and t1, 60p t0, 62p t1 and t2.\n- **No-code replies are all truncations:** in every arm, a reply has no code block exactly when it was cut off (length or repeat_limit).\n\n### 5. Significance per stage (not pre-specified; within 3, exact two-sided McNemar)\nEach cell gives v4-only tasks / other-arm-only tasks and the p-value.\n\n| stage | vs base bare, P58 | vs base docs, P58 | vs v1, P58 | vs base bare, S-p-25 |\n|---|---|---|---|---|\n| (a) code | 5/1, p=0.22 | 0/0, p=1 | 2/0, p=0.5 | 1/1, p=1 |\n| (b) step 1 ok | **23/0, p=2.4e-7** | **20/3, p=4.9e-4** | **23/0, p=2.4e-7** | 5/0, p=0.0625 |\n| (c) ran | 7/0, p=0.0156 | 7/0, p=0.0156 | 7/0, p=0.0156 | 2/0, p=0.5 |\n| (d) correct | 3/0, p=0.25 | 3/0, p=0.25 | 3/0, p=0.25 | 2/0, p=0.5 |\n| (e) pass (primary) | 1/0, p=1.0 | 1/0, p=1.0 | 1/0, p=1.0 | 1/0, p=1.0 |\n\n**95% Wilson intervals, v4 on primary-58:**\n- (b) 23/58, [0.281, 0.525]\n- (c) 7/58, [0.060, 0.229]\n- (d) 3/58, [0.018, 0.141]\n- (e) 1/58, [0.003, 0.091]\n\nBase bare's 0/58 is [0, 0.062].\n\n**Paired bootstrap of the difference, v4 minus base bare on primary-58** (10,000 resamples, seed 0):\n- (b) +0.397, [+0.276, +0.534]\n- (c) +0.121, [+0.052, +0.207]\n- (d) +0.052, [0, +0.121]\n- (e) +0.017, [0, +0.052]\n\nThe scripts are in `/private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/`: `funnel.py` writes `funnel_out.json`, and `tables.py`, `tables2.py` and `numbers.py` build the tables and numbers above from it.",
+   "numbers": {
+    "base_bare.all64.stage_a": 59,
+    "base_bare.all64.stage_b": 0,
+    "base_bare.all64.stage_c": 0,
+    "base_bare.all64.stage_d": 0,
+    "base_bare.all64.stage_e": 0,
+    "base_bare.primary58.stage_a": 53,
+    "base_bare.primary58.stage_b": 0,
+    "base_bare.primary58.stage_c": 0,
+    "base_bare.primary58.stage_d": 0,
+    "base_bare.primary58.stage_e": 0,
+    "base_bare.Sp25.stage_a": 24,
+    "base_bare.Sp25.stage_b": 0,
+    "base_bare.Sp25.stage_c": 0,
+    "base_bare.Sp25.stage_d": 0,
+    "base_bare.Sp25.stage_e": 0,
+    "base_bare.k33.stage_a": 29,
+    "base_bare.k33.stage_b": 0,
+    "base_bare.k33.stage_c": 0,
+    "base_bare.k33.stage_d": 0,
+    "base_bare.k33.stage_e": 0,
+    "base_bare.p31.stage_a": 30,
+    "base_bare.p31.stage_b": 0,
+    "base_bare.p31.stage_c": 0,
+    "base_bare.p31.stage_d": 0,
+    "base_bare.p31.stage_e": 0,
+    "base_bare.pass_at_1.all64": 0,
+    "base_docs.all64.stage_a": 63,
+    "base_docs.all64.stage_b": 6,
+    "base_docs.all64.stage_c": 0,
+    "base_docs.all64.stage_d": 0,
+    "base_docs.all64.stage_e": 0,
+    "base_docs.primary58.stage_a": 57,
+    "base_docs.primary58.stage_b": 6,
+    "base_docs.primary58.stage_c": 0,
+    "base_docs.primary58.stage_d": 0,
+    "base_docs.primary58.stage_e": 0,
+    "base_docs.Sp25.stage_a": 24,
+    "base_docs.Sp25.stage_b": 3,
+    "base_docs.Sp25.stage_c": 0,
+    "base_docs.Sp25.stage_d": 0,
+    "base_docs.Sp25.stage_e": 0,
+    "base_docs.k33.stage_a": 33,
+    "base_docs.k33.stage_b": 3,
+    "base_docs.k33.stage_c": 0,
+    "base_docs.k33.stage_d": 0,
+    "base_docs.k33.stage_e": 0,
+    "base_docs.p31.stage_a": 30,
+    "base_docs.p31.stage_b": 3,
+    "base_docs.p31.stage_c": 0,
+    "base_docs.p31.stage_d": 0,
+    "base_docs.p31.stage_e": 0,
+    "base_docs.pass_at_1.all64": 0,
+    "v1.all64.stage_a": 61,
+    "v1.all64.stage_b": 0,
+    "v1.all64.stage_c": 0,
+    "v1.all64.stage_d": 0,
+    "v1.all64.stage_e": 0,
+    "v1.primary58.stage_a": 55,
+    "v1.primary58.stage_b": 0,
+    "v1.primary58.stage_c": 0,
+    "v1.primary58.stage_d": 0,
+    "v1.primary58.stage_e": 0,
+    "v1.Sp25.stage_a": 22,
+    "v1.Sp25.stage_b": 0,
+    "v1.Sp25.stage_c": 0,
+    "v1.Sp25.stage_d": 0,
+    "v1.Sp25.stage_e": 0,
+    "v1.k33.stage_a": 33,
+    "v1.k33.stage_b": 0,
+    "v1.k33.stage_c": 0,
+    "v1.k33.stage_d": 0,
+    "v1.k33.stage_e": 0,
+    "v1.p31.stage_a": 28,
+    "v1.p31.stage_b": 0,
+    "v1.p31.stage_c": 0,
+    "v1.p31.stage_d": 0,
+    "v1.p31.stage_e": 0,
+    "v1.pass_at_1.all64": 0,
+    "pilot25.all64.stage_a": 62,
+    "pilot25.all64.stage_b": 0,
+    "pilot25.all64.stage_c": 0,
+    "pilot25.all64.stage_d": 0,
+    "pilot25.all64.stage_e": 0,
+    "pilot25.primary58.stage_a": 56,
+    "pilot25.primary58.stage_b": 0,
+    "pilot25.primary58.stage_c": 0,
+    "pilot25.primary58.stage_d": 0,
+    "pilot25.primary58.stage_e": 0,
+    "pilot25.Sp25.stage_a": 23,
+    "pilot25.Sp25.stage_b": 0,
+    "pilot25.Sp25.stage_c": 0,
+    "pilot25.Sp25.stage_d": 0,
+    "pilot25.Sp25.stage_e": 0,
+    "pilot25.k33.stage_a": 33,
+    "pilot25.k33.stage_b": 0,
+    "pilot25.k33.stage_c": 0,
+    "pilot25.k33.stage_d": 0,
+    "pilot25.k33.stage_e": 0,
+    "pilot25.p31.stage_a": 29,
+    "pilot25.p31.stage_b": 0,
+    "pilot25.p31.stage_c": 0,
+    "pilot25.p31.stage_d": 0,
+    "pilot25.p31.stage_e": 0,
+    "pilot25.pass_at_1.all64": 0,
+    "v4.all64.stage_a": 63,
+    "v4.all64.stage_b": 24,
+    "v4.all64.stage_c": 7,
+    "v4.all64.stage_d": 3,
+    "v4.all64.stage_e": 1,
+    "v4.primary58.stage_a": 57,
+    "v4.primary58.stage_b": 23,
+    "v4.primary58.stage_c": 7,
+    "v4.primary58.stage_d": 3,
+    "v4.primary58.stage_e": 1,
+    "v4.Sp25.stage_a": 24,
+    "v4.Sp25.stage_b": 5,
+    "v4.Sp25.stage_c": 2,
+    "v4.Sp25.stage_d": 2,
+    "v4.Sp25.stage_e": 1,
+    "v4.k33.stage_a": 33,
+    "v4.k33.stage_b": 18,
+    "v4.k33.stage_c": 5,
+    "v4.k33.stage_d": 1,
+    "v4.k33.stage_e": 0,
+    "v4.p31.stage_a": 30,
+    "v4.p31.stage_b": 6,
+    "v4.p31.stage_c": 2,
+    "v4.p31.stage_d": 2,
+    "v4.p31.stage_e": 1,
+    "v4.pass_at_1.all64": 1,
+    "base_bare.t0.attempts": 64,
+    "base_bare.t0.stage_a": 52,
+    "base_bare.t0.stage_b": 0,
+    "base_bare.t0.stage_c": 0,
+    "base_bare.t0.stage_d": 0,
+    "base_bare.t0.stage_e": 0,
+    "base_bare.t1.attempts": 64,
+    "base_bare.t1.stage_a": 56,
+    "base_bare.t1.stage_b": 0,
+    "base_bare.t1.stage_c": 0,
+    "base_bare.t1.stage_d": 0,
+    "base_bare.t1.stage_e": 0,
+    "base_bare.t2.attempts": 64,
+    "base_bare.t2.stage_a": 59,
+    "base_bare.t2.stage_b": 0,
+    "base_bare.t2.stage_c": 0,
+    "base_bare.t2.stage_d": 0,
+    "base_bare.t2.stage_e": 0,
+    "base_bare.tall.attempts": 192,
+    "base_bare.tall.stage_a": 167,
+    "base_bare.tall.stage_b": 0,
+    "base_bare.tall.stage_c": 0,
+    "base_bare.tall.stage_d": 0,
+    "base_bare.tall.stage_e": 0,
+    "base_docs.t0.attempts": 64,
+    "base_docs.t0.stage_a": 56,
+    "base_docs.t0.stage_b": 4,
+    "base_docs.t0.stage_c": 0,
+    "base_docs.t0.stage_d": 0,
+    "base_docs.t0.stage_e": 0,
+    "base_docs.t1.attempts": 64,
+    "base_docs.t1.stage_a": 62,
+    "base_docs.t1.stage_b": 3,
+    "base_docs.t1.stage_c": 0,
+    "base_docs.t1.stage_d": 0,
+    "base_docs.t1.stage_e": 0,
+    "base_docs.t2.attempts": 64,
+    "base_docs.t2.stage_a": 62,
+    "base_docs.t2.stage_b": 4,
+    "base_docs.t2.stage_c": 0,
+    "base_docs.t2.stage_d": 0,
+    "base_docs.t2.stage_e": 0,
+    "base_docs.tall.attempts": 192,
+    "base_docs.tall.stage_a": 180,
+    "base_docs.tall.stage_b": 11,
+    "base_docs.tall.stage_c": 0,
+    "base_docs.tall.stage_d": 0,
+    "base_docs.tall.stage_e": 0,
+    "v1.t0.attempts": 64,
+    "v1.t0.stage_a": 59,
+    "v1.t0.stage_b": 0,
+    "v1.t0.stage_c": 0,
+    "v1.t0.stage_d": 0,
+    "v1.t0.stage_e": 0,
+    "v1.t1.attempts": 64,
+    "v1.t1.stage_a": 61,
+    "v1.t1.stage_b": 0,
+    "v1.t1.stage_c": 0,
+    "v1.t1.stage_d": 0,
+    "v1.t1.stage_e": 0,
+    "v1.t2.attempts": 64,
+    "v1.t2.stage_a": 60,
+    "v1.t2.stage_b": 0,
+    "v1.t2.stage_c": 0,
+    "v1.t2.stage_d": 0,
+    "v1.t2.stage_e": 0,
+    "v1.tall.attempts": 192,
+    "v1.tall.stage_a": 180,
+    "v1.tall.stage_b": 0,
+    "v1.tall.stage_c": 0,
+    "v1.tall.stage_d": 0,
+    "v1.tall.stage_e": 0,
+    "pilot25.t0.attempts": 64,
+    "pilot25.t0.stage_a": 45,
+    "pilot25.t0.stage_b": 0,
+    "pilot25.t0.stage_c": 0,
+    "pilot25.t0.stage_d": 0,
+    "pilot25.t0.stage_e": 0,
+    "pilot25.t1.attempts": 64,
+    "pilot25.t1.stage_a": 58,
+    "pilot25.t1.stage_b": 0,
+    "pilot25.t1.stage_c": 0,
+    "pilot25.t1.stage_d": 0,
+    "pilot25.t1.stage_e": 0,
+    "pilot25.t2.attempts": 64,
+    "pilot25.t2.stage_a": 62,
+    "pilot25.t2.stage_b": 0,
+    "pilot25.t2.stage_c": 0,
+    "pilot25.t2.stage_d": 0,
+    "pilot25.t2.stage_e": 0,
+    "pilot25.tall.attempts": 192,
+    "pilot25.tall.stage_a": 165,
+    "pilot25.tall.stage_b": 0,
+    "pilot25.tall.stage_c": 0,
+    "pilot25.tall.stage_d": 0,
+    "pilot25.tall.stage_e": 0,
+    "v4.t0.attempts": 64,
+    "v4.t0.stage_a": 56,
+    "v4.t0.stage_b": 24,
+    "v4.t0.stage_c": 7,
+    "v4.t0.stage_d": 3,
+    "v4.t0.stage_e": 1,
+    "v4.t1.attempts": 63,
+    "v4.t1.stage_a": 60,
+    "v4.t1.stage_b": 23,
+    "v4.t1.stage_c": 6,
+    "v4.t1.stage_d": 1,
+    "v4.t1.stage_e": 0,
+    "v4.t2.attempts": 63,
+    "v4.t2.stage_a": 62,
+    "v4.t2.stage_b": 23,
+    "v4.t2.stage_c": 6,
+    "v4.t2.stage_d": 1,
+    "v4.t2.stage_e": 0,
+    "v4.tall.attempts": 190,
+    "v4.tall.stage_a": 178,
+    "v4.tall.stage_b": 70,
+    "v4.tall.stage_c": 19,
+    "v4.tall.stage_d": 5,
+    "v4.tall.stage_e": 1,
+    "v4.tpu_verdicts_all_turns": {
+     "compile": 3,
+     "vmem": 48,
+     "wrong": 14,
+     "correct_slow": 4,
+     "pass": 1
+    },
+    "v4.cpu_verdicts_all_turns": {
+     "compile": 118,
+     "not_a_kernel": 2
+    },
+    "base_docs.tpu_verdicts_all_turns": {
+     "compile": 6,
+     "vmem": 5
+    },
+    "base_bare.nocode_replies": 25,
+    "base_bare.attempts_total": 192,
+    "base_docs.nocode_replies": 12,
+    "base_docs.attempts_total": 192,
+    "v1.nocode_replies": 12,
+    "v1.attempts_total": 192,
+    "pilot25.nocode_replies": 27,
+    "pilot25.attempts_total": 192,
+    "v4.nocode_replies": 12,
+    "v4.attempts_total": 190,
+    "v4.finish.stop": 178,
+    "v4.finish.length": 11,
+    "v4.finish.repeat_limit": 1,
+    "base_bare.repair.t1_eq_t0_bytes_nonempty": 2,
+    "base_bare.repair.t1_eq_t0_pairs": 64,
+    "base_bare.repair.t2_eq_t1_bytes_nonempty": 8,
+    "base_bare.repair.t2_eq_t1_strip_nonempty": 8,
+    "base_bare.repair.t2_eq_t1_pairs": 64,
+    "base_docs.repair.t1_eq_t0_bytes_nonempty": 0,
+    "base_docs.repair.t1_eq_t0_pairs": 64,
+    "base_docs.repair.t2_eq_t1_bytes_nonempty": 15,
+    "base_docs.repair.t2_eq_t1_strip_nonempty": 15,
+    "base_docs.repair.t2_eq_t1_pairs": 64,
+    "v1.repair.t1_eq_t0_bytes_nonempty": 3,
+    "v1.repair.t1_eq_t0_pairs": 64,
+    "v1.repair.t2_eq_t1_bytes_nonempty": 43,
+    "v1.repair.t2_eq_t1_strip_nonempty": 43,
+    "v1.repair.t2_eq_t1_pairs": 64,
+    "pilot25.repair.t1_eq_t0_bytes_nonempty": 0,
+    "pilot25.repair.t1_eq_t0_pairs": 64,
+    "pilot25.repair.t2_eq_t1_bytes_nonempty": 14,
+    "pilot25.repair.t2_eq_t1_strip_nonempty": 14,
+    "pilot25.repair.t2_eq_t1_pairs": 64,
+    "v4.repair.t1_eq_t0_bytes_nonempty": 39,
+    "v4.repair.t1_eq_t0_strip_nonempty": 40,
+    "v4.repair.t1_eq_t0_pairs": 63,
+    "v4.repair.t2_eq_t1_bytes_nonempty": 39,
+    "v4.repair.t2_eq_t1_strip_nonempty": 54,
+    "v4.repair.t2_eq_t1_pairs": 63,
+    "v4.tasks_stage_e": [
+     "12p_RMSNorm"
+    ],
+    "v4.tasks_stage_d": [
+     "12p_RMSNorm",
+     "8p_GEMM",
+     "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish"
+    ],
+    "v4.tasks_stage_c": [
+     "12p_RMSNorm",
+     "8p_GEMM",
+     "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish",
+     "21k_Gemm_Divide_Sum_Scaling",
+     "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish",
+     "36k_Matmul_Sigmoid_Sum",
+     "42k_Gemm_Max_Subtract_GELU"
+    ],
+    "v4.speed.12p_RMSNorm.pass_t0": 1.4019783868145834,
+    "v4.speed.8p_GEMM.best_correct_slow_t1": 0.3360349253946382,
+    "v4.speed.48k.correct_slow_t0": 0.16082428304710641,
+    "primary.pass_within_3.v4_vs_base_bare.primary58.p": 1,
+    "primary.pass_within_3.v4_vs_base_bare.Sp25.p": 1,
+    "mcnemar.v4_vs_base_bare.primary58.stage_a": "5/0 vs 1: p=0.21875 (5 v4-only / 1 base-only)",
+    "mcnemar.v4_vs_base_bare.primary58.stage_b.p": 2.384185791015625e-07,
+    "mcnemar.v4_vs_base_bare.primary58.stage_b.discordant": "23/0",
+    "mcnemar.v4_vs_base_bare.primary58.stage_c.p": 0.015625,
+    "mcnemar.v4_vs_base_bare.primary58.stage_c.discordant": "7/0",
+    "mcnemar.v4_vs_base_bare.primary58.stage_d.p": 0.25,
+    "mcnemar.v4_vs_base_bare.primary58.stage_d.discordant": "3/0",
+    "mcnemar.v4_vs_base_bare.primary58.stage_e.p": 1,
+    "mcnemar.v4_vs_base_bare.primary58.stage_e.discordant": "1/0",
+    "mcnemar.v4_vs_base_docs.primary58.stage_b.p": 0.00048828125,
+    "mcnemar.v4_vs_base_docs.primary58.stage_b.discordant": "20/3",
+    "mcnemar.v4_vs_base_docs.primary58.stage_c.p": 0.015625,
+    "mcnemar.v4_vs_base_docs.primary58.stage_d.p": 0.25,
+    "mcnemar.v4_vs_base_docs.primary58.stage_e.p": 1,
+    "mcnemar.v4_vs_v1.primary58.stage_b.p": 2.384185791015625e-07,
+    "mcnemar.v4_vs_v1.primary58.stage_c.p": 0.015625,
+    "mcnemar.v4_vs_v1.primary58.stage_d.p": 0.25,
+    "mcnemar.v4_vs_v1.primary58.stage_e.p": 1,
+    "mcnemar.v4_vs_base_bare.Sp25.stage_b.p": 0.0625,
+    "mcnemar.v4_vs_base_bare.Sp25.stage_b.discordant": "5/0",
+    "mcnemar.v4_vs_base_bare.Sp25.stage_c.p": 0.5,
+    "mcnemar.v4_vs_base_bare.Sp25.stage_d.p": 0.5,
+    "mcnemar.v4_vs_base_bare.Sp25.stage_e.p": 1,
+    "mcnemar.v4_vs_base_docs.Sp25.stage_b.p": 0.6875,
+    "mcnemar.v4_vs_base_docs.Sp25.stage_b.discordant": "4/2",
+    "mcnemar.v4_vs_base_bare.all64.stage_b.p": 1.1920928955078125e-07,
+    "mcnemar.v4_vs_base_bare.all64.stage_c.p": 0.015625,
+    "mcnemar.v4_vs_base_docs.all64.stage_b.p": 0.0002771615982055664,
+    "mcnemar.v4_vs_base_docs.all64.stage_b.discordant": "21/3",
+    "holm5.v4_vs_base_bare.primary58.stage_c.adjusted_p": 0.0625,
+    "wilson.v4.primary58.stage_b": [
+     0.2809,
+     0.5251
+    ],
+    "wilson.v4.primary58.stage_c": [
+     0.0597,
+     0.2288
+    ],
+    "wilson.v4.primary58.stage_d": [
+     0.0177,
+     0.1414
+    ],
+    "wilson.v4.primary58.stage_e": [
+     0.0031,
+     0.0914
+    ],
+    "wilson.base_bare.primary58.stage_any_0of58": [
+     0,
+     0.0621
+    ],
+    "wilson.v4.Sp25.stage_b": [
+     0.0886,
+     0.3913
+    ],
+    "wilson.v4.Sp25.stage_e": [
+     0.0071,
+     0.1954
+    ],
+    "bootstrap.v4_minus_base_bare.primary58.stage_b": [
+     0.2759,
+     0.5345
+    ],
+    "bootstrap.v4_minus_base_bare.primary58.stage_c": [
+     0.0517,
+     0.2069
+    ],
+    "bootstrap.v4_minus_base_bare.primary58.stage_d": [
+     0,
+     0.1207
+    ],
+    "bootstrap.v4_minus_base_bare.primary58.stage_e": [
+     0,
+     0.0517
+    ],
+    "set_sizes": {
+     "all64": 64,
+     "primary58": 58,
+     "Sp25": 25,
+     "k33": 33,
+     "p31": 31
+    }
+   },
+   "issues": [
+    "The v4 turn counts are 64 (t0) / 63 (t1) / 63 (t2) = 190. The prompt's breakdown '64+62+63+1' does not match, although the total of 190 does. The last row in verdicts.jsonl (62p t2) came from a later static check, cpu_checks/lora-v4final-e2-modal-catchup-t0_static.jsonl. That file is named 't0' but holds id bare/62p_Causal_Conv1d_GDN/t2.",
+    "The repeat-loop reply is 62p t0 (finish repeat_limit, 2,788 output tokens). 62p's t1 and t2 then hit the 8,192-token cap (finish 'length'), so 62p has no code in any turn. It is v4's only task that misses stage (a).",
+    "A reply with no code block has no verdict of its own. The oracle records it as a CPU 'compile' verdict at step 1. In every arm, a reply has no code exactly when finish is 'length' or 'repeat_limit'.",
+    "No row in any arm has the verdicts harness_oom, too_large_for_chip, crash, mosaic, timeout or runtime. Every TPU failure is 'compile' or 'vmem'.",
+    "oracle_sha is c9a07d9298a1 on every row, so all rows are valid under PROTOCOL.md. The oracle_commit field varies, though: v4's 70 TPU rows say 748da03, while its CPU rows and all base rows say 963c0e3. The base TPU rows also record stack 'colab-tpu', where v4's say 'cloud-tpu-vm'. All TPU rows report device 'TPU v6 lite' and JAX 0.10.2.",
+    "TPU rows have no judged_on field (it is None); only CPU rows carry the 'cpu: oracle step 1' string. So TPU judging was identified by device_kind == 'TPU v6 lite'. The two signals agreed on every row.",
+    "PROTOCOL.md names 'v1_r64' as the pre-declared headline adapter. v4 is not mentioned (amendments stop at A4). If v4 was chosen as headline after the v1 and pilot25 JAXBench results were seen, that is selection on JAXBench, and with 3 adapters tested the p-values need a multiplicity correction. The files don't show when v4 was designated.",
+    "bare_stack was not run for v4. Every test here is v4 vs base bare, base docs or v1, so the pre-registered primary comparison (lora vs bare_stack) is unavailable. v4's model digest 0f764d3f\u2026 differs from base's ee665637\u2026, as expected for a folded GGUF.",
+    "The per-stage McNemar tests are exploratory and were not pre-specified. Stage (c) gives 7/0, p = 0.0156, which does not survive Holm over v4 vs base bare's 5 stages (adjusted 0.0625). Only stage (b) survives.",
+    "v4's stage-(b) gain is mostly level-1 k tasks (18 of 24). 16 of its 24 TPU-judged tasks hit VMEM limits on every turn: the code traces as a Pallas kernel, but its blocks don't fit on the chip.",
+    "speed_vs_xla is recorded for 'wrong' verdicts too: 21k at 1.32x, 36k at 3.59x, 42k at 4.35x. Those outputs are wrong, so the speeds mean nothing and must not be quoted.",
+    "v4 barely uses the oracle's feedback. 39 of 63 turn-1 codes are byte-identical to turn 0, against 2 of 64 for base bare and 3 of 64 for v1. At t2, 39 more are byte-identical and 15 differ only by one extra trailing newline, so 54 of 63 are effectively unchanged and no t2 verdict differs from t1. 48k went from correct_slow at t0 to wrong at t1 and t2.",
+    "The scratch analysis directory is shared with another agent, whose sig.py and out.json appeared there mid-run. My results are in funnel_out.json (written by funnel.py, with tables.py, tables2.py and numbers.py). The out.json in that directory is the other agent's file, not mine."
+   ]
+  },
+  "verdict": {
+   "agrees": true,
+   "discrepancies": [
+    "Minor, a definition problem: in the base docs repair table, 'same verdict t0\u2192t1' is given as 51. That only holds if a CPU 'compile' (failed step 1) counts as the same verdict as a TPU 'compile' (failed step 2). 9p_SwiGLU_MLP goes from CPU compile at t0 to TPU compile at t1, which is a stage change. Counting where the verdict was judged as well as its label gives 50 (the t1\u2192t2 count stays 54). Every other arm's same-verdict counts come out the same both ways: base bare 61/59, v1 62/63, pilot25 50/60, v4 61/63.",
+    "Protocol history: the claim that the amendments stop at A4 is only true of the worktree copy the prompt names (wt-v4runs, branch hruday/v4-runs, last PROTOCOL commit 813b2be). Commit 26e26dc on branch hruday/protocol-no-headline adds A5 ('Nov 9, 16:45 UTC, after the v1_r64 result'). A5 withdraws the v1_r64 headline pre-registration, allows iterating on 'data, objective, hyperparameters, quantization handling' with successive adapters evaluated on JAXBench, and requires every evaluated adapter plus the total number of JAXBench evaluations to be reported. Neither branch is merged into main, which has no control/PROTOCOL.md. So naming v4 as headline is allowed under A5, provided every run is reported. Their multiplicity concern still applies.",
+    "bare_stack reasoning is incomplete. PROTOCOL.md lines 31-32 and A3 (lines 149-153) say bare_stack 'is the official model and its rows are the bare rows', because a Q4_0 fold reproduces the official file. For v4 that premise fails. The served model layer is v4final_e2_q8.gguf (sha256 342ca428\u2026; modal_v4_create.py checks GGUF_SHA against it). Its GGUF tensor types are 258 Q8_0 (exactly the 258 LoRA-target weights in metrics.json 'target_weights_changed'), 84 Q4_0, 321 F32, 1 F16 and 2 Q6_K. The base model blob (sha256 e8b6a059\u2026, from manifest ee665637\u2026) has 342 Q4_0, 321 F32, 1 F16 and 2 Q6_K. So the conclusion that the pre-registered comparison is unavailable is correct, and this is the concrete reason: v4 vs base bare mixes the adapter's effect with Q8_0 re-quantization of 258 tensors. v4 also departs from PROTOCOL's 'Quantization: Q4_0, as the official file' and 'Q4_0(W + (alpha/r)\u00b7B\u00b7A)' (A5 does allow changing 'quantization handling').",
+    "Bootstrap bounds are Monte Carlo values that land on a 1/58 grid. Over seeds 0-5 of my resampler, stage (b)'s upper bound comes out 0.5172 in five seeds and 0.5345 in one (theirs is 0.5345). Stage (c)'s lower bound comes out 0.0517 or 0.0345 (theirs is 0.0517). This is not an error, but the bounds should be quoted as accurate to about \u00b11/58.",
+    "Wording: 'Data: 5 runs (control/runs/*__modal)' should be 4 run directories holding 5 arms (gemma4_e4b-it-qat__modal holds both bare and docs).",
+    "The prompt's v4 turn breakdown '64+62+63+1' does not match any count in the data. Their per-turn count of 64/63/63 is correct: 12p is missing at t1 and t2, nothing else is. The catch-up comes from 62p lagging one batch. 62p t0's verdict is in the cpu_checks t1 batch file, its t1 verdict in the t2 batch, and its t2 verdict in lora-v4final-e2-modal-catchup-t0_static.jsonl (a file named 't0' that holds the t2 id). Generation batches were 63+63+63 (jaxbench_v4_modal.log: rows 63/126/189) plus that 1 catch-up row."
+   ],
+   "corrected_markdown": "I recomputed every number independently from the raw files with my own script (/private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/adv_funnel/verify.py, which writes mine.json). **All 286 values in their numbers object match exactly.** So do sections 1 to 5: per-turn funnel cells, CPU/TPU verdict splits, within-3 sets, McNemar counts and p-values, Wilson intervals, task lists, finish reasons and repair counts. Only the points below need changing.\n\n**Repair table, base docs row:** the 'same verdict t0\u2192t1' cell should be **50**, not 51, if a CPU compile and a TPU compile are counted as different stages (9p goes from CPU compile at t0 to TPU compile at t1). It is 51 only if the verdict label alone is compared. The t1\u2192t2 value of 54 is unchanged.\n\n**Bootstrap (v4 minus base bare, primary-58):** (b) +0.397 [+0.276, +0.517 to +0.534]; (c) +0.121 [+0.034 to +0.052, +0.207]; (d) +0.052 [0, +0.121]; (e) +0.017 [0, +0.052]. The endpoints move by one 1/58 step depending on the seed.\n\n**Data line:** 4 run directories, 5 arms (base bare and base docs share gemma4_e4b-it-qat__modal).\n\n**Protocol caveats (replaces 'amendments stop at A4' and the bare_stack paragraph):**\n- The protocol copy in wt-v4runs stops at A4, but commit 26e26dc (branch hruday/protocol-no-headline, not merged) adds **A5**: 'Nov 9, 16:45 UTC, after the v1_r64 result: no pre-registered headline adapter'.\n  - A5 lets the team iterate (including on quantization handling) and test successive adapters on JAXBench.\n  - It requires every evaluated adapter, and the total number of JAXBench evaluations, to be reported.\n  - So v4 as headline is permitted, but only with pilot25 and v1 reported too, and the p-values need a multiplicity correction across adapters.\n- PROTOCOL treats the base bare rows as bare_stack only if the folded file is Q4_0 like the official one. **v4's served GGUF is not.**\n  - v4final_e2_q8.gguf (sha256 342ca428\u2026) stores its 258 LoRA-target tensors as Q8_0, plus 84 Q4_0, 321 F32, 1 F16 and 2 Q6_K.\n  - The official base GGUF has 342 Q4_0, 321 F32, 1 F16 and 2 Q6_K.\n  - Every 'v4 vs base bare' test therefore mixes the adapter with re-quantizing those 258 tensors to Q8_0. A zero-adapter Q8 bare_stack run is needed to separate the two.\n  - Prompts are not a confound: the t0 prompt_sha256 matches base on 64/64 tasks and prompt_tokens on 63/64 (v4's 62p t0 row has prompt_tokens = None).\n\n**Unchanged conclusions:**\n- Primary pass_within_3 is 1/58 vs 0/58, exact McNemar p = 1.0. S-p-25 is 1/25 vs 0/25, p = 1.0.\n- Stage (b) is 23/0 on primary-58, p = 2.38e-7. It survives Holm over 5 stages and any reasonable correction across arms and adapters.\n- Stage (c) is 7/0, p = 0.015625, Holm-adjusted 0.0625. Stages (d) and (e) are not significant.",
+   "notes": [
+    "Checks run: 64 tasks, of which 33 are k and 31 are p. All 33 k tasks and 17 of the p tasks have ref_source level1; the other 14 p tasks have ref_source 'refs'. Primary-58 excludes exactly 52p, 54p, 59p, 60p, 64p and 65p. S-p-25 has exactly 1p-17p plus 51p, 53p, 56p, 57p, 58p, 61p, 62p and 63p.",
+    "Last-row-wins makes no difference here. No canonical verdicts.jsonl or attempt file has a duplicate id. pilot25's *.with_dups files (194 rows, 2 duplicate ids) give the canonical result under both last-wins and first-wins.",
+    "CPU/TPU split: device_kind 'TPU v6 lite' and the absence of a 'cpu\u2026' judged_on agree on every row (TPU rows simply lack the judged_on key). Every CPU verdict is compile or not_a_kernel. Every pass has speed_vs_xla >= 0.7 and every correct_slow is below 0.7. No TPU row lacks code.",
+    "Attempt ids match the verdict ids one-to-one in all 5 arms. Each id's task and turn match its row fields. oracle_sha is c9a07d9298a1 on all 958 judged rows.",
+    "For v4, the code in each cpu_checks *_tpu_items.jsonl row is byte-identical to the code in bare.jsonl, and every static-check verdict and msg matches verdicts.jsonl. The judged code is therefore the recorded code.",
+    "Backend per arm: one model and digest per arm, all on A10G, Ollama 0.40.14, temperature 0, max_tokens 8192. Digests are base ee6656371218, v1 19ec6dde2cca, pilot25 d07865302bb2 and v4 0f764d3f6798 (an Ollama manifest digest, not a GGUF hash).",
+    "I compared v4's 1,706 training task names (metrics.json history: 1,309 kernelbook, 166 authored, 161 kb, 55 gen, 15 github) against the 33 JAXBench k-task names and found no overlap; metrics.json also records near_test_rows 0. The 161 'kb' rows include KernelBench level-2 problems (for example kb__l2__31_Conv2d_Min_Add_Multiply), the same family as the k tasks. That fits v4's stage-(b) gains being concentrated in k tasks (18 of 33, against 6 of 31 p tasks), but it is not contamination.",
+    "Scripts and outputs: /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/adv_funnel/verify.py, /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/adv_funnel/mine.json, /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/adv_funnel/theirs.json, and /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/adv_funnel/gguf_type.py (the GGUF tensor-type reader). No repo files were edited."
+   ]
+  }
+ },
+ {
+  "key": "val",
+  "compiled": {
+   "markdown": "## Validation results for the v4 family (dataset-v1 held-out val, CPU only)\n\n**The headline adapter v4final-e2 has no behavioural val.** No file anywhere scores code it generated on the val problems through any gate. I searched the scratchpad at maxdepth 3 (skipping wt-* and tpu/ops1/repo) by filename and by content. Every v4final hit is one of four kinds:\n- JAXBench runs and logs\n- TPU job items for the JAXBench run\n- training files\n- the GGUFs\n\nFor v4final, val exists only as training loss. Every behavioural val number below for the v4 family belongs to the **rehearsal adapters v4qat-e1 and v4qat-e2**.\n\n**No val result ran on a real TPU.**\n- The greedy scored rows have only `verdict` and `feedback`, with no `device_kind` or `judged_on`.\n- The sampled rows have only the CPU lines `STATIC`, `LOWER` and `NUMERIC`, written by `passn/check.py`.\n- None of the 23 val task names appears in any `tpu/*.jsonl` or `tpu/ops1/*.jsonl` job items file.\n- The step-1 check is the oracle's own `--static-only` code. Its files in gemma-dataset-claude/oracle hash to **c9a07d9298a1**, the same oracle as JAXBench, and have been unchanged since commit fea23e7 on Nov 8, before any val scoring.\n\n**Val set.** There are 23 problems: 7 authored, 11 kb level 1, 4 kb level 2 and 1 scraped. Sources: `diag/prompts_val.jsonl` has 23 problems and `passn/problems/` has 23 `.ref.py` files (24 directory entries with `__pycache__`). None of the 23 appears in v4final's 2,983 training rows.\n\nThe training-loss val set is a different thing: 24 rows covering only 21 unique problems. Three tasks appear twice, and two are missing from it: `authored__attention_alibi\u2026` and `authored__attention_relative_bias\u2026`.\n\n### 1. Greedy val: one sample per problem, temperature 0, seed 0, 8192-token cap\n\n**The greedy files contain oracle step 1 only.** Lowering and numerics were never run on greedy outputs: `diag.py score` calls only `static_check`. So the lowering and numerics columns are empty, not zero.\n\n| Model (file) | Adapter | Served on | n | Has code block | **Passed step 1** (Wilson 95%) | Lowering | Numerics |\n|---|---|---|---|---|---|---|---|\n| **v4qat-e2** (`local_val_v4qat-e2`) | gemma4-e4b-lora:v4qat-e2 (rehearsal v4, epoch 2) | Mac Ollama 0.40.14 | 23 | 20 | **4** (7.0\u201337.1%) | not run | not run |\n| **v4qat-e1** (`local_val_v4qat-e1`) | gemma4-e4b-lora:v4qat-e1 (rehearsal v4, epoch 1) | Mac Ollama | 23 | 9 | **3** (4.5\u201332.1%) | not run | not run |\n| v2-q8 (`local_val_v2-q8`) | v2 LoRA, q8 fold | Mac Ollama | 23 | 18 | 4 (7.0\u201337.1%) | not run | not run |\n| v1-q8 (`local_val_v1-q8`) | v1 LoRA, q8 fold | Mac Ollama | 23 | 19 | 3 (4.5\u201332.1%) | not run | not run |\n| v1-f16 (`local_val_v1-f16`) | v1 LoRA, f16 fold | Mac Ollama | 23 | 19 | 3 (4.5\u201332.1%) | not run | not run |\n| v1 on Modal (`ollama_val_gemma4-e4b-lora_v1`) | gemma4-e4b-lora:v1, digest 19ec6dde2cca | Modal Ollama | 23 | 20 | 1 (0.8\u201321.0%) | not run | not run |\n| v2 on Modal (`ollama_val_gemma4-e4b-lora_v2`, extra file) | gemma4-e4b-lora:v2, digest 07c9d456ab42 | Modal Ollama | 23 | 22 | 0 (0\u201314.3%) | not run | not run |\n| v1 at bf16 (`bf16_val_lora`) | v1_r64 adapter, bf16 base with PEFT (not merged, not quantized) | Modal H100, transformers | 23 | 19 | 4 (7.0\u201337.1%) | not run | not run |\n| **base** (`ollama_val_gemma4_e4b-it-qat`) | gemma4:e4b-it-qat, digest ee6656371218 | Modal Ollama | 23 | 20 | **0** (0\u201314.3%) | not run | not run |\n\n**Step-1 verdict counts** (no_code / compile / not_a_kernel / static_ok):\n\n| Model | no_code | compile | not_a_kernel | static_ok |\n|---|---|---|---|---|\n| v4qat-e2 | 3 | 16 | 0 | 4 |\n| v4qat-e1 | 14 | 6 | 0 | 3 |\n| v2-q8 | 5 | 14 | 0 | 4 |\n| v1-q8 | 4 | 16 | 0 | 3 |\n| v1-f16 | 4 | 16 | 0 | 3 |\n| v1 on Modal | 3 | 19 | 0 | 1 |\n| v2 on Modal | 1 | 22 | 0 | 0 |\n| v1 at bf16 | 4 | 15 | 0 | 4 |\n| base | 3 | 18 | 2 | 0 |\n\nEvery no_code row is a reply that hit the 8192-token cap. v4qat-e1 hit the cap on 14 of 23 problems, v4qat-e2 on 3.\n\n**Which problems passed step 1:**\n- v4qat-e2: Softplus, Softsign, L1Norm, `kb__l1__76_conv_standard_1D_dilated_strided__`\n- v4qat-e1, v1-q8 and v1-f16: Softplus, Softsign, L1Norm\n- v2-q8: Softplus, Softsign, L1Norm, MSELoss\n- v1 on Modal: Softsign only\n- v1 at bf16: Softplus, Softsign, L1Norm, `authored__ragged_masked_layernorm`\n\n### 2. Sampled val: temperature 1.0, top_p 0.95, top_k 64, through all three CPU gates (cumulative)\n\n**Per sample:**\n\n| Model | Samples | Has code | Passed step 1 | + lowered on v6e | + numerics ok | Numerics wrong / error |\n|---|---|---|---|---|---|---|\n| **v4qat-e2** | 69 (3 \u00d7 23) | 69 | 10 | 10 | **6** (8.7%; Wilson 4.1\u201317.7%) | 4 / 0 |\n| v2-q8, chains 0\u20132 | 69 (3 \u00d7 23) | 69 | 9 | 9 | 5 (7.2%; Wilson 3.1\u201315.9%) | 3 / 1 |\n| v2-q8, all chains | 91 (23+23+23+22) | 91 | 12 | 12 | 7 | 4 / 1 |\n| v4qat-e1 | 0 (file is empty, 0 bytes) | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 |\n\nThe per-sample Wilson intervals assume independent samples. Samples are clustered within problems, so these intervals are too narrow.\n\n**Per problem, passing in any of its 3 samples:**\n\n| Model | Problems | Has code | Passed step 1 | + lowered | + numerics ok |\n|---|---|---|---|---|---|\n| **v4qat-e2** | 23 | 23 | 4 (Wilson 7.0\u201337.1%) | 4 | **3** (Wilson 4.5\u201332.1%) |\n| v2-q8, chains 0\u20132 | 23 | 23 | 4 | 4 | 2 (Wilson 2.4\u201326.8%) |\n| v2-q8, all chains (any of 4) | 23 | 23 | 4 | 4 | 2 |\n\n- **Lowering rejected nothing.** Every sample that passed step 1 also lowered.\n- **Every numerics pass came from three trivial elementwise kb level-1 problems.**\n  - v4qat-e2: Softplus 2 of 3 samples, Softsign 3 of 3, L1Norm 1 of 3.\n  - v2-q8: Softplus and Softsign only.\n- **No authored, kb level-2 or scraped problem passed numerics in any val run.** The one authored problem to reach step 1 and lowering, `authored__softcapped_logits\u2026` (v4qat-e2, chain 1), failed numerics (relative error 0.955).\n- Unbiased pass@1, averaged per problem: v4qat-e2 0.0870; v2-q8 0.0725 (chains 0\u20132) and 0.0761 (all chains).\n\n### 3. Training-loss val (the only val for the headline adapter)\n\n| Adapter | Train rows | Val rows | Val loss before \u2192 after |\n|---|---|---|---|\n| **v4final, epoch 2 (headline)** | 2,983 | 24 | **1.08 \u2192 0.2601** |\n| v4qat, epoch 2 (rehearsal) | 2,806 | 24 | 1.08 \u2192 0.2671 |\n| v1_r64 (context) | 238 | 26, a different set | 1.0634 \u2192 0.354 |\n| v2_r64 (context) | 432 | 26, a different set | 1.0634 \u2192 0.4714 |\n\nThe v4 loss-val file is byte-identical across every v4 build in the scratchpad (sha ea667fc895a3). v4qat's metrics don't record which file it used, but its 24 rows and its starting loss of 1.08 match.\n\n### 4. Is anything on val statistically significant?\n\n**No.** These tests are exploratory: val is not in PROTOCOL.md's primary test. I used exact two-sided McNemar on the 23 paired problems. With 23 problems and no passes on one side, p < 0.05 needs at least 6 problems where only one model passes. No val comparison gets past 4.\n\n| Comparison | Passes A vs B | Problems only A / only B passed | Exact p | Difference (paired bootstrap 95%, 10,000 resamples) |\n|---|---|---|---|---|\n| Greedy step 1, v4qat-e2 vs base | 4 vs 0 | 4 / 0 | 0.125 | +0.174 (+0.043, +0.348) |\n| Greedy step 1, v4qat-e2 vs v1 on Modal | 4 vs 1 | 3 / 0 | 0.25 | +0.130 (0, +0.261) |\n| Greedy step 1, v4qat-e2 vs v1-q8 | 4 vs 3 | 1 / 0 | 1.0 | +0.043 |\n| Greedy step 1, v4qat-e2 vs v2-q8 | 4 vs 4 | 1 / 1 | 1.0 | 0 |\n| Greedy step 1, v4qat-e2 vs v4qat-e1 | 4 vs 3 | 1 / 0 | 1.0 | +0.043 |\n| Greedy step 1, v2-q8 vs base | 4 vs 0 | 4 / 0 | 0.125 | +0.174 |\n| Sampled numerics, any of 3: v4qat-e2 vs v2-q8 (chains 0\u20132) | 3 vs 2 | 1 / 0 | 1.0 | (0, +0.130) |\n| Sampled step 1, any of 3: v4qat-e2 vs v2-q8 (chains 0\u20132) | 4 vs 4 | 1 / 1 | 1.0 | (\u22120.130, +0.130) |\n\nTwo of these comparisons are also confounded by backend. Base and v1 on Modal were generated on Modal's Ollama; v4qat and the q8 folds ran on the Mac's Ollama. The same v1 adapter passed step 1 on 3 of 23 as the Mac q8 fold and 1 of 23 on Modal.\n\nScript: /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/val_compile.py\nOutput: /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/val_compile.out.json",
+   "numbers": {
+    "val_problems": 23,
+    "val_categories": {
+     "authored": 7,
+     "kb_l1": 11,
+     "kb_l2": 4,
+     "scraped": 1
+    },
+    "val_oracle_sha_step1": "c9a07d9298a1",
+    "val_on_real_tpu": 0,
+    "v4final_behavioural_val_files": 0,
+    "greedy_gates_available": "step1_only",
+    "greedy": {
+     "v4qat-e2": {
+      "n": 23,
+      "has_code": 20,
+      "step1": 4,
+      "no_code": 3,
+      "compile": 16,
+      "not_a_kernel": 0,
+      "length_capped": 3,
+      "step1_wilson95": [
+       0.0698,
+       0.3714
+      ]
+     },
+     "v4qat-e1": {
+      "n": 23,
+      "has_code": 9,
+      "step1": 3,
+      "no_code": 14,
+      "compile": 6,
+      "not_a_kernel": 0,
+      "length_capped": 14,
+      "step1_wilson95": [
+       0.0454,
+       0.3213
+      ]
+     },
+     "v2-q8_local": {
+      "n": 23,
+      "has_code": 18,
+      "step1": 4,
+      "no_code": 5,
+      "compile": 14
+     },
+     "v1-q8_local": {
+      "n": 23,
+      "has_code": 19,
+      "step1": 3,
+      "no_code": 4,
+      "compile": 16
+     },
+     "v1-f16_local": {
+      "n": 23,
+      "has_code": 19,
+      "step1": 3,
+      "no_code": 4,
+      "compile": 16
+     },
+     "v1_modal": {
+      "n": 23,
+      "has_code": 20,
+      "step1": 1,
+      "no_code": 3,
+      "compile": 19,
+      "digest": "19ec6dde2cca"
+     },
+     "v2_modal": {
+      "n": 23,
+      "has_code": 22,
+      "step1": 0,
+      "no_code": 1,
+      "compile": 22,
+      "digest": "07c9d456ab42"
+     },
+     "v1_bf16": {
+      "n": 23,
+      "has_code": 19,
+      "step1": 4,
+      "no_code": 4,
+      "compile": 15
+     },
+     "base_modal": {
+      "n": 23,
+      "has_code": 20,
+      "step1": 0,
+      "no_code": 3,
+      "compile": 18,
+      "not_a_kernel": 2,
+      "digest": "ee6656371218"
+     }
+    },
+    "sampled": {
+     "v4qat-e2": {
+      "samples": 69,
+      "chains": 3,
+      "per_sample": {
+       "has_code": 69,
+       "step1": 10,
+       "lowered": 10,
+       "numerics_ok": 6,
+       "numerics_wrong": 4,
+       "numerics_error": 0
+      },
+      "per_problem_any3": {
+       "has_code": 23,
+       "step1": 4,
+       "lowered": 4,
+       "numerics_ok": 3
+      },
+      "pass1_mean": 0.087,
+      "per_sample_numerics_wilson95": [
+       0.0405,
+       0.177
+      ],
+      "per_problem_numerics_wilson95": [
+       0.0454,
+       0.3213
+      ]
+     },
+     "v2-q8_chains0-2": {
+      "samples": 69,
+      "per_sample": {
+       "has_code": 69,
+       "step1": 9,
+       "lowered": 9,
+       "numerics_ok": 5,
+       "numerics_wrong": 3,
+       "numerics_error": 1
+      },
+      "per_problem_any3": {
+       "has_code": 23,
+       "step1": 4,
+       "lowered": 4,
+       "numerics_ok": 2
+      },
+      "pass1_mean": 0.0725
+     },
+     "v2-q8_all": {
+      "samples": 91,
+      "chains": 4,
+      "chain3_rows": 22,
+      "per_sample": {
+       "has_code": 91,
+       "step1": 12,
+       "lowered": 12,
+       "numerics_ok": 7,
+       "numerics_wrong": 4,
+       "numerics_error": 1
+      },
+      "per_problem_any": {
+       "step1": 4,
+       "lowered": 4,
+       "numerics_ok": 2
+      },
+      "pass1_mean": 0.0761
+     },
+     "v4qat-e1": {
+      "samples": 0,
+      "file_bytes": 0
+     }
+    },
+    "training_loss_val": {
+     "v4final_e2": {
+      "train_rows": 2983,
+      "val_rows": 24,
+      "val_unique_tasks": 21,
+      "before": 1.08,
+      "after": 0.2601
+     },
+     "v4qat_e2": {
+      "train_rows": 2806,
+      "val_rows": 24,
+      "before": 1.08,
+      "after": 0.2671
+     },
+     "v1_r64": {
+      "train_rows": 238,
+      "val_rows": 26,
+      "before": 1.0634,
+      "after": 0.354
+     },
+     "v2_r64": {
+      "train_rows": 432,
+      "val_rows": 26,
+      "before": 1.0634,
+      "after": 0.4714
+     }
+    },
+    "tests_exploratory": {
+     "greedy_step1_v4qat-e2_vs_base": {
+      "a": 4,
+      "b": 0,
+      "discordant": [
+       4,
+       0
+      ],
+      "p": 0.125,
+      "boot95": [
+       0.0435,
+       0.3478
+      ]
+     },
+     "greedy_step1_v4qat-e2_vs_v1modal": {
+      "a": 4,
+      "b": 1,
+      "discordant": [
+       3,
+       0
+      ],
+      "p": 0.25
+     },
+     "greedy_step1_v4qat-e2_vs_v1q8": {
+      "discordant": [
+       1,
+       0
+      ],
+      "p": 1
+     },
+     "greedy_step1_v4qat-e2_vs_v2q8": {
+      "discordant": [
+       1,
+       1
+      ],
+      "p": 1
+     },
+     "greedy_step1_v4qat-e2_vs_v4qat-e1": {
+      "discordant": [
+       1,
+       0
+      ],
+      "p": 1
+     },
+     "sampled_numerics_any3_v4qat-e2_vs_v2q8": {
+      "a": 3,
+      "b": 2,
+      "discordant": [
+       1,
+       0
+      ],
+      "p": 1
+     },
+     "min_one_way_discordant_for_p_lt_0.05": 6
+    }
+   },
+   "issues": [
+    "The headline adapter v4final-e2 has no behavioural val anywhere in the scratchpad. Every val number for the v4 family comes from the rehearsal adapters v4qat-e1 and v4qat-e2 (earlier data build, 2,806 training rows). The only val for v4final is training loss: 1.08 to 0.2601 on 24 rows.",
+    "The task said the scored files carry per-gate outcomes. That is true only for the sampled files. All 9 greedy scored files hold just the oracle step-1 verdict (static_ok, compile, not_a_kernel or no_code); diag.py's score step runs only static_check. Lowering and numerics were never run on greedy outputs.",
+    "The v2-q8 sampled file has 91 rows over 4 chains, not 3 samples per problem. Chain 3 is missing scraped__tpu-inference__spmm because the run crashed with HTTP 500 (passn_v2.log). Tables report chains 0-2 for a like-for-like comparison and all chains separately.",
+    "The v4qat-e1 sampled file is empty (0 bytes), as the task said.",
+    "The val counts disagree depending on the set. Behavioural val is 23 problems (prompts_val.jsonl; passn/problems has 23 .ref.py files, 24 directory entries with __pycache__). The training-loss val is 24 rows covering only 21 unique tasks: kb l1 76, kb l1 81 and kb l2 91 appear twice, and authored attention_alibi and attention_relative_bias are absent. The loss and behavioural val sets are not the same.",
+    "The local greedy val files (all v4qat, v1-q8, v1-f16, v2-q8) and both sampled files record no backend digest, so the served model cannot be checked from the files. local_gen.py and passn.py pass the model tag explicitly, and V4_README says v4_val is unaffected by the base-mislabel bug, but no digest backs this up.",
+    "Comparisons are confounded by backend. Base, v1 on Modal and v2 on Modal were generated on Modal Ollama; v4qat and the q8/f16 folds ran on the Mac Ollama. The same v1 adapter passed step 1 on 3 of 23 locally (q8) and 1 of 23 on Modal, so the backend or fold changes step-1 counts by about as much as the differences between adapters.",
+    "No val comparison is statistically significant. The largest one-way gap is 4 problems (v4qat-e2 vs base, greedy step 1, p = 0.125), and p < 0.05 needs at least 6.",
+    "All numerics passes on val are on three trivial elementwise problems: Softplus, Softsign and L1Norm.",
+    "The bf16 val generation log (gen_val_bf16.log) ends with a Modal FunctionTimeoutError, but bf16_val_lora.jsonl and its scored file have all 23 problems. It was presumably resumed; the resume is not in the log. That file has finish=None on every row.",
+    "The copies in wt-v4runs/control/runs/v4_val/ are byte-identical to the originals in diag/ and passn/samples/. V4_README describes them correctly: local val is greedy with CPU step 1 only, sampled val went through three CPU gates."
+   ]
+  },
+  "verdict": {
+   "agrees": true,
+   "discrepancies": [
+    "Rounding: the per-sample Wilson 95% interval for v4qat-e2 numerics (6 of 69) is 4.046% to 17.701%, which rounds to 4.0\u201317.7%, not 4.1\u201317.7%. The script rounded to 0.0405 first, and the markdown rounded that again.",
+    "Wording: 'three trivial elementwise kb level-1 problems' is wrong for L1Norm. Its reference is `x / jnp.mean(jnp.abs(x), axis=1, keepdims=True)`, a row-wise reduction followed by a divide. Softplus and Softsign are elementwise; L1Norm is not.",
+    "Understated evidence: 'v4qat's metrics don't record which file it used' is true of metrics.json, but `modal_train/launch.txt` says 'validation rows from draft_val.jsonl: 24'. `modal_train/draft_val.jsonl` has sha256 prefix ea667fc895a3, byte-identical to `v4final_val.jsonl`, so v4qat's loss-val file is recorded directly.",
+    "Overstated claim: 'The v4 loss-val file is byte-identical across every v4 build in the scratchpad (sha ea667fc895a3)'. `tokcheck/v4b_val.jsonl` (an earlier 'v4b' build) has 26 rows and sha 8abc71aecc45, the same as `colab_train/data/rc1_val.jsonl` and `tokcheck/final_val.jsonl`. The ea667fc895a3 file is shared by both trained v4 adapters (v4qat via draft_val, v4final via v4final_val) and by the v4draft, v4b2, v4c and release/dataset-v4 copies, but not by every v4-named build.",
+    "Understated evidence: 'no digest backs this up' for the local v4qat val files is true at row level, but the Mac Ollama tag store backs up the attribution. `/api/tags` shows v4qat-e1 = 27dea4c9f984 (created 2026-11-10 04:00:23 EST) and v4qat-e2 = 5a9b219b0377 (created 04:44:32), both different from base ee6656371218. `local_val_v4qat-e1.jsonl` was created at 04:00:33 and `local_val_v4qat-e2.jsonl` at 04:45:20. Both v4final tags (e1 06:29:29, e2 07:15:05) were created after the last val write (sampled v4qat-e2, 05:39:02), so no val file can be v4final output. The e1 and e2 greedy replies share 0 of 23 byte-identical replies, so they are not both the base default. `local_gen.py` calls `chat(..., model=tag)`, and bench.py's old bug was only in the CLI's `chat_fn`, as V4_README says.",
+    "Missing caveat on the oracle hash: no val row records an oracle sha. `diag.py score` discards the sha that `static_check` returns, and `check.py` doesn't print it. The c9a07d9298a1 attribution is inferred from the current files plus git history: the three oracle files hash to c9a07d9298a1 in both gemma-dataset-claude/oracle and gemma-hackathon-research/oracle, the last commit touching them is fea23e7 (2026-11-08 00:34 -0500), and only __pycache__ is modified in the working tree. The inference is sound, but it is not recorded on any row.",
+    "Column header: '+ lowered on v6e' can read as on-chip. The gate is Pallas's TPU-v6e lowering run on CPU (`curation/lower_filter.py`). The numerics gate is not oracle step 3 either: it is one seed (seed 0) in TPU interpret mode on CPU, and it passes if `np.allclose(rtol=atol=1e-2)` holds or the relative error is at most 2x XLA-default's. Oracle step 3 uses 3 seeds against a float32 'highest' reference. Nothing is mislabelled as a TPU result, but the header should say CPU.",
+    "Minor omission: `diag/bf16_v2.jsonl` holds unscored bf16 v2 replies on 22 of the 23 val problems, plus 4 train problems (log `gen_bf16_v2.log`). It is not in the compilation. It is not v4, so no v4 number changes.",
+    "Cosmetic: the sampled-test rows in the significance table give only the bootstrap interval. The point differences are +0.043 for numerics any-of-3 and 0 for step 1 any-of-3."
+   ],
+   "corrected_markdown": "## Validation results for the v4 family (dataset-v1 held-out val, CPU only)\n\n**The headline adapter v4final-e2 has no behavioural val.** No file in the scratchpad scores code it generated on the val problems through any gate. I searched at maxdepth 3 (skipping wt-* and tpu/ops1/repo) by filename and by content. Every v4final hit is one of four kinds: JAXBench runs and logs, TPU job items for the JAXBench run, training files, or the GGUFs. The Mac Ollama tags `gemma4-e4b-lora:v4final-e1` and `v4final-e2` were created at 06:29 and 07:15 EST on Nov 10. That is after the last val file was written (05:39), so no val file can hold v4final output.\n\nFor v4final, val exists only as training loss. Every behavioural val number below for the v4 family belongs to the **rehearsal adapters v4qat-e1 and v4qat-e2**.\n\n**The attribution to v4qat holds:**\n- `local_gen.py` passes `model=tag` to `bench.chat`, and `passn.py` puts the tag in `request_body`. The base-default bug was only in bench.py's CLI `chat_fn`.\n- Mac Ollama shows v4qat-e1 = 27dea4c9f984 (tag created 04:00:23) and v4qat-e2 = 5a9b219b0377 (created 04:44:32). Both differ from base ee6656371218.\n- The val files began 10 s and 48 s after their tags were created: `local_val_v4qat-e1` at 04:00:33 and `local_val_v4qat-e2` at 04:45:20.\n- The e1 and e2 greedy replies share none of their 23 replies byte for byte.\n- The val rows themselves carry no digest.\n\n**No val result ran on a real TPU.**\n- The greedy scored rows have only `verdict` and `feedback`, with no `device_kind` or `judged_on`.\n- The sampled rows have only the CPU lines `STATIC`, `LOWER` and `NUMERIC`, written by `passn/check.py`.\n- None of the 23 val task names appears in any `tpu/*.jsonl` or `tpu/ops1/*.jsonl` file. They do appear inside `tpu/ops1/repo`, but that is a copy of the dataset repo: it holds dataset-construction job files for teacher solutions, not model val.\n- The step-1 check is the oracle's own `--static-only` code. Its three files in gemma-dataset-claude/oracle currently hash to **c9a07d9298a1**, the same oracle as JAXBench. The last commit touching them is fea23e7 (Nov 8, 00:34), before any val scoring.\n- No val row records an oracle sha, so that attribution is inferred from the current files and git history.\n\n**Val set.** There are 23 problems: 7 authored, 11 kb level 1, 4 kb level 2 and 1 scraped. `diag/prompts_val.jsonl` has 23 problems and `passn/problems/` has 23 `.ref.py` files. None of the 23 appears, by task name or substring, in v4final's 2,983 training rows or in v4qat's 2,806. The training-loss val set is different: 24 rows covering 21 unique problems. kb l1 76, kb l1 81 and kb l2 91 appear twice, and `authored__attention_alibi\u2026` and `authored__attention_relative_bias\u2026` are missing.\n\n### 1. Greedy val: one sample per problem, temperature 0, seed 0, 8192-token cap\n\nThe bf16 row was generated with transformers `do_sample=False`, which has no seed.\n\n**The greedy files contain oracle step 1 only.** `diag.py score` calls only `static_check`, so lowering and numerics were never run on greedy outputs. Those columns are empty, not zero.\n\n| Model (file) | Adapter | Served on | n | Has code block | **Passed step 1** (Wilson 95%) | Lowering | Numerics |\n|---|---|---|---|---|---|---|---|\n| **v4qat-e2** (`local_val_v4qat-e2`) | gemma4-e4b-lora:v4qat-e2 (rehearsal v4, epoch 2; Mac digest 5a9b219b0377) | Mac Ollama 0.40.14 | 23 | 20 | **4** (7.0\u201337.1%) | not run | not run |\n| **v4qat-e1** (`local_val_v4qat-e1`) | gemma4-e4b-lora:v4qat-e1 (rehearsal v4, epoch 1; Mac digest 27dea4c9f984) | Mac Ollama | 23 | 9 | **3** (4.5\u201332.1%) | not run | not run |\n| v2-q8 (`local_val_v2-q8`) | v2 LoRA, q8 fold | Mac Ollama | 23 | 18 | 4 (7.0\u201337.1%) | not run | not run |\n| v1-q8 (`local_val_v1-q8`) | v1 LoRA, q8 fold | Mac Ollama | 23 | 19 | 3 (4.5\u201332.1%) | not run | not run |\n| v1-f16 (`local_val_v1-f16`) | v1 LoRA, f16 fold | Mac Ollama | 23 | 19 | 3 (4.5\u201332.1%) | not run | not run |\n| v1 on Modal (`ollama_val_gemma4-e4b-lora_v1`) | gemma4-e4b-lora:v1, digest 19ec6dde2cca | Modal Ollama | 23 | 20 | 1 (0.8\u201321.0%) | not run | not run |\n| v2 on Modal (`ollama_val_gemma4-e4b-lora_v2`) | gemma4-e4b-lora:v2, digest 07c9d456ab42 | Modal Ollama | 23 | 22 | 0 (0\u201314.3%) | not run | not run |\n| v1 at bf16 (`bf16_val_lora`) | v1_r64 adapter, bf16 base with PEFT (not merged, not quantized) | Modal H100, transformers | 23 | 19 | 4 (7.0\u201337.1%) | not run | not run |\n| **base** (`ollama_val_gemma4_e4b-it-qat`) | gemma4:e4b-it-qat, digest ee6656371218 | Modal Ollama | 23 | 20 | **0** (0\u201314.3%) | not run | not run |\n\n**Step-1 verdict counts:**\n\n| Model | no_code | compile | not_a_kernel | static_ok |\n|---|---|---|---|---|\n| v4qat-e2 | 3 | 16 | 0 | 4 |\n| v4qat-e1 | 14 | 6 | 0 | 3 |\n| v2-q8 | 5 | 14 | 0 | 4 |\n| v1-q8 | 4 | 16 | 0 | 3 |\n| v1-f16 | 4 | 16 | 0 | 3 |\n| v1 on Modal | 3 | 19 | 0 | 1 |\n| v2 on Modal | 1 | 22 | 0 | 0 |\n| v1 at bf16 | 4 | 15 | 0 | 4 |\n| base | 3 | 18 | 2 | 0 |\n\nEvery no_code row is a reply that hit the 8192-token cap: finish is `length`, or for the bf16 rows (finish None) output_tokens is 8192. v4qat-e1 hit the cap on 14 of 23 problems, v4qat-e2 on 3.\n\n**Which problems passed step 1:**\n- v4qat-e2: Softplus, Softsign, L1Norm, `kb__l1__76_conv_standard_1D_dilated_strided__`\n- v4qat-e1, v1-q8 and v1-f16: Softplus, Softsign, L1Norm\n- v2-q8: Softplus, Softsign, L1Norm, MSELoss\n- v1 on Modal: Softsign only\n- v1 at bf16: Softplus, Softsign, L1Norm, `authored__ragged_masked_layernorm`\n\n`diag/bf16_v2.jsonl` holds unscored bf16 v2 replies on 22 of the 23 val problems; it was never scored.\n\n### 2. Sampled val: temperature 1.0, top_p 0.95, top_k 64, through three cumulative CPU gates\n\nThe three gates are:\n1. Oracle step 1 (static).\n2. Pallas TPU-v6e lowering, run on CPU.\n3. Numerics in TPU interpret mode on CPU: seed 0 only, pass if `np.allclose(rtol=atol=1e-2)` holds or the relative error is at most 2x XLA-default's.\n\nThe numerics gate is not oracle step 3, which uses 3 seeds against a float32 \"highest\" reference. The gates really are cumulative. Every row with a LOWER line passed static, every row with a NUMERIC line lowered, and no row had a lowering abstain or a numerics skip.\n\n**Per sample:**\n\n| Model | Samples | Has code | Passed step 1 | + v6e lowering (CPU) | + numerics ok | Numerics wrong / error |\n|---|---|---|---|---|---|---|\n| **v4qat-e2** | 69 (3 \u00d7 23) | 69 | 10 | 10 | **6** (8.7%; Wilson 4.0\u201317.7%) | 4 / 0 |\n| v2-q8, chains 0\u20132 | 69 (3 \u00d7 23) | 69 | 9 | 9 | 5 (7.2%; Wilson 3.1\u201315.9%) | 3 / 1 |\n| v2-q8, all chains | 91 (23+23+23+22) | 91 | 12 | 12 | 7 | 4 / 1 |\n| v4qat-e1 | 0 (file is empty, 0 bytes) | \u2013 | \u2013 | \u2013 | \u2013 | \u2013 |\n\nThe per-sample Wilson intervals assume independent samples. Samples are clustered within problems, so these intervals are too narrow.\n\n**Per problem, passing in any of its 3 samples:**\n\n| Model | Problems | Has code | Passed step 1 | + lowered | + numerics ok |\n|---|---|---|---|---|---|\n| **v4qat-e2** | 23 | 23 | 4 (Wilson 7.0\u201337.1%) | 4 | **3** (Wilson 4.5\u201332.1%) |\n| v2-q8, chains 0\u20132 | 23 | 23 | 4 | 4 | 2 (Wilson 2.4\u201326.8%) |\n| v2-q8, all chains (any of 4) | 23 | 23 | 4 | 4 | 2 |\n\n- **Lowering rejected nothing.** Every sample that passed step 1 also lowered.\n- **Every numerics pass came from three simple kb level-1 problems.** Two are elementwise activations (Softplus, Softsign) and one is a row-wise L1 normalisation (L1Norm, `x / mean(|x|, axis=1)`).\n  - v4qat-e2: Softplus 2 of 3 samples, Softsign 3 of 3, L1Norm 1 of 3.\n  - v2-q8: Softplus and Softsign only.\n- **No authored, kb level-2 or scraped problem passed numerics in any val run.** The one authored problem to reach step 1 and lowering, `authored__softcapped_logits\u2026` (v4qat-e2, chain 1), failed numerics with relative error 0.955.\n- Unbiased pass@1, averaged per problem: v4qat-e2 0.0870; v2-q8 0.0725 (chains 0\u20132) and 0.0761 (all chains).\n\n### 3. Training-loss val (the only val for the headline adapter)\n\n| Adapter | Train rows | Val rows | Val loss before \u2192 after |\n|---|---|---|---|\n| **v4final, epoch 2 (headline)** | 2,983 | 24 | **1.08 \u2192 0.2601** |\n| v4qat, epoch 2 (rehearsal) | 2,806 | 24 | 1.08 \u2192 0.2671 |\n| v1_r64 (context) | 238 | 26, a different set | 1.0634 \u2192 0.354 |\n| v2_r64 (context) | 432 | 26, a different set | 1.0634 \u2192 0.4714 |\n\nBoth trained v4 adapters used the same 24-row loss-val file. `modal_train/launch.txt` records that v4qat used `draft_val.jsonl` and `launch_v4final.txt` records `v4final_val.jsonl`. Both files have sha ea667fc895a3, as do the v4draft, v4b2, v4c and release/dataset-v4 copies. The earlier `tokcheck/v4b_val.jsonl` build is different: 26 rows, sha 8abc71aecc45, the same as rc1.\n\n### 4. Is anything on val statistically significant?\n\n**No.** These tests are exploratory: val is not in PROTOCOL.md's primary test. I used exact two-sided McNemar on the 23 paired problems. With no passes on one side, p < 0.05 needs at least 6 problems where only one model passes (5 gives p = 0.0625, 6 gives 0.03125). No val comparison gets past 4.\n\n| Comparison | Passes A vs B | Problems only A / only B passed | Exact p | Difference (paired bootstrap 95%, 10,000 resamples) |\n|---|---|---|---|---|\n| Greedy step 1, v4qat-e2 vs base | 4 vs 0 | 4 / 0 | 0.125 | +0.174 (+0.043, +0.348) |\n| Greedy step 1, v4qat-e2 vs v1 on Modal | 4 vs 1 | 3 / 0 | 0.25 | +0.130 (0, +0.261) |\n| Greedy step 1, v4qat-e2 vs v1-q8 | 4 vs 3 | 1 / 0 | 1.0 | +0.043 (0, +0.130) |\n| Greedy step 1, v4qat-e2 vs v2-q8 | 4 vs 4 | 1 / 1 | 1.0 | 0 (\u22120.130, +0.130) |\n| Greedy step 1, v4qat-e2 vs v4qat-e1 | 4 vs 3 | 1 / 0 | 1.0 | +0.043 (0, +0.130) |\n| Greedy step 1, v2-q8 vs base | 4 vs 0 | 4 / 0 | 0.125 | +0.174 (+0.043, +0.348) |\n| Sampled numerics, any of 3: v4qat-e2 vs v2-q8 (chains 0\u20132) | 3 vs 2 | 1 / 0 | 1.0 | +0.043 (0, +0.130) |\n| Sampled step 1, any of 3: v4qat-e2 vs v2-q8 (chains 0\u20132) | 4 vs 4 | 1 / 1 | 1.0 | 0 (\u22120.130, +0.130) |\n\nComparisons across files are confounded by backend. Base and v1 on Modal were generated on Modal's Ollama; v4qat and the q8/f16 folds ran on the Mac's Ollama. The same v1 adapter passed step 1 on 3 of 23 as the Mac q8 fold and on 1 of 23 as Modal's fold, so the backend or fold moves step-1 counts by about as much as the differences between adapters.",
+   "notes": [
+    "Every count in the compilation reproduced exactly with my own stdlib script (/private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/verify_val/v1.py, v2.py, v3.py). That covers: all 9 greedy files (n, has-code, the verdict breakdown, the step-1 task lists, digests, no_code = length-capped), both sampled files (69 and 91 rows, cumulative gates 69/10/10/6 and 69/9/9/5 and 91/12/12/7, per-problem 23/4/4/3 and 23/4/4/2, pass@1 0.0870/0.0725/0.0761), all McNemar p-values, and the bootstrap intervals (to 4 decimals with a different seed).",
+    "In all 9 greedy files the stored `code` field matches a fresh regex extraction from `reply` (0 mismatches).",
+    "Greedy really is greedy: `request_body` sets temperature 0, seed 0 and num_predict 8192, which overrides the Modelfiles' temperature 1 / top_k 64 / top_p 0.95. bf16 uses `do_sample=False` and max_new_tokens 8192.",
+    "The 'cumulative' gates are cumulative in the data, not just by construction: no row has a LOWER line without STATIC static_ok, no row has a NUMERIC line without LOWER lowered, and there are 0 lowering abstains and 0 'NUMERIC skipped' rows.",
+    "No val number is attributed to the wrong adapter. All v4-family behavioural val numbers come from v4qat-e1/e2. The training-loss figures match v4final/metrics.json (2983 rows, 24 val, 1.08 \u2192 0.2601) and v4qat/metrics.json (2806, 24, 1.08 \u2192 0.2671).",
+    "No behavioural val for v4final exists. The by-name and by-content searches (maxdepth 3, skipping wt-* and tpu/ops1/repo) found only JAXBench logs and scripts, TPU job items for control-lora-v4final-e2-modal t0\u2013t2, training files (modal_train/v4final_*), GGUFs, Modelfiles and metrics. The only model-output val files anywhere are in diag/ and passn/samples/.",
+    "The six files in wt-v4runs/control/runs/v4_val/ are byte-identical to the originals in diag/ and passn/samples/, checked with cmp under bash. An earlier 'DIFF' result came from zsh not word-splitting in my loop, not from the files.",
+    "Logs check out: gen_val_bf16.log ends in a Modal FunctionTimeoutError after 3600 s, yet bf16_val_lora has all 23 tasks with finish None. passn_v2.log ends in HTTP Error 500, and chain 3 lacks only scraped__tpu-inference__spmm.",
+    "Out of val scope but relevant to 'all v4 runs': the scratchpad's jaxbench_v4.log ('lora-v4qat-e2-t0': 64 checked, compile 54 / not_a_kernel 10, 0 to TPU) is the base model run under a v4 label, per V4_README's correction. No valid JAXBench run exists for v4qat-e2."
+   ]
+  }
+ },
+ {
+  "key": "stats",
+  "compiled": {
+   "markdown": "## Verdict\n\n**The headline result is not statistically significant.** v4 passes **1 of 58** primary tasks (12p_RMSNorm, at turn 0, 1.40x XLA). Base bare, base docs and v1 each pass **0 of 58**. That leaves 1 discordant task against 0, so the exact McNemar test gives **p = 1.0** two-sided (0.5 one-sided). A single discordant task can never reach p < 0.05. It takes at least 6 tasks that only v4 passes (6 gives p = 0.03125; 5 gives p = 0.0625). The pre-declared S-p metric is also null: **1/25 vs 0/25, p = 1.0**.\n\n**What is significant: getting onto the TPU, i.e. passing oracle step 1.** Step 1 checks that the code imports, traces and contains a pallas_call the output depends on. v4 does this on **23 of 58** primary tasks (39.7%, Wilson [28.1, 52.5]).\n- vs base bare and v1, which never pass step 1 (0/58): p = 2.4e-7, Holm 8.6e-6.\n- vs base docs (6/58): p = 4.9e-4, Holm 0.015.\n- The turn-0 version also survives: vs docs, 23 vs 4 tasks, Holm 0.0021.\n\n**Every later stage stays inside noise.**\n- Compiled and ran: 7/58 vs 0/58, raw p = 0.0156, Holm 0.47.\n- Correct: 3/58 vs 0/58, p = 0.25.\n- Pass: 1/58 vs 0/58, p = 1.\n\nOn S-p-25 nothing is significant even before correction. The best case is step 1, 5/25 vs 0/25, p = 0.0625.\n\nIn plain terms, v4 has learned the form of a Pallas kernel well enough to clear the static check on about 40% of tasks, where the base model and v1 clear it on none. Most of those kernels then fail on the chip: 16 of the 24 tasks that reached the TPU hit VMEM errors on all 3 turns. The evidence that v4 writes correct or fast kernels (3 correct, 1 pass) cannot be told apart from zero at this sample size. The repair turns added nothing. At every stage, the count within 3 turns equals the turn-0 count.\n\n**About bare_stack.** The protocol's primary comparison is v4 vs bare_stack, which was not run. Base bare is the closest arm available. Base bare already scored 0/58 on pass. A bare_stack run could only add tasks that both arms pass or tasks only the control passes. Either way the p-value cannot drop below the 1.0 reported here, so the primary result is p = 1.0 whatever bare_stack scores.\n\n---\n\n### Data checks (raw files only)\n- I used 4 run directories: base (`bare` and `docs`), v1, pilot25 (descriptive only) and v4.\n- Every attempt id has exactly one verdict and vice versa, with no duplicate ids. Every verdict has `oracle_sha` c9a07d9298a1.\n- Generation settings match across all arms: temperature 0, max_tokens 8192, num_ctx 65536, Ollama 0.40.14 on A10G. Each arm has a single backend digest.\n- Task lists:\n  - The 64 tasks are identical across arms: 33 k and 31 p.\n  - 50 tasks have `ref_source` jaxbench/level1 and 14 come from control/refs.\n  - primary-58 has 58 tasks and S-p-25 has 25.\n- Stage 1 failures (CPU-judged): all have verdict `compile` (failed_stage `static`) or `not_a_kernel`.\n- TPU rows:\n  - All have device_kind \"TPU v6 lite\" and no `judged_on` field.\n  - The only TPU failures are `vmem` and `compile`, both with failed_stage `compile`, so they are step-2 failures.\n  - There are no harness_oom, too_large_for_chip, timeout, runtime, mosaic or crash verdicts.\n- v4 has 64/63/63 rows for turns 0/1/2, 190 in total. 12p stops after its turn-0 pass.\n\n### A. Per-attempt oracle funnel\n\n| arm | turn | attempts | (a) has code | (b) passed step 1 (TPU-judged) | (c) compiled+ran | (d) correct | (e) pass |\n|---|---|---|---|---|---|---|---|\n| v4 | 0 | 64 | 56 | 24 | 7 | 3 | 1 |\n| v4 | 1 | 63 | 60 | 23 | 6 | 1 | 0 |\n| v4 | 2 | 63 | 62 | 23 | 6 | 1 | 0 |\n| v4 | all | 190 | 178 | 70 | 19 | 5 | 1 |\n| bare | all (t0/t1/t2) | 192 | 167 (52/56/59) | 0 | 0 | 0 | 0 |\n| docs | all (t0/t1/t2) | 192 | 180 (56/62/62) | 11 (4/3/4) | 0 | 0 | 0 |\n| v1 | all (t0/t1/t2) | 192 | 180 (59/61/60) | 0 | 0 | 0 | 0 |\n| pilot25 | all (t0/t1/t2) | 192 | 165 (45/58/62) | 0 | 0 | 0 | 0 |\n\nv4 verdicts across all 190 attempts: compile 121 (118 on CPU at step 1, 3 on TPU at step 2), vmem 48, wrong 14, correct_slow 4, not_a_kernel 2, pass 1.\n\n### B. Per-task funnel: best stage within 3 turns (x/n, %, Wilson 95% in brackets)\n\n| arm | set | (a) has code | (b) passed step 1 | (c) compiled+ran | (d) correct | (e) pass | t0 (b) | t0 (e) |\n|---|---|---|---|---|---|---|---|---|\n| v4 | primary58 | 57/58 (98.3%) [90.9, 99.7] | 23/58 (39.7%) [28.1, 52.5] | 7/58 (12.1%) [6.0, 22.9] | 3/58 (5.2%) [1.8, 14.1] | 1/58 (1.7%) [0.3, 9.1] | 23/58 (39.7%) [28.1, 52.5] | 1/58 (1.7%) [0.3, 9.1] |\n| v4 | sp25 | 24/25 (96.0%) [80.5, 99.3] | 5/25 (20.0%) [8.9, 39.1] | 2/25 (8.0%) [2.2, 25.0] | 2/25 (8.0%) [2.2, 25.0] | 1/25 (4.0%) [0.7, 19.5] | 5/25 (20.0%) [8.9, 39.1] | 1/25 (4.0%) [0.7, 19.5] |\n| v4 | all64 | 63/64 (98.4%) [91.7, 99.7] | 24/64 (37.5%) [26.7, 49.7] | 7/64 (10.9%) [5.4, 20.9] | 3/64 (4.7%) [1.6, 12.9] | 1/64 (1.6%) [0.3, 8.3] | 24/64 (37.5%) [26.7, 49.7] | 1/64 (1.6%) [0.3, 8.3] |\n| bare | primary58 | 53/58 (91.4%) [81.4, 96.3] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] |\n| bare | sp25 | 24/25 (96.0%) [80.5, 99.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] |\n| bare | all64 | 59/64 (92.2%) [83.0, 96.6] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] |\n| docs | primary58 | 57/58 (98.3%) [90.9, 99.7] | 6/58 (10.3%) [4.8, 20.8] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 4/58 (6.9%) [2.7, 16.4] | 0/58 [0.0, 6.2] |\n| docs | sp25 | 24/25 (96.0%) [80.5, 99.3] | 3/25 (12.0%) [4.2, 30.0] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 1/25 (4.0%) [0.7, 19.5] | 0/25 [0.0, 13.3] |\n| docs | all64 | 63/64 (98.4%) [91.7, 99.7] | 6/64 (9.4%) [4.4, 19.0] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 4/64 (6.2%) [2.5, 15.0] | 0/64 [0.0, 5.7] |\n| v1 | primary58 | 55/58 (94.8%) [85.9, 98.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] | 0/58 [0.0, 6.2] |\n| v1 | sp25 | 22/25 (88.0%) [70.0, 95.8] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] | 0/25 [0.0, 13.3] |\n| v1 | all64 | 61/64 (95.3%) [87.1, 98.4] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] | 0/64 [0.0, 5.7] |\n| pilot25 | all64 | 62/64 (96.9%) [89.3, 99.1] | 0/64 [0.0, 5.7] | 0/64 | 0/64 | 0/64 | 0/64 | 0/64 |\n\n### C. The 24 tasks where v4 reached the TPU (per-turn verdict, with speed_vs_xla where measured)\n\n| task | t0 | t1 | t2 |\n|---|---|---|---|\n| 8p_GEMM | correct_slow 0.204 | correct_slow 0.336 | correct_slow 0.336 |\n| 12p_RMSNorm | **pass 1.402** | (stopped) | (stopped) |\n| 48k_Matmul_BatchNorm_BiasAdd_Divide_Swish | correct_slow 0.161 | wrong (code changed) | wrong |\n| 21k, 24k, 36k, 42k | wrong | wrong | wrong (same code each turn) |\n| 57p_SparseCore_Ragged_Gather | compile (TPU: \"Only take_along_axis-like gathers supported\") | compile | compile |\n| 13p, 14p, 19k, 20k, 26k, 27k, 29k, 30k, 37k, 38k, 41k, 44k, 47k, 49k, 50k, 64p (16 tasks) | vmem | vmem | vmem |\n\nOf these 24 tasks, 18 are k tasks and 6 are p tasks (8p, 12p, 13p, 14p, 57p, 64p). 64p is outside both primary-58 and S-p-25.\n\nTwo notes on the significance tables below. \"Holm 36\" is the Holm-adjusted p over 36 tests: 3 controls x {primary58, sp25} x 6 outcomes. \"Holm 54\" adds the 18 all-64 tests. Bootstrap CIs are percentile intervals (linear interpolation) from 10,000 resamples of tasks, using one fresh `random.Random(0)` per test.\n\n### 1. Pre-registered primary: pass_within_3 on primary-58\nThe protocol compares against bare_stack, which was not run, so base bare is the closest available arm.\n\n| comparison | both | v4 only | ctrl only | neither | v4 Wilson 95% | ctrl Wilson 95% | diff pp [bootstrap 95%] | McNemar p (2-sided) | p (1-sided) | Holm 36 |\n|---|---|---|---|---|---|---|---|---|---|---|\n| v4 vs base bare | 0 | 1 | 0 | 57 | 1/58 (1.7%) [0.3, 9.1] | 0/58 [0.0, 6.2] | +1.7 [+0.0, +5.2] | **1** | 0.5 | 1 |\n| v4 vs base docs | 0 | 1 | 0 | 57 | 1/58 (1.7%) [0.3, 9.1] | 0/58 [0.0, 6.2] | +1.7 [+0.0, +5.2] | 1 | 0.5 | 1 |\n| v4 vs v1 bare | 0 | 1 | 0 | 57 | 1/58 (1.7%) [0.3, 9.1] | 0/58 [0.0, 6.2] | +1.7 [+0.0, +5.2] | 1 | 0.5 | 1 |\n\n### 2. Pre-declared secondary S-p (amendment A4): pass_within_3 on S-p-25\n\n| comparison | both | v4 only | ctrl only | neither | v4 Wilson 95% | ctrl Wilson 95% | diff pp [bootstrap 95%] | p (2-sided) | p (1-sided) | Holm 36 |\n|---|---|---|---|---|---|---|---|---|---|---|\n| v4 vs base bare | 0 | 1 | 0 | 24 | 1/25 (4.0%) [0.7, 19.5] | 0/25 [0.0, 13.3] | +4.0 [+0.0, +12.0] | **1** | 0.5 | 1 |\n| v4 vs base docs | 0 | 1 | 0 | 24 | 1/25 (4.0%) [0.7, 19.5] | 0/25 [0.0, 13.3] | +4.0 [+0.0, +12.0] | 1 | 0.5 | 1 |\n| v4 vs v1 bare | 0 | 1 | 0 | 24 | 1/25 (4.0%) [0.7, 19.5] | 0/25 [0.0, 13.3] | +4.0 [+0.0, +12.0] | 1 | 0.5 | 1 |\n\n### 3. Exploratory funnel tests (no test was pre-specified for these stages)\n\nBase bare and v1 have identical outcomes at every stage from (b) on (zero everywhere), so their rows are merged.\n\n#### primary-58\n\n| comparison | outcome | both | v4 only | ctrl only | neither | v4 % [Wilson] | ctrl % [Wilson] | diff pp [boot 95%] | p 2-sided | p 1-sided | Holm 36 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| vs bare = vs v1 | (b) passed step 1 | 0 | 23 | 0 | 35 | 39.7 [28.1, 52.5] | 0 [0, 6.2] | +39.7 [+27.6, +51.7] | 2.38e-07 | 1.19e-07 | **8.58e-06** |\n| vs bare = vs v1 | (c) compiled+ran | 0 | 7 | 0 | 51 | 12.1 [6.0, 22.9] | 0 [0, 6.2] | +12.1 [+5.2, +20.7] | 0.0156 | 0.0078 | 0.469 |\n| vs bare = vs v1 | (d) correct | 0 | 3 | 0 | 55 | 5.2 [1.8, 14.1] | 0 [0, 6.2] | +5.2 [+0.0, +12.1] | 0.25 | 0.125 | 1 |\n| vs bare = vs v1 | (e) pass | 0 | 1 | 0 | 57 | 1.7 [0.3, 9.1] | 0 [0, 6.2] | +1.7 [+0.0, +5.2] | 1 | 0.5 | 1 |\n| vs bare = vs v1 | t0 (b) | 0 | 23 | 0 | 35 | 39.7 [28.1, 52.5] | 0 [0, 6.2] | +39.7 [+27.6, +51.7] | 2.38e-07 | 1.19e-07 | **8.58e-06** |\n| vs bare = vs v1 | t0 (e) | 0 | 1 | 0 | 57 | 1.7 [0.3, 9.1] | 0 [0, 6.2] | +1.7 [+0.0, +5.2] | 1 | 0.5 | 1 |\n| vs docs | (b) passed step 1 | 3 | 20 | 3 | 32 | 39.7 [28.1, 52.5] | 10.3 [4.8, 20.8] | +29.3 [+15.5, +43.1] | 4.88e-04 | 2.44e-04 | **0.0151** |\n| vs docs | (c) compiled+ran | 0 | 7 | 0 | 51 | 12.1 [6.0, 22.9] | 0 [0, 6.2] | +12.1 [+5.2, +20.7] | 0.0156 | 0.0078 | 0.469 |\n| vs docs | (d) correct | 0 | 3 | 0 | 55 | 5.2 [1.8, 14.1] | 0 [0, 6.2] | +5.2 [+0.0, +12.1] | 0.25 | 0.125 | 1 |\n| vs docs | (e) pass | 0 | 1 | 0 | 57 | 1.7 [0.3, 9.1] | 0 [0, 6.2] | +1.7 [+0.0, +5.2] | 1 | 0.5 | 1 |\n| vs docs | t0 (b) | 2 | 21 | 2 | 33 | 39.7 [28.1, 52.5] | 6.9 [2.7, 16.4] | +32.8 [+19.0, +46.6] | 6.60e-05 | 3.30e-05 | **0.00211** |\n| vs docs | t0 (e) | 0 | 1 | 0 | 57 | 1.7 [0.3, 9.1] | 0 [0, 6.2] | +1.7 [+0.0, +5.2] | 1 | 0.5 | 1 |\n\n#### S-p-25\n\n| comparison | outcome | both | v4 only | ctrl only | neither | v4 % [Wilson] | ctrl % [Wilson] | diff pp [boot 95%] | p 2-sided | p 1-sided | Holm 36 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| vs bare = vs v1 | (b) passed step 1 | 0 | 5 | 0 | 20 | 20.0 [8.9, 39.1] | 0 [0, 13.3] | +20.0 [+4.0, +36.0] | 0.0625 | 0.03125 | 1 |\n| vs bare = vs v1 | (c) compiled+ran | 0 | 2 | 0 | 23 | 8.0 [2.2, 25.0] | 0 [0, 13.3] | +8.0 [+0.0, +20.0] | 0.5 | 0.25 | 1 |\n| vs bare = vs v1 | (d) correct | 0 | 2 | 0 | 23 | 8.0 [2.2, 25.0] | 0 [0, 13.3] | +8.0 [+0.0, +20.0] | 0.5 | 0.25 | 1 |\n| vs bare = vs v1 | (e) pass | 0 | 1 | 0 | 24 | 4.0 [0.7, 19.5] | 0 [0, 13.3] | +4.0 [+0.0, +12.0] | 1 | 0.5 | 1 |\n| vs bare = vs v1 | t0 (b) | 0 | 5 | 0 | 20 | 20.0 [8.9, 39.1] | 0 [0, 13.3] | +20.0 [+4.0, +36.0] | 0.0625 | 0.03125 | 1 |\n| vs bare = vs v1 | t0 (e) | 0 | 1 | 0 | 24 | 4.0 [0.7, 19.5] | 0 [0, 13.3] | +4.0 [+0.0, +12.0] | 1 | 0.5 | 1 |\n| vs docs | (b) passed step 1 | 1 | 4 | 2 | 18 | 20.0 [8.9, 39.1] | 12.0 [4.2, 30.0] | +8.0 [-12.0, +28.0] | 0.6875 | 0.344 | 1 |\n| vs docs | (c) compiled+ran | 0 | 2 | 0 | 23 | 8.0 [2.2, 25.0] | 0 [0, 13.3] | +8.0 [+0.0, +20.0] | 0.5 | 0.25 | 1 |\n| vs docs | (d) correct | 0 | 2 | 0 | 23 | 8.0 [2.2, 25.0] | 0 [0, 13.3] | +8.0 [+0.0, +20.0] | 0.5 | 0.25 | 1 |\n| vs docs | (e) pass | 0 | 1 | 0 | 24 | 4.0 [0.7, 19.5] | 0 [0, 13.3] | +4.0 [+0.0, +12.0] | 1 | 0.5 | 1 |\n| vs docs | t0 (b) | 0 | 5 | 1 | 19 | 20.0 [8.9, 39.1] | 4.0 [0.7, 19.5] | +16.0 [+0.0, +36.0] | 0.2188 | 0.109 | 1 |\n| vs docs | t0 (e) | 0 | 1 | 0 | 24 | 4.0 [0.7, 19.5] | 0 [0, 13.3] | +4.0 [+0.0, +12.0] | 1 | 0.5 | 1 |\n\nOn S-p-25, v4 reaches step 1 on 8p, 12p, 13p, 14p and 57p. Docs reaches it on 8p, 9p and 15p.\n\n#### all-64 (descriptive only, not part of the Holm-36 family)\n\n| comparison | outcome | both | v4 only | ctrl only | neither | v4 % [Wilson] | ctrl % [Wilson] | diff pp [boot 95%] | p 2-sided | p 1-sided | Holm 54 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| vs bare = vs v1 | (b) / t0 (b) | 0 | 24 | 0 | 40 | 37.5 [26.7, 49.7] | 0 [0, 5.7] | +37.5 [+26.6, +50.0] | 1.19e-07 | 5.96e-08 | 6.44e-06 |\n| vs bare = vs v1 | (c) | 0 | 7 | 0 | 57 | 10.9 [5.4, 20.9] | 0 [0, 5.7] | +10.9 [+4.7, +18.8] | 0.0156 | 0.0078 | 0.656 |\n| vs bare = vs v1 | (d) | 0 | 3 | 0 | 61 | 4.7 [1.6, 12.9] | 0 [0, 5.7] | +4.7 [+0.0, +10.9] | 0.25 | 0.125 | 1 |\n| vs bare = vs v1 | (e) / t0 (e) | 0 | 1 | 0 | 63 | 1.6 [0.3, 8.3] | 0 [0, 5.7] | +1.6 [+0.0, +4.7] | 1 | 0.5 | 1 |\n| vs docs | (b) | 3 | 21 | 3 | 37 | 37.5 [26.7, 49.7] | 9.4 [4.4, 19.0] | +28.1 [+14.1, +40.6] | 2.77e-04 | 1.39e-04 | 0.0122 |\n| vs docs | t0 (b) | 2 | 22 | 2 | 38 | 37.5 [26.7, 49.7] | 6.2 [2.5, 15.0] | +31.2 [+18.8, +43.8] | 3.59e-05 | 1.79e-05 | 0.00165 |\n| vs docs | (c) | 0 | 7 | 0 | 57 | 10.9 [5.4, 20.9] | 0 [0, 5.7] | +10.9 [+4.7, +18.8] | 0.0156 | 0.0078 | 0.656 |\n| vs docs | (d) | 0 | 3 | 0 | 61 | 4.7 [1.6, 12.9] | 0 [0, 5.7] | +4.7 [+0.0, +10.9] | 0.25 | 0.125 | 1 |\n| vs docs | (e) / t0 (e) | 0 | 1 | 0 | 63 | 1.6 [0.3, 8.3] | 0 [0, 5.7] | +1.6 [+0.0, +4.7] | 1 | 0.5 | 1 |\n\n### Tests that survive Holm at 0.05 (family of 36)\n\n| test | raw p | Holm p |\n|---|---|---|\n| v4_vs_bare.primary58.stage_b | 2.38e-07 | 8.58e-06 |\n| v4_vs_bare.primary58.t0_stage_b | 2.38e-07 | 8.58e-06 |\n| v4_vs_v1.primary58.stage_b | 2.38e-07 | 8.58e-06 |\n| v4_vs_v1.primary58.t0_stage_b | 2.38e-07 | 8.58e-06 |\n| v4_vs_docs.primary58.t0_stage_b | 6.60e-05 | 0.00211 |\n| v4_vs_docs.primary58.stage_b | 4.88e-04 | 0.0151 |\n\nNone of the 30 other tests survive. That includes every stage (c), (d) and (e) test and every S-p-25 test. Over the larger family of 54, the same 6 tests survive, plus the matching all-64 stage (b) tests.\n\n### Sensitivity checks and caveats\n- **The stage (c) result depends on how the test family is drawn.** Take only the 4 within-3-turns stages on primary-58 vs base bare, a family chosen after the fact. Then stage (c) gets Holm p = 3 x 0.015625 = 0.0469, just under 0.05. Under the requested family of 36 it is 0.469, so it should not be claimed.\n- **Adapter selection.** v4 is the third adapter run on JAXBench through Modal; pilot25 and v1 both scored 0/64 before it. A Bonferroni factor of 3 for choosing among them leaves stage (b) at p = 7.2e-7. The step-1 finding holds up under that correction, and the pass result was null anyway.\n- **Bootstrap intervals at small counts.** With 1 to 3 discordant tasks, the bootstrap interval's lower bound is exactly 0.0, so it cannot separate those results from zero. This agrees with McNemar.\n\nScripts and outputs are in /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/: `sig.py` (the analysis), `report.py` (the tables), `out.json` (full results) and `nums_lean.json`.",
+   "numbers": {
+    "headline.primary58.pass_within_3": {
+     "v4": 1,
+     "bare": 0,
+     "docs": 0,
+     "v1": 0,
+     "n": 58,
+     "v4_pass_task": "12p_RMSNorm",
+     "v4_pass_speed_vs_xla": 1.402
+    },
+    "headline.sp25.pass_within_3": {
+     "v4": 1,
+     "bare": 0,
+     "docs": 0,
+     "v1": 0,
+     "n": 25
+    },
+    "legend.table": "[both, v4_only, ctrl_only, neither]",
+    "legend.boot95": "percentile 95% CI of the v4 minus control difference, in percentage points",
+    "legend.tasks": "[w3_a has code, w3_b passed step1, w3_c compiled+ran, w3_d correct, w3_e pass, t0_b, t0_e]",
+    "legend.attempts": "[n, a has code, b passed step1, c compiled+ran, d correct, e pass]",
+    "holm_family36_size": 36,
+    "holm_family54_size": 54,
+    "holm36_survivors": [
+     "v4_vs_bare.primary58.stage_b",
+     "v4_vs_bare.primary58.t0_stage_b",
+     "v4_vs_v1.primary58.stage_b",
+     "v4_vs_v1.primary58.t0_stage_b",
+     "v4_vs_docs.primary58.t0_stage_b",
+     "v4_vs_docs.primary58.stage_b"
+    ],
+    "mcnemar_min_oneway_discordant_for_p_lt_0.05": 6,
+    "mcnemar_p_at_b5_c0": 0.0625,
+    "mcnemar_p_at_b6_c0": 0.03125,
+    "sensitivity.posthoc_family4_v4_vs_bare_primary58.stage_c.p_holm": 0.04688,
+    "sensitivity.adapter_selection_bonferroni3.v4_vs_bare.primary58.stage_b": 7.153e-07,
+    "v4.repairs_t1_code_identical_to_t0": [
+     40,
+     63
+    ],
+    "v4.repairs_t2_code_identical_to_t1": [
+     54,
+     63
+    ],
+    "v4.tasks_vmem_all_turns": 16,
+    "attempts.v4.turn0": [
+     64,
+     56,
+     24,
+     7,
+     3,
+     1
+    ],
+    "attempts.v4.turn1": [
+     63,
+     60,
+     23,
+     6,
+     1,
+     0
+    ],
+    "attempts.v4.turn2": [
+     63,
+     62,
+     23,
+     6,
+     1,
+     0
+    ],
+    "attempts.v4.turnall": [
+     190,
+     178,
+     70,
+     19,
+     5,
+     1
+    ],
+    "attempts.bare.turnall": [
+     192,
+     167,
+     0,
+     0,
+     0,
+     0
+    ],
+    "attempts.docs.turnall": [
+     192,
+     180,
+     11,
+     0,
+     0,
+     0
+    ],
+    "attempts.v1.turnall": [
+     192,
+     180,
+     0,
+     0,
+     0,
+     0
+    ],
+    "attempts.pilot25.turnall": [
+     192,
+     165,
+     0,
+     0,
+     0,
+     0
+    ],
+    "tasks.v4.all64": [
+     63,
+     24,
+     7,
+     3,
+     1,
+     24,
+     1
+    ],
+    "tasks.v4.primary58": [
+     57,
+     23,
+     7,
+     3,
+     1,
+     23,
+     1
+    ],
+    "tasks.v4.sp25": [
+     24,
+     5,
+     2,
+     2,
+     1,
+     5,
+     1
+    ],
+    "tasks.bare.all64": [
+     59,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "tasks.bare.primary58": [
+     53,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "tasks.bare.sp25": [
+     24,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "tasks.docs.all64": [
+     63,
+     6,
+     0,
+     0,
+     0,
+     4,
+     0
+    ],
+    "tasks.docs.primary58": [
+     57,
+     6,
+     0,
+     0,
+     0,
+     4,
+     0
+    ],
+    "tasks.docs.sp25": [
+     24,
+     3,
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    "tasks.v1.all64": [
+     61,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "tasks.v1.primary58": [
+     55,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "tasks.v1.sp25": [
+     22,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "v4_vs_bare.primary58.stage_b.p_two_sided": 2.384e-07,
+    "v4_vs_bare.primary58.stage_b.p_one_sided": 1.192e-07,
+    "v4_vs_bare.primary58.stage_b.p_holm36": 8.583e-06,
+    "v4_vs_bare.primary58.stage_b.table": [
+     0,
+     23,
+     0,
+     35
+    ],
+    "v4_vs_bare.primary58.stage_b.boot95": [
+     27.59,
+     51.72
+    ],
+    "v4_vs_bare.primary58.stage_c.p_two_sided": 0.01562,
+    "v4_vs_bare.primary58.stage_c.p_one_sided": 0.007812,
+    "v4_vs_bare.primary58.stage_c.p_holm36": 0.4688,
+    "v4_vs_bare.primary58.stage_c.table": [
+     0,
+     7,
+     0,
+     51
+    ],
+    "v4_vs_bare.primary58.stage_c.boot95": [
+     5.172,
+     20.69
+    ],
+    "v4_vs_bare.primary58.stage_d.p_two_sided": 0.25,
+    "v4_vs_bare.primary58.stage_d.p_one_sided": 0.125,
+    "v4_vs_bare.primary58.stage_d.p_holm36": 1,
+    "v4_vs_bare.primary58.stage_d.table": [
+     0,
+     3,
+     0,
+     55
+    ],
+    "v4_vs_bare.primary58.stage_d.boot95": [
+     0,
+     12.07
+    ],
+    "v4_vs_bare.primary58.stage_e.p_two_sided": 1,
+    "v4_vs_bare.primary58.stage_e.p_one_sided": 0.5,
+    "v4_vs_bare.primary58.stage_e.p_holm36": 1,
+    "v4_vs_bare.primary58.stage_e.table": [
+     0,
+     1,
+     0,
+     57
+    ],
+    "v4_vs_bare.primary58.stage_e.boot95": [
+     0,
+     5.172
+    ],
+    "v4_vs_bare.primary58.t0_stage_b.p_two_sided": 2.384e-07,
+    "v4_vs_bare.primary58.t0_stage_b.p_one_sided": 1.192e-07,
+    "v4_vs_bare.primary58.t0_stage_b.p_holm36": 8.583e-06,
+    "v4_vs_bare.primary58.t0_stage_b.table": [
+     0,
+     23,
+     0,
+     35
+    ],
+    "v4_vs_bare.primary58.t0_stage_b.boot95": [
+     27.59,
+     51.72
+    ],
+    "v4_vs_bare.primary58.t0_stage_e.p_two_sided": 1,
+    "v4_vs_bare.primary58.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_bare.primary58.t0_stage_e.p_holm36": 1,
+    "v4_vs_bare.primary58.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     57
+    ],
+    "v4_vs_bare.primary58.t0_stage_e.boot95": [
+     0,
+     5.172
+    ],
+    "v4_vs_bare.sp25.stage_b.p_two_sided": 0.0625,
+    "v4_vs_bare.sp25.stage_b.p_one_sided": 0.03125,
+    "v4_vs_bare.sp25.stage_b.p_holm36": 1,
+    "v4_vs_bare.sp25.stage_b.table": [
+     0,
+     5,
+     0,
+     20
+    ],
+    "v4_vs_bare.sp25.stage_b.boot95": [
+     4,
+     36
+    ],
+    "v4_vs_bare.sp25.stage_c.p_two_sided": 0.5,
+    "v4_vs_bare.sp25.stage_c.p_one_sided": 0.25,
+    "v4_vs_bare.sp25.stage_c.p_holm36": 1,
+    "v4_vs_bare.sp25.stage_c.table": [
+     0,
+     2,
+     0,
+     23
+    ],
+    "v4_vs_bare.sp25.stage_c.boot95": [
+     0,
+     20
+    ],
+    "v4_vs_bare.sp25.stage_d.p_two_sided": 0.5,
+    "v4_vs_bare.sp25.stage_d.p_one_sided": 0.25,
+    "v4_vs_bare.sp25.stage_d.p_holm36": 1,
+    "v4_vs_bare.sp25.stage_d.table": [
+     0,
+     2,
+     0,
+     23
+    ],
+    "v4_vs_bare.sp25.stage_d.boot95": [
+     0,
+     20
+    ],
+    "v4_vs_bare.sp25.stage_e.p_two_sided": 1,
+    "v4_vs_bare.sp25.stage_e.p_one_sided": 0.5,
+    "v4_vs_bare.sp25.stage_e.p_holm36": 1,
+    "v4_vs_bare.sp25.stage_e.table": [
+     0,
+     1,
+     0,
+     24
+    ],
+    "v4_vs_bare.sp25.stage_e.boot95": [
+     0,
+     12
+    ],
+    "v4_vs_bare.sp25.t0_stage_b.p_two_sided": 0.0625,
+    "v4_vs_bare.sp25.t0_stage_b.p_one_sided": 0.03125,
+    "v4_vs_bare.sp25.t0_stage_b.p_holm36": 1,
+    "v4_vs_bare.sp25.t0_stage_b.table": [
+     0,
+     5,
+     0,
+     20
+    ],
+    "v4_vs_bare.sp25.t0_stage_b.boot95": [
+     4,
+     36
+    ],
+    "v4_vs_bare.sp25.t0_stage_e.p_two_sided": 1,
+    "v4_vs_bare.sp25.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_bare.sp25.t0_stage_e.p_holm36": 1,
+    "v4_vs_bare.sp25.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     24
+    ],
+    "v4_vs_bare.sp25.t0_stage_e.boot95": [
+     0,
+     12
+    ],
+    "v4_vs_bare.all64.stage_b.p_two_sided": 1.192e-07,
+    "v4_vs_bare.all64.stage_b.p_one_sided": 5.96e-08,
+    "v4_vs_bare.all64.stage_b.p_holm54": 6.437e-06,
+    "v4_vs_bare.all64.stage_b.table": [
+     0,
+     24,
+     0,
+     40
+    ],
+    "v4_vs_bare.all64.stage_b.boot95": [
+     26.56,
+     50
+    ],
+    "v4_vs_bare.all64.stage_c.p_two_sided": 0.01562,
+    "v4_vs_bare.all64.stage_c.p_one_sided": 0.007812,
+    "v4_vs_bare.all64.stage_c.p_holm54": 0.6562,
+    "v4_vs_bare.all64.stage_c.table": [
+     0,
+     7,
+     0,
+     57
+    ],
+    "v4_vs_bare.all64.stage_c.boot95": [
+     4.688,
+     18.75
+    ],
+    "v4_vs_bare.all64.stage_d.p_two_sided": 0.25,
+    "v4_vs_bare.all64.stage_d.p_one_sided": 0.125,
+    "v4_vs_bare.all64.stage_d.p_holm54": 1,
+    "v4_vs_bare.all64.stage_d.table": [
+     0,
+     3,
+     0,
+     61
+    ],
+    "v4_vs_bare.all64.stage_d.boot95": [
+     0,
+     10.94
+    ],
+    "v4_vs_bare.all64.stage_e.p_two_sided": 1,
+    "v4_vs_bare.all64.stage_e.p_one_sided": 0.5,
+    "v4_vs_bare.all64.stage_e.p_holm54": 1,
+    "v4_vs_bare.all64.stage_e.table": [
+     0,
+     1,
+     0,
+     63
+    ],
+    "v4_vs_bare.all64.stage_e.boot95": [
+     0,
+     4.688
+    ],
+    "v4_vs_bare.all64.t0_stage_b.p_two_sided": 1.192e-07,
+    "v4_vs_bare.all64.t0_stage_b.p_one_sided": 5.96e-08,
+    "v4_vs_bare.all64.t0_stage_b.p_holm54": 6.437e-06,
+    "v4_vs_bare.all64.t0_stage_b.table": [
+     0,
+     24,
+     0,
+     40
+    ],
+    "v4_vs_bare.all64.t0_stage_b.boot95": [
+     26.56,
+     50
+    ],
+    "v4_vs_bare.all64.t0_stage_e.p_two_sided": 1,
+    "v4_vs_bare.all64.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_bare.all64.t0_stage_e.p_holm54": 1,
+    "v4_vs_bare.all64.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     63
+    ],
+    "v4_vs_bare.all64.t0_stage_e.boot95": [
+     0,
+     4.688
+    ],
+    "v4_vs_docs.primary58.stage_b.p_two_sided": 0.0004883,
+    "v4_vs_docs.primary58.stage_b.p_one_sided": 0.0002441,
+    "v4_vs_docs.primary58.stage_b.p_holm36": 0.01514,
+    "v4_vs_docs.primary58.stage_b.table": [
+     3,
+     20,
+     3,
+     32
+    ],
+    "v4_vs_docs.primary58.stage_b.boot95": [
+     15.52,
+     43.1
+    ],
+    "v4_vs_docs.primary58.stage_c.p_two_sided": 0.01562,
+    "v4_vs_docs.primary58.stage_c.p_one_sided": 0.007812,
+    "v4_vs_docs.primary58.stage_c.p_holm36": 0.4688,
+    "v4_vs_docs.primary58.stage_c.table": [
+     0,
+     7,
+     0,
+     51
+    ],
+    "v4_vs_docs.primary58.stage_c.boot95": [
+     5.172,
+     20.69
+    ],
+    "v4_vs_docs.primary58.stage_d.p_two_sided": 0.25,
+    "v4_vs_docs.primary58.stage_d.p_one_sided": 0.125,
+    "v4_vs_docs.primary58.stage_d.p_holm36": 1,
+    "v4_vs_docs.primary58.stage_d.table": [
+     0,
+     3,
+     0,
+     55
+    ],
+    "v4_vs_docs.primary58.stage_d.boot95": [
+     0,
+     12.07
+    ],
+    "v4_vs_docs.primary58.stage_e.p_two_sided": 1,
+    "v4_vs_docs.primary58.stage_e.p_one_sided": 0.5,
+    "v4_vs_docs.primary58.stage_e.p_holm36": 1,
+    "v4_vs_docs.primary58.stage_e.table": [
+     0,
+     1,
+     0,
+     57
+    ],
+    "v4_vs_docs.primary58.stage_e.boot95": [
+     0,
+     5.172
+    ],
+    "v4_vs_docs.primary58.t0_stage_b.p_two_sided": 6.604e-05,
+    "v4_vs_docs.primary58.t0_stage_b.p_one_sided": 3.302e-05,
+    "v4_vs_docs.primary58.t0_stage_b.p_holm36": 0.002113,
+    "v4_vs_docs.primary58.t0_stage_b.table": [
+     2,
+     21,
+     2,
+     33
+    ],
+    "v4_vs_docs.primary58.t0_stage_b.boot95": [
+     18.97,
+     46.55
+    ],
+    "v4_vs_docs.primary58.t0_stage_e.p_two_sided": 1,
+    "v4_vs_docs.primary58.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_docs.primary58.t0_stage_e.p_holm36": 1,
+    "v4_vs_docs.primary58.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     57
+    ],
+    "v4_vs_docs.primary58.t0_stage_e.boot95": [
+     0,
+     5.172
+    ],
+    "v4_vs_docs.sp25.stage_b.p_two_sided": 0.6875,
+    "v4_vs_docs.sp25.stage_b.p_one_sided": 0.3438,
+    "v4_vs_docs.sp25.stage_b.p_holm36": 1,
+    "v4_vs_docs.sp25.stage_b.table": [
+     1,
+     4,
+     2,
+     18
+    ],
+    "v4_vs_docs.sp25.stage_b.boot95": [
+     -12,
+     28
+    ],
+    "v4_vs_docs.sp25.stage_c.p_two_sided": 0.5,
+    "v4_vs_docs.sp25.stage_c.p_one_sided": 0.25,
+    "v4_vs_docs.sp25.stage_c.p_holm36": 1,
+    "v4_vs_docs.sp25.stage_c.table": [
+     0,
+     2,
+     0,
+     23
+    ],
+    "v4_vs_docs.sp25.stage_c.boot95": [
+     0,
+     20
+    ],
+    "v4_vs_docs.sp25.stage_d.p_two_sided": 0.5,
+    "v4_vs_docs.sp25.stage_d.p_one_sided": 0.25,
+    "v4_vs_docs.sp25.stage_d.p_holm36": 1,
+    "v4_vs_docs.sp25.stage_d.table": [
+     0,
+     2,
+     0,
+     23
+    ],
+    "v4_vs_docs.sp25.stage_d.boot95": [
+     0,
+     20
+    ],
+    "v4_vs_docs.sp25.stage_e.p_two_sided": 1,
+    "v4_vs_docs.sp25.stage_e.p_one_sided": 0.5,
+    "v4_vs_docs.sp25.stage_e.p_holm36": 1,
+    "v4_vs_docs.sp25.stage_e.table": [
+     0,
+     1,
+     0,
+     24
+    ],
+    "v4_vs_docs.sp25.stage_e.boot95": [
+     0,
+     12
+    ],
+    "v4_vs_docs.sp25.t0_stage_b.p_two_sided": 0.2188,
+    "v4_vs_docs.sp25.t0_stage_b.p_one_sided": 0.1094,
+    "v4_vs_docs.sp25.t0_stage_b.p_holm36": 1,
+    "v4_vs_docs.sp25.t0_stage_b.table": [
+     0,
+     5,
+     1,
+     19
+    ],
+    "v4_vs_docs.sp25.t0_stage_b.boot95": [
+     0,
+     36
+    ],
+    "v4_vs_docs.sp25.t0_stage_e.p_two_sided": 1,
+    "v4_vs_docs.sp25.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_docs.sp25.t0_stage_e.p_holm36": 1,
+    "v4_vs_docs.sp25.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     24
+    ],
+    "v4_vs_docs.sp25.t0_stage_e.boot95": [
+     0,
+     12
+    ],
+    "v4_vs_docs.all64.stage_b.p_two_sided": 0.0002772,
+    "v4_vs_docs.all64.stage_b.p_one_sided": 0.0001386,
+    "v4_vs_docs.all64.stage_b.p_holm54": 0.0122,
+    "v4_vs_docs.all64.stage_b.table": [
+     3,
+     21,
+     3,
+     37
+    ],
+    "v4_vs_docs.all64.stage_b.boot95": [
+     14.06,
+     40.62
+    ],
+    "v4_vs_docs.all64.stage_c.p_two_sided": 0.01562,
+    "v4_vs_docs.all64.stage_c.p_one_sided": 0.007812,
+    "v4_vs_docs.all64.stage_c.p_holm54": 0.6562,
+    "v4_vs_docs.all64.stage_c.table": [
+     0,
+     7,
+     0,
+     57
+    ],
+    "v4_vs_docs.all64.stage_c.boot95": [
+     4.688,
+     18.75
+    ],
+    "v4_vs_docs.all64.stage_d.p_two_sided": 0.25,
+    "v4_vs_docs.all64.stage_d.p_one_sided": 0.125,
+    "v4_vs_docs.all64.stage_d.p_holm54": 1,
+    "v4_vs_docs.all64.stage_d.table": [
+     0,
+     3,
+     0,
+     61
+    ],
+    "v4_vs_docs.all64.stage_d.boot95": [
+     0,
+     10.94
+    ],
+    "v4_vs_docs.all64.stage_e.p_two_sided": 1,
+    "v4_vs_docs.all64.stage_e.p_one_sided": 0.5,
+    "v4_vs_docs.all64.stage_e.p_holm54": 1,
+    "v4_vs_docs.all64.stage_e.table": [
+     0,
+     1,
+     0,
+     63
+    ],
+    "v4_vs_docs.all64.stage_e.boot95": [
+     0,
+     4.688
+    ],
+    "v4_vs_docs.all64.t0_stage_b.p_two_sided": 3.588e-05,
+    "v4_vs_docs.all64.t0_stage_b.p_one_sided": 1.794e-05,
+    "v4_vs_docs.all64.t0_stage_b.p_holm54": 0.001651,
+    "v4_vs_docs.all64.t0_stage_b.table": [
+     2,
+     22,
+     2,
+     38
+    ],
+    "v4_vs_docs.all64.t0_stage_b.boot95": [
+     18.75,
+     43.75
+    ],
+    "v4_vs_docs.all64.t0_stage_e.p_two_sided": 1,
+    "v4_vs_docs.all64.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_docs.all64.t0_stage_e.p_holm54": 1,
+    "v4_vs_docs.all64.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     63
+    ],
+    "v4_vs_docs.all64.t0_stage_e.boot95": [
+     0,
+     4.688
+    ],
+    "v4_vs_v1.primary58.stage_b.p_two_sided": 2.384e-07,
+    "v4_vs_v1.primary58.stage_b.p_one_sided": 1.192e-07,
+    "v4_vs_v1.primary58.stage_b.p_holm36": 8.583e-06,
+    "v4_vs_v1.primary58.stage_b.table": [
+     0,
+     23,
+     0,
+     35
+    ],
+    "v4_vs_v1.primary58.stage_b.boot95": [
+     27.59,
+     51.72
+    ],
+    "v4_vs_v1.primary58.stage_c.p_two_sided": 0.01562,
+    "v4_vs_v1.primary58.stage_c.p_one_sided": 0.007812,
+    "v4_vs_v1.primary58.stage_c.p_holm36": 0.4688,
+    "v4_vs_v1.primary58.stage_c.table": [
+     0,
+     7,
+     0,
+     51
+    ],
+    "v4_vs_v1.primary58.stage_c.boot95": [
+     5.172,
+     20.69
+    ],
+    "v4_vs_v1.primary58.stage_d.p_two_sided": 0.25,
+    "v4_vs_v1.primary58.stage_d.p_one_sided": 0.125,
+    "v4_vs_v1.primary58.stage_d.p_holm36": 1,
+    "v4_vs_v1.primary58.stage_d.table": [
+     0,
+     3,
+     0,
+     55
+    ],
+    "v4_vs_v1.primary58.stage_d.boot95": [
+     0,
+     12.07
+    ],
+    "v4_vs_v1.primary58.stage_e.p_two_sided": 1,
+    "v4_vs_v1.primary58.stage_e.p_one_sided": 0.5,
+    "v4_vs_v1.primary58.stage_e.p_holm36": 1,
+    "v4_vs_v1.primary58.stage_e.table": [
+     0,
+     1,
+     0,
+     57
+    ],
+    "v4_vs_v1.primary58.stage_e.boot95": [
+     0,
+     5.172
+    ],
+    "v4_vs_v1.primary58.t0_stage_b.p_two_sided": 2.384e-07,
+    "v4_vs_v1.primary58.t0_stage_b.p_one_sided": 1.192e-07,
+    "v4_vs_v1.primary58.t0_stage_b.p_holm36": 8.583e-06,
+    "v4_vs_v1.primary58.t0_stage_b.table": [
+     0,
+     23,
+     0,
+     35
+    ],
+    "v4_vs_v1.primary58.t0_stage_b.boot95": [
+     27.59,
+     51.72
+    ],
+    "v4_vs_v1.primary58.t0_stage_e.p_two_sided": 1,
+    "v4_vs_v1.primary58.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_v1.primary58.t0_stage_e.p_holm36": 1,
+    "v4_vs_v1.primary58.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     57
+    ],
+    "v4_vs_v1.primary58.t0_stage_e.boot95": [
+     0,
+     5.172
+    ],
+    "v4_vs_v1.sp25.stage_b.p_two_sided": 0.0625,
+    "v4_vs_v1.sp25.stage_b.p_one_sided": 0.03125,
+    "v4_vs_v1.sp25.stage_b.p_holm36": 1,
+    "v4_vs_v1.sp25.stage_b.table": [
+     0,
+     5,
+     0,
+     20
+    ],
+    "v4_vs_v1.sp25.stage_b.boot95": [
+     4,
+     36
+    ],
+    "v4_vs_v1.sp25.stage_c.p_two_sided": 0.5,
+    "v4_vs_v1.sp25.stage_c.p_one_sided": 0.25,
+    "v4_vs_v1.sp25.stage_c.p_holm36": 1,
+    "v4_vs_v1.sp25.stage_c.table": [
+     0,
+     2,
+     0,
+     23
+    ],
+    "v4_vs_v1.sp25.stage_c.boot95": [
+     0,
+     20
+    ],
+    "v4_vs_v1.sp25.stage_d.p_two_sided": 0.5,
+    "v4_vs_v1.sp25.stage_d.p_one_sided": 0.25,
+    "v4_vs_v1.sp25.stage_d.p_holm36": 1,
+    "v4_vs_v1.sp25.stage_d.table": [
+     0,
+     2,
+     0,
+     23
+    ],
+    "v4_vs_v1.sp25.stage_d.boot95": [
+     0,
+     20
+    ],
+    "v4_vs_v1.sp25.stage_e.p_two_sided": 1,
+    "v4_vs_v1.sp25.stage_e.p_one_sided": 0.5,
+    "v4_vs_v1.sp25.stage_e.p_holm36": 1,
+    "v4_vs_v1.sp25.stage_e.table": [
+     0,
+     1,
+     0,
+     24
+    ],
+    "v4_vs_v1.sp25.stage_e.boot95": [
+     0,
+     12
+    ],
+    "v4_vs_v1.sp25.t0_stage_b.p_two_sided": 0.0625,
+    "v4_vs_v1.sp25.t0_stage_b.p_one_sided": 0.03125,
+    "v4_vs_v1.sp25.t0_stage_b.p_holm36": 1,
+    "v4_vs_v1.sp25.t0_stage_b.table": [
+     0,
+     5,
+     0,
+     20
+    ],
+    "v4_vs_v1.sp25.t0_stage_b.boot95": [
+     4,
+     36
+    ],
+    "v4_vs_v1.sp25.t0_stage_e.p_two_sided": 1,
+    "v4_vs_v1.sp25.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_v1.sp25.t0_stage_e.p_holm36": 1,
+    "v4_vs_v1.sp25.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     24
+    ],
+    "v4_vs_v1.sp25.t0_stage_e.boot95": [
+     0,
+     12
+    ],
+    "v4_vs_v1.all64.stage_b.p_two_sided": 1.192e-07,
+    "v4_vs_v1.all64.stage_b.p_one_sided": 5.96e-08,
+    "v4_vs_v1.all64.stage_b.p_holm54": 6.437e-06,
+    "v4_vs_v1.all64.stage_b.table": [
+     0,
+     24,
+     0,
+     40
+    ],
+    "v4_vs_v1.all64.stage_b.boot95": [
+     26.56,
+     50
+    ],
+    "v4_vs_v1.all64.stage_c.p_two_sided": 0.01562,
+    "v4_vs_v1.all64.stage_c.p_one_sided": 0.007812,
+    "v4_vs_v1.all64.stage_c.p_holm54": 0.6562,
+    "v4_vs_v1.all64.stage_c.table": [
+     0,
+     7,
+     0,
+     57
+    ],
+    "v4_vs_v1.all64.stage_c.boot95": [
+     4.688,
+     18.75
+    ],
+    "v4_vs_v1.all64.stage_d.p_two_sided": 0.25,
+    "v4_vs_v1.all64.stage_d.p_one_sided": 0.125,
+    "v4_vs_v1.all64.stage_d.p_holm54": 1,
+    "v4_vs_v1.all64.stage_d.table": [
+     0,
+     3,
+     0,
+     61
+    ],
+    "v4_vs_v1.all64.stage_d.boot95": [
+     0,
+     10.94
+    ],
+    "v4_vs_v1.all64.stage_e.p_two_sided": 1,
+    "v4_vs_v1.all64.stage_e.p_one_sided": 0.5,
+    "v4_vs_v1.all64.stage_e.p_holm54": 1,
+    "v4_vs_v1.all64.stage_e.table": [
+     0,
+     1,
+     0,
+     63
+    ],
+    "v4_vs_v1.all64.stage_e.boot95": [
+     0,
+     4.688
+    ],
+    "v4_vs_v1.all64.t0_stage_b.p_two_sided": 1.192e-07,
+    "v4_vs_v1.all64.t0_stage_b.p_one_sided": 5.96e-08,
+    "v4_vs_v1.all64.t0_stage_b.p_holm54": 6.437e-06,
+    "v4_vs_v1.all64.t0_stage_b.table": [
+     0,
+     24,
+     0,
+     40
+    ],
+    "v4_vs_v1.all64.t0_stage_b.boot95": [
+     26.56,
+     50
+    ],
+    "v4_vs_v1.all64.t0_stage_e.p_two_sided": 1,
+    "v4_vs_v1.all64.t0_stage_e.p_one_sided": 0.5,
+    "v4_vs_v1.all64.t0_stage_e.p_holm54": 1,
+    "v4_vs_v1.all64.t0_stage_e.table": [
+     0,
+     1,
+     0,
+     63
+    ],
+    "v4_vs_v1.all64.t0_stage_e.boot95": [
+     0,
+     4.688
+    ]
+   },
+   "issues": [
+    "The v4 row breakdown in the prompt, '64+62+63+1', does not match the per-turn counts. The real counts are t0 = 64, t1 = 63, t2 = 63, so the total of 190 agrees. Only 12p_RMSNorm stops after t0.",
+    "The PROTOCOL.md the prompt points to (scratchpad wt-v4runs) is the A4 version; its md5 is identical to commit 813b2be. A later amendment, A5 (commit 26e26dc, 'withdraw the v1_r64 headline pre-registration'), exists only on the local, unmerged, unpushed branch hruday/protocol-no-headline. control/PROTOCOL.md does not exist in the main working tree.",
+    "Under the A4 protocol as cited, v4 is not the pre-registered headline adapter (v1_r64 is), and 'a LoRA chosen using JAXBench outcomes' is listed as an invalidating event. v4 was evaluated after pilot25 and v1 had both scored 0/64 on JAXBench. A5 replaces that rule with 'report every adapter evaluated on JAXBench plus the total number of evaluations', but A5 is not merged.",
+    "bare_stack (the zero-adapter re-quantized stack) was not run for v4. A3 assumes it equals the official GGUF, and therefore the existing bare arm, but nothing in these run files shows that this was re-verified for v4's folded GGUF. This cannot affect the primary test, which is p = 1 whatever bare_stack scores.",
+    "TPU-judged rows (70 for v4, 11 for base docs) have no judged_on field at all rather than a non-'cpu' value. I classified them by device_kind == 'TPU v6 lite'. All CPU rows have device_kind 'cpu' and a judged_on that starts with 'cpu'.",
+    "No harness_oom, too_large_for_chip, timeout, runtime, mosaic or crash verdicts appear in any of the 4 runs. v4's step-2 failures are vmem (48 attempts, the same 16 tasks on all 3 turns) and 3 TPU compile errors, all on 57p ('Only take_along_axis-like gathers supported').",
+    "The repair turns added nothing for v4: the count within 3 turns equals the turn-0 count at every stage. 40 of 63 t1 replies have code byte-identical to t0 (after stripping whitespace), and 54 of 63 t2 replies are identical to t1. 48k regressed from correct_slow at t0 to wrong at t1 and t2 after its t1 code changed. A commit message on hruday/v4-runs says '41/62 repairs re-emit the turn-0 code verbatim'; my stricter definition (non-empty code, exact match after stripping) gives 40/63.",
+    "Base bare and v1 are 0 at every stage from (b) on, so the v4-vs-bare and v4-vs-v1 tests are exact duplicates. The Holm family of 36 therefore contains 12 duplicated pairs, which makes it conservative.",
+    "The stage (c) result (compiled and ran, 7 vs 0, raw p = 0.0156) depends on the family: Holm p is 0.469 over 36 tests but would be 0.0469 in an after-the-fact family of 4 (primary-58 vs bare, stages b to e). It should not be claimed as significant.",
+    "Percentile bootstrap intervals with 1 to 3 discordant tasks have a lower bound of exactly 0.0, so they are degenerate at these counts. They agree with McNemar.",
+    "62p_Causal_Conv1d_GDN: the t0 reply has finish 'repeat_limit' and empty code (confirming the prompt), and t1 and t2 end with finish 'length' and also have empty code. It is the only v4 task with no code in any turn.",
+    "The pilot25 run directory also holds bare.jsonl.with_dups and verdicts.jsonl.with_dups. I used only the deduplicated bare.jsonl and verdicts.jsonl, and treated pilot25 as descriptive only.",
+    "The user's request mentions 'val'. No validation-split results are in these run directories and none were computed in this step; this analysis covers only the JAXBench Modal runs.",
+    "Of the 24 tasks where v4 reached the TPU, 18 are k tasks. Only 5 of the 25 S-p tasks reached it (8p, 12p, 13p, 14p, 57p), which is why the stage (b) effect is significant on primary-58 but not on S-p-25 (p = 0.0625 vs bare and v1; p = 0.6875 vs docs)."
+   ]
+  },
+  "verdict": {
+   "agrees": true,
+   "discrepancies": [
+    "Wrong statement about bare_stack. They wrote that 'the p-value cannot drop below the 1.0 reported here' whatever bare_stack scores. The two-sided p can drop below 1, but only in the control's favour. v4 has 1 pass (12p). If bare_stack missed 12p and passed c tasks that v4 misses, two-sided p would be 0.625 at c=3, 0.0703 at c=7 and 0.0391 at c=8. If bare_stack also passed 12p, p would be 0.0312 at c=6. What holds is this: v4 has at most 1 discordant win, so the one-sided p for v4 beating bare_stack is at least 0.5 whatever bare_stack scores. v4 cannot be shown better than bare_stack on pass_within_3.",
+    "Wrong statement about repairs. They wrote 'At every stage, the count within 3 turns equals the turn-0 count.' This is false for stage (a), has a code block: 52 tasks at turn 0 vs 57 within 3 on primary-58, and 56 vs 63 on all-64. It holds only for stages (b) to (e).",
+    "The turn-0 result is not extra evidence. They wrote that 'The turn-0 version also survives' (stage b vs bare and vs v1). For v4, the turn-0 and within-3 stage (b) sets are the same 23 tasks, so it is the same evidence counted twice, also inside the Holm family. Only the docs comparison differs between them (the docs arm reaches 4 tasks at turn 0 vs 6 within 3), and that difference comes from the control, not from v4.",
+    "Post-hoc result headlined as significant. The Verdict's bold 'What is significant: getting onto the TPU' does not say that the result is exploratory. PROTOCOL.md (A4 text) lists the funnel only as a secondary descriptive metric and specifies no test for it. The 36-test Holm family was also built after the data were seen. Section 3 is labelled exploratory, but the Verdict paragraph needs the same label.",
+    "Stage (b) is credited to the adapter without a test. 'v4 has learned the form of a Pallas kernel' compares the official QAT GGUF (digest ee6656...) with the folded v4 GGUF (digest 0f764d...). The protocol requires bare_stack to separate adapter from stack, and it was not run, so stage (b) is just as untested as the primary on this point. They applied this caveat only to the primary. Some support for the attribution: the two excluded base_local__mislabelled_* runs (base model on a local backend) also had 0 TPU-judged attempts (0/128 and 0/64 verdicts). Those runs are excluded for v4 and should be cited only as extra base-model evidence.",
+    "The stage (b) effect sits in one task family, and tasks are not independent. All 18 k tasks that reach the TPU are Matmul/Gemm/BMM-led (18 of 25 such tasks). None of the 8 Conv-led k tasks do. The p tasks show 5/25 vs 0, p = 0.0625, not significant. S-p-25 is exactly the 25 p tasks in primary-58, so the pre-declared transfer metric gives the same null. Commit 9ec0e73 shows that v4's KernelBook training data had 195 of 941 problems flagged as algorithmically close to a JAXBench task, and only 84 were excluded. Exact McNemar treats the 23 tasks as independent units, but most are near-identical matmul-plus-epilogue tasks close to the training distribution. The p-value is valid for this fixed task set, but it overstates how far the result generalizes.",
+    "The vs-docs stage (b) result is fragile under the adapter-selection correction they proposed. They multiplied by 3 only for vs bare (7.2e-7). Applying the same factor to Holm-36 vs docs gives 0.01514 x 3 = 0.045, just under 0.05. The turn-0 vs-docs result (0.002113 x 3 = 0.0063) holds.",
+    "Minor: my percentile paired bootstrap (10,000 resamples, seed 0, index convention) gives stage (b) v4 minus bare [+27.6, +53.4] and v4 minus docs [+15.5, +44.8]. Theirs are [+27.6, +51.7] and [+15.5, +43.1]. The upper bound differs by one task (1/58 = 1.7 pp) because of the quantile convention. This is not material. Lower bounds and the stage (c), (d) and (e) intervals match."
+   ],
+   "corrected_markdown": "## Independent recomputation: v4 vs base bare, primary-58 (raw verdict files, last row per id, exact two-sided McNemar)\n\n| stage | v4 (within 3) | base bare | both | v4 only | bare only | neither | p two-sided | p one-sided | Holm-36 |\n|---|---|---|---|---|---|---|---|---|---|\n| (b) passed step 1 (TPU-judged) | 23/58 | 0/58 | 0 | 23 | 0 | 35 | 2.38e-07 | 1.19e-07 | 8.58e-06 |\n| (c) compiled + ran | 7/58 | 0/58 | 0 | 7 | 0 | 51 | 0.015625 | 0.0078125 | 0.469 |\n| (d) correct | 3/58 | 0/58 | 0 | 3 | 0 | 55 | 0.25 | 0.125 | 1 |\n| (e) pass (pre-registered metric) | 1/58 | 0/58 | 0 | 1 | 0 | 57 | 1.0 | 0.5 | 1 |\n\n- Turn 0 alone gives the same four tables, task for task. vs v1 is identical to vs bare at every stage.\n- vs docs, stage (b): 3 / 20 / 3 / 32 within 3 turns (p = 4.88e-4, Holm 0.01514) and 2 / 21 / 2 / 33 at turn 0 (p = 6.60e-5, Holm 0.002113). Stages (c) to (e) match the bare comparison.\n- Exact two-sided McNemar with 0 discordant tasks the other way: 5 tasks give p = 0.0625 and 6 give p = 0.03125. The protocol's 'at least 6' is correct.\n\n## Corrected verdict\n\n**The headline result is not statistically significant.** v4 passes 1 of 58 primary tasks (12p_RMSNorm, turn 0, 1.40x XLA). Base bare, base docs and v1 each pass 0 of 58. That is 1 discordant task, so the exact two-sided McNemar p = 1.0. The pre-declared S-p metric (1/25 vs 0/25, p = 1.0) is also null.\n\nThe protocol's control, bare_stack, was not run. v4 has only one pass, so it can have at most one discordant win. Whatever bare_stack scored, the one-sided p for v4 beating it would be at least 0.5. The two-sided p could fall below 1 only if bare_stack passed tasks that v4 does not.\n\n**Exploratory, not pre-registered: v4 clears oracle step 1 far more often.** No test was pre-specified for the funnel stages. Step 1 is a static CPU check: the code imports, traces and contains a pallas_call the output depends on. v4 clears it on 23/58 primary tasks (39.7%, Wilson [28.1, 52.5]).\n- vs base bare and v1 (0/58): p = 2.4e-7.\n- vs base docs (6/58): p = 4.9e-4.\n- Both survive Holm over the 36-test family built after the fact. The turn-0 version is the same 23 tasks, so it adds no independent evidence.\n\nThree caveats limit what this shows:\n1. **Adapter or serving stack?** The comparison is the official GGUF vs the folded v4 GGUF, and without bare_stack the adapter's effect is not separated from the stack's. Base-model runs on other stacks also had 0 attempts clear step 1, so a stack effect is unlikely, but it is untested.\n2. **One task family.** All 18 k tasks that clear step 1 are Matmul/Gemm/BMM-led, and 0 of the 8 Conv-led k tasks do. On the p tasks (= S-p-25, the pre-declared transfer set) it is 5/25 vs 0, p = 0.0625, not significant. v4's KernelBook training data kept problems that had been flagged as close to JAXBench tasks.\n3. **Weak against docs.** Under the adapter-selection factor of 3, the within-3 vs-docs result falls to 0.045.\n\n**Stages (b) and (c) say nothing about correctness.**\n- Compiled and ran: 7/58 vs 0/58, p = 0.0156, Holm 0.469. Not significant. 4 of those 7 tasks give wrong output on every turn.\n- Correct: 3/58 vs 0/58, p = 0.25.\n- Pass: 1/58 vs 0/58, p = 1.0.\n- 16 of the 24 tasks that reached the TPU fail with VMEM errors on all 3 turns.\n\n**Repair turns.** From stage (b) onward, the within-3 count equals the turn-0 count. Only stage (a), having a code block, improved: 52 to 57 tasks on primary-58. 40 of 63 turn-1 replies repeat the turn-0 code exactly (after stripping whitespace), and 54 of 63 turn-2 replies repeat turn 1.",
+   "notes": [
+    "My scripts are in /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/analysis/adv_review/: adv.py (funnel, exact McNemar via math.comb, Wilson, Holm, unpaired Fisher for comparison), adv2.py (attempt funnel, repairs, task-family split) and adv3.py (stage tags, bootstrap, bare_stack what-if). Output is in adv_out.txt. I did not touch the other agent's files in the parent analysis directory.",
+    "Every count and p-value in their tables matches my recomputation:\n- Per-task funnels for all arms and sets.\n- v4 attempt funnel 64/56/24/7/3/1, 63/60/23/6/1/0, 63/62/23/6/1/0, 190/178/70/19/5/1.\n- All the McNemar 2x2 tables and p-values I spot-checked.\n- Holm-36 adjusted values: 8.583e-6, 0.002113, 0.01514 and 0.4688 for stage (c).\n- The 16 tasks with VMEM on all 3 turns; repairs identical to the previous turn 40/63 and 54/63.\n- 62p: no code on any turn; t0 finish repeat_limit, t1 and t2 length.",
+    "They used the right test: a paired, exact, two-sided McNemar on task outcomes. An unpaired Fisher test gives similar conclusions (stage b 1.6e-8, c 0.0129, d 0.244, e 1.0), so the choice of test does not change any verdict. Holm is computed correctly. Mixing pre-registered and exploratory tests in one family is unusual, but it is conservative and cannot matter here because the primary p is 1. Dropping the duplicated v1 tests (a family of 24) leaves stage (c) at Holm 0.3125, still not significant.",
+    "Data checks:\n- Every verdict carries oracle_sha c9a07d9298a1.\n- No duplicate ids, and every attempt has exactly one verdict.\n- CPU rows: judged_on starts with 'cpu:', with verdict compile/static or not_a_kernel.\n- TPU rows: device_kind 'TPU v6 lite' and no judged_on field. The prompt implied a non-cpu judged_on value; the field is simply absent.\n- TPU failures are only vmem or compile (failed_stage compile). There are no harness_oom, too_large_for_chip, timeout, runtime, mosaic or crash verdicts.",
+    "The prompt's v4 row breakdown '64+62+63+1' is wrong. The actual rows per turn are 64 / 63 / 63, total 190. Only 12p stops after its turn-0 pass.",
+    "PROTOCOL.md (A4 version) fixes the checkpoint at end of epoch 3 and names v1_r64 as the headline adapter, with v4 not mentioned. 'v4final-e2' looks like an epoch-2 checkpoint. The run files cannot show whether e2 was chosen on the dataset's val split, as the protocol allows, or by other means. Commit 63900c9 mentions a JAXBench 'rehearsal v4qat-e2 turn 0' run, but commit 3b84c02 says that run actually served the base model."
+   ]
+  }
+ }
+]
