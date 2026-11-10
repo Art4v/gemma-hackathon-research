@@ -1,7 +1,7 @@
 {
  "items_path": "dataset-kbk-r1.items.jsonl",
  "job_id": "dataset-kbk-r1",
- "max_chip_minutes": 223,
+ "max_chip_minutes": 281,
  "owner": "karthik",
  "priority": 2,
  "seeds": 3,
