@@ -16,6 +16,9 @@ from v3_common import V3  # noqa: E402
 from v4_parts import V4  # noqa: E402
 
 PART_ORDER = ("m1", "kbk", "kbkc", "prod")
+# A target longer than the eval's 8,192-token generation cap teaches output the eval would cut off. chars/2.44 ran ~5% low on the one real case
+# (ConvDenoiser_3791: 19,347 chars, 8,316 tokens by Gemma's tokenizer), so the cap uses a stricter ratio: 2.3 chars per token, i.e. 18,000 chars.
+MAX_TARGET_CHARS = 18000
 
 
 def main(argv=None) -> int:
@@ -27,13 +30,16 @@ def main(argv=None) -> int:
     base_verif = {v["example_id"]: v for v in read_jsonl(V3 / "final" / "verification.jsonl")}
     val = read_jsonl(V3 / "final" / "val.jsonl")
     val_families = {e["family_id"] for e in read_jsonl(FINAL / "val.jsonl")}
-    rows, verif, parts = list(base), [base_verif[r["example_id"]] for r in base if r["example_id"] in base_verif], {}
+    rows, verif, parts, too_long = list(base), [base_verif[r["example_id"]] for r in base if r["example_id"] in base_verif], {}, []
     for name in PART_ORDER:
         part = read_jsonl(V4 / f"{name}.jsonl")
         parts[name] = len(part)
         for e in part:
             if e["family_id"] in val_families:
                 sys.exit(f"{e['example_id']}: from a val family")
+            if len(e["turns"][-1]["code"]) > MAX_TARGET_CHARS:
+                too_long.append(e["example_id"])
+                continue
             rows.append(training_row(e, e["kind"], conv))
             verif.append({"example_id": e["example_id"], "kind": e["kind"], "part": name, "verification": "tpu", "final_verdict": e["final_verdict"],
                           "speed_vs_xla": e["speed_vs_xla"], "oracle_job_ids": e["oracle"]["job_ids"], "oracle_shas": e["oracle"]["shas"]})
@@ -59,7 +65,7 @@ def main(argv=None) -> int:
     lens = [len(r["messages"][-1]["content"]) for r in rows]
     total = [sum(len(m["content"]) for m in r["messages"]) for r in rows]
     parts_report = json.loads((V4 / "parts_report.json").read_text()) if (V4 / "parts_report.json").exists() else {}
-    manifest = {"created_at": now(), "base": f"v3 {a.base}", "n_train": len(rows), "n_val": len(val), "base_rows": len(base), "part_rows": parts,
+    manifest = {"created_at": now(), "base": f"v3 {a.base}", "n_train": len(rows), "n_val": len(val), "base_rows": len(base), "part_rows": parts, "dropped_target_over_cap": {"max_chars": MAX_TARGET_CHARS, "ids": too_long},
                 "part_commits": {k: v.get("commit") for k, v in parts_report.items() if isinstance(v, dict) and "commit" in v},
                 "train_by_kind": dict(collections.Counter(r["kind"] for r in rows)), "by_teacher": dict(collections.Counter(r["teacher"] for r in rows)),
                 "by_verification": dict(collections.Counter(v["verification"] for v in verif)),
