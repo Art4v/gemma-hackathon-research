@@ -43,3 +43,13 @@ judged with turn 1's batch, and one catch-up pass gives it its 3 turns.
   outside, correct on 3 seeds, with error equal to XLA default's.
 - 2 `correct_slow`: `8p_GEMM` (0.20x) and `48k` (0.16x).
 - 4 `wrong`, 16 `vmem` (whole arrays or oversized blocks in VMEM), 1 `compile` (57p).
+
+**Turn 1** (62 repairs; 62p t0 judged in this batch: `compile`, "module 'cand' has no attribute 'workload'", since its reply had no
+closed code block):
+- CPU step 1: 23 passed to the TPU. TPU: 0 new pass; 1 `correct_slow` (`8p_GEMM` 0.20x -> 0.34x); 16 `vmem`; 5 `wrong` (`48k` went
+  from `correct_slow` to `wrong`); 1 `compile`.
+- **Repair behaviour:** 41 of 62 turn-1 codes are byte-identical to the task's turn-0 code, 15 more are >= 0.95 similar, and the median
+  similarity is 1.00. Base bare and v1 each repeat their code on only 2 and 3 of 64 tasks. v4's training rows are single-turn (problem ->
+  solution), and under greedy decoding it mostly re-emits its previous answer.
+- **One-constant near-misses:** 19k, 37k, 47k and 49k fail with "Scoped allocation 65-66 MB, limit 64 MB", and 30k's turn 1 at 64.02 MB.
+  The limit is the kernel's own `vmem_limit_bytes=64*1024*1024`; v6e VMEM is 128 MiB.
