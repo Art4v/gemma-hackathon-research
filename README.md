@@ -18,7 +18,7 @@ in the prompt. We fine-tune it on kernels that a real TPU has verified.
 | v3 adapters (1,597 and 2,877 rows) | trained; validation pending |
 | Dataset v4 | release candidate out (`dataset-v4-rc1`); freeze Nov 11 06:00 UTC, then v4 training and the JAXBench run |
 
-The pre-registered evaluation protocol is `control/PROTOCOL.md`.
+The evaluation protocol is `control/PROTOCOL.md`.
 
 ## Datasets
 
