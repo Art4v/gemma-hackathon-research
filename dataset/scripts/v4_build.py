@@ -24,6 +24,7 @@ MAX_TARGET_CHARS = 18000
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--base", required=True, choices=("train", "train_capped")); ap.add_argument("--coverage", default="")
+    ap.add_argument("--drop-correct-slow", action="store_true", help="drop the base's kind=correct_slow rows (TPU-correct targets under the 0.7x speed bar)")
     a = ap.parse_args(argv)
     conv = bench().conversation
     # families dropped by rule 3, from train and val alike; a training row's family is the first two parts of its task name
@@ -40,7 +41,7 @@ def main(argv=None) -> int:
                 return False
         return True
 
-    base = [r for r in read_jsonl(V3 / "final" / f"{a.base}.jsonl") if keep(r["task"])]
+    base = [r for r in read_jsonl(V3 / "final" / f"{a.base}.jsonl") if keep(r["task"]) and not (a.drop_correct_slow and r["kind"] == "correct_slow")]
     base_verif = {v["example_id"]: v for v in read_jsonl(V3 / "final" / "verification.jsonl")}
     val_all = read_jsonl(V3 / "final" / "val.jsonl")
     val = [r for r in val_all if keep(r["task"])]
@@ -82,7 +83,7 @@ def main(argv=None) -> int:
     lens = [len(r["messages"][-1]["content"]) for r in rows]
     total = [sum(len(m["content"]) for m in r["messages"]) for r in rows]
     parts_report = json.loads((V4 / "parts_report.json").read_text()) if (V4 / "parts_report.json").exists() else {}
-    manifest = {"created_at": now(), "base": f"v3 {a.base}", "n_train": len(rows), "n_val": len(val), "base_rows": len(base), "part_rows": parts, "dropped_target_over_cap": {"max_chars": MAX_TARGET_CHARS, "ids": too_long},
+    manifest = {"created_at": now(), "base": f"v3 {a.base}", "drop_correct_slow": a.drop_correct_slow, "n_train": len(rows), "n_val": len(val), "base_rows": len(base), "part_rows": parts, "dropped_target_over_cap": {"max_chars": MAX_TARGET_CHARS, "ids": too_long},
                 "excluded_families": {"file": "dataset/v4/exclude_families.txt", "families": sorted(excl), "rows_dropped_train_and_val": dict(sorted(dropped_family.items())),
                                       "val_rows_before": len(val_all), "val_problems": len({r["task"] for r in val})},
                 "part_commits": {k: v.get("commit") for k, v in parts_report.items() if isinstance(v, dict) and "commit" in v},
