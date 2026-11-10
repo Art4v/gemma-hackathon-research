@@ -1,0 +1,4 @@
+{"uuid": 17495, "stem": "PolicyAHG_17495", "hits": ["attr:load", "attr:save"]}
+{"uuid": 7332, "stem": "TokenClassifier_7332", "hits": ["call:setattr"]}
+{"uuid": 17489, "stem": "ActorCriticPPO_17489", "hits": ["attr:load", "attr:save", "call:setattr"]}
+{"uuid": 351, "stem": "ConditionalBatchNorm2d_351", "hits": ["call:setattr"]}
