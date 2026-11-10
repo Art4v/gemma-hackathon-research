@@ -1,0 +1,50 @@
+{"id": "kernelbook__GeneratorGCN_2596.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__moe_expert_bincount__moe_capacity_bincount_dispatch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__down_17191.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LeakyClamp_3779.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Policy_4403.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Decoder_10708.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ChannelSpatialSELayer_13777.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TransitionUp_15856.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CharbonnierLoss_8293.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Decoder1_6814.single.a1", "verdict": "mismatch", "issues": ["Plan says kron(W27, I8) is \"216 x 512 bf16\"; code pads W27 to an even tap count (27 -> 28 rows) before the kron, so lmat is (28*8, 64*8) = 224 x 512."]}
+{"id": "kernelbook__BinaryLoss_1496.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Collapse_18331.single.a1", "verdict": "mismatch", "issues": ["Rule 5: plan contains meta commentary \"Not compiled or run on a TPU, so speed and VMEM use are unmeasured.\""]}
+{"id": "kernelbook__BCE_LOSS_6005.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__circle_loss.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AdjMSELoss_11518.single.a1", "verdict": "mismatch", "issues": ["Plan says \"about 8 MiB of VMEM (2 inputs x 2 MiB bf16 x 2 buffers)\"; code blocks are (bm=4096, 128) bf16 = 1 MiB each, so 2 inputs x 1 MiB x 2 buffers = 4 MiB."]}
+{"id": "kernelbook__MLMTaskHead_4039.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__7_Conv3d_ReLU_LeakyReLU_GELU_Sigmoid_BiasAdd.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SoftArgMax_3579.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__71_Conv2d_Divide_LeakyReLU.a3.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__XSigmoidLoss_5349.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__self_attn_mini_1487.single.a1", "verdict": "mismatch", "issues": ["Rule 5: plan contains meta commentary: \"Not compiled or run here; the cross-block sublane slice + reshape is the most likely Mosaic failure point\" and \"This assumes v6e physical VMEM exceeds that\", plus a reference to the checker tolerance (\"against a 1e-2 tolerance\")."]}
+{"id": "kernelbook__Conv2dTransposeBlock_7928.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ContrastiveDistanceLoss_3182.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CharbonnierLoss_15929.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AutoEncoder_10195.repair.a2", "verdict": "ok", "issues": []}
+{"id": "github__dynamic_conv1d.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BCELoss2d_1686.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SpatialAttention_4325.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ActNorm_1036.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__70_conv_transposed_3D__asymmetric_input__square_kernel.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AE_2D_v1000_12448.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_s4d_conv__s4d_kernel_causal_conv.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ComplexConvTranspose2d_3769.single.a1", "verdict": "mismatch", "issues": ["Rule 5: plan contains meta commentary \"Not compiled or run here.\""]}
+{"id": "kernelbook__BiInteractionPooling_2342.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__VarianceC_4476.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LNN_2986.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SA_3016.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FocalLoss_9714.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__output_6021.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AvgPoolPad_17140.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__RewardCriterion_3114.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__UNetModule_3705.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SmoothPinballLoss_630.single.a1", "verdict": "mismatch", "issues": ["Plan says row blocks of up to 4096 rows are \"bf16 2 MiB/input/buffer, ~8 MiB double-buffered\"; code block is (4096, W=128) bf16 = 1 MiB per input per buffer, ~4 MiB double-buffered."]}
+{"id": "kernelbook__ParamSum_13586.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Encoder_7074.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__74_conv_transposed_1D_dilated.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Attention_969.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__KLDiscCriterion_8657.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SplitDim_10398.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NetVLAD_9510.single.a1", "verdict": "ok", "issues": []}

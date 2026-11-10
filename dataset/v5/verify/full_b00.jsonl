@@ -1,0 +1,50 @@
+{"id": "kernelbook__FusedUpsample_16645.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AgentA2C_7363.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__33_Gemm_Scale_BatchNorm.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Similarity_3272.single.a1", "verdict": "unsure", "issues": ["Plan says \"weights (16 MB bf16) stay in VMEM\"; the bf16 weights are wa+wb (2048,1024) bf16 = 8 MiB plus wp (1024,128) bf16 = 0.25 MiB, about 8.25 MiB. Only the double-buffered VMEM footprint (~16.5 MiB) matches 16 MB, so the claim is either 2x off or ambiguous."]}
+{"id": "kb__l2__61_ConvTranspose3d_ReLU_GroupNorm.a3.s0.correct_slow", "verdict": "unsure", "issues": ["Rule 5 (correct_slow): \"not M=Cout=128\" and \"17 large chunks per step instead of tiny TD=2/TH=8 tiles\" contrast against a design that appears nowhere in the code or problem, reading as an implicit reference to an earlier attempt. All numeric claims check out (grid (1,34) and (1,34,2), rows 544, K 2304, 256 lanes, 17 chunks)."]}
+{"id": "kernelbook__Conv2d_GN_ReLUx2_2246.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PyramidPoolingModule_16140.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__make_style_12017.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__gumbel_sampler_16342.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LayerNorm_3679.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Fp32GroupNorm_263.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LayerNormAVG_2911.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__RELUTwosided_10077.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NALU_200.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Normalize3D_1787.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConstractiveThresholdHingeLoss_15808.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TwoLayerFCBodyWithAction_585.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__30_Gemm_GroupNorm_Hardtanh.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TripletLoss_2156.single.a1", "verdict": "mismatch", "issues": ["Plan: \"last step reduces and scales by 1/(rows*128)\", where the plan itself uses rows for the chunk height ((rows,W) chunks, (rows,128) carry; rows=64 in code). Code scales by inv_count = 1/(n*h*128) = 1/(4096*128*128), i.e. total rows B*C*H, not the 64-row chunk."]}
+{"id": "kernelbook__ResidualBlock_4196.single.a1", "verdict": "unsure", "issues": ["Rule 5: \"(1-pass bf16 fails 1e-2)\" reads as a reported test/judge outcome rather than a design statement. All structural claims (grid (8,), (1,HW,C) blocks, 3 row-tap matmuls K=3C, bf16x3, weight relayout to (3,3C,C), N=2C hi|lo pass) match the code."]}
+{"id": "kernelbook__CompositeActivation_1340.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CapsuleLoss_2967.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Critic_10243.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__IIDIsotropicGaussianUVLoss_581.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TopicEmbeddingAttention_1243.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NodeClassifier_7787.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_update_2.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LSTMClassCriterion_11641.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ZPool_9819.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Decoder_10454.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (single): plan contains meta commentary: \"Not compiled or run. Speed is the main risk ... so the 0.7 ratio may not be met. The reshape ... is the main compile risk.\" Structural claims (bb=32, 100 MiB, 5 layers fused, band matrices for layer 4, (H4,B,W4) output) match."]}
+{"id": "kernelbook__MSE_285.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Critic_10668.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MiniBatchStd_14366.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AutoEncoder_3580.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CoSirenModule_6257.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__OutputLayer_2119.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BCEDiceLoss_5703.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Conv3D_Block_5700.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (single): plan contains meta commentary: \"Not compiled or run here: block shapes, VMEM use and speed are untested on TPU.\" Structural claims (grid N*(T+2)=48, 36 matmuls per frame, block (1,2,2,64,64,128), 96 MiB) match."]}
+{"id": "kernelbook__CrossNet_523.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__RevPaddingLayer_17832.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__adaILN_10739.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AffineLayer_9129.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GeneratorLoss_6142.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__RewardCriterion_11442.single.a3", "verdict": "mismatch", "issues": ["Plan: \"outside only reshape to () and astype\". Code also builds prev = concatenate([ones, seq[:, :-1]]) and transposes seq, prev and reward (seq.T, prev.T, reward.T) outside the kernel before the pallas_call."]}
+{"id": "kernelbook__SEBlock_17553.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GeneralizedFocalLoss_1323.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SmoothL1Loss_7106.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DurationMSELoss_15303.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BPRLoss_2207.single.a1", "verdict": "ok", "issues": []}

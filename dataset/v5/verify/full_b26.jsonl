@@ -1,0 +1,50 @@
+{"id": "kernelbook__EltwiseSubEmbed_14637.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LunaBlock_688.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GaussActivation_17197.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__HLoss_4771.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MultiLabelCircleLoss_15281.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L1_Charbonnier_loss_5887.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LeNet5_2962.single.a1", "verdict": "mismatch", "issues": ["Plan says \"every FLOP is on the MXU with K >= 120\", but fc3 is f3_ref (10, 84) @ h (84, bn), so its contraction K = fc2_out = 84 < 120."]}
+{"id": "kb__l2__31_Conv2d_Min_Add_Multiply.single.a1", "verdict": "mismatch", "issues": ["Plan says \"outside only reshape/slice\", but at CONFIG sizes _flat_conv picks Lh=384, m=14, L=5376, nl=3, need=16512 > Lsp=16384, so jnp.pad copies the flattened input outside the kernel; weights are also transposed/concatenated/padded/cast to bf16 outside."]}
+{"id": "kernelbook__FCNetwork_11684.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AffineConstantFlow_8329.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GroupScaling1D_73.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__VNMaxPool_3385.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__enhance_net_nopool_11696.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__up_9766.single.a1", "verdict": "mismatch", "issues": ["Plan says \"~290 MiB of HBM traffic\"; at CONFIG sizes the kernel reads x2 (16x128x4096 f32 = 32 MiB) and x1 (16x128x16384 f32 = 128 MiB) and writes out (16x256x16384 f32 = 256 MiB), about 416 MiB."]}
+{"id": "kb__l2__89_ConvTranspose3d_MaxPool_Softmax_Subtract_Swish_Max.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_rwkv_time_mix__rwkv4_time_mix_wkv_3.single.a1", "verdict": "mismatch", "issues": ["Plan defines tn=512 and says kernel 2 has \"grid (C/tn, M/tm)\", but kernel 2 uses tn2=_pick(2048,(1024,...))=1024, so its grid is (2, 32) with (512, 1024) output tiles, not (4, 32)."]}
+{"id": "kernelbook__TransformDecoder4_2694.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__21_Conv2d_Add_Scale_Sigmoid_GroupNorm.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SeparableConv2d_6123.repair.a2", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_short_conv_gate__ssm_short_conv_silu_gate__m1_aux.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__35_GroupNorm_.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kb__l1__31_ELU__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__61_conv_transposed_3D__square_input__square_kernel.repair.a2", "verdict": "ok", "issues": []}
+{"id": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_buffer_update.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__HyperSphereLoss_7995.single.a1", "verdict": "ok", "issues": []}
+{"id": "github__beam_search_step.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__52_Argmin_over_a_dimension.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ProjectExciteLayer_2703.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AdaptiveAvgMaxPool2d_4803.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AttentionUnit_1455.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MobileViTv2Attention_4526.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Encoder_5392.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DiceLoss_11734.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__loss_Textures_8291.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__48_Mean_reduction_over_a_dimension.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Net_10603.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Encoder_7581.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PKT_5786.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__UnpackLayerConv2d_2252.single.a1", "verdict": "mismatch", "issues": ["Plan says Call 2 has \"grid (B, Nq/2048)\", but at CONFIG sizes nq = 17 * 1024 = 17408 is not a multiple of 2048, so tn falls back to 1024 and the grid is (16, 17)."]}
+{"id": "authored__moe_capacity_dispatch__moe_capacity_top1_dispatch_combine.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__51_Argmax_over_a_dimension__m1_aux.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FCUDown_16471.single.a1", "verdict": "unsure", "issues": ["Plan says x is \"reshaped (free) to (B, C, H*W)\"; merging the minor (64,64) dims into 4096 is generally not a bitcast in the TPU tiled HBM layout, so a relayout copy is likely. Cannot settle from the code alone. Grid (8, 8), (1,512,512) bf16 blocks, (O,C) weight, sublane LayerNorm, erf GELU and transposed store all match."]}
+{"id": "kernelbook__DecoderSlot_8954.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AvgPoolPad_17158.single.a1", "verdict": "unsure", "issues": ["Plan calls the (B,C,H,W)->(B*C*H/2, 2W) reshape \"free\"; it changes the minor dims (256,256)->(128,512), which is generally not a bitcast in the TPU tiled HBM layout, so XLA likely inserts a relayout copy. Cannot settle from the code alone. Everything else (grid 128 steps of (1024,512)->(1024,128) bf16 blocks, nb=8, 0/1 window matmul, roll + mask, iota 1/count) matches."]}
+{"id": "authored__norm_residual_fusion__gemma_sandwich_norm_residual__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BPR_17179.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__ragged_segment_reduce__packed_segment_sum_mean_2__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LogLoss_4355.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvBlock_15465.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LeNetPP_16004.single.a1", "verdict": "ok", "issues": []}

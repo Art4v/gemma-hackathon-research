@@ -1,0 +1,50 @@
+{"id": "kernelbook__LayerNormAVG_2911.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FRM_3582.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SpatialTransformerPooled2d_12402.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MixLoss_15978.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SelfAttention_8355.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__EmbeddingModule_16872.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__KD_6200.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LossPredLoss_2449.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MyModel_1269.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Beta2_998.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AvgPoolPad_212.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__RewardCriterion_2784.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BILM_1046.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GeometricMean_1127.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ReduceBranch_15196.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SmoothL1LossWithIgnore_6607.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BinaryReg_4134.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ContrastiveEmbeddingLoss_3183.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PixelNorm_18399.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CGD_8272.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AEBatch_18180.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MLPAttention_9503.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Mask_4270.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TripletSoftmaxLoss_17721.single.a1", "verdict": "mismatch", "issues": ["Plan says \"one HBM pass over the 80 MiB\", but the 5 bf16 inputs are each 8*128*128*128*2 B = 32 MiB, so the pass reads 160 MiB."]}
+{"id": "kernelbook__MaxPool2dDynamicSamePadding_2478.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LayerScaling_8826.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Actor_9677.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BetaMish_3429.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GDiceLossV2_6295.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l1__79_conv_transposed_1D_asymmetric_input_square_kernel___padded____strided____dilated__.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LigthSpeechLoss_6654.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__offset_pos_9100.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Wang_18074.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Soft_Distillation_Loss_794.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ApplySingleAttention_17095.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L1_7518.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__69_Conv2d_HardSwish_ReLU.a2.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__EltwiseSubEmbed_14637.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__EncoderLayer_17877.single.a1", "verdict": "mismatch", "issues": ["Plan says \"activations crossing calls kept in bf16\", but the residual stream x1 output by the out-proj call (out_dtype=x.dtype, f32, (8192, 2048)) is passed in f32 to both the LN2+FFN1 call and the FFN2 call."]}
+{"id": "kernelbook__Scale_2227.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MaskedSoftL1_11076.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MeanMaxPooling_8189.single.a1", "verdict": "mismatch", "issues": ["Plan says \"Outside the kernel there is only the transpose, a reshape and an astype\"; the code has the doc transpose and the entity_lens reshape, but no astype outside the kernel."]}
+{"id": "kernelbook__BaseQuantization_14536.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BiaffineAttention_7991.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DilateContourLoss_6433.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AttentionUnit_1951.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Backprojection_10913.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_update_2__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ReadUnit_4676.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__49_ConvTranspose3d_Softmax_Sigmoid.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (kind single): \"same phase-decomposed conv engine as 100\" refers to some other kernel/attempt (\"100\") that the reader never sees; unexplained cross-reference / meta wording."]}

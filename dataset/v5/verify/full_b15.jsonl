@@ -1,0 +1,50 @@
+{"id": "kernelbook__CNN_17398.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__90_Conv3d_LeakyReLU_Sum_Clamp_GELU.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NonAttentiveTacotronLoss_17420.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__tripletLoss_9326.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DistillLoss_18009.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Attn_14288.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (single): plan ends with meta commentary \"Not run on a TPU.\", a statement about testing status rather than the design."]}
+{"id": "kernelbook__ShakeResNet_9912.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CReLU_3306.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Discriminator_10954.single.a1", "verdict": "mismatch", "issues": ["Plan says \"one pass over the three 128 MiB inputs\"; at CONFIG each of c, h_pl, h_mi is (16,256,256,128) f32 = 512 MiB, not 128 MiB."]}
+{"id": "kb__l1__71_conv_transposed_2D__asymmetric_input__square_kernel.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Classifier_6794.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LinearMaxPoolLinearModel_436.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__WeightedMCEFocalloss_5298.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__32_HardTanh.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Cartesian_13697.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__QuadricLinearLoss_14407.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GaussActivation_14572.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AdaIN_8649.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__HyperConv2d_7305.repair.a2", "verdict": "ok", "issues": []}
+{"id": "authored__norm_residual_fusion__gemma_sandwich_norm_residual.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__InstanceNorm_4775.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BCELoss2d_1686.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Residual_Block_845.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Get_gradient_7834.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ContrastiveLoss_3665.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ZeroOneTest_7312.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FocalLoss_1404.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Attention_7562.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (single): plan contains meta commentary \"Not compiled or run here: lane-offset scratch writes and the speed ratio are untested on v6e.\""]}
+{"id": "kernelbook__Discriminator_14408.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Img_decoder_v3_638.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__65_conv_transposed_2D__square_input__asymmetric_kernel.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResizeConv1d_132.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Decoder_31.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__94_MSELoss.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PermEqui2_max_15492.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PitchShift_16402.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NN_2layer_regression_6724.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Net_10789.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L2Normalization_17502.repair.a2", "verdict": "ok", "issues": []}
+{"id": "github__stickbreaking_attention.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__56_conv_standard_2D__asymmetric_input__asymmetric_kernel.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SDSDRLoss_15902.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Gaussian_Distance_9230.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GELU__7911.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kb__l1__33_BatchNorm.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CosLoss_5739.single.a1", "verdict": "mismatch", "issues": ["Plan says \"The only op outside the kernel is a reshape to a scalar\"; code also does out.reshape(()).astype(state_s.dtype) (cast f32 -> bf16) outside the kernel."]}
+{"id": "kernelbook__Critic_4231.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Simplenet_12042.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__35_GroupNorm_.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AlgebraicLoss_16630.single.a1", "verdict": "ok", "issues": []}

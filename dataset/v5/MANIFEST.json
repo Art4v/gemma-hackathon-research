@@ -4,14 +4,14 @@
   "v4/final/val.jsonl": "ea667fc895a31bcddf776640d2cd0a4eae49ab55698fdaad51549a1ba75634ff"
  },
  "rows": {
-  "train/correct_slow": 45,
-  "train/repair": 234,
-  "train/repair_injected": 988,
-  "train/single": 1564,
+  "train/correct_slow": 30,
+  "train/repair": 230,
+  "train/repair_injected": 934,
+  "train/single": 1472,
   "val/repair": 3,
   "val/single": 21
  },
- "train_rows": 2831,
+ "train_rows": 2666,
  "val_rows": 24,
  "left_out_kinds": [
   "generated",
@@ -21,11 +21,11 @@
  "standalone_rewrites_used": 267,
  "standalone_rewrites_rejected": {},
  "plan_header_chars": {
-  "median": 665,
+  "median": 657,
   "max": 1763
  },
  "files": {
-  "train.jsonl": "88087c021fbbacbf7ff4671c6b84514fb495556f980c9b0ae51c0aa2ba7ba03c",
+  "train.jsonl": "f47c28bc6319f0c28ea28c72b9a387af6360c773285a4809f4f89f4bfa2a0d32",
   "val.jsonl": "3e34abdd4585bfc7428c049b3de6ba5bfc06454034589b5a09f2c3041aad31cb"
  }
 }

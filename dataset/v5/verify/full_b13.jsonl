@@ -1,0 +1,50 @@
+{"id": "kernelbook__ActNorm_6985.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__61_conv_transposed_3D__square_input__square_kernel.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvLayer_15055.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GatedActivation_6864.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__HardAttn_9586.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Net_10577.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DenseSAGEConv_1831.single.a1", "verdict": "mismatch", "issues": ["Plan says \"~5 MiB VMEM double-buffered\"; at CONFIG sizes (tm=512, n=1024, bf16) the blocks are adj (1,512,1024)=1 MiB, x (1,1024,128)=256 KiB, W 32 KiB, out (1,512,128)=128 KiB, so double-buffered total is about 2.8 MiB, not ~5 MiB.", "Plan says \"memory-bound on the 32 MiB adj read\"; adj is (8,4,1024,1024) bf16 = 64 MiB."]}
+{"id": "kernelbook__SkipModule_16307.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GaussianSmearing_15962.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__kv_cache_int8_write__kv_cache_int8_write__m1_batch.single.a1", "verdict": "mismatch", "issues": ["Plan says \"plus ~1 MiB of kernel traffic\"; the kernel reads new_k/new_v (2 x 1 MiB f32) and per step DMAs in and out two (8,64,128) int8 windows and two (8,256) f32 windows (288 KiB per step x 16 steps = 4.5 MiB), about 6.5 MiB total."]}
+{"id": "kernelbook__QNetwork_13927.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NasAvgPoolBlock_6625.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__75_conv_transposed_2D_asymmetric_input_asymmetric_kernel_strided__grouped____padded____dilated__.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PLCCLoss_6074.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PixelNorm_890.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SSIM_7242.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__51_Argmax_over_a_dimension.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__moe_load_balance_loss__moe_top2_router_aux_loss.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GammaScaleMap_8434.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l1__66_conv_standard_3D__asymmetric_input__asymmetric_kernel.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__quant_fp8_amax_scaling__fp8_delayed_scaling_matmul_3.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Value_Net_136.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Net_11740.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L1_12240.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__rSoftMax_239.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__61_conv_transposed_3D__square_input__square_kernel.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Encoder_3464.single.a1", "verdict": "ok", "issues": []}
+{"id": "github__muon_newton_schulz.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GatedConvTranspose_2141.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DecoderLayer_14361.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CombinedPooling_5938.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DisparityConv_15701.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FilterResponseNorm_3200.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__85_Conv2d_GroupNorm_Scale_MaxPool_Clamp.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResHead_11605.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DenseSAGEConv_1760.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LSTM_11841.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SplitCosineLinear_16039.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__kv_rope_append__kv_rope_append.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (kind single): plan ends with meta commentary \"Untested: not compiled or run.\""]}
+{"id": "kernelbook__Fusion3_MinusFCLayer_17850.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__RewardCriterion_15116.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Hswish_8080.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SpatialGate_7095.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SimBasedLoss_3929.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__quant_fp8_amax_scaling__fp8_delayed_scaling_matmul_2__m1_ragged.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__61_ConvTranspose3d_ReLU_GroupNorm.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GRU_8485.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CoordLoss_13253.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvNet_16737.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (kind single): plan contains meta commentary \"Not run on TPU; speed and compile are unverified.\""]}
+{"id": "kernelbook__Gaussian_transform_17009.single.a1", "verdict": "ok", "issues": []}

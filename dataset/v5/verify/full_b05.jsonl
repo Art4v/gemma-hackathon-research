@@ -1,0 +1,50 @@
+{"id": "kb__l1__25_Swish__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Actor_9191.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CharbonnierLoss_7813.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResidualBlock_11099.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__35_GroupNorm_.a2.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TD3Critic_11179.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GatedConvTranspose_736.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DiceLoss_3118.single.a1", "verdict": "mismatch", "issues": ["Plan says the inputs are padded \"if the size is not a multiple of 1024\"; code pads to a multiple of unit = _CH*_LANES = 256*128 = 32768 elements."]}
+{"id": "kernelbook__AttentionPooling_4576.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Conv_ReLU_Block_13160.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__EncModel_2849.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FocalLoss_15384.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__stack_pool_6133.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__multi_pool_6124.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l1__33_BatchNorm.a2.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NN_11947.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TripletLossDoubleMargin_1508.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SAGEAggregator_5109.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__HighwayCNN_10675.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FM_2350.single.a1", "verdict": "mismatch", "issues": ["Rule 5: plan for kind single ends with meta commentary \"Not compiled or run here.\""]}
+{"id": "kernelbook__Residual_Block_7506.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Entropy_3076.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__77_ConvTranspose3d_Scale_BatchNorm_GlobalAvgPool.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TransitionUp_9077.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GELU_231.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__cSEmodule_2356.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__lrBLock_l2_8758.single.a1", "verdict": "mismatch", "issues": ["Plan says P1 uses an \"exact 0/1 MXU column pool\"; _pool_mat builds a (W, w) matrix with entries 0.5 (and 0), not 0/1, then the row pool multiplies by 0.5 again."]}
+{"id": "kernelbook__PNTrainingSigmoid_7307.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__56_conv_standard_2D__asymmetric_input__asymmetric_kernel.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook___Residual_Block_SR_229.single.a1", "verdict": "mismatch", "issues": ["Plan says \"whole-image blocks plus scratch come to about 35 MiB\"; at CONFIG sizes x/out blocks are (1,128,16384) bf16 = 4 MiB each, double-buffered in+out = 16 MiB, two (128, 16640) bf16 scratches = ~8.1 MiB, weights ~1.2 MiB double-buffered: ~25 MiB, about 30% below the stated 35 MiB."]}
+{"id": "kernelbook__Fp32GroupNorm_263.single.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l1__22_Tanh.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GlobalWeightedAvgPool2d_6599.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Actor_3397.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DistillKL_404.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__57_Conv2d_ReLU_HardSwish.a1.s0.correct_slow", "verdict": "mismatch", "issues": ["Plan says \"outside only reshape/slice\"; code also jnp.pads the flattened x outside the kernel (lsp=16384 < need = nl*L + Lh, Lh=384), and transposes/reorders/pads/casts the weights to bf16 outside."]}
+{"id": "authored__moe_shared_plus_routed__qwen_moe_shared_routed_combine_2.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BCEDiceLoss_1717.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LNN_10373.single.a1", "verdict": "mismatch", "issues": ["Plan says \"one read of x and one write of the output (128 MB each)\"; x is (1024,128,128) f32 = 64 MiB and the output (1024,16384) f32 = 64 MiB."]}
+{"id": "kernelbook__MetaPathAttention_17401.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ProbabilityBilinear_14907.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResidualBlock_4932.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__26_GELU_.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BackwardsNet_12997.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Highway_2434.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CLNLayer_11109.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GeM_16928.repair.a2", "verdict": "ok", "issues": []}
+{"id": "authored__kv_cache_update__rope_paged_kv_cache_write__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GaussActivation_6544.single.a2", "verdict": "ok", "issues": []}

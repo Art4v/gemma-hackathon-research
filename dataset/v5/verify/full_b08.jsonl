@@ -1,0 +1,50 @@
+{"id": "kernelbook__KDLoss_14880.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResnetBlock_2170.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GELU_2265.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LogCoshLoss_4093.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__82_Conv2d_Tanh_Scaling_BiasAdd_Max__m1_aux.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__100_ConvTranspose3d_Clamp_Min_Divide.a3.s0.correct_slow", "verdict": "mismatch", "issues": ["Plan says \"Per plane: one bf16 0/1 MXU matmul W-upsamples x for all kw taps\", but the code loops over cin//CB = 64//8 = 8 channel groups per plane, so it issues 8 matmuls of (CB*H=384, W=48) @ (48, 3*128) per plane, not one."]}
+{"id": "kernelbook__MaxPool_5158.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L1Part_1682.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ContrastiveLoss_10809.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Join_2706.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__stack_pool_6133.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SEBatch_18181.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__moe_load_balance_loss__moe_top2_router_load_balance_loss.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvLayer_15055.single.a2", "verdict": "ok", "issues": []}
+{"id": "authored__moe_topk_routing__moe_sigmoid_grouped_topk_router_2.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__InceptionB_11445.single.a1", "verdict": "mismatch", "issues": ["Rule 5: single-kind plan contains meta commentary \"Not compiled or run here; the strided sublane reads and the 96 MiB limit are the main risks.\""]}
+{"id": "kernelbook__ShakeResNet_2438.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MixtureSoftmax_6217.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ThetaEncoder_4616.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SinenetComponent_7273.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NormalizeImages_7178.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResNetModel_18279.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NormalLoss_719.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MovingAvg_3722.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ContentLoss_2483.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResizeGatedConv2d_9622.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__moe_capacity_dispatch__switch_capacity_dispatch_combine.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__50_conv_standard_2D__square_input__square_kernel.a3.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FusedUpsample_1656.single.a1", "verdict": "mismatch", "issues": ["Rule 5: single-kind plan contains meta commentary \"Not compiled or run here.\""]}
+{"id": "kernelbook__MaskedSoftL1_11076.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MSELossWithIgnore_6600.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PredictiveEntropy_7060.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__VNMaxPool_14508.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Block_14562.single.a1", "verdict": "mismatch", "issues": ["Rule 5: single-kind plan contains a first-person aside and meta commentary: \"because I don't expect Mosaic to lower lax.erf; this is from memory and not compiled here.\""]}
+{"id": "kernelbook__BatchSpectralShrinkage_5680.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CSDN_Tem_11667.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DiceCoefMultilabelLoss_12948.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MNIST_CNN_1427.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__quantized_fp8_matmul__fp8_dynamic_act_quant_block_weight_matmul__m1_ragged.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__rope_qk_norm__qk_rmsnorm_interleaved_mrope_2.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Pow_17023.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FilterResponseNorm_layer_1815.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FocalLoss_16524.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__83_conv_depthwise_2D_square_input_asymmetric_kernel.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SequenceBias_2178.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BasicBlock_ins_15035.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AdaptiveAvgMaxPool2d_13347.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AttentionLoss_16330.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MMD_4913.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ClusterLayer_758.single.a1", "verdict": "ok", "issues": []}

@@ -1,0 +1,50 @@
+{"id": "kernelbook__PLU_6486.repair.a2", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_scan_step__mamba1_selective_scan_3.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NormedLinear_5111.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DistillLoss_7292.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PixelNorm_18399.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FrmScrLoss_9283.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PatchMerging_16516.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Policy_153.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L_2nd_18169.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Softmax_12377.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ILN_14443.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ActorNetwork_11121.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LinearAverage_18045.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__StdConv2d_13774.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kb__l1__5_Matrix_scalar_multiplication__m1_aux.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DDM_Decoder_8515.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LN_self_17240.repair.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MyBCEWithLogitsLoss_15557.single.a1", "verdict": "mismatch", "issues": ["Plan says \"row blocks of up to 2048 rows. That is 8 MiB per step for 2 f32 inputs at L=1024, or 16 MiB double-buffered\"; code sets max_bm = (2 MiB)//(L*4) = 512 rows at L=1024 (rows=16384), so blocks are (512,1024) f32 = 2 MiB per input, 4 MiB per step, 8 MiB double-buffered, grid 32 steps."]}
+{"id": "kb__l2__87_Conv2d_Subtract_Subtract_Mish.single.a1", "verdict": "mismatch", "issues": ["Plan says \"outside only reshape/slice\"; code also runs jnp.pad on the full flattened input outside the kernel (need = nl*L + Lh > 65536 = H*W at CONFIG, so x is always padded/copied), plus a weight transpose/reorder/zero-pad and astype to bf16 outside."]}
+{"id": "kernelbook__ResidualBlock_8570.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__L1_Gradient_loss_16938.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FeatClassifier_12886.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BicubicUpsampler_8307.single.a1", "verdict": "mismatch", "issues": ["Rule 5: single-kind plan contains meta commentary \"Not compiled or run here.\""]}
+{"id": "kernelbook__FocalLossV1_6875.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GraphConvolution_8391.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BoxEncoder_7781.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AttentivePoolingModule_117.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_s4d_conv__s4d_kernel_direct_causal_conv.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__quant_int4_packed_matmul__w4a16_int4_packed_group_matmul__m1_ragged.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvNet_14402.single.a1", "verdict": "mismatch", "issues": ["Plan says \"K, N = 384-768\" for the conv matmuls; the first conv (Cin=1, W=24) has K = W*Cin = 24 (N=768), so not all layers have K in 384-768."]}
+{"id": "kernelbook__EqualConv2dSame_8020.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SelectiveMarginLoss_9468.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DistillMSE_7688.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ContrastiveLoss_5598.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SM_14472.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Sinkhorn_Net_16387.single.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__6_Conv3d_Softmax_MaxPool_MaxPool.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AveragePooling_7272.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResNNFlow_4086.single.a1", "verdict": "mismatch", "issues": ["Rule 5: single-kind plan contains meta commentary \"Not run on TPU, so correctness and the speed ratio are unverified.\""]}
+{"id": "kernelbook__ConvNet_12094.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TuckERLoss_5016.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__JointBoneLoss_14395.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Hswish_11194.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LSoftLoss_9933.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__48_Conv3d_Scaling_Tanh_Multiply_Sigmoid.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kb__l2__100_ConvTranspose3d_Clamp_Min_Divide.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Attention_12916.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SIMSE_3952.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Relu_Adpt_5968.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Upsample4x_4595.single.a1", "verdict": "ok", "issues": []}

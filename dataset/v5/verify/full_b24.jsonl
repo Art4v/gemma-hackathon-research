@@ -1,0 +1,50 @@
+{"id": "kernelbook__LayerScaling_13515.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NegativeLearningLoss_16953.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MaskedLoss_12037.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SkillDiscriminator_10260.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NALUCell_7225.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SimpleNet_2710.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (single): plan ends with meta commentary about the generation process: \"Not compiled or run here, so block size is untuned.\""]}
+{"id": "kernelbook__DiffLoss_286.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Baseline_9225.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DeepCritic_15236.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__58_ConvTranspose3d_LogSumExp_HardSwish_Subtract_Clamp.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BasicBlock_595.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NumericLabelEncoder_6781.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__IIDIsotropicGaussianUVLoss_2617.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CharbonnierLoss_8050.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SimpleSpatialEmbedding_6274.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvAutoencoder_4314.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConvEncoder_8588.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l2__69_Conv2d_HardSwish_ReLU.a1.s0.correct_slow", "verdict": "mismatch", "issues": ["Plan says \"outside only reshape/slice (drop the W-Wo garbage columns)\", but the code also runs jnp.pad on the flattened x outside the kernel (lanes 16384 -> need = 16128 + 384 = 16512 at CONFIG sizes) plus weight transpose/reshape/zero-pad/astype(bf16) and bias reshape."]}
+{"id": "kernelbook__CNN_14901.repair.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Attention_SEblock_7752.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__rSoftMax_9090.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MSELoss2d_12703.repair.a3", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_short_conv_gate__ssm_short_conv_silu_gate_2.single.a1", "verdict": "mismatch", "issues": ["Rule 5 (single): plan contains meta commentary \"Not compiled or run on a TPU yet; the unaligned f32 scratch reads are the main compile risk.\"", "Plan says \"about 3 MB of double-buffered tiles\"; x, z and out tiles are each (1,1024,512) bf16 = 1 MiB, so double-buffered they total about 6 MiB (3 MiB only if single-buffered)."]}
+{"id": "kernelbook__RMSE_15778.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GammaScaleMap_8434.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GELU__4985.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FocalLoss_16829.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TracedModule_1024.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine__m1_batch.single.a1", "verdict": "mismatch", "issues": ["Plan says \"Outside: reshape/slice only\", but the code pads w_router (H,64)->(H,128) and expert_scale (64,H)->(128,H) with jnp.pad outside the kernels."]}
+{"id": "authored__ragged_jagged_softmax__jagged_segment_softmax_3.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MatchingTensor_4700.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SoftL1_14509.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__quantized_fp8_matmul__fp8_act_quant_linear_residual.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BarlowTwinLoss_6950.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Max_AvgPool_10435.single.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm.a3.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DiceLoss_18292.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__50_conv_standard_2D__square_input__square_kernel.a1.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SE_4955.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__PSNRLoss_7356.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MultiHeadAttentionWithPooling_7846.single.a1", "verdict": "ok", "issues": []}
+{"id": "github__multiscale_deformable_attention.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AP_122.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Subspace_14369.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__kv_quantized_dequant_matmul__int8_per_channel_dequant_matmul.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__HardAttn_9586.single.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__57_Conv2d_ReLU_HardSwish.a3.s0.correct_slow", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AvgPoolShortCut_8411.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__DiceLoss_1397.single.a1", "verdict": "ok", "issues": []}
