@@ -53,3 +53,9 @@ closed code block):
   solution), and under greedy decoding it mostly re-emits its previous answer.
 - **One-constant near-misses:** 19k, 37k, 47k and 49k fail with "Scoped allocation 65-66 MB, limit 64 MB", and 30k's turn 1 at 64.02 MB.
   The limit is the kernel's own `vmem_limit_bytes=64*1024*1024`; v6e VMEM is 128 MiB.
+
+**Turn 2 and the 62p catch-up** (the run is complete: 190 rows and 190 verdicts, every row from digest `0f764d3f6798`):
+- Turn 2: CPU step 1 passed 23. TPU: 0 new pass; 16 `vmem`, 5 `wrong`, 1 `correct_slow` (`8p_GEMM` 0.34x), 1 `compile`.
+- `62p` t1 and t2 (t2 from the catch-up pass, `cpu_checks/lora-v4final-e2-modal-catchup-t0_*`): `compile` on CPU, no `workload`.
+- **Final:** `pass_within_3` = 1/58 primary (`12p_RMSNorm`), S-p = 1/25. Numerically correct within 3 = 3/58 (12p, 8p, 48k). Every
+  control arm (base bare, base docs, v1, pilot25) is 0/58 on both. The significance analysis follows in a separate commit.
