@@ -1,0 +1,70 @@
+{
+ "at": "2026-11-10T05:31:52+00:00",
+ "excluded_list": 0,
+ "kbk": {
+  "batch": "kbk",
+  "branch": "karthik/kbk",
+  "by_kind": {
+   "repair": 80,
+   "single": 674
+  },
+  "commit": "6dee712",
+  "errors": [],
+  "n_errors": 0,
+  "rows": 754,
+  "skipped": {
+   "problem_not_ok": 1
+  },
+  "trajectories": {
+   "harness_blocked": 7,
+   "open": 68,
+   "solved": 675,
+   "unsolved": 27
+  }
+ },
+ "kbkc": {
+  "batch": "kbkc",
+  "branch": "karthik/kbkc",
+  "by_kind": {},
+  "commit": "c5b88b9",
+  "errors": [],
+  "n_errors": 0,
+  "rows": 0,
+  "skipped": {},
+  "trajectories": {}
+ },
+ "m1": {
+  "batch": "m1",
+  "branch": "karthik/m1",
+  "by_kind": {
+   "repair": 5,
+   "single": 86
+  },
+  "commit": "20e30a6",
+  "errors": [],
+  "n_errors": 0,
+  "rows": 91,
+  "skipped": {},
+  "trajectories": {
+   "open": 2,
+   "solved": 86,
+   "unsolved": 6
+  }
+ },
+ "prod": {
+  "batch": "prod",
+  "branch": "karthik/kbk",
+  "by_kind": {
+   "single": 21
+  },
+  "commit": "6dee712",
+  "errors": [],
+  "n_errors": 0,
+  "rows": 21,
+  "skipped": {},
+  "trajectories": {
+   "harness_blocked": 1,
+   "solved": 21
+  }
+ }
+}
