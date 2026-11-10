@@ -18,10 +18,19 @@ def judged(job):
     return {r["id"] for r in jsonl(JOBS / job / "results" / f"{job}.jsonl") if not r.get("meta") and "id" in r}
 
 
+def free_name(base, k):
+    """The first {base}-p{k}, {base}-p{k+1}, ... with no job directory yet: make_pack builds a directory once, and an aborted earlier
+    attempt (Nov 10: a Colab run) can leave one behind."""
+    while (JOBS / f"{base}-p{k}").exists():
+        k += 1
+    return k
+
+
 def run(job, items):
     src = S / f"{job}.items.jsonl"
     src.write_text("".join(json.dumps(i) + "\n" for i in items))
-    subprocess.run(["python3", "oracle/make_pack.py", str(src), f"oracle/jobs/{job}", "--job-id", job, "--owner", "karthik", "--step", job],
+    subprocess.run(["python3", "oracle/make_pack.py", str(src), f"oracle/jobs/{job}", "--job-id", job, "--owner", "karthik", "--step", job,
+                    "--shards", os.environ.get("SHARDS", "1")],   # SHARDS=8 on a v6e-8: one shard per chip
                    cwd=S / "repo", check=True, capture_output=True)
     subprocess.run(["bash", os.environ.get("RUNNER", "oracle/vm.sh"), "push", f"oracle/jobs/{job}"], cwd=S / "repo", check=True, capture_output=True)
     subprocess.run(["bash", "ops_loop.sh", job], cwd=S)   # exit 2 on SHORT is expected here
@@ -39,12 +48,12 @@ def main():
         todo = [i for i in items if i["id"] not in done and i["id"] not in suspects]
         if not todo:
             break
-        k += 1
+        k = free_name(a.base, k + 1)
         got = run(f"{a.base}-p{k}", todo)
         if not got:
             # 0 rows is not a crash signal (a crash still leaves the earlier rows): a hung or timed-out fetch, NOSTART, or a lost
             # session. Retry the part once before blaming its first item.
-            k += 1
+            k = free_name(a.base, k + 1)
             got = run(f"{a.base}-p{k}", todo)
             if not got:
                 raise SystemExit(f"part {k}: 0 rows twice; check the TPU session before continuing")

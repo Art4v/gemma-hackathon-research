@@ -16,17 +16,20 @@
 set -euo pipefail
 : "${PROJECT:?export PROJECT=<project id>}" "${ZONE:?export ZONE=<zone with v6e>}"
 NAME=${NAME:-oracle-v6e}
-G=(gcloud compute tpus tpu-vm --project="$PROJECT" --zone="$ZONE")
+ACCEL=${ACCEL:-v6e-1}  # v6e-8: one host, 8 chips; pack with make_pack.py --shards 8 (one shard per chip)
+case "$ACCEL" in v6e-1) CB=1,1,1 ;; v6e-4) CB=2,2,1 ;; v6e-8) CB=2,4,1 ;; *) echo "unsupported ACCEL=$ACCEL" >&2; exit 1 ;; esac
+export CLOUDSDK_COMPUTE_ZONE="$ZONE"  # gcloud rejects --zone before the ssh/scp subcommand
+G=(gcloud compute tpus tpu-vm --project="$PROJECT")
 OH=/home/oracle
 PY=$OH/venv/bin/python
 # libtpu can't ask the blocked metadata server for the topology, so it comes from the environment (QUEUE.md step 4)
-TPU_ENV="TPU_SKIP_MDS_QUERY=1 TPU_ACCELERATOR_TYPE=v6e-1 TPU_WORKER_ID=0 TPU_WORKER_HOSTNAMES=localhost TPU_HOST_BOUNDS=1,1,1 TPU_CHIPS_PER_HOST_BOUNDS=1,1,1"
+TPU_ENV="TPU_SKIP_MDS_QUERY=1 TPU_ACCELERATOR_TYPE=$ACCEL TPU_WORKER_ID=0 TPU_WORKER_HOSTNAMES=localhost TPU_HOST_BOUNDS=1,1,1 TPU_CHIPS_PER_HOST_BOUNDS=$CB"
 on_vm() { "${G[@]}" ssh "$NAME" --command="$1"; }
 job_name() { [[ "$1" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || { echo "bad job name: $1" >&2; exit 1; }; echo "$1"; }
 
 case "${1:-}" in
 create)
-  "${G[@]}" create "$NAME" --accelerator-type=v6e-1 --version=v2-alpha-tpuv6e \
+  "${G[@]}" create "$NAME" --accelerator-type="$ACCEL" --version=v2-alpha-tpuv6e \
     --scopes=https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/devstorage.read_only ${SPOT:+--spot}
   ;;
 bootstrap)
