@@ -13,8 +13,9 @@ documentation. We ask whether Gemma 4 E4B, a model small enough to run on a lapt
 We build three things:
 1. **A TPU oracle** that accepts a solution only if it is a real Pallas kernel, compiles and runs at full size on a TPU v6e, matches
    a float32 answer key on three input seeds, and runs at least 0.7x as fast as XLA.
-2. **A dataset** of TBD(N) problems, screened against every JAXBench task by jaxpr op-chain signatures and near-duplicate text, with
-   TBD(N) TPU-verified examples, including multi-turn repairs driven by the oracle's verbatim feedback.
+2. **A dataset** of 2,983 training examples over 1,706 problems, screened against every JAXBench task by jaxpr op-chain signatures,
+   near-duplicate text and an algorithm review. 2,815 targets passed the oracle, and 241 examples are multi-turn repairs driven by the
+   oracle's verbatim feedback.
 3. **An equal-budget evaluation** that gives base Gemma, Gemma with 25k tokens of Pallas docs, Gemma with a LoRA, and Gemini Flash
    with docs the same attempt budget on JAXBench's 64 tasks.
 
@@ -87,14 +88,17 @@ record a second crash as a harness failure.
 
 ### 3.3 Problems and contamination control
 
-Problems come from three sources:
+Problems come from four sources:
 - KernelBench Level 1 and 2 problems, ported to JAX and checked against the PyTorch module
+- PyTorch modules from GPU MODE's KernelBook (its permissively licensed subset), ported to JAX the same way
 - model operators written for this project: attention variants (sliding window, sinks, ALiBi, softcapping, MQA decode, chunked
   prefill), MoE routing and dispatch, quantized matmuls (int8, int4, fp8), KV-cache updates, SSM scans, ragged ops
 - references for public Pallas kernels from MaxText and tpu-inference, checked against those kernels in interpret mode
 
 Before any kernel is written, every problem passes seven CPU checks at full size: it loads, fits HBM, has deterministic and
-seed-varying inputs, runs, and gives finite outputs at default and highest precision.
+seed-varying inputs, runs, and gives finite outputs at default and highest precision. Five KernelBook problems still reached the
+oracle with a float32 reference that is NaN on every oracle seed (exact zeros in uniform inputs give 0/0 or log 0), so no kernel can
+pass them; we found them from the oracle's feedback and excluded them.
 
 **Contamination screen.** The exam is all 73 JAXBench files (50 level 1 references and 23 level 2 kernels), screened in three layers:
 1. A KernelBench-stem match.
@@ -124,7 +128,11 @@ We chose the constructor by measuring candidates through this same pipeline and 
 | Gemini 3.5 Flash-Lite | 16% (6 of 38) and 9% (4 of 47) |
 | Gemini Flash (served as 3.6) | 35% (7 of 20) on a matched 20-problem sample, against 20% for Flash-Lite |
 
-TBD: the constructor note for the final dataset.
+For `v4` the constructor was Claude Opus with the same prompt. Repair rounds also gave it the oracle's measured kernel and XLA times,
+and asked it to diagnose the bottleneck before rewriting; each change is recorded per candidate as a `prompt_version`. One addition,
+a note on TPU tiled layouts for the third KernelBook shard, showed no measurable effect: that shard's first-attempt pass rate (82.6%)
+matched the second shard's without it (82.8%). On last attempts, the constructor's byte and FLOP estimates often predicted 1.3x XLA or
+more for kernels the oracle then measured below 0.7x, so only measured timing decided speed.
 
 ### 3.5 Training
 
@@ -168,6 +176,14 @@ Nothing is tuned on JAXBench.
 ## 4. Results
 
 ### 4.1 The dataset
+
+The final `dataset-v4` (Nov 11 freeze) has 2,983 training and 24 validation rows over 1,706 problems: 1,575 single-turn rows, 241
+repairs with real oracle feedback, 999 repairs of injected errors, and 168 rows from the `v3` base (47 `correct_slow` targets, 66
+shape variants and 55 generated kernels). Within three attempts the constructor solved 729 of 771 KernelBook problems (94.6%), 361 of
+373 in a second KernelBook shard (96.8%), 215 of 224 in a third (96.0%) and 86 of 94 structural mutations (91.5%); first-attempt pass
+rates were 77-83%. The repair rounds showed that most correct-but-slow kernels were not slow inside the kernel: a reshape outside
+`pallas_call`, such as `(B,C,H,W)` to `(B,C,H*W)`, is not a free relabelling in the TPU's tiled layout, so XLA copies the whole input
+or output around the kernel, and rewriting to keep native layouts recovered 26 of 51 kernels that had failed twice.
 
 The `dataset-v1` export (Nov 9) has **264 examples** (238 train, 26 val, split by family) from **236 solved problems** out of 255
 judged:
@@ -251,7 +267,8 @@ with MLX on the exact Q4_0 weights), its val numbers, and its JAXBench result.
   arm sees the same budget, which may understate small models.
 - **Quantized serving.** Folding a bf16-trained LoRA into a Q4_0 GGUF erased most of it (Section 4.3). Anyone shipping a LoRA on a
   4-bit on-device model should check the effect that survives the fold, or train on the quantized weights directly.
-- **Repair data.** Most constructor kernels pass at once, so repair examples are few (TBD(n)).
+- **Repair data.** Most constructor kernels pass at once, so repair examples with real oracle feedback are few: 241 of 2,983
+  training rows, against 999 repairs of injected errors.
 
 ## 6. Conclusion
 
