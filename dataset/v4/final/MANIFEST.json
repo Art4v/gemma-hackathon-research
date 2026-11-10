@@ -2,16 +2,16 @@
  "base": "v3 train_capped",
  "base_rows": 1380,
  "by_teacher": {
-  "claude": 1425,
+  "claude": 1604,
   "generator": 55,
   "injected": 1005
  },
  "by_verification": {
   "cpu": 121,
-  "tpu": 2316,
+  "tpu": 2495,
   "tpu_correct_slow": 48
  },
- "created_at": "2026-11-10T06:46:47+00:00",
+ "created_at": "2026-11-10T07:00:44+00:00",
  "dropped_target_over_cap": {
   "ids": [
    "kernelbook__ConvDenoiser_3791.single.a1",
@@ -53,22 +53,22 @@
   "val_rows_before": 26
  },
  "files": {
-  "coverage.txt": "ba30a720a18537d66a4f876c5513686000d402f78dad678d2a19bb807f259b4e",
-  "train.jsonl": "626f1e747d40c7f1de3a78118b846cb3094741d8c38d4e759e5f776f4c266d8c",
+  "coverage.txt": "1079b1710fe7d88aacbbf941cfbf0dd0ae96e147eca71f1c451cde10567c3cff",
+  "train.jsonl": "6649b2995ba2c43b474c41edacd59538edbbf563b35d7004f061310869a0133c",
   "val.jsonl": "ea667fc895a31bcddf776640d2cd0a4eae49ab55698fdaad51549a1ba75634ff",
-  "verification.jsonl": "da3c397962245eca9435b2ef982646306349d374813f7823576c6f503a13a8dc"
+  "verification.jsonl": "f6c1419ead3f98dfbfdfc21d15ce3b8ac7926b0cc61aa2db3af98b65d840e8bd"
  },
- "n_train": 2485,
+ "n_train": 2664,
  "n_val": 24,
  "part_commits": {
-  "kbk": "6dee712",
-  "kbkc": "f3bde09",
-  "m1": "20e30a6",
-  "prod": "6dee712"
+  "kbk": "b8acd75",
+  "kbkc": "950661f",
+  "m1": "8841d3e",
+  "prod": "b8acd75"
  },
  "part_rows": {
-  "kbk": 754,
-  "kbkc": 256,
+  "kbk": 850,
+  "kbkc": 339,
   "m1": 91,
   "prod": 21
  },
@@ -81,9 +81,9 @@
  "train_by_kind": {
   "correct_slow": 48,
   "generated": 55,
-  "repair": 109,
+  "repair": 170,
   "repair_injected": 1005,
   "shape_variant": 66,
-  "single": 1202
+  "single": 1320
  }
 }

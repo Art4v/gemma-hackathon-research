@@ -1,23 +1,23 @@
 
-== /private/tmp/claude-501/-Users-aarav-Documents-GitHub-gemma-hackathon-research/66df349f-ad0e-439d-9993-9c5ca7c606ac/scratchpad/v3/dataset/v4/final/train.jsonl: 1371 kernels
-  grid_rank        0:1  1:663  2:624  3:126  4:14
-  index_map_arity  0:5  1:635  2:633  3:149  4:23  5:2  6:1
-  n_outputs        1:1229  2:154  3:42  4:20  5:1  6:2
-  multi pallas_call  161
-  accumulator_scratch   670   48.9%
-  arbitrary_axis        628   45.8%
-  pl_when               623   45.4%
-  scalar_prefetch       104    7.6%
-  manual_dma             41    3.0%
-  smem                   78    5.7%
-  masking_iota          439   32.0%
-  cdiv_grid             182   13.3%
-  in_kernel_loop        363   26.5%
-  dynamic_slice         346   25.2%
-  aliasing               21    1.5%
-  mxu_dot               784   57.2%
-  f32_accumulate        784   57.2%
-  vmem_limit            933   68.1%
+== /private/tmp/claude-501/-Users-aarav-Documents-GitHub-gemma-hackathon-research/66df349f-ad0e-439d-9993-9c5ca7c606ac/scratchpad/v3/dataset/v4/final/train.jsonl: 1489 kernels
+  grid_rank        0:1  1:727  2:677  3:133  4:14
+  index_map_arity  0:6  1:698  2:688  3:157  4:24  5:2  6:1
+  n_outputs        1:1339  2:165  3:44  4:20  5:1  6:2
+  multi pallas_call  177
+  accumulator_scratch   738   49.6%
+  arbitrary_axis        685   46.0%
+  pl_when               681   45.7%
+  scalar_prefetch       105    7.1%
+  manual_dma             42    2.8%
+  smem                   92    6.2%
+  masking_iota          471   31.6%
+  cdiv_grid             194   13.0%
+  in_kernel_loop        430   28.9%
+  dynamic_slice         403   27.1%
+  aliasing               21    1.4%
+  mxu_dot               830   55.7%
+  f32_accumulate        830   55.7%
+  vmem_limit           1033   69.4%
   emit_pipeline           0    0.0%
-  bf16                  523   38.1%
-  distinct skeletons 453; top-10 skeletons hold 431 rows (31%)
+  bf16                  554   37.2%
+  distinct skeletons 486; top-10 skeletons hold 459 rows (31%)
