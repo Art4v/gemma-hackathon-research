@@ -13,3 +13,5 @@ authored/attention_relative_bias
 authored/attention_sliding_window
 authored/attention_softcap
 authored/cross_entropy_chunked_softcap
+# MaxText ragged attention is the algorithm of JAXBench's decode/ragged attention p-tasks (Hruday's rule 3, issue 5, 2026-11-10 07:02 UTC).
+scraped/maxtext/ragged_attention_v2

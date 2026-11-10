@@ -28,14 +28,16 @@ def main(argv=None) -> int:
     conv = bench().conversation
     # families dropped by rule 3, from train and val alike; a training row's family is the first two parts of its task name
     excl = {l.strip() for l in (V4 / "exclude_families.txt").read_text().splitlines() if l.strip() and not l.startswith("#")}
-    family_of_task = lambda task: "/".join(task.split("__")[:2])
     dropped_family = collections.Counter()
 
     def keep(task: str) -> bool:
-        f = family_of_task(task)
-        if f in excl:
-            dropped_family[f] += 1
-            return False
+        """An entry names a family (authored/attention_alibi) or a single problem (scraped/maxtext/ragged_attention_v2); it drops the task
+        and anything under it, such as an m1 child (task name __-joined, so the path is the task with __ read as /)."""
+        path = task.replace("__", "/")
+        for e in excl:
+            if path == e or path.startswith(e + "/"):
+                dropped_family[e] += 1
+                return False
         return True
 
     base = [r for r in read_jsonl(V3 / "final" / f"{a.base}.jsonl") if keep(r["task"])]

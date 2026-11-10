@@ -1,17 +1,17 @@
 {
  "base": "v3 train_capped",
- "base_rows": 1380,
+ "base_rows": 1371,
  "by_teacher": {
-  "claude": 1604,
+  "claude": 1600,
   "generator": 55,
-  "injected": 1005
+  "injected": 999
  },
  "by_verification": {
   "cpu": 121,
-  "tpu": 2495,
-  "tpu_correct_slow": 48
+  "tpu": 2486,
+  "tpu_correct_slow": 47
  },
- "created_at": "2026-11-10T07:00:44+00:00",
+ "created_at": "2026-11-10T07:03:44+00:00",
  "dropped_target_over_cap": {
   "ids": [
    "kernelbook__ConvDenoiser_3791.single.a1",
@@ -32,7 +32,8 @@
    "authored/attention_relative_bias",
    "authored/attention_sliding_window",
    "authored/attention_softcap",
-   "authored/cross_entropy_chunked_softcap"
+   "authored/cross_entropy_chunked_softcap",
+   "scraped/maxtext/ragged_attention_v2"
   ],
   "file": "dataset/v4/exclude_families.txt",
   "rows_dropped_train_and_val": {
@@ -47,18 +48,19 @@
    "authored/attention_relative_bias": 15,
    "authored/attention_sliding_window": 24,
    "authored/attention_softcap": 26,
-   "authored/cross_entropy_chunked_softcap": 21
+   "authored/cross_entropy_chunked_softcap": 21,
+   "scraped/maxtext/ragged_attention_v2": 10
   },
   "val_problems": 21,
   "val_rows_before": 26
  },
  "files": {
-  "coverage.txt": "1079b1710fe7d88aacbbf941cfbf0dd0ae96e147eca71f1c451cde10567c3cff",
-  "train.jsonl": "6649b2995ba2c43b474c41edacd59538edbbf563b35d7004f061310869a0133c",
+  "coverage.txt": "89e200cae1d4c72cdef87f3d594a0c15fd396e5974555f9ceb3ea95e0dd38d48",
+  "train.jsonl": "b06ece73a610e019e92c25ae76c0f855bc18ab8bfed0f93db1c349fdbff5e05e",
   "val.jsonl": "ea667fc895a31bcddf776640d2cd0a4eae49ab55698fdaad51549a1ba75634ff",
-  "verification.jsonl": "f6c1419ead3f98dfbfdfc21d15ce3b8ac7926b0cc61aa2db3af98b65d840e8bd"
+  "verification.jsonl": "352318b7f4214a13eca8fab746f95be81a1201a56c8656d28a3d789087428faa"
  },
- "n_train": 2664,
+ "n_train": 2654,
  "n_val": 24,
  "part_commits": {
   "kbk": "b8acd75",
@@ -79,11 +81,11 @@
   "max_target_limit": 8192
  },
  "train_by_kind": {
-  "correct_slow": 48,
+  "correct_slow": 47,
   "generated": 55,
-  "repair": 170,
-  "repair_injected": 1005,
+  "repair": 169,
+  "repair_injected": 999,
   "shape_variant": 66,
-  "single": 1320
+  "single": 1318
  }
 }
