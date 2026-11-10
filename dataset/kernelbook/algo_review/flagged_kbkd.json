@@ -1,0 +1,699 @@
+[
+{
+"problem_id": "kernelbook/Attention_12916",
+"task_name": "kernelbook__Attention_12916",
+"batch": "kbkd",
+"module": "attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 16
+},
+{
+"problem_id": "kernelbook/Attention_17195",
+"task_name": "kernelbook__Attention_17195",
+"batch": "kbkd",
+"module": "attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 13
+},
+{
+"problem_id": "kernelbook/MLPAttention_9503",
+"task_name": "kernelbook__MLPAttention_9503",
+"batch": "kbkd",
+"module": "mlpattention",
+"name_flags": [
+"attention",
+"glu_mlp"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 16
+},
+{
+"problem_id": "kernelbook/DiceLossV1_15248",
+"task_name": "kernelbook__DiceLossV1_15248",
+"batch": "kbkd",
+"module": "dicelossv1",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 14
+},
+{
+"problem_id": "kernelbook/_MLP_C_5185",
+"task_name": "kernelbook___MLP_C_5185",
+"batch": "kbkd",
+"module": "_mlp_c",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 7
+},
+{
+"problem_id": "kernelbook/BiaffineAttention_7991",
+"task_name": "kernelbook__BiaffineAttention_7991",
+"batch": "kbkd",
+"module": "biaffineattention",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 18
+},
+{
+"problem_id": "kernelbook/SpacialGatingUnit_16571",
+"task_name": "kernelbook__SpacialGatingUnit_16571",
+"batch": "kbkd",
+"module": "spacialgatingunit",
+"name_flags": [
+"moe"
+],
+"op_flags": [],
+"n_ops": 15
+},
+{
+"problem_id": "kernelbook/AngularPenaltySMLoss_8810",
+"task_name": "kernelbook__AngularPenaltySMLoss_8810",
+"batch": "kbkd",
+"module": "angularpenaltysmloss",
+"name_flags": [],
+"op_flags": [
+"cross_entropy"
+],
+"n_ops": 31
+},
+{
+"problem_id": "kernelbook/ActQuant_PACT_6801",
+"task_name": "kernelbook__ActQuant_PACT_6801",
+"batch": "kbkd",
+"module": "actquant_pact",
+"name_flags": [
+"quant"
+],
+"op_flags": [],
+"n_ops": 11
+},
+{
+"problem_id": "kernelbook/CPAMDec_10410",
+"task_name": "kernelbook__CPAMDec_10410",
+"batch": "kbkd",
+"module": "cpamdec",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 17
+},
+{
+"problem_id": "kernelbook/IMQSteinKernel_5388",
+"task_name": "kernelbook__IMQSteinKernel_5388",
+"batch": "kbkd",
+"module": "imqsteinkernel",
+"name_flags": [],
+"op_flags": [
+"cross_entropy"
+],
+"n_ops": 71
+},
+{
+"problem_id": "kernelbook/Attention_395",
+"task_name": "kernelbook__Attention_395",
+"batch": "kbkd",
+"module": "attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 15
+},
+{
+"problem_id": "kernelbook/BiaffineAttention_10925",
+"task_name": "kernelbook__BiaffineAttention_10925",
+"batch": "kbkd",
+"module": "biaffineattention",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 5
+},
+{
+"problem_id": "kernelbook/CausalAttentionSortNet_13040",
+"task_name": "kernelbook__CausalAttentionSortNet_13040",
+"batch": "kbkd",
+"module": "causalattentionsortnet",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"scan+matmul (ssm/retention?)"
+],
+"n_ops": 27
+},
+{
+"problem_id": "kernelbook/BCEDiceLoss_4907",
+"task_name": "kernelbook__BCEDiceLoss_4907",
+"batch": "kbkd",
+"module": "bcediceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 27
+},
+{
+"problem_id": "kernelbook/MLP_8911",
+"task_name": "kernelbook__MLP_8911",
+"batch": "kbkd",
+"module": "mlp",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 16
+},
+{
+"problem_id": "kernelbook/Spatial_Attention_layer_10594",
+"task_name": "kernelbook__Spatial_Attention_layer_10594",
+"batch": "kbkd",
+"module": "spatial_attention_layer",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 14
+},
+{
+"problem_id": "kernelbook/scSE_3996",
+"task_name": "kernelbook__scSE_3996",
+"batch": "kbkd",
+"module": "scse",
+"name_flags": [],
+"op_flags": [
+"glu_mlp_like"
+],
+"n_ops": 15
+},
+{
+"problem_id": "kernelbook/Actor_4657",
+"task_name": "kernelbook__Actor_4657",
+"batch": "kbkd",
+"module": "actor",
+"name_flags": [],
+"op_flags": [
+"glu_mlp_like"
+],
+"n_ops": 43
+},
+{
+"problem_id": "kernelbook/GEGLU_11635",
+"task_name": "kernelbook__GEGLU_11635",
+"batch": "kbkd",
+"module": "geglu",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 8
+},
+{
+"problem_id": "kernelbook/LuongAttentionDot_6336",
+"task_name": "kernelbook__LuongAttentionDot_6336",
+"batch": "kbkd",
+"module": "luongattentiondot",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 10
+},
+{
+"problem_id": "kernelbook/HighwayMLP_10676",
+"task_name": "kernelbook__HighwayMLP_10676",
+"batch": "kbkd",
+"module": "highwaymlp",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 16
+},
+{
+"problem_id": "kernelbook/SiamFC_5438",
+"task_name": "kernelbook__SiamFC_5438",
+"batch": "kbkd",
+"module": "siamfc",
+"name_flags": [
+"gemm"
+],
+"op_flags": [],
+"n_ops": 2
+},
+{
+"problem_id": "kernelbook/GRUStep_8339",
+"task_name": "kernelbook__GRUStep_8339",
+"batch": "kbkd",
+"module": "grustep",
+"name_flags": [],
+"op_flags": [
+"glu_mlp_like"
+],
+"n_ops": 11
+},
+{
+"problem_id": "kernelbook/Bi_Attention_17614",
+"task_name": "kernelbook__Bi_Attention_17614",
+"batch": "kbkd",
+"module": "bi_attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 23
+},
+{
+"problem_id": "kernelbook/InterModalityUpdate_17913",
+"task_name": "kernelbook__InterModalityUpdate_17913",
+"batch": "kbkd",
+"module": "intermodalityupdate",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 32
+},
+{
+"problem_id": "kernelbook/Sinkhorn_Net_16387",
+"task_name": "kernelbook__Sinkhorn_Net_16387",
+"batch": "kbkd",
+"module": "sinkhorn_net",
+"name_flags": [
+"sinkhorn"
+],
+"op_flags": [],
+"n_ops": 5
+},
+{
+"problem_id": "kernelbook/Generator_2161",
+"task_name": "kernelbook__Generator_2161",
+"batch": "kbkd",
+"module": "generator",
+"name_flags": [],
+"op_flags": [
+"glu_mlp_like"
+],
+"n_ops": 13
+},
+{
+"problem_id": "kernelbook/MLPNet_775",
+"task_name": "kernelbook__MLPNet_775",
+"batch": "kbkd",
+"module": "mlpnet",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 15
+},
+{
+"problem_id": "kernelbook/DecoderLayer_14361",
+"task_name": "kernelbook__DecoderLayer_14361",
+"batch": "kbkd",
+"module": "decoderlayer",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 77
+},
+{
+"problem_id": "kernelbook/TransformerEncoderFeedForward_17858",
+"task_name": "kernelbook__TransformerEncoderFeedForward_17858",
+"batch": "kbkd",
+"module": "transformerencoderfeedforward",
+"name_flags": [
+"attention",
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 18
+},
+{
+"problem_id": "kernelbook/Attention_15176",
+"task_name": "kernelbook__Attention_15176",
+"batch": "kbkd",
+"module": "attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 17
+},
+{
+"problem_id": "kernelbook/PartialBCELoss_8169",
+"task_name": "kernelbook__PartialBCELoss_8169",
+"batch": "kbkd",
+"module": "partialbceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 35
+},
+{
+"problem_id": "kernelbook/Encoding_5325",
+"task_name": "kernelbook__Encoding_5325",
+"batch": "kbkd",
+"module": "encoding",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 20
+},
+{
+"problem_id": "kernelbook/DiceLoss_2125",
+"task_name": "kernelbook__DiceLoss_2125",
+"batch": "kbkd",
+"module": "diceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 15
+},
+{
+"problem_id": "kernelbook/NeuralNetMultiplePositionalArgumentsMultiOutputsWithoutDependency_5906",
+"task_name": "kernelbook__NeuralNetMultiplePositionalArgumentsMultiOutputsWithoutDependency_5906",
+"batch": "kbkd",
+"module": "neuralnetmultiplepositionalargumentsmultioutputswithoutdependency",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 21
+},
+{
+"problem_id": "kernelbook/_ChannelAttentionModule_5287",
+"task_name": "kernelbook___ChannelAttentionModule_5287",
+"batch": "kbkd",
+"module": "_channelattentionmodule",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 13
+},
+{
+"problem_id": "kernelbook/Attention_16802",
+"task_name": "kernelbook__Attention_16802",
+"batch": "kbkd",
+"module": "attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 16
+},
+{
+"problem_id": "kernelbook/GridAttentionBlock_5956",
+"task_name": "kernelbook__GridAttentionBlock_5956",
+"batch": "kbkd",
+"module": "gridattentionblock",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 9
+},
+{
+"problem_id": "kernelbook/CRF_14013",
+"task_name": "kernelbook__CRF_14013",
+"batch": "kbkd",
+"module": "crf",
+"name_flags": [],
+"op_flags": [
+"plain_gemm"
+],
+"n_ops": 3
+},
+{
+"problem_id": "kernelbook/MHSA_12172",
+"task_name": "kernelbook__MHSA_12172",
+"batch": "kbkd",
+"module": "mhsa",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 18
+},
+{
+"problem_id": "kernelbook/MultiHeadAttention_7344",
+"task_name": "kernelbook__MultiHeadAttention_7344",
+"batch": "kbkd",
+"module": "multiheadattention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 16
+},
+{
+"problem_id": "kernelbook/SoftGeneratorAttention_2519",
+"task_name": "kernelbook__SoftGeneratorAttention_2519",
+"batch": "kbkd",
+"module": "softgeneratorattention",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 9
+},
+{
+"problem_id": "kernelbook/CHI_Block_14594",
+"task_name": "kernelbook__CHI_Block_14594",
+"batch": "kbkd",
+"module": "chi_block",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 178
+},
+{
+"problem_id": "kernelbook/CELoss_7357",
+"task_name": "kernelbook__CELoss_7357",
+"batch": "kbkd",
+"module": "celoss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 9
+},
+{
+"problem_id": "kernelbook/WeightedBCELoss_8181",
+"task_name": "kernelbook__WeightedBCELoss_8181",
+"batch": "kbkd",
+"module": "weightedbceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 35
+},
+{
+"problem_id": "kernelbook/BCEDiceLoss_11735",
+"task_name": "kernelbook__BCEDiceLoss_11735",
+"batch": "kbkd",
+"module": "bcediceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 25
+},
+{
+"problem_id": "kernelbook/GlobalAttentionGeneral_5169",
+"task_name": "kernelbook__GlobalAttentionGeneral_5169",
+"batch": "kbkd",
+"module": "globalattentiongeneral",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 10
+},
+{
+"problem_id": "kernelbook/SelfAttention_8355",
+"task_name": "kernelbook__SelfAttention_8355",
+"batch": "kbkd",
+"module": "selfattention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 11
+},
+{
+"problem_id": "kernelbook/TwoMLPHead_2335",
+"task_name": "kernelbook__TwoMLPHead_2335",
+"batch": "kbkd",
+"module": "twomlphead",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 6
+},
+{
+"problem_id": "kernelbook/MLP_16034",
+"task_name": "kernelbook__MLP_16034",
+"batch": "kbkd",
+"module": "mlp",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 9
+},
+{
+"problem_id": "kernelbook/Temporal_Attention_layer_6065",
+"task_name": "kernelbook__Temporal_Attention_layer_6065",
+"batch": "kbkd",
+"module": "temporal_attention_layer",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 14
+},
+{
+"problem_id": "kernelbook/SelfAttention_10797",
+"task_name": "kernelbook__SelfAttention_10797",
+"batch": "kbkd",
+"module": "selfattention",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 15
+},
+{
+"problem_id": "kernelbook/MLPNetwork_4815",
+"task_name": "kernelbook__MLPNetwork_4815",
+"batch": "kbkd",
+"module": "mlpnetwork",
+"name_flags": [
+"glu_mlp"
+],
+"op_flags": [],
+"n_ops": 8
+},
+{
+"problem_id": "kernelbook/SoftDiceLoss_5637",
+"task_name": "kernelbook__SoftDiceLoss_5637",
+"batch": "kbkd",
+"module": "softdiceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 13
+},
+{
+"problem_id": "kernelbook/SpatialAttentionLayer_18244",
+"task_name": "kernelbook__SpatialAttentionLayer_18244",
+"batch": "kbkd",
+"module": "spatialattentionlayer",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 6
+},
+{
+"problem_id": "kernelbook/partCE_8260",
+"task_name": "kernelbook__partCE_8260",
+"batch": "kbkd",
+"module": "partce",
+"name_flags": [],
+"op_flags": [
+"cross_entropy"
+],
+"n_ops": 19
+},
+{
+"problem_id": "kernelbook/BinaryDiceLoss_6463",
+"task_name": "kernelbook__BinaryDiceLoss_6463",
+"batch": "kbkd",
+"module": "binarydiceloss",
+"name_flags": [
+"cross_entropy"
+],
+"op_flags": [],
+"n_ops": 11
+},
+{
+"problem_id": "kernelbook/Attention_969",
+"task_name": "kernelbook__Attention_969",
+"batch": "kbkd",
+"module": "attention",
+"name_flags": [
+"attention"
+],
+"op_flags": [],
+"n_ops": 14
+},
+{
+"problem_id": "kernelbook/Multihead_Attention_Layer_910",
+"task_name": "kernelbook__Multihead_Attention_Layer_910",
+"batch": "kbkd",
+"module": "multihead_attention_layer",
+"name_flags": [
+"attention"
+],
+"op_flags": [
+"attention"
+],
+"n_ops": 13
+},
+{
+"problem_id": "kernelbook/PAM_Module_4494",
+"task_name": "kernelbook__PAM_Module_4494",
+"batch": "kbkd",
+"module": "pam_module",
+"name_flags": [],
+"op_flags": [
+"attention"
+],
+"n_ops": 17
+}
+]
