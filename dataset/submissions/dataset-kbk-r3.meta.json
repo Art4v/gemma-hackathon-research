@@ -1,0 +1,369 @@
+{
+ "created_at": "2026-11-10T05:06:09+00:00",
+ "estimate": {
+  "rows": [
+   {
+    "fits_hbm": true,
+    "input_bytes": 12288,
+    "n": 1,
+    "seconds": 32.904827754879996,
+    "task": "kernelbook__AffineGridGen_647"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.856309104639998,
+    "task": "kernelbook__AlphaChooser_16276"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 136316928,
+    "n": 1,
+    "seconds": 30.025310913279995,
+    "task": "kernelbook__AnyHead_9083"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 111153152,
+    "n": 1,
+    "seconds": 30.01757841152,
+    "task": "kernelbook__AvgPoolHead_905"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.199397260159998,
+    "task": "kernelbook__BCELoss2d_1686"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.37909907456,
+    "task": "kernelbook__BetaMish_3429"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.13941871296,
+    "task": "kernelbook__BinaryReg_3980"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67112972,
+    "n": 1,
+    "seconds": 31.452582144045,
+    "task": "kernelbook__Brain_1452"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.417899479040003,
+    "task": "kernelbook__Cartesian_13697"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134250880,
+    "n": 1,
+    "seconds": 31.652643962,
+    "task": "kernelbook__ChannelSELayer3D_13789"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.07201622368,
+    "task": "kernelbook__ContrastiveDistanceLoss_3182"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 30.020558535120003,
+    "task": "kernelbook__Distribution_Loss_14357"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 269616128,
+    "n": 1,
+    "seconds": 33.30293873088,
+    "task": "kernelbook__DoubleConv_8847"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.638798458880004,
+    "task": "kernelbook__Downsample_9405"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 270536704,
+    "n": 1,
+    "seconds": 30.010717283840002,
+    "task": "kernelbook__EmbeddingModule_16872"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.814120366079997,
+    "task": "kernelbook__Envelope_12226"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 138412848,
+    "n": 1,
+    "seconds": 30.01508127778,
+    "task": "kernelbook__FC2_5888"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 36658562,
+    "n": 1,
+    "seconds": 30.0923436376075,
+    "task": "kernelbook__FCDiscriminator_4330"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.07576359616,
+    "task": "kernelbook__FocalLoss_16988"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.74952808448,
+    "task": "kernelbook__GELU_2265"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.74952808448,
+    "task": "kernelbook__GELU__7911"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 31.70389405696,
+    "task": "kernelbook__GatedActivation_3481"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217736,
+    "n": 1,
+    "seconds": 31.837189038109997,
+    "task": "kernelbook__GaussActivation_17197"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108872,
+    "n": 1,
+    "seconds": 30.89321897987,
+    "task": "kernelbook__GaussianActivation_18109"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33554534,
+    "n": 1,
+    "seconds": 50.9482625847025,
+    "task": "kernelbook__GaussianSmearing_15962"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268443648,
+    "n": 1,
+    "seconds": 30.19709239488,
+    "task": "kernelbook__GeneralizedFocalLoss_1323"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134218240,
+    "n": 1,
+    "seconds": 31.7633693952,
+    "task": "kernelbook__LN_self_17240"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134218752,
+    "n": 1,
+    "seconds": 31.70905002432,
+    "task": "kernelbook__LayerNormChannel_13867"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268437504,
+    "n": 1,
+    "seconds": 33.45414484864,
+    "task": "kernelbook__LayerNorm_17868"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.883721994240005,
+    "task": "kernelbook__MiniBatchStddevLayer_5253"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.350266511360005,
+    "task": "kernelbook__MinibatchStdDev_1769"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 33558592,
+    "n": 1,
+    "seconds": 30.819275272720002,
+    "task": "kernelbook__NIN4d_14612"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 30.10892612288,
+    "task": "kernelbook__NegativeLearningLoss_16953"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 42396110,
+    "n": 1,
+    "seconds": 30.812218460612502,
+    "task": "kernelbook__Net_10577"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 205724456,
+    "n": 1,
+    "seconds": 30.04551831201,
+    "task": "kernelbook__Net_11161"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 42263330,
+    "n": 1,
+    "seconds": 30.2229835562875,
+    "task": "kernelbook__Net_12198"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 37848468,
+    "n": 1,
+    "seconds": 30.004506632305,
+    "task": "kernelbook__Net_12603"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134217728,
+    "n": 1,
+    "seconds": 31.66698549248,
+    "task": "kernelbook__PixelNorm_16870"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67633408,
+    "n": 1,
+    "seconds": 30.85617329008,
+    "task": "kernelbook__QuantConv2d_1261"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 135270912,
+    "n": 1,
+    "seconds": 31.634362121920002,
+    "task": "kernelbook__SELayer_17170"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67372288,
+    "n": 1,
+    "seconds": 30.826355200480002,
+    "task": "kernelbook__SEModule_8007"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134284032,
+    "n": 1,
+    "seconds": 31.63419219792,
+    "task": "kernelbook__SE_layer_3d_4495"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268436480,
+    "n": 1,
+    "seconds": 33.2960521056,
+    "task": "kernelbook__Scale_13874"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 134219776,
+    "n": 1,
+    "seconds": 31.66660752256,
+    "task": "kernelbook__ScaledL2Norm_6171"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 205653584,
+    "n": 1,
+    "seconds": 30.083002064940004,
+    "task": "kernelbook__SiameseMLP_391"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 33.24068704256,
+    "task": "kernelbook__TotalVariationLoss_6524"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 145371008,
+    "n": 1,
+    "seconds": 30.38507516688,
+    "task": "kernelbook__aeEncoder_1264"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 42586368,
+    "n": 1,
+    "seconds": 30.051155869280002,
+    "task": "kernelbook__deepmind_17908"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 268435456,
+    "n": 1,
+    "seconds": 30.04735468256,
+    "task": "kernelbook__make_style_10035"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 536870912,
+    "n": 1,
+    "seconds": 30.020876084719998,
+    "task": "kernelbook__make_style_12017"
+   },
+   {
+    "fits_hbm": true,
+    "input_bytes": 67108864,
+    "n": 1,
+    "seconds": 30.82362537984,
+    "task": "kernelbook__moving_avg_16583"
+   }
+  ],
+  "total_s": 1606.57260350299
+ },
+ "job_id": "dataset-kbk-r3",
+ "n_items": 51,
+ "n_tasks": 51,
+ "probe_ids": []
+}
