@@ -15,10 +15,10 @@ We build three things:
    a float32 answer key on three input seeds, and runs at least 0.7x as fast as XLA.
 2. **A dataset** of TBD(N) problems, screened against every JAXBench task by jaxpr op-chain signatures and near-duplicate text, with
    TBD(N) TPU-verified examples, including multi-turn repairs driven by the oracle's verbatim feedback.
-3. **A pre-registered evaluation** that gives base Gemma, Gemma with 25k tokens of Pallas docs, Gemma with a LoRA, and Gemini Flash
+3. **An equal-budget evaluation** that gives base Gemma, Gemma with 25k tokens of Pallas docs, Gemma with a LoRA, and Gemini Flash
    with docs the same attempt budget on JAXBench's 64 tasks.
 
-Base Gemma solves 0 of 64 and Gemini Flash with docs solves 8 of 64. The pre-registered LoRA also solves 0 of 64. It learns the
+Base Gemma solves 0 of 64 and Gemini Flash with docs solves 8 of 64. The first LoRA also solves 0 of 64. It learns the
 format (no repetition loops, the right length, `pallas_call` in every reply) but not Pallas's API semantics, and every attempt fails
 the oracle's first check.
 
@@ -36,7 +36,7 @@ learning from execution feedback on curated Pallas corpora" as future work. We t
 consumer machine.
 
 Our contributions are the oracle, whose kernel check rejected 12 of Gemini Flash's 64 first attempts on JAXBench; a
-contamination-screened training set in which every example is a kernel the oracle passed; a pre-registered, equal-budget
+contamination-screened training set in which every example is a kernel the oracle passed; an equal-budget
 evaluation; and TBD(results).
 
 ## 2. Related work
@@ -140,7 +140,7 @@ the evaluation's 8,192-token output limit.
 identical prompt token counts on 6 rows covering single-turn and one- and two-repair chains, so the comparison has a single
 difference: the adapter.
 
-### 3.6 Evaluation protocol (pre-registered)
+### 3.6 Evaluation protocol
 
 The protocol was committed before any LoRA result (`control/PROTOCOL.md`).
 
@@ -193,7 +193,7 @@ rejected 12 first attempts that did the real computation outside `pallas_call`.
 
 ### 4.3 The fine-tuned model
 
-**The pre-registered adapter, `v1_r64`, solves 0 of 64.** That holds on the primary set (58 tasks) and on the S-p subset (25
+**The first adapter, `v1_r64`, solves 0 of 64.** That holds on the primary set (58 tasks) and on the S-p subset (25
 verified p-tasks), and against `bare_stack` (the same GGUF without the adapter) there are no discordant tasks. All 192 attempts were
 decided at the oracle's first check (trace and kernel check, on CPU):
 
@@ -225,7 +225,7 @@ The F16 fold matches the unquantized adapter, so the serving bug is fixed. But e
 kernels past step 1. A second adapter trained longer on the same data (`v2`) reached a lower training loss (0.07 vs 0.18) and a
 higher val loss (0.35 to 0.47): with 238 training rows it memorizes. Published kernel models trained on 2k to 60k verified examples.
 
-**Deviation from the protocol.** The serving bug was found after the pre-registered result, so `v1_r64` at 0/64 stays reported as
+**Deviation from the protocol.** The serving bug was found after the first JAXBench result, so `v1_r64` at 0/64 stays reported as
 the first iteration. Later adapters change the data and the serving fold, are selected on val only, and are all reported with
 the total number of JAXBench runs (amendment A5).
 
