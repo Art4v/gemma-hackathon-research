@@ -41,6 +41,13 @@ def main():
             break
         k += 1
         got = run(f"{a.base}-p{k}", todo)
+        if not got:
+            # 0 rows is not a crash signal (a crash still leaves the earlier rows): a hung or timed-out fetch, NOSTART, or a lost
+            # session. Retry the part once before blaming its first item.
+            k += 1
+            got = run(f"{a.base}-p{k}", todo)
+            if not got:
+                raise SystemExit(f"part {k}: 0 rows twice; check the TPU session before continuing")
         done |= got
         left = [i["id"] for i in todo if i["id"] not in got]
         print(f"part {k}: {len(got)} judged, {len(left)} left", flush=True)
