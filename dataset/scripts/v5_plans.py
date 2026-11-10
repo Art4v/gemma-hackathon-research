@@ -55,7 +55,9 @@ def load():
     for f in SOURCES:
         for e in read(ROOT / f):
             src.setdefault(e["example_id"], e)
-    rows = [(split, r) for split in ("train", "val") for r in read(ROOT / "v4" / "final" / f"{split}.jsonl") if r["kind"] not in SKIP_KINDS]
+    ex = V5 / "exclude_tasks.txt"  # tasks whose plan a read-through found to contradict the kernel
+    bad = {l.strip() for l in ex.read_text().splitlines() if l.strip() and not l.startswith("#")} if ex.exists() else set()
+    rows = [(split, r) for split in ("train", "val") for r in read(ROOT / "v4" / "final" / f"{split}.jsonl") if r["kind"] not in SKIP_KINDS and r["task"] not in bad]
     return src, rows
 
 

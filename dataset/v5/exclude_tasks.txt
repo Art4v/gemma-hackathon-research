@@ -1,0 +1,12 @@
+# tasks whose plan contradicts its kernel (sampled read-through of 200 plans, Nov 10); see verify/
+kb__l1__20_LeakyReLU
+kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_
+kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__m1_aux
+kernelbook__AttentiveNorm2d_4131
+kernelbook__BinaryDiceLoss_6463
+kernelbook__InnerProductDecoder_2030
+kernelbook__LinearNet_364
+kernelbook__MLP_5432
+kernelbook__MSEloss_mod_11337
+kernelbook__ResConv2dLayer_2853
+kernelbook__my_Hingeloss_1635

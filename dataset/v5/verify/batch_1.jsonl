@@ -1,0 +1,50 @@
+{"id": "kernelbook__AlphaChooser_16276.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__TVLoss_8160.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AttentiveNorm2d_4131.single.a2", "verdict": "mismatch", "issues": ["Duplicated text reads oddly (edit residue): \"both pallas_calls both pallas_calls use blocks (1, Cb, H, W)\". Other claims check out (Cb=C=128, 4 MiB bf16, grid (16,1))."]}
+{"id": "kernelbook__KDLoss_13974.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__make_style_10035.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BiaffineScorer_3037.single.a2", "verdict": "ok", "issues": []}
+{"id": "authored__ssm_scan_step__mamba1_selective_scan_2.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__5_Matrix_scalar_multiplication.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GRelu_12489.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Net_17905.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__my_Hingeloss_1635.single.a1", "verdict": "mismatch", "issues": ["\"one memory-bound pass over 536 MB\": each input (16,64,256,512) f32 is 536 MB, but the kernel reads both output and target, about 1.07 GB in total."]}
+{"id": "kernelbook__MaxPPVPool1d_4472.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ExpandingBlock_12283.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Encoder_18149.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__AffineChannel2d_13241.single.a2", "verdict": "ok", "issues": []}
+{"id": "authored__swiglu_variant_geglu__geglu_fused_gate_up_mlp.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MSE_285.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__cSE_2843.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ActQuant_PACT_6801.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MSEloss_mod_11337.single.a2", "verdict": "mismatch", "issues": ["Leftover meta text and comparison with an earlier design: \"(my assumption about the layout; I could not run this)\" and \"there is no lane-interleaving reshape relayout and no one-hot selection matmuls\" (the code never had one-hot matmuls, so this refers to a previous attempt)."]}
+{"id": "kb__l1__45_Average_Pooling_2D.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GatedActivation_3481.single.a3", "verdict": "ok", "issues": []}
+{"id": "authored__ragged_segment_reduce__packed_segment_sum_mean__m1_batch.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Attention_11029.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__LinearNet_364.single.a1", "verdict": "mismatch", "issues": ["\"one pass over x (32 MiB in, 32 MiB out)\": x is (8,128,128,256) bf16 = 64 MiB and the output (8,128,128,256) bf16 is also 64 MiB."]}
+{"id": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ValueNetwork_17733.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SubPixelConvolutionalBlock_1705.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__KeyValueAttention_2258.single.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_.single.a3", "verdict": "mismatch", "issues": ["\"lane-dense flat spatial blocks + 128-lane halo block\": the halo block is (1, cin_g, Lh) with Lh = round_up(max(offs)+1, 128). The tap offsets include one full plane stride (pitch >= 34x131 = 4454), so Lh is at least about 4480 lanes, not 128."]}
+{"id": "kernelbook__MiniBatchStdDev_4774.single.a1", "verdict": "ok", "issues": []}
+{"id": "authored__kv_rope_append__kv_rope_append_2.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__BetaMish_3429.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__InnerProductDecoder_2030.single.a2", "verdict": "mismatch", "issues": ["\"4M DMAs of 512 B\": a z row is latent_dim 128 x bf16 = 256 B, not 512 B (the 4M count = 2 x 2,097,152 edges is right)."]}
+{"id": "authored__ssm_lru_scan__lru_complex_diag_scan.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Network_9696.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__NetRes_3452.single.a1", "verdict": "ok", "issues": []}
+{"id": "kb__l1__96_HuberLoss.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__weighted_mae_windows_9647.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__MaxPoolStride1_4763.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResidualBlock_575.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__FocalLoss_5147.single.a2", "verdict": "ok", "issues": []}
+{"id": "kb__l2__19_ConvTranspose2d_GELU_GroupNorm.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__CombinedPooling_5938.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__Downsample_9405.single.a3", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SOSLoss_7142.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ConcatBlock_8276.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__SoftTargetCrossEntropy_17728.single.a2", "verdict": "ok", "issues": []}
+{"id": "kernelbook__ResBlock_1012.single.a1", "verdict": "ok", "issues": []}
+{"id": "kernelbook__GeneralizedFocalLoss_1323.single.a3", "verdict": "ok", "issues": []}
