@@ -1,0 +1,4 @@
+{"candidate_id": "kernelbook__FusedDownsample_1654.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
+{"candidate_id": "kernelbook__IdentityPadding_7908.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
+{"candidate_id": "kernelbook__LinearMaxPoolLinearModel_436.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
+{"candidate_id": "kernelbook__Net_6125.a3.s0", "oracle_sha_used": "c9a07d9298a1", "outcome": "pass", "reason": "", "seconds": 0.13, "stage": "static"}
