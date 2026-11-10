@@ -1,0 +1,31 @@
+{
+ "from": {
+  "v4/final/train.jsonl": "eb71ad6501402993c216564d59c57c76dc8574e9c49ff68683a9fdd9fad94f5d",
+  "v4/final/val.jsonl": "ea667fc895a31bcddf776640d2cd0a4eae49ab55698fdaad51549a1ba75634ff"
+ },
+ "rows": {
+  "train/correct_slow": 47,
+  "train/repair": 241,
+  "train/repair_injected": 999,
+  "train/single": 1575,
+  "val/repair": 3,
+  "val/single": 21
+ },
+ "train_rows": 2862,
+ "val_rows": 24,
+ "left_out_kinds": [
+  "generated",
+  "shape_variant"
+ ],
+ "dropped": {},
+ "standalone_rewrites_used": 267,
+ "standalone_rewrites_rejected": {},
+ "plan_header_chars": {
+  "median": 663,
+  "max": 1763
+ },
+ "files": {
+  "train.jsonl": "bb25a3eca8bbf4241d010749ea8d2e3436d30f201c7d0d3d593cca2ed4606a69",
+  "val.jsonl": "3e34abdd4585bfc7428c049b3de6ba5bfc06454034589b5a09f2c3041aad31cb"
+ }
+}
