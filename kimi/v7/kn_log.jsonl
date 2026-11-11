@@ -1,0 +1,972 @@
+{"problem_id": "authored/norm_residual_fusion/fused_add_rmsnorm_residual", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/kv_cache_update/paged_kv_cache_scatter_update", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/kv_quantized_dequant_matmul/int8_per_channel_dequant_matmul", "ok": false, "reason": "overshoots: K 4608 N 36864 at f=1", "K0": 4608, "N0": 36864, "dot_share": 1.0, "bytes_old": 207765504, "rule_b": false}
+{"problem_id": "authored/rope_qk_norm/qk_rmsnorm_rope_gqa", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/23_Softmax", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/24_LogSoftmax", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/26_GELU_", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/40_LayerNorm", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/30_Gemm_GroupNorm_Hardtanh", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 302088192, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 302088192}
+{"problem_id": "kb/l2/33_Gemm_Scale_BatchNorm", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 302120960, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 302120960}
+{"problem_id": "kb/l2/39_Gemm_Scale_BatchNorm", "ok": true, "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 335609856, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 335609856}
+{"problem_id": "kb/l2/62_Matmul_GroupNorm_LeakyReLU_Sum", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 302088192, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 302088192}
+{"problem_id": "kb/l2/64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 302022656, "rule_b": true, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 302022656}
+{"problem_id": "kb/l2/81_Gemm_Swish_Divide_Clamp_Tanh_Clamp", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 302022656, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 302022656}
+{"problem_id": "kb/l1/33_BatchNorm", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/34_InstanceNorm", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/35_GroupNorm_", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/19_ReLU", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/20_LeakyReLU", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/21_Sigmoid", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/22_Tanh", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/25_Swish", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/27_SELU_", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/28_HardSigmoid", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/31_ELU", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/32_HardTanh", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/41_Max_Pooling_1D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/42_Max_Pooling_2D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/44_Average_Pooling_1D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/45_Average_Pooling_2D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/46_Average_Pooling_3D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/47_Sum_reduction_over_a_dimension", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/48_Mean_reduction_over_a_dimension", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/49_Max_reduction_over_a_dimension", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/52_Argmin_over_a_dimension", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/53_Min_reduction_over_a_dimension", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/56_conv_standard_2D__asymmetric_input__asymmetric_kernel", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/5_Matrix_scalar_multiplication", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/64_conv_transposed_1D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/67_conv_standard_1D", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/71_conv_transposed_2D__asymmetric_input__square_kernel", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/73_conv_transposed_3D_asymmetric_input_square_kernel__strided_padded__grouped", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/79_conv_transposed_1D_asymmetric_input_square_kernel___padded____strided____dilated__", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/80_conv_standard_2D_square_input_asymmetric_kernel___dilated____padded__", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/85_conv_depthwise_2D_asymmetric_input_asymmetric_kernel", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/86_conv_depthwise_separable_2D", "ok": true, "K0": 128, "N0": 256, "dot_share": 0.966, "bytes_old": 268571136, "rule_b": false, "K": 2944, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 8, "bytes_new": 841195008}
+{"problem_id": "kb/l1/88_MinGPTNewGelu", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/89_cumsum", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/90_cumprod", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/93_masked_cumsum", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/99_TripletMarginLoss", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/16_ConvTranspose2d_Mish_Add_Hardtanh_Scaling", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/31_Conv2d_Min_Add_Multiply", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/32_Conv2d_Scaling_Min", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/35_Conv2d_Subtract_HardSwish_MaxPool_Mish", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/46_Conv2d_Subtract_Tanh_Subtract_AvgPool", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/77_ConvTranspose3d_Scale_BatchNorm_GlobalAvgPool", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/78_ConvTranspose3d_Max_Max_Sum", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/82_Conv2d_Tanh_Scaling_BiasAdd_Max", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/83_Conv3d_GroupNorm_Min_Clamp_Dropout", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/87_Conv2d_Subtract_Subtract_Mish", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/90_Conv3d_LeakyReLU_Sum_Clamp_GELU", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/norm_residual_fusion/gemma_sandwich_norm_residual", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/norm_residual_fusion/gemma_sandwich_norm_residual_2", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/norm_gated/mamba2_gate_first_group_rmsnorm_outproj_2", "ok": true, "K0": 8192, "N0": 4096, "dot_share": 1.0, "bytes_old": 335560704, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 335560704}
+{"problem_id": "authored/moe_expert_bincount/moe_capacity_dispatch_bincount", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/quantized_fp8_matmul/fp8_dynamic_act_quant_block_weight_matmul", "ok": true, "K0": 7168, "N0": 4608, "dot_share": 1.0, "bytes_old": 91758464, "rule_b": false, "K": 7168, "N": 4608, "weight_mb": 132.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 91758464}
+{"problem_id": "authored/ssm_scan_step/mamba1_selective_scan", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_scan_step/mamba1_selective_scan_3", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/rope_qk_norm/qk_rmsnorm_interleaved_mrope", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/rope_qk_norm/qk_rmsnorm_interleaved_mrope_2", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/attention_linear_elu/linear_attention_elu", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/moe_capacity_dispatch/moe_top1_capacity_dispatch_combine", "ok": false, "reason": "overshoots: K 18432 N 64 at f=9", "K0": 2048, "N0": 64, "dot_share": 1.0, "bytes_old": 67633152, "rule_b": true}
+{"problem_id": "authored/moe_expert_ffn_batched/moe_expert_ffn_capacity_gelu", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/moe_expert_ffn_batched/moe_capacity_expert_gelu_ffn", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/quant_activation_per_token/int8_dynamic_per_token_w8a8_matmul", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 335577088, "rule_b": true}
+{"problem_id": "authored/quant_activation_per_token/w8a8_per_token_dynamic_quant_matmul", "ok": false, "reason": "overshoots: K 8192 N 28672 at f=2", "K0": 4096, "N0": 14336, "dot_share": 1.0, "bytes_old": 125886464, "rule_b": false}
+{"problem_id": "authored/quant_activation_per_token/w8a8_dynamic_per_token_matmul", "ok": false, "reason": "overshoots: K 8192 N 28672 at f=2", "K0": 4096, "N0": 14336, "dot_share": 1.0, "bytes_old": 125886464, "rule_b": false}
+{"problem_id": "authored/quant_fp8_amax_scaling/fp8_delayed_scaling_matmul", "ok": true, "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 201326720, "rule_b": true, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 201326720}
+{"problem_id": "authored/ragged_segment_reduce/packed_segment_sum_mean", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ragged_segment_reduce/packed_segment_sum_mean_3", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ragged_masked_layernorm/ragged_masked_residual_layernorm", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/kv_rope_append/kv_rope_append", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_rwkv_time_mix/rwkv4_time_mix_wkv", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.25, "bytes_old": 100691968, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 503402496}
+{"problem_id": "authored/ssm_rwkv_time_mix/rwkv4_time_mix_wkv_2", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.25, "bytes_old": 134258688, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 402735104}
+{"problem_id": "authored/ssm_rwkv_time_mix/rwkv4_time_mix_wkv_3", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.25, "bytes_old": 100704256, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 503439360}
+{"problem_id": "authored/ssm_lru_scan/lru_complex_diagonal_scan", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.25, "bytes_old": 151011328, "rule_b": false, "K": 16384, "N": 1024, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 2, "bytes_new": 805384192}
+{"problem_id": "authored/ssm_lru_scan/lru_complex_diagonal_scan_2", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.25, "bytes_old": 151011328, "rule_b": false, "K": 16384, "N": 1024, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 2, "bytes_new": 805384192}
+{"problem_id": "authored/ssm_s4d_conv/s4d_kernel_causal_conv", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_s4d_conv/s4d_kernel_direct_causal_conv", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_short_conv_gate/ssm_short_conv_silu_gate", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_short_conv_gate/ssm_short_conv_silu_gate_2", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/23_Softmax__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/24_LogSoftmax__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/26_GELU___bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/50_conv_standard_2D__square_input__square_kernel__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/30_Gemm_GroupNorm_Hardtanh__bf16", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 151044096, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 151044096}
+{"problem_id": "kb/l2/33_Gemm_Scale_BatchNorm__bf16", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 151060480, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 151060480}
+{"problem_id": "kb/l2/39_Gemm_Scale_BatchNorm__bf16", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 167804928, "rule_b": false}
+{"problem_id": "kb/l2/62_Matmul_GroupNorm_LeakyReLU_Sum__bf16", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 151044096, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 151044096}
+{"problem_id": "kb/l2/64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU__bf16", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 151011328, "rule_b": true, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 151011328}
+{"problem_id": "kb/l2/81_Gemm_Swish_Divide_Clamp_Tanh_Clamp__bf16", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 151011328, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 151011328}
+{"problem_id": "kb/l2/94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__bf16", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 151060480, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 151060480}
+{"problem_id": "kb/l1/33_BatchNorm__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/34_InstanceNorm__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/35_GroupNorm___bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/100_HingeLoss__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/19_ReLU__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/20_LeakyReLU__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/21_Sigmoid__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/22_Tanh__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/25_Swish__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/27_SELU___bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/28_HardSigmoid__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/32_HardTanh__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/41_Max_Pooling_1D__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/42_Max_Pooling_2D__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/45_Average_Pooling_2D__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/47_Sum_reduction_over_a_dimension__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/49_Max_reduction_over_a_dimension__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/52_Argmin_over_a_dimension__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/53_Min_reduction_over_a_dimension__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/56_conv_standard_2D__asymmetric_input__asymmetric_kernel__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/5_Matrix_scalar_multiplication__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/61_conv_transposed_3D__square_input__square_kernel__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/67_conv_standard_1D__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/77_conv_transposed_3D_square_input_square_kernel___padded____dilated____strided____bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/78_conv_transposed_2D_asymmetric_input_asymmetric_kernel___padded____bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/80_conv_standard_2D_square_input_asymmetric_kernel___dilated____padded____bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/82_conv_depthwise_2D_square_input_square_kernel__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/84_conv_depthwise_2D_asymmetric_input_square_kernel__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/88_MinGPTNewGelu__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/90_cumprod__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/91_cumsum_reverse__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/32_Conv2d_Scaling_Min__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/35_Conv2d_Subtract_HardSwish_MaxPool_Mish__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/44_ConvTranspose2d_Multiply_GlobalAvgPool_GlobalAvgPool_Mean__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/48_Conv3d_Scaling_Tanh_Multiply_Sigmoid__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/57_Conv2d_ReLU_HardSwish__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/83_Conv3d_GroupNorm_Min_Clamp_Dropout__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/87_Conv2d_Subtract_Subtract_Mish__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/89_ConvTranspose3d_MaxPool_Softmax_Subtract_Swish_Max__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/96_ConvTranspose3d_Multiply_Max_GlobalAvgPool_Clamp__bf16", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SmoothL1Loss_7106", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RNN_9217", "ok": true, "K0": 8192, "N0": 4096, "dot_share": 0.5, "bytes_old": 201342976, "rule_b": true, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 201342976}
+{"problem_id": "kernelbook/GaussActivation_14572", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GateLayer_1320", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 1.0, "bytes_old": 276832260, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 880828420}
+{"problem_id": "kernelbook/moving_avg_17649", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RMSE_log_717", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Wang_18074", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MulScalarNegative_14063", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Spike_6487", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TemporalRelation_4523", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 134742016, "rule_b": false}
+{"problem_id": "kernelbook/DiceLoss_5958", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FusedUpsample_1656", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftHistogram_8586", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SimpleNet_2710", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 128, "dot_share": 0.363, "bytes_old": 67290884, "rule_b": false}
+{"problem_id": "kernelbook/CombinedPooling_5938", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Conv3D_Block_5700", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DiscrimNet_10956", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 138418178, "rule_b": false}
+{"problem_id": "kernelbook/Relu_Adpt_5968", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttentionLayer_10873", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HighwayCNN_10675", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 135268352, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 2, "bytes_new": 956325888}
+{"problem_id": "kernelbook/Mix2Pooling_4323", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HouseHolderFlow_12465", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerScaling1D_8827", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPool2dDynamicSamePadding_72", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_15097", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DiscriminatorLoss_18296", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Block_14562", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 3072, "N0": 768, "dot_share": 0.273, "bytes_old": 39336960, "rule_b": true}
+{"problem_id": "kernelbook/SpatialAttention_5798", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/VAE_Kl_Loss_14456", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TransformerLinearXMCHead_3300", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GeneralizedFocalLoss_1323", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AEBatch_18180", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Conv1d_8318", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AffineConstantFlow_2648", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DisparityConv_15701", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Downsample_9405", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ME_6183", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 1024, "N0": 16, "dot_share": 0.997, "bytes_old": 84017216, "rule_b": true}
+{"problem_id": "kernelbook/LayerNormChannel_13867", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TransitionUp_9077", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MlpLite_12815", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.167, "bytes_old": 68684800, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 1, "bytes_new": 1031835648}
+{"problem_id": "kernelbook/Net2_3500", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 16384, "N0": 128, "dot_share": 1.0, "bytes_old": 138413062, "rule_b": false}
+{"problem_id": "kernelbook/DiffLoss_286", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 32768, "N0": 1024, "dot_share": 1.0, "bytes_old": 268435456, "rule_b": true}
+{"problem_id": "kernelbook/FiLMLayer_PreSin_11113", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.333, "bytes_old": 184573952, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 335593472}
+{"problem_id": "kernelbook/Distribution_Loss_14357", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GaussianActivation_18109", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DenseSAGEConv_6086", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 256, "dot_share": 0.5, "bytes_old": 604242944, "rule_b": true}
+{"problem_id": "kernelbook/Decoder_17735", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 384, "N0": 512, "dot_share": 0.6, "bytes_old": 101320192, "rule_b": false}
+{"problem_id": "kernelbook/MaxPoolStride1_9509", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Hswish_11194", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LinearClassifier_663", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2048, "N0": 1024, "dot_share": 0.5, "bytes_old": 151007232, "rule_b": false}
+{"problem_id": "kernelbook/PLU_6486", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CircularPad_15117", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HyperSphereLoss_7995", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AnyHead_9083", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 136316928, "rule_b": false}
+{"problem_id": "kernelbook/Attention_7562", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.246, "bytes_old": 41951232, "rule_b": false, "K": 9216, "N": 9216, "weight_mb": 169.9, "factor_features": 9, "batch_divisor": 1, "bytes_new": 981540864}
+{"problem_id": "kernelbook/FM_2350", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttentionGRUCell_12684", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.25, "bytes_old": 289423360, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 2, "bytes_new": 541130752}
+{"problem_id": "kernelbook/UNetModule_3705", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/QueryEncoding_4551", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MSE_3948", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/make_style_10035", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PredictiveEntropy_7060", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RollLayer_5620", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CenterIntersection_15454", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 135268352, "rule_b": false}
+{"problem_id": "kernelbook/NonLocalBlock_8363", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Discriminator_10954", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 256, "dot_share": 0.496, "bytes_old": 1610678276, "rule_b": false}
+{"problem_id": "kernelbook/SoftAttention_11380", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.998, "bytes_old": 69210112, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 478175232}
+{"problem_id": "kernelbook/MaxPoolPad_542", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RewardCriterion_835", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MeanStd_26", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SeriesDecomp_3732", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TimeVarFIRFilter_14091", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Coords_8037", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SSIM_2414", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/IntegrationModule_16384", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PointwiseConvolutionLayer_4360", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 0.5, "bytes_old": 67174912, "rule_b": false}
+{"problem_id": "kernelbook/RMSPE_8648", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ThetaEncoder_4616", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MultiAccuracy_12813", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/EdgeClassifLoss_818", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ActNorm_18128", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/D_phiVpsi_7775", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2048, "N0": 1024, "dot_share": 0.381, "bytes_old": 156327936, "rule_b": false}
+{"problem_id": "kernelbook/SoftDiceLossSquared_13375", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Bottleneck_nobn_10002", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Discriminator2_5996", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 128, "dot_share": 0.498, "bytes_old": 201457666, "rule_b": false}
+{"problem_id": "kernelbook/KLDivergence_13743", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Generative_Model_10069", "ok": false, "reason": "overshoots: K 17408 N 1024 at f=17", "K0": 1024, "N0": 1024, "dot_share": 0.333, "bytes_old": 73406464, "rule_b": false}
+{"problem_id": "kernelbook/CNet_8412", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 30, "dot_share": 0.498, "bytes_old": 67124406, "rule_b": false}
+{"problem_id": "kernelbook/MixLoss_15978", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LinearCombine_4278", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPoolTrinary_17131", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AffineConstantFlow_8329", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CLNLayer_11109", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.333, "bytes_old": 159395840, "rule_b": true, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 394301440}
+{"problem_id": "kernelbook/CoordConv_1465", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AlphaVectorMultiplication_13791", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LogCosh_12389", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Dice_5301", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Swish_13688", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FCNet_17088", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 272633860, "rule_b": true, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 1140867076}
+{"problem_id": "kernelbook/Scale_2227", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RewardCriterion_3114", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/OrthogonalFusion_15362", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NonAttentiveTacotronLoss_17420", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GaborConstraint_15318", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DiceBCELoss_9988", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Norm_5", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttCosine_15647", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MultiHeadAttentionWithPooling_7846", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.114, "bytes_old": 80236544, "rule_b": true, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 858906624}
+{"problem_id": "kernelbook/GroupScaling1D_73", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/KeypointsMSESmoothLoss_16762", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PseudoCoord_13933", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GELU_2265", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SEModule_8007", "ok": true, "K0": 512, "N0": 128, "dot_share": 0.5, "bytes_old": 67372288, "rule_b": false, "K": 11776, "N": 2944, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 2, "bytes_new": 910455552}
+{"problem_id": "kernelbook/LossCrossentropyAgg_3763", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/up_9766", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GeM_499", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/WeightedMCEFocalloss_5298", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ProjectExciteLayer_2703", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 128, "dot_share": 0.5, "bytes_old": 134250880, "rule_b": true}
+{"problem_id": "kernelbook/ChannelSELayer3D_655", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 64, "dot_share": 0.5, "bytes_old": 536937216, "rule_b": true}
+{"problem_id": "kernelbook/GeometricMean_1127", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LogSumExpPool_4926", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Hsigmoid_8048", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelNorm_8096", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FPNOutput_808", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DataProcessor_15684", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CReLU_6653", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Differencial_SMAPE_7462", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPoolStride1_11689", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerScaling_13515", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MixtureSoftmax_6217", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Scale_13874", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NetWidth_3451", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 1024, "N0": 32, "dot_share": 0.016, "bytes_old": 100816840, "rule_b": false}
+{"problem_id": "kernelbook/AddCoords_14011", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MeanEncoder_3851", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SE_layer_3d_4495", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 64, "dot_share": 0.5, "bytes_old": 134284032, "rule_b": false}
+{"problem_id": "kernelbook/CatRepr_9939", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Lda2Vec_1287", "ok": true, "K0": 4096, "N0": 2048, "dot_share": 0.8, "bytes_old": 71307264, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 159391744}
+{"problem_id": "kernelbook/AttentiveStatsPooling_18096", "ok": true, "K0": 512, "N0": 128, "dot_share": 0.5, "bytes_old": 134744576, "rule_b": true, "K": 8192, "N": 2048, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 4, "bytes_new": 671129600}
+{"problem_id": "kernelbook/DistanceWeightedMSELoss_13604", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPool2d_6395", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BPRLoss_2207", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MSE_285", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Similarity_3272", "ok": true, "K0": 4096, "N0": 1024, "dot_share": 0.97, "bytes_old": 151523840, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 203440640}
+{"problem_id": "kernelbook/ComplexConv2d_12323", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelPool_2266", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/diag_offdiag_maxpool_2442", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BinaryReg_6555", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Quaternion_16824", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AvgPoolPad_17158", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Envelope_12226", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SpatialAttention_15894", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BCELoss2d_1686", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaskedSoftL1_11076", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/projection_model_17910", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 512, "dot_share": 0.667, "bytes_old": 137367552, "rule_b": false}
+{"problem_id": "kernelbook/GRU_6764", "ok": true, "K0": 2048, "N0": 4096, "dot_share": 0.333, "bytes_old": 53501952, "rule_b": false, "K": 4096, "N": 8192, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 207667200}
+{"problem_id": "kernelbook/ImageLevelFeaturePooling2D_349", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BinaryLoss_1496", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Loss_fn_5943", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AveragePooling_7272", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SMOEScaleMap_8423", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LNN_2986", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 1.0, "bytes_old": 268500992, "rule_b": false}
+{"problem_id": "kernelbook/MaxPool_17153", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GELU__7911", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Attn_10095", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 1.0, "bytes_old": 71340032, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 335691776}
+{"problem_id": "kernelbook/Merge_13453", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FocalLoss_16524", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DIAYNActionModel_14260", "ok": false, "reason": "overshoots: K 17408 N 128 at f=17", "K0": 1024, "N0": 128, "dot_share": 0.667, "bytes_old": 79769600, "rule_b": true}
+{"problem_id": "kernelbook/WeightedL2WithSigmaLoss_13989", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_3679", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SELayer_2477", "ok": true, "K0": 512, "N0": 128, "dot_share": 0.5, "bytes_old": 67372288, "rule_b": false, "K": 11776, "N": 2944, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 2, "bytes_new": 910455552}
+{"problem_id": "kernelbook/DECLoss_368", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/EncModel_2849", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 276832256, "rule_b": false}
+{"problem_id": "kernelbook/BiInteractionPooling_2342", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SpatialSoftmaxBZ_16837", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Gaussian_Distance_9230", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/InstockMask_2326", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GammaScaleMap_8434", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SampaddingMaxPool1D_6195", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TernaryTanh_5828", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ConvLayer_15055", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FeatureDiscriminator_17427", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TotalVariation_5718", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GAT_644", "ok": true, "K0": 4096, "N0": 256, "dot_share": 0.464, "bytes_old": 71632384, "rule_b": true, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 1, "bytes_new": 202392064}
+{"problem_id": "kernelbook/L1_7518", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TopKMaxPooling_8394", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Recover_from_density_4964", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerScaling1d_13508", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_17868", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Decoder_6333", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FM_17486", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftIoU_12034", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/rSoftMax_239", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NormalLoss_719", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AffineChannel2d_11227", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Fp32GroupNorm_263", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GetSegPred_10461", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Softmax_12377", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChanNorm_2745", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ContrastiveLoss_3845", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TwoLayerNet_15183", "ok": false, "reason": "overshoots: K 17408 N 512 at f=17", "K0": 1024, "N0": 512, "dot_share": 0.5, "bytes_old": 272635904, "rule_b": false}
+{"problem_id": "kernelbook/MainClassifier_12602", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 128, "dot_share": 1.0, "bytes_old": 67240192, "rule_b": false}
+{"problem_id": "kernelbook/BinaryMarginLoss_7682", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RNN_10326", "ok": true, "K0": 4096, "N0": 2048, "dot_share": 0.5, "bytes_old": 67121152, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 201351168}
+{"problem_id": "kernelbook/XSigmoidLoss_5349", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CompositeActivation_1340", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NextSentencePrediction_2915", "ok": false, "reason": "overshoots: K 16896 N 2 at f=33", "K0": 512, "N0": 2, "dot_share": 1.0, "bytes_old": 268439560, "rule_b": true}
+{"problem_id": "kernelbook/ActNorm_6985", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Highway_8386", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 37752832, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 352346112}
+{"problem_id": "kernelbook/DilateContourLoss_6433", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AffineConstantFlow_830", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BinaryReg_3980", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AFMS_3585", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 269488128, "rule_b": false}
+{"problem_id": "kernelbook/ComplexConvTranspose2d_12328", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ClampExp_10770", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FeatureCorrelation_648", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RMSELoss_471", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NodeClassifier_7787", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.997, "bytes_old": 272646156, "rule_b": false, "K": 1024, "N": 16384, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 1, "bytes_new": 335806476}
+{"problem_id": "kernelbook/rSoftMax_9090", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/L_2nd_18169", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HighwayMaxoutNetwork_4005", "ok": true, "K0": 1024, "N0": 2048, "dot_share": 0.666, "bytes_old": 83197968, "rule_b": false, "K": 2560, "N": 8192, "weight_mb": 83.9, "factor_features": 4, "batch_divisor": 1, "bytes_new": 243925008}
+{"problem_id": "kernelbook/TotalVariationLoss_6524", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DistilledLoss_17311", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxMin_1714", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CoordConv_2416", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPool_5158", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/act_PRT_4984", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FCUDown_16471", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 64, "dot_share": 1.0, "bytes_old": 67644416, "rule_b": false}
+{"problem_id": "kernelbook/BILM_1046", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AdaFM_8536", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PGNetwork_6380", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 20, "dot_share": 0.5, "bytes_old": 134238800, "rule_b": false}
+{"problem_id": "kernelbook/LDEPooling_6681", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AutoregressiveShift_902", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CnptAttention_18225", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Discriminator_1246", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 512, "N0": 128, "dot_share": 0.499, "bytes_old": 202375172, "rule_b": false}
+{"problem_id": "kernelbook/FilterResponseNorm_layer_1815", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FFN_7153", "ok": true, "K0": 2048, "N0": 512, "dot_share": 0.5, "bytes_old": 71309312, "rule_b": false, "K": 15872, "N": 2048, "weight_mb": 65.0, "factor_features": 31, "batch_divisor": 2, "bytes_new": 1170401280}
+{"problem_id": "kernelbook/SAM_15078", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/KL_5741", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Connection_Combination_16380", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DDM_Encoder_8523", "ok": false, "reason": "a CONFIG key appears more than once", "K0": 512, "N0": 512, "dot_share": 0.471, "bytes_old": 270668928, "rule_b": false}
+{"problem_id": "kernelbook/offset_pos_9100", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ZeroOneTest_7312", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Brain_1452", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 4, "N0": 128, "dot_share": 0.571, "bytes_old": 67112972, "rule_b": false}
+{"problem_id": "kernelbook/Hard_Distillation_Loss_793", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RevPaddingLayer_17832", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LossesOfConVIRT_15374", "ok": true, "K0": 2048, "N0": 8192, "dot_share": 1.0, "bytes_old": 67108864, "rule_b": true, "K": 2048, "N": 8192, "weight_mb": 67.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 67108864}
+{"problem_id": "kernelbook/VarianceC_4476", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttentionPool_15616", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 128, "dot_share": 1.0, "bytes_old": 268501504, "rule_b": false}
+{"problem_id": "kernelbook/SineODE_3193", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BAP_6188", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MinibatchStdDev_1769", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/OutputLayer_2119", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 1024, "dot_share": 0.5, "bytes_old": 134218752, "rule_b": false}
+{"problem_id": "kernelbook/MiniBatchDiscrimination_3428", "ok": true, "K0": 8192, "N0": 2048, "dot_share": 1.0, "bytes_old": 37748736, "rule_b": false, "K": 16384, "N": 4096, "weight_mb": 134.2, "factor_features": 2, "batch_divisor": 1, "bytes_new": 142606336}
+{"problem_id": "kernelbook/TVLoss_4504", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RewardCriterion_8829", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Highway_2434", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 276832256, "rule_b": false}
+{"problem_id": "kernelbook/ParallelDilatedConv_3441", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPoolStride1_2115", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChanNorm_5651", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AlphaChooser_16276", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SplitCosineLinear_16039", "ok": false, "reason": "overshoots: K 16896 N 512 at f=33", "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 135266306, "rule_b": false}
+{"problem_id": "kernelbook/RELUTwosided_10077", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AgreementRouting_16455", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TemporalBlock_16671", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftArgMax_3579", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SpatialShift2d_13065", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MSELoss_14849", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MultAttention_10385", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 128, "dot_share": 0.16, "bytes_old": 84280832, "rule_b": false}
+{"problem_id": "kernelbook/LossFunction_15572", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AvgPoolHead_905", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 1.0, "bytes_old": 111153152, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 383791104}
+{"problem_id": "kernelbook/UpsamplingBilinear_6462", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PatchMerging_12918", "ok": true, "K0": 1024, "N0": 512, "dot_share": 1.0, "bytes_old": 136323072, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 880852992}
+{"problem_id": "kernelbook/SELayer_17170", "ok": true, "K0": 1024, "N0": 128, "dot_share": 0.5, "bytes_old": 135270912, "rule_b": false, "K": 12288, "N": 1536, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 2, "bytes_new": 956356608}
+{"problem_id": "kernelbook/DenseSAGEConv_7964", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.333, "bytes_old": 152045568, "rule_b": true, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 1, "bytes_new": 335560704}
+{"problem_id": "kernelbook/multi_scale_spatial_15338", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NormedLinear_5111", "ok": true, "K0": 512, "N0": 1024, "dot_share": 1.0, "bytes_old": 270536704, "rule_b": false, "K": 3072, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 2, "bytes_new": 880828416}
+{"problem_id": "kernelbook/AdaptiveConcatPool2d_592", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelAttention_3965", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 128, "dot_share": 0.5, "bytes_old": 134744576, "rule_b": false}
+{"problem_id": "kernelbook/MySoftmax_1369", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SERF_17202", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GaussActivation_6544", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GramMatrix_2098", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PositionEmbedder_11333", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_6248", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/multi_pool_6124", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelPool_8251", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SelectiveMarginLoss_9468", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPool_2276", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BoxEncoder_7781", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 0.4, "bytes_old": 289423360, "rule_b": false, "K": 16384, "N": 1024, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 1, "bytes_new": 406921216}
+{"problem_id": "kernelbook/AdaptiveAvgMaxPool2d_13347", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Softmax_5088", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPoolStride1_4763", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SmoothPinballLoss_630", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BasePolicy_7480", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 68160000, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 1, "bytes_new": 956332032}
+{"problem_id": "kernelbook/SA_3016", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/QNetworkSmall_14690", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 64, "dot_share": 0.4, "bytes_old": 33595904, "rule_b": false}
+{"problem_id": "kernelbook/MaxPool_3293", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttentionUnit_14625", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.998, "bytes_old": 277098500, "rule_b": true}
+{"problem_id": "kernelbook/FGFunction_868", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GaussianSmearing_1703", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/UsBlockRes_5564", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 32, "dot_share": 0.036, "bytes_old": 76644864, "rule_b": false}
+{"problem_id": "kernelbook/AvgPoolPad_5575", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GELU_4334", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DownsampleB_15452", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GDiceLossV2_6295", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ActorNetwork_2339", "ok": true, "K0": 1024, "N0": 512, "dot_share": 0.471, "bytes_old": 138689024, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 223957504}
+{"problem_id": "kernelbook/LDEPooling_4234", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MarginLoss_7206", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TemporalDecay_9511", "ok": false, "reason": "overshoots: K 16896 N 512 at f=33", "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 269486080, "rule_b": false}
+{"problem_id": "kernelbook/AutoEncoder_3580", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 256, "dot_share": 0.5, "bytes_old": 68160000, "rule_b": false}
+{"problem_id": "kernelbook/NeuralAccumulatorCell_7228", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 142606336, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 671088640}
+{"problem_id": "kernelbook/NormalizeImages_7178", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CharbonnierLoss_8288", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GRUCell_17050", "ok": true, "K0": 2048, "N0": 6144, "dot_share": 0.5, "bytes_old": 117465088, "rule_b": false, "K": 4096, "N": 12288, "weight_mb": 201.3, "factor_features": 2, "batch_divisor": 1, "bytes_new": 436256768}
+{"problem_id": "kernelbook/IdentityPadding_10476", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ImagenetNorm_6975", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Subspace_14369", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/L1_Charbonnier_loss_6002", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaskUpdate_17192", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Actor_4242", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 64, "dot_share": 0.4, "bytes_old": 67150336, "rule_b": false}
+{"problem_id": "kernelbook/EqualConv2dSame_8020", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/WeightedBCELoss2d_3699", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Arc2_1502", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelPool_112", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BiaffineScorer_7974", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 129, "N0": 129, "dot_share": 0.992, "bytes_old": 35684608, "rule_b": false}
+{"problem_id": "kernelbook/CosNorm_Classifier_11486", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2048, "N0": 4096, "dot_share": 1.0, "bytes_old": 167772160, "rule_b": false}
+{"problem_id": "kernelbook/ResampleNorm_17450", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MonomialNN_5069", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaskedLoss_12037", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SpatialGate_7095", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ContrastiveDistanceLoss_3182", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DenseSAGEConv_1831", "ok": true, "K0": 128, "N0": 128, "dot_share": 0.111, "bytes_old": 75530496, "rule_b": true, "K": 5760, "N": 5760, "weight_mb": 66.4, "factor_features": 45, "batch_divisor": 1, "bytes_new": 510962944}
+{"problem_id": "kernelbook/RelativeMSE_8540", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GatedActivation_3481", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DiscriminatorLoss_6129", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BertPredictionHeadTransform_17784", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 138424320, "rule_b": true, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 604028928}
+{"problem_id": "kernelbook/Hswish_8080", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPool_12803", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GaussianSmearing_15962", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CSDN_Tem_11667", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 128, "dot_share": 0.934, "bytes_old": 134253312, "rule_b": false}
+{"problem_id": "kernelbook/OutlookAttention_4230", "ok": true, "K0": 128, "N0": 128, "dot_share": 0.306, "bytes_old": 33641122, "rule_b": false, "K": 5760, "N": 5760, "weight_mb": 66.4, "factor_features": 45, "batch_divisor": 2, "bytes_new": 888629922}
+{"problem_id": "kernelbook/GaussActivation_17197", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CoSirenModule_6257", "ok": true, "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 269486080, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 2, "bytes_new": 1140867072}
+{"problem_id": "kernelbook/GlobalWeightedAvgPool2d_6599", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AvgPoolPad_534", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Cartesian_13697", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AlReLU_1691", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Noise_15349", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/moving_avg_16583", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/VectorQuantizer_17814", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 1024, "dot_share": 1.0, "bytes_old": 68157440, "rule_b": true}
+{"problem_id": "kernelbook/Hsigmoid_11203", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FF_16887", "ok": true, "K0": 4096, "N0": 1024, "dot_share": 0.5, "bytes_old": 50341888, "rule_b": false, "K": 12288, "N": 3072, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 251688960}
+{"problem_id": "kernelbook/EmbeddingModule_16872", "ok": true, "K0": 512, "N0": 1024, "dot_share": 1.0, "bytes_old": 270536704, "rule_b": false, "K": 15872, "N": 1024, "weight_mb": 65.0, "factor_features": 31, "batch_divisor": 8, "bytes_new": 1105203200}
+{"problem_id": "kernelbook/AffineChannel2d_13241", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/eca_layer_2732", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HighwayLayer_8017", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142614528, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 671121408}
+{"problem_id": "kernelbook/BoF_Pooling_13127", "ok": false, "reason": "overshoots: K 16896 N 256 at f=33", "K0": 512, "N0": 256, "dot_share": 1.0, "bytes_old": 134743040, "rule_b": true}
+{"problem_id": "kernelbook/BetaMish_3429", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/rSoftMax_11978", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NetworkExtension_12207", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 272633856, "rule_b": false}
+{"problem_id": "kernelbook/Word2Vec_4253", "ok": false, "reason": "overshoots: K 16896 N 256 at f=33", "K0": 512, "N0": 256, "dot_share": 0.5, "bytes_old": 134743552, "rule_b": false}
+{"problem_id": "kernelbook/Conv2dNormActiv_7936", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GaussMembFunc_4261", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GeM_3478", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Cartesian_1484", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NetVLAD_9510", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 64, "dot_share": 0.5, "bytes_old": 33587328, "rule_b": false}
+{"problem_id": "kernelbook/DRS_15991", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LBM_9785", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 0.992, "bytes_old": 67141632, "rule_b": false}
+{"problem_id": "kernelbook/ResForward_17457", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 1152, "N0": 1024, "dot_share": 0.1, "bytes_old": 61362176, "rule_b": false}
+{"problem_id": "kernelbook/InformedSender_2882", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 2048, "N0": 1024, "dot_share": 0.911, "bytes_old": 73404672, "rule_b": true}
+{"problem_id": "kernelbook/MaxPoolStride1_2354", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Encoder_5392", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PaddedMaxPool2d_2241", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CReLU_3306", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPool2dDynamicSamePadding_2478", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RBF_activation_9789", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/down_17191", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/InstanceNorm_4775", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LigthSpeechLoss_6654", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MiniBatchStddevLayer_5253", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttPool_18021", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 1, "dot_share": 1.0, "bytes_old": 268436484, "rule_b": true}
+{"problem_id": "kernelbook/Beta2_998", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ResBlock_1012", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142614528, "rule_b": false}
+{"problem_id": "kernelbook/SequenceSummaryLayer_1294", "ok": true, "K0": 4096, "N0": 1024, "dot_share": 0.8, "bytes_old": 423632896, "rule_b": false, "K": 8192, "N": 2048, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 889208832}
+{"problem_id": "kernelbook/NIN4d_14612", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 1.0, "bytes_old": 33558592, "rule_b": true}
+{"problem_id": "kernelbook/Encoder_7074", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.333, "bytes_old": 146812928, "rule_b": false}
+{"problem_id": "kernelbook/ODEfunc_1191", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PyramidPoolingModule_16140", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 6, "dot_share": 0.246, "bytes_old": 134217728, "rule_b": false}
+{"problem_id": "kernelbook/TracedModule_5419", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ExpPool_4921", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelwiseAttention_3495", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 128, "dot_share": 0.5, "bytes_old": 67372288, "rule_b": false}
+{"problem_id": "kernelbook/GatedConvTranspose_2141", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PixelwiseNorm_1129", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPPVPool1d_4472", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BinaryReg_4134", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MergeLayer_2910", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142622724, "rule_b": false}
+{"problem_id": "kernelbook/TracedModule_1024", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PermEqui2_max_15492", "ok": true, "K0": 256, "N0": 256, "dot_share": 0.992, "bytes_old": 134480384, "rule_b": false, "K": 5888, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 2, "bytes_new": 910437888}
+{"problem_id": "kernelbook/MaxPool2dDynamicSamePadding_9198", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Cat_4702", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/piNetwork_12730", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.571, "bytes_old": 141566976, "rule_b": false, "K": 15872, "N": 1024, "weight_mb": 65.0, "factor_features": 31, "batch_divisor": 4, "bytes_new": 1141939200}
+{"problem_id": "kernelbook/make_style_12017", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/EltwiseSubEmbed_14637", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SelfAttention_9168", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.999, "bytes_old": 69210114, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 478175234}
+{"problem_id": "kernelbook/FocalLoss_2686", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftAttention_16399", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 0.998, "bytes_old": 135270400, "rule_b": true}
+{"problem_id": "kernelbook/FocalLoss_5062", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GeneralRelu_756", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/simple_decoder_7839", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RMSPool_1724", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NALU_200", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 276828160, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 2, "bytes_new": 671105024}
+{"problem_id": "kernelbook/SelfAttn_692", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 1, "dot_share": 1.0, "bytes_old": 268435972, "rule_b": false}
+{"problem_id": "kernelbook/Bottleneck_v2_2597", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GlobalpoolFC_1550", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 1024, "dot_share": 1.0, "bytes_old": 270536704, "rule_b": false}
+{"problem_id": "kernelbook/SplitDim_10398", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/WeightedPool_13858", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 1, "dot_share": 0.001, "bytes_old": 35651840, "rule_b": false}
+{"problem_id": "kernelbook/SquaredModulus_15306", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CReLU_15179", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MiniBatchStd_14366", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPoolStride1_13452", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Net_12881", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 135268352, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 2, "bytes_new": 956325888}
+{"problem_id": "kernelbook/SvmLoss_3238", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Critic_17636", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 64, "dot_share": 0.663, "bytes_old": 67133826, "rule_b": false}
+{"problem_id": "kernelbook/MyMaxPool1dPadSame_2963", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RefineDoublePendulumModel_7871", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 0.306, "bytes_old": 67325200, "rule_b": false}
+{"problem_id": "kernelbook/DownsampleB_18332", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NALUCell_7225", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.333, "bytes_old": 73400320, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 629145600}
+{"problem_id": "kernelbook/ConvSqu_2425", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CharbonnierLoss_8293", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CosNorm_Classifier_5719", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 100663296, "rule_b": true}
+{"problem_id": "kernelbook/GatedActivation_6864", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ResnetDecoder_17904", "ok": false, "reason": "overshoots: K 18432 N 1024 at f=9", "K0": 2048, "N0": 1024, "dot_share": 1.0, "bytes_old": 138414080, "rule_b": true}
+{"problem_id": "kernelbook/L2PenaltyConstraintLoss_11013", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Generator_6399", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.333, "bytes_old": 146812928, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 738246656}
+{"problem_id": "kernelbook/PolicyNetwork_3228", "ok": true, "K0": 256, "N0": 128, "dot_share": 0.5, "bytes_old": 134481408, "rule_b": false, "K": 2944, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 4, "bytes_new": 844127744}
+{"problem_id": "kernelbook/makeStyle_6403", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/StdConv2d_6818", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/JSDLoss_4010", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Discriminator_4203", "ok": true, "K0": 1024, "N0": 500, "dot_share": 0.681, "bytes_old": 135724530, "rule_b": false, "K": 7500, "N": 4500, "weight_mb": 67.5, "factor_features": 15, "batch_divisor": 1, "bytes_new": 219811358}
+{"problem_id": "kernelbook/ChannelPool_12902", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DistillKL_18013", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Prototype_4528", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 512, "dot_share": 1.0, "bytes_old": 67371008, "rule_b": false}
+{"problem_id": "kernelbook/Linear_sigmoid_68", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 138416128, "rule_b": false}
+{"problem_id": "kernelbook/RSoftmax_11171", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LINEAR_LOGSOFTMAX_13817", "ok": false, "reason": "overshoots: K 16896 N 512 at f=33", "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 134743040, "rule_b": false}
+{"problem_id": "kernelbook/LocalVariation_10879", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftmaxDeepLiftModel_449", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.333, "bytes_old": 271587328, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 1, "bytes_new": 352356352}
+{"problem_id": "kernelbook/LuongAttentionGeneral_6341", "ok": true, "K0": 128, "N0": 128, "dot_share": 0.111, "bytes_old": 71369216, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 32, "batch_divisor": 4, "bytes_new": 1174421504}
+{"problem_id": "kernelbook/Encoder_461", "ok": true, "K0": 512, "N0": 1024, "dot_share": 0.5, "bytes_old": 138418176, "rule_b": false, "K": 3072, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 893413376}
+{"problem_id": "kernelbook/MovingAvg_3722", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PatchMerging_3950", "ok": true, "K0": 512, "N0": 256, "dot_share": 1.0, "bytes_old": 134746112, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 2, "bytes_new": 880852992}
+{"problem_id": "kernelbook/AUXModule_17535", "ok": true, "K0": 512, "N0": 1024, "dot_share": 1.0, "bytes_old": 135268352, "rule_b": false, "K": 4096, "N": 8192, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 1, "bytes_new": 1140867072}
+{"problem_id": "kernelbook/AdaIN_7467", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 68175872, "rule_b": false}
+{"problem_id": "kernelbook/ComplexConv1d_16119", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MetaLayerNorm_716", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm1D_9941", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GatedTanh_18083", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.5, "bytes_old": 167788544, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 402685952}
+{"problem_id": "kernelbook/FocalLoss_7163", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SkipBlock_17361", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.333, "bytes_old": 73406464, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 629182464}
+{"problem_id": "kernelbook/WeightedBDiceLoss_201", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "github/sparsemax", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "github/yarn_rope_partial", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "github/hadamard_rotation_int4_quant", "ok": true, "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 33554432, "rule_b": true, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 2, "batch_divisor": 1, "bytes_new": 67108864}
+{"problem_id": "github/muon_newton_schulz", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/average_attention_network", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2048, "N0": 2048, "dot_share": 0.667, "bytes_old": 75501568, "rule_b": false}
+{"problem_id": "kernelbook/aft_full", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.25, "bytes_old": 42994432, "rule_b": false, "K": 16384, "N": 2048, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 1, "bytes_new": 813740032}
+{"problem_id": "kernelbook/circle_loss", "ok": true, "K0": 2048, "N0": 8192, "dot_share": 1.0, "bytes_old": 33587200, "rule_b": true, "K": 4096, "N": 8192, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 67141632}
+{"problem_id": "kernelbook/Minibatch_stddev_layer_5322", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MatchingTensor_4700", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 256, "dot_share": 0.667, "bytes_old": 71303168, "rule_b": false}
+{"problem_id": "kernelbook/JaccardLoss_3985", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SkillDiscriminator_10260", "ok": true, "K0": 256, "N0": 256, "dot_share": 0.5, "bytes_old": 134481152, "rule_b": false, "K": 5888, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 1, "bytes_new": 206593280}
+{"problem_id": "kernelbook/cSEmodule_2356", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 64, "dot_share": 0.5, "bytes_old": 134250880, "rule_b": false}
+{"problem_id": "kernelbook/FocalLoss_6088", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TracedModule_2755", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/length_evolution_8461", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NetVLAD_15961", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AffineChannelwise_6585", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AE_2D_12437", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 1280, "N0": 640, "dot_share": 0.284, "bytes_old": 72886016, "rule_b": false}
+{"problem_id": "kernelbook/series_decomp_multi_17652", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1, "N0": 2, "dot_share": 1.0, "bytes_old": 134217736, "rule_b": true}
+{"problem_id": "kernelbook/AddCoords_1048", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GTConv_2_16670", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/WSConv2d_3729", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/EncoderLayer_17877", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.143, "bytes_old": 167854080, "rule_b": true, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 469917696}
+{"problem_id": "kernelbook/PitchShift_4638", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AE_2D_v1000_12448", "ok": true, "K0": 1024, "N0": 384, "dot_share": 0.279, "bytes_old": 69934596, "rule_b": false, "K": 10240, "N": 3840, "weight_mb": 78.6, "factor_features": 10, "batch_divisor": 1, "bytes_new": 935261700}
+{"problem_id": "kernelbook/SM_14472", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NumericLabelEncoder_6781", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Pool_2348", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CosineLinear_17517", "ok": true, "K0": 256, "N0": 256, "dot_share": 1.0, "bytes_old": 268697604, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 4, "bytes_new": 1140850692}
+{"problem_id": "kernelbook/gumbel_sampler_16342", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/N_TransE_1115", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LogSumPenalty_10067", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MinibatchStdLayer_14960", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HardSigmoid_8002", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Network_9696", "ok": true, "K0": 768, "N0": 128, "dot_share": 0.5, "bytes_old": 67898880, "rule_b": false, "K": 9984, "N": 1664, "weight_mb": 66.5, "factor_features": 13, "batch_divisor": 1, "bytes_new": 1005368832}
+{"problem_id": "kernelbook/AvgPoolPad_2297", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AdditiveAttention_640", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 256, "dot_share": 0.994, "bytes_old": 67372032, "rule_b": false}
+{"problem_id": "kernelbook/AffineLayer_9129", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/IdentityPadding_7908", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HGCN_6507", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.143, "bytes_old": 134221824, "rule_b": true}
+{"problem_id": "kernelbook/distLinear_3627", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 128, "dot_share": 1.0, "bytes_old": 134349312, "rule_b": false}
+{"problem_id": "kernelbook/TFBCELoss_7164", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Entropy_6677", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SeparableConvBlock_7098", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/L1_12240", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MyInstanceNorm2d_6581", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CosLoss_5739", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Rodrigues_16825", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/StatsNet_1438", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SigmaL1SmoothLoss_753", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TopicEmbeddingAttention_1243", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 64, "N0": 64, "dot_share": 0.25, "bytes_old": 335577088, "rule_b": false}
+{"problem_id": "kernelbook/CGD_8272", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 1, "dot_share": 0.333, "bytes_old": 268438528, "rule_b": false}
+{"problem_id": "kernelbook/Actor_1583", "ok": true, "K0": 512, "N0": 384, "dot_share": 0.462, "bytes_old": 135926272, "rule_b": false, "K": 5120, "N": 3840, "weight_mb": 78.6, "factor_features": 10, "batch_divisor": 1, "bytes_new": 222072832}
+{"problem_id": "kernelbook/AvgPoolStride1_9900", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AgreementRouting_3237", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CharbonnierLoss_15929", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LSTM_11841", "ok": true, "K0": 4096, "N0": 2048, "dot_share": 0.25, "bytes_old": 92291072, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 318799872}
+{"problem_id": "kernelbook/MaxPool_9881", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BaseQuantization_14536", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TransitionUp_2293", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BoundedIoULoss_16434", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GlobalpoolFC_3218", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 512, "dot_share": 1.0, "bytes_old": 134349824, "rule_b": false}
+{"problem_id": "kernelbook/disparityentropy_7742", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AdaptiveAvgMaxPool2d_4803", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PairwiseDistance_3707", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/attention_11048", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 64, "dot_share": 0.5, "bytes_old": 268501760, "rule_b": false}
+{"problem_id": "kernelbook/GlobalChannelLayerNorm_6390", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/reg_hw_pos_9101", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/QNetwork_11349", "ok": true, "K0": 256, "N0": 256, "dot_share": 0.333, "bytes_old": 67503616, "rule_b": false, "K": 5888, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 2, "bytes_new": 979798528}
+{"problem_id": "kernelbook/GELayerv2_14348", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ResnetBlock_2170", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GELU_231", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MulScalarNegative_6454", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AddCoords_9362", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DenseSAGEConv_1760", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 76548096, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 1, "bytes_new": 612384768}
+{"problem_id": "kernelbook/cSE_2843", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 256, "dot_share": 0.5, "bytes_old": 134742016, "rule_b": false}
+{"problem_id": "kernelbook/Normalize_1783", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Clipping_14540", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ResidualBlockNoBN_1100", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NAC_188", "ok": true, "K0": 256, "N0": 256, "dot_share": 1.0, "bytes_old": 134742016, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 4, "bytes_new": 671088640}
+{"problem_id": "kernelbook/WDLoss_4016", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ExponentialEnvelope_1696", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Mix_3516", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 2048, "N0": 512, "dot_share": 0.471, "bytes_old": 138684672, "rule_b": true}
+{"problem_id": "kernelbook/CameraPriorLoss_5376", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LinearNormalGamma_4524", "ok": true, "K0": 256, "N0": 256, "dot_share": 1.0, "bytes_old": 67240448, "rule_b": false, "K": 5888, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 2, "bytes_new": 841100800}
+{"problem_id": "kernelbook/rSoftMax_17292", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/cPReLU_605", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ClsCriterion_8661", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LogSumDualPenalty_10075", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CELoss_14073", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Net16_3522", "ok": true, "K0": 256, "N0": 128, "dot_share": 0.5, "bytes_old": 67240704, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 32, "batch_divisor": 4, "bytes_new": 671113216}
+{"problem_id": "kernelbook/DiceLoss_18292", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/UpdateCell_6138", "ok": true, "K0": 1024, "N0": 2048, "dot_share": 0.5, "bytes_old": 41947136, "rule_b": false, "K": 4096, "N": 8192, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 268451840}
+{"problem_id": "kernelbook/VideoBoringModel_14403", "ok": false, "reason": "overshoots: K 128 N 17408 at f=17", "K0": 128, "N0": 1024, "dot_share": 1.0, "bytes_old": 537399296, "rule_b": false}
+{"problem_id": "kernelbook/DisparityRegression_1094", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SimpleNet_9976", "ok": false, "reason": "overshoots: K 524288 N 128 at f=1", "K0": 524288, "N0": 128, "dot_share": 1.0, "bytes_old": 268435712, "rule_b": false}
+{"problem_id": "kernelbook/BoundSoftmaxImpl_7253", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DownsampleA_3676", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PNTrainingSigmoid_7307", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PositionalEmbedding_1103", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaxPoolStride1_7641", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MobileViTv2Attention_4526", "ok": true, "K0": 128, "N0": 128, "dot_share": 0.332, "bytes_old": 268634116, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 32, "batch_divisor": 4, "bytes_new": 738263044}
+{"problem_id": "kernelbook/LinearNet_364", "ok": false, "reason": "overshoots: K 16896 N 256 at f=33", "K0": 512, "N0": 256, "dot_share": 0.5, "bytes_old": 67634688, "rule_b": false}
+{"problem_id": "kernelbook/predicates1_8277", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 256, "dot_share": 1.0, "bytes_old": 67240448, "rule_b": false}
+{"problem_id": "kernelbook/ResidualBlock_8570", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Mask_10990", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MSELoss2d_12703", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TVLoss_9407", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SDSDRLoss_15902", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CoreNetwork_10707", "ok": true, "K0": 256, "N0": 256, "dot_share": 0.5, "bytes_old": 268961792, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 8, "bytes_new": 671121408}
+{"problem_id": "kernelbook/TransformerEncoderLayer_12626", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 0.222, "bytes_old": 100773888, "rule_b": true, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 503517184}
+{"problem_id": "kernelbook/LayerNorm_2011", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DQN_5684", "ok": true, "K0": 512, "N0": 256, "dot_share": 0.5, "bytes_old": 135269376, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 1, "bytes_new": 216043520}
+{"problem_id": "kernelbook/SAGEAggregator_5109", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 0.889, "bytes_old": 67174400, "rule_b": false}
+{"problem_id": "kernelbook/ChannelAttentionGG_15323", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PositionalEncoder_8622", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PostSynthesisProcessing_4939", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/soft_L1_15480", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/HardWeightedSum_17893", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AUGRUCell_1936", "ok": true, "K0": 2048, "N0": 6144, "dot_share": 0.5, "bytes_old": 67137536, "rule_b": false, "K": 4096, "N": 12288, "weight_mb": 100.7, "factor_features": 2, "batch_divisor": 1, "bytes_new": 234934272}
+{"problem_id": "kernelbook/SymmetricPad2d_8449", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/_TransitionUp_16449", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DistanceMatrixLoss_1773", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Normalize3D_1787", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Get_gradient_7834", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DICELoss_14300", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CMMD_8302", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2097152, "N0": 4, "dot_share": 0.042, "bytes_old": 536870912, "rule_b": true}
+{"problem_id": "kernelbook/LSoftLoss_9933", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LearnableClsToken_16126", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Pow_17023", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Aggregate_16939", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LeakyClamp_3779", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GRelu_12489", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BilinearWithBias_12801", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 0.333, "bytes_old": 71368960, "rule_b": true}
+{"problem_id": "kernelbook/StackTime_10842", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CosSim_15404", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 256, "dot_share": 1.0, "bytes_old": 134479872, "rule_b": true}
+{"problem_id": "kernelbook/CatKLLoss_10289", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ModifiedSmoothL1Loss_4777", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GELU__4985", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Mask_4270", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SE_4955", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ParamSum_13586", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/act_RT_4974", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FFB_1689", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FrameMaxPool_4922", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Mask_1669", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PredictionHead_7510", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 1024, "dot_share": 1.0, "bytes_old": 268963840, "rule_b": true}
+{"problem_id": "kernelbook/SineODE_1157", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NLKDifferenceOffset_17364", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 128, "dot_share": 0.5, "bytes_old": 151126784, "rule_b": false}
+{"problem_id": "kernelbook/PaddedMaxPool2d_328", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AvgPoolShortCut_8411", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RNNCell_17042", "ok": true, "K0": 256, "N0": 256, "dot_share": 0.5, "bytes_old": 268960768, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 8, "bytes_new": 671105024}
+{"problem_id": "kernelbook/SecondOrderInteraction_17200", "ok": false, "reason": "overshoots: K 20480 N 1024 at f=5", "K0": 4096, "N0": 1024, "dot_share": 0.5, "bytes_old": 41943040, "rule_b": true}
+{"problem_id": "kernelbook/series_decomp_16588", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Gaussian_Distance_8170", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BCE_LOSS_6005", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AvgPoolPadding_1708", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AddLayerNorm_2586", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SELayer_257", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 32, "dot_share": 0.5, "bytes_old": 134234432, "rule_b": false}
+{"problem_id": "kernelbook/CosineSimilarity_8255", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TripletLoss_2156", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PGNet_9289", "ok": true, "K0": 256, "N0": 256, "dot_share": 0.5, "bytes_old": 134744064, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 16, "batch_divisor": 2, "bytes_new": 1145062400}
+{"problem_id": "kernelbook/AsymmetricLoss_1723", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Critic_10078", "ok": true, "K0": 4096, "N0": 2048, "dot_share": 0.5, "bytes_old": 100679682, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 251682818}
+{"problem_id": "kernelbook/MLMTaskHead_4039", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 270540800, "rule_b": true}
+{"problem_id": "kernelbook/Up_9550", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TripletLoss_4328", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DiffLoss_14239", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2097152, "N0": 32, "dot_share": 1.0, "bytes_old": 268435456, "rule_b": true}
+{"problem_id": "kernelbook/L1_log_12243", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CosineAngularLoss_16281", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DiceLoss_3118", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AttentionLoss_16330", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MyBCEWithLogitsLoss_15557", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FocalLoss2d_5945", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/cal_L2Norm_2765", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ShuffleCatChunk_1956", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SEBlock_5517", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SequenceBias_2178", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GeneratorLoss_6142", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LocalNorm2d_16320", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SimpleSpatialEmbedding_6274", "ok": true, "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 134742016, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 2, "bytes_new": 880803840}
+{"problem_id": "kernelbook/SpatialAttention2d_9932", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/InstanceNormLayer_17770", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BatchSpectralShrinkage_5680", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Discriminator2_14404", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 0.496, "bytes_old": 100696066, "rule_b": false}
+{"problem_id": "kernelbook/FocalLoss_9714", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ChannelSpatialSELayer3D_13785", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 64, "dot_share": 0.0, "bytes_old": 268468866, "rule_b": false}
+{"problem_id": "kernelbook/NeuralAccumulatorCell_7926", "ok": true, "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 135266304, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 12, "batch_divisor": 2, "bytes_new": 956301312}
+{"problem_id": "kernelbook/ComplexConvTranspose2d_17426", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Attention_17406", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 128, "dot_share": 0.485, "bytes_old": 67175170, "rule_b": false}
+{"problem_id": "kernelbook/KLDiscCriterion_8657", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Attention_11029", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2048, "N0": 2048, "dot_share": 1.0, "bytes_old": 151068672, "rule_b": true}
+{"problem_id": "kernelbook/BerHuLoss_7444", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BCEFocalLoss_7049", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftExp_15743", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_16764", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LogCoshLoss_4093", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TransitionUpB_6082", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/AUXModule_2844", "ok": true, "K0": 128, "N0": 128, "dot_share": 1.0, "bytes_old": 134250752, "rule_b": false, "K": 5760, "N": 5760, "weight_mb": 66.4, "factor_features": 45, "batch_divisor": 8, "bytes_new": 821341440}
+{"problem_id": "kernelbook/ExponentialDecay_8705", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CartpoleDQN_6356", "ok": false, "reason": "overshoots: K 17408 N 512 at f=17", "K0": 1024, "N0": 512, "dot_share": 0.5, "bytes_old": 272635904, "rule_b": false}
+{"problem_id": "kernelbook/ConditionalEntropyLoss_13104", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/distLinear_14902", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 256, "dot_share": 1.0, "bytes_old": 134480384, "rule_b": false}
+{"problem_id": "kernelbook/HardAttn_9586", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 8, "dot_share": 1.0, "bytes_old": 134219792, "rule_b": false}
+{"problem_id": "kernelbook/NN_2layer_regression_6724", "ok": false, "reason": "overshoots: K 16896 N 512 at f=33", "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 135269378, "rule_b": false}
+{"problem_id": "kernelbook/SPPModule_14421", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Spatial_Attention_layer_15836", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 512, "N0": 512, "dot_share": 0.696, "bytes_old": 135299584, "rule_b": false}
+{"problem_id": "kernelbook/UnderfitNet_17600", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 0.5, "bytes_old": 83898368, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 352358400}
+{"problem_id": "kernelbook/FRM_3582", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 272633856, "rule_b": true}
+{"problem_id": "kernelbook/ResHead_5558", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 1024, "dot_share": 1.0, "bytes_old": 269488128, "rule_b": false}
+{"problem_id": "kernelbook/AnyHead_18398", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 1024, "dot_share": 1.0, "bytes_old": 134481920, "rule_b": false}
+{"problem_id": "kernelbook/ZPool_9819", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NaiveTorchNet_1836", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 256, "dot_share": 0.5, "bytes_old": 67371008, "rule_b": false}
+{"problem_id": "kernelbook/KDE_7676", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/kv_cache_ring_buffer/sliding_window_kv_ring_buffer_update__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/moe_expert_bincount/moe_capacity_dispatch_bincount__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/moe_expert_ffn_batched/moe_capacity_expert_ffn_gelu__m1_splitk", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/norm_gated/mamba2_gate_first_group_rmsnorm_outproj_2__m1_ragged", "ok": true, "K0": 8192, "N0": 4096, "dot_share": 1.0, "bytes_old": 329138176, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 329138176}
+{"problem_id": "authored/norm_residual_fusion/fused_add_rmsnorm_residual__m1_ragged", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/norm_residual_fusion/gemma_sandwich_norm_residual__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/quant_activation_per_token/int8_dynamic_per_token_w8a8_matmul__m1_ragged", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 332562432, "rule_b": true}
+{"problem_id": "authored/quant_fp8_amax_scaling/fp8_delayed_scaling_matmul_2__m1_ragged", "ok": true, "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 99098752, "rule_b": true, "K": 8192, "N": 8192, "weight_mb": 134.2, "factor_features": 2, "batch_divisor": 1, "bytes_new": 265306240}
+{"problem_id": "authored/ragged_segment_reduce/packed_segment_sum_mean_2__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_short_conv_gate/short_conv_silu_gate__m1_ragged", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "authored/ssm_short_conv_gate/ssm_short_conv_silu_gate__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/20_LeakyReLU__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/21_Sigmoid__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/22_Tanh__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/23_Softmax__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/25_Swish__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/28_HardSigmoid__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/31_ELU__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/32_HardTanh__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/35_GroupNorm___m1_ragged", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/44_Average_Pooling_1D__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/47_Sum_reduction_over_a_dimension__m1_ragged", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/48_Mean_reduction_over_a_dimension__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/49_Max_reduction_over_a_dimension__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/51_Argmax_over_a_dimension__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/52_Argmin_over_a_dimension__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/5_Matrix_scalar_multiplication__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/86_conv_depthwise_separable_2D__m1_batch", "ok": true, "K0": 128, "N0": 256, "dot_share": 0.966, "bytes_old": 268571136, "rule_b": false, "K": 2944, "N": 5888, "weight_mb": 69.3, "factor_features": 23, "batch_divisor": 8, "bytes_new": 841195008}
+{"problem_id": "kb/l1/89_cumsum__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/90_cumprod__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l1/93_masked_cumsum__m1_aux", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/33_Gemm_Scale_BatchNorm__m1_ragged", "ok": true, "K0": 8192, "N0": 8000, "dot_share": 1.0, "bytes_old": 295826432, "rule_b": false, "K": 8192, "N": 8000, "weight_mb": 262.1, "factor_features": 1, "batch_divisor": 1, "bytes_new": 295826432}
+{"problem_id": "kb/l2/36_ConvTranspose2d_Min_Sum_GELU_Add__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/62_Matmul_GroupNorm_LeakyReLU_Sum__m1_aux", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 302088192, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 302088192}
+{"problem_id": "kb/l2/74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/89_ConvTranspose3d_MaxPool_Softmax_Subtract_Swish_Max__m1_batch", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kb/l2/94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__m1_batch", "ok": true, "K0": 8192, "N0": 8192, "dot_share": 1.0, "bytes_old": 335675392, "rule_b": false, "K": 8192, "N": 8192, "weight_mb": 268.4, "factor_features": 1, "batch_divisor": 1, "bytes_new": 335675392}
+{"problem_id": "kernelbook/Tacotron2Loss_15891", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Critic_12128", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 0.485, "bytes_old": 109318400, "rule_b": false, "K": 7168, "N": 6144, "weight_mb": 88.1, "factor_features": 6, "batch_divisor": 1, "bytes_new": 718813440}
+{"problem_id": "kernelbook/ResidualBlock_4932", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Actor_9191", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142632960, "rule_b": true, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 671195136}
+{"problem_id": "kernelbook/OneDilate_11093", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MLPAttention_9503", "ok": false, "reason": "overshoots: K 16896 N 512 at f=33", "K0": 512, "N0": 512, "dot_share": 0.492, "bytes_old": 68682752, "rule_b": false}
+{"problem_id": "kernelbook/DiceLossV1_15248", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/StageBlock_5368", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/_Residual_Block_16661", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SOSLoss_7142", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ResConv2dLayer_2853", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1152, "N0": 128, "dot_share": 0.0, "bytes_old": 269026304, "rule_b": true}
+{"problem_id": "kernelbook/ANN_5457", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142614528, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 671121408}
+{"problem_id": "kernelbook/KLDivLoss_9895", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Actor_11647", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 16, "dot_share": 0.471, "bytes_old": 134226752, "rule_b": false}
+{"problem_id": "kernelbook/FocalLoss_9305", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ActQuant_PACT_6801", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Entropy_3076", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_9611", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SimCLRLoss_4832", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 2048, "N0": 8192, "dot_share": 1.0, "bytes_old": 67108864, "rule_b": true}
+{"problem_id": "kernelbook/DurationMSELoss_15303", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TimeEncode_18298", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/TripletMarginLoss_8554", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Policy_4403", "ok": true, "K0": 128, "N0": 64, "dot_share": 0.4, "bytes_old": 268518912, "rule_b": false, "K": 5760, "N": 2880, "weight_mb": 66.4, "factor_features": 45, "batch_divisor": 4, "bytes_new": 920931840}
+{"problem_id": "kernelbook/RON_5422", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 256, "N0": 64, "dot_share": 0.182, "bytes_old": 101778432, "rule_b": false}
+{"problem_id": "kernelbook/IMQSteinKernel_5388", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Attention_395", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 0.999, "bytes_old": 142872576, "rule_b": false, "K": 5120, "N": 4096, "weight_mb": 83.9, "factor_features": 4, "batch_divisor": 1, "bytes_new": 218775552}
+{"problem_id": "kernelbook/BWCEWLoss_1630", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SamePadConv2d_6951", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RNN_10187", "ok": true, "K0": 9216, "N0": 4096, "dot_share": 0.545, "bytes_old": 213925888, "rule_b": false, "K": 9216, "N": 4096, "weight_mb": 75.5, "factor_features": 1, "batch_divisor": 1, "bytes_new": 213925888}
+{"problem_id": "kernelbook/BWCEWLoss_3859", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BCEDiceLoss_4907", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CoordLoss_13253", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/my_Hingeloss_1635", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RMSE_15778", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DecInit_14710", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 4096, "N0": 4096, "dot_share": 1.0, "bytes_old": 201342976, "rule_b": false}
+{"problem_id": "kernelbook/HyperConv2d_7305", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ReduceDim_15580", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 272633856, "rule_b": true}
+{"problem_id": "kernelbook/scSE_3996", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 128, "N0": 256, "dot_share": 0.998, "bytes_old": 268502276, "rule_b": true}
+{"problem_id": "kernelbook/GaussionConvD_5105", "ok": true, "K0": 4096, "N0": 1024, "dot_share": 0.4, "bytes_old": 176160768, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 402653184}
+{"problem_id": "kernelbook/CharbonnierLoss_12806", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GRU_8485", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 0.667, "bytes_old": 135005696, "rule_b": false}
+{"problem_id": "kernelbook/Actor_4657", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 400, "dot_share": 0.564, "bytes_old": 67839720, "rule_b": true}
+{"problem_id": "kernelbook/BatchHardTripletLoss_15023", "ok": true, "K0": 4096, "N0": 8192, "dot_share": 1.0, "bytes_old": 134250496, "rule_b": true, "K": 4096, "N": 8192, "weight_mb": 134.2, "factor_features": 1, "batch_divisor": 1, "bytes_new": 134250496}
+{"problem_id": "kernelbook/LinearAverage_18045", "ok": true, "K0": 2048, "N0": 8192, "dot_share": 1.0, "bytes_old": 50331648, "rule_b": false, "K": 4096, "N": 16384, "weight_mb": 134.2, "factor_features": 2, "batch_divisor": 1, "bytes_new": 167772160}
+{"problem_id": "kernelbook/TripletLossDoubleMargin_1508", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GRUStep_8339", "ok": true, "K0": 2048, "N0": 1024, "dot_share": 0.333, "bytes_old": 79691776, "rule_b": false, "K": 8192, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 469762048}
+{"problem_id": "kernelbook/Conv2dDynamicSamePadding_13660", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/NeuralNet_4160", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142614528, "rule_b": false}
+{"problem_id": "kernelbook/Grad_hyper_15758", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Sinkhorn_Net_16387", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 32, "N0": 32, "dot_share": 0.97, "bytes_old": 33556672, "rule_b": false}
+{"problem_id": "kernelbook/ResizeConv1d_132", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Critic_4231", "ok": true, "K0": 256, "N0": 64, "dot_share": 0.798, "bytes_old": 268518148, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 64, "batch_divisor": 1, "bytes_new": 340820224}
+{"problem_id": "kernelbook/BCEFocalLoss_16817", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Hidden2Discrete_684", "ok": true, "K0": 1024, "N0": 4096, "dot_share": 1.0, "bytes_old": 83902464, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 335560704}
+{"problem_id": "kernelbook/Decoder_2633", "ok": true, "K0": 1024, "N0": 512, "dot_share": 0.5, "bytes_old": 71309312, "rule_b": false, "K": 6144, "N": 3072, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 553684992}
+{"problem_id": "kernelbook/ToRGB_4649", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ContrastiveEmbeddingLoss_16259", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Maxout_4302", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 142614528, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 671121408}
+{"problem_id": "kernelbook/SLP_14144", "ok": true, "K0": 4096, "N0": 1024, "dot_share": 1.0, "bytes_old": 150999040, "rule_b": true, "K": 16384, "N": 1024, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 201330688}
+{"problem_id": "kernelbook/DQN_3819", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 256, "N0": 128, "dot_share": 0.5, "bytes_old": 67374592, "rule_b": false}
+{"problem_id": "kernelbook/mfm_59", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/distLinear_7494", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 1024, "dot_share": 1.0, "bytes_old": 68159488, "rule_b": false}
+{"problem_id": "kernelbook/Charbonnier_1797", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Encoding_2367", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LinearI_Neg_7695", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 272633856, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 1140867072}
+{"problem_id": "kernelbook/Conv2dSameExport_16901", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/L1_Charbonnier_loss_5887", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LogVarLayer_17377", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LNN_10373", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 128, "dot_share": 1.0, "bytes_old": 67174400, "rule_b": false}
+{"problem_id": "kernelbook/ReduceBranch_15196", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/merge_layer_17261", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 1.0, "bytes_old": 272633856, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 1140867072}
+{"problem_id": "kernelbook/SoftJaccardLoss_17658", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/PartitionedLinear_4357", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.5, "bytes_old": 151003136, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 3, "batch_divisor": 1, "bytes_new": 553672704}
+{"problem_id": "kernelbook/UpsampleConvLayer_11372", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Encoding_5325", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 32, "dot_share": 0.5, "bytes_old": 134283392, "rule_b": true}
+{"problem_id": "kernelbook/ResBlock_7556", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.333, "bytes_old": 73410560, "rule_b": true, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 629207040}
+{"problem_id": "kernelbook/DiceLoss_2125", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/RMSELoss_1964", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SigmoidFocalClassificationLoss_3256", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/GridAttentionBlock_5956", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ContrastiveLoss_3514", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Copy_7863", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.5, "bytes_old": 102762496, "rule_b": false, "K": 6144, "N": 6144, "weight_mb": 75.5, "factor_features": 6, "batch_divisor": 1, "bytes_new": 679489536}
+{"problem_id": "kernelbook/co_peak_loss_6445", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SirenLayer_1356", "ok": false, "reason": "no feature-dimension CONFIG key", "K0": 512, "N0": 512, "dot_share": 1.0, "bytes_old": 135268352, "rule_b": false}
+{"problem_id": "kernelbook/SoftGeneratorAttention_2519", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/FiLMLayer_PreSin_6999", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.667, "bytes_old": 109076480, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 234930176}
+{"problem_id": "kernelbook/ConcatBlock_8276", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/OHEM_CrossEntroy_Loss_584", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/output_6021", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/CELoss_7357", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MaskedMSELoss_33", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/DDM_Decoder_8515", "ok": false, "reason": "a CONFIG key appears more than once", "K0": 512, "N0": 512, "dot_share": 0.471, "bytes_old": 68225600, "rule_b": false}
+{"problem_id": "kernelbook/CapsuleLoss_2967", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_9702", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/InstanceNormLayer_7450", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BCEDiceLoss_11735", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LayerNorm_11082", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LR_9130", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 128, "N0": 1, "dot_share": 1.0, "bytes_old": 268435976, "rule_b": false}
+{"problem_id": "kernelbook/LayerNorm_5644", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SelfAttention_8355", "ok": true, "K0": 1024, "N0": 1024, "dot_share": 0.998, "bytes_old": 138416128, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 4, "batch_divisor": 1, "bytes_new": 603996160}
+{"problem_id": "kernelbook/LIN_3874", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ContrastiveLoss_3665", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/LUConv_11290", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/adaILN_10739", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SpatialGC_5230", "ok": false, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", "K0": 512, "N0": 128, "dot_share": 0.5, "bytes_old": 268961792, "rule_b": false}
+{"problem_id": "kernelbook/Backprojection_10913", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/MockOpticalFlowModel_16159", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/SoftmaxAllocator_16672", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ResidualLinear_14910", "ok": true, "K0": 2048, "N0": 2048, "dot_share": 0.5, "bytes_old": 167788544, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 2, "batch_divisor": 1, "bytes_new": 402685952}
+{"problem_id": "kernelbook/EntMinLoss_3887", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/ProbabilityBilinear_14907", "ok": false, "reason": "overshoots: K 65536 N 256 at f=1", "K0": 65536, "N0": 256, "dot_share": 0.996, "bytes_old": 83886080, "rule_b": true}
+{"problem_id": "kernelbook/SoftDiceLoss_5637", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/BCNN_15970", "ok": false, "reason": "no non-batched matmul"}
+{"problem_id": "kernelbook/Attention_969", "ok": true, "K0": 512, "N0": 512, "dot_share": 0.5, "bytes_old": 270536704, "rule_b": false, "K": 4096, "N": 4096, "weight_mb": 67.1, "factor_features": 8, "batch_divisor": 2, "bytes_new": 671121408}
+{"problem_id": "kernelbook/CharbonnierLoss_15458", "ok": false, "reason": "no non-batched matmul"}
