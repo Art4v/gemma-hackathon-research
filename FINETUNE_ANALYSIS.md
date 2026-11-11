@@ -141,7 +141,9 @@ Matmul/Gemm/BMM-led k-tasks (my count from `bare.jsonl` and `verdicts.jsonl` on 
 - Literal tile sizes in matmul targets range from 16 to 4096.
 - 586 v4 targets (20%) and 240 v6 targets (18%) choose a block with
   `X if n % X == 0 else <whole dim>`. At exam size the fallback silently becomes "whole dimension
-  in VMEM".
+  in VMEM". Aarav's agent counts 781 in v4 with a broader regex, so the share is 20 to 25%.
+- The 999 `repair_injected` targets are the same verified kernels as `single` targets, so they
+  double the weight of whatever tiling those targets carry (Aarav's agent).
 
 **3.4 v6 trains on slow kernels.** 518 of 1,332 v6 targets (39%) are below the 0.7x bar that
 defines `pass`, and 157 are below 0.3x. v4 had 47 of 2,983. Among K-accumulating matmul targets in
@@ -180,8 +182,9 @@ Ranked.
       first, then the TPU.
    3. A pass is a `single` row at exam scale for zero teacher tokens.
    4. A `vmem` verdict is a real repair chain: a kernel that was right at small size, the oracle's
-      real feedback, then the fix. That is the model's own JAXBench failure, and it is the
-      real-feedback repair we have 241 of against 999 injected.
+      real feedback, then the fix. It is the same failure v4 shows on JAXBench, and it is the
+      real-feedback repair we have 241 of against 999 injected. It is the teacher's failure, not
+      the student's own output, so the writeup must not call it on-policy data (Aarav's agent).
    5. Only the failures go to a constructor, as a repair turn with that feedback.
 2. **One policy across every new target.** The same helper, one `vmem_limit_bytes` (about
    100 MiB), tiles of 1024 or more where the dimension allows. Choose the tile sizes with a small
@@ -190,7 +193,9 @@ Ranked.
    block spans all of N.
 4. **Clean the base set.** Drop sub-bar matmul rows, at least the 157 below 0.3x. Decide v4 plus
    v6 against v6 alone; v6 alone loses the `vmem_limit_bytes` habit.
-5. **Hold out 25 to 30 scaled problems as a dev set**, never trained. Score turn 0 only. It shows
+5. **Hold out 25 to 30 scaled problems as a dev set**, never trained. Hold out whole problems,
+   every small and scaled variant, or the dev score partly measures recall of a memorised kernel
+   (Aarav's agent). Score turn 0 only. It shows
    whether v7 fixed VMEM before the one JAXBench run, and it is a legal way to choose between v7
    variants.
 6. **Stop** plan variants, self-sampling on the old pool, conv tasks and new production-operator
