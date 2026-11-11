@@ -1,0 +1,16 @@
+{"id": "kimiKN0/authored/norm_gated/mamba2_gate_first_group_rmsnorm_outproj__kn", "verdict": "over", "total_mib": 190.02, "limit_mib": 110.0, "blocks2x_mib": 185.02, "scratch_mib": 5.0, "error": null}
+{"id": "kimiKN0/authored/quant_fp8_amax_scaling/fp8_delayed_scaling_matmul_2__kn", "verdict": "fits", "total_mib": 40.01, "limit_mib": 100.0, "blocks2x_mib": 24.01, "scratch_mib": 16.0, "error": null}
+{"id": "kimiKN0/github/siglip_sigmoid_contrastive_loss__kn", "verdict": "fits", "total_mib": 36.02, "limit_mib": 64.0, "blocks2x_mib": 36.02, "scratch_mib": 0.0, "error": null}
+{"id": "kimiKN0/kernelbook/AP_122__kn", "verdict": "over", "total_mib": 137.19, "limit_mib": 96.0, "blocks2x_mib": 137.19, "scratch_mib": 0.0, "error": null}
+{"id": "kimiKN0/kernelbook/ArcMarginProduct_subcenter_1135__kn", "verdict": "over", "total_mib": 612.5, "limit_mib": 64.0, "blocks2x_mib": 539.0, "scratch_mib": 73.5, "error": null}
+{"id": "kimiKN0/kernelbook/AttentionPooling_4576__kn", "verdict": "over", "total_mib": 315.49, "limit_mib": 100.0, "blocks2x_mib": 313.74, "scratch_mib": 1.75, "error": null}
+{"id": "kimiKN0/kernelbook/BarlowTwinLoss_6950__kn", "verdict": "fits", "total_mib": 24.0, "limit_mib": 64.0, "blocks2x_mib": 8.0, "scratch_mib": 16.0, "error": null}
+{"id": "kimiKN0/kernelbook/ChannelSELayer3D_13789__kn", "verdict": "over", "total_mib": 4287.98, "limit_mib": 4048.0, "blocks2x_mib": 4280.11, "scratch_mib": 7.88, "error": null}
+{"id": "kimiKN0/kernelbook/Copy_2209__kn", "verdict": "over", "total_mib": 182.02, "limit_mib": 64.0, "blocks2x_mib": 182.02, "scratch_mib": 0.0, "error": null}
+{"id": "kimiKN0/kernelbook/GaussianParamNet_4116__kn", "verdict": "over", "total_mib": 312.02, "limit_mib": 64.0, "blocks2x_mib": 312.02, "scratch_mib": 0.0, "error": null}
+{"id": "kimiKN0/kernelbook/GlobalAttention_2860__kn", "verdict": "over", "total_mib": 138.06, "limit_mib": 64.0, "blocks2x_mib": 136.06, "scratch_mib": 2.0, "error": null}
+{"id": "kimiKN0/kernelbook/LinearMaxPoolLinearModel_4351__kn", "verdict": "fits", "total_mib": 82.0, "limit_mib": 100.0, "blocks2x_mib": 74.0, "scratch_mib": 8.0, "error": null}
+{"id": "kimiKN0/kernelbook/OrthogonalLoss_9921__kn", "verdict": "fits", "total_mib": 25.53, "limit_mib": 64.0, "blocks2x_mib": 24.02, "scratch_mib": 1.51, "error": null}
+{"id": "kimiKN0/kernelbook/PKT_5786__kn", "verdict": "fits", "total_mib": 40.07, "limit_mib": 64.0, "blocks2x_mib": 40.06, "scratch_mib": 0.01, "error": null}
+{"id": "kimiKN0/kernelbook/ReadUnit_4676__kn", "verdict": "over", "total_mib": 264.68, "limit_mib": 64.0, "blocks2x_mib": 264.48, "scratch_mib": 0.2, "error": null}
+{"id": "kimiKN0/kernelbook/VNMaxPool_3385__kn", "verdict": "over", "total_mib": 290.75, "limit_mib": null, "blocks2x_mib": 286.84, "scratch_mib": 3.91, "error": null}
