@@ -5,7 +5,7 @@
 Families (the two designs v4 lacks on the matmul k-tasks, FINETUNE_ANALYSIS.md section 3.2):
   matmul_epilogue, bmm_epilogue  K tiled with an f32 accumulator in scratch, the epilogue on the last K step (rule A)
   row_reduction_matmul           the weight block spans all of N, so the row reduction sees whole rows (rule B)
-Sizes: K and N in {4096, 8192}, M in {1024, 2048, 4096}, weight >= 64 MB. The kernels pick their tiles at trace time from one policy
+Sizes: K and N in {4096, 8192}, M in {2048, 4096} for matmul and bmm ({1024, 2048, 4096} for row reductions), weight >= 64 MB, inputs <= 800 MB. The kernels pick their tiles at trace time from one policy
 (_tile(n, pref): the largest power of two <= pref dividing n) and set one vmem_limit_bytes, so the same text runs at every size.
 
 Pipeline, all CPU, writes dataset/v7_gen/:
@@ -28,9 +28,15 @@ from v3_generate import HEADER_K, REDUCE_KEEP, _chain_names, apply_lines, epilog
 from v3_verify import verify  # noqa: E402
 
 OUT = DATASET / "v7_gen"
-VMEM_LIMIT_MIB = 100
-MATMUL_TILES = (1024, 2048, 2048)   # (tm, tn, tk) preferred; f32: 2 x (8 + 16 + 8) + 8 acc = 72 MiB
-ROWRED_TILES = (256, 512)           # (tm, tk) preferred; f32 at N = 8192: 2 x (0.5 + 16 + 8) + 8 acc = 57 MiB
+# Policy from three v6e sweeps on Karthik's project (#5, Nov 11, oracle c9a07d9298a1). One limit for every kernel: 124 MiB, because the
+# f32 row reduction at N = 8192 only clears the bar with tm = 1024 (114 MiB est., 1.01x); 100 MiB caps it at 0.58x.
+VMEM_LIMIT_MIB = 124
+MATMUL_TILES = (2048, 2048, 1024)   # (tm, tn, tk): f32 0.87x at M 2048, 1.31x at M 4096; 2 x (8 + 8 + 16) + 16 acc = 80 MiB
+
+
+def rowred_prefs(n: int) -> dict:
+    """Row reduction (tm, tk) by N: N 4096 -> (1024, 512), 1.23x at 68 MiB; N 8192 -> (1024, 256), 1.01x at 114 MiB. tk never below 128."""
+    return {"m": 1024, "k": 512 if n <= 4096 else 256}
 # CPU numerics run at a shrunken CONFIG: each axis that is tiled at full size keeps exactly 2 tiles (dim = 2 x preferred tile), so the
 # accumulator reset, the last-step epilogue and every index map are exercised across a tile boundary (the v4 `wrong` bugs only show then).
 
@@ -57,7 +63,7 @@ def _check_steps(full: dict, small: dict, prefs: dict) -> None:
         if full[ax] // _tile(full[ax], p) >= 2:
             assert small[ax] // _tile(small[ax], p) >= 2, f"axis {ax}: {small[ax]} gives one tile of {_tile(small[ax], p)} at the shrunken size"
 
-POLICY = (f"\nVMEM_LIMIT = {VMEM_LIMIT_MIB} * 1024 * 1024  # one scoped VMEM limit for every kernel (v6e has 128 MiB)\n\n\n"
+POLICY = (f"\nVMEM_LIMIT = {VMEM_LIMIT_MIB} * 1024 * 1024  # one scoped VMEM limit for every kernel (v6e has 128 MiB of VMEM)\n\n\n"
           "def _tile(n, pref):\n    \"\"\"The largest power-of-two block <= pref that divides n (n itself when n <= pref).\"\"\"\n"
           "    t = min(pref, n)\n    while n % t:\n        t //= 2\n    return t\n")
 
@@ -66,12 +72,13 @@ def _dtype(rng) -> tuple:
     return ("jnp.bfloat16", 2) if rng.random() < 0.4 else ("jnp.float32", 4)
 
 
-def _sizes(rng, nbytes: int, batched: bool) -> tuple:
+def _sizes(rng, nbytes: int, batched: bool, ms: tuple = (1024, 2048, 4096)) -> tuple:
+    """Inputs capped at 800 MB: larger ones overran the 6 GB host-memory cap of the CPU check (9 of 300 in the first run)."""
     while True:
         K, N = rng.choice((4096, 8192)), rng.choice((4096, 8192))
-        M = rng.choice((1024, 2048) if batched else (1024, 2048, 4096))
+        M = rng.choice(ms)
         B = rng.choice((2, 4)) if batched else 1
-        if K * N * nbytes >= 64 * 2 ** 20 and B * (M * K + K * N + M * N) * nbytes <= 1200 * 2 ** 20:
+        if K * N * nbytes >= 64 * 2 ** 20 and B * (M * K + K * N + M * N) * nbytes <= 800 * 2 ** 20:
             return B, M, N, K
 
 
@@ -84,7 +91,7 @@ def _dot(dtype: str) -> str:
 def matmul_epilogue(i: int, rng) -> dict:
     batched = rng.random() < 0.25
     dtype, nb = _dtype(rng)
-    B, M, N, K = _sizes(rng, nb, batched)
+    B, M, N, K = _sizes(rng, nb, batched, ms=(2048, 4096))  # the sweep: an output tile under 2048 x 2048 stays below 0.7x on f32
     bias = rng.random() < 0.3
     chain = epilogue(rng)
     pre = "c['batch'], " if batched else ""
@@ -133,15 +140,16 @@ def row_reduction_matmul(i: int, rng) -> dict:
     doc = f"Matmul -> {_chain_names(chain)} over the last axis."
     name = f"gen7_rowreduce_{i}"
     cfg = {"name": name, "m": M, "n": N, "k": K}
-    prefs = dict(zip("mk", ROWRED_TILES))
-    dims = _shrink({"m": M, "k": K}, prefs)
-    _check_steps({"m": M, "k": K}, dims, prefs)
-    small = {**cfg, **dims, "n": min(N, 2048)}  # N stays wider than any plausible N tile, so a kernel reducing over part of a row fails here
+    sn = min(N, 2048)  # N stays wider than any plausible N tile, so a kernel reducing over part of a row fails here
+    dims = _shrink({"m": M, "k": K}, rowred_prefs(sn))  # the shrunken run uses the prefs the kernel will pick at the shrunken N
+    _check_steps({"m": M, "k": K}, dims, rowred_prefs(sn))
+    small = {**cfg, **dims, "n": sn}
     kern = ("\n\ndef _kernel(a_ref, b_ref, o_ref, acc):\n    @pl.when(pl.program_id(1) == 0)\n    def _():\n        acc[...] = jnp.zeros_like(acc)\n"
             f"    acc[...] += {_dot(dtype)}\n\n"
             "    @pl.when(pl.program_id(1) == pl.num_programs(1) - 1)\n    def _():\n        y = acc[...]\n" + apply_lines(chain, "        ") + "        o_ref[...] = y.astype(o_ref.dtype)\n")
-    tm, tk = ROWRED_TILES
-    code = (f"{HEADER_K}{POLICY}{kern}\n\ndef workload(a, b):\n    M, K = a.shape\n    N = b.shape[1]\n    tm, tk = _tile(M, {tm}), _tile(K, {tk})\n"
+    code = (f"{HEADER_K}{POLICY}{kern}\n\ndef workload(a, b):\n    M, K = a.shape\n    N = b.shape[1]\n"
+            f"    # rows per block decide the speed; at N = 8192 the whole-row blocks need a smaller K tile to fit\n"
+            f"    tm, tk = _tile(M, 1024), _tile(K, 512 if N <= 4096 else 256)\n"
             f"    # the weight block spans all of N: the row reduction must see whole rows\n"
             f"    return pl.pallas_call(\n        _kernel,\n        out_shape=jax.ShapeDtypeStruct((M, {Nout}), a.dtype),\n        grid=(M // tm, K // tk),\n"
             f"        in_specs=[pl.BlockSpec((tm, tk), lambda i, l: (i, l)), pl.BlockSpec((tk, N), lambda i, l: (l, 0))],\n"
@@ -174,7 +182,7 @@ def run_filter(script: str, problems: pathlib.Path, python: str | None) -> None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--n", type=int, default=300); ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--python", default=None); ap.add_argument("--max-mib", type=float, default=90.0, help="drop a kernel whose estimated VMEM exceeds this")
+    ap.add_argument("--python", default=None); ap.add_argument("--max-mib", type=float, default=116.0, help="drop a kernel whose estimated VMEM exceeds this (114 MiB ran clean against the 124 MiB limit)")
     a = ap.parse_args(argv)
     log = lambda m: print(m, flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
