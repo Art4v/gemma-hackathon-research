@@ -1,0 +1,19 @@
+{
+ "rows": 616,
+ "kinds": {
+  "unsolved_so_far": 934,
+  "single": 380,
+  "correct_slow": 236,
+  "a1_harness_oom": 121,
+  "no_attempt1_verdict": 1
+ },
+ "by_source_kind": {
+  "authored/single": 32,
+  "authored/correct_slow": 18,
+  "kernelbench/single": 45,
+  "kernelbench/correct_slow": 34,
+  "kernelbook/correct_slow": 184,
+  "kernelbook/single": 302,
+  "github/single": 1
+ }
+}
