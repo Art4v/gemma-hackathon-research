@@ -3,8 +3,8 @@
 {"id": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_update_2__shape0.shape_variant", "original": 12595200, "variant": 10498048}
 {"id": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_update_2__shape1.shape_variant", "original": 12595200, "variant": 6303744}
 {"id": "authored__kv_quantized_dequant_matmul__int8_per_channel_dequant_matmul__shape1.shape_variant", "original": 44304384, "variant": 24250368}
-{"id": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine__shape0.shape_variant", "original": 136839168, "variant": 139460608}
-{"id": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine__shape1.shape_variant", "original": 136839168, "variant": 68419584}
+{"id": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine__shape0.shape_variant", "original": 7342080, "variant": 6817792}
+{"id": "authored__moe_capacity_dispatch__moe_top1_capacity_dispatch_combine__shape1.shape_variant", "original": 7342080, "variant": 3672064}
 {"id": "authored__moe_expert_bincount__moe_capacity_bincount_dispatch__shape0.shape_variant", "original": 4390912, "variant": 4390912}
 {"id": "authored__moe_expert_bincount__moe_capacity_dispatch_mask__shape0.shape_variant", "original": 12621824, "variant": 12621824}
 {"id": "authored__moe_shared_plus_routed__qwen_moe_shared_plus_routed_combine__shape0.shape_variant", "original": 63414272, "variant": 63168512}
@@ -56,8 +56,8 @@
 {"id": "authored__swiglu_variant_geglu__geglu_mlp_fused_gate_up__shape1.shape_variant", "original": 29360128, "variant": 14680064}
 {"id": "kb__l1__99_TripletMarginLoss__shape0.shape_variant", "original": 6291464, "variant": 6291464}
 {"id": "kb__l1__99_TripletMarginLoss__shape1.shape_variant", "original": 6291464, "variant": 6291464}
-{"id": "kb__l2__50_ConvTranspose3d_Scaling_AvgPool_BiasAdd_Scaling__shape0.shape_variant", "original": 12721424, "variant": 6429968}
-{"id": "kb__l2__50_ConvTranspose3d_Scaling_AvgPool_BiasAdd_Scaling__shape1.shape_variant", "original": 12721424, "variant": 6429968}
+{"id": "kb__l2__50_ConvTranspose3d_Scaling_AvgPool_BiasAdd_Scaling__shape0.shape_variant", "original": 12721408, "variant": 6429952}
+{"id": "kb__l2__50_ConvTranspose3d_Scaling_AvgPool_BiasAdd_Scaling__shape1.shape_variant", "original": 12721408, "variant": 6429952}
 {"id": "kb__l2__6_Conv3d_Softmax_MaxPool_MaxPool__shape0.shape_variant", "original": 8633472, "variant": 8511040}
 {"id": "kb__l2__6_Conv3d_Softmax_MaxPool_MaxPool__shape1.shape_variant", "original": 8633472, "variant": 4324480}
 {"id": "kb__l2__74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__shape0.shape_variant", "original": 6526976, "variant": 4313088}
