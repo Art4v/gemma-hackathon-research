@@ -19,6 +19,7 @@ BATCHY = re.compile(r"^(batch|batch_size|bs|B|n_batch|num_batch|batches|n_sample
                     r"T|S|L|length|rows|num_rows|seq1|seq2)$")
 REDUCE = {"reduce_sum", "reduce_max", "reduce_min", "argmax", "argmin", "reduce_prod", "cumsum", "cumlogsumexp", "cummax"}
 HBM, TOT_HI = 28e9, 1.2e9
+KN_MIN, SUFFIX = int(os.environ.get("KN_MIN", "4096")), os.environ.get("KN_SUFFIX", "__kn")
 
 
 def load(code):
@@ -85,7 +86,7 @@ def patch(code, newvals):
         if len(pat.findall(block)) != 1:
             return None
         block = pat.sub(lambda mm: mm.group(1) + str(val), block)
-    block = re.sub(r"(['\"]name['\"]\s*:\s*['\"])([^'\"]+)(['\"])", lambda mm: mm.group(1) + mm.group(2) + "__kn" + mm.group(3), block, count=1)
+    block = re.sub(r"(['\"]name['\"]\s*:\s*['\"])([^'\"]+)(['\"])", lambda mm: mm.group(1) + mm.group(2) + SUFFIX + mm.group(3), block, count=1)
     return code[:a] + block + code[b:]
 
 
@@ -102,7 +103,8 @@ def main():
     feats = {k: v for k, v in ints.items() if FEAT.match(k)}
     base = {"K0": K0, "N0": N0, "dot_share": round(share, 3), "bytes_old": b0, "rule_b": rb0}
     if not feats:
-        print(json.dumps({"ok": False, "reason": "no feature-dimension CONFIG key", **base})); return
+        res = perturb(code, ints, base, K0, N0)
+        print(json.dumps(res if res else {"ok": False, "reason": "no feature-dimension CONFIG key", **base})); return
     for f in range(1, 65):
         newf = {k: v * f for k, v in feats.items()}
         for g in (1, 2, 4, 8, 16, 32, 64, 128):
@@ -126,14 +128,75 @@ def main():
             if not d:
                 break
             K, N = d[0], d[1]
-            if 4096 <= max(K, N) <= 16384 and K * N * d[2] >= 64e6:
+            if KN_MIN <= max(K, N) <= 16384 and K * N * d[2] >= 64e6:
                 print(json.dumps({"ok": True, **base, "K": K, "N": N, "weight_mb": round(K * N * d[2] / 1e6, 1), "factor_features": f,
                                   "batch_divisor": g, "rule_b": rb, "bytes_new": b, "code": nc}))
                 return
             if max(K, N) > 16384:
-                print(json.dumps({"ok": False, "reason": f"overshoots: K {K} N {N} at f={f}", **base})); return
+                res = perturb(code, ints, base, K0, N0)
+                print(json.dumps(res if res else {"ok": False, "reason": f"overshoots: K {K} N {N} at f={f}", **base})); return
             break
-    print(json.dumps({"ok": False, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", **base}))
+    res = perturb(code, ints, base, K0, N0)
+    print(json.dumps(res if res else {"ok": False, "reason": "no factor reaches K/N >= 4096 with weight >= 64MB within 1.2GB inputs", **base}))
+
+
+def perturb(code, ints, base, K0, N0):
+    """Fallback (Karthik's item 1): find the keys by their effect, not their name. Double each int alone and re-trace: a key that changes
+    the main matmul's K is a K-key, one that changes N an N-key, one that changes only input bytes a batch key. Then grow K-keys and N-keys by
+    separate powers of two (so skinny matmuls need not overshoot) and shrink batch keys if the inputs get too big."""
+    kk, nk, bk = [], [], []
+    b0 = base["bytes_old"]
+    for k, v in ints.items():
+        nc = patch(code, {k: v * 2})
+        if nc is None:
+            continue
+        try:
+            m2 = load(nc); d, _ = analyze(m2); b = nbytes(m2)
+        except Exception:
+            continue
+        if not d:
+            continue
+        if d[0] != K0:
+            kk.append(k)
+        if d[1] != N0:
+            nk.append(k)
+        if d[0] == K0 and d[1] == N0 and b != b0:
+            bk.append(k)
+    if not kk and not nk:
+        return None
+    pw = [1, 2, 4, 8, 16, 32, 64]
+    for fk in pw:
+        for fn in pw:
+            if fk == fn == 1:
+                continue
+            vals = {}
+            for k in set(kk) | set(nk):
+                f = fk if k in kk and k not in nk else fn if k in nk and k not in kk else max(fk, fn)
+                vals[k] = ints[k] * f
+            for g in (1, 2, 4, 8, 16, 32, 64, 128):
+                newb = {k: ints[k] // g for k in bk if ints[k] % g == 0 and ints[k] // g >= 1} if g > 1 else {}
+                if g > 1 and not newb:
+                    break
+                nc = patch(code, {**vals, **newb})
+                if nc is None:
+                    return None
+                try:
+                    m2 = load(nc); b = nbytes(m2)
+                except Exception:
+                    break
+                if b > TOT_HI or 3 * b > HBM:
+                    continue
+                try:
+                    d, rb = analyze(m2)
+                    jax.eval_shape(m2.workload, *jax.eval_shape(m2.create_inputs))
+                except Exception:
+                    break
+                if d and KN_MIN <= max(d[0], d[1]) <= 16384 and d[0] * d[1] * d[2] >= 64e6:
+                    return {"ok": True, **base, "K": d[0], "N": d[1], "weight_mb": round(d[0] * d[1] * d[2] / 1e6, 1), "factor_features": max(fk, fn),
+                            "factor_k": fk, "factor_n": fn, "batch_divisor": g, "rule_b": rb, "bytes_new": b, "via": "perturbation", "code": nc}
+                break
+    return None
+
 
 
 main()

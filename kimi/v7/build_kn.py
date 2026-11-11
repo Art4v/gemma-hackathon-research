@@ -11,7 +11,7 @@ PY = "/Users/hrudaynara/Projects/gemma-dataset-gen/dataset/.venv/bin/python"
 sys.path.insert(0, "/Users/hrudaynara/Projects/gemma-dataset-claude/dataset/scripts")
 from render_chat import render_problem  # noqa: E402
 
-ap = argparse.ArgumentParser(); ap.add_argument("--only", nargs="*"); ap.add_argument("--workers", type=int, default=8); a = ap.parse_args()
+ap = argparse.ArgumentParser(); ap.add_argument("--only", nargs="*"); ap.add_argument("--workers", type=int, default=8); ap.add_argument("--kn-min", type=int, default=4096); ap.add_argument("--suffix", default="__kn"); ap.add_argument("--tag", default=""); a = ap.parse_args()
 L = lambda f: {l.strip() for l in open(W / "v6" / f) if l.strip() and not l.startswith("#")}
 FLAG = L("exclude_hard.txt") | L("flag_unsure.txt") | L("rule3_families.txt") | L("flag_generic_stacks.txt") | L("flag_generic_stacks_new.txt")
 AARAV_DROPS = {"kernelbook/Sentence_Maxpool_14501", "kernelbook/MetaBilinear_711", "kernelbook/CPC_15255", "kernelbook/QMaxPooling2d_9618"}
@@ -38,7 +38,7 @@ def one(c):
     pid, code, kernel, row = c
     try:
         p = subprocess.run([PY, str(V7 / "scale_kn_one.py")], input=json.dumps({"code": code}), capture_output=True, text=True, timeout=300,
-                           env={"JAX_PLATFORMS": "cpu", "PATH": "/usr/bin:/bin"})
+                           env={"JAX_PLATFORMS": "cpu", "PATH": "/usr/bin:/bin", "KN_MIN": str(a.kn_min), "KN_SUFFIX": a.suffix})
         line = [x for x in p.stdout.splitlines() if x.startswith("{")]
         return c, (json.loads(line[-1]) if line else {"ok": False, "reason": "no output: " + p.stderr[-200:]})
     except subprocess.TimeoutExpired:
@@ -59,20 +59,20 @@ with cf.ThreadPoolExecutor(a.workers) as ex:
             if d.get("ok"):
                 stat["ok_but_matmul_share<0.5"] += 1; stat["ok"] -= 1
             continue
-        u = user[pid]; nc = d["code"]; npid = pid + "__kn"
-        meta = {"problem_id": npid, "task_name": u["task_name"] + "__kn", "source": u["source"], "family_id": u["family_id"], "set": "e4_kn",
+        u = user[pid]; nc = d["code"]; npid = pid + a.suffix
+        meta = {"problem_id": npid, "task_name": u["task_name"] + a.suffix, "source": u["source"], "family_id": u["family_id"], "set": "e4_kn",
                 "scaled_from": pid, "ref_sha256": hashlib.sha256(nc.encode()).hexdigest()}
         refs.append({**meta, "ref_code": nc, "kn": {k: d[k] for k in ("K0", "N0", "K", "N", "weight_mb", "factor_features", "batch_divisor",
                                                                      "rule_b", "dot_share", "bytes_old", "bytes_new")},
                      "orig_kind": row["kind"], "orig_speed": row.get("speed_vs_xla")})
-        probs.append({**meta, "problem_file": str(V7 / "kn_refs.jsonl"), "user": render_problem(nc)})
+        probs.append({**meta, "problem_file": str(V7 / f"kn_refs{a.tag}.jsonl"), "user": render_problem(nc)})
         items.append({"id": "kimiKN0/" + npid, "task": meta["task_name"], "ref_code": nc, "code": kernel})
-(V7 / "kn_log.jsonl").write_text("".join(json.dumps(x) + "\n" for x in log))
-(V7 / "kn_refs.jsonl").write_text("".join(json.dumps(x) + "\n" for x in refs))
-(V7 / "kn_problems.jsonl").write_text("".join(json.dumps(x) + "\n" for x in probs))
-(V7 / "kn_items_existing.jsonl").write_text("".join(json.dumps(x) + "\n" for x in items))
+(V7 / f"kn_log{a.tag}.jsonl").write_text("".join(json.dumps(x) + "\n" for x in log))
+(V7 / f"kn_refs{a.tag}.jsonl").write_text("".join(json.dumps(x) + "\n" for x in refs))
+(V7 / f"kn_problems{a.tag}.jsonl").write_text("".join(json.dumps(x) + "\n" for x in probs))
+(V7 / f"kn_items_existing{a.tag}.jsonl").write_text("".join(json.dumps(x) + "\n" for x in items))
 # dev slice: ~15% by hash, at least 25, stratified so rule-B problems are represented; never trained on
 dev = sorted(r["problem_id"] for r in refs if zlib.crc32(r["problem_id"].encode()) % 100 < 15)
-(V7 / "kn_dev_ids.txt").write_text("# v7 held-out dev slice (weight-scaled problems never trained on)\n" + "".join(p + "\n" for p in dev))
+(V7 / f"kn_dev_ids{a.tag}.txt").write_text("# v7 held-out dev slice (weight-scaled problems never trained on)\n" + "".join(p + "\n" for p in dev))
 print("KN BUILD DONE:", len(refs), "variants of", len(cand), dict(stat), "| rule_b", sum(r["kn"]["rule_b"] for r in refs),
       "| weight MB median", sorted(r["kn"]["weight_mb"] for r in refs)[len(refs) // 2] if refs else None, "| dev", len(dev), flush=True)
