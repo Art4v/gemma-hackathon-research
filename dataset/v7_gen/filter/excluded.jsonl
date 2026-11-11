@@ -1,0 +1,10 @@
+{"at": "2026-11-11T19:42:20+00:00", "problem_id": "gen7__matmul_epilogue__00051", "reason": "contamination:opchain:37k_Matmul_Swish_Scaling"}
+{"at": "2026-11-11T19:42:20+00:00", "problem_id": "gen7__matmul_epilogue__00072", "reason": "contamination:opchain:37k_Matmul_Swish_Scaling"}
+{"at": "2026-11-11T19:44:18+00:00", "problem_id": "gen7__matmul_epilogue__00119", "reason": "contamination:neardup:41k_Gemm_Add_ReLU:j=0.453,r=0.806"}
+{"at": "2026-11-11T19:44:20+00:00", "problem_id": "gen7__matmul_epilogue__00122", "reason": "contamination:neardup:50k_Matmul_GELU_Softmax:j=0.402,r=0.8"}
+{"at": "2026-11-11T19:45:50+00:00", "problem_id": "gen7__row_reduction_matmul__00029", "reason": "contamination:neardup:36k_Matmul_Sigmoid_Sum:j=0.402,r=0.806"}
+{"at": "2026-11-11T19:45:57+00:00", "problem_id": "gen7__row_reduction_matmul__00036", "reason": "contamination:neardup:36k_Matmul_Sigmoid_Sum:j=0.423,r=0.802"}
+{"at": "2026-11-11T19:46:02+00:00", "problem_id": "gen7__row_reduction_matmul__00041", "reason": "contamination:neardup:36k_Matmul_Sigmoid_Sum:j=0.407,r=0.803"}
+{"at": "2026-11-11T19:47:04+00:00", "problem_id": "gen7__row_reduction_matmul__00104", "reason": "contamination:neardup:36k_Matmul_Sigmoid_Sum:j=0.384,r=0.801"}
+{"at": "2026-11-11T19:47:05+00:00", "problem_id": "gen7__row_reduction_matmul__00105", "reason": "contamination:neardup:36k_Matmul_Sigmoid_Sum:j=0.439,r=0.811"}
+{"at": "2026-11-11T19:47:13+00:00", "problem_id": "gen7__row_reduction_matmul__00093", "reason": "duplicate:gen7__row_reduction_matmul__00008"}

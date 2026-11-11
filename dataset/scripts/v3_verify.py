@@ -27,6 +27,7 @@ import sigpure
 jax, jnp, np, tc = o.jax, o.jnp, o.np, o.tc
 signal.signal(signal.SIGALRM, tc._alarm)
 BUDGET = int(sys.argv[1])
+NUMERICS = len(sys.argv) < 3 or sys.argv[2] != "no-numerics"  # v7_gen checks numerics on a shrunken reference instead
 # Some lowering rules ask the device for its TPU spec, and the host device here is a CPU: answer with one v6e core, the chip the oracle judges on.
 from jax._src.pallas.mosaic import tpu_info
 tpu_info.registry["cpu"] = lambda: tpu_info.get_tpu_info_for_chip(tpu_info.ChipVersion.TPU_V6E, 1)
@@ -63,6 +64,8 @@ def check(it):
         jax.jit(cand.workload, static_argnums=t.static).trace(*t.abstract).lower(lowering_platforms=("tpu",))
         r["lowered"] = True
         jax.clear_caches()
+        if not NUMERICS:
+            return {**r, "ok": True, "stage": "done", "numerics": "skipped"}
         r["stage"] = "numerics"
         fps, per, state = [], [], {"precision": "f32_highest", "failed": []}
         with o.interpret(True):
@@ -112,15 +115,16 @@ for it in json.load(open("items.json")):
 '''
 
 
-def run_batch(batch: list, python: str | None, budget: int, max_rss_gb: float) -> tuple:
+def run_batch(batch: list, python: str | None, budget: int, max_rss_gb: float, numerics: bool = True) -> tuple:
     files = {p: (ORACLE / p).read_text() for p in ORACLE_FILES}
     files.update({"child.py": CHILD, "sigpure.py": _SIGPURE, "items.json": json.dumps(batch)})
-    r = Isolated(python, timeout=60 + budget * len(batch), max_rss_gb=max_rss_gb).run(["child.py", str(budget)], files=files, extra_env={"ORACLE_COMMIT": "v3-verify"})
+    argv = ["child.py", str(budget)] + ([] if numerics else ["no-numerics"])
+    r = Isolated(python, timeout=60 + budget * len(batch), max_rss_gb=max_rss_gb).run(argv, files=files, extra_env={"ORACLE_COMMIT": "v3-verify"})
     rows = [json.loads(l[2:]) for l in r.stdout.splitlines() if l.startswith("@@")]
     return rows, (r.stderr.strip().splitlines() or [f"exit {r.returncode}"])[-1][-200:]
 
 
-def verify(items: list, out: pathlib.Path, python: str | None, *, batch: int = 25, budget: int = 30, max_rss_gb: float = 6.0, log=print) -> dict:
+def verify(items: list, out: pathlib.Path, python: str | None, *, batch: int = 25, budget: int = 30, max_rss_gb: float = 6.0, numerics: bool = True, log=print) -> dict:
     """{id: result} for every item, resuming from `out`. A child that dies charges the crash to the item it was on and continues after it."""
     done = {r["id"]: r for r in read_jsonl(out)}
     todo = [i for i in items if i["id"] not in done]
@@ -130,7 +134,7 @@ def verify(items: list, out: pathlib.Path, python: str | None, *, batch: int = 2
     with out.open("a") as f:
         while k < len(todo):
             chunk = todo[k:k + batch]
-            rows, tail = run_batch(chunk, python, budget, max_rss_gb)
+            rows, tail = run_batch(chunk, python, budget, max_rss_gb, numerics)
             if len(rows) < len(chunk):  # the child died on the item after the last one it reported
                 dead = chunk[len(rows)]
                 rows.append({"id": dead["id"], "ok": False, "stage": "crash", "error": tail})
