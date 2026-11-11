@@ -151,3 +151,30 @@ significant.** The largest gap is v4qat-e2 vs base at greedy step 1, 4 vs 0, p =
 - Adapters evaluated on JAXBench so far: pilot25, v1, v4 (all bare, greedy, Modal), plus the base bare and docs arms. The two
   `base_local__mislabelled_*` runs are base-model runs and are reported as such.
 - `bare_stack` is still unrun for v4; see section 3.
+
+## 6. v5 (plan-before-code, `v5plans_r64_full`) vs v4final-e2 (added Nov 11)
+
+v5 is the adapter Aarav trained on Karthik's dataset-v5 (`karthik/v5-plans` @ `98f95c3`): v4's rows with a checked `# PLAN` block
+above each kernel, trained with v4final's recipe (2 epochs, H100). Adapter sha256 `9fd591c2…`, verified on download.
+- **Fold and serving:** folded as v4 (`fold_local.py`, delta at q8_0), GGUF sha256 `de2516a3…`. Served on the same Modal backend as
+  `gemma4-e4b-lora:v5full`, digest `641ddde330ed` (`control/modal_v5_create.py`). Every layer except the model equals v4's.
+- **Val** (`v5_val/`, 23 held-out problems, CPU gates):
+  - greedy step 1: v4 5/23, v5 4/23
+  - sampled (69): step 1 9 vs 9; numerics ok 6 vs 6
+  - problems numerically ok: 3 vs 3
+  - v5 opens every reply with `# PLAN` (23/23, 69/69); v4 never does.
+- **JAXBench** (bare, greedy, 3 turns, Modal; 191 rows, all digest `641ddde330ed`): a Modal RemoteError cut turn 2 to 10 rows, and a
+  catch-up pass generated the other 53. On primary-58, within 3 turns:
+
+  | Stage | v4 | v5 | only v4 / only v5 | exact McNemar p |
+  |---|---|---|---|---|
+  | (b) step 1 | 23 | 12 | 13 / 2 | 0.007 |
+  | (c) compiled and ran | 7 | 7 | 5 / 5 | 1.0 |
+  | (d) correct | 3 | 2 | 2 / 1 | 1.0 |
+  | (e) pass | 1 | 1 | 0 / 0 | 1.0 |
+
+  - Both pass only `12p_RMSNorm`. v5 failed it at t0 on VMEM (48 MB against a 32 MB limit) and fixed it at t1 (1.39x XLA). That is
+    one real repair.
+  - v5 still re-emits its previous code on 48/64 (t0->t1) and 55/63 (t1->t2) repairs; v4's figures are 40/63 and 54/63.
+  - **Conclusion (exploratory):** plan-before-code SFT did not improve JAXBench, and it significantly reduced structural validity
+    (step 1 down from 23 to 12).
