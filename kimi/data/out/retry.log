@@ -1,0 +1,9 @@
+us shard 0/1: 7 to generate (1665 done), cap $5.0, workers 7
+  [1/7] kernelbook/ValueNetwork_338 ok in 24832 out 3434 $0.18
+  [2/7] kernelbook/EdgeClassifLoss_818 ok in 24691 out 3968 $0.38
+  [3/7] authored/kv_cache_update/rope_fused_paged_kv_cache_write ok in 25216 out 5181 $0.61
+  [4/7] kernelbook/SpatialAttention_4325 ok in 557 out 4821 $0.72
+  [5/7] kernelbook/DepthwiseSeparableConv_8314 ok in 24909 out 13562 $1.13
+  [6/7] authored/kv_cache_int8_write/kv_cache_int8_write_2__m1_batch ok in 1152 out 5296 $1.26
+  [7/7] kernelbook/FusedUpsample_8450 ok in 710 out 20672 $1.73
+FULL GEN DONE us s0: spent $1.73
