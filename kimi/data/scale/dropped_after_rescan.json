@@ -1,0 +1,7 @@
+{
+ "kb/l2/57_Conv2d_ReLU_HardSwish__bf16__scale": "scaled variant scans as a conv+ReLU stack >=2/3 FLOPs",
+ "kernelbook/FrameMaxPool_4922__scale": "scaled variant scans as a ReLU stack >=2/3 FLOPs",
+ "kernelbook/QNetworkSmall_14690__scale": "scaled variant scans as a GEMM+ReLU stack >=2/3 FLOPs",
+ "kernelbook/MultAttention_10385__scale": "SDPA core ~2/3 of FLOPs (audit threshold)",
+ "kernelbook/NonLocalBlock_8363__scale": "SDPA core ~2/3 of FLOPs (audit threshold)"
+}

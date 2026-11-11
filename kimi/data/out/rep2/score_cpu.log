@@ -1,0 +1,7 @@
+scored 801: batch 60 -> static_ok 53, lowering not rejected 53
+scored 861: batch 60 -> static_ok 50, lowering not rejected 50
+scored 921: batch 60 -> static_ok 51, lowering not rejected 51
+scored 933: batch 12 -> static_ok 11, lowering not rejected 11
+CPU SCORING DONE 933
+scored 977: batch 44 -> static_ok 38, lowering not rejected 38
+CPU SCORING DONE 977

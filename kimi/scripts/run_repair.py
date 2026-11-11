@@ -30,15 +30,18 @@ def jl(p):
                     pass
     return out
 
+def _halt(d):  # Nov 11: harness_oom rows caused by an earlier kernel halting the TPU core are not verdicts (see tpu/crashloop.py)
+    return d.get("verdict") == "harness_oom" and any(h in (d.get("feedback") or "") for h in ("halted unexpectedly", "RuntimeUnexpectedCoreHalt"))
+
 
 def attempts_for(r):
     """{problem_id: (code, verdict, feedback)} for attempt r: the generated code, then the CPU step-1 verdict or the TPU verdict."""
     gen_glob, cpu_file, tpu_glob = ((P / "out/k31_*.jsonl", P / "out/cpu_scored.jsonl", SC / "tpu/ops1/repo/oracle/jobs/kimi-k31-*/results/*.jsonl")
                                     if r == 1 else (P / f"out/rep{r}/k31_rep{r}_*.jsonl", P / f"out/rep{r}/cpu_scored.jsonl",
-                                                    SC / f"tpu/ops1/repo/oracle/jobs/kimi-a{r}-*/results/*.jsonl"))
+                                                    SC / f"tpu/ops1/repo/oracle/jobs/kimi-a{r}*/results/*.jsonl"))
     code = {d["problem_id"]: d["code"] for d in jl(gen_glob) if d.get("ok") and d.get("code")}
     cpu = {d["problem_id"]: d for d in jl(cpu_file)}
-    tpu = {d["id"].split("/", 1)[1]: d for d in jl(tpu_glob) if "id" in d and not d.get("meta")}
+    tpu = {d["id"].split("/", 1)[1]: d for d in jl(tpu_glob) if "id" in d and not d.get("meta") and not _halt(d)}
     out = {}
     for pid, c in code.items():
         s = cpu.get(pid)

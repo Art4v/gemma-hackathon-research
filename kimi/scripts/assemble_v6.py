@@ -7,6 +7,9 @@ Rows:
   correct_slow  attempt 1 verdict correct_slow (kept, labelled; the trainer can drop them)
   repair        attempt 1 failed with a kernel-attributable verdict, attempt R (2 or 3) is pass or correct_slow (repair_slow if slow)
 harness_oom / too_large_for_chip rows are never used. Every row records problem_id so the Kimi reasoning/plan can be joined back.
+Two problem pools: "pool" (full_problems.jsonl, the 1,672 first-attempt problems; TPU jobs kimi-k31-* / kimi-a<r>*) and "new"
+(Nov 11 night: e1 = the 133 class-B problems re-admitted under the instance-level rule, e2 = Karthik's kbkd batch, e3 = JAXBench-size
+scale variants of solved unflagged pool problems; TPU jobs kimi-n<r>*). Every row carries its set (pool / e1_readmit / e2_kbkd / e3_scale).
   python3 assemble_v6.py  ->  v6/v6_train_draft.jsonl, v6/v6_stats.json"""
 import collections, glob, json, pathlib, sys
 P = pathlib.Path(__file__).resolve().parent
@@ -28,14 +31,24 @@ def jl(pattern):
                     pass
     return out
 
+def _halt(d):  # Nov 11: harness_oom rows caused by an earlier kernel halting the TPU core are not verdicts (see tpu/crashloop.py)
+    return d.get("verdict") == "harness_oom" and any(h in (d.get("feedback") or "") for h in ("halted unexpectedly", "RuntimeUnexpectedCoreHalt"))
 
-def attempt(r):
-    gen, cpu, tpu = ((P / "out/k31_*.jsonl", P / "out/cpu_scored.jsonl", SC / "tpu/ops1/repo/oracle/jobs/kimi-k31-*/results/*.jsonl")
-                     if r == 1 else (P / f"out/rep{r}/k31_rep{r}_*.jsonl", P / f"out/rep{r}/cpu_scored.jsonl",
-                                     SC / f"tpu/ops1/repo/oracle/jobs/kimi-a{r}-*/results/*.jsonl"))
+
+def paths(pool, r):
+    J = SC / "tpu/ops1/repo/oracle/jobs"
+    if pool == "pool":
+        return ((P / "out/k31_*.jsonl", P / "out/cpu_scored.jsonl", J / "kimi-k31-*/results/*.jsonl") if r == 1 else
+                (P / f"out/rep{r}/k31_rep{r}_*.jsonl", P / f"out/rep{r}/cpu_scored.jsonl", J / f"kimi-a{r}*/results/*.jsonl"))
+    return ((P / "out/new/k31_*.jsonl", P / "out/new/cpu_scored.jsonl", J / "kimi-n1*/results/*.jsonl") if r == 1 else
+            (P / f"out/new/rep{r}/k31_rep{r}_*.jsonl", P / f"out/new/rep{r}/cpu_scored.jsonl", J / f"kimi-n{r}*/results/*.jsonl"))
+
+
+def attempt(pool, r):
+    gen, cpu, tpu = paths(pool, r)
     code = {d["problem_id"]: d["code"] for d in jl(gen) if d.get("ok") and d.get("code")}
     cpu = {d["problem_id"]: d for d in jl(cpu)}
-    tpu = {d["id"].split("/", 1)[1]: d for d in jl(tpu) if "id" in d and not d.get("meta")}
+    tpu = {d["id"].split("/", 1)[1]: d for d in jl(tpu) if "id" in d and not d.get("meta") and not _halt(d)}
     out = {}
     for pid, c in code.items():
         s = cpu.get(pid)
@@ -49,22 +62,39 @@ def attempt(r):
     return out
 
 
-probs = {json.loads(l)["problem_id"]: json.loads(l) for l in open(P / "full_problems.jsonl")}
+probs = {json.loads(l)["problem_id"]: {**json.loads(l), "pool": "pool"} for l in open(P / "full_problems.jsonl")}
+for f in ("new/new_problems.jsonl", "scale/scale_problems.jsonl"):
+    if (P / f).exists():
+        for l in open(P / f):
+            x = json.loads(l)
+            assert x["problem_id"] not in probs, x["problem_id"]
+            probs[x["problem_id"]] = {**x, "pool": "new"}
 ref = {}
 for pf in {p["problem_file"] for p in probs.values()}:
     for l in open(pf):
         x = json.loads(l)
         if x["problem_id"] in probs and x["problem_id"] not in ref:
             ref[x["problem_id"]] = x["ref_code"]
-A = {r: attempt(r) for r in (1, 2, 3)}
+A = {(pool, r): attempt(pool, r) for pool in ("pool", "new") for r in (1, 2, 3)}
+_lst = lambda f: {l.strip() for l in open(P / "v6" / f) if l.strip() and not l.startswith("#")}
+HARD, RULE3 = _lst("exclude_hard.txt"), _lst("rule3_families.txt")
+UNSURE, STACKS = _lst("flag_unsure.txt"), _lst("flag_generic_stacks.txt") | (_lst("flag_generic_stacks_new.txt") if (P / "v6/flag_generic_stacks_new.txt").exists() else set())
 fence = lambda c: "```python\n" + c.rstrip("\n") + "\n```"
 rows, stats = [], collections.Counter()
 for pid, p in probs.items():
-    a1 = A[1].get(pid)
+    a1 = A[(p["pool"], 1)].get(pid)
     if not a1:
         stats["no_attempt1_verdict"] += 1
         continue
-    base = {"source": p["source"], "task": p["task_name"], "problem_id": pid, "teacher": "kimi-k3.1", "thinking": False}
+    if pid in HARD:
+        stats["hard_excluded"] += 1
+        continue
+    if pid in UNSURE:  # default OUT until Hruday decides the 'unsure' tier
+        stats["unsure_excluded"] += 1
+        continue
+    base = {"source": p["source"], "task": p["task_name"], "problem_id": pid, "teacher": "kimi-k3.1", "thinking": False,
+            "rule3_family": pid in RULE3, "generic_stack": pid in STACKS, "set": p.get("set") or "pool",
+            "scaled_from": p.get("scaled_from")}
     if a1["verdict"] in ("pass", "correct_slow"):
         kind = "single" if a1["verdict"] == "pass" else "correct_slow"
         msgs = bench.conversation(ref[pid], [], None) + [{"role": "assistant", "content": fence(a1["code"])}]
@@ -77,7 +107,7 @@ for pid, p in probs.items():
         continue
     hist, fixed = [{"code": a1["code"], "feedback": a1["feedback"]}], None
     for r in (2, 3):
-        ar = A[r].get(pid)
+        ar = A[(p["pool"], r)].get(pid)
         if not ar:
             break
         if ar["verdict"] in ("pass", "correct_slow"):
@@ -98,6 +128,9 @@ for pid, p in probs.items():
 out = P / "v6"; out.mkdir(exist_ok=True)
 (out / "v6_train_draft.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
 by_src = collections.Counter((r["source"], r["kind"]) for r in rows)
-(out / "v6_stats.json").write_text(json.dumps({"rows": len(rows), "kinds": dict(stats), "by_source_kind": {f"{a}/{b}": n for (a, b), n in by_src.items()}}, indent=1))
+by_set = collections.Counter((r["set"], r["kind"]) for r in rows)
+(out / "v6_stats.json").write_text(json.dumps({"rows": len(rows), "kinds": dict(stats), "by_source_kind": {f"{a}/{b}": n for (a, b), n in by_src.items()},
+                                                 "by_set_kind": {f"{a}/{b}": n for (a, b), n in sorted(by_set.items())}}, indent=1))
 print(f"v6 draft: {len(rows)} rows; {dict(stats)}")
 print("by source:", dict(collections.Counter(r["source"] for r in rows)))
+print("by set/kind:", dict(sorted(by_set.items())))

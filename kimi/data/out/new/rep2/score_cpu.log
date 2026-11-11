@@ -1,0 +1,14 @@
+scored 4: batch 4 -> static_ok 4, lowering not rejected 4
+scored 5: batch 1 -> static_ok 1, lowering not rejected 1
+scored 65: batch 60 -> static_ok 49, lowering not rejected 49
+scored 80: batch 15 -> static_ok 11, lowering not rejected 11
+scored 81: batch 1 -> static_ok 1, lowering not rejected 1
+scored 132: batch 51 -> static_ok 46, lowering not rejected 46
+scored 190: batch 58 -> static_ok 50, lowering not rejected 50
+scored 191: batch 1 -> static_ok 1, lowering not rejected 1
+scored 242: batch 51 -> static_ok 48, lowering not rejected 48
+scored 244: batch 2 -> static_ok 2, lowering not rejected 2
+scored 304: batch 60 -> static_ok 51, lowering not rejected 51
+scored 307: batch 3 -> static_ok 3, lowering not rejected 3
+scored 309: batch 2 -> static_ok 2, lowering not rejected 2
+CPU SCORING DONE 309

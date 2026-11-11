@@ -6,13 +6,16 @@ import glob, json, os, pathlib, subprocess, sys, tempfile, time
 P = pathlib.Path(__file__).resolve().parent
 ROOT = pathlib.Path("/Users/hrudaynara/Projects/gemma-hackathon-research")
 PY = "/Users/hrudaynara/Projects/gemma-dataset-gen/dataset/.venv/bin/python"  # JAX 0.10.2, as bench/cpu_check use
-OUT = P / "out" / "cpu_scored.jsonl"
+OUT = pathlib.Path(os.environ.get("OUT", str(P / "out" / "cpu_scored.jsonl")))
+GEN_GLOB = os.environ.get("GEN_GLOB", str(P / "out" / "k31_*.jsonl"))
+LOG_GLOB = os.environ.get("LOG_GLOB", str(P / "out" / "full_*_s*.log"))
 BATCH = 60
 
 refs = {}
-for l in open(P / "full_problems.jsonl"):
-    r = json.loads(l)
-    refs[r["problem_id"]] = (r["task_name"], r["problem_file"])
+for pf_ in os.environ.get("PROBLEMS", str(P / "full_problems.jsonl")).split(","):
+    for l in open(pf_):
+        r = json.loads(l)
+        refs[r["problem_id"]] = (r["task_name"], r["problem_file"])
 ref_code, files = {}, {}
 for pid, (task, pf) in refs.items():
     files.setdefault(pf, set()).add(pid)
@@ -25,7 +28,7 @@ for pf, pids in files.items():
 
 def gen_rows():
     rows = {}
-    for f in sorted(glob.glob(str(P / "out" / "k31_*.jsonl"))):
+    for f in sorted(glob.glob(GEN_GLOB)):
         for l in open(f):
             try:
                 d = json.loads(l)
@@ -37,8 +40,8 @@ def gen_rows():
 
 
 def gen_done():
-    logs = glob.glob(str(P / "out" / "full_*_s*.log"))
-    return logs and all("FULL GEN DONE" in open(x).read() or "CAP REACHED" in open(x).read() for x in logs)
+    logs = glob.glob(LOG_GLOB)
+    return logs and all(any(m in open(x).read() for m in ("FULL GEN DONE", "REPAIR GEN DONE", "CAP REACHED")) for x in logs)
 
 
 def score(batch):

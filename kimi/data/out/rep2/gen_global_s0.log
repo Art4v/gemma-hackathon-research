@@ -1,0 +1,365 @@
+repair round 2, global shard 0/2: 363 to generate (0 done), cap $125.0
+  [1/363] kb/l1/52_Argmin_over_a_dimension ok in 25394 out 1624 $0.13
+  [2/363] authored/moe_topk_routing/moe_router_softmax_topk_renorm ok in 25798 out 2375 $0.28
+  [3/363] authored/rope_qk_norm/qk_rmsnorm_rope_gqa ok in 26281 out 3252 $0.45
+  [4/363] scraped/maxtext/ragged_attention_v2 ok in 26371 out 2815 $0.62
+  [5/363] kb/l1/44_Average_Pooling_1D ok in 25723 out 3178 $0.78
+  [6/363] kb/l1/73_conv_transposed_3D_asymmetric_input_square_kernel__strided_padded__grouped ok in 26652 out 3573 $0.96
+  [7/363] kb/l1/33_BatchNorm ok in 25228 out 3283 $1.13
+  [8/363] kb/l1/99_TripletMarginLoss ok in 1174 out 1753 $1.18
+  [9/363] kb/l1/54_conv_standard_3D__square_input__square_kernel ok in 25731 out 5649 $1.39
+  [10/363] kb/l1/46_Average_Pooling_3D ok in 25575 out 7748 $1.65
+  [11/363] kb/l1/92_cumsum_exclusive ok in 785 out 4116 $1.75
+  [12/363] kb/l2/11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm ok in 2979 out 5308 $1.87
+  [13/363] kb/l2/16_ConvTranspose2d_Mish_Add_Hardtanh_Scaling FAIL unparseable answer (stop end_turn, 3099 chars) in 1995 out 4102 $1.97
+  [14/363] authored/attention_sliding_window/gemma3_sliding_window_gqa_attention ok in 26833 out 8708 $2.25
+  [15/363] kb/l1/50_conv_standard_2D__square_input__square_kernel ok in 25749 out 9055 $2.54
+  [16/363] kb/l2/27_Conv3d_HardSwish_GroupNorm_Mean FAIL unparseable answer (stop end_turn, 5262 chars) in 2137 out 5545 $2.67
+  [17/363] kb/l2/100_ConvTranspose3d_Clamp_Min_Divide ok in 2113 out 9057 $2.87
+  [18/363] kb/l2/58_ConvTranspose3d_LogSumExp_HardSwish_Subtract_Clamp ok in 1857 out 4925 $2.98
+  [19/363] kb/l2/65_Conv2d_AvgPool_Sigmoid_Sum ok in 1612 out 5163 $3.10
+  [20/363] kb/l2/21_Conv2d_Add_Scale_Sigmoid_GroupNorm ok in 2412 out 10746 $3.34
+  [21/363] kb/l2/35_Conv2d_Subtract_HardSwish_MaxPool_Mish ok in 1571 out 6792 $3.49
+  [22/363] kb/l1/79_conv_transposed_1D_asymmetric_input_square_kernel___padded____strided____dilated__ ok in 1454 out 13398 $3.77
+  [23/363] kb/l2/6_Conv3d_Softmax_MaxPool_MaxPool ok in 1566 out 7061 $3.93
+  [24/363] kb/l2/36_ConvTranspose2d_Min_Sum_GELU_Add ok in 2126 out 9040 $4.13
+  [25/363] kb/l1/72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_ ok in 26878 out 16806 $4.57
+  [26/363] kb/l2/38_ConvTranspose3d_AvgPool_Clamp_Softmax_Multiply FAIL unparseable answer (stop end_turn, 4627 chars) in 2601 out 9963 $4.79
+  [27/363] kb/l2/73_Conv2d_BatchNorm_Scaling FAIL unparseable answer (stop end_turn, 4750 chars) in 2082 out 6678 $4.94
+  [28/363] kb/l2/82_Conv2d_Tanh_Scaling_BiasAdd_Max ok in 1782 out 3546 $5.03
+  [29/363] kb/l2/24_Conv3d_Min_Softmax ok in 1895 out 13239 $5.31
+  [30/363] authored/attention_sliding_window/gpt_oss_sliding_window_attention_sinks ok in 2237 out 3232 $5.40
+  [31/363] authored/attention_sliding_window/gpt_oss_sliding_window_sink_attention ok in 2128 out 3192 $5.48
+  [32/363] authored/moe_expert_bincount/moe_capacity_dispatch_bincount FAIL unparseable answer (stop end_turn, 4134 chars) in 2492 out 2887 $5.56
+  [33/363] authored/attention_gqa_sink/gqa_sink_sliding_window_specdecode ok in 3073 out 4678 $5.67
+  [34/363] kb/l2/7_Conv3d_ReLU_LeakyReLU_GELU_Sigmoid_BiasAdd ok in 2037 out 9544 $5.88
+  [35/363] authored/kv_quantized_dequant_matmul/int4_groupwise_awq_dequant_matmul ok in 1847 out 3512 $5.97
+  [36/363] authored/ssm_scan_step/mamba1_selective_scan ok in 1986 out 2461 $6.03
+  [37/363] kb/l2/87_Conv2d_Subtract_Subtract_Mish ok in 1402 out 7877 $6.21
+  [38/363] authored/swiglu_variant_geglu/geglu_mlp_fused_gate_up ok in 1519 out 2122 $6.27
+  [39/363] kb/l2/78_ConvTranspose3d_Max_Max_Sum ok in 2586 out 11557 $6.52
+  [40/363] authored/quantized_fp8_matmul/fp8_dynamic_act_quant_block_weight_matmul ok in 1990 out 4105 $6.62
+  [41/363] authored/rope_qk_norm/qk_rmsnorm_interleaved_mrope ok in 2049 out 3146 $6.70
+  [42/363] kb/l1/60_conv_standard_3D__square_input__asymmetric_kernel ok in 1399 out 7513 $6.86
+  [43/363] authored/quantized_fp8_matmul/fp8_act_quant_linear_residual FAIL unparseable answer (stop end_turn, 4193 chars) in 2066 out 4493 $6.97
+  [44/363] authored/attention_relative_bias/t5_relative_bias_attention_2 ok in 2450 out 3916 $7.07
+  [45/363] authored/attention_cross/encdec_cross_attention_padmask ok in 3386 out 4527 $7.18
+  [46/363] authored/attention_decode_mqa/mqa_decode_padded_lengths_2 ok in 1793 out 2869 $7.26
+  [47/363] authored/moe_load_balance_loss/top2_router_load_balance_loss ok in 2152 out 2708 $7.33
+  [48/363] authored/attention_local_global/mixed_local_global_head_attention ok in 2194 out 3072 $7.41
+  [49/363] authored/moe_expert_bincount/moe_capacity_bincount_dispatch ok in 2490 out 10266 $7.63
+  [50/363] kb/l2/79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max ok in 2398 out 17069 $7.99
+  [51/363] authored/moe_capacity_dispatch/moe_top1_capacity_dispatch_combine ok in 2834 out 3450 $8.08
+  [52/363] authored/attention_chunked_prefill/chunked_prefill_attention ok in 1923 out 4268 $8.19
+  [53/363] authored/ragged_masked_layernorm/ragged_masked_residual_layernorm FAIL unparseable answer (stop end_turn, 2544 chars) in 1370 out 1635 $8.24
+  [54/363] authored/ragged_jagged_softmax/jagged_segment_softmax ok in 2421 out 3881 $8.33
+  [55/363] authored/moe_capacity_dispatch/moe_capacity_top1_dispatch_combine ok in 2958 out 6557 $8.48
+  [56/363] authored/attention_chunked_prefill/chunked_prefill_kv_offset_attention ok in 2568 out 6816 $8.64
+  [57/363] authored/kv_cache_int8_write/kv_cache_int8_quant_write ok in 1893 out 3163 $8.72
+  [58/363] authored/kv_rope_append/kv_rope_append ok in 1916 out 3093 $8.80
+  [59/363] authored/quant_fp8_amax_scaling/fp8_delayed_scaling_matmul ok in 2575 out 7251 $8.97
+  [60/363] authored/quant_int4_packed_matmul/int4_packed_group_matmul ok in 1921 out 6151 $9.11
+  [61/363] authored/kv_rope_append/kv_rope_append_2 ok in 1972 out 2996 $9.18
+  [62/363] kb/l2/77_ConvTranspose3d_Scale_BatchNorm_GlobalAvgPool ok in 2461 out 18138 $9.57
+  [63/363] authored/kv_rope_append/kv_rope_append_3 FAIL unparseable answer (stop end_turn, 2828 chars) in 1693 out 1856 $9.62
+  [64/363] authored/ragged_jagged_softmax/jagged_segment_softmax_3 ok in 2361 out 5375 $9.75
+  [65/363] authored/ssm_s4d_conv/s4d_kernel_causal_conv ok in 2771 out 3030 $9.83
+  [66/363] kb/l2/30_Gemm_GroupNorm_Hardtanh__bf16 FAIL unparseable answer (stop end_turn, 2611 chars) in 1316 out 1851 $9.88
+  [67/363] kb/l1/31_ELU__bf16 FAIL unparseable answer (stop end_turn, 1034 chars) in 652 out 454 $9.90
+  [68/363] authored/quant_int4_packed_matmul/int4_packed_groupwise_w4a16_matmul ok in 1869 out 6870 $10.06
+  [69/363] kb/l1/35_GroupNorm___bf16 FAIL unparseable answer (stop end_turn, 2040 chars) in 1210 out 1713 $10.10
+  [70/363] kb/l2/64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU__bf16 ok in 1345 out 2615 $10.17
+  [71/363] authored/ssm_rwkv_time_mix/rwkv4_time_mix_wkv_2 ok in 3466 out 4235 $10.28
+  [72/363] kb/l1/94_MSELoss__bf16 ok in 828 out 2052 $10.33
+  [73/363] kb/l1/52_Argmin_over_a_dimension__bf16 ok in 1127 out 2493 $10.40
+  [74/363] kb/l1/89_cumsum__bf16 ok in 784 out 2553 $10.46
+  [75/363] authored/kv_cache_int8_write/kv_cache_int8_write ok in 2056 out 11485 $10.71
+  [76/363] authored/ragged_jagged_softmax/jagged_segment_softmax_2 ok in 2872 out 12229 $10.98
+  [77/363] kb/l1/66_conv_standard_3D__asymmetric_input__asymmetric_kernel__bf16 ok in 1728 out 4573 $11.08
+  [78/363] kb/l1/81_conv_transposed_2D_asymmetric_input_square_kernel___dilated____padded____strided____bf16 ok in 1985 out 4733 $11.20
+  [79/363] kb/l1/62_conv_standard_2D__square_input__asymmetric_kernel__bf16 ok in 1373 out 6312 $11.34
+  [80/363] kb/l1/91_cumsum_reverse__bf16 ok in 788 out 5808 $11.47
+  [81/363] kb/l1/93_masked_cumsum__bf16 ok in 853 out 1791 $11.52
+  [82/363] kb/l2/16_ConvTranspose2d_Mish_Add_Hardtanh_Scaling__bf16 ok in 2007 out 2947 $11.59
+  [83/363] kb/l2/19_ConvTranspose2d_GELU_GroupNorm__bf16 ok in 2282 out 3730 $11.69
+  [84/363] kb/l1/92_cumsum_exclusive__bf16 ok in 806 out 3885 $11.78
+  [85/363] kb/l2/2_ConvTranspose2d_BiasAdd_Clamp_Scaling_Clamp_Divide__bf16 FAIL unparseable answer (stop end_turn, 3229 chars) in 1910 out 1487 $11.82
+  [86/363] kb/l2/21_Conv2d_Add_Scale_Sigmoid_GroupNorm__bf16 ok in 2490 out 4462 $11.93
+  [87/363] kb/l2/31_Conv2d_Min_Add_Multiply__bf16 FAIL unparseable answer (stop end_turn, 2542 chars) in 1583 out 2687 $12.00
+  [88/363] kb/l1/82_conv_depthwise_2D_square_input_square_kernel__bf16 ok in 1333 out 10071 $12.22
+  [89/363] kb/l1/77_conv_transposed_3D_square_input_square_kernel___padded____dilated____strided____bf16 ok in 2058 out 9611 $12.43
+  [90/363] kb/l2/58_ConvTranspose3d_LogSumExp_HardSwish_Subtract_Clamp__bf16 ok in 2097 out 6423 $12.58
+  [91/363] kb/l1/71_conv_transposed_2D__asymmetric_input__square_kernel__bf16 ok in 2019 out 11542 $12.82
+  [92/363] kb/l2/77_ConvTranspose3d_Scale_BatchNorm_GlobalAvgPool__bf16 ok in 2748 out 3956 $12.92
+  [93/363] kb/l2/6_Conv3d_Softmax_MaxPool_MaxPool__bf16 ok in 1718 out 3865 $13.02
+  [94/363] kb/l2/73_Conv2d_BatchNorm_Scaling__bf16 ok in 2165 out 4342 $13.12
+  [95/363] kb/l2/65_Conv2d_AvgPool_Sigmoid_Sum__bf16 ok in 1438 out 5365 $13.25
+  [96/363] kb/l2/61_ConvTranspose3d_ReLU_GroupNorm__bf16 ok in 2520 out 7872 $13.42
+  [97/363] kb/l2/24_Conv3d_Min_Softmax__bf16 ok in 1580 out 6890 $13.58
+  [98/363] kb/l2/8_Conv3d_Divide_Max_GlobalAvgPool_BiasAdd_Sum__bf16 ok in 1997 out 3622 $13.67
+  [99/363] kernelbook/Fair_1796 ok in 819 out 1599 $13.71
+  [100/363] kernelbook/Spike_6487 ok in 928 out 1002 $13.75
+  [101/363] kernelbook/Wang_18074 ok in 974 out 1944 $13.80
+  [102/363] kb/l1/70_conv_transposed_3D__asymmetric_input__square_kernel__bf16 ok in 1790 out 14782 $14.11
+  [103/363] kernelbook/BCE_17603 ok in 1079 out 3163 $14.19
+  [104/363] kb/l2/7_Conv3d_ReLU_LeakyReLU_GELU_Sigmoid_BiasAdd__bf16 FAIL unparseable answer (stop end_turn, 2736 chars) in 1544 out 7490 $14.35
+  [105/363] kb/l2/82_Conv2d_Tanh_Scaling_BiasAdd_Max__bf16 ok in 1876 out 7875 $14.53
+  [106/363] kernelbook/HighwayCNN_10675 FAIL unparseable answer (stop end_turn, 2462 chars) in 1279 out 4456 $14.63
+  [107/363] kernelbook/SpatialAttention_5798 ok in 1318 out 2813 $14.70
+  [108/363] kernelbook/fChannelAttention_15287 FAIL unparseable answer (stop end_turn, 3405 chars) in 1563 out 2103 $14.76
+  [109/363] kernelbook/EncoderDecoder_5013 ok in 1350 out 7167 $14.92
+  [110/363] kernelbook/Conv1d_8318 ok in 1305 out 2093 $14.98
+  [111/363] kb/l2/48_Conv3d_Scaling_Tanh_Multiply_Sigmoid__bf16 ok in 1728 out 16017 $15.31
+  [112/363] kb/l2/79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__bf16 ok in 2427 out 13836 $15.61
+  [113/363] kb/l1/58_conv_transposed_3D__asymmetric_input__asymmetric_kernel__bf16 ok in 2065 out 20251 $16.03
+  [114/363] kernelbook/RewardCriterion_1171 ok in 1141 out 4118 $16.13
+  [115/363] kb/l2/96_ConvTranspose3d_Multiply_Max_GlobalAvgPool_Clamp__bf16 FAIL unparseable answer (stop end_turn, 4163 chars) in 1909 out 8512 $16.32
+  [116/363] kernelbook/TransitionUp_9077 ok in 1797 out 3455 $16.40
+  [117/363] kernelbook/DisparityConv_15701 ok in 1943 out 8173 $16.58
+  [118/363] kernelbook/marginLoss_2121 ok in 879 out 4608 $16.69
+  [119/363] kernelbook/Distribution_Loss_14357 ok in 1132 out 2261 $16.75
+  [120/363] kb/l2/87_Conv2d_Subtract_Subtract_Mish__bf16 ok in 1447 out 11125 $16.99
+  [121/363] kernelbook/ContrastiveDistanceLoss_16263 ok in 1002 out 2240 $17.05
+  [122/363] kernelbook/Coords_8037 ok in 999 out 1207 $17.08
+  [123/363] kernelbook/FocalLoss_9710 ok in 1416 out 2991 $17.16
+  [124/363] kb/l2/89_ConvTranspose3d_MaxPool_Softmax_Subtract_Swish_Max__bf16 ok in 2104 out 13392 $17.44
+  [125/363] kernelbook/GeneralizedFocalLoss_1323 ok in 1443 out 7469 $17.61
+  [126/363] kernelbook/RewardCriterion_835 ok in 1062 out 3204 $17.69
+  [127/363] kernelbook/Discriminator_6003 ok in 1321 out 1646 $17.74
+  [128/363] kernelbook/RMSPE_8648 ok in 908 out 2332 $17.80
+  [129/363] kernelbook/DocUnetLoss_3611 ok in 960 out 2578 $17.86
+  [130/363] kernelbook/ResNNFlow_4086 ok in 724 out 1365 $17.90
+  [131/363] kernelbook/ThetaEncoder_4616 ok in 1129 out 4618 $18.01
+  [132/363] kernelbook/MlpLite_12815 ok in 2429 out 7759 $18.18
+  [133/363] kernelbook/AffineConstantFlow_8329 FAIL unparseable answer (stop end_turn, 1811 chars) in 997 out 2990 $18.26
+  [134/363] kernelbook/NonAttentiveTacotronLoss_17420 ok in 1373 out 3826 $18.35
+  [135/363] kernelbook/HyperpriorSynthesis_6148 FAIL unparseable answer (stop end_turn, 5353 chars) in 2548 out 7883 $18.52
+  [136/363] kernelbook/RewardCriterion_3114 ok in 1126 out 4267 $18.62
+  [137/363] kernelbook/AttCosine_15647 ok in 1497 out 1949 $18.68
+  [138/363] kernelbook/ResBlock_10456 ok in 2022 out 7759 $18.85
+  [139/363] kernelbook/LogSumExpPool_4926 ok in 933 out 1410 $18.89
+  [140/363] kernelbook/Differencial_SMAPE_7462 ok in 910 out 1624 $18.94
+  [141/363] kernelbook/DiceBCELoss_9988 ok in 1426 out 6761 $19.09
+  [142/363] kernelbook/MSE_3682 ok in 1105 out 5507 $19.21
+  [143/363] kernelbook/classifier_15118 ok in 3472 out 5476 $19.35
+  [144/363] kernelbook/KeypointsMSESmoothLoss_16762 ok in 1340 out 4132 $19.44
+  [145/363] kernelbook/Similarity_3272 ok in 1486 out 1939 $19.50
+  [146/363] kernelbook/AttentionConv_10307 ok in 3062 out 6404 $19.65
+  [147/363] kernelbook/SpatialAttention_15894 ok in 1635 out 3295 $19.73
+  [148/363] kernelbook/BlendConv2d_697 ok in 1726 out 10218 $19.95
+  [149/363] kernelbook/BinaryReg_6555 FAIL unparseable answer (stop end_turn, 1714 chars) in 910 out 2095 $20.01
+  [150/363] kernelbook/MixtureSoftmax_6217 ok in 911 out 3315 $20.09
+  [151/363] kernelbook/SMOEScaleMap_8423 ok in 790 out 1302 $20.13
+  [152/363] kernelbook/Encoder_18149 ok in 2074 out 16406 $20.47
+  [153/363] kernelbook/rmse_609 ok in 911 out 1728 $20.52
+  [154/363] kernelbook/Baseline_9225 FAIL unparseable answer (stop end_turn, 4396 chars) in 2568 out 10486 $20.75
+  [155/363] kernelbook/LNN_2986 ok in 962 out 1763 $20.80
+  [156/363] kernelbook/Net_10603 ok in 2787 out 3665 $20.89
+  [157/363] kernelbook/Gaussian_Distance_9230 ok in 1739 out 2350 $20.96
+  [158/363] kernelbook/ImageLevelFeaturePooling2D_349 FAIL unparseable answer (stop end_turn, 1138 chars) in 817 out 4704 $21.06
+  [159/363] kernelbook/SimpleCNN32Filter_12057 ok in 1793 out 3939 $21.16
+  [160/363] kernelbook/DECLoss_368 ok in 1231 out 3979 $21.25
+  [161/363] kernelbook/GatedConvTranspose_736 ok in 1997 out 9726 $21.47
+  [162/363] kernelbook/TotalVariation_5718 ok in 1387 out 3157 $21.54
+  [163/363] kernelbook/LossPredLoss_2449 ok in 1006 out 2246 $21.60
+  [164/363] kernelbook/AlgebraicLoss_16630 FAIL unparseable answer (stop end_turn, 1721 chars) in 847 out 983 $21.64
+  [165/363] kernelbook/WRNBottleneck_17683 ok in 2049 out 7727 $21.81
+  [166/363] kernelbook/Join_17327 ok in 1127 out 3705 $21.90
+  [167/363] kernelbook/GAT_644 ok in 2242 out 3162 $21.98
+  [168/363] kernelbook/Forward_Grad_7661 ok in 1609 out 3161 $22.06
+  [169/363] kernelbook/ContrastiveLoss_3845 ok in 1210 out 2884 $22.13
+  [170/363] kernelbook/BILM_1046 FAIL unparseable answer (stop end_turn, 2198 chars) in 1371 out 1416 $22.17
+  [171/363] kernelbook/rSoftMax_9090 ok in 1030 out 2150 $22.23
+  [172/363] kernelbook/act_PRT_4984 ok in 928 out 1675 $22.28
+  [173/363] kernelbook/DistilledLoss_17311 ok in 1562 out 2777 $22.35
+  [174/363] kernelbook/FCUDown_16471 ok in 1737 out 2239 $22.41
+  [175/363] kernelbook/DilateContourLoss_6433 ok in 1522 out 3311 $22.49
+  [176/363] kernelbook/MaxPoolStride1_9509 ok in 1695 out 23898 $22.99
+  [177/363] kernelbook/Block_8949 ok in 3726 out 14087 $23.29
+  [178/363] kernelbook/TVLoss_530 ok in 735 out 1471 $23.34
+  [179/363] kernelbook/ContrastiveLoss_4327 FAIL unparseable answer (stop end_turn, 2298 chars) in 1210 out 2091 $23.39
+  [180/363] kernelbook/MiniBatchDiscrimination_3428 FAIL unparseable answer (stop end_turn, 3660 chars) in 1523 out 2409 $23.46
+  [181/363] kernelbook/LossesOfConVIRT_15374 ok in 1843 out 4120 $23.56
+  [182/363] kernelbook/Residual_Block_7506 ok in 3648 out 4577 $23.67
+  [183/363] kernelbook/MaxPoolStride1_11689 ok in 1460 out 23249 $24.15
+  [184/363] kernelbook/ParallelDilatedConv_3441 ok in 2113 out 16804 $24.51
+  [185/363] kernelbook/DCT_1372 ok in 1460 out 5029 $24.62
+  [186/363] kernelbook/AdaILN_8490 FAIL unparseable answer (stop end_turn, 4722 chars) in 2224 out 2463 $24.69
+  [187/363] kernelbook/AvgPoolPad_17140 FAIL unparseable answer (stop end_turn, 2071 chars) in 1293 out 10209 $24.91
+  [188/363] kernelbook/ConcatAvgMaxPooling_5794 ok in 1553 out 2968 $24.98
+  [189/363] kernelbook/GlobalAttention_2860 ok in 1450 out 3779 $25.08
+  [190/363] kernelbook/ContentLoss_2483 ok in 1023 out 4244 $25.17
+  [191/363] kernelbook/UpsamplingBilinear_6462 ok in 1621 out 3390 $25.26
+  [192/363] kernelbook/ATLoss_15371 ok in 1237 out 1370 $25.30
+  [193/363] kernelbook/SELayer_17170 ok in 1373 out 3174 $25.38
+  [194/363] kernelbook/DenseSAGEConv_7964 ok in 1485 out 2749 $25.45
+  [195/363] kernelbook/ChannelAttention_3965 ok in 1535 out 2652 $25.52
+  [196/363] kernelbook/Conv_ReLU_Block_13160 ok in 2685 out 6010 $25.66
+  [197/363] kernelbook/MaxPool_2276 ok in 1023 out 3217 $25.74
+  [198/363] kernelbook/MulticlassSegmentationLoss_5714 ok in 935 out 3657 $25.82
+  [199/363] kernelbook/SA_3016 ok in 1565 out 5548 $25.95
+  [200/363] kernelbook/PinballLoss_621 ok in 972 out 3414 $26.03
+  [201/363] kernelbook/AffineGridGen_647 ok in 961 out 1517 $26.08
+  [202/363] kernelbook/MarginLoss_7206 ok in 1171 out 2750 $26.15
+  [203/363] kernelbook/ATLoss_4294 ok in 1269 out 2587 $26.21
+  [204/363] kernelbook/NormalizeImages_7178 ok in 1492 out 2879 $26.29
+  [205/363] kernelbook/ResBlock_2251 ok in 3284 out 6621 $26.44
+  [206/363] kernelbook/CharbonnierLoss_8288 ok in 1013 out 3452 $26.52
+  [207/363] kernelbook/EqualConv2dSame_8020 ok in 1557 out 14231 $26.82
+  [208/363] kernelbook/discriminator_15107 ok in 2078 out 9960 $27.04
+  [209/363] kernelbook/MonomialNN_5069 ok in 677 out 946 $27.07
+  [210/363] kernelbook/Duel_QNetwork_3783 ok in 1748 out 5839 $27.21
+  [211/363] kernelbook/ConvNeuralNetwork_4027 FAIL unparseable answer (stop end_turn, 5483 chars) in 2997 out 5334 $27.33
+  [212/363] kernelbook/ArcMarginProduct_subcenter_1135 ok in 1432 out 2450 $27.40
+  [213/363] kernelbook/ContrastiveDistanceLoss_3182 FAIL unparseable answer (stop end_turn, 2474 chars) in 1148 out 5134 $27.52
+  [214/363] kernelbook/FusedUpsample_16645 ok in 2735 out 5414 $27.65
+  [215/363] kernelbook/GaussianSmearing_15962 ok in 918 out 1732 $27.69
+  [216/363] kernelbook/CoSirenModule_6257 FAIL unparseable answer (stop end_turn, 1268 chars) in 866 out 1144 $27.73
+  [217/363] kernelbook/VectorQuantizer_17814 ok in 1831 out 3330 $27.81
+  [218/363] kernelbook/Copy_2209 ok in 1361 out 5219 $27.93
+  [219/363] kernelbook/Encoder_attention_17177 ok in 1137 out 2728 $28.00
+  [220/363] kernelbook/AffineChannel2d_13241 ok in 858 out 1297 $28.04
+  [221/363] kernelbook/CNN_17398 ok in 2626 out 6415 $28.19
+  [222/363] kernelbook/BoF_Pooling_13127 ok in 1416 out 2801 $28.26
+  [223/363] kernelbook/NetVLAD_9510 ok in 1814 out 4165 $28.36
+  [224/363] kernelbook/Conv2dNormActiv_7936 ok in 2436 out 5531 $28.49
+  [225/363] kernelbook/MetaBilinear_711 ok in 1647 out 3633 $28.58
+  [226/363] kernelbook/CReLU_3306 ok in 819 out 2128 $28.64
+  [227/363] kernelbook/Encoder_5392 FAIL unparseable answer (stop end_turn, 2108 chars) in 1312 out 4683 $28.74
+  [228/363] kernelbook/down_17191 ok in 2312 out 13154 $29.03
+  [229/363] kernelbook/NIN4d_14612 ok in 1261 out 1895 $29.08
+  [230/363] kernelbook/Fire_9590 ok in 2320 out 2876 $29.16
+  [231/363] kernelbook/DownsampleA_8190 FAIL unparseable answer (stop end_turn, 1133 chars) in 858 out 17193 $29.51
+  [232/363] kernelbook/PyramidPoolingModule_16140 ok in 2129 out 3179 $29.59
+  [233/363] kernelbook/GatedConvTranspose_2141 ok in 1835 out 3352 $29.68
+  [234/363] kernelbook/MaskedMSELoss_16430 FAIL unparseable answer (stop end_turn, 2226 chars) in 1126 out 4012 $29.77
+  [235/363] kernelbook/MyConv3d_16742 ok in 1706 out 10928 $30.01
+  [236/363] kernelbook/LayerNorm_4866 ok in 1503 out 6371 $30.15
+  [237/363] kernelbook/FocalLoss_2686 ok in 873 out 1997 $30.20
+  [238/363] kernelbook/FocalLoss_5062 ok in 1133 out 2685 $30.27
+  [239/363] kernelbook/SoftAttention_16399 ok in 998 out 8252 $30.45
+  [240/363] kernelbook/APLoss_dist_13178 ok in 1710 out 5867 $30.58
+  [241/363] kernelbook/PatchApplier_5711 ok in 1032 out 1078 $30.62
+  [242/363] kernelbook/simple_decoder_7839 ok in 1432 out 9453 $30.82
+  [243/363] kernelbook/Conv2dWS_15083 FAIL unparseable answer (stop end_turn, 3156 chars) in 1716 out 13362 $31.11
+  [244/363] kernelbook/resBlock_8744 ok in 2477 out 5976 $31.25
+  [245/363] kernelbook/Img_decoder_v3_638 ok in 5071 out 14482 $31.57
+  [246/363] kernelbook/MyMaxPool1dPadSame_2963 ok in 1364 out 8608 $31.75
+  [247/363] kernelbook/up_12115 ok in 1589 out 7371 $31.92
+  [248/363] kernelbook/GatedActivation_6864 ok in 687 out 1311 $31.96
+  [249/363] kernelbook/DownsampleB_18332 ok in 783 out 2371 $32.02
+  [250/363] kernelbook/handpose_model_6201 FAIL unparseable answer (stop end_turn, 4655 chars) in 3153 out 2704 $32.09
+  [251/363] kernelbook/SoftTargetCrossEntropy_17728 ok in 1148 out 4596 $32.20
+  [252/363] kernelbook/StdConv2d_6818 ok in 1757 out 2867 $32.27
+  [253/363] kernelbook/BCEDiceLoss_1717 FAIL unparseable answer (stop end_turn, 4161 chars) in 1718 out 2502 $32.34
+  [254/363] kernelbook/DistillKL_18013 ok in 1181 out 3887 $32.43
+  [255/363] kernelbook/LINEAR_LOGSOFTMAX_13817 ok in 1087 out 1773 $32.48
+  [256/363] kernelbook/IIDIsotropicGaussianUVLoss_581 FAIL unparseable answer (stop end_turn, 1936 chars) in 1019 out 1315 $32.52
+  [257/363] kernelbook/FocalLoss_16988 FAIL unparseable answer (stop end_turn, 2766 chars) in 1259 out 4620 $32.63
+  [258/363] kernelbook/GDL_1858 ok in 1693 out 3487 $32.72
+  [259/363] kernelbook/PinballLoss_6415 FAIL unparseable answer (stop end_turn, 2059 chars) in 1018 out 2979 $32.79
+  [260/363] kernelbook/WeightNormConv2d_17016 FAIL unparseable answer (stop end_turn, 3009 chars) in 1719 out 3332 $32.87
+  [261/363] kernelbook/FocalLoss_7163 ok in 987 out 3210 $32.95
+  [262/363] github/multiscale_deformable_attention ok in 4130 out 5605 $33.09
+  [263/363] github/encodec_residual_vq ok in 1324 out 3553 $33.17
+  [264/363] github/wav2vec2_product_quantizer ok in 1864 out 2838 $33.25
+  [265/363] github/yarn_rope_partial ok in 2242 out 3280 $33.33
+  [266/363] github/bitnet_ternary_bitlinear FAIL unparseable answer (stop end_turn, 4491 chars) in 1936 out 4052 $33.43
+  [267/363] kernelbook/OutputLayer_2119 ok in 1493 out 2410 $33.49
+  [268/363] kernelbook/AttentionNet_7188 ok in 3324 out 7899 $33.68
+  [269/363] kernelbook/KL_5741 ok in 1128 out 3701 $33.76
+  [270/363] kernelbook/FocalTiLoss_11047 ok in 1134 out 2202 $33.82
+  [271/363] github/muon_newton_schulz ok in 3554 out 7532 $34.00
+  [272/363] kernelbook/RewardCriterion_8829 ok in 954 out 5195 $34.11
+  [273/363] kernelbook/AddCoords_1048 ok in 939 out 1001 $34.15
+  [274/363] kernelbook/Vgg16_13529 ok in 1779 out 9991 $34.36
+  [275/363] kernelbook/KLLoss_14745 ok in 1230 out 4654 $34.47
+  [276/363] kernelbook/FocalLoss_6088 ok in 1177 out 2692 $34.54
+  [277/363] github/beam_search_step ok in 1688 out 4405 $34.65
+  [278/363] github/siglip_sigmoid_contrastive_loss ok in 1960 out 7082 $34.80
+  [279/363] github/soft_moe ok in 2746 out 6894 $34.96
+  [280/363] kernelbook/HybridLoss_6798 ok in 1050 out 1507 $35.01
+  [281/363] kernelbook/ComplexConvTranspose2d_12328 ok in 2413 out 12103 $35.27
+  [282/363] kernelbook/Net_1481 ok in 2479 out 7929 $35.45
+  [283/363] kernelbook/L1_12240 ok in 1003 out 2610 $35.51
+  [284/363] kernelbook/TFBCELoss_7164 FAIL unparseable answer (stop end_turn, 1442 chars) in 907 out 4078 $35.61
+  [285/363] kernelbook/FocalLoss_1404 ok in 1165 out 3800 $35.70
+  [286/363] kernelbook/WSConv2d_3729 ok in 1866 out 6956 $35.85
+  [287/363] kernelbook/CXLoss_15263 ok in 2563 out 4596 $35.97
+  [288/363] kernelbook/SpatialTransformerPooled2d_12402 ok in 3225 out 7242 $36.13
+  [289/363] kernelbook/equalized_conv2d_7232 ok in 1896 out 3412 $36.22
+  [290/363] kernelbook/GlobalpoolFC_3218 ok in 1137 out 5103 $36.34
+  [291/363] kernelbook/Mix_3516 ok in 2060 out 2314 $36.40
+  [292/363] kernelbook/TransitionUp_2293 ok in 1584 out 6304 $36.54
+  [293/363] kernelbook/MinibatchStdLayer_17069 ok in 1673 out 7004 $36.70
+  [294/363] kernelbook/MSELoss2d_12703 FAIL unparseable answer (stop end_turn, 1921 chars) in 910 out 1616 $36.74
+  [295/363] kernelbook/BPR_17179 ok in 1050 out 5550 $36.87
+  [296/363] kernelbook/L2Norm_6153 ok in 784 out 13417 $37.15
+  [297/363] kernelbook/bodypose_model_12060 ok in 3628 out 7554 $37.33
+  [298/363] kernelbook/MaxPoolPad_17152 ok in 1170 out 22612 $37.79
+  [299/363] kernelbook/TSA_Fusion_1816 ok in 7657 out 10878 $38.05
+  [300/363] kernelbook/TransformerEncoderLayer_12626 ok in 4432 out 5104 $38.18
+  [301/363] kernelbook/AvgPoolPad_2297 ok in 1302 out 14527 $38.48
+  [302/363] kernelbook/ResidualBlock_8570 FAIL unparseable answer (stop end_turn, 5522 chars) in 2575 out 6796 $38.64
+  [303/363] kernelbook/ConvBlock_5722 ok in 2122 out 5572 $38.77
+  [304/363] kernelbook/SimpleNet_9976 FAIL unparseable answer (stop end_turn, 2364 chars) in 1348 out 8751 $38.96
+  [305/363] kernelbook/Get_gradient_7834 ok in 1743 out 3161 $39.04
+  [306/363] kernelbook/FocalLoss_5147 ok in 1170 out 2411 $39.10
+  [307/363] kernelbook/ChannelAttentionGG_15323 ok in 1675 out 4441 $39.21
+  [308/363] kernelbook/CNNNet_10128 ok in 3265 out 5366 $39.34
+  [309/363] kernelbook/ActNorm_1036 ok in 1127 out 5705 $39.47
+  [310/363] kernelbook/ShuffleConv_8174 ok in 1812 out 17595 $39.84
+  [311/363] kernelbook/TripletSoftmaxLoss_17721 ok in 1331 out 3824 $39.93
+  [312/363] kernelbook/EncoderCNN_8754 ok in 2455 out 5435 $40.06
+  [313/363] kernelbook/SqueezeEmbedding_1260 ok in 1164 out 3583 $40.14
+  [314/363] kernelbook/QuadricLinearLoss_14407 ok in 1083 out 2606 $40.21
+  [315/363] kernelbook/Mask_4270 ok in 904 out 4900 $40.32
+  [316/363] kernelbook/BiaffineScorer_3037 FAIL unparseable answer (stop end_turn, 2445 chars) in 1263 out 10239 $40.54
+  [317/363] kernelbook/BasicResidualBlock_10970 FAIL unparseable answer (stop end_turn, 5465 chars) in 2354 out 3843 $40.63
+  [318/363] kernelbook/FocalLossV1_6875 FAIL unparseable answer (stop end_turn, 1865 chars) in 1315 out 2070 $40.69
+  [319/363] kernelbook/KD_6200 FAIL unparseable answer (stop end_turn, 2862 chars) in 1470 out 4342 $40.79
+  [320/363] kernelbook/Gaussian_Distance_8170 ok in 1991 out 3718 $40.89
+  [321/363] kernelbook/PaddedMaxPool2d_328 ok in 1016 out 4999 $41.00
+  [322/363] kernelbook/loss_Textures_8291 ok in 1107 out 3733 $41.09
+  [323/363] kernelbook/L1_log_12243 ok in 1863 out 3288 $41.17
+  [324/363] kernelbook/RingLoss_15456 ok in 1443 out 2643 $41.24
+  [325/363] kernelbook/L0Loss_7588 FAIL unparseable answer (stop end_turn, 1939 chars) in 899 out 1487 $41.28
+  [326/363] kernelbook/SqueezeInitBlock_6634 ok in 1825 out 7786 $41.46
+  [327/363] kernelbook/Discriminator2_14404 ok in 1563 out 2420 $41.52
+  [328/363] kernelbook/ConditionalEntropyLoss_13104 ok in 970 out 1883 $41.57
+  [329/363] kernelbook/SilogLoss_2230 ok in 1318 out 2169 $41.63
+  [330/363] kernelbook/distLinear_14902 FAIL unparseable answer (stop end_turn, 2254 chars) in 1221 out 2425 $41.69
+  [331/363] kernelbook/FocalLoss_4521 ok in 1255 out 2708 $41.76
+  [332/363] kernelbook/LevelVariabilityLoss_6392 ok in 1329 out 2848 $41.83
+  [333/363] kernelbook/Myloss_2656 FAIL unparseable answer (stop end_turn, 2204 chars) in 1098 out 5779 $41.96
+  [334/363] authored/kv_cache_int8_write/kv_cache_int8_write__m1_batch FAIL unparseable answer (stop end_turn, 3927 chars) in 2371 out 2745 $42.04
+  [335/363] kernelbook/Attention_17406 FAIL unparseable answer (stop end_turn, 5641 chars) in 2292 out 6798 $42.19
+  [336/363] authored/kv_cache_update/rope_fused_paged_kv_cache_write__m1_batch ok in 2392 out 3043 $42.27
+  [337/363] authored/attention_cross/encdec_cross_attention_padmask__m1_splitk ok in 3285 out 4996 $42.39
+  [338/363] kernelbook/BasicModel_ConvNet_One_Conv_5489 FAIL unparseable answer (stop end_turn, 3093 chars) in 1662 out 10159 $42.61
+  [339/363] authored/moe_expert_bincount/moe_capacity_bincount_dispatch__m1_batch ok in 3070 out 3445 $42.71
+  [340/363] authored/moe_expert_ffn_batched/moe_capacity_expert_ffn_gelu__m1_splitk ok in 2101 out 2134 $42.77
+  [341/363] authored/moe_topk_routing/moe_router_softmax_topk_renorm__m1_splitk ok in 1424 out 1684 $42.82
+  [342/363] authored/moe_capacity_dispatch/moe_top1_capacity_dispatch_combine__m1_batch FAIL unparseable answer (stop end_turn, 6002 chars) in 2469 out 4318 $42.92
+  [343/363] authored/quantized_fp8_matmul/fp8_act_quant_linear_residual__m1_ragged ok in 1983 out 2043 $42.98
+  [344/363] kernelbook/BatchSpectralShrinkage_5680 FAIL unparseable answer (stop end_turn, 15937 chars) in 4900 out 9040 $43.19
+  [345/363] kb/l1/31_ELU__m1_batch ok in 792 out 1002 $43.22
+  [346/363] kb/l1/21_Sigmoid__m1_aux ok in 732 out 1418 $43.26
+  [347/363] kb/l1/22_Tanh__m1_aux ok in 684 out 1691 $43.31
+  [348/363] authored/moe_load_balance_loss/moe_top2_router_aux_loss__m1_batch ok in 2295 out 4179 $43.41
+  [349/363] kb/l1/5_Matrix_scalar_multiplication__m1_aux ok in 688 out 1225 $43.45
+  [350/363] kernelbook/PlainRefiner_646 ok in 2569 out 13951 $43.75
+  [351/363] kb/l1/51_Argmax_over_a_dimension__m1_aux ok in 1186 out 1944 $43.80
+  [352/363] authored/moe_expert_bincount/moe_capacity_dispatch_mask__m1_batch ok in 2637 out 5368 $43.93
+  [353/363] kb/l1/52_Argmin_over_a_dimension__m1_aux ok in 1036 out 2273 $43.99
+  [354/363] authored/quant_fp8_amax_scaling/fp8_delayed_scaling_matmul_2__m1_ragged ok in 2878 out 5080 $44.11
+  [355/363] authored/attention_gqa_sink/gqa_sink_sliding_window_attention__m1_aux ok in 3040 out 8660 $44.31
+  [356/363] kb/l1/92_cumsum_exclusive__m1_batch ok in 962 out 1851 $44.36
+  [357/363] kb/l1/99_TripletMarginLoss__m1_ragged FAIL unparseable answer (stop end_turn, 2091 chars) in 1134 out 2227 $44.42
+  [358/363] kb/l1/89_cumsum__m1_aux ok in 981 out 3470 $44.50
+  [359/363] kb/l2/19_ConvTranspose2d_GELU_GroupNorm__m1_batch ok in 2214 out 4975 $44.62
+  [360/363] kb/l2/46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch FAIL unparseable answer (stop end_turn, 3149 chars) in 1594 out 5559 $44.74
+  [361/363] kb/l1/35_GroupNorm___m1_ragged ok in 1553 out 8171 $44.92
+  [362/363] authored/kv_cache_int8_write/kv_cache_int8_quant_write__m1_batch ok in 2656 out 10661 $45.16
+  [363/363] kb/l2/36_ConvTranspose2d_Min_Sum_GELU_Add__m1_batch ok in 2252 out 8395 $45.34
+REPAIR GEN DONE round 2 global s0: spent $45.34

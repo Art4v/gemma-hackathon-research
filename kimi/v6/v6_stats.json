@@ -1,19 +1,73 @@
 {
- "rows": 616,
+ "rows": 1413,
  "kinds": {
-  "unsolved_so_far": 934,
-  "single": 380,
-  "correct_slow": 236,
-  "a1_harness_oom": 121,
-  "no_attempt1_verdict": 1
+  "hard_excluded": 94,
+  "unsure_excluded": 23,
+  "single": 591,
+  "correct_slow": 357,
+  "unsolved_so_far": 777,
+  "repair": 271,
+  "repair_slow": 194,
+  "no_attempt1_verdict": 2,
+  "a1_harness_oom": 13
  },
  "by_source_kind": {
-  "authored/single": 32,
-  "authored/correct_slow": 18,
-  "kernelbench/single": 45,
-  "kernelbench/correct_slow": 34,
-  "kernelbook/correct_slow": 184,
-  "kernelbook/single": 302,
-  "github/single": 1
- }
+  "authored/single": 18,
+  "authored/correct_slow": 12,
+  "authored/repair": 20,
+  "kernelbench/single": 66,
+  "kernelbench/correct_slow": 39,
+  "kernelbench/repair": 30,
+  "kernelbench/repair_slow": 40,
+  "authored/repair_slow": 5,
+  "kernelbook/correct_slow": 306,
+  "kernelbook/single": 505,
+  "kernelbook/repair_slow": 149,
+  "kernelbook/repair": 218,
+  "github/single": 2,
+  "github/repair": 3
+ },
+ "by_set_kind": {
+  "e1_readmit/correct_slow": 18,
+  "e1_readmit/repair": 17,
+  "e1_readmit/repair_slow": 14,
+  "e1_readmit/single": 29,
+  "e2_kbkd/correct_slow": 41,
+  "e2_kbkd/repair": 31,
+  "e2_kbkd/repair_slow": 16,
+  "e2_kbkd/single": 46,
+  "e3_scale/correct_slow": 57,
+  "e3_scale/repair": 31,
+  "e3_scale/repair_slow": 23,
+  "e3_scale/single": 123,
+  "pool/correct_slow": 241,
+  "pool/repair": 192,
+  "pool/repair_slow": 141,
+  "pool/single": 393
+ },
+ "strict": {
+  "file": "kimi/v6/v6_train_strict.jsonl",
+  "sha256": "9a7001c753f68ae7a898af804cfc6b27a5af82eab9c2a4f44760199f41b74570",
+  "rows": 1332,
+  "a6_dependent_rows": 81
+ },
+ "file": "kimi/v6/v6_train.jsonl",
+ "sha256": "d9271a92ee265b0f2cac9002f6b5abc6f5ec0ce1dd9600f28fbc554f87a6a2b2",
+ "by_kind": {
+  "single": 591,
+  "correct_slow": 357,
+  "repair": 271,
+  "repair_slow": 194
+ },
+ "by_set": {
+  "pool": 967,
+  "e1_readmit": 78,
+  "e2_kbkd": 134,
+  "e3_scale": 234
+ },
+ "flags": {
+  "generic_stack": 122,
+  "rule3_family": 3
+ },
+ "problems": 1413
 }

@@ -33,7 +33,12 @@ def _parse(text: str, required: list) -> dict | None:
         except (json.JSONDecodeError, TypeError):
             pass
     m = PYFENCE.findall(text)
-    return {"plan": "", "code": m[-1], "_parsed_from": "python_fence"} if m and "code" in required else None
+    if m and "code" in required:
+        return {"plan": "", "code": m[-1], "_parsed_from": "python_fence"}
+    # repair turns ask for "code only": Kimi then answers with the bare module (render_chat.unfence accepts the same)
+    if "code" in required and "def workload" in text:
+        return {"plan": "", "code": text.strip("\n") + "\n", "_parsed_from": "raw_module"}
+    return None
 
 
 class Ledger:

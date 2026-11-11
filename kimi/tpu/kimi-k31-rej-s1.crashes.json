@@ -1,0 +1,6 @@
+{
+ "kimi31r1/kb/l2/32_Conv2d_Scaling_Min": "judged alone",
+ "kimi31r1/kb/l2/81_Gemm_Swish_Divide_Clamp_Tanh_Clamp": "judged alone",
+ "kimi31r1/kb/l2/38_ConvTranspose3d_AvgPool_Clamp_Softmax_Multiply__bf16": "harness_crash (crashed in a part and again alone)",
+ "kimi31r1/kernelbook/aeEncoder_1264": "judged alone"
+}

@@ -1,0 +1,33 @@
+scored 6: batch 6 -> static_ok 5, lowering not rejected 5
+scored 7: batch 1 -> static_ok 1, lowering not rejected 1
+scored 40: batch 33 -> static_ok 25, lowering not rejected 25
+scored 68: batch 28 -> static_ok 15, lowering not rejected 15
+scored 88: batch 20 -> static_ok 13, lowering not rejected 13
+scored 91: batch 3 -> static_ok 2, lowering not rejected 2
+scored 93: batch 2 -> static_ok 1, lowering not rejected 1
+scored 97: batch 4 -> static_ok 2, lowering not rejected 2
+scored 134: batch 37 -> static_ok 25, lowering not rejected 25
+scored 138: batch 4 -> static_ok 4, lowering not rejected 4
+scored 139: batch 1 -> static_ok 1, lowering not rejected 1
+scored 177: batch 38 -> static_ok 29, lowering not rejected 29
+scored 215: batch 38 -> static_ok 29, lowering not rejected 29
+scored 228: batch 13 -> static_ok 11, lowering not rejected 11
+scored 288: batch 60 -> static_ok 52, lowering not rejected 52
+scored 300: batch 12 -> static_ok 8, lowering not rejected 8
+scored 324: batch 24 -> static_ok 14, lowering not rejected 14
+scored 378: batch 54 -> static_ok 47, lowering not rejected 47
+scored 421: batch 43 -> static_ok 37, lowering not rejected 37
+scored 422: batch 1 -> static_ok 1, lowering not rejected 1
+scored 474: batch 52 -> static_ok 43, lowering not rejected 43
+scored 523: batch 49 -> static_ok 43, lowering not rejected 43
+scored 559: batch 36 -> static_ok 31, lowering not rejected 31
+scored 583: batch 24 -> static_ok 19, lowering not rejected 19
+scored 596: batch 13 -> static_ok 12, lowering not rejected 12
+scored 604: batch 8 -> static_ok 6, lowering not rejected 6
+scored 615: batch 11 -> static_ok 10, lowering not rejected 10
+scored 627: batch 12 -> static_ok 9, lowering not rejected 9
+scored 643: batch 16 -> static_ok 15, lowering not rejected 15
+scored 648: batch 5 -> static_ok 5, lowering not rejected 5
+CPU SCORING DONE 648
+scored 650: batch 2 -> static_ok 2, lowering not rejected 2
+CPU SCORING DONE 650

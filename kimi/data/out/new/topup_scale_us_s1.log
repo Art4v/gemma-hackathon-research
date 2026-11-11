@@ -1,0 +1,4 @@
+us shard 1/2: 2 to generate (144 done), cap $50.0, workers 4
+  [1/2] kb/l2/44_ConvTranspose2d_Multiply_GlobalAvgPool_GlobalAvgPool_Mean__bf16__scale ok in 690 out 9248 $22.53
+  [2/2] kb/l1/90_cumprod__scale ok in 248 out 12331 $22.81
+FULL GEN DONE us s1: spent $22.81
