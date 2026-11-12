@@ -1,0 +1,7 @@
+{
+ "kimi31r1/kb/l1/23_Softmax": "judged alone",
+ "kimi31r1/kb/l1/33_BatchNorm": "judged alone",
+ "kimi31r1/kb/l1/19_ReLU": "judged alone",
+ "kimi31r1/kb/l2/71_Conv2d_Divide_LeakyReLU": "judged alone",
+ "kimi31r1/kernelbook/TransformerLinearXMCHead_3300": "judged alone"
+}

@@ -1,0 +1,3 @@
+Counter({'safe to re-admit': 196, 'keep excluded (instance)': 42, 'keep excluded (unsure, default)': 35})
+Counter({('safe to re-admit', False): 153, ('safe to re-admit', True): 43, ('keep excluded (instance)', True): 28, ('keep excluded (unsure, default)', False): 19, ('keep excluded (unsure, default)', True): 16, ('keep excluded (instance)', False): 14})
+Counter({('safe to re-admit', 'far'): 115, ('safe to re-admit', 'near'): 81, ('keep excluded (instance)', 'near'): 38, ('keep excluded (unsure, default)', 'far'): 19, ('keep excluded (unsure, default)', 'near'): 16, ('keep excluded (instance)', 'far'): 4})

@@ -1,0 +1,18 @@
+{
+ "type": "object",
+ "properties": {
+  "plan": {
+   "type": "string",
+   "description": "3-6 lines: grid and block shapes, accumulator dtype, what stays outside the kernel"
+  },
+  "code": {
+   "type": "string",
+   "description": "the complete Python module"
+  }
+ },
+ "required": [
+  "plan",
+  "code"
+ ],
+ "additionalProperties": false
+}

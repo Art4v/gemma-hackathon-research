@@ -1,17 +1,19 @@
 """Every prompt the constructor agent sees. Versioned: PROMPT_VERSION is recorded on each candidate and problem record.
 
-Three jobs, all producing plain-JAX reference modules: port a KernelBench PyTorch module, author a new p-style problem from a
-category spec, and write a reference for a scraped human Pallas kernel. The Pallas kernel-writing prompt was archived on Nov 8
-(dataset/archive/pallas/scripts/constructor/prompts.py) when kernel generation was paused.
+Four jobs: write a kernel (first attempt or repair), port a KernelBench PyTorch module to a JAX baseline, author a new p-style
+baseline from a category spec, and wrap a scraped human kernel with a plain-JAX reference. The kernel job's user turn is rendered by
+render_chat.py, so the constructor sees exactly what the student will see; the system prompt adds the oracle's rules and the Pallas
+TPU docs (pallas_guides/teacher_docs.md, sha recorded).
 """
 from __future__ import annotations
 
 import json, pathlib, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
-from common import REPO, fence, sha256  # noqa: E402
+from common import REPO, sha256  # noqa: E402
+from render_chat import fence, render_feedback, render_problem  # noqa: E402
 
-PROMPT_VERSION = "prompts-2"  # prompts-1 also carried the Pallas kernel prompt (archive/pallas)
+PROMPT_VERSION = "prompts-1"
 DOCS_PATH = REPO / "pallas_guides" / "teacher_docs.md"
 
 
@@ -21,6 +23,61 @@ def docs() -> tuple:
         t = DOCS_PATH.read_text()
         return t, sha256(t)
     return "", None
+
+
+# ---- the kernel job ----
+
+ORACLE_RULES = """You write Pallas TPU kernels that are judged by an automatic oracle on a TPU v6e (JAX 0.10.2). The oracle's four steps, in order; the first failure is the verdict:
+1. Kernel check (traced, nothing run): the module defines `workload(*inputs)` with the reference's arguments; at least one `pl.pallas_call`; the output depends on it; outside the kernel only layout and dtype primitives (reshape, transpose, broadcast, slice, pad, concatenate, astype, iota) or small integer metadata (<= 65536 elements, not derived from float inputs). Any arithmetic on float data outside the kernel fails: "not a Pallas kernel: heavy work outside pallas_call".
+2. Compile and run at the reference's full input sizes. Failures: compile, VMEM out of memory, Mosaic compile error, timeout (480 s for 3 seeds), runtime error.
+3. Correct on 3 input seeds against a float32 "highest"-precision answer: np.allclose(rtol=1e-2, atol=1e-2), or error at most 2x XLA default's own error. Seeds change the random draws in create_inputs, not shapes.
+4. Speed on seed 0: median of 20 calls vs jax.jit(reference) at default precision. pass needs t_xla / t_kernel >= 0.7.
+
+Rules that follow from this:
+- One self-contained module: import jax, jax.numpy as jnp, from jax.experimental import pallas as pl, from jax.experimental.pallas import tpu as pltpu, functools as needed. No other modules.
+- Sizes from the input arrays' shapes (x.shape), never from literals, so the same code works when the reference's CONFIG changes.
+- Block shapes: last two dims multiples of (8, 128) for f32, (16, 128) for bf16, or equal to the full array dims. Keep per-step VMEM well under 16 MiB on v6e (default scoped limit): a 512x512 f32 tile is 1 MiB; count inputs, outputs and scratch, times 2 for double buffering.
+- Accumulate matmuls in float32 (preferred_element_type=jnp.float32) and cast on store. Reductions over a tiled axis need a scratch accumulator (pltpu.VMEM) or an output block that is resident across the reduction axis.
+- Fuse the whole reference into one pallas_call when the shapes allow; a second pallas_call is fine when a global reduction needs two passes. Never finish the computation in plain jnp outside the kernel.
+- Do not use interpret=True. Do not call the reference. Do not read CONFIG from the reference; the reference module is not importable from the solution.
+- Keep weights of shape (in, out) as the reference passes them; transpose inside the kernel or via a layout op outside if you must.
+"""
+
+KERNEL_SYSTEM_NO_DOCS = ORACLE_RULES + """
+A minimal example of the contract (toy sizes; real tasks are 50 MB to 2 GB of input):
+""" + fence('''import jax, jax.numpy as jnp
+from jax.experimental import pallas as pl
+
+def _k(x_ref, b_ref, o_ref):
+    o_ref[...] = x_ref[...] * 2.0 + b_ref[...]
+
+def workload(x, b):
+    m, n = x.shape
+    return pl.pallas_call(_k, out_shape=jax.ShapeDtypeStruct(x.shape, x.dtype), grid=(m // 8,),
+        in_specs=[pl.BlockSpec((8, n), lambda i: (i, 0)), pl.BlockSpec((1, n), lambda i: (0, 0))],
+        out_specs=pl.BlockSpec((8, n), lambda i: (i, 0)))(x, b.reshape(1, n))
+''') + """
+Reply as JSON with `plan` (3-6 lines: grid and block shapes, accumulator dtype, what stays outside the kernel, the speed idea) and
+`code` (the complete module). The code must be the whole file, not a diff.
+"""
+
+
+def kernel_system(with_docs: bool = True) -> tuple:
+    """(system prompt, docs sha). The docs go after the rules so the rules are read first."""
+    text, sha = docs() if with_docs else ("", None)
+    if not text:
+        return KERNEL_SYSTEM_NO_DOCS, None
+    return KERNEL_SYSTEM_NO_DOCS + "\n\n# Pallas TPU documentation (reference material)\n\n" + text, sha
+
+
+def kernel_user(ref_code: str, history: list | None = None) -> str:
+    """The user turn for attempt 1 (history empty) or a repair: problem, then (kernel, feedback) pairs, rendered as the student sees
+    them, concatenated with role markers so one message carries the whole conversation."""
+    parts = [render_problem(ref_code)]
+    for code, feedback in history or []:
+        parts.append("[your previous answer]\n" + fence(code))
+        parts.append("[oracle]\n" + render_feedback(feedback))
+    return "\n\n".join(parts)
 
 
 # ---- porting KernelBench ----
@@ -79,6 +136,32 @@ CATEGORIES = {
     "swiglu_variant_geglu": "GeGLU MLP block: x @ [W_gate, W_up] fused, gelu(gate) * up, then @ W_down, bf16 with f32 accumulation.",
     "softcapped_logits": "Final-layer logits with tanh soft-capping (Gemma style) and a fused log-softmax, bf16 in, f32 out.",
     "cross_entropy_chunked_softcap": "Fused linear + softcap + cross-entropy loss returning per-token losses (not the exam's plain cross entropy; includes the projection).",
+    # Phase 2 (Nov 8, overnight): weighted toward the exam's hard families. The kernel prompt is unchanged, so PROMPT_VERSION stays.
+    "attention_softcap": "Causal multi-head attention with tanh logit soft-capping (Gemma 2 style) before softmax, bf16 in, f32 softmax.",
+    "attention_relative_bias": "Attention with a T5-style bucketed relative position bias (bias table indexed by bucketed distance), bf16.",
+    "attention_cross": "Encoder-decoder cross attention: decoder queries over a padded encoder memory with a per-example key padding mask.",
+    "attention_chunked_prefill": "Causal attention for a chunk of new query tokens appended after an existing prefix (query offset into the key positions), bf16.",
+    "attention_decode_mqa": "Single-token decode, multi-query attention (one KV head) over a long padded cache with per-sequence valid lengths.",
+    "attention_linear_elu": "Non-causal linear attention with an elu(x)+1 feature map: phi(Q) (phi(K)^T V) normalized by phi(Q) sum(phi(K)).",
+    "attention_differential": "Differential attention: two softmax attention maps from split Q/K heads, output = (A1 - lambda * A2) V with a learned scalar lambda.",
+    "attention_local_global": "Alternating local (windowed) and global attention heads in one call: half the heads use a sliding window mask, half are full causal.",
+    "moe_shared_plus_routed": "MoE layer output combine: a dense shared-expert MLP plus top-k routed expert outputs weighted by gates, given precomputed expert outputs per token.",
+    "moe_capacity_dispatch": "Capacity-limited token dispatch: build the [experts, capacity, hidden] buffer from top-1 routing with drop of overflow tokens, and the matching combine.",
+    "moe_load_balance_loss": "Router with softmax over experts, top-2 selection and the Switch-style auxiliary load-balancing loss returned alongside the gates.",
+    "moe_expert_ffn_batched": "Batched expert FFN on a fixed-capacity buffer: [E, C, d] x [E, d, f] -> gelu -> [E, C, f] x [E, f, d], bf16 with f32 accumulation.",
+    "quant_int4_packed_matmul": "Matmul with int4 weights packed two per int8 byte, per-group (group 128) scales and zero points, bf16 activations, f32 accumulation.",
+    "quant_activation_per_token": "Dynamic per-token int8 activation quantization (absmax) followed by an int8 x int8 matmul with per-channel weight scales, dequantized output.",
+    "quant_fp8_amax_scaling": "fp8 (e4m3) matmul with delayed scaling: inputs scaled by amax-derived factors, cast to fp8, matmul in f32, unscaled output and new amax returned.",
+    "ragged_segment_reduce": "Segment sum and segment mean over a packed token tensor given per-sequence lengths (sequences concatenated, no padding).",
+    "ragged_masked_layernorm": "LayerNorm over padded variable-length sequences that ignores padded positions and zeroes them in the output.",
+    "ragged_jagged_softmax": "Softmax within each variable-length segment of a packed 1-D score vector per row (segment offsets given), as used by jagged attention.",
+    "kv_cache_int8_write": "Quantize new K/V (per-head, per-token absmax int8) and write them into a preallocated int8 cache plus scale cache at given positions.",
+    "kv_cache_ring_buffer": "Sliding-window KV cache update as a ring buffer: write new tokens at position mod window and return the cache and an updated validity mask.",
+    "kv_rope_append": "Apply rotary embedding to new K at their absolute positions and append K/V into a contiguous cache at per-sequence offsets.",
+    "ssm_rwkv_time_mix": "RWKV-style time-mixing recurrence over a sequence (WKV with exponential decay per channel), f32 state, bf16 inputs.",
+    "ssm_lru_scan": "Linear recurrent unit: complex-diagonal recurrence h_t = lambda * h_{t-1} + B x_t (real and imaginary parts as separate arrays), output Re(C h_t).",
+    "ssm_s4d_conv": "S4D layer as a long convolution: compute the SSM kernel from diagonal (A, B, C, dt) and apply it causally to the sequence via FFT-free direct convolution.",
+    "ssm_short_conv_gate": "Hyena/Mamba-style short causal depthwise conv1d (kernel 4) followed by a SiLU gate multiply with a second branch.",
 }
 
 
@@ -119,4 +202,5 @@ def prompt_versions() -> dict:
 
 
 if __name__ == "__main__":
-    print(json.dumps({**prompt_versions(), "categories": len(CATEGORIES)}))
+    s, sha = kernel_system()
+    print(json.dumps({"prompt_version": PROMPT_VERSION, "docs_sha256": sha, "kernel_system_chars": len(s), "categories": len(CATEGORIES)}))

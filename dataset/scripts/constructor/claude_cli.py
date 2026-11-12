@@ -14,6 +14,21 @@ from constructor import Request, Response  # noqa: E402
 RETRY_MARKERS = ("rate limit", "429", "overloaded", "529", "timeout", "ECONNRESET", "Not logged in")
 
 
+def _run(argv: list, stdin: str, timeout: int, cwd: str) -> subprocess.CompletedProcess:
+    """subprocess.run with the timeout applied to the whole process group: a grandchild (an MCP server, a node helper) that
+    inherits the pipes would otherwise keep communicate() waiting after the child itself is killed."""
+    import signal
+    proc = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd,
+                            start_new_session=True)
+    try:
+        out, err = proc.communicate(stdin, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        os.killpg(proc.pid, signal.SIGKILL)
+        proc.communicate()
+        raise
+    return subprocess.CompletedProcess(argv, proc.returncode, out, err)
+
+
 class ClaudeCLI:
     name = "claude_cli"
 
@@ -23,7 +38,10 @@ class ClaudeCLI:
 
     def _argv(self, req: Request) -> list:
         argv = [self.bin, "-p", "--tools", "", "--no-session-persistence", "--output-format", "json", "--json-schema", json.dumps(req.schema),
-                "--system-prompt", req.system]
+                "--system-prompt", req.system,
+                # Nov 8: no MCP servers. The user's Claude Code config starts e.g. a Playwright MCP (`npm exec`) with every call; it
+                # hung and held the output pipe, so calls ran 30+ min and the 900 s timeout could not end them.
+                "--strict-mcp-config"]
         if self.model != "default":
             argv += ["--model", self.model]
         if self.effort:
@@ -35,8 +53,7 @@ class ClaudeCLI:
         for attempt in range(self.retries + 1):
             t0, p = time.time(), None
             try:
-                p = subprocess.run(self._argv(req), input=req.user, capture_output=True, text=True, timeout=self.timeout_s,
-                                   cwd=os.environ.get("CLAUDE_CLI_CWD", str(pathlib.Path(__file__).resolve().parents[2])))
+                p = _run(self._argv(req), req.user, self.timeout_s, os.environ.get("CLAUDE_CLI_CWD", str(pathlib.Path(__file__).resolve().parents[2])))
                 raw = p.stdout
                 d = json.loads(raw) if raw.strip().startswith("{") else {}
             except subprocess.TimeoutExpired:
