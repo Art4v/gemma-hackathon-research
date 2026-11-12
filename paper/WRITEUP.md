@@ -16,9 +16,9 @@ We build:
 2. **A training set of 2,304 rows.** Every target was judged correct by that oracle, and 85% also meet its speed bar. The kernels
    come from an open-weights teacher (Kimi K3.1), refined over up to three rounds of oracle feedback, plus a template generator for
    kernels at production scale. Every row is screened against JAXBench at the instance level.
-3. **An evaluation** on JAXBench's 64 tasks. Every model gets the same three attempts per task.
+3. **An evaluation** on JAXBench's 50 tasks. Every model gets the same three attempts per task.
 
-On the 58-task primary set, our LoRA adapter passes **9 tasks within three attempts**, against 0 for base Gemma and 7 for Gemini
+On JAXBench's 50 tasks, our LoRA adapter passes **9 tasks within three attempts**, against 0 for base Gemma and 7 for Gemini
 Flash with 25k tokens of Pallas docs, and **7 on the first attempt**, against Flash's 1. All nine of its kernels run faster than XLA
 (1.30-1.39x). Eight are matmul fusions that tile M, N and K to fit TPU memory at production size: the expert part of the job, applied
 to operation chains the model was never trained on. The gain comes from targeted data at JAXBench's production scale, and the
@@ -175,8 +175,9 @@ The trainer's and Ollama's prompt token counts agree on all 64 turn-0 prompts.
 
 ### 3.6 Evaluation
 
-**Tasks.** JAXBench's 50 level 1 tasks and 14 level 2-only tasks with our plain-JAX references, checked on the TPU against Google's
-kernels. The **primary set** is the 58 whose references verified: 33 k-tasks and 25 p-tasks.
+**Tasks.** JAXBench's 50 tasks: 33 k-tasks and 17 p-tasks. We also wrote plain-JAX references for JAXBench's 14 level 2-only
+kernels; no model passes, or is correct on, any of the 8 whose reference matched Google's kernel on the TPU, so every count below is
+the same with them included.
 
 **Budget.** Every arm gets a first attempt and two repairs with the oracle's feedback, 3 attempts per task (against up to 144 in the
 JAXBench paper).
@@ -204,12 +205,12 @@ development.
 
 ### 4.1 JAXBench
 
-| Arm | Pass within 3 | Correct within 3 | pass@1 | Parity | k-33 | p-25 |
+| Arm | Pass within 3 | Correct within 3 | pass@1 | Parity | k-33 | p-17 |
 |---|---|---|---|---|---|---|
-| Gemma 4 E4B, bare | 0/58 | 0 | 0 | 0 | 0 | 0 |
-| Gemma 4 E4B + docs | 0/58 | 0 | 0 | 0 | 0 | 0 |
-| Gemini Flash + docs | 7/58 | 36 | 1 | 4 | 5 | 2 |
-| **Gemma 4 E4B + our LoRA** | **9/58** | **9** | **7** | **9** | **8** | **1** |
+| Gemma 4 E4B, bare | 0/50 | 0 | 0 | 0 | 0 | 0 |
+| Gemma 4 E4B + docs | 0/50 | 0 | 0 | 0 | 0 | 0 |
+| Gemini Flash + docs | 7/50 | 36 | 1 | 4 | 5 | 2 |
+| **Gemma 4 E4B + our LoRA** | **9/50** | **9** | **7** | **9** | **8** | **1** |
 
 ![Figure 1: JAXBench tasks passed within k attempts (all 64 tasks)](figures/fig11_success_vs_attempts.png)
 
@@ -277,7 +278,7 @@ exam-scale data is matmul-centric.
 ## 6. Conclusion
 
 Verified, targeted data taught a 4B model the expert core of TPU matmul kernels, for sizes its tiles divide: tiling M, N and K,
-accumulating in f32 VMEM and fusing the epilogue. Base Gemma passes none of JAXBench's 58 primary tasks; with 2,304 verified rows and
+accumulating in f32 VMEM and fusing the epilogue. Base Gemma passes none of JAXBench's 50 tasks; with 2,304 verified rows and
 two epochs of LoRA it passes 9, as many as Gemini Flash with docs, every one faster than XLA, and 7 of them on the first attempt.
 What remains is partial tiles, API correctness (most failures never compile) and kernels outside the matmul family.
 
