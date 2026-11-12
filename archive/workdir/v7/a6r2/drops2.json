@@ -1,0 +1,295 @@
+{
+ "rule": "see a6r2/compare2.py",
+ "drops": {
+  "authored/kv_quantized_dequant_matmul/int4_groupwise_awq_dequant_matmul": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quant_activation_per_token/w8a8_dynamic_per_token_matmul__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quant_int4_packed_matmul/int4_packed_group_matmul": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quant_int4_packed_matmul/w4a16_int4_packed_group_matmul": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quantized_fp8_matmul/fp8_act_quant_linear_residual__m1_ragged": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/ssm_lru_scan/lru_complex_diag_scan": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kb/l1/86_conv_depthwise_separable_2D__m1_batch__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kb/l2/100_ConvTranspose3d_Clamp_Min_Divide": [
+   "18k_Conv2D_ReLU_BiasAdd"
+  ],
+  "kernelbook/AFMS_3585__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/AUXModule_2844__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/AnyHead_9083__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/AttentionConv_10307": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/AttentionPool_8898": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/AvgPoolHead_905__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/BiaffineScorer_3037": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "kernelbook/CosNorm_Classifier_11486__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/CosSim_15404__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/EmbeddingModule_16872__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/FCNet_17088__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/FRM_3582__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/GateLayer_1320__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/GlobalpoolFC_1550__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Hidden2Discrete_684__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/LinearAverage_18045__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/LinearI_Neg_7695__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Linear_sigmoid_68__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/MainClassifier_12602__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/MatchingTensor_4700__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/MergeLayer_2910__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/Mfm_12447": [
+   "18k_Conv2D_ReLU_BiasAdd"
+  ],
+  "kernelbook/NAC_188__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Net_36": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/NeuralAccumulatorCell_7228__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/NormedLinear_5111__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PartitionedLinear_4357__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PatchMerging_12918__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PatchMerging_16516": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PatchMerging_3950__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PermEqui2_max_15492__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/RNNCell_17042__kn": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/ResHead_5558__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/ResnetDecoder_17904__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/SLP_14144__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/SpatialGC_5230__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/VideoBoringModel_14403__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/average_attention_network__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/distLinear_3627__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/norm_gated/mamba2_gate_first_group_rmsnorm_outproj": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quant_activation_per_token/w8a8_per_token_dynamic_quant_matmul__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quant_int4_packed_matmul/int4_packed_groupwise_w4a16_matmul": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quant_int4_packed_matmul/w4a16_int4_packed_group_matmul__m1_ragged": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/quantized_fp8_matmul/fp8_dynamic_act_quant_block_weight_matmul__m1_ragged": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "authored/ssm_scan_step/mamba1_selective_scan_2": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "github/bitnet_ternary_bitlinear": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kb/l1/86_conv_depthwise_separable_2D__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/AFMS_3585__kn8": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/AUXModule_17535__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/AnyHead_18398__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Attention_11029__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/AvgPoolHead_905__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/BiaffineScorer_7974__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/CSDN_Tem_11667__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Classifier_6794": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/CnnViewModel_3186": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/CoreNetwork_10707__kn": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/CosNorm_Classifier_5719__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/CosineLinear_17517__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/DeepMind_14839": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/FRM_3582__kn8": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/GateLayer_1320__kn8": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/GlobalAttention_2860": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/GlobalpoolFC_3218__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Hidden2Discrete_684__kn8": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/KarankEtAl_10153": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/LINEAR_LOGSOFTMAX_13817__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/LeNet5_2962": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/LocalizationNet_5812": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/Maxout_4302__kn": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/MetaBilinear_9554": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/NAC_188__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/NIN4d_14612__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/NeuralAccumulatorCell_7228__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/NeuralAccumulatorCell_7926__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PartitionedLinear_4357__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PatchMerging_12918__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PatchMerging_3950__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PermEqui2_max_15492__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PredictionHead_7510__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/Prototypes_4126": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/ReadUnit_4676": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/ResHead_11605": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/SAGEAggregator_5109__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Word2Vec_4253__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/distLinear_14902__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/distLinear_7494__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ]
+ }
+}

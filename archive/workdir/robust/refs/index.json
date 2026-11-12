@@ -1,0 +1,98 @@
+{
+ "19k_Matmul_Subtract_Multiply_ReLU__shapeA": {
+  "orig": "19k_Matmul_Subtract_Multiply_ReLU",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "19k_Matmul_Subtract_Multiply_ReLU__shapeB": {
+  "orig": "19k_Matmul_Subtract_Multiply_ReLU",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "20k_Gemm_Multiply_LeakyReLU__shapeA": {
+  "orig": "20k_Gemm_Multiply_LeakyReLU",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "20k_Gemm_Multiply_LeakyReLU__shapeB": {
+  "orig": "20k_Gemm_Multiply_LeakyReLU",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "27k_Matmul_Mish_Mish__shapeA": {
+  "orig": "27k_Matmul_Mish_Mish",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "27k_Matmul_Mish_Mish__shapeB": {
+  "orig": "27k_Matmul_Mish_Mish",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "35k_Gemm_Scaling_Hardtanh_GELU__shapeA": {
+  "orig": "35k_Gemm_Scaling_Hardtanh_GELU",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "35k_Gemm_Scaling_Hardtanh_GELU__shapeB": {
+  "orig": "35k_Gemm_Scaling_Hardtanh_GELU",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "37k_Matmul_Swish_Scaling__shapeA": {
+  "orig": "37k_Matmul_Swish_Scaling",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "37k_Matmul_Swish_Scaling__shapeB": {
+  "orig": "37k_Matmul_Swish_Scaling",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "41k_Gemm_Add_ReLU__shapeA": {
+  "orig": "41k_Gemm_Add_ReLU",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "41k_Gemm_Add_ReLU__shapeB": {
+  "orig": "41k_Gemm_Add_ReLU",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "44k_Matmul_Divide_GELU__shapeA": {
+  "orig": "44k_Matmul_Divide_GELU",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "44k_Matmul_Divide_GELU__shapeB": {
+  "orig": "44k_Matmul_Divide_GELU",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ },
+ "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh__shapeA": {
+  "orig": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+  "M": 2048,
+  "K": 7168,
+  "N": 9216
+ },
+ "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh__shapeB": {
+  "orig": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+  "M": 3072,
+  "K": 7680,
+  "N": 8704
+ }
+}

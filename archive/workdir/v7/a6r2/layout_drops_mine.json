@@ -1,0 +1,56 @@
+{
+ "rule": "same test as drops.json, on aarav/dataset-v4 422e28a layout items",
+ "drops": {
+  "gen7L__matmul_layout__00014": [
+   "44k_Matmul_Divide_GELU"
+  ],
+  "gen7L__matmul_layout__00023": [
+   "20k_Gemm_Multiply_LeakyReLU"
+  ],
+  "gen7L__matmul_layout__00026": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "gen7L__matmul_layout__00046": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "gen7L__matmul_layout__00048": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "gen7L__matmul_layout__00064": [
+   "44k_Matmul_Divide_GELU"
+  ],
+  "gen7L__row_reduction_layout__00010": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7L__row_reduction_layout__00016": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7L__row_reduction_layout__00017": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7L__row_reduction_layout__00018": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "gen7L__row_reduction_layout__00029": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "gen7L__row_reduction_layout__00041": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7L__row_reduction_layout__00042": [
+   "50k_Matmul_GELU_Softmax"
+  ],
+  "gen7L__row_reduction_layout__00043": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "gen7L__row_reduction_layout__00044": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7L__row_reduction_layout__00048": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "gen7L__row_reduction_layout__00050": [
+   "38k_Matmul_Dropout_Softmax"
+  ]
+ }
+}

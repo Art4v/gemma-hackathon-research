@@ -1,0 +1,32 @@
+{
+ "rule": "same as drops.json (whole chain minus linear+layout; also log removed)",
+ "drops": {
+  "gen7R__row_reduction_rowout__00015": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7R__row_reduction_rowout__00019": [
+   "50k_Matmul_GELU_Softmax"
+  ],
+  "gen7R__row_reduction_rowout__00025": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7R__row_reduction_rowout__00037": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "gen7R__row_reduction_rowout__00041": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7R__row_reduction_rowout__00043": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7R__row_reduction_rowout__00045": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "gen7R__row_reduction_rowout__00062": [
+   "36k_Matmul_Sigmoid_Sum"
+  ],
+  "gen7R__row_reduction_rowout__00064": [
+   "38k_Matmul_Dropout_Softmax"
+  ]
+ }
+}
