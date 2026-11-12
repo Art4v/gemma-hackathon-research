@@ -162,12 +162,123 @@ def row_reduction_matmul(i: int, rng) -> dict:
 FAMILIES = [(matmul_epilogue, 0.62), (row_reduction_matmul, 0.38)]  # bmm is 25% of matmul_epilogue; row reductions weighted up (rule B is the smallest group)
 
 
-def candidates(n: int, seed: int) -> list:
+# --layout: the exam's input layouts the rows above never show (Karthik's agent's comparison, #5 Nov 12 02:30 UTC): a weight stored (N, K) and
+# used as weight.T, a bias after the matmul (in 24 of 25 matmul k-tasks), a bias before a row reduction, and a second per-feature vector
+# (scale and shift). f32 only, as every exam input is. Same tiles, limit, filters and checks.
+DOT_NT = "jax.lax.dot_general(a_ref[...].astype(jnp.float32), b_ref[...].astype(jnp.float32), (((1,), (1,)), ((), ())), preferred_element_type=jnp.float32)"
+
+
+def _vectors(rng, p_bias: float) -> tuple:
+    bias = rng.random() < p_bias
+    scale = bias and rng.random() < 0.35
+    return bias, scale
+
+
+def _vec_lines(bias: bool, scale: bool, indent: str, kernel: bool) -> str:
+    s, v = ("s_ref[...].astype(jnp.float32)", "v_ref[...].astype(jnp.float32)") if kernel else ("s", "v")
+    return f"{indent}y = y * {s} + {v}\n" if scale else (f"{indent}y = y + {v}\n" if bias else "")
+
+
+def _vec_doc(bias: bool, scale: bool) -> str:
+    return " -> scale and shift" if scale else (" -> bias" if bias else "")
+
+
+def matmul_layout(i: int, rng) -> dict:
+    batched = rng.random() < 0.25
+    transposed = rng.random() < 0.4
+    bias, scale = _vectors(rng, 0.8)
+    dtype, nb = "jnp.float32", 4
+    B, M, N, K = _sizes(rng, nb, batched, ms=(2048, 4096))
+    chain = epilogue(rng)
+    pre = "c['batch'], " if batched else ""
+    bshape = f"({pre}c['n'], c['k'])" if transposed else f"({pre}c['k'], c['n'])"
+    inputs = [("a", f"({pre}c['m'], c['k'])", 0.05), ("b", bshape, 0.05)] + ([("s", "(c['n'],)", 0.5)] if scale else []) + ([("v", "(c['n'],)", 0.1)] if bias else [])
+    names = ["a", "b"] + (["s"] if scale else []) + (["v"] if bias else [])
+    sig = ", ".join(names)
+    bt = ("jnp.swapaxes(b, -1, -2)" if batched else "b.T") if transposed else "b"
+    body = f"    y = jnp.matmul(a, {bt})\n" + _vec_lines(bias, scale, "    ", False) + apply_lines(chain, "    ") + "    return y\n"
+    doc = f"{'Batched matmul' if batched else 'Matmul'}{' with the weight stored (n, k)' if transposed else ''}{_vec_doc(bias, scale)} -> {_chain_names(chain)}."
+    name = f"gen7L_{'bmm' if batched else 'matmul'}_{i}"
+    cfg = {"name": name, **({"batch": B} if batched else {}), "m": M, "n": N, "k": K}
+    prefs = dict(zip("mnk", MATMUL_TILES))
+    dims = _shrink({"m": M, "n": N, "k": K}, prefs)
+    _check_steps({"m": M, "n": N, "k": K}, dims, prefs)
+    small = {**cfg, **dims, **({"batch": min(B, 2)} if batched else {})}
+    g = (["b_i"] if batched else []) + ["i", "j", "l"]
+    args, kn = ", ".join(g), len(g) - 1
+    bdim, bix = ("None, ", "b_i, ") if batched else ("", "")
+    refs = ", ".join(f"{x}_ref" for x in names)
+    kern = (f"\n\ndef _kernel({refs}, o_ref, acc):\n    @pl.when(pl.program_id({kn}) == 0)\n    def _():\n        acc[...] = jnp.zeros_like(acc)\n"
+            f"    acc[...] += {DOT_NT if transposed else _dot(dtype)}\n\n"
+            f"    @pl.when(pl.program_id({kn}) == pl.num_programs({kn}) - 1)\n    def _():\n        y = acc[...]\n"
+            + _vec_lines(bias, scale, "        ", True) + apply_lines(chain, "        ") + "        o_ref[...] = y.astype(o_ref.dtype)\n")
+    nax = (1 if batched else 0) if transposed else (2 if batched else 1)
+    head = ("    B, M, K = a.shape\n" if batched else "    M, K = a.shape\n") + f"    N = b.shape[{nax}]\n"
+    tm, tn, tk = MATMUL_TILES
+    head += f"    tm, tn, tk = _tile(M, {tm}), _tile(N, {tn}), _tile(K, {tk})\n"
+    grid = "(B, M // tm, N // tn, K // tk)" if batched else "(M // tm, N // tn, K // tk)"
+    sem = ", ".join(['"parallel"'] * (len(g) - 1) + ['"arbitrary"'])
+    bspec = (f"pl.BlockSpec(({bdim}tn, tk), lambda {args}: ({bix}j, l))" if transposed else f"pl.BlockSpec(({bdim}tk, tn), lambda {args}: ({bix}l, j))")
+    vspecs = "".join(f", pl.BlockSpec((tn,), lambda {args}: (j,))" for _ in names[2:])
+    code = (f"{HEADER_K}{POLICY}{kern}\n\ndef workload({sig}):\n{head}    return pl.pallas_call(\n        _kernel,\n"
+            f"        out_shape=jax.ShapeDtypeStruct(({'B, ' if batched else ''}M, N), a.dtype),\n        grid={grid},\n"
+            f"        in_specs=[pl.BlockSpec(({bdim}tm, tk), lambda {args}: ({bix}i, l)), {bspec}{vspecs}],\n"
+            f"        out_specs=pl.BlockSpec(({bdim}tm, tn), lambda {args}: ({bix}i, j)),\n        scratch_shapes=[pltpu.VMEM((tm, tn), jnp.float32)],\n"
+            f"        compiler_params=pltpu.CompilerParams(dimension_semantics=({sem}), vmem_limit_bytes=VMEM_LIMIT),\n    )({sig})\n")
+    return {"family": "bmm_epilogue" if batched else "matmul_epilogue", "layout": {"transposed": transposed, "bias": bias, "scale": scale},
+            "name": name, "code": code, "ref_code": ref_module(doc, cfg, dtype, inputs, sig, body), "shrunk_ref_code": ref_module(doc, small, dtype, inputs, sig, body)}
+
+
+def row_reduction_layout(i: int, rng) -> dict:
+    transposed = rng.random() < 0.4
+    bias, scale = _vectors(rng, 0.6)
+    dtype, nb = "jnp.float32", 4
+    _, M, N, K = _sizes(rng, nb, False)
+    pre, post = epilogue(rng, 0, 2), epilogue(rng, 0, 1)
+    rname = rng.choice(sorted(REDUCE_KEEP))
+    keeps = REDUCE_KEEP[rname].startswith("jax.nn") or rname in ("normalize", "center")
+    Nout = "N" if keeps else "1"
+    chain = pre + [(rname, REDUCE_KEEP[rname])] + post
+    bshape = "(c['n'], c['k'])" if transposed else "(c['k'], c['n'])"
+    inputs = [("a", "(c['m'], c['k'])", 0.05), ("b", bshape, 0.05)] + ([("s", "(c['n'],)", 0.5)] if scale else []) + ([("v", "(c['n'],)", 0.1)] if bias else [])
+    names = ["a", "b"] + (["s"] if scale else []) + (["v"] if bias else [])
+    sig = ", ".join(names)
+    body = f"    y = jnp.matmul(a, {'b.T' if transposed else 'b'})\n" + _vec_lines(bias, scale, "    ", False) + apply_lines(chain, "    ") + "    return y\n"
+    doc = f"Matmul{' with the weight stored (n, k)' if transposed else ''}{_vec_doc(bias, scale)} -> {_chain_names(chain)} over the last axis."
+    name = f"gen7L_rowreduce_{i}"
+    cfg = {"name": name, "m": M, "n": N, "k": K}
+    sn = min(N, 2048)
+    dims = _shrink({"m": M, "k": K}, rowred_prefs(sn))
+    _check_steps({"m": M, "k": K}, dims, rowred_prefs(sn))
+    small = {**cfg, **dims, "n": sn}
+    refs = ", ".join(f"{x}_ref" for x in names)
+    kern = (f"\n\ndef _kernel({refs}, o_ref, acc):\n    @pl.when(pl.program_id(1) == 0)\n    def _():\n        acc[...] = jnp.zeros_like(acc)\n"
+            f"    acc[...] += {DOT_NT if transposed else _dot(dtype)}\n\n"
+            "    @pl.when(pl.program_id(1) == pl.num_programs(1) - 1)\n    def _():\n        y = acc[...]\n"
+            + _vec_lines(bias, scale, "        ", True) + apply_lines(chain, "        ") + "        o_ref[...] = y.astype(o_ref.dtype)\n")
+    bspec = "pl.BlockSpec((N, tk), lambda i, l: (0, l))" if transposed else "pl.BlockSpec((tk, N), lambda i, l: (l, 0))"
+    vspecs = "".join(", pl.BlockSpec((N,), lambda i, l: (0,))" for _ in names[2:])
+    code = (f"{HEADER_K}{POLICY}{kern}\n\ndef workload({sig}):\n    M, K = a.shape\n    N = b.shape[{0 if transposed else 1}]\n"
+            f"    # rows per block decide the speed; at N = 8192 the whole-row blocks need a smaller K tile to fit\n"
+            f"    tm, tk = _tile(M, 1024), _tile(K, 512 if N <= 4096 else 256)\n"
+            f"    # the weight block and every per-feature vector span all of N: the row reduction must see whole rows\n"
+            f"    return pl.pallas_call(\n        _kernel,\n        out_shape=jax.ShapeDtypeStruct((M, {Nout}), a.dtype),\n        grid=(M // tm, K // tk),\n"
+            f"        in_specs=[pl.BlockSpec((tm, tk), lambda i, l: (i, l)), {bspec}{vspecs}],\n"
+            f"        out_specs=pl.BlockSpec((tm, {Nout}), lambda i, l: (i, 0)),\n        scratch_shapes=[pltpu.VMEM((tm, N), jnp.float32)],\n"
+            f'        compiler_params=pltpu.CompilerParams(dimension_semantics=("parallel", "arbitrary"), vmem_limit_bytes=VMEM_LIMIT),\n    )({sig})\n')
+    return {"family": "row_reduction_matmul", "layout": {"transposed": transposed, "bias": bias, "scale": scale},
+            "name": name, "code": code, "ref_code": ref_module(doc, cfg, dtype, inputs, sig, body), "shrunk_ref_code": ref_module(doc, small, dtype, inputs, sig, body)}
+
+
+LAYOUT_FAMILIES = [(matmul_layout, 0.55), (row_reduction_layout, 0.45)]
+
+
+def candidates(n: int, seed: int, layout: bool = False) -> list:
     out = []
-    for f, share in FAMILIES:
+    for f, share in (LAYOUT_FAMILIES if layout else FAMILIES):
         for k in range(round(n * share)):
-            c = f(k, random.Random(f"v7/{seed}/{f.__name__}/{k}"))
-            cid = f"gen7__{f.__name__}__{k:05d}"
+            c = f(k, random.Random(f"v7{'L' if layout else ''}/{seed}/{f.__name__}/{k}"))
+            cid = f"gen7{'L' if layout else ''}__{f.__name__}__{k:05d}"
             out.append({"id": cid, "task": cid, **c})
     return out
 
@@ -182,11 +293,15 @@ def run_filter(script: str, problems: pathlib.Path, python: str | None) -> None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--n", type=int, default=300); ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--layout", action="store_true", help="the f32 layout variants (weight.T, bias, scale and shift) into dataset/v7_gen_layout/")
     ap.add_argument("--python", default=None); ap.add_argument("--max-mib", type=float, default=116.0, help="drop a kernel whose estimated VMEM exceeds this (114 MiB ran clean against the 124 MiB limit)")
     a = ap.parse_args(argv)
     log = lambda m: print(m, flush=True)
+    global OUT
+    if a.layout:
+        OUT = DATASET / "v7_gen_layout"
     OUT.mkdir(parents=True, exist_ok=True)
-    cands = candidates(a.n, a.seed)
+    cands = candidates(a.n, a.seed, a.layout)
     write_jsonl(OUT / "candidates.jsonl", cands)
     log(f"{len(cands)} candidates: {dict(collections.Counter(c['family'] for c in cands))}")
 
@@ -216,7 +331,7 @@ def main(argv=None) -> int:
     fits = [c for c in ok if (blocks.get(c["id"]) or {}).get("full_total") is not None and blocks[c["id"]]["full_total"] <= cap]
     log(f"estimated VMEM <= {a.max_mib} MiB: {len(fits)} of {len(ok)}")
 
-    items = [{"id": f"gen7/{c['id']}", "task": c["task"], "set": "e5_gen", "family": c["family"], "ref_code": c["ref_code"], "code": c["code"],
+    items = [{"id": f"gen7{'L' if a.layout else ''}/{c['id']}", "task": c["task"], "set": "e5_gen", "family": c["family"], **({"layout": c["layout"]} if a.layout else {}), "ref_code": c["ref_code"], "code": c["code"],
               "vmem_estimate_mib": round(blocks[c["id"]]["full_total"] / 2 ** 20, 2), "verification": "cpu (full-size lowering, shrunken numerics)"} for c in fits]
     write_jsonl(OUT / "items.jsonl", items)
     log(f"items.jsonl: {len(items)} {dict(collections.Counter(i['family'] for i in items))}")
