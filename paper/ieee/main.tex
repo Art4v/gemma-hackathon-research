@@ -43,13 +43,13 @@ code generation, fine-tuning, LoRA, accelerator kernels, TPU, Pallas, JAX, bench
 \section{Introduction}
 
 Most numerical code that runs on an accelerator is compiled automatically. In JAX, a function is traced and handed to XLA,
-which chooses how to schedule each operation on the device \cite{jax}. When the automatic result is not fast enough, an expert
-writes a kernel by hand. On Google TPUs this is done in Pallas, a JAX extension in which the programmer states how arrays are
+which chooses how to schedule each operation on the device \cite{jax,mlir}. Decades of work on tensor compilers and schedule search \cite{halide,tvm,ansor} have narrowed the gap to hand-written code without closing it. When the automatic result is not fast enough, an expert
+writes a kernel by hand. On Google TPUs \cite{tpu} this is done in Pallas, a JAX extension in which the programmer states how arrays are
 cut into blocks, which blocks are loaded into the chip's small fast memory (VMEM) at each step, and what is computed on
 them \cite{pallas}. A good kernel keeps the matrix unit busy, never asks for more VMEM than exists, and fuses operations that
 XLA would run as separate passes over memory.
 
-Writing such kernels is specialist work, and language models do it poorly. Pallas has little public code, its lowering rules for
+Writing such kernels is specialist work. Language models trained on code \cite{codex,alphacode,codellama,starcoder} write ordinary programs well, but they write kernels poorly. Pallas has little public code, its lowering rules for
 TPU are strict, and an error in a block shape is only discovered on the chip. JAXBench \cite{jaxbench} measures this directly:
 it gives a model a plain JAX function and asks for an equivalent Pallas kernel. Its authors report that most failed samples are
 API misuse or compile errors, and they name fine-tuning on curated Pallas corpora as future work. For GPUs, the analogous
@@ -57,7 +57,7 @@ problem has received a benchmark \cite{kernelbench} and several trained models \
 knowledge no fine-tuned Pallas model has been published, and no result on JAXBench exists for a small open model.
 
 This paper tests whether a small model can acquire the skill through its weights. We fine-tune Gemma 4 E4B \cite{gemma4} with
-LoRA \cite{lora} and compare it with the same model given an identical prompt, so that any difference is attributable to the
+LoRA \cite{lora}, in the manner of distillation from a stronger teacher \cite{distill}, and compare it with the same model given an identical prompt, so that any difference is attributable to the
 adapter. We deliberately give the fine-tuned model no documentation or examples in its prompt. As a reference point we also run
 a much larger commercial model, Gemini Flash, with documentation.
 
@@ -90,15 +90,16 @@ scores correctness and speedup. Follow-up work on verified variants of that benc
 score by exploiting the checker rather than by solving the task \cite{kbverified}. JAXBench \cite{jaxbench} carries the idea to
 TPUs: its level 1 contains 50 workloads, 33 operator chains ported from KernelBench (k-tasks) and 17 production kernels such as
 attention variants and normalizations (p-tasks). Its authors report that with curated documentation and iterative refinement of
-up to 144 attempts per task, a frontier model solves 48 of the 50. None of these works trains a model.
+up to 144 attempts per task, a frontier model solves 48 of the 50. None of these works trains a model. Related benchmarks measure whether models can make existing programs faster \cite{pie} or resolve real software issues \cite{swebench}, and learned search has found faster low-level routines than human experts in narrow domains \cite{alphadev}.
 
 \textbf{Trained kernel models.} KernelLLM \cite{kernelllm} fine-tunes an 8B Llama model on PyTorch-to-Triton pairs.
 AutoTriton \cite{autotriton}, TritonRL \cite{tritonrl}, Dr.~Kernel \cite{drkernel} and Kevin \cite{kevin} add reinforcement
-learning from execution feedback, all for GPUs. Several of them add guards against reward hacking; the static kernel check in
+learning from execution feedback, all for GPUs, where Triton \cite{triton} plays the role that Pallas plays on TPUs. Several of them add guards against reward hacking; the static kernel check in
 our oracle plays that role for TPUs.
 
-\textbf{Parameter-efficient fine-tuning.} LoRA \cite{lora} trains low-rank updates to frozen weight matrices. We use it
-unchanged. The only departure from common practice is where the update is applied, which Section~\ref{sec:train} explains.
+\textbf{Parameter-efficient fine-tuning.} LoRA \cite{lora} trains low-rank updates to frozen weight matrices, and QLoRA \cite{qlora} trains them over a quantized base. We use LoRA unchanged on a base released with quantization-aware training \cite{qat}.
+
+\textbf{Execution feedback.} Showing a model the error from its own failed program and asking for a correction is an established technique \cite{selfdebug}. Our repair turns and repair training rows follow it, with the TPU oracle as the source of feedback. The only departure from common practice is where the update is applied, which Section~\ref{sec:train} explains.
 
 \section{Method}
 
@@ -227,7 +228,7 @@ Total & 2,304 \\
 \label{sec:train}
 
 We train a LoRA adapter of rank 64 and scale 128 on the attention and MLP projections of Gemma 4 E4B (139.5M trainable
-parameters), for 2 epochs at a peak learning rate of $10^{-4}$ with AdamW, 10\% warm-up, cosine decay and gradient accumulation
+parameters), for 2 epochs at a peak learning rate of $10^{-4}$ with AdamW \cite{adamw}, 10\% warm-up, cosine decay and gradient accumulation
 of 4, which gives 1,152 optimizer steps. Training took 89 minutes on one A100 80~GB and cost under 6 US dollars. The mean
 training loss was 0.157 in the first epoch and 0.075 in the second. The scored checkpoint, the end of epoch 2, was fixed before
 training began.
@@ -260,7 +261,7 @@ is therefore a reference point with a different model, prompt and decoding regim
 \textbf{Metrics and tests.} The primary metric is \emph{pass within 3}: the number of tasks with a \texttt{pass} on any
 attempt. Secondary metrics are \emph{correct within 3} (a \texttt{pass} or \texttt{correct\_slow} on any attempt), pass at the
 first attempt, and parity (a correct kernel at 0.97\x{} XLA or faster). Arms are compared on paired per-task outcomes with an
-exact two-sided McNemar test \cite{mcnemar}, and we report Holm-adjusted values \cite{holm} over the three comparisons we make.
+exact two-sided McNemar test \cite{mcnemar}, a standard choice for comparing two systems on the same test items \cite{dietterich}, and we report Holm-adjusted values \cite{holm} over the three comparisons we make.
 Proportions are given with 95\% Wilson intervals \cite{wilson}.
 
 \section{Results}
@@ -498,7 +499,7 @@ under a tiled contraction, and feedback that explains compile errors rather than
 
 Code, data and results are in the repository \texttt{Art4v/gemma-hackathon-research}. The oracle is in \texttt{oracle/}. The
 release \texttt{dataset-final} contains the training file as trained (2,304 rows), the published file without the five
-shortcut rows (2,299 rows), the development set, a datasheet and checksums. The raw generations and verdicts of every arm are
+shortcut rows (2,299 rows), the development set, a datasheet \cite{datasheets} and checksums. The raw generations and verdicts of every arm are
 in \texttt{paper/data/runs/}, and \texttt{paper/analysis/jaxbench.py} recomputes every number in Tables~\ref{tab:main} and
 \ref{tab:mcnemar} from them using only the Python standard library.
 
@@ -524,6 +525,31 @@ arXiv preprint, 2025.
 pp. 65--70, 1979.
 \bibitem{wilson} E. B. Wilson, ``Probable inference, the law of succession, and statistical inference,'' \emph{J. Amer.
 Statist. Assoc.}, vol. 22, no. 158, pp. 209--212, 1927.
+\bibitem{mlir} C. Lattner \emph{et al.}, ``MLIR: Scaling compiler infrastructure for domain specific computation,'' in \emph{Proc. CGO}, 2021.
+\bibitem{halide} J. Ragan-Kelley \emph{et al.}, ``Halide: A language and compiler for optimizing parallelism, locality, and
+recomputation in image processing pipelines,'' in \emph{Proc. PLDI}, 2013.
+\bibitem{tvm} T. Chen \emph{et al.}, ``TVM: An automated end-to-end optimizing compiler for deep learning,'' in \emph{Proc. OSDI}, 2018.
+\bibitem{ansor} L. Zheng \emph{et al.}, ``Ansor: Generating high-performance tensor programs for deep learning,'' in \emph{Proc. OSDI}, 2020.
+\bibitem{tpu} N. P. Jouppi \emph{et al.}, ``In-datacenter performance analysis of a tensor processing unit,'' in \emph{Proc. ISCA}, 2017.
+\bibitem{triton} P. Tillet, H. T. Kung, and D. Cox, ``Triton: An intermediate language and compiler for tiled neural network
+computations,'' in \emph{Proc. MAPL}, 2019.
+\bibitem{codex} M. Chen \emph{et al.}, ``Evaluating large language models trained on code,'' arXiv:2107.03374, 2021.
+\bibitem{alphacode} Y. Li \emph{et al.}, ``Competition-level code generation with AlphaCode,'' \emph{Science}, vol. 378, no. 6624, pp. 1092--1097, 2022.
+\bibitem{codellama} B. Rozi\`ere \emph{et al.}, ``Code Llama: Open foundation models for code,'' arXiv:2308.12950, 2023.
+\bibitem{starcoder} R. Li \emph{et al.}, ``StarCoder: May the source be with you!'' arXiv:2305.06161, 2023.
+\bibitem{distill} G. Hinton, O. Vinyals, and J. Dean, ``Distilling the knowledge in a neural network,'' arXiv:1503.02531, 2015.
+\bibitem{pie} A. Shypula \emph{et al.}, ``Learning performance-improving code edits,'' in \emph{Proc. ICLR}, 2024.
+\bibitem{swebench} C. E. Jimenez \emph{et al.}, ``SWE-bench: Can language models resolve real-world GitHub issues?'' in \emph{Proc. ICLR}, 2024.
+\bibitem{alphadev} D. J. Mankowitz \emph{et al.}, ``Faster sorting algorithms discovered using deep reinforcement learning,''
+\emph{Nature}, vol. 618, pp. 257--263, 2023.
+\bibitem{qlora} T. Dettmers, A. Pagnoni, A. Holtzman, and L. Zettlemoyer, ``QLoRA: Efficient finetuning of quantized LLMs,'' in \emph{Proc. NeurIPS}, 2023.
+\bibitem{qat} B. Jacob \emph{et al.}, ``Quantization and training of neural networks for efficient integer-arithmetic-only
+inference,'' in \emph{Proc. CVPR}, 2018.
+\bibitem{selfdebug} X. Chen, M. Lin, N. Sch\"arli, and D. Zhou, ``Teaching large language models to self-debug,'' in \emph{Proc. ICLR}, 2024.
+\bibitem{adamw} I. Loshchilov and F. Hutter, ``Decoupled weight decay regularization,'' in \emph{Proc. ICLR}, 2019.
+\bibitem{dietterich} T. G. Dietterich, ``Approximate statistical tests for comparing supervised classification learning
+algorithms,'' \emph{Neural Comput.}, vol. 10, no. 7, pp. 1895--1923, 1998.
+\bibitem{datasheets} T. Gebru \emph{et al.}, ``Datasheets for datasets,'' \emph{Commun. ACM}, vol. 64, no. 12, pp. 86--92, 2021.
 \end{thebibliography}
 
 \end{document}
