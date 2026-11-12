@@ -57,18 +57,43 @@ for c in chains:
     if len(dev) >= 27:
         break
     dev += by[c]; dev_chains.append(c)
+FIXED_DEV = D / "dev_fixed.jsonl"  # the shared dev set (#5, ca43b98): read, never recomputed, so it cannot shift when the pool changes
+if FIXED_DEV.exists():
+    want = [json.loads(l)["example_id"] for l in open(FIXED_DEV)]
+    byid = {r["example_id"]: r for r in gen}
+    dev = [byid[i] for i in want]; dev_chains = sorted({chain(r) for r in dev})
 dev_ids = {r["example_id"] for r in dev}
 gen_train = [r for r in pool if r["example_id"] not in dev_ids]
-assert len(a6 - {r["example_id"] for r in gen}) == 0
+a6_not_passes = len(a6 - {r["example_id"] for r in gen})  # matched candidates that never passed the TPU: nothing to drop
 assert not {chain(r) for r in gen_train} & set(dev_chains)
 
 rows = base + scaled + gen_train
+# history turns as the eval renders them (Karthik's agent's audit, #5 03:09 UTC): bench.conversation wraps extract_code(previous reply),
+# which keeps the code's trailing newline. Rebuild every prefix through bench.conversation; final targets are untouched.
+fixed_hist = 0
+for r in rows:
+    m = r["messages"]
+    if len(m) <= 3:
+        continue
+    assert len(m) == 5 and [x["role"] for x in m] == ["system", "user", "assistant", "user", "assistant"], r["example_id"]
+    ref = re.findall(r"```python\n(.*?)\n```", m[1]["content"], re.S)[0]
+    fb_turn = m[3]["content"]
+    code1 = bench.extract_code(m[2]["content"])
+    probe = bench.conversation(ref, [{"code": code1, "feedback": "@@FB@@"}], None)
+    pre, post = probe[3]["content"].split("@@FB@@")
+    assert fb_turn.startswith(pre) and fb_turn.endswith(post), r["example_id"]
+    fb = fb_turn[len(pre):len(fb_turn) - len(post)]
+    new = bench.conversation(ref, [{"code": code1, "feedback": fb}], None)
+    assert new[0] == {k: m[0][k] for k in ("role", "content")} and new[1]["content"] == m[1]["content"] and new[3]["content"] == fb_turn, r["example_id"]
+    if new[2]["content"] != m[2]["content"]:
+        fixed_hist += 1
+    r["messages"] = new[:3] + [m[3], m[4]]
 ids = collections.Counter(r["example_id"] for r in rows)
 assert max(ids.values()) == 1, [k for k, n in ids.items() if n > 1][:3]
 (D / "train.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
 (D / "dev_items.jsonl").write_text("".join(json.dumps({"example_id": r["example_id"], "task": r["task"], "family": r["family"], "chain": chain(r)}) + "\n" for r in dev))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-man = {"rows": len(rows), "parts": {"v6_a6_minus_4": len(base), "kimi_kn0_pass": len(scaled), "generated_train": len(gen_train), "a6_rule2_dropped": len(a6)},
+man = {"rows": len(rows), "parts": {"v6_a6_minus_4": len(base), "kimi_kn0_pass": len(scaled), "generated_train": len(gen_train), "a6_rule2_dropped": len(a6), "history_turns_rewrapped": fixed_hist},
        "dev_holdout": {"rows": len(dev), "chains": len(dev_chains)}, "by_kind": dict(collections.Counter(r["kind"] for r in rows)),
        "by_teacher": dict(collections.Counter(r["teacher"] for r in rows)),
        "below_0.7x_rows": sum((r.get("speed_vs_xla") or 1) < 0.7 for r in rows),

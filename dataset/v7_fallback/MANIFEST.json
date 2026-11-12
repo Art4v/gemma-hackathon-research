@@ -1,24 +1,25 @@
 {
- "rows": 1663,
+ "rows": 1660,
  "parts": {
   "v6_a6_minus_4": 1409,
   "kimi_kn0_pass": 47,
-  "generated_train": 207,
-  "a6_rule2_dropped": 33
+  "generated_train": 204,
+  "a6_rule2_dropped": 41,
+  "history_turns_rewrapped": 463
  },
  "dev_holdout": {
   "rows": 29,
   "chains": 20
  },
  "by_kind": {
-  "single": 843,
+  "single": 840,
   "correct_slow": 357,
   "repair": 270,
   "repair_slow": 193
  },
  "by_teacher": {
   "kimi-k3.1": 1456,
-  "generator-v7": 207
+  "generator-v7": 204
  },
  "below_0.7x_rows": 550,
  "max_target_chars": 15951,
@@ -28,7 +29,7 @@
   "generated": "aarav/dataset-v4@de8f43a dataset/v7_gen/v7_gen_rows.jsonl sha256 ff739ee6..."
  },
  "files": {
-  "train.jsonl": "8ded1d8098cdf0196f8359009ec8e44332a08d9c23b659853105c4fd96b6b2e1",
+  "train.jsonl": "68732ae334f827c5ef9ec7b9b36e74c5419d220cf8491df671eea0c0b326029f",
   "dev_items.jsonl": "c96b2f7c07ef707c727337e71cbdab2510d745111545bfc937fd313d092931cb"
  }
 }

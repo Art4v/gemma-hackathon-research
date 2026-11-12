@@ -7,8 +7,11 @@
   "gen7__matmul_epilogue__00026.gen7",
   "gen7__matmul_epilogue__00035.gen7",
   "gen7__matmul_epilogue__00046.gen7",
+  "gen7__matmul_epilogue__00050.gen7",
   "gen7__matmul_epilogue__00051.gen7",
+  "gen7__matmul_epilogue__00061.gen7",
   "gen7__matmul_epilogue__00064.gen7",
+  "gen7__matmul_epilogue__00072.gen7",
   "gen7__matmul_epilogue__00081.gen7",
   "gen7__matmul_epilogue__00084.gen7",
   "gen7__matmul_epilogue__00088.gen7",
@@ -17,8 +20,11 @@
   "gen7__matmul_epilogue__00113.gen7",
   "gen7__matmul_epilogue__00117.gen7",
   "gen7__matmul_epilogue__00118.gen7",
+  "gen7__matmul_epilogue__00119.gen7",
+  "gen7__matmul_epilogue__00121.gen7",
   "gen7__matmul_epilogue__00148.gen7",
   "gen7__matmul_epilogue__00154.gen7",
+  "gen7__matmul_epilogue__00157.gen7",
   "gen7__matmul_epilogue__00160.gen7",
   "gen7__matmul_epilogue__00161.gen7",
   "gen7__matmul_epilogue__00167.gen7",
@@ -26,10 +32,12 @@
   "gen7__matmul_epilogue__00180.gen7",
   "gen7__row_reduction_matmul__00008.gen7",
   "gen7__row_reduction_matmul__00013.gen7",
+  "gen7__row_reduction_matmul__00041.gen7",
   "gen7__row_reduction_matmul__00054.gen7",
   "gen7__row_reduction_matmul__00056.gen7",
   "gen7__row_reduction_matmul__00058.gen7",
   "gen7__row_reduction_matmul__00067.gen7",
+  "gen7__row_reduction_matmul__00073.gen7",
   "gen7__row_reduction_matmul__00078.gen7",
   "gen7__row_reduction_matmul__00082.gen7",
   "gen7__row_reduction_matmul__00083.gen7",
@@ -634,5 +642,6 @@
    "gen7__row_reduction_matmul__00082.gen7"
   ],
   "why": "00177: negate+clamp(hardtanh)+gelu = 35k's chain at 35k's shape; rr 00008/00054/00082: log_softmax ~ 38k/43k softmax (rule 4, unsure means out); #5 2026-11-12 02:44 UTC"
- }
+ },
+ "note": "drop lists are the union of every detail id plus the audit additions, so they cannot drift from the detail (fixed after Karthik's agent's audit, #5 03:09 UTC)"
 }
