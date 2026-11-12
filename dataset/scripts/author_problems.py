@@ -14,7 +14,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from common import CANDIDATES, HBM_BUDGET_BYTES, PIPELINE_VERSION, PROBLEMS, Isolated, now, read_jsonl, sha256, task_name, validate, write_jsonl  # noqa: E402
 from constructor import Request, get_constructor, save_raw  # noqa: E402
 from constructor.prompts import AUTHOR_SCHEMA, AUTHOR_SYSTEM, CATEGORIES, PROMPT_VERSION, author_user  # noqa: E402
-from common import unfence  # noqa: E402
+from render_chat import unfence  # noqa: E402
 
 MIN_BYTES = 20e6
 
@@ -107,7 +107,13 @@ def main(argv=None) -> None:
             save_raw(raw_dir, resp)
             if not resp.ok:
                 excluded.append(record(cat, f"failed_{n}", "", {}, "excluded", f"author_failed:constructor:{resp.error}", "")); continue
-            name = slug(resp.output["name"])
+            name = base = slug(resp.output["name"])
+            # parallel requests in one category share the same avoid-list and often pick the same name; ids must be unique and
+            # the file path per id, or the last response overwrites the others on disk (Nov 8: 23 collisions)
+            taken = {r["problem_id"] for r in existing} | {r["problem_id"] for r in kept + excluded}
+            k = 2
+            while f"authored/{cat}/{name}" in taken:
+                name, k = f"{base}_{k}", k + 1
             code = (unfence(resp.output["code"]) or resp.output["code"]).strip("\n") + "\n"
             chk = shape_check(code, a.python)
             note = None

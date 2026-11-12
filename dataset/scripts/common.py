@@ -53,11 +53,17 @@ def read_jsonl(path) -> list:
 
 
 def write_jsonl(path, rows, append: bool = False) -> None:
+    """Rewrites are atomic (temp file + rename): the overnight driver runs stages in parallel with readers of the same files."""
     p = pathlib.Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
-    with p.open("a" if append else "w") as f:
-        for r in rows:
-            f.write(json.dumps(r, sort_keys=True) + "\n")
+    text = "".join(json.dumps(r, sort_keys=True) + "\n" for r in rows)
+    if append:
+        with p.open("a") as f:
+            f.write(text)
+        return
+    tmp = p.with_name(f".{p.name}.{os.getpid()}.tmp")
+    tmp.write_text(text)
+    os.replace(tmp, p)
 
 
 def read_json(path):
@@ -67,7 +73,9 @@ def read_json(path):
 def write_json(path, obj) -> None:
     p = pathlib.Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(obj, indent=1, sort_keys=True) + "\n")
+    tmp = p.with_name(f".{p.name}.{os.getpid()}.tmp")
+    tmp.write_text(json.dumps(obj, indent=1, sort_keys=True) + "\n")
+    os.replace(tmp, p)
 
 
 def task_name(problem_id: str) -> str:
@@ -236,20 +244,3 @@ def exam_kb_stems() -> dict:
             if stem:
                 out[stem] = task
     return out
-
-
-FENCE = re.compile(r"```(?:python)?\n(.*?)\n```", re.S)
-
-
-def fence(code: str) -> str:
-    return "```python\n" + code.rstrip("\n") + "\n```"
-
-
-def unfence(text: str):
-    """The single fenced Python block in `text`, or the whole text if it has no fence and defines a function; else None."""
-    blocks = FENCE.findall(text)
-    if len(blocks) == 1:
-        return blocks[0] + "\n"
-    if not blocks and "def " in text:
-        return text.strip("\n") + "\n"
-    return None

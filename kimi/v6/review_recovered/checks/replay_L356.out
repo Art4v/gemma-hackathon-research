@@ -1,0 +1,12 @@
+('CE(13p,64p)', 'keep') 4
+('CE(13p,64p)', 'safe') 18
+('attn(1p-7p,15p,16p,65p)', 'keep') 61
+('attn(1p-7p,15p,16p,65p)', 'safe') 71
+('k', 'keep') 9
+('k', 'safe') 67
+('other p', 'keep') 8
+('other p', 'safe') 35
+ 
+83625 adversarial_verdicts.jsonl
+6181 final_safe_list.txt
+13676 verdicts.py

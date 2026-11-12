@@ -19,7 +19,7 @@ from common import (CANDIDATES, HBM_BUDGET_BYTES, PIPELINE_VERSION, PROBLEMS, RA
                     sha256, task_name, validate, write_jsonl)
 from constructor import Request, get_constructor, save_raw  # noqa: E402
 from constructor.prompts import PORT_SYSTEM, PROMPT_VERSION, port_user  # noqa: E402
-from common import unfence  # noqa: E402
+from render_chat import unfence  # noqa: E402
 
 KB = RAW / "kernelbench" / "KernelBench"
 # KernelBench level-1 problems that are exam p-tasks in all but name (8p GEMM, 12p RMSNorm, 13p Cross Entropy, 1p/2p attention).

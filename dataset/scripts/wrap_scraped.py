@@ -1,12 +1,12 @@
-"""Stage 2c: turn public human-written Pallas TPU kernels into plain-JAX reference problems.
+"""Stage 2c: wrap public human-written Pallas TPU kernels as problems (plain-JAX reference) plus a human candidate kernel.
 
   python dataset/scripts/wrap_scraped.py [--limit 5] [--batch pilot] [--backend claude_cli] [--model M] [--list]
 
 Enumerates raw/scrape/**/*.py containing `pallas_call`, drops files that are exam human kernels or their sources (DENY and every
 path cited in benchmarks/jaxbench/level2/*/baseline.py headers), and asks the constructor for a reference and a self-contained
-wrapper. The reference goes to problems/scraped/<repo>/<name>.py and problems.jsonl. The wrapped human kernel is written beside it
-as <name>.kernel.py only so check_scraped.py can validate the reference in Pallas interpret mode; it is deleted after that check
-and never enters the dataset.
+wrapper. The reference goes to problems/scraped/<repo>/<name>.py and problems.jsonl; the human kernel becomes a candidate record in
+candidates/<batch>/r1-human.jsonl with id <task>.human.s0, so round 1 submits it as a reference-validity probe and, if it passes,
+a training target (meta.target_origin human). Scraped kernels are checked by the oracle only; nothing here executes them.
 """
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from common import BENCH, CANDIDATES, HBM_BUDGET_BYTES, PIPELINE_VERSION, PROBLE
 from constructor import Request, get_constructor, save_raw  # noqa: E402
 from constructor.prompts import PROMPT_VERSION, WRAP_SCHEMA, WRAP_SYSTEM, wrap_user  # noqa: E402
 from author_problems import shape_check  # noqa: E402
-from common import unfence  # noqa: E402
+from render_chat import unfence  # noqa: E402
 
 REPOS = {"jax": ("jax-ml/jax", "Apache-2.0"), "maxtext": ("AI-Hypercomputer/maxtext", "Apache-2.0"), "tpu-inference": ("vllm-project/tpu-inference", "Apache-2.0")}
 # only the TPU kernel directories; never the Pallas implementation, GPU ops, model layers or tests
@@ -78,7 +78,7 @@ def main(argv=None) -> None:
     reqs = [Request(f"wrap/{repo}/{rel}", WRAP_SYSTEM, wrap_user(REPOS[repo][0], rel, p.read_text(errors="replace"), REPOS[repo][1]), WRAP_SCHEMA)
             for repo, rel, p in kernels]
     meta = {f"wrap/{repo}/{rel}": (repo, rel, p) for repo, rel, p in kernels}
-    kept, excluded = [], []
+    kept, excluded, humans = [], [], []
     for resp in con.generate(reqs):
         repo, rel, p = meta[resp.key]
         save_raw(raw_dir, resp)
@@ -103,14 +103,23 @@ def main(argv=None) -> None:
         out = PROBLEMS / "scraped" / repo / f"{name}.py"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(ref); (PROBLEMS / "scraped" / repo / f"{name}.kernel.py").write_text(ker)
+        humans.append({"candidate_id": f"{rec['task_name']}.human.s0", "problem_id": pid, "task_name": rec["task_name"], "attempt": 1, "sample": 0,
+                       "parent_candidate_id": None, "feedback_in": None, "feedback_in_verdict": None, "prescreen_hint": None,
+                       "constructor": {"backend": "human", "model": REPOS[repo][0], "prompt_version": PROMPT_VERSION, "docs_sha256": None},
+                       "plan": "human-written kernel from " + rel, "code": ker, "code_sha256": sha256(ker), "usage": {}, "created_at": now()})
         print(f"  {pid}: ok {chk['input_bytes'] / 1e6:.0f} MB")
     for r in kept:
         errs = validate("problem", r)
         if errs:
             raise SystemExit(f"{r['problem_id']}: {errs}")
+    for c in humans:
+        errs = validate("candidate", c)
+        if errs:
+            raise SystemExit(f"{c['candidate_id']}: {errs}")
     write_jsonl(PROBLEMS / "problems.jsonl", kept, append=True)
     write_jsonl(PROBLEMS / "excluded.jsonl", excluded, append=True)
-    print(f"wrapped {len(kept)}, excluded {len(excluded)}; kernels kept beside each reference for check_scraped.py")
+    write_jsonl(CANDIDATES / a.batch / "r1-human.jsonl", humans, append=True)
+    print(f"wrapped {len(kept)}, excluded {len(excluded)}; human candidates -> candidates/{a.batch}/r1-human.jsonl")
 
 
 if __name__ == "__main__":

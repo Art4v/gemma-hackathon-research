@@ -1,0 +1,8 @@
+PASS main L20876 (toolu_01XVTVggeV2Gh1g3uz7cTWoi) reads review/adv/pool_contamination.json; L20877 is its result
+PASS relu-stacks line is complete (ends with ']])]')
+PASS both keys printed, same keys/order as pool_relu_stacks.json (L20877 'relu:' line)
+PASS counts == ADV L311 (91 | 2 | 52 and 68 | 3 | 49)
+PASS every entry is [problem_id:str, share:float, audit_class:str]
+PASS pool_relu_stacks.json size == 9557 (ADV L357 ls)
+L20877 verified_instance_in_pool_not_in_audit: verified_instance_in_pool_not_in_audit dict [('9p_SwiGLU_MLP', ['authored/swiglu_variant_geglu/geglu_mlp_fused_gate_up',
+L20877 unsure_in_pool_not_in_audit: unsure_in_pool_not_in_audit dict [('13p/64p', ['authored/softcapped_logits/gemma_softcapped_logits_logsoftmax', 'authore

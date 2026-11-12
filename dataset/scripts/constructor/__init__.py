@@ -1,8 +1,7 @@
 """The constructor agent: the model that writes candidate kernels, ports KernelBench problems, authors p-style problems and wraps
-scraped kernels. One protocol, two backends:
+scraped kernels. One protocol, one backend:
 
   claude_cli        `claude -p` headless under the user's Max plan (default)
-  anthropic_batch   Anthropic Message Batches API (fallback for throughput; needs ANTHROPIC_API_KEY and the `anthropic` package)
 
 Every request is a system prompt plus one user message and a JSON schema; every response is the parsed structured output plus usage.
 Not called "teacher": that word belongs to other parts of the study.
@@ -55,9 +54,6 @@ def get_constructor(backend: str = "claude_cli", model: str | None = None, **kw)
     if backend == "claude_cli":
         from constructor.claude_cli import ClaudeCLI
         return ClaudeCLI(model=model, **kw)
-    if backend == "anthropic_batch":
-        from constructor.anthropic_batch import AnthropicBatch
-        return AnthropicBatch(model=model or "claude-opus-5-5", **kw)
     raise ValueError(f"unknown constructor backend {backend!r}")
 
 
