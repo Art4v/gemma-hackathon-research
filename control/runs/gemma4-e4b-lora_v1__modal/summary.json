@@ -1,0 +1,18 @@
+{
+ "bare": {
+  "tasks": 64,
+  "judged": 64,
+  "pass_at_1": 0,
+  "pass_within_3": 0,
+  "correct_within_3": 0,
+  "parity_within_3": 0,
+  "median_speed_correct": null,
+  "turn0_verdicts": {
+   "compile": 61,
+   "not_a_kernel": 3
+  },
+  "final_verdicts": {
+   "compile": 64
+  }
+ }
+}

@@ -1,0 +1,10 @@
+{"id": "bare/19k_Matmul_Subtract_Multiply_ReLU/t2", "task": "19k_Matmul_Subtract_Multiply_ReLU", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/20k_Gemm_Multiply_LeakyReLU/t2", "task": "20k_Gemm_Multiply_LeakyReLU", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/21k_Gemm_Divide_Sum_Scaling/t2", "task": "21k_Gemm_Divide_Sum_Scaling", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/30k_Matmul_Scaling_ResidualAdd/t2", "task": "30k_Matmul_Scaling_ResidualAdd", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/37k_Matmul_Swish_Scaling/t2", "task": "37k_Matmul_Swish_Scaling", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/42k_Gemm_Max_Subtract_GELU/t2", "task": "42k_Gemm_Max_Subtract_GELU", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/44k_Matmul_Divide_GELU/t2", "task": "44k_Matmul_Divide_GELU", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/43k_Gemm_BatchNorm_Scaling_Softmax/t2", "task": "43k_Gemm_BatchNorm_Scaling_Softmax", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t2", "task": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/50k_Matmul_GELU_Softmax/t2", "task": "50k_Matmul_GELU_Softmax", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}

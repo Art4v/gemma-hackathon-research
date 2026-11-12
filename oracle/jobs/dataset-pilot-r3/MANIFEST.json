@@ -1,0 +1,51 @@
+{
+ "job_id": "dataset-pilot-r3",
+ "owner": "aarav",
+ "step": "dataset-r3",
+ "oracle_commit": "963c0e3",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 4,
+ "shards": 1,
+ "priority": 2,
+ "max_chip_minutes": 4,
+ "estimate_chip_minutes": 2.231,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "ed9cc96c73c24c47acc537ff1307ac13f8434534469ccd8b09f4a3be14aa5754",
+  "run.sh": "373b0e3ee61901916d809cbbc639d633fbb8b217d9c92a6545a1110e66e5d245",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kb__l1__33_BatchNorm.a3.s0",
+   "task": "kb__l1__33_BatchNorm",
+   "code_sha256": "11e0f80dcba57ce473b22678ba67e071a51000ffd9848a78ebe3b0eb26086dae",
+   "ref_sha256": "26f46ccb56db4b5061547d1b78d6ff756c5ff10deb77fac469c43ec066679064"
+  },
+  {
+   "id": "kb__l1__34_InstanceNorm.a3.s0",
+   "task": "kb__l1__34_InstanceNorm",
+   "code_sha256": "83dc30044c16b779cda680173de65fc52793f64461c6e0441fdc3008745f4efe",
+   "ref_sha256": "d0cdc67d1184555a3cd66d0b7d00d0aff763dd28ff4473c2c9c1e321eb2b218c"
+  },
+  {
+   "id": "kb__l1__35_GroupNorm_.a3.s0",
+   "task": "kb__l1__35_GroupNorm_",
+   "code_sha256": "5cee1328e9a0950e7270cfc61c453ff85d7555bc7dc4bf9d8ccd3857716f05d4",
+   "ref_sha256": "d5483b2d48153debc7fea70f5b81cf0556220c5f5c944c6c51882a8e4e46cbac"
+  },
+  {
+   "id": "kb__l1__50_conv_standard_2D__square_input__square_kernel.a3.s0",
+   "task": "kb__l1__50_conv_standard_2D__square_input__square_kernel",
+   "code_sha256": "68f3a40b2f0483e845e792b5ae8b7579028023fb3333a45e10e4a29d27c87922",
+   "ref_sha256": "f9f16871048008632795b1da2526400a97c00d2dacaededcaac042c831353777"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "src": "origin/dataset-gen",
+ "splits": {
+  "train": {
+   "rows": 25,
+   "repairs": 1,
+   "src_sha256": "deefb4e7f2d7aff16ec44de2474b61179f8e8ffeaaff366380c144b825686702"
+  },
+  "val": {
+   "rows": 2,
+   "repairs": 0,
+   "src_sha256": "60159ae0d5184e22facd95ebddc8d2858cb22641be0cb9adcd87645c6ae2c53f"
+  }
+ },
+ "src_commit": "2d5ec70291846b9a2756bdb14d98656ebfd30a30"
+}

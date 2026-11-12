@@ -1,0 +1,2 @@
+ORACLE_ON_COLAB=1: Cloud VM security checks skipped (no project credentials in a Colab session); file check done above
+results/control-tpu2.jsonl: 4 rows of 4

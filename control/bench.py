@@ -117,16 +117,37 @@ def request_body(messages: list, seed: int, model=MODEL) -> dict:
             "options": {"temperature": 0, "seed": seed, "num_ctx": NUM_CTX, "num_predict": MAX_TOKENS}}
 
 
+_DIGESTS = {}
+
+
+def local_digest(model: str, url=OLLAMA) -> str:
+    """The local Ollama digest of `model` (from /api/tags), cached; every local row records the digest of the model that served it."""
+    if model not in _DIGESTS:
+        tags = json.load(urllib.request.urlopen(url.replace("/api/chat", "/api/tags"), timeout=60))
+        d = {m["name"]: m["digest"] for m in tags.get("models", [])}
+        _DIGESTS[model] = d.get(model) or d.get(model + ":latest") or ""
+    return _DIGESTS[model]
+
+
 def chat(messages: list, seed: int, url=OLLAMA, model=MODEL, timeout=1800) -> dict:
     req = urllib.request.Request(url, json.dumps(request_body(messages, seed, model)).encode(), {"Content-Type": "application/json"})
-    return {**json.load(urllib.request.urlopen(req, timeout=timeout)), "backend": {"host": "local"}}
+    r = json.load(urllib.request.urlopen(req, timeout=timeout))
+    # rule 9 (Nov 10): the served model must be the requested one, recorded by digest; a mismatch fails loudly instead of mislabelling a run
+    assert r.get("model") == model, f"Ollama served {r.get('model')!r}, not the requested {model!r}"
+    return {**r, "backend": {"host": "local", "model": model, "digest": local_digest(model, url)[:12]}}
 
 
 def modal_chat(model=MODEL):
     """chat() on the deployed Modal app (modal deploy control/modal_gemma.py): the same request body, served there."""
     import modal
     gemma = modal.Cls.from_name("gemma-bench", "Gemma")()
-    return lambda messages, seed: gemma.chat.remote(request_body(messages, seed, model))
+
+    def call(messages, seed):
+        r = gemma.chat.remote(request_body(messages, seed, model))
+        d = (r.get("backend") or {}).get("digest")  # rule 9 on Modal too: the requested model answered, and its digest is on the row
+        assert r.get("model") == model and d, f"Modal served {r.get('model')!r} (digest {d}), not the requested {model!r}"
+        return r
+    return call
 
 
 def generate(arm: str, model: str, only=(), limit=0, chat_fn=chat, log=print, workers=1) -> int:
@@ -231,7 +252,9 @@ def main(argv=None) -> None:
             print(f"{t:60} {src}")
         print(f"{len(tasks())} tasks")
     elif a.cmd == "generate":
-        chat_fn = modal_chat(a.model) if a.backend == "modal" else chat
+        if a.backend == "local" and a.model != MODEL:  # rule 9: a LoRA arm must not resolve to the base model's weights
+            assert local_digest(a.model) and local_digest(a.model) != local_digest(MODEL), f"{a.model} resolves to the base model's digest"
+        chat_fn = modal_chat(a.model) if a.backend == "modal" else (lambda messages, seed: chat(messages, seed, model=a.model))  # local: pass --model (it defaulted to the base MODEL; found Nov 10)
         print(f"{generate(a.arm, a.model, a.tasks, a.limit, chat_fn, workers=a.workers)} attempts generated")
     elif a.cmd == "items":
         rows = items(a.model)

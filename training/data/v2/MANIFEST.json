@@ -1,0 +1,15 @@
+{
+ "base": "training/data/v1 (dataset-v1)",
+ "onpolicy_rows": 194,
+ "skipped": {
+  "passed_step1": 0,
+  "no_code": 19,
+  "no_feedback": 0
+ },
+ "train_rows": 432,
+ "val_rows": 26,
+ "first_verdicts": {
+  "compile": 183,
+  "not_a_kernel": 11
+ }
+}

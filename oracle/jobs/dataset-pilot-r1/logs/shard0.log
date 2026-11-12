@@ -1,0 +1,39 @@
+/usr/local/lib/python3.13/dist-packages/jax/_src/cloud_tpu_init.py:88: UserWarning: Transparent hugepages are not enabled. TPU runtime startup and shutdown time should be significantly improved on TPU v5e and newer. If not already set, you may need to enable transparent hugepages in your VM image (sudo sh -c "echo always > /sys/kernel/mm/transparent_hugepage/enabled")
+  warnings.warn(
+{"meta": true, "oracle": true, "jax": "0.10.2", "platform": "tpu", "device_kind": "TPU v6 lite", "n_devices": 1, "shard": "0/1", "items": 36, "seeds": [0, 1, 2], "speed_bar": 0.7, "timeout_s": 480, "oracle_commit": "963c0e3", "oracle_sha": "c9a07d9298a1"}
+0 authored__attention_alibi__alibi_causal_mha.a1.s0 pass 2.1539437221065842 pass: 2.15x XLA
+1 authored__attention_gqa_sink__gqa_sink_sliding_window_attention.a1.s0 pass 2.729882255650237 pass: 2.73x XLA
+2 authored__attention_sliding_window__gemma3_sliding_window_gqa_attention.a1.s0 compile None compile error: The kernel function in the pallas_call _attn_kernel at /tmp/tmpb63_kq1p/cand.py:15 captures constants [f3
+3 authored__attention_sliding_window__gemma3_sliding_window_gqa_attention.a1.s1 pass 1.5223136640781736 pass: 1.52x XLA
+4 authored__kv_cache_update__paged_kv_cache_scatter_update.a1.s0 pass 1.6531628610164804 pass: 1.65x XLA
+5 authored__kv_quantized_dequant_matmul__int8_per_channel_dequant_matmul.a1.s0 pass 0.8939584328016945 pass: 0.89x XLA
+6 authored__moe_topk_routing__moe_router_softmax_topk_renorm.a1.s0 pass 1.0588426170346805 pass: 1.06x XLA
+7 authored__norm_gated__gated_rmsnorm_per_head.a1.s0 pass 1.228655837605132 pass: 1.23x XLA
+8 authored__norm_residual_fusion__fused_add_rmsnorm_residual.a1.s0 pass 1.1825414947276702 pass: 1.18x XLA
+9 authored__quantized_fp8_matmul__blockwise_fp8_scaled_matmul.a1.s0 pass 1.5151056655401787 pass: 1.52x XLA
+10 authored__rope_qk_norm__qk_rmsnorm_rope_gqa.a1.s0 pass 3.3442990156476426 pass: 3.34x XLA
+11 kb__l1__23_Softmax.a1.s0 pass 1.4505623393721347 pass: 1.45x XLA
+12 kb__l1__24_LogSoftmax.a1.s0 pass 1.4499353874092484 pass: 1.45x XLA
+13 kb__l1__26_GELU_.a1.s0 pass 1.4632220137823286 pass: 1.46x XLA
+14 kb__l1__33_BatchNorm.a1.s0 correct_slow 0.6724817520698134 correct but too slow: 0.67x XLA, need >= 0.70x
+15 kb__l1__34_InstanceNorm.a1.s0 correct_slow 0.6969435977177434 correct but too slow: 0.70x XLA, need >= 0.70x
+16 kb__l1__35_GroupNorm_.a1.s0 correct_slow 0.6799540706287304 correct but too slow: 0.68x XLA, need >= 0.70x
+17 kb__l1__39_L2Norm_.a1.s0 pass 1.2208767411334631 pass: 1.22x XLA
+18 kb__l1__40_LayerNorm.a1.s0 pass 1.215680380605859 pass: 1.22x XLA
+19 kb__l1__50_conv_standard_2D__square_input__square_kernel.a1.s0 correct_slow 0.21544966558203646 correct but too slow: 0.22x XLA, need >= 0.70x
+20 kb__l1__54_conv_standard_3D__square_input__square_kernel.a1.s0 pass 0.8608868744427821 pass: 0.86x XLA
+21 kb__l1__94_MSELoss.a1.s0 pass 0.9871189238045492 pass: 0.99x XLA
+22 kb__l2__30_Gemm_GroupNorm_Hardtanh.a1.s0 pass 1.321416167473761 pass: 1.32x XLA
+23 kb__l2__33_Gemm_Scale_BatchNorm.a1.s0 pass 0.8994834415801873 pass: 0.90x XLA
+24 kb__l2__39_Gemm_Scale_BatchNorm.a1.s0 pass 1.0010219690821751 pass: 1.00x XLA
+25 kb__l2__62_Matmul_GroupNorm_LeakyReLU_Sum.a1.s0 pass 1.1112104402776843 pass: 1.11x XLA
+26 kb__l2__63_Gemm_ReLU_Divide.a1.s0 pass 0.93469982824424 pass: 0.93x XLA
+27 kb__l2__64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU.a1.s0 compile None compile error: Unimplemented primitive in Pallas TPU lowering for tc: erfc. Please file an issue at https://github.com/j
+28 kb__l2__81_Gemm_Swish_Divide_Clamp_Tanh_Clamp.a1.s0 pass 0.8569512316912166 pass: 0.86x XLA
+29 kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm.a1.s0 pass 1.0987498735380472 pass: 1.10x XLA
+30 scraped__maxtext__ragged_attention.a1.s0 correct_slow 0.6404798411380921 correct but too slow: 0.64x XLA, need >= 0.70x
+31 scraped__maxtext__ragged_attention.human.s0 not_a_kernel None not a Pallas kernel: heavy work outside pallas_call: mul. Do the computation inside pl.pallas_call; outside it use only 
+32 scraped__tpu-inference__blockwise_kernel.a1.s0 wrong 1.990448917947866 wrong output on 3 of 3 seeds; seed 0: max error 0.0174 of max|ref| (XLA default: 0.00229); seed 1: max error 0.0177 of m
+33 scraped__tpu-inference__blockwise_kernel.human.s0 wrong 2.14903313540134 wrong output on 3 of 3 seeds; seed 0: max error 0.00788 of max|ref| (XLA default: 0.00229); seed 1: max error 0.00906 of
+34 scraped__tpu-inference__spmm.a1.s0 pass 1.9306849929351364 pass: 1.93x XLA
+35 scraped__tpu-inference__spmm.human.s0 wrong 2.1174405085006196 wrong output on 3 of 3 seeds; seed 0: max error 0.00239 of max|ref| (XLA default: 0); seed 1: max error 0.00258 of max|r

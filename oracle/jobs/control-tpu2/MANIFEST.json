@@ -1,0 +1,48 @@
+{
+ "job_id": "control-tpu2",
+ "owner": "overnight",
+ "step": "control-tpu2",
+ "oracle_commit": "963c0e3",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 4,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "3116183848d94b6be8240e3dee39b69fb12b56c356a21dc7993ee87c60c914e6",
+  "run.sh": "d611c2556b03ddb0aed7144a3ca0fdcc4b88005d47b76c8f9253b6b35cfd1758",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "docs/15p_RetNet_Retention/t1",
+   "task": "15p_RetNet_Retention",
+   "code_sha256": "d34b31f39440fa3effca390a1a0e5be7129ec8bc94d312c2707b254493a56126",
+   "ref_sha256": "56616b60350c73b66fa81487dd77136686a51d8fcf9f255ac4da895cc0c08830"
+  },
+  {
+   "id": "docs/38k_Matmul_Dropout_Softmax/t1",
+   "task": "38k_Matmul_Dropout_Softmax",
+   "code_sha256": "56905fe30d1923667653519172f73b51fd78f62ff557bb18cb1e70c6bcb606b1",
+   "ref_sha256": "a906f7a5d3baa6b0c660470eb7851811adfcef80089ac99aef732e925367e4ce"
+  },
+  {
+   "id": "docs/9p_SwiGLU_MLP/t2",
+   "task": "9p_SwiGLU_MLP",
+   "code_sha256": "53d01f70d132fef3b10e71613f619b565b4e593536cc58cef389455f3fbebdaf",
+   "ref_sha256": "0a08d8a55a72b55e714610e0c4e09092d2d18f7a44abfdda751eaa3a82d6b708"
+  },
+  {
+   "id": "docs/43k_Gemm_BatchNorm_Scaling_Softmax/t2",
+   "task": "43k_Gemm_BatchNorm_Scaling_Softmax",
+   "code_sha256": "2016a726443d1bf9686c9067472dd4f5668d3157f4d00ff734437d3ea151c084",
+   "ref_sha256": "c56b44aa4ae0c80efd481a238adb4bd86668c41c446daf80d0434ed5b7ffdc3f"
+  }
+ ]
+}

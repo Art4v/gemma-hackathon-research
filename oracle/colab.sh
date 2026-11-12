@@ -32,7 +32,8 @@ setup)
   spec='jax==0.10.2'; [ -n "$TPU" ] && spec='jax[tpu]==0.10.2'
   py_on 1800 <<EOF
 import subprocess, sys
-subprocess.run([sys.executable, "-m", "pip", "install", "-q", "$spec"], check=True)
+# jaxtyping and pydantic: JAXBench's 64p reference imports them (requirements.txt pins the same versions)
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "$spec", "jaxtyping==0.3.11", "pydantic==2.14.3"], check=True)
 print(subprocess.run([sys.executable, "-c", "import jax; print('jax', jax.__version__, jax.devices())"], capture_output=True, text=True, check=True).stdout)
 EOF
   ;;

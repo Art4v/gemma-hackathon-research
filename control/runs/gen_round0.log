@@ -1,0 +1,76 @@
+[1/64] bare/1p_Flash_Attention/t0: 2640 tokens, 38.2 s, finish stop, code
+[2/64] bare/2p_GQA_Attention/t0: 1965 tokens, 28.9 s, finish stop, code
+[3/64] bare/3p_MLA_Attention/t0: 3923 tokens, 60.8 s, finish stop, code
+[4/64] bare/4p_Sparse_Attention/t0: 5078 tokens, 92.8 s, finish stop, code
+[5/64] bare/5p_Flex_Attention/t0: 6092 tokens, 167.5 s, finish stop, code
+[6/64] bare/6p_Paged_Attention/t0: 4920 tokens, 134.6 s, finish stop, code
+[7/64] bare/7p_Ragged_Paged_Attention/t0: 4038 tokens, 107.8 s, finish stop, code
+[8/64] bare/8p_GEMM/t0: 1808 tokens, 45.3 s, finish stop, code
+[9/64] bare/9p_SwiGLU_MLP/t0: 1502 tokens, 38.5 s, finish stop, code
+[10/64] bare/10p_Sparse_MoE/t0: 3585 tokens, 98.7 s, finish stop, code
+[11/64] bare/11p_Megablox_GMM/t0: 2586 tokens, 70.6 s, finish stop, code
+[12/64] bare/12p_RMSNorm/t0: 8192 tokens, 221.1 s, finish length, NO CODE
+[13/64] bare/13p_Cross_Entropy/t0: 1927 tokens, 48.7 s, finish stop, code
+[14/64] bare/14p_Ragged_Dot/t0: 1925 tokens, 49.6 s, finish stop, code
+[15/64] bare/15p_RetNet_Retention/t0: 1747 tokens, 57.9 s, finish stop, code
+[16/64] bare/16p_Mamba2_SSD/t0: 1982 tokens, 59.6 s, finish stop, code
+[17/64] bare/17p_Triangle_Multiplication/t0: 8192 tokens, 256.0 s, finish length, NO CODE
+[18/64] bare/18k_Conv2D_ReLU_BiasAdd/t0: 4600 tokens, 147.4 s, finish stop, code
+[19/64] bare/19k_Matmul_Subtract_Multiply_ReLU/t0: 3647 tokens, 108.2 s, finish stop, code
+[20/64] bare/20k_Gemm_Multiply_LeakyReLU/t0: 1857 tokens, 52.1 s, finish stop, code
+[21/64] bare/21k_Gemm_Divide_Sum_Scaling/t0: 1367 tokens, 35.9 s, finish stop, code
+[22/64] bare/22k_Conv2d_InstanceNorm_Divide/t0: 2064 tokens, 54.7 s, finish stop, code
+[23/64] bare/23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp/t0: 2167 tokens, 64.6 s, finish stop, code
+[24/64] bare/24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish/t0: 8192 tokens, 239.5 s, finish length, NO CODE
+[25/64] bare/25k_Conv3d_GroupNorm_Mean/t0: 4744 tokens, 129.8 s, finish stop, code
+[26/64] bare/26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply/t0: 1910 tokens, 63.2 s, finish stop, code
+[27/64] bare/27k_Matmul_Mish_Mish/t0: 8192 tokens, 269.6 s, finish length, NO CODE
+[28/64] bare/28k_ConvTranspose3d_LayerNorm_GELU_Scaling/t0: 4641 tokens, 136.9 s, finish stop, code
+[29/64] bare/29k_Matmul_Swish_Sum_GroupNorm/t0: 2557 tokens, 82.0 s, finish stop, code
+[30/64] bare/30k_Matmul_Scaling_ResidualAdd/t0: 1695 tokens, 56.8 s, finish stop, code
+[31/64] bare/31k_Gemm_BatchNorm_GELU_ReLU/t0: 2721 tokens, 87.7 s, finish stop, code
+[32/64] bare/32k_Gemm_Sigmoid_LogSumExp/t0: 1764 tokens, 56.7 s, finish stop, code
+[33/64] bare/33k_Conv3d_Mish_Tanh/t0: 4464 tokens, 142.9 s, finish stop, code
+[34/64] bare/34k_Conv2d_Activation_BatchNorm/t0: 2235 tokens, 70.6 s, finish stop, code
+[35/64] bare/35k_Gemm_Scaling_Hardtanh_GELU/t0: 3283 tokens, 61.4 s, finish stop, code
+[36/64] bare/36k_Matmul_Sigmoid_Sum/t0: 8192 tokens, 121.2 s, finish length, NO CODE
+[37/64] bare/37k_Matmul_Swish_Scaling/t0: 4170 tokens, 59.9 s, finish stop, code
+[38/64] bare/38k_Matmul_Dropout_Softmax/t0: 4808 tokens, 70.4 s, finish stop, code
+[39/64] bare/39k_Conv2d_GELU_GlobalAvgPool/t0: 2603 tokens, 37.5 s, finish stop, code
+[40/64] bare/40k_Gemm_GroupNorm_Min_BiasAdd/t0: 2752 tokens, 39.2 s, finish stop, code
+[41/64] bare/41k_Gemm_Add_ReLU/t0: 1491 tokens, 21.2 s, finish stop, code
+[42/64] bare/42k_Gemm_Max_Subtract_GELU/t0: 8192 tokens, 120.2 s, finish length, NO CODE
+[43/64] bare/43k_Gemm_BatchNorm_Scaling_Softmax/t0: 2220 tokens, 31.8 s, finish stop, code
+[44/64] bare/44k_Matmul_Divide_GELU/t0: 8192 tokens, 120.6 s, finish length, NO CODE
+[45/64] bare/45k_Gemm_GroupNorm_Swish_Multiply_Swish/t0: 1584 tokens, 567.3 s, finish stop, code
+[46/64] bare/46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp/t0: 6329 tokens, 93.2 s, finish stop, code
+[47/64] bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t0: 8192 tokens, 120.2 s, finish length, NO CODE
+[48/64] bare/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/t0: 1802 tokens, 25.9 s, finish stop, code
+[49/64] bare/49k_Matmul_AvgPool_GELU_Scale_Max/t0: 2822 tokens, 40.2 s, finish stop, code
+[50/64] bare/50k_Matmul_GELU_Softmax/t0: 1977 tokens, 27.9 s, finish stop, code
+[51/64] bare/51p_DeepSeek_V4_CSA/t0: 2760 tokens, 43.0 s, finish stop, code
+[52/64] bare/52p_DeepSeek_V4_HCA/t0: 4750 tokens, 71.8 s, finish stop, code
+[53/64] bare/53p_DeepSeek_V4_MLA_SWA/t0: 3446 tokens, 53.0 s, finish stop, code
+[54/64] bare/54p_DeepSeek_V4_Masked_Dense_MLA/t0: 6620 tokens, 100.0 s, finish stop, code
+[55/64] bare/56p_DeepSeek_V4_MHC/t0: 2893 tokens, 43.1 s, finish stop, code
+[56/64] bare/57p_SparseCore_Ragged_Gather/t0: 1463 tokens, 20.8 s, finish stop, code
+[57/64] bare/58p_DeepSeek_V4_KV_Compressor/t0: 8192 tokens, 139.3 s, finish length, NO CODE
+[58/64] bare/59p_Megablox_GMM_v2/t0: 5280 tokens, 81.6 s, finish stop, code
+[59/64] bare/60p_RPAv3/t0: 8192 tokens, 133.0 s, finish length, NO CODE
+[60/64] bare/61p_Batched_RPA/t0: 2919 tokens, 45.3 s, finish stop, code
+[61/64] bare/62p_Causal_Conv1d_GDN/t0: 4858 tokens, 82.2 s, finish stop, code
+[62/64] bare/63p_GDN/t0: 2690 tokens, 41.3 s, finish stop, code
+[63/64] bare/64p_Linear_Softmax_Cross_Entropy/t0: 1453 tokens, 21.8 s, finish stop, code
+[64/64] bare/65p_Quantized_Splash_Attention/t0: 8192 tokens, 121.4 s, finish length, NO CODE
+64 attempts generated
+[1/64] docs/1p_Flash_Attention/t0: 2195 tokens, 56.5 s, finish stop, code
+[2/64] docs/2p_GQA_Attention/t0: 2111 tokens, 55.1 s, finish stop, code
+[3/64] docs/3p_MLA_Attention/t0: 4823 tokens, 109.9 s, finish stop, code
+[4/64] docs/4p_Sparse_Attention/t0: 2543 tokens, 63.0 s, finish stop, code
+[5/64] docs/5p_Flex_Attention/t0: 2745 tokens, 67.4 s, finish stop, code
+[6/64] docs/6p_Paged_Attention/t0: 2920 tokens, 72.2 s, finish stop, code
+[7/64] docs/7p_Ragged_Paged_Attention/t0: 1874 tokens, 52.8 s, finish stop, code
+[8/64] docs/8p_GEMM/t0: 887 tokens, 32.5 s, finish stop, code
+[9/64] docs/9p_SwiGLU_MLP/t0: 1946 tokens, 51.8 s, finish stop, code
+[10/64] docs/10p_Sparse_MoE/t0: 2016 tokens, 53.5 s, finish stop, code
+[11/64] docs/11p_Megablox_GMM/t0: 8192 tokens, 171.8 s, finish length, NO CODE

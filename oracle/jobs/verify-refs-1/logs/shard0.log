@@ -1,0 +1,17 @@
+/usr/local/lib/python3.13/dist-packages/jax/_src/cloud_tpu_init.py:88: UserWarning: Transparent hugepages are not enabled. TPU runtime startup and shutdown time should be significantly improved on TPU v5e and newer. If not already set, you may need to enable transparent hugepages in your VM image (sudo sh -c "echo always > /sys/kernel/mm/transparent_hugepage/enabled")
+  warnings.warn(
+{"meta": true, "oracle": true, "jax": "0.10.2", "platform": "tpu", "device_kind": "TPU v6 lite", "n_devices": 1, "shard": "0/1", "items": 14, "seeds": [0, 1, 2], "speed_bar": 0.7, "timeout_s": 480, "oracle_commit": "82091fe", "oracle_sha": "c9a07d9298a1"}
+0 verify/51p_DeepSeek_V4_CSA correct_slow 0.6291249401457208 correct but too slow: 0.63x XLA, need >= 0.70x
+1 verify/52p_DeepSeek_V4_HCA wrong 0.8871321915705223 wrong output on 3 of 3 seeds; seed 0: max error 1 of max|ref| (XLA default: 2.46e-40); seed 1: max error 1 of max|ref| (
+2 verify/53p_DeepSeek_V4_MLA_SWA pass 1.9800979763927922 pass: 1.98x XLA
+3 verify/54p_DeepSeek_V4_Masked_Dense_MLA compile None compile error: INTERNAL: Operation not supported at location: loc("sc_mask_generate.6":106:1) The MLIR operation involve
+4 verify/56p_DeepSeek_V4_MHC pass 1.0787102000926359 pass: 1.08x XLA
+5 verify/57p_SparseCore_Ragged_Gather pass 1.2294284725835969 pass: 1.23x XLA
+6 verify/58p_DeepSeek_V4_KV_Compressor pass 1.0742723881266978 pass: 1.07x XLA
+7 verify/59p_Megablox_GMM_v2 mosaic None Mosaic compile error: INTERNAL: Mosaic failed to compile TPU kernel: Not Implemented: The last dim size is not 128 in or
+8 verify/60p_RPAv3 wrong 3.6283443991052278 wrong output on 2 of 3 seeds; seed 0: max error 0.0222 of max|ref| (XLA default: 0); seed 2: max error 0.0314 of max|ref
+9 verify/61p_Batched_RPA pass 2.514322167797865 pass: 2.51x XLA
+10 verify/62p_Causal_Conv1d_GDN pass 1.6892298160621402 pass: 1.69x XLA
+11 verify/63p_GDN pass 3.539699210307699 pass: 3.54x XLA
+12 verify/64p_Linear_Softmax_Cross_Entropy compile None compile error: No module named 'jaxtyping'
+13 verify/65p_Quantized_Splash_Attention harness_oom None harness error (HBM out of memory or the reference failed), not the kernel: RESOURCE_EXHAUSTED: Ran out of memory on HBM,

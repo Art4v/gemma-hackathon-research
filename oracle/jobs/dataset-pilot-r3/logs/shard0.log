@@ -1,0 +1,7 @@
+/usr/local/lib/python3.13/dist-packages/jax/_src/cloud_tpu_init.py:88: UserWarning: Transparent hugepages are not enabled. TPU runtime startup and shutdown time should be significantly improved on TPU v5e and newer. If not already set, you may need to enable transparent hugepages in your VM image (sudo sh -c "echo always > /sys/kernel/mm/transparent_hugepage/enabled")
+  warnings.warn(
+{"meta": true, "oracle": true, "jax": "0.10.2", "platform": "tpu", "device_kind": "TPU v6 lite", "n_devices": 1, "shard": "0/1", "items": 4, "seeds": [0, 1, 2], "speed_bar": 0.7, "timeout_s": 480, "oracle_commit": "963c0e3", "oracle_sha": "c9a07d9298a1"}
+0 kb__l1__33_BatchNorm.a3.s0 pass 1.6044223453692827 pass: 1.60x XLA
+1 kb__l1__34_InstanceNorm.a3.s0 pass 1.5962861049406232 pass: 1.60x XLA
+2 kb__l1__35_GroupNorm_.a3.s0 pass 1.6145200366389225 pass: 1.61x XLA
+3 kb__l1__50_conv_standard_2D__square_input__square_kernel.a3.s0 correct_slow 0.31473970394752504 correct but too slow: 0.31x XLA, need >= 0.70x

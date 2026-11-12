@@ -1,0 +1,33 @@
+2026-11-08 15:58:58  overnight start (dry run: True)
+2026-11-08 15:58:58  state: 64 to generate, 0 waiting (0 not CPU-checked) -> generate
+2026-11-08 16:16:19  overnight start (dry run: False)
+2026-11-08 16:16:19  state: 64 to generate, 0 waiting (0 not CPU-checked) -> generate
+2026-11-08 16:16:19  generate on Modal: 64 attempts
+2026-11-08 16:35:44  state: 0 to generate, 64 waiting (64 not CPU-checked) -> cpu_check
+2026-11-08 16:35:44  CPU check check1: 64 attempts waiting
+2026-11-08 16:35:45  $ /Users/hrudaynara/miniforge3/bin/python3 control/cpu_check.py --backend modal --model gemma4-e4b-lora:pilot25 --tag check1 --py /private/tmp/claude-501/-Users-h -> exit 0 | bare: 64 checked -> {'compile': 54, 'not_a_kernel': 10} / docs: 0 checked -> {} / 64 decided on CPU and ingested; 0 for the TPU -> /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/cpu_checks/check1_tpu_items.jsonl
+2026-11-08 16:35:45    bare: 64 checked -> {'compile': 54, 'not_a_kernel': 10}
+2026-11-08 16:35:45    docs: 0 checked -> {}
+2026-11-08 16:35:45    64 decided on CPU and ingested; 0 for the TPU -> /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/cpu_checks/check1_tpu_items.jsonl
+2026-11-08 16:35:45  state: 64 to generate, 0 waiting (0 not CPU-checked) -> generate
+2026-11-08 16:35:45  generate on Modal: 64 attempts
+2026-11-08 16:38:11  overnight start (dry run: False)
+2026-11-08 16:38:11  state: 50 to generate, 14 waiting (14 not CPU-checked) -> generate
+2026-11-08 16:38:11  generate on Modal: 50 attempts
+2026-11-08 16:48:58  state: 0 to generate, 66 waiting (66 not CPU-checked) -> cpu_check
+2026-11-08 16:48:58  CPU check lora-pilot25-check2: 66 attempts waiting
+2026-11-08 16:48:59  $ /Users/hrudaynara/miniforge3/bin/python3 control/cpu_check.py --backend modal --model gemma4-e4b-lora:pilot25 --tag lora-pilot25-check2 --py /private/tmp/claude -> exit 0 | bare: 66 checked -> {'compile': 47, 'not_a_kernel': 19} / docs: 0 checked -> {} / 66 decided on CPU and ingested; 0 for the TPU -> /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/cpu_checks/lora-pilot25-check2_tpu_items.jsonl
+2026-11-08 16:48:59    bare: 66 checked -> {'compile': 47, 'not_a_kernel': 19}
+2026-11-08 16:48:59    docs: 0 checked -> {}
+2026-11-08 16:48:59    66 decided on CPU and ingested; 0 for the TPU -> /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/cpu_checks/lora-pilot25-check2_tpu_items.jsonl
+2026-11-08 16:48:59  state: 64 to generate, 0 waiting (0 not CPU-checked) -> generate
+2026-11-08 16:48:59  generate on Modal: 64 attempts
+2026-11-08 16:59:26  state: 0 to generate, 64 waiting (64 not CPU-checked) -> cpu_check
+2026-11-08 16:59:26  CPU check lora-pilot25-check3: 64 attempts waiting
+2026-11-08 16:59:27  $ /Users/hrudaynara/miniforge3/bin/python3 control/cpu_check.py --backend modal --model gemma4-e4b-lora:pilot25 --tag lora-pilot25-check3 --py /private/tmp/claude -> exit 0 | bare: 64 checked -> {'compile': 50, 'not_a_kernel': 14} / docs: 0 checked -> {} / 64 decided on CPU and ingested; 0 for the TPU -> /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/cpu_checks/lora-pilot25-check3_tpu_items.jsonl
+2026-11-08 16:59:27    bare: 64 checked -> {'compile': 50, 'not_a_kernel': 14}
+2026-11-08 16:59:27    docs: 0 checked -> {}
+2026-11-08 16:59:27    64 decided on CPU and ingested; 0 for the TPU -> /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/cpu_checks/lora-pilot25-check3_tpu_items.jsonl
+2026-11-08 16:59:27  state: 0 to generate, 0 waiting (0 not CPU-checked) -> done
+2026-11-08 16:59:27  report written: /Users/hrudaynara/Projects/gemma-hackathon-research/control/runs/gemma4-e4b-lora_pilot25__modal/REPORT.md
+2026-11-08 16:59:27  overnight done

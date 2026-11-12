@@ -1,0 +1,9 @@
+/usr/local/lib/python3.13/dist-packages/jax/_src/cloud_tpu_init.py:88: UserWarning: Transparent hugepages are not enabled. TPU runtime startup and shutdown time should be significantly improved on TPU v5e and newer. If not already set, you may need to enable transparent hugepages in your VM image (sudo sh -c "echo always > /sys/kernel/mm/transparent_hugepage/enabled")
+  warnings.warn(
+{"meta": true, "oracle": true, "jax": "0.10.2", "platform": "tpu", "device_kind": "TPU v6 lite", "n_devices": 1, "shard": "0/1", "items": 6, "seeds": [0, 1, 2], "speed_bar": 0.7, "timeout_s": 480, "oracle_commit": "963c0e3", "oracle_sha": "c9a07d9298a1"}
+0 docs/15p_RetNet_Retention/t0 compile None compile error: Pallas encountered an internal verification error. Please file a bug at https://github.com/jax-ml/jax/iss
+1 docs/38k_Matmul_Dropout_Softmax/t0 vmem None VMEM out of memory: RESOURCE_EXHAUSTED: Allocation (size=268435456) would exceed memory (size=134217728) :: #allocation5
+2 docs/43k_Gemm_BatchNorm_Scaling_Softmax/t0 vmem None VMEM out of memory: RESOURCE_EXHAUSTED: Allocation (size=268435456) would exceed memory (size=134217728) :: #allocation6
+3 docs/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t0 vmem None VMEM out of memory: RESOURCE_EXHAUSTED: Allocation (size=268435456) would exceed memory (size=134217728) :: #allocation5
+5 docs/8p_GEMM/t2 compile None compile error: Pallas encountered an internal verification error. Please file a bug at https://github.com/jax-ml/jax/iss
+4 docs/9p_SwiGLU_MLP/t1 compile None compile error: Pallas encountered an internal verification error. Please file a bug at https://github.com/jax-ml/jax/iss

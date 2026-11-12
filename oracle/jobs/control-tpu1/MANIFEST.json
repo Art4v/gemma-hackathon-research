@@ -1,0 +1,60 @@
+{
+ "job_id": "control-tpu1",
+ "owner": "overnight",
+ "step": "control-tpu1",
+ "oracle_commit": "963c0e3",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 6,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "f6e62878a0c52fdcba97f158641ddf5b5bd0568b03c92b4568d51bbe1f5d7d29",
+  "run.sh": "fec47e21ac73423acde01ee6de9456dbb5a8b9ca562aff5c52bde62f8d4429c2",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "docs/15p_RetNet_Retention/t0",
+   "task": "15p_RetNet_Retention",
+   "code_sha256": "16b6dcccbf6d249b5ffa58469622cd8411c3a6a3c3c14506577239cb82d18c23",
+   "ref_sha256": "56616b60350c73b66fa81487dd77136686a51d8fcf9f255ac4da895cc0c08830"
+  },
+  {
+   "id": "docs/38k_Matmul_Dropout_Softmax/t0",
+   "task": "38k_Matmul_Dropout_Softmax",
+   "code_sha256": "c624ea98911b16ce880102ea8823f9aa6cf7067d83dd701df2d4855e949c27dc",
+   "ref_sha256": "a906f7a5d3baa6b0c660470eb7851811adfcef80089ac99aef732e925367e4ce"
+  },
+  {
+   "id": "docs/43k_Gemm_BatchNorm_Scaling_Softmax/t0",
+   "task": "43k_Gemm_BatchNorm_Scaling_Softmax",
+   "code_sha256": "2016a726443d1bf9686c9067472dd4f5668d3157f4d00ff734437d3ea151c084",
+   "ref_sha256": "c56b44aa4ae0c80efd481a238adb4bd86668c41c446daf80d0434ed5b7ffdc3f"
+  },
+  {
+   "id": "docs/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t0",
+   "task": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+   "code_sha256": "dc37d629e01817d0b079d483b86d7118afd6607c766f762cb790e990c90724d1",
+   "ref_sha256": "b7afe86bcb22f284c8b0eab14c393d62337ef1bfba74a34cc345da13ca740f5c"
+  },
+  {
+   "id": "docs/9p_SwiGLU_MLP/t1",
+   "task": "9p_SwiGLU_MLP",
+   "code_sha256": "6863726e9b756f9c8bc5d0d2c5a16da04c2a151c4cca221c2ffa751fa161fc1e",
+   "ref_sha256": "0a08d8a55a72b55e714610e0c4e09092d2d18f7a44abfdda751eaa3a82d6b708"
+  },
+  {
+   "id": "docs/8p_GEMM/t2",
+   "task": "8p_GEMM",
+   "code_sha256": "19baa7e1481ec436b6ed4bab79a34313d2f8de647b435d8cd5661a23dffd341a",
+   "ref_sha256": "88d698bbbc254cc69fa1206801274247506711b8db48daef71b7c81b281ca442"
+  }
+ ]
+}
