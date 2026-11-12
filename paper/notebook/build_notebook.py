@@ -99,6 +99,11 @@ for k in KNOWN_BAD:
     print(f"{k:55} {'present' if x else 'MISSING'}  speed {round(x['speed_vs_xla'], 2) if x else ''}")
 release = [x for x in train if x["example_id"] not in KNOWN_BAD]
 print("rows in the release (train minus known-bad):", len(release))
+RELEASE_COMMIT = "105fcaf"   # aarav/paper-v7: paper/release/v7_release.jsonl, the published file
+pub = jl(fetch(RELEASE_COMMIT, "paper/release/v7_release.jsonl", "002da96dc410dd219772c456232a7bc3aef750fbb915fef9b9594640ce6a4c97"))
+assert [x["example_id"] for x in pub] == [x["example_id"] for x in release], "the release file is not train minus the 5 known-bad rows"
+assert all(json.dumps(a) == json.dumps(b) for a, b in zip(pub, release)), "a release row differs from its training row"
+print("published release file: sha256 verified, equal to train minus the 5 known-bad rows, row for row")
 speeds = [x["speed_vs_xla"] for x in train if x.get("speed_vs_xla")]
 print(f"target speed vs XLA: median {statistics.median(speeds):.2f}x, {sum(s > 5 for s in speeds)} rows above 5x (report medians)")
 """)
