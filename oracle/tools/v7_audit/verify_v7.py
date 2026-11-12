@@ -335,7 +335,8 @@ def main():
                 continue
             target = unfence(r["messages"][-1].get("content") or "")
             # the prompt's reference must be the one the oracle timed, or the verdict says nothing about this row
-            why = "code" if target != it.get("code") else "ref" if ref_of(r, k) != it.get("ref_code") else v.get("verdict")
+            # trailing newlines are not part of the kernel: a target may drop the judged code's final newline
+            why = "code" if (target or "").rstrip("\n") != (it.get("code") or "").rstrip("\n") else "ref" if ref_of(r, k) != it.get("ref_code") else v.get("verdict")
             if why in ("code", "ref") or v.get("verdict") != "pass" or (v.get("speed_vs_xla") or 0) < SPEED_BAR:
                 mismatch.append(f"{rid(r, i)}:{why}/{v.get('speed_vs_xla')}")
         report("e5_gen_matched", missing, "every e5_gen row has an item and a verdict", "no item or verdict")
@@ -347,9 +348,21 @@ def main():
            "rows outside v6 base sets are pass and >= 0.7x")
 
     # 12. base rows byte-equal to base file
+    # history turns (every assistant turn but the last) in bench.conversation's form: a reply ends "code\n```", extract_code keeps
+    # that newline and the wrapper adds one, so the eval sends exactly two newlines before the closing fence
+    tail_nl = lambda s: len(s[:-3]) - len(s[:-3].rstrip("\n"))
+    hist = [m.get("content") or "" for r in rows for m in (r.get("messages") or [])[2:-1:2]]
+    report("history_wrapper", [f"{rid(r, i)}:{[tail_nl(m.get('content') or '') for m in (r.get('messages') or [])[2:-1:2]]}" for i, r in enumerate(rows)
+                               if any(tail_nl(m.get("content") or "") != 2 for m in (r.get("messages") or [])[2:-1:2])],
+           f"{len(hist)} history turns have two newlines before the fence, as bench.conversation sends them",
+           "history turn does not have exactly two newlines before the fence")
+    report("final_target_one_newline", [rid(r, i) for i, r in enumerate(rows) if r.get("messages") and tail_nl(r["messages"][-1].get("content") or "") != 1],
+           "every final target ends with one newline before the fence", "final targets not ending with exactly one newline before the fence", soft=True)
     if a.base:
-        base = {b.get("example_id"): b.get("messages") for b in read_jsonl(a.base)[0]}
-        report("base_rows_equal", [rid(r, i) for i, r in enumerate(rows) if not gen(r) and base.get(r.get("example_id")) != r.get("messages")],
+        # compared with newlines before a closing fence collapsed, so the history-wrapper fix alone is not a difference
+        squash = lambda msgs: [(m.get("role"), re.sub(r"\n+```$", "\n```", m.get("content") or "")) for m in msgs or []]
+        base = {b.get("example_id"): squash(b.get("messages")) for b in read_jsonl(a.base)[0]}
+        report("base_rows_equal", [rid(r, i) for i, r in enumerate(rows) if not gen(r) and base.get(r.get("example_id")) != squash(r.get("messages"))],
                f"base-set rows equal {os.path.basename(a.base)}")
 
     # 13. below-bar matmul rows in base sets
