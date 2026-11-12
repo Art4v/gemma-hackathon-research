@@ -17,8 +17,9 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SCRATCH = os.path.dirname(os.path.dirname(HERE))
-BENCH_PY = os.path.join(SCRATCH, "wt/v4-runs/control/bench.py")
-LEVEL1 = os.path.join(SCRATCH, "repo/benchmarks/jaxbench/level1")
+# set BENCH_PY and LEVEL1 to your checkout: control/bench.py on hruday/v4-runs and benchmarks/jaxbench/level1
+BENCH_PY = os.environ.get("BENCH_PY", os.path.join(SCRATCH, "wt/v4-runs/control/bench.py"))
+LEVEL1 = os.environ.get("LEVEL1", os.path.join(SCRATCH, "repo/benchmarks/jaxbench/level1"))
 BASE_SETS = {"pool", "e1_readmit", "e2_kbkd", "e3_scale"}
 TEACHERS = {"kimi-k3.1", "generator-v7"}
 BANNED_TEACHER = re.compile(r"claude|opus|sonnet|fable|gpt|gemini", re.I)
