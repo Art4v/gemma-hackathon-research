@@ -47,10 +47,11 @@ Or run the notebook top to bottom. It downloads the release and the run rows, ch
 
 ## Provenance
 
-- **Oracle verdicts:** every per-job verdict file is on an `oracle-results/*` branch.
+- **Oracle verdicts:** every per-job verdict file is on branch `hruday/archive-local` under `archive/oracle-results/`. They were
+  consolidated from the per-job `oracle-results/*` branches, and `MANIFEST.json` there lists each job branch's head commit.
 - **Run rows:** every run row records its oracle hash, seeds, speed bar, chip, JAX version and the served model's digest.
-- **Development history:** kept as `archive/*` tags, on `hruday/archive-local` (scripts and data that lived only on a laptop), and
-  on the dataset and run branches of each team member.
+- **Development history:** kept on `hruday/archive-local` (scripts and data that lived only on a laptop) and as `archive/*` tags.
+  A deleted working branch `<name>` is kept as the tag `archive/<name>`.
 
 ## License
 
