@@ -1,0 +1,1667 @@
+{
+ "definitions": "(control/PROTOCOL.md, unchanged since the first LoRA run):\n  - tasks: JAXBench level 1 (50) + 14 level 2-only tasks with plain-JAX references (64). Primary set = the 50 level 1 tasks + the 8\n    level 2 tasks whose reference verified against Google's kernel on the TPU (51p 53p 56p 57p 58p 61p 62p 63p): 58 tasks, 33 k + 25 p.\n  - 3 attempts per task: turn 0 + 2 repairs with the oracle's verbatim feedback. A task stops at its first pass (or a terminal harness\n    verdict).\n  - pass_within_3: a `pass` (correct on 3 seeds and >= 0.7x XLA) on any turn. correct_within_3: `pass` or `correct_slow` on any turn.\n    pass_at_1: `pass` at turn 0. parity_within_3: a correct attempt at >= 0.97x XLA.\n  - Paired comparison: exact two-sided McNemar on per-task outcomes (binomial on the discordant tasks).",
+ "arms": {
+  "bare": {
+   "label": "Gemma 4 E4B (base), reference only",
+   "run_dir": "gemma4_e4b-it-qat__modal",
+   "generated_rows": 192,
+   "all": {
+    "n": 64,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 62,
+     "not_a_kernel": 2
+    },
+    "t1": {
+     "compile": 61,
+     "not_a_kernel": 3
+    },
+    "t2": {
+     "compile": 60,
+     "not_a_kernel": 4
+    }
+   }
+  },
+  "docs": {
+   "label": "Gemma 4 E4B (base) + 25k tokens of Pallas docs",
+   "run_dir": "gemma4_e4b-it-qat__modal",
+   "generated_rows": 192,
+   "all": {
+    "n": 64,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 55,
+     "not_a_kernel": 6,
+     "vmem": 3
+    },
+    "t1": {
+     "compile": 54,
+     "not_a_kernel": 9,
+     "vmem": 1
+    },
+    "t2": {
+     "compile": 62,
+     "not_a_kernel": 1,
+     "vmem": 1
+    }
+   }
+  },
+  "flash_docs": {
+   "label": "Gemini Flash + docs",
+   "run_dir": "gemini-3.6-flash",
+   "generated_rows": 181,
+   "all": {
+    "n": 64,
+    "pass_within_3": 8,
+    "correct_within_3": 37,
+    "pass_at_1": 1,
+    "parity_within_3": 4,
+    "median_best_correct_speed": 0.549,
+    "passed_tasks": [
+     "11p",
+     "12p",
+     "21k",
+     "24k",
+     "26k",
+     "29k",
+     "46k",
+     "64p"
+    ]
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 7,
+    "correct_within_3": 36,
+    "pass_at_1": 1,
+    "parity_within_3": 4,
+    "median_best_correct_speed": 0.541,
+    "passed_tasks": [
+     "11p",
+     "12p",
+     "21k",
+     "24k",
+     "26k",
+     "29k",
+     "46k"
+    ]
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 5,
+    "correct_within_3": 25,
+    "pass_at_1": 0,
+    "parity_within_3": 2,
+    "median_best_correct_speed": 0.549,
+    "passed_tasks": [
+     "21k",
+     "24k",
+     "26k",
+     "29k",
+     "46k"
+    ]
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 2,
+    "correct_within_3": 11,
+    "pass_at_1": 1,
+    "parity_within_3": 2,
+    "median_best_correct_speed": 0.382,
+    "passed_tasks": [
+     "11p",
+     "12p"
+    ]
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 17,
+     "correct_slow": 23,
+     "harness_oom": 2,
+     "mosaic": 4,
+     "not_a_kernel": 12,
+     "pass": 1,
+     "runtime": 1,
+     "vmem": 4
+    },
+    "t1": {
+     "compile": 23,
+     "correct_slow": 19,
+     "harness_oom": 1,
+     "mosaic": 1,
+     "not_a_kernel": 7,
+     "pass": 3,
+     "runtime": 1,
+     "vmem": 6
+    },
+    "t2": {
+     "compile": 17,
+     "correct_slow": 20,
+     "mosaic": 4,
+     "not_a_kernel": 5,
+     "pass": 4,
+     "timeout": 2,
+     "vmem": 3,
+     "wrong": 1
+    }
+   }
+  },
+  "pilot25": {
+   "label": "LoRA pilot (25 rows)",
+   "run_dir": "gemma4-e4b-lora_pilot25__modal",
+   "generated_rows": 192,
+   "all": {
+    "n": 64,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 54,
+     "not_a_kernel": 10
+    },
+    "t1": {
+     "compile": 46,
+     "not_a_kernel": 18
+    },
+    "t2": {
+     "compile": 50,
+     "not_a_kernel": 14
+    }
+   }
+  },
+  "v1": {
+   "label": "LoRA v1 (dataset-v1, Q4_0 fold)",
+   "run_dir": "gemma4-e4b-lora_v1__modal",
+   "generated_rows": 192,
+   "all": {
+    "n": 64,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 61,
+     "not_a_kernel": 3
+    },
+    "t1": {
+     "compile": 63,
+     "not_a_kernel": 1
+    },
+    "t2": {
+     "compile": 64
+    }
+   }
+  },
+  "v4": {
+   "label": "LoRA v4final-e2 (dataset-v4)",
+   "run_dir": "gemma4-e4b-lora_v4final-e2__modal",
+   "generated_rows": 190,
+   "all": {
+    "n": 64,
+    "pass_within_3": 1,
+    "correct_within_3": 3,
+    "pass_at_1": 1,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 0.336,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 1,
+    "correct_within_3": 3,
+    "pass_at_1": 1,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 0.336,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 1,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": 0.161,
+    "passed_tasks": []
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 1,
+    "correct_within_3": 2,
+    "pass_at_1": 1,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 0.869,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 41,
+     "correct_slow": 2,
+     "pass": 1,
+     "vmem": 16,
+     "wrong": 4
+    },
+    "t1": {
+     "compile": 40,
+     "correct_slow": 1,
+     "not_a_kernel": 1,
+     "vmem": 16,
+     "wrong": 5
+    },
+    "t2": {
+     "compile": 40,
+     "correct_slow": 1,
+     "not_a_kernel": 1,
+     "vmem": 16,
+     "wrong": 5
+    }
+   }
+  },
+  "v5": {
+   "label": "LoRA v5full (plan-before-code)",
+   "run_dir": "gemma4-e4b-lora_v5full__modal",
+   "generated_rows": 191,
+   "all": {
+    "n": 64,
+    "pass_within_3": 1,
+    "correct_within_3": 2,
+    "pass_at_1": 0,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 0.854,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 1,
+    "correct_within_3": 2,
+    "pass_at_1": 0,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 0.854,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 1,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": 0.318,
+    "passed_tasks": []
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 1,
+    "correct_within_3": 1,
+    "pass_at_1": 0,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 1.391,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 54,
+     "correct_slow": 1,
+     "vmem": 5,
+     "wrong": 4
+    },
+    "t1": {
+     "compile": 52,
+     "correct_slow": 1,
+     "pass": 1,
+     "vmem": 5,
+     "wrong": 5
+    },
+    "t2": {
+     "compile": 52,
+     "correct_slow": 1,
+     "vmem": 5,
+     "wrong": 5
+    }
+   }
+  },
+  "v7": {
+   "label": "LoRA v7final (dataset v7, final)",
+   "run_dir": "gemma4-e4b-lora_v7final__modal",
+   "generated_rows": 176,
+   "all": {
+    "n": 64,
+    "pass_within_3": 9,
+    "correct_within_3": 9,
+    "pass_at_1": 7,
+    "parity_within_3": 9,
+    "median_best_correct_speed": 1.367,
+    "passed_tasks": [
+     "12p",
+     "19k",
+     "20k",
+     "27k",
+     "35k",
+     "37k",
+     "41k",
+     "44k",
+     "47k"
+    ]
+   },
+   "primary": {
+    "n": 58,
+    "pass_within_3": 9,
+    "correct_within_3": 9,
+    "pass_at_1": 7,
+    "parity_within_3": 9,
+    "median_best_correct_speed": 1.367,
+    "passed_tasks": [
+     "12p",
+     "19k",
+     "20k",
+     "27k",
+     "35k",
+     "37k",
+     "41k",
+     "44k",
+     "47k"
+    ]
+   },
+   "primary_k": {
+    "n": 33,
+    "pass_within_3": 8,
+    "correct_within_3": 8,
+    "pass_at_1": 6,
+    "parity_within_3": 8,
+    "median_best_correct_speed": 1.366,
+    "passed_tasks": [
+     "19k",
+     "20k",
+     "27k",
+     "35k",
+     "37k",
+     "41k",
+     "44k",
+     "47k"
+    ]
+   },
+   "primary_p": {
+    "n": 25,
+    "pass_within_3": 1,
+    "correct_within_3": 1,
+    "pass_at_1": 1,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 1.394,
+    "passed_tasks": [
+     "12p"
+    ]
+   },
+   "funnel_by_turn": {
+    "t0": {
+     "compile": 41,
+     "mosaic": 1,
+     "not_a_kernel": 1,
+     "pass": 7,
+     "vmem": 8,
+     "wrong": 6
+    },
+    "t1": {
+     "compile": 40,
+     "mosaic": 1,
+     "not_a_kernel": 1,
+     "pass": 2,
+     "vmem": 1,
+     "wrong": 12
+    },
+    "t2": {
+     "compile": 40,
+     "mosaic": 1,
+     "not_a_kernel": 1,
+     "vmem": 1,
+     "wrong": 12
+    }
+   }
+  }
+ },
+ "mcnemar_v7_vs": {
+  "bare": {
+   "pass_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   },
+   "correct_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   }
+  },
+  "docs": {
+   "pass_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   },
+   "correct_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   }
+  },
+  "flash_docs": {
+   "pass_within_3": {
+    "a_only": 8,
+    "b_only": 6,
+    "p_exact_two_sided": 0.7905
+   },
+   "correct_within_3": {
+    "a_only": 1,
+    "b_only": 28,
+    "p_exact_two_sided": 0.0
+   }
+  },
+  "pilot25": {
+   "pass_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   },
+   "correct_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   }
+  },
+  "v1": {
+   "pass_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   },
+   "correct_within_3": {
+    "a_only": 9,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0039
+   }
+  },
+  "v4": {
+   "pass_within_3": {
+    "a_only": 8,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0078
+   },
+   "correct_within_3": {
+    "a_only": 8,
+    "b_only": 2,
+    "p_exact_two_sided": 0.1094
+   }
+  },
+  "v5": {
+   "pass_within_3": {
+    "a_only": 8,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0078
+   },
+   "correct_within_3": {
+    "a_only": 7,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0156
+   }
+  }
+ },
+ "v7_per_task": {
+  "1p_Flash_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "2p_GQA_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "3p_MLA_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "4p_Sparse_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "5p_Flex_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "6p_Paged_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "7p_Ragged_Paged_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "8p_GEMM": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "9p_SwiGLU_MLP": [
+   [
+    0,
+    "wrong",
+    0.85
+   ],
+   [
+    1,
+    "wrong",
+    0.85
+   ],
+   [
+    2,
+    "wrong",
+    0.85
+   ]
+  ],
+  "10p_Sparse_MoE": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "11p_Megablox_GMM": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "12p_RMSNorm": [
+   [
+    0,
+    "pass",
+    1.39
+   ]
+  ],
+  "13p_Cross_Entropy": [
+   [
+    0,
+    "not_a_kernel",
+    null
+   ],
+   [
+    1,
+    "not_a_kernel",
+    null
+   ],
+   [
+    2,
+    "not_a_kernel",
+    null
+   ]
+  ],
+  "14p_Ragged_Dot": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "15p_RetNet_Retention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "16p_Mamba2_SSD": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "17p_Triangle_Multiplication": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "18k_Conv2D_ReLU_BiasAdd": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "19k_Matmul_Subtract_Multiply_ReLU": [
+   [
+    0,
+    "pass",
+    1.36
+   ]
+  ],
+  "20k_Gemm_Multiply_LeakyReLU": [
+   [
+    0,
+    "pass",
+    1.38
+   ]
+  ],
+  "21k_Gemm_Divide_Sum_Scaling": [
+   [
+    0,
+    "wrong",
+    1.32
+   ],
+   [
+    1,
+    "wrong",
+    1.32
+   ],
+   [
+    2,
+    "wrong",
+    1.32
+   ]
+  ],
+  "22k_Conv2d_InstanceNorm_Divide": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "wrong",
+    1.12
+   ],
+   [
+    2,
+    "wrong",
+    1.12
+   ]
+  ],
+  "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "wrong",
+    1.66
+   ],
+   [
+    2,
+    "wrong",
+    1.63
+   ]
+  ],
+  "25k_Conv3d_GroupNorm_Mean": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "vmem",
+    null
+   ],
+   [
+    2,
+    "vmem",
+    null
+   ]
+  ],
+  "27k_Matmul_Mish_Mish": [
+   [
+    0,
+    "pass",
+    1.3
+   ]
+  ],
+  "28k_ConvTranspose3d_LayerNorm_GELU_Scaling": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "29k_Matmul_Swish_Sum_GroupNorm": [
+   [
+    0,
+    "wrong",
+    0.74
+   ],
+   [
+    1,
+    "wrong",
+    0.72
+   ],
+   [
+    2,
+    "wrong",
+    0.74
+   ]
+  ],
+  "30k_Matmul_Scaling_ResidualAdd": [
+   [
+    0,
+    "wrong",
+    0.85
+   ],
+   [
+    1,
+    "wrong",
+    0.86
+   ],
+   [
+    2,
+    "wrong",
+    0.84
+   ]
+  ],
+  "31k_Gemm_BatchNorm_GELU_ReLU": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "32k_Gemm_Sigmoid_LogSumExp": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "wrong",
+    2.46
+   ],
+   [
+    2,
+    "wrong",
+    2.43
+   ]
+  ],
+  "33k_Conv3d_Mish_Tanh": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "34k_Conv2d_Activation_BatchNorm": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "35k_Gemm_Scaling_Hardtanh_GELU": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "pass",
+    1.34
+   ]
+  ],
+  "36k_Matmul_Sigmoid_Sum": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "wrong",
+    1.28
+   ],
+   [
+    2,
+    "wrong",
+    1.29
+   ]
+  ],
+  "37k_Matmul_Swish_Scaling": [
+   [
+    0,
+    "pass",
+    1.38
+   ]
+  ],
+  "38k_Matmul_Dropout_Softmax": [
+   [
+    0,
+    "mosaic",
+    null
+   ],
+   [
+    1,
+    "mosaic",
+    null
+   ],
+   [
+    2,
+    "mosaic",
+    null
+   ]
+  ],
+  "39k_Conv2d_GELU_GlobalAvgPool": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "40k_Gemm_GroupNorm_Min_BiasAdd": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "41k_Gemm_Add_ReLU": [
+   [
+    0,
+    "pass",
+    1.37
+   ]
+  ],
+  "42k_Gemm_Max_Subtract_GELU": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "wrong",
+    1.42
+   ],
+   [
+    2,
+    "wrong",
+    1.41
+   ]
+  ],
+  "43k_Gemm_BatchNorm_Scaling_Softmax": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "44k_Matmul_Divide_GELU": [
+   [
+    0,
+    "pass",
+    1.38
+   ]
+  ],
+  "45k_Gemm_GroupNorm_Swish_Multiply_Swish": [
+   [
+    0,
+    "wrong",
+    0.85
+   ],
+   [
+    1,
+    "wrong",
+    0.85
+   ],
+   [
+    2,
+    "wrong",
+    0.85
+   ]
+  ],
+  "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "pass",
+    1.35
+   ]
+  ],
+  "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish": [
+   [
+    0,
+    "wrong",
+    1.56
+   ],
+   [
+    1,
+    "wrong",
+    1.58
+   ],
+   [
+    2,
+    "wrong",
+    1.56
+   ]
+  ],
+  "49k_Matmul_AvgPool_GELU_Scale_Max": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "50k_Matmul_GELU_Softmax": [
+   [
+    0,
+    "vmem",
+    null
+   ],
+   [
+    1,
+    "wrong",
+    1.46
+   ],
+   [
+    2,
+    "wrong",
+    1.41
+   ]
+  ],
+  "51p_DeepSeek_V4_CSA": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "52p_DeepSeek_V4_HCA": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "53p_DeepSeek_V4_MLA_SWA": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "54p_DeepSeek_V4_Masked_Dense_MLA": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "56p_DeepSeek_V4_MHC": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "57p_SparseCore_Ragged_Gather": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "58p_DeepSeek_V4_KV_Compressor": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "59p_Megablox_GMM_v2": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "60p_RPAv3": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "61p_Batched_RPA": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "62p_Causal_Conv1d_GDN": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "63p_GDN": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "64p_Linear_Softmax_Cross_Entropy": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ],
+  "65p_Quantized_Splash_Attention": [
+   [
+    0,
+    "compile",
+    null
+   ],
+   [
+    1,
+    "compile",
+    null
+   ],
+   [
+    2,
+    "compile",
+    null
+   ]
+  ]
+ },
+ "v7_transitions": {
+  "compile -> compile": 80,
+  "wrong -> wrong": 18,
+  "vmem -> wrong": 6,
+  "not_a_kernel -> not_a_kernel": 2,
+  "vmem -> pass": 2,
+  "mosaic -> mosaic": 2,
+  "compile -> vmem": 1,
+  "vmem -> vmem": 1
+ }
+}
