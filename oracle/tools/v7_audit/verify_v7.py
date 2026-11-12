@@ -185,6 +185,49 @@ def first_heavy_op(ref):
     return visit(funcs["workload"]) if "workload" in funcs else None
 
 
+def canon(code):
+    """AST dump with parameters and locals numbered in order of first use; None if the code does not parse.
+
+    Imports, module-level names and builtins keep their names, so two programs with the same dump differ only by a
+    consistent renaming of parameters and locals. Names are numbered across scopes, which can only make equal programs
+    look different, never different programs look equal.
+    """
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return None
+    fixed = set(dir(__builtins__)) if not isinstance(__builtins__, dict) else set(__builtins__)
+    for node in tree.body:
+        if isinstance(node, (ast.Import, ast.ImportFrom)):
+            fixed |= {(al.asname or al.name).split(".")[0] for al in node.names}
+        elif isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+            fixed.add(node.name)
+        elif isinstance(node, ast.Assign):
+            fixed |= {t.id for t in node.targets if isinstance(t, ast.Name)}
+    seen = {}
+
+    class Rename(ast.NodeTransformer):
+        def visit_Name(self, node):
+            if node.id not in fixed:
+                node.id = seen.setdefault(node.id, f"v{len(seen)}")
+            return node
+
+        def visit_arg(self, node):
+            if node.arg not in fixed:
+                node.arg = seen.setdefault(node.arg, f"v{len(seen)}")
+            return node
+
+    return ast.dump(Rename().visit(tree))
+
+
+def sizes(ref):
+    """Sorted integer literals >= 64 in a reference: the CONFIG sizes, whatever the keys are called."""
+    try:
+        return sorted(n.value for n in ast.walk(ast.parse(ref)) if isinstance(n, ast.Constant) and type(n.value) is int and n.value >= 64)
+    except SyntaxError:
+        return None
+
+
 def row_text(row):
     return "\n".join(m.get("content", "") or "" for m in row.get("messages") or [])
 
@@ -341,6 +384,39 @@ def main():
                 mismatch.append(f"{rid(r, i)}:{why}/{v.get('speed_vs_xla')}")
         report("e5_gen_matched", missing, "every e5_gen row has an item and a verdict", "no item or verdict")
         report("e5_gen_target_verified", mismatch, "every e5_gen target equals a passing item at >= 0.7x")
+
+        # 10b. every generator row, original or renamed variant: its target is alpha-equivalent to the TPU-judged item
+        # named by the gen7 stem in its task or example_id, that item passed at the bar, and the reference keeps its sizes
+        by_stem = {}
+        for it in items.values():
+            m = re.search(r"gen7[A-Z]?__[a-z_]+?__\d{5}", f"{it.get('task')} {it.get('id')}")
+            if m:
+                by_stem[m.group(0)] = it
+        cache, n_gen, n_var, no_item, not_equiv, not_pass, size_diff = {}, 0, 0, [], [], [], []
+        for i, r in enumerate(rows):
+            if r.get("teacher") != "generator-v7":
+                continue
+            n_gen += 1
+            m = re.search(r"gen7[A-Z]?__[a-z_]+?__\d{5}", f"{r.get('task')} {r.get('example_id')} {r.get('variant_of')} {r.get('source')}")
+            it = by_stem.get(m.group(0)) if m else None
+            v = verd.get(it.get("id")) if it else None
+            if it is None or v is None:
+                no_item.append(rid(r, i))
+                continue
+            target = unfence(r["messages"][-1].get("content") or "") or ""
+            n_var += target.rstrip("\n") != (it.get("code") or "").rstrip("\n")
+            if it["id"] not in cache:
+                cache[it["id"]] = canon(it.get("code") or "")
+            if canon(target) is None or canon(target) != cache[it["id"]]:
+                not_equiv.append(rid(r, i))
+            if v.get("verdict") != "pass" or (v.get("speed_vs_xla") or 0) < SPEED_BAR:
+                not_pass.append(f"{rid(r, i)}:{v.get('verdict')}/{v.get('speed_vs_xla')}")
+            if sizes(ref_of(r, k) or "") != sizes(it.get("ref_code") or ""):
+                size_diff.append(rid(r, i))
+        report("generator_item_found", no_item, f"all {n_gen} generator rows name a judged item ({n_var} are renamed variants)", "no judged item for the row's gen7 stem")
+        report("generator_target_alpha_equal", not_equiv, "every generator target is the judged kernel up to renaming of parameters and locals")
+        report("generator_item_passed", not_pass, "every generator row's item passed on TPU at >= 0.7x")
+        report("generator_ref_sizes", size_diff, "every generator reference has its item's sizes", "reference sizes differ from the judged item's")
 
     # 11. non-base rows are fast passes
     report("nonbase_fast_pass", [rid(r, i) for i, r in enumerate(rows) if gen(r) and (
