@@ -1,5 +1,10 @@
 # dataset
 
+> This file, `PLAN.md` and `PROCESS.md` describe the pilot problem set of Nov 8 (`final/`, `problems/`): 32 plain-JAX problems with no
+> kernels. It is not the training data of the writeup. That data is the release
+> [`dataset-final`](https://github.com/Art4v/gemma-hackathon-research/releases/tag/dataset-final) (2,304 rows), built by the teacher
+> pipeline in `kimi/` and the template generator in `v7_gen/` and `v7_gen_layout/` here, with `v7_check/` as the generator's checker.
+
 32 plain-JAX problems in exactly the form JAXBench questions take, each verified on CPU to be ready for the TPU oracle. This is the
 training problem set for the Pallas LoRA. It contains no Pallas code: producing kernels for these problems is the trainer's job.
 
