@@ -1,0 +1,622 @@
+{
+ "rule": "A6 rule 2 (k-tasks), conservative: op_chain minus add/sub/mul/div/neg/convert/broadcast/reshape/transpose/squeeze/expand_dims/copy equals a k-task's, read the same way; unsure means out",
+ "drop_generated_training_example_ids": [
+  "gen7__matmul_epilogue__00000.gen7",
+  "gen7__matmul_epilogue__00006.gen7",
+  "gen7__matmul_epilogue__00007.gen7",
+  "gen7__matmul_epilogue__00026.gen7",
+  "gen7__matmul_epilogue__00035.gen7",
+  "gen7__matmul_epilogue__00046.gen7",
+  "gen7__matmul_epilogue__00051.gen7",
+  "gen7__matmul_epilogue__00064.gen7",
+  "gen7__matmul_epilogue__00081.gen7",
+  "gen7__matmul_epilogue__00084.gen7",
+  "gen7__matmul_epilogue__00088.gen7",
+  "gen7__matmul_epilogue__00096.gen7",
+  "gen7__matmul_epilogue__00097.gen7",
+  "gen7__matmul_epilogue__00113.gen7",
+  "gen7__matmul_epilogue__00117.gen7",
+  "gen7__matmul_epilogue__00118.gen7",
+  "gen7__matmul_epilogue__00148.gen7",
+  "gen7__matmul_epilogue__00154.gen7",
+  "gen7__matmul_epilogue__00160.gen7",
+  "gen7__matmul_epilogue__00161.gen7",
+  "gen7__matmul_epilogue__00167.gen7",
+  "gen7__matmul_epilogue__00180.gen7",
+  "gen7__row_reduction_matmul__00013.gen7",
+  "gen7__row_reduction_matmul__00056.gen7",
+  "gen7__row_reduction_matmul__00058.gen7",
+  "gen7__row_reduction_matmul__00067.gen7",
+  "gen7__row_reduction_matmul__00078.gen7",
+  "gen7__row_reduction_matmul__00083.gen7",
+  "gen7__row_reduction_matmul__00085.gen7"
+ ],
+ "drop_layout_item_ids": [
+  "gen7L/gen7L__matmul_layout__00001",
+  "gen7L/gen7L__matmul_layout__00023",
+  "gen7L/gen7L__matmul_layout__00026",
+  "gen7L/gen7L__matmul_layout__00032",
+  "gen7L/gen7L__matmul_layout__00034",
+  "gen7L/gen7L__matmul_layout__00046",
+  "gen7L/gen7L__matmul_layout__00048",
+  "gen7L/gen7L__matmul_layout__00064",
+  "gen7L/gen7L__row_reduction_layout__00010",
+  "gen7L/gen7L__row_reduction_layout__00016",
+  "gen7L/gen7L__row_reduction_layout__00018",
+  "gen7L/gen7L__row_reduction_layout__00029",
+  "gen7L/gen7L__row_reduction_layout__00042",
+  "gen7L/gen7L__row_reduction_layout__00043",
+  "gen7L/gen7L__row_reduction_layout__00048",
+  "gen7L/gen7L__row_reduction_layout__00050"
+ ],
+ "detail": {
+  "layout": [
+   {
+    "id": "gen7L__matmul_layout__00001",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00023",
+    "core": [
+     "dot_general",
+     "ge",
+     "select_n"
+    ],
+    "ktasks": [
+     "20k_Gemm_Multiply_LeakyReLU"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00026",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00032",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00034",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00046",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00048",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__matmul_layout__00064",
+    "core": [
+     "dot_general",
+     "pow",
+     "tanh"
+    ],
+    "ktasks": [
+     "44k_Matmul_Divide_GELU"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00010",
+    "core": [
+     "dot_general",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "38k_Matmul_Dropout_Softmax"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00016",
+    "core": [
+     "dot_general",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "38k_Matmul_Dropout_Softmax"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00018",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00029",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00042",
+    "core": [
+     "dot_general",
+     "pow",
+     "tanh",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "50k_Matmul_GELU_Softmax"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00043",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00048",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7L__row_reduction_layout__00050",
+    "core": [
+     "dot_general",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "38k_Matmul_Dropout_Softmax"
+    ]
+   }
+  ],
+  "generated": [
+   {
+    "id": "gen7__matmul_epilogue__00000",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00006",
+    "core": [
+     "dot_general",
+     "ge",
+     "select_n"
+    ],
+    "ktasks": [
+     "20k_Gemm_Multiply_LeakyReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00007",
+    "core": [
+     "dot_general",
+     "pow",
+     "tanh"
+    ],
+    "ktasks": [
+     "44k_Matmul_Divide_GELU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00026",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00035",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00046",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00050",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00051",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00061",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00064",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00072",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00081",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00084",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00088",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00096",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00097",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00113",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00117",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00118",
+    "core": [
+     "dot_general",
+     "ge",
+     "select_n"
+    ],
+    "ktasks": [
+     "20k_Gemm_Multiply_LeakyReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00119",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00121",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00148",
+    "core": [
+     "dot_general",
+     "ge",
+     "select_n"
+    ],
+    "ktasks": [
+     "20k_Gemm_Multiply_LeakyReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00154",
+    "core": [
+     "dot_general",
+     "max"
+    ],
+    "ktasks": [
+     "19k_Matmul_Subtract_Multiply_ReLU",
+     "41k_Gemm_Add_ReLU"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00157",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00160",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00161",
+    "core": [
+     "dot_general",
+     "sigmoid"
+    ],
+    "ktasks": [
+     "37k_Matmul_Swish_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00167",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__matmul_epilogue__00180",
+    "core": [
+     "dot_general"
+    ],
+    "ktasks": [
+     "30k_Matmul_Scaling_ResidualAdd"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00013",
+    "core": [
+     "dot_general",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "38k_Matmul_Dropout_Softmax"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00041",
+    "core": [
+     "dot_general",
+     "sigmoid",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "36k_Matmul_Sigmoid_Sum"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00056",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00058",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00067",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00073",
+    "core": [
+     "dot_general",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "38k_Matmul_Dropout_Softmax"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00078",
+    "core": [
+     "dot_general",
+     "reduce_max",
+     "max",
+     "stop_gradient",
+     "exp",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "38k_Matmul_Dropout_Softmax"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00083",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   },
+   {
+    "id": "gen7__row_reduction_matmul__00085",
+    "core": [
+     "dot_general",
+     "reduce_sum"
+    ],
+    "ktasks": [
+     "21k_Gemm_Divide_Sum_Scaling"
+    ]
+   }
+  ]
+ }
+}

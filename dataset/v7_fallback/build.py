@@ -34,6 +34,9 @@ for it in read(D / "kimi_items.jsonl"):
 
 # 3. generated rows, minus a dev holdout of whole epilogue chains (the docstring names the chain; sizes and dtypes vary within a chain)
 gen = read(D / "gen_rows.jsonl")
+# A6 rule 2 (k-task chain equal once constants, scales and bias are set aside): aarav/dataset-v4 dataset/v7_gen/a6_rule2_drops.json
+a6 = set(json.load(open(D / "a6_rule2_drops.json"))["drop_generated_training_example_ids"])
+gen_all = gen
 def chain(r):
     ref = re.findall(r"```python\n(.*?)\n```", r["messages"][1]["content"], re.S)[0]
     return r["family"].replace("bmm_epilogue", "matmul_epilogue") + ":" + ref.split('"""')[1].split(".")[0].replace("Batched matmul", "Matmul")
@@ -47,7 +50,8 @@ for c in chains:
         break
     dev += by[c]; dev_chains.append(c)
 dev_ids = {r["example_id"] for r in dev}
-gen_train = [r for r in gen if r["example_id"] not in dev_ids]
+gen_train = [r for r in gen if r["example_id"] not in dev_ids and r["example_id"] not in a6]
+assert len(a6 - {r["example_id"] for r in gen}) == 0
 assert not {chain(r) for r in gen_train} & set(dev_chains)
 
 rows = base + scaled + gen_train
@@ -56,7 +60,7 @@ assert max(ids.values()) == 1, [k for k, n in ids.items() if n > 1][:3]
 (D / "train.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
 (D / "dev_items.jsonl").write_text("".join(json.dumps({"example_id": r["example_id"], "task": r["task"], "family": r["family"], "chain": chain(r)}) + "\n" for r in dev))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-man = {"rows": len(rows), "parts": {"v6_a6_minus_4": len(base), "kimi_kn0_pass": len(scaled), "generated_train": len(gen_train)},
+man = {"rows": len(rows), "parts": {"v6_a6_minus_4": len(base), "kimi_kn0_pass": len(scaled), "generated_train": len(gen_train), "a6_rule2_dropped": len(a6)},
        "dev_holdout": {"rows": len(dev), "chains": len(dev_chains)}, "by_kind": dict(collections.Counter(r["kind"] for r in rows)),
        "by_teacher": dict(collections.Counter(r["teacher"] for r in rows)),
        "below_0.7x_rows": sum((r.get("speed_vs_xla") or 1) < 0.7 for r in rows),
