@@ -21,9 +21,12 @@ assert len(v6) - len(base) == 4, len(v6) - len(base)
 verdict = {d["id"]: d for d in read(SC / "v7bb/kn0_rows.jsonl") if "verdict" in d}
 claude16 = {x["id"] for x in read(D / "karthik16.jsonl")}
 scaled = []
+KN0_A6 = ("GateLayer_1320", "Maxout_4302")
 for it in read(D / "kimi_items.jsonl"):
     v = verdict.get(it["id"])
     if it["id"] in claude16 or not v or v["verdict"] != "pass":
+        continue
+    if any(k in it["id"] for k in KN0_A6):  # A6 rule 2 per Hruday's agent's trace (#5 02:47 UTC); my re-trace missed these
         continue
     assert v["oracle_sha"] == "c9a07d9298a1"
     msgs = bench.conversation(it["ref_code"], [], None) + [{"role": "assistant", "content": f"```python\n{it['code']}\n```"}]
