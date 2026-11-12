@@ -27,6 +27,9 @@ ap.add_argument("--r3-slow", default="keep", choices=["keep", "drop"])
 ap.add_argument("--exam-slow", default="keep", choices=["keep", "drop"])  # drop = an added row may not have a below-bar TARGET (slow kernels stay only as failed turns)
 ap.add_argument("--dev-gen", default=str(V7 / "dev_items_gen.jsonl"))  # the shared dev set (aarav/dataset-v4 @ cdea3a6, 27 generated items, 24 whole chains)
 ap.add_argument("--out", default="v7_train")
+ap.add_argument("--layout")  # 04:30 file: Aarav's verified layout rows (set e5_gen_layout), e.g. v7_layout_rows.jsonl @ 422e28a
+ap.add_argument("--gen7r")   # 04:30 file: Karthik's gen7R rows (f32 whole-row N=8192 output-block template); if given, the one-to-one rule drops the old scratch-template rows
+SCRATCH_GEN = {"gen7__row_reduction_matmul__00016.gen7", "gen7__row_reduction_matmul__00033.gen7", "gen7__row_reduction_matmul__00034.gen7", "gen7__row_reduction_matmul__00047.gen7"}
 ap.add_argument("--a6r2", default=str(V7 / "a6r2/drops.json"))  # A6 rule 2 (conservative, Aarav's test) matches among OUR added problems
 ap.add_argument("--a6r2-gen", default=str(V7 / "a6r2/aarav_drops.json"))  # Aarav's list for the generated rows (aarav/dataset-v4 @ ad6b273)
 ap.add_argument("--dot-share-fill")  # opt-in: dot_share_fill.jsonl, the dot_share of slow A6 rows build_kn never measured (so --drop-slow matmul sees them)
@@ -34,6 +37,9 @@ ap.add_argument("--repeat-exam", type=int, default=1); ap.add_argument("--dev");
 a = ap.parse_args()
 R2 = set(json.load(open(a.a6r2))["drops"]) if a.a6r2 and pathlib.Path(a.a6r2).exists() else set()
 R2B = set(json.load(open(V7 / "a6r2/base_drops.json"))["drops"])  # the same A6 rule-2 test on the base (02:55Z decision)
+R2L = {i.split("/")[-1] for i in json.load(open(V7 / "a6r2/aarav_drops_latest.json")).get("drop_layout_item_ids", [])} if (V7 / "a6r2/aarav_drops_latest.json").exists() else set()  # layout items matching A6 rule 2 (by task)
+R2L |= set(json.load(open(V7 / "a6r2/layout_drops_mine.json"))["drops"]) if (V7 / "a6r2/layout_drops_mine.json").exists() else set()  # + our own trace (gen7L 00014 -> 44k)
+R2R = set(json.load(open(V7 / "a6r2/gen7R_drops.json"))["drops"]) if (V7 / "a6r2/gen7R_drops.json").exists() else set()  # gen7R items matching rule 2 (00037, 00062 + unsent)
 R2G = set(json.load(open(a.a6r2_gen))["drop_generated_training_example_ids"]) if a.a6r2_gen and pathlib.Path(a.a6r2_gen).exists() else set()
 fence = lambda c: "```python\n" + c.rstrip("\n") + "\n```"
 halt = lambda x: x.get("verdict") == "harness_oom" and any(h in (x.get("feedback") or "") for h in ("halted unexpectedly", "RuntimeUnexpectedCoreHalt"))
@@ -141,7 +147,25 @@ for g in gen:
         stats["gen_dev_holdout"] += 1; continue
     if g["example_id"] in R2G or g.get("surface_of") in R2G:
         stats["gen_a6_rule2_dropped"] += 1; continue
+    if g.get("task") in R2L or str(g.get("surface_of") or "").split(".")[0] in R2L:
+        stats["layout_a6_rule2_dropped"] += 1; continue
     exam.append({**g, "set": "e5_gen"}); stats["exam_gen"] += 1
+# ---- 04:30 additions: layout rows (and gen7R rows), same holdouts as the generated rows
+def add_extra(path, setname):
+    for l in open(path):
+        g = json.loads(l)
+        if g["example_id"] in devgen or g["example_id"] in R2G or g.get("task") in R2L or g.get("task") in R2R or str(g.get("surface_of") or "").split(".")[0] in R2R:
+            stats[setname + "_held_or_dropped"] += 1; continue
+        if a.gen7r and g.get("f32_wholerow_n8192_scratch"):
+            stats[setname + "_scratch_one_to_one_dropped"] += 1; continue
+        exam.append({**g, "set": setname}); stats[setname] += 1
+if a.gen7r:
+    n0 = len(exam); exam[:] = [r for r in exam if not (r.get("set") == "e5_gen" and (r["example_id"] in SCRATCH_GEN or r.get("surface_of") in SCRATCH_GEN))]  # surface_of: a surface_gen.py variant goes with its original
+    stats["gen_scratch_one_to_one_dropped"] = n0 - len(exam)
+if a.layout:
+    add_extra(a.layout, "e5_gen_layout")
+if a.gen7r:
+    add_extra(a.gen7r, "e5_gen7r")
 # ---- round 3 on the v4-covered gap
 gap = json.load(open(V7 / "r3/gap.json")) if (V7 / "r3/gap.json").exists() else {}
 k3, a3 = verdicts("kimi-r3-*"), gen_rows("out/r3/k31_r3_*.jsonl")

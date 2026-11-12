@@ -70,7 +70,7 @@ v6rows = {json.dumps(_eval_form(json.loads(l))) for l in open(W / "wt-kimi/kimi/
 fails["history_not_eval_form"] = [r["example_id"] for r in rows if any(m["role"] == "assistant" and not (m["content"].startswith("```python\n") and m["content"].endswith("\n\n```") and not m["content"].endswith("\n\n\n```")) for m in r["messages"][2:-1])]
 fails["target_not_single_newline"] = [r["example_id"] for r in rows if not r["messages"][-1]["content"].endswith("\n```") or r["messages"][-1]["content"].endswith("\n\n```")]
 for r in rows:
-    if r.get("set") not in PFX and r.get("set") != "e5_gen" and json.dumps(r) not in v6rows:
+    if r.get("set") not in PFX and r.get("set") not in ("e5_gen", "e5_gen_layout", "e5_gen7r") and json.dumps(r) not in v6rows:
         fails["base_row_not_in_v6"].append(r["example_id"])
 ids = [r["example_id"] for r in rows]
 fails["duplicate_example_id"] = [i for i, n in collections.Counter(ids).items() if n > 1]
@@ -78,6 +78,11 @@ devg = {json.loads(l)["example_id"] for l in open(V7 / "dev_items_gen.jsonl")}
 r2 = set(json.load(open(V7 / "a6r2/drops.json"))["drops"]); r2g = set(json.load(open(V7 / "a6r2/aarav_drops.json"))["drop_generated_training_example_ids"])
 r2b = set(json.load(open(V7 / "a6r2/base_drops.json"))["drops"])
 fails["a6_rule2_base_row"] = [r["example_id"] for r in rows if r["problem_id"] in r2b]
+r2l = {i.split("/")[-1] for i in json.load(open(V7 / "a6r2/aarav_drops_latest.json")).get("drop_layout_item_ids", [])}
+r2l |= set(json.load(open(V7 / "a6r2/layout_drops_mine.json"))["drops"])
+fails["a6_rule2_layout_row"] = [r["example_id"] for r in rows if r.get("task") in r2l]
+r2r = set(json.load(open(V7 / "a6r2/gen7R_drops.json"))["drops"])
+fails["a6_rule2_gen7R_row"] = [r["example_id"] for r in rows if r.get("task") in r2r]
 fails["a6_rule2_added_row"] = [r["example_id"] for r in rows if (r.get("set") in PFX and r["problem_id"] in r2) or (r.get("set") == "e5_gen" and r["example_id"] in r2g)]
 fails["dev_item_in_train"] = [r["example_id"] for r in rows if r["example_id"] in devg or r.get("surface_of") in devg]  # surface_of: a surface_gen.py variant
 r2g = set(json.load(open(V7 / "a6r2/aarav_drops.json"))["drop_generated_training_example_ids"]) if (V7 / "a6r2/aarav_drops.json").exists() else set()
@@ -89,6 +94,43 @@ if VAL.exists():
     fails["val_count_not_29"] = [] if len(vr) == len(devg) else [len(vr)]
     fails["val_task_in_train"] = [v["task"] for v in vr if v["task"] in {r["task"] for r in rows}]
     fails["val_thinking_not_false"] = [v["example_id"] for v in vr if v.get("thinking") is not False]
+# layout / gen7R rows: target == the judged item's code (one trailing newline), verdict pass >= 0.7 in Karthik's results
+LAY = {}
+for f in glob.glob(str(V7 / "layout/items*.jsonl")):
+    for l in open(f):
+        x = json.loads(l); LAY[x["task"]] = x["code"]
+LV = {}
+for f in glob.glob(str(V7 / "layout/gen7*-*.jsonl")):
+    for l in open(f):
+        if l.strip() and '"meta": true' not in l:
+            x = json.loads(l)
+            if not halt(x): LV[x["task"]] = x
+for r in rows:
+    if r.get("set") in ("e5_gen_layout", "e5_gen7r"):
+        v = LV.get(r["task"])
+        if not v or v["verdict"] != "pass" or (v.get("speed_vs_xla") or 0) < 0.7:
+            fails["layout_not_verified"].append(r["example_id"])
+        if not r.get("surface_of") and unfence(r["messages"][-1]["content"]).rstrip("\n") != (LAY.get(r["task"]) or "").rstrip("\n"):
+            fails["layout_code_mismatch"].append(r["example_id"])
+# surface variants (Hruday confirmed 03:38Z): the variant's target must be the PROVEN text (surface_gen.py check: AST under renaming + bit-identical
+# reference at a shrunken size; <dir>/check.json with 0 failures), and its original must be TPU-verified (pass >= 0.7x; layout via LV above).
+PROOF = {}
+for d in [x for x in ("gen_surface", "layout_surface", "rowout_surface") if (V7 / x / "check.json").exists()]:
+    ck = json.load(open(V7 / d / "check.json")); vs = [json.loads(l) for l in open(V7 / d / "variants.jsonl")]
+    if ck.get("failures") or ck.get("variants") != len(vs) or (V7 / d / "check.json").stat().st_mtime < (V7 / d / "variants.jsonl").stat().st_mtime:  # stale proof
+        fails["surface_proof_file"].append(d)
+    for v in vs:
+        PROOF.setdefault(v["task"], set()).add(unfence(v["messages"][-1]["content"]).rstrip("\n"))
+GEN = {json.loads(l)["example_id"]: json.loads(l) for l in open(V7 / "v7_gen_rows.jsonl")}
+for r in rows:
+    if not r.get("surface_of"):
+        continue
+    if unfence(r["messages"][-1]["content"]).rstrip("\n") not in PROOF.get(r["task"], set()):
+        fails["surface_not_proven"].append(r["example_id"])
+    if r.get("set") == "e5_gen":
+        g = GEN.get(r["surface_of"])
+        if not g or g.get("verdict") != "pass" or (g.get("speed_vs_xla") or 0) < 0.7:
+            fails["surface_original_not_verified"].append(r["example_id"])
 # format: last turn is the fenced target; system prompt identical across rows
 sys0 = rows[0]["messages"][0]
 for r in rows:
