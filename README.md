@@ -83,7 +83,8 @@ python control/scoring/fold_local.py <gemma4:e4b-it-qat model blob> <adapter dir
 
 This adds the LoRA update to the 258 adapted tensors, stores them at 8 bits, and copies every other tensor unchanged. The model blob
 is the 5.15 GB file `sha256-e8b6a059...` under `~/.ollama/models/blobs/` after `ollama pull gemma4:e4b-it-qat`. The script needs
-`numpy`, `gguf` and `modal` installed. The model card in the release gives the prompt and decoding settings, and
+`numpy`, `gguf` and `modal` installed. Run on the released adapter, it reproduces the GGUF we evaluated byte for byte (sha256
+`997a7145c280863d512dab29da7c961372e2111103171b2bf88d7d6a00391760`, 7.1 GB). The model card in the release gives the prompt and decoding settings, and
 `control/scoring/README.md` the remaining steps we used to register and score the model.
 
 ## Tests
