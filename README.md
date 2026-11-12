@@ -18,6 +18,8 @@ Pallas docs, and 7 on the first attempt against Flash's 1. Every kernel that pas
   (partial tiles).
 - **Companion notebook:** [`paper/notebook/submission.ipynb`](paper/notebook/submission.ipynb). CPU only, it recomputes every number
   from the published data and raw run files.
+- **Model:** release [`model-final`](https://github.com/Art4v/gemma-hackathon-research/releases/tag/model-final): the LoRA adapter
+  with a model card. `control/scoring/fold_local.py` folds it into the official `gemma4:e4b-it-qat` GGUF for Ollama.
 - **Data:** release [`dataset-final`](https://github.com/Art4v/gemma-hackathon-research/releases/tag/dataset-final).
   - `train.jsonl`: 2,299 rows, the published training set.
   - `train_as_trained.jsonl`: the 2,304 rows the adapter trained on.
@@ -45,12 +47,23 @@ Or run the notebook top to bottom. It downloads the release and the run rows, ch
 
 ## Provenance
 
-- **Oracle verdicts:** every per-job verdict file is on an `oracle-results/*` branch.
+- **Oracle verdicts:** every per-job verdict file is on branch `hruday/archive-local` under `archive/oracle-results/`. They were
+  consolidated from the per-job `oracle-results/*` branches, and `MANIFEST.json` there lists each job branch's head commit.
 - **Run rows:** every run row records its oracle hash, seeds, speed bar, chip, JAX version and the served model's digest.
-- **Development history:** kept as `archive/*` tags, on `hruday/archive-local` (scripts and data that lived only on a laptop), and
-  on the dataset and run branches of each team member.
+- **Development history:** kept on `hruday/archive-local` (scripts and data that lived only on a laptop) and as `archive/*` tags.
+  A deleted working branch `<name>` is kept as the tag `archive/<name>`.
 
 ## License
 
-To be added by the authors. The third-party sources keep their own licenses: KernelBench is MIT, and KernelBook is its permissively
-licensed subset. See the release datasheet.
+- **Code** (Python, shell scripts and notebooks): [MIT](LICENSE).
+- **Data, writeup and figures** (the dataset releases, `paper/WRITEUP.md`, `paper/figures/`, the run rows and other data files):
+  [CC BY 4.0](LICENSE-CC-BY-4.0).
+- **Model adapter** (release `model-final`): CC BY 4.0. It is a derivative of Gemma 4 E4B, so its use is also subject to the base
+  model's license and terms.
+
+Third-party material keeps its own license:
+- the JAXBench tasks in `benchmarks/`;
+- the Pallas documentation excerpts in `pallas_guides/upstream/` (see the `LICENSE` there);
+- KernelBench (MIT) and the permissively licensed KernelBook subset.
+
+Kimi K3.1's outputs are subject to its model license.

@@ -9,7 +9,7 @@ import collections, csv, difflib, io, json, pathlib, re, subprocess, sys
 
 REPO = sys.argv[1] if len(sys.argv) > 1 else str(pathlib.Path(__file__).resolve().parents[3])
 TRAIN = "2efa6a5:kimi/v7/v7_final.jsonl"        # hruday/kimi-k31: the file v7 was trained on
-RES = "origin/oracle-results/karthik-gen7"      # TPU verdicts for the v7 training candidates
+RES = "6e898c7"                                # TPU verdicts for the v7 training candidates (tag archive/oracle-results/karthik-gen7)
 RUNS = "487973d"                                # hruday/v4-runs: the scored run folder and the 64 references
 LOSS = "eadf22b:paper/parts/loss_v7.csv"         # aarav/paper-v7: one row per example step of the v7 training run
 DEV_LOSS = [[0, 1.318], [100, 0.521], [300, 0.018], [500, 0.005], [4608, 0.0002]]  # (example step, loss): training_v7.md @ eadf22b
