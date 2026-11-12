@@ -68,26 +68,22 @@ a6_not_passes = len(a6 - {r["example_id"] for r in gen})  # matched candidates t
 assert not {chain(r) for r in gen_train} & set(dev_chains)
 
 rows = base + scaled + gen_train
-# history turns as the eval renders them (Karthik's agent's audit, #5 03:09 UTC): bench.conversation wraps extract_code(previous reply),
-# which keeps the code's trailing newline. Rebuild every prefix through bench.conversation; final targets are untouched.
+# Code turns as the eval renders them (Karthik's agent's corrected rule, #5 03:12 UTC). The model's reply ends with one newline before the
+# fence; extract_code keeps it and conversation() adds one, so a history turn has two. Rule, idempotent: every assistant turn except the
+# last is "```python\n" + body.rstrip("\n") + "\n\n```". Final targets end with one newline, as the Kimi targets do (generated code
+# changes only in its trailing newline, so the TPU verdict still applies).
 fixed_hist = 0
+FENCE = re.compile(r"\A```python\n(.*?)\n*```\Z", re.S)
 for r in rows:
     m = r["messages"]
-    if len(m) <= 3:
-        continue
-    assert len(m) == 5 and [x["role"] for x in m] == ["system", "user", "assistant", "user", "assistant"], r["example_id"]
-    ref = re.findall(r"```python\n(.*?)\n```", m[1]["content"], re.S)[0]
-    fb_turn = m[3]["content"]
-    code1 = bench.extract_code(m[2]["content"])
-    probe = bench.conversation(ref, [{"code": code1, "feedback": "@@FB@@"}], None)
-    pre, post = probe[3]["content"].split("@@FB@@")
-    assert fb_turn.startswith(pre) and fb_turn.endswith(post), r["example_id"]
-    fb = fb_turn[len(pre):len(fb_turn) - len(post)]
-    new = bench.conversation(ref, [{"code": code1, "feedback": fb}], None)
-    assert new[0] == {k: m[0][k] for k in ("role", "content")} and new[1]["content"] == m[1]["content"] and new[3]["content"] == fb_turn, r["example_id"]
-    if new[2]["content"] != m[2]["content"]:
-        fixed_hist += 1
-    r["messages"] = new[:3] + [m[3], m[4]]
+    for k, t in enumerate(m):
+        if t["role"] != "assistant":
+            continue
+        body = FENCE.match(t["content"]).group(1)
+        want = "```python\n" + body.rstrip("\n") + ("\n```" if k == len(m) - 1 else "\n\n```")
+        if want != t["content"]:
+            fixed_hist += k != len(m) - 1
+            t["content"] = want
 ids = collections.Counter(r["example_id"] for r in rows)
 assert max(ids.values()) == 1, [k for k, n in ids.items() if n > 1][:3]
 (D / "train.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))

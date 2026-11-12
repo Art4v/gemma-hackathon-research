@@ -5,7 +5,7 @@
   "kimi_kn0_pass": 47,
   "generated_train": 204,
   "a6_rule2_dropped": 41,
-  "history_turns_rewrapped": 463
+  "history_turns_rewrapped": 55
  },
  "dev_holdout": {
   "rows": 29,
@@ -29,7 +29,7 @@
   "generated": "aarav/dataset-v4@de8f43a dataset/v7_gen/v7_gen_rows.jsonl sha256 ff739ee6..."
  },
  "files": {
-  "train.jsonl": "68732ae334f827c5ef9ec7b9b36e74c5419d220cf8491df671eea0c0b326029f",
+  "train.jsonl": "7418bd39e1f20ba8ac71f209d126bfc6714a870562954acc30ecb59a8f327776",
   "dev_items.jsonl": "c96b2f7c07ef707c727337e71cbdab2510d745111545bfc937fd313d092931cb"
  }
 }
