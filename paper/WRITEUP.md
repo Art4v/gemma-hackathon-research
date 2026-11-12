@@ -13,7 +13,8 @@ thinly documented DSL. We ask whether Gemma 4 E4B, a model small enough to run o
 We build:
 1. **A TPU oracle.** It accepts a solution only if it is a real Pallas kernel, compiles and runs at full size on a TPU v6e, matches a
    float32 answer key on three seeds, and runs at least 0.7x as fast as XLA.
-2. **A training set of 2,304 rows.** Every target passed that oracle. The kernels come from an open-weights teacher (Kimi K3.1)
+2. **A training set of 2,304 rows.** Every target was judged correct by that oracle, and 85% also meet its speed bar. The kernels
+   come from an open-weights teacher (Kimi K3.1)
    through up to three rounds of oracle feedback, plus a template generator for kernels at JAXBench's sizes. Every row is screened
    against JAXBench at the instance level.
 3. **An evaluation** on JAXBench's 64 tasks. Every model gets the same three attempts per task.
@@ -123,7 +124,7 @@ three ways:
 - **Fixing.** Kimi fixed the rest with the oracle's feedback and a TPU-measured tiling policy in the system prompt:
   - set `vmem_limit_bytes` to 124 MiB;
   - tile (tm, tn, tk) as (2048, 2048, 1024);
-  - for row reductions, keep N whole with tm = 1024 and tk = 512.
+  - for row reductions, keep N whole with tm = 1024 and tk = 512 (256 at N = 8,192).
 
   After contamination drops, 48 problems with a passing first-round fix and 38 with a passing second-round fix remain. Each
   becomes a repair row and a turn-0 row.
@@ -133,7 +134,7 @@ three ways:
   - a layout variant, with transposed weights, bias before a reduction, and scale and shift, gave 104 of 111;
   - a whole-row output template for f32 softmax-type reductions at N = 8,192 gave 61 of 61.
 
-  Every generated row also appears once more in a **surface variant**: renamed arguments, CONFIG keys and docstring, so the policy is
+  Almost every generated row (354 of 355) also appears once more in a **surface variant**: renamed arguments, CONFIG keys and docstring, so the policy is
   tied to the operation rather than the generator's wording. A variant is admitted only with two proofs: its target's AST equals
   the judged kernel's after renaming, and its reference is bit-identical at a shrunken size. A stratified sample of 91 variants then
   passed the TPU oracle 91 of 91.
@@ -271,8 +272,8 @@ v1 and v4 used Claude-written targets; v7 uses only kernels from an open-weights
   - polynomial approximations accurate only on the reference's input range.
 
   Three seeds from fixed input distributions cannot rule these out. v7 trained on them; the published dataset excludes them.
-- **Template share.** 30.8% of rows come from one generator template. Each template kernel is seen 4 times over two epochs (with its
-  variant), each teacher row twice. The dev set is template items, so its loss, which fell to 0.0002, measures template recall, not
+- **Template share.** 30.8% of rows come from one generator template. Over two epochs, each template kernel (with its variant) and
+  each fix or round-3 target (repair + turn-0 row) is seen 4 times, other teacher rows twice. The dev set is template items, so its loss, which fell to 0.0002, measures template recall, not
   tiling ability. JAXBench is our only behavioural evidence.
 - **Slow targets.** 15% of targets are correct but below the bar, and most Kimi kernels set no VMEM limit, while the fix and
   generator rows set 124 MiB. The model sees mixed signals outside matmuls.
@@ -293,8 +294,10 @@ is API correctness (most failures still never compile) and production kernels ou
 
 Repository `Art4v/gemma-hackathon-research`:
 - **Oracle:** `oracle/` (sha `c9a07d9298a1`).
-- **Final data:** `hruday/kimi-k31:kimi/v7/v7_final.jsonl` (sha256 `10345461…`), with the val file, the build and check scripts,
-  and the A6 review evidence.
+- **Final data:**
+  - what v7 trained on: `hruday/kimi-k31:kimi/v7/v7_final.jsonl` (sha256 `10345461…`), with the val file, the build and check
+    scripts, and the A6 review evidence;
+  - the published release: `v7_release.jsonl`, which is the same minus the 5 shortcut rows (2,299 rows, sha256 `002da96d…`).
 - **Evaluation:** `control/bench.py`, and `hruday/v4-runs:control/scoring/` for the fold and the JAXBench runner.
 - **Results:** every run in `paper/data/runs/`, plus `paper/analysis/jaxbench.py`, which recomputes every table here. Oracle verdicts
   are on the `oracle-results/*` branches.
