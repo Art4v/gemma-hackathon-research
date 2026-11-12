@@ -10,7 +10,9 @@ Every other tensor (embeddings, per-layer embeddings, norms) and all metadata ar
 import argparse, json, re, sys, time
 import numpy as np, gguf
 
-sys.path.insert(0, "/Users/hrudaynara/Projects/gemma-hackathon-research/training")
+import os  # noqa: E401
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # to_ollama.py ships next to this file (control/scoring/)
+sys.path.append("/Users/hrudaynara/Projects/gemma-hackathon-research/training")  # fallback: the original location on Hruday's Mac
 from to_ollama import SafeTensors, GGUF_TO_HF  # noqa: E402
 
 TARGET = re.compile(r"blk\.(\d+)\.(attn_q|attn_k|attn_v|attn_output|ffn_gate|ffn_up|ffn_down)\.weight")
