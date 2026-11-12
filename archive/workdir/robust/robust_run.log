@@ -1,0 +1,50 @@
+newacct: metered $27.78 of $39.00 cap -> OK to launch
+07:37:21Z robust turn 0: generating
+[16/16] bare/35k_Gemm_Scaling_Hardtanh_GELU__shapeB/t0: 618 tokens, 63.2 s, finish stop, code
+16 generated; rows 16; wrong model/digest: 0
+turn 0: 16 checked, 16 static_ok -> TPU, 0 failed step 1 {}
+07:39:42Z robust hunting a v6e-1
+07:52:37Z robust UP in asia-northeast1-b
+part 1: 16 judged, 0 left (0 halt victims to re-run)
+ROUND DONE robust-shift-t0 16 judged in parts, 0 suspects judged alone
+turn 0: 16 TPU verdicts ingested {'wrong': 7, 'correct_slow': 3, 'vmem': 1, 'compile': 5}
+08:00:15Z robust TURN 0 DONE
+newacct: metered $28.1 of $39.00 cap -> OK to launch
+08:00:16Z robust turn 1: generating
+[16/16] bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh__shapeA/t1: 566 tokens, 65.5 s, finish stop, code
+16 generated; rows 32; wrong model/digest: 0
+turn 1: 16 checked, 16 static_ok -> TPU, 0 failed step 1 {}
+part 1: 16 judged, 0 left (0 halt victims to re-run)
+ROUND DONE robust-shift-t1 16 judged in parts, 0 suspects judged alone
+turn 1: 16 TPU verdicts ingested {'wrong': 7, 'correct_slow': 4, 'pass': 3, 'compile': 2}
+08:11:26Z robust TURN 1 DONE
+newacct: metered $28.79 of $39.00 cap -> OK to launch
+08:11:27Z robust turn 2: generating
+[13/13] bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh__shapeB/t2: 557 tokens, 29.3 s, finish stop, code
+13 generated; rows 45; wrong model/digest: 0
+turn 2: 13 checked, 13 static_ok -> TPU, 0 failed step 1 {}
+part 1: 13 judged, 0 left (0 halt victims to re-run)
+ROUND DONE robust-shift-t2 13 judged in parts, 0 suspects judged alone
+turn 2: 13 TPU verdicts ingested {'wrong': 8, 'correct_slow': 3, 'compile': 2}
+08:19:58Z robust TURN 2 DONE
+Listed 0 items.
+robust_run.sh: line 10: 32168 Terminated: 15          RATE=3.24 CAP_USD=8 IDLE_MIN=15 nohup bash guard.sh >> guard.out 2>&1 < /dev/null
+08:21:05Z robust ROBUST DONE
+== shapeA 2048x7168x9216: pass within 3 = 3/8
+   19k_Matmul_Subtract_Multiply_ReLU__shapeA        t0:wrong 0.95x | t1:wrong 0.95x | t2:wrong 0.95x
+   20k_Gemm_Multiply_LeakyReLU__shapeA              t0:wrong 0.95x | t1:wrong 0.94x | t2:wrong 0.96x
+   27k_Matmul_Mish_Mish__shapeA                     t0:correct_slow 0.22x | t1:correct_slow 0.45x | t2:wrong 0.85x
+   35k_Gemm_Scaling_Hardtanh_GELU__shapeA           t0:correct_slow 0.31x | t1:correct_slow 0.31x | t2:correct_slow 0.30x
+   37k_Matmul_Swish_Scaling__shapeA                 t0:compile | t1:pass 0.80x
+   41k_Gemm_Add_ReLU__shapeA                        t0:compile | t1:pass 0.79x
+   44k_Matmul_Divide_GELU__shapeA                   t0:compile | t1:pass 0.82x
+   47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh__shapeA  t0:wrong 2.19x | t1:wrong 2.17x | t2:wrong 2.11x
+== shapeB 3072x7680x8704: pass within 3 = 0/8
+   19k_Matmul_Subtract_Multiply_ReLU__shapeB        t0:wrong 1.32x | t1:wrong 1.31x | t2:wrong 1.34x
+   20k_Gemm_Multiply_LeakyReLU__shapeB              t0:wrong 1.31x | t1:wrong 1.33x | t2:wrong 1.32x
+   27k_Matmul_Mish_Mish__shapeB                     t0:wrong 1.33x | t1:wrong 1.34x | t2:wrong 1.35x
+   35k_Gemm_Scaling_Hardtanh_GELU__shapeB           t0:vmem | t1:correct_slow 0.41x | t2:correct_slow 0.40x
+   37k_Matmul_Swish_Scaling__shapeB                 t0:compile | t1:compile | t2:compile
+   41k_Gemm_Add_ReLU__shapeB                        t0:correct_slow 0.41x | t1:correct_slow 0.41x | t2:correct_slow 0.41x
+   44k_Matmul_Divide_GELU__shapeB                   t0:compile | t1:compile | t2:compile
+   47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh__shapeB  t0:wrong 0.25x | t1:wrong 0.24x | t2:wrong 0.25x
