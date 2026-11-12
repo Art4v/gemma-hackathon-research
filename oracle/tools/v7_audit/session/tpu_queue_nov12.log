@@ -1,0 +1,45 @@
+STARTED oracle-r3d gen7L-b 02:59Z
+STARTED oracle-r3c rowsweep 02:59Z
+DONE oracle-r3c rowsweep 03:06Z 20 {'pass': 9, 'vmem': 9, 'correct_slow': 2}
+STARTED oracle-r3c kimi-r3-s6a 03:08Z
+READY oracle-r3e us-east5-b 03:15Z
+STARTED oracle-r3e gen7R-a 03:17Z
+DONE oracle-r3a gen7L-a 03:18Z 56 {'pass': 51, 'vmem': 5}
+STARTED oracle-r3a gen7R-b 03:20Z
+DONE oracle-r3c kimi-r3-s6a 03:26Z FileNotFoundError: [Errno 2] No such file or directory: 'oracle/jobs/kimi-r3-s6a/results/kimi-r3-s6a.jsonl'
+QUEUE EMPTY oracle-r3c 03:26Z
+DONE oracle-r3d gen7L-b 03:32Z 55 {'pass': 53, 'vmem': 2}
+STARTED oracle-r3d kimi-r3-s6b1 03:33Z
+STARTED oracle-r3c kimi-r3-s6ar 03:33Z
+WARNING oracle-r3c kimi-r3-s6ar not running 50 s after start
+DONE oracle-r3e gen7R-a 03:35Z 31 {'pass': 31}
+DONE oracle-r3c kimi-r3-s6ar 03:35Z FileNotFoundError: [Errno 2] No such file or directory: 'oracle/jobs/kimi-r3-s6ar/results/kimi-r3-s6ar.jsonl'
+QUEUE EMPTY oracle-r3c 03:35Z
+STARTED oracle-r3e kimi-r3-s5r2 03:36Z
+DONE oracle-r3a gen7R-b 03:37Z 30 {'pass': 30}
+STARTED oracle-r3a kimi-r3-s5r1 03:39Z
+DELETED oracle-r3c 03:40Z (rebooted at 03:24, metadata block lost)
+DONE oracle-r3d kimi-r3-s6b1 03:42Z 16 {'pass': 4, 'correct_slow': 4, 'vmem': 2, 'wrong': 1, 'compile': 3, 'runtime': 1, 'harness_oom': 1}
+STARTED oracle-r3d kimi-r3-s6b2 03:44Z
+DONE oracle-r3e kimi-r3-s5r2 03:45Z 21 {'pass': 11, 'mosaic': 3, 'correct_slow': 3, 'compile': 2, 'vmem': 1, 'runtime': 1}
+QUEUE EMPTY oracle-r3e 03:45Z
+DONE oracle-r3d kimi-r3-s6b2 03:53Z 16 {'pass': 4, 'correct_slow': 5, 'vmem': 2, 'mosaic': 2, 'compile': 2, 'wrong': 1}
+QUEUE EMPTY oracle-r3d 03:53Z
+DONE oracle-r3a kimi-r3-s5r1 03:54Z 18 {'pass': 9, 'compile': 4, 'wrong': 2, 'correct_slow': 1, 'vmem': 1, 'runtime': 1}
+QUEUE EMPTY oracle-r3a 03:54Z
+STARTED oracle-r3a kimi-r3-s6ar 03:54Z
+DELETED oracle-r3d 03:55Z (queue empty)
+STARTED oracle-r3e kimi-r3-s5r3 03:57Z
+WARNING oracle-r3e kimi-r3-s5r3 not running 50 s after start
+DONE oracle-r3e kimi-r3-s5r3 03:58Z 3 {'correct_slow': 2, 'pass': 1}
+QUEUE EMPTY oracle-r3e 03:58Z
+STARTED oracle-r3e gen7V-a 04:00Z
+DONE oracle-r3a kimi-r3-s6ar 04:04Z 10 {'compile': 3, 'vmem': 1, 'mosaic': 2, 'correct_slow': 2, 'wrong': 1, 'pass': 1}
+QUEUE EMPTY oracle-r3a 04:04Z
+STARTED oracle-r3a gen7V-b 04:05Z
+DONE oracle-r3e gen7V-a 04:30Z 46 {'pass': 46}
+QUEUE EMPTY oracle-r3e 04:30Z
+DELETED oracle-r3e 04:33Z (queue empty)
+DONE oracle-r3a gen7V-b 04:34Z 45 {'pass': 45}
+QUEUE EMPTY oracle-r3a 04:34Z
+DELETED oracle-r3a 04:36Z (queue empty)
