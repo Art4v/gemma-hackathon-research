@@ -18,6 +18,8 @@ Pallas docs, and 7 on the first attempt against Flash's 1. Every kernel that pas
   (partial tiles).
 - **Companion notebook:** [`paper/notebook/submission.ipynb`](paper/notebook/submission.ipynb). CPU only, it recomputes every number
   from the published data and raw run files.
+- **Model:** release [`model-final`](https://github.com/Art4v/gemma-hackathon-research/releases/tag/model-final): the LoRA adapter
+  with a model card. `control/scoring/fold_local.py` folds it into the official `gemma4:e4b-it-qat` GGUF for Ollama.
 - **Data:** release [`dataset-final`](https://github.com/Art4v/gemma-hackathon-research/releases/tag/dataset-final).
   - `train.jsonl`: 2,299 rows, the published training set.
   - `train_as_trained.jsonl`: the 2,304 rows the adapter trained on.
