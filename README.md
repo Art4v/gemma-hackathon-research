@@ -4,7 +4,7 @@ We fine-tune **Gemma 4 E4B** with LoRA on Pallas TPU kernels that a TPU oracle v
 attempts per task.
 
 On the 58-task primary set, the adapter passes **9 tasks**, against 0 for base Gemma and 7 for Gemini Flash with 25k tokens of
-Pallas docs. Every kernel that passes runs faster than XLA (1.30-1.39x).
+Pallas docs, and 7 on the first attempt against Flash's 1. Every kernel that passes runs faster than XLA (1.30-1.39x).
 
 | Arm | Pass within 3 (primary-58) | Correct within 3 | pass@1 |
 |---|---|---|---|
@@ -13,8 +13,9 @@ Pallas docs. Every kernel that passes runs faster than XLA (1.30-1.39x).
 | Gemini Flash + docs | 7 | 36 | 1 |
 | **Gemma 4 E4B + our LoRA** | **9** | **9** | **7** |
 
-- **Writeup:** [`paper/WRITEUP.md`](paper/WRITEUP.md). The limitations section matters: the gains are in production-scale tiled
-  matmul kernels, and the training data was shaped with JAXBench's matmul scale in view.
+- **Writeup:** [`paper/WRITEUP.md`](paper/WRITEUP.md). The gains are in production-scale tiled matmul kernels, built from
+  training data at JAXBench's matmul scale; the limitations section covers how that data was built and where the kernels stop
+  (partial tiles).
 - **Companion notebook:** [`paper/notebook/submission.ipynb`](paper/notebook/submission.ipynb). CPU only, it recomputes every number
   from the published data and raw run files.
 - **Data:** release [`dataset-final`](https://github.com/Art4v/gemma-hackathon-research/releases/tag/dataset-final).
