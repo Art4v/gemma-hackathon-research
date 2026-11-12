@@ -1,4 +1,8 @@
-# v7 weight-scaled problems (work in progress, Nov 11)
+# v7 weight-scaled problems (as of Nov 11)
+
+> Written on Nov 11, before the final build, and covers the weight-scaling step only. The final training file is assembled by
+> `assemble_v7.py` and checked by `check_v7.py` (output in `check_v7.out`); the dev slice and base set listed as undecided below were
+> settled in that build.
 
 - **`kn_refs.jsonl` / `kn_problems.jsonl`:** 89 weight-scaled variants (`__kn`) of solved, unflagged, matmul-dominant v6-strict problems.
   - Every feature-dimension CONFIG int (in/out features, hidden, ...) is multiplied by one integer factor, so the main matmul reaches max(K, N) of 4096–16384 and a weight of at least 64 MB. Batch ints are divided by an exact power of two if inputs exceed 1.2 GB. The op chain is unchanged.
