@@ -1,5 +1,5 @@
 {
- "definitions": "(control/PROTOCOL.md, unchanged since the first LoRA run):\n  - tasks: JAXBench level 1 (50) + 14 level 2-only tasks with plain-JAX references (64). Primary set = the 50 level 1 tasks + the 8\n    level 2 tasks whose reference verified against Google's kernel on the TPU (51p 53p 56p 57p 58p 61p 62p 63p): 58 tasks, 33 k + 25 p.\n  - 3 attempts per task: turn 0 + 2 repairs with the oracle's verbatim feedback. A task stops at its first pass (or a terminal harness\n    verdict).\n  - pass_within_3: a `pass` (correct on 3 seeds and >= 0.7x XLA) on any turn. correct_within_3: `pass` or `correct_slow` on any turn.\n    pass_at_1: `pass` at turn 0. parity_within_3: a correct attempt at >= 0.97x XLA.\n  - Paired comparison: exact two-sided McNemar on per-task outcomes (binomial on the discordant tasks).",
+ "definitions": "(control/PROTOCOL.md, unchanged since the first LoRA run):\n  - tasks: the headline set is JAXBench's own 50 level 1 tasks (33 k + 17 p). We also wrote plain-JAX references for 14 level\n    2-only tasks (64 in all); the 8 whose reference verified against Google's kernel on the TPU (51p 53p 56p 57p 58p 61p 62p 63p)\n    form the extended set of 58. No arm passes, or is correct on, any of those 8, so every headline count is the same on 50 and 58.\n  - 3 attempts per task: turn 0 + 2 repairs with the oracle's verbatim feedback. A task stops at its first pass (or a terminal harness\n    verdict).\n  - pass_within_3: a `pass` (correct on 3 seeds and >= 0.7x XLA) on any turn. correct_within_3: `pass` or `correct_slow` on any turn.\n    pass_at_1: `pass` at turn 0. parity_within_3: a correct attempt at >= 0.97x XLA.\n  - Paired comparison: exact two-sided McNemar on per-task outcomes (binomial on the discordant tasks).",
  "arms": {
   "bare": {
    "label": "Gemma 4 E4B (base), reference only",
@@ -7,6 +7,33 @@
    "generated_rows": 192,
    "all": {
     "n": 64,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "jaxbench50": {
+    "n": 50,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "jaxbench50_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "jaxbench50_p": {
+    "n": 17,
     "pass_within_3": 0,
     "correct_within_3": 0,
     "pass_at_1": 0,
@@ -62,6 +89,33 @@
    "generated_rows": 192,
    "all": {
     "n": 64,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "jaxbench50": {
+    "n": 50,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "jaxbench50_k": {
+    "n": 33,
+    "pass_within_3": 0,
+    "correct_within_3": 0,
+    "pass_at_1": 0,
+    "parity_within_3": 0,
+    "median_best_correct_speed": null,
+    "passed_tasks": []
+   },
+   "jaxbench50_p": {
+    "n": 17,
     "pass_within_3": 0,
     "correct_within_3": 0,
     "pass_at_1": 0,
@@ -134,6 +188,50 @@
      "29k",
      "46k",
      "64p"
+    ]
+   },
+   "jaxbench50": {
+    "n": 50,
+    "pass_within_3": 7,
+    "correct_within_3": 36,
+    "pass_at_1": 1,
+    "parity_within_3": 4,
+    "median_best_correct_speed": 0.541,
+    "passed_tasks": [
+     "11p",
+     "12p",
+     "21k",
+     "24k",
+     "26k",
+     "29k",
+     "46k"
+    ]
+   },
+   "jaxbench50_k": {
+    "n": 33,
+    "pass_within_3": 5,
+    "correct_within_3": 25,
+    "pass_at_1": 0,
+    "parity_within_3": 2,
+    "median_best_correct_speed": 0.549,
+    "passed_tasks": [
+     "21k",
+     "24k",
+     "26k",
+     "29k",
+     "46k"
+    ]
+   },
+   "jaxbench50_p": {
+    "n": 17,
+    "pass_within_3": 2,
+    "correct_within_3": 11,
+    "pass_at_1": 1,
+    "parity_within_3": 2,
+    "median_best_correct_speed": 0.382,
+    "passed_tasks": [
+     "11p",
+     "12p"
     ]
    },
    "primary": {
@@ -234,6 +332,54 @@
      "41k",
      "44k",
      "47k"
+    ]
+   },
+   "jaxbench50": {
+    "n": 50,
+    "pass_within_3": 9,
+    "correct_within_3": 9,
+    "pass_at_1": 7,
+    "parity_within_3": 9,
+    "median_best_correct_speed": 1.367,
+    "passed_tasks": [
+     "12p",
+     "19k",
+     "20k",
+     "27k",
+     "35k",
+     "37k",
+     "41k",
+     "44k",
+     "47k"
+    ]
+   },
+   "jaxbench50_k": {
+    "n": 33,
+    "pass_within_3": 8,
+    "correct_within_3": 8,
+    "pass_at_1": 6,
+    "parity_within_3": 8,
+    "median_best_correct_speed": 1.366,
+    "passed_tasks": [
+     "19k",
+     "20k",
+     "27k",
+     "35k",
+     "37k",
+     "41k",
+     "44k",
+     "47k"
+    ]
+   },
+   "jaxbench50_p": {
+    "n": 17,
+    "pass_within_3": 1,
+    "correct_within_3": 1,
+    "pass_at_1": 1,
+    "parity_within_3": 1,
+    "median_best_correct_speed": 1.394,
+    "passed_tasks": [
+     "12p"
     ]
    },
    "primary": {

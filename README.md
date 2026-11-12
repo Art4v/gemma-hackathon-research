@@ -3,10 +3,10 @@
 We fine-tune **Gemma 4 E4B** with LoRA on Pallas TPU kernels that a TPU oracle verified, and evaluate on **JAXBench** with three
 attempts per task.
 
-On the 58-task primary set, the adapter passes **9 tasks**, against 0 for base Gemma and 7 for Gemini Flash with 25k tokens of
+On JAXBench's 50 tasks, the adapter passes **9 tasks**, against 0 for base Gemma and 7 for Gemini Flash with 25k tokens of
 Pallas docs, and 7 on the first attempt against Flash's 1. Every kernel that passes runs faster than XLA (1.30-1.39x).
 
-| Arm | Pass within 3 (primary-58) | Correct within 3 | pass@1 |
+| Arm | Pass within 3 (JAXBench 50) | Correct within 3 | pass@1 |
 |---|---|---|---|
 | Gemma 4 E4B, bare | 0 | 0 | 0 |
 | Gemma 4 E4B + docs | 0 | 0 | 0 |

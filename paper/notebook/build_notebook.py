@@ -163,8 +163,9 @@ print(f"target speed vs XLA: median {statistics.median(speeds):.2f}x, {sum(s > 5
 md("""
 ## 2. JAXBench
 
-**Tasks:** JAXBench's 50 level 1 tasks plus 14 level 2-only tasks (64). The **primary set** is the 50 level 1 tasks plus the 8
-level 2 tasks whose plain-JAX reference verified against Google's kernel on the TPU: 58 tasks, 33 k and 25 p.
+**Tasks:** the headline set is **JAXBench's own 50 level 1 tasks** (33 k, 17 p). We also wrote plain-JAX references for 14 level
+2-only tasks (64 in all); the 8 that verified against Google's kernel on the TPU make an extended set of 58. No model passes any of
+those 8, so every count below is the same on 50 and 58.
 
 **Budget:** 3 attempts per task (turn 0 plus 2 repairs with the oracle's verbatim feedback); a task stops at its first pass.
 
@@ -199,7 +200,8 @@ ARMS = {  # label -> (run dir, id prefix)
 }
 PRIMARY_L2 = {"51p", "53p", "56p", "57p", "58p", "61p", "62p", "63p"}
 num = lambda t: t.split("_")[0]
-is_primary = lambda t: int("".join(c for c in num(t) if c.isdigit())) <= 50 or num(t) in PRIMARY_L2
+is_primary = lambda t: int("".join(c for c in num(t) if c.isdigit())) <= 50 or num(t) in PRIMARY_L2  # extended 58
+is_jaxbench50 = lambda t: int("".join(c for c in num(t) if c.isdigit())) <= 50                         # headline
 kind = lambda t: "k" if num(t).endswith("k") else "p"
 
 def load_arm(run, prefix):
@@ -233,28 +235,30 @@ for label, d in DIGESTS.items():
 md("""
 ### Main table
 
-One line per arm, on the 58 primary tasks. `pass<=3` is the headline metric: tasks with a pass on any of the three attempts.
-`correct<=3` also counts kernels that are correct but slower than 0.7x XLA. `k-33` and `p-25` split the passes into the 33
-operator-chain tasks ported from KernelBench and the 25 production-kernel tasks. The last column lists the tasks each arm passed.
+One line per arm, on JAXBench's 50 tasks. `pass<=3` is the headline metric: tasks with a pass on any of the three attempts.
+`correct<=3` also counts kernels that are correct but slower than 0.7x XLA. `k-33` and `p-17` split the passes into the 33
+operator-chain tasks ported from KernelBench and the 17 production-kernel tasks. `ext-58` is the pass count on the extended set
+(the 50 plus the 8 verified level 2-only tasks). The last column lists the tasks each arm passed.
 """)
 
 code("""
-prim = sorted(t for t in OUT[OURS] if is_primary(t))
+prim = sorted(t for t in OUT[OURS] if is_jaxbench50(t))   # headline: JAXBench's 50
+ext = sorted(t for t in OUT[OURS] if is_primary(t))        # extended 58
 K = [t for t in prim if kind(t) == "k"]; P = [t for t in prim if kind(t) == "p"]
-print(f"primary tasks: {len(prim)} ({len(K)} k, {len(P)} p)\\n")
-hdr = f"{'arm':24} {'pass<=3':>8} {'correct<=3':>11} {'pass@1':>7} {'parity':>7} {'k-33':>5} {'p-25':>5}  passed"
+print(f"JAXBench tasks: {len(prim)} ({len(K)} k, {len(P)} p)\\n")
+hdr = f"{'arm':24} {'pass<=3':>8} {'correct<=3':>11} {'pass@1':>7} {'parity':>7} {'k-33':>5} {'p-17':>5} {'ext-58':>7}  passed"
 print(hdr); print("-" * len(hdr))
 for label, oc in OUT.items():
     c = lambda key, ts: sum(oc[t][key] for t in ts if t in oc)
     passed = " ".join(sorted((num(t) for t in prim if oc.get(t, {}).get("pass")), key=lambda x: int(x[:-1])))
-    print(f"{label:24} {c('pass', prim):>5}/58 {c('correct', prim):>8}/58 {c('pass_at_1', prim):>4}/58 {c('parity', prim):>4}/58 "
-          f"{c('pass', K):>2}/33 {c('pass', P):>2}/25  {passed}")
+    print(f"{label:24} {c('pass', prim):>5}/50 {c('correct', prim):>8}/50 {c('pass_at_1', prim):>4}/50 {c('parity', prim):>4}/50 "
+          f"{c('pass', K):>2}/33 {c('pass', P):>2}/17 {c('pass', ext):>4}/58  {passed}")
 """)
 
 md("""
 ### Paired tests
 
-Every arm ran the same 58 tasks, so two arms are compared task by task. Only the tasks where they disagree carry information:
+Every arm ran the same 50 tasks, so two arms are compared task by task. Only the tasks where they disagree carry information:
 "ours only" counts tasks our adapter passed and the other arm did not, and "other only" counts the reverse. The exact McNemar
 test asks how likely a split at least this uneven would be if both arms were equally good. A small p means the difference is
 unlikely to be chance.
@@ -279,7 +283,7 @@ for other in ARMS:
 md("""
 ### Passes by attempt
 
-The same data as a curve: how many of the 58 primary tasks each arm has passed after one, two and three attempts. The two base
+The same data as a curve: how many of JAXBench's 50 tasks each arm has passed after one, two and three attempts. The two base
 Gemma lines lie on top of each other at zero.
 """)
 
@@ -290,8 +294,8 @@ cum = {l: [sum(any(v["verdict"] == "pass" for v in RAW[l][t][:k + 1]) for t in p
 fig, ax = plt.subplots(figsize=(7, 4))
 for l in labels:
     ax.plot([1, 2, 3], cum[l], marker="o", label=l, lw=2.5 if l == OURS else 1.2)
-ax.set_xticks([1, 2, 3]); ax.set_xlabel("attempts (turn 0 + repairs)"); ax.set_ylabel("tasks passed (of 58)")
-ax.set_title("JAXBench primary-58: passes within k attempts"); ax.legend(fontsize=7, loc="upper left"); ax.grid(alpha=0.3)
+ax.set_xticks([1, 2, 3]); ax.set_xlabel("attempts (turn 0 + repairs)"); ax.set_ylabel("tasks passed (of 50)")
+ax.set_title("JAXBench (50 tasks): passes within k attempts"); ax.legend(fontsize=7, loc="upper left"); ax.grid(alpha=0.3)
 plt.tight_layout(); plt.show()
 """)
 
@@ -300,7 +304,7 @@ md("""
 """)
 
 md("""
-The cell below prints every attempt our adapter made, one task per line. `P` marks the 58 primary tasks. Attempts are separated
+The cell below prints every attempt our adapter made, one task per line. `50` marks JAXBench's 50 tasks; the unmarked lines are our extra level 2-only tasks. Attempts are separated
 by `|`, and a line stops at the first pass. A number such as `1.37x` is the kernel's speed against XLA, which is only measured
 when the kernel ran.
 
@@ -320,7 +324,7 @@ ours = RAW[OURS]
 order = sorted(ours, key=lambda t: int("".join(c for c in num(t) if c.isdigit())))
 for t in order:
     turns = " | ".join(f"{v['verdict']}{'' if not v.get('speed_vs_xla') else ' %.2fx' % v['speed_vs_xla']}" for v in ours[t])
-    print(f"{t[:46]:46} {'P' if is_primary(t) else ' '}  {turns}")
+    print(f"{t[:46]:46} {'50' if is_jaxbench50(t) else '  '}  {turns}")
 """)
 
 md("""

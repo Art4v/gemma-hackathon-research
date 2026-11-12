@@ -3,8 +3,9 @@
   python3 paper/analysis/jaxbench.py            -> paper/analysis/results.json and paper/analysis/results.md
 
 Definitions (control/PROTOCOL.md, unchanged since the first LoRA run):
-  - tasks: JAXBench level 1 (50) + 14 level 2-only tasks with plain-JAX references (64). Primary set = the 50 level 1 tasks + the 8
-    level 2 tasks whose reference verified against Google's kernel on the TPU (51p 53p 56p 57p 58p 61p 62p 63p): 58 tasks, 33 k + 25 p.
+  - tasks: the headline set is JAXBench's own 50 level 1 tasks (33 k + 17 p). We also wrote plain-JAX references for 14 level
+    2-only tasks (64 in all); the 8 whose reference verified against Google's kernel on the TPU (51p 53p 56p 57p 58p 61p 62p 63p)
+    form the extended set of 58. No arm passes, or is correct on, any of those 8, so every headline count is the same on 50 and 58.
   - 3 attempts per task: turn 0 + 2 repairs with the oracle's verbatim feedback. A task stops at its first pass (or a terminal harness
     verdict).
   - pass_within_3: a `pass` (correct on 3 seeds and >= 0.7x XLA) on any turn. correct_within_3: `pass` or `correct_slow` on any turn.
@@ -34,6 +35,10 @@ def num(task):
 def is_primary(task):
     n = int("".join(c for c in num(task) if c.isdigit()))
     return n <= 50 or num(task) in PRIMARY_L2
+
+
+def is_jaxbench50(task):
+    return int("".join(c for c in num(task) if c.isdigit())) <= 50
 
 
 def kind(task):
@@ -87,6 +92,7 @@ def main():
         oc = {t: task_outcome(v) for t, v in per.items()}
         outcomes[arm] = oc
         prim = [t for t in oc if is_primary(t)]
+        j50 = [t for t in oc if is_jaxbench50(t)]
         def summ(ts):
             cs = [oc[t]["best_correct_speed"] for t in ts if oc[t]["best_correct_speed"]]
             return {"n": len(ts), "pass_within_3": sum(oc[t]["pass"] for t in ts), "correct_within_3": sum(oc[t]["correct"] for t in ts),
@@ -98,10 +104,12 @@ def main():
             for x in turns:
                 funnel[(x["turn"], x["verdict"])] += 1
         res["arms"][arm] = {"label": label, "run_dir": run, "generated_rows": ngen,
-                            "all": summ(list(oc)), "primary": summ(prim),
+                            "all": summ(list(oc)), "jaxbench50": summ(j50),
+                            "jaxbench50_k": summ([t for t in j50 if kind(t) == "k"]), "jaxbench50_p": summ([t for t in j50 if kind(t) == "p"]),
+                            "primary": summ(prim),
                             "primary_k": summ([t for t in prim if kind(t) == "k"]), "primary_p": summ([t for t in prim if kind(t) == "p"]),
                             "funnel_by_turn": {f"t{k}": dict(sorted(((v or "none"), n) for (kk, v), n in funnel.items() if kk == k)) for k in range(3)}}
-    prim_all = sorted(t for t in outcomes["ours"] if is_primary(t))
+    prim_all = sorted(t for t in outcomes["ours"] if is_jaxbench50(t))  # paired tests on the headline set (identical on the extended 58)
     res["mcnemar_ours_vs"] = {arm: {"pass_at_1": mcnemar(outcomes["ours"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "pass_at_1"),
                                   "pass_within_3": mcnemar(outcomes["ours"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "pass"),
                                   "correct_within_3": mcnemar(outcomes["ours"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "correct")}
@@ -115,12 +123,13 @@ def main():
     res["ours_transitions"] = dict(tr.most_common())
     (HERE / "results.json").write_text(json.dumps(res, indent=1))
     # markdown tables
-    md.append("| Arm | pass within 3 (primary-58) | correct within 3 | pass@1 | parity within 3 | k-33 pass | S-p-25 pass | all-64 pass |")
-    md.append("|---|---|---|---|---|---|---|---|")
+    md.append("| Arm | pass within 3 (JAXBench 50) | correct within 3 | pass@1 | parity within 3 | k-33 pass | p-17 pass | extended-58 pass | all-64 pass |")
+    md.append("|---|---|---|---|---|---|---|---|---|")
     for arm, a in res["arms"].items():
-        p = a["primary"]
+        p = a["jaxbench50"]
         md.append(f"| {a['label']} | {p['pass_within_3']}/{p['n']} | {p['correct_within_3']}/{p['n']} | {p['pass_at_1']}/{p['n']} | {p['parity_within_3']}/{p['n']} | "
-                  f"{a['primary_k']['pass_within_3']}/{a['primary_k']['n']} | {a['primary_p']['pass_within_3']}/{a['primary_p']['n']} | {a['all']['pass_within_3']}/{a['all']['n']} |")
+                  f"{a['jaxbench50_k']['pass_within_3']}/{a['jaxbench50_k']['n']} | {a['jaxbench50_p']['pass_within_3']}/{a['jaxbench50_p']['n']} | "
+                  f"{a['primary']['pass_within_3']}/{a['primary']['n']} | {a['all']['pass_within_3']}/{a['all']['n']} |")
     md.append("\n| ours vs | pass within 3: ours-only / other-only, p | correct within 3: ours-only / other-only, p |\n|---|---|---|")
     for arm, m in res["mcnemar_ours_vs"].items():
         a, c = m["pass_within_3"], m["correct_within_3"]
