@@ -1,0 +1,87 @@
+newacct: metered $24.62 of $39.00 cap -> OK to launch
+2026-11-12T05:58:07Z turn 0: generating on Modal (6 workers)
+[63/64] bare/58p_DeepSeek_V4_KV_Compressor/t0: 8192 tokens, 154.4 s, finish length, NO CODE
+[64/64] bare/60p_RPAv3/t0: 8192 tokens, 144.0 s, finish length, NO CODE
+64 attempts generated
+2026-11-12T06:04:16Z turn 0: 64 rows generated
+rows 64, wrong model/digest 0 []
+2026-11-12T06:04:16Z turn 0: CPU step 1 (lora-v7final-modal-t0)
+  TPU lowering on CPU: bare/45k_Gemm_GroupNorm_Swish_Multiply_Swish/t0: abstain 
+  TPU lowering on CPU: bare/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/t0: abstain 
+  TPU lowering on CPU: bare/50k_Matmul_GELU_Softmax/t0: abstain 
+  TPU lowering on CPU: bare/57p_SparseCore_Ragged_Gather/t0: abstain 
+2026-11-12T06:04:17Z turn 0: 23 attempt(s) passed step 1 -> TPU
+2026-11-12T06:04:18Z hunting a v6e-1
+01:20:41 QUEUE EMPTY
+part 1: 23 judged, 0 left (0 halt victims to re-run)
+ROUND DONE control-lora-v7final-modal-t0 23 judged in parts, 0 suspects judged alone
+23 final verdicts from 1 parts
+23 verdicts ingested
+2026-11-12T06:20:41Z TURN 0 DONE
+newacct: metered $25.71 of $39.00 cap -> OK to launch
+2026-11-12T06:20:43Z turn 1: generating on Modal (6 workers)
+[56/57] bare/58p_DeepSeek_V4_KV_Compressor/t1: 8192 tokens, 153.8 s, finish length, NO CODE
+[57/57] bare/60p_RPAv3/t1: 8192 tokens, 144.8 s, finish length, NO CODE
+57 attempts generated
+2026-11-12T06:26:56Z turn 1: 57 rows generated
+rows 121, wrong model/digest 0 []
+2026-11-12T06:26:56Z turn 1: CPU step 1 (lora-v7final-modal-t1)
+  TPU lowering on CPU: bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t1: abstain 
+  TPU lowering on CPU: bare/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/t1: abstain 
+  TPU lowering on CPU: bare/50k_Matmul_GELU_Softmax/t1: abstain 
+  TPU lowering on CPU: bare/57p_SparseCore_Ragged_Gather/t1: abstain 
+2026-11-12T06:26:57Z turn 1: 17 attempt(s) passed step 1 -> TPU
+01:36:43 QUEUE EMPTY
+part 1: 17 judged, 0 left (0 halt victims to re-run)
+ROUND DONE control-lora-v7final-modal-t1 17 judged in parts, 0 suspects judged alone
+17 final verdicts from 1 parts
+17 verdicts ingested
+2026-11-12T06:36:43Z TURN 1 DONE
+newacct: metered $26.81 of $39.00 cap -> OK to launch
+2026-11-12T06:36:44Z turn 2: generating on Modal (6 workers)
+[54/55] bare/58p_DeepSeek_V4_KV_Compressor/t2: 8192 tokens, 153.0 s, finish length, NO CODE
+[55/55] bare/60p_RPAv3/t2: 7311 tokens, 125.0 s, finish stop, code
+55 attempts generated
+2026-11-12T06:42:58Z turn 2: 55 rows generated
+rows 176, wrong model/digest 0 []
+2026-11-12T06:42:58Z turn 2: CPU step 1 (lora-v7final-modal-t2)
+  TPU lowering on CPU: bare/45k_Gemm_GroupNorm_Swish_Multiply_Swish/t2: abstain 
+  TPU lowering on CPU: bare/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/t2: abstain 
+  TPU lowering on CPU: bare/50k_Matmul_GELU_Softmax/t2: abstain 
+  TPU lowering on CPU: bare/57p_SparseCore_Ragged_Gather/t2: abstain 
+2026-11-12T06:42:59Z turn 2: 15 attempt(s) passed step 1 -> TPU
+01:51:45 QUEUE EMPTY
+part 1: 15 judged, 0 left (0 halt victims to re-run)
+ROUND DONE control-lora-v7final-modal-t2 15 judged in parts, 0 suspects judged alone
+15 final verdicts from 1 parts
+15 verdicts ingested
+2026-11-12T06:51:45Z TURN 2 DONE
+2026-11-12T06:51:45Z JAXBENCH DONE (gemma4-e4b-lora:v7final on Modal)
+Listed 0 items.
+jaxbench_modal.sh: line 37: 20714 Terminated: 15          RATE=3.24 CAP_USD=12 IDLE_MIN=15 nohup bash guard.sh >> guard.out 2>&1 < /dev/null
+   "wrong": 6,
+   "vmem": 8,
+   "mosaic": 1
+  },
+  "final_verdicts": {
+   "compile": 40,
+   "pass": 9,
+   "not_a_kernel": 1,
+   "wrong": 12,
+   "vmem": 1,
+   "mosaic": 1
+  }
+ },
+ "docs": {
+  "tasks": 64,
+  "judged": 0,
+  "pass_at_1": 0,
+  "pass_within_3": 0,
+  "correct_within_3": 0,
+  "parity_within_3": 0,
+  "median_speed_correct": null,
+  "turn0_verdicts": {},
+  "final_verdicts": {}
+ }
+}
+64 tasks; turns per task: {3: 55, 1: 7, 2: 2} (tasks with < 3 turns must have a terminal verdict; check bench summary)

@@ -1,0 +1,17 @@
+{"id": "bare/9p_SwiGLU_MLP/t1", "task": "9p_SwiGLU_MLP", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/21k_Gemm_Divide_Sum_Scaling/t1", "task": "21k_Gemm_Divide_Sum_Scaling", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp/t1", "task": "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish/t1", "task": "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply/t1", "task": "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/30k_Matmul_Scaling_ResidualAdd/t1", "task": "30k_Matmul_Scaling_ResidualAdd", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/29k_Matmul_Swish_Sum_GroupNorm/t1", "task": "29k_Matmul_Swish_Sum_GroupNorm", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/32k_Gemm_Sigmoid_LogSumExp/t1", "task": "32k_Gemm_Sigmoid_LogSumExp", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/35k_Gemm_Scaling_Hardtanh_GELU/t1", "task": "35k_Gemm_Scaling_Hardtanh_GELU", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/38k_Matmul_Dropout_Softmax/t1", "task": "38k_Matmul_Dropout_Softmax", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/36k_Matmul_Sigmoid_Sum/t1", "task": "36k_Matmul_Sigmoid_Sum", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/42k_Gemm_Max_Subtract_GELU/t1", "task": "42k_Gemm_Max_Subtract_GELU", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/45k_Gemm_GroupNorm_Swish_Multiply_Swish/t1", "task": "45k_Gemm_GroupNorm_Swish_Multiply_Swish", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t1", "task": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/t1", "task": "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/50k_Matmul_GELU_Softmax/t1", "task": "50k_Matmul_GELU_Softmax", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
+{"id": "bare/57p_SparseCore_Ragged_Gather/t1", "task": "57p_SparseCore_Ragged_Gather", "outcome": "abstain", "stage": "child", "error_type": "SandboxChild", "feedback": ""}
