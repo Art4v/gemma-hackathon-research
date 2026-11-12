@@ -54,11 +54,15 @@ Or run the notebook top to bottom. It downloads the release and the run rows, ch
 
 ## License
 
-Original content in this repository (code, the data compilation and the writeup) is released under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); see [`LICENSE`](LICENSE). Third-party material keeps its own license:
+- **Code** (Python, shell scripts and notebooks): [MIT](LICENSE).
+- **Data, writeup and figures** (the dataset releases, `paper/WRITEUP.md`, `paper/figures/`, the run rows and other data files):
+  [CC BY 4.0](LICENSE-CC-BY-4.0).
+- **Model adapter** (release `model-final`): CC BY 4.0. It is a derivative of Gemma 4 E4B, so its use is also subject to the base
+  model's license and terms.
+
+Third-party material keeps its own license:
 - the JAXBench tasks in `benchmarks/`;
 - the Pallas documentation excerpts in `pallas_guides/upstream/` (see the `LICENSE` there);
 - KernelBench (MIT) and the permissively licensed KernelBook subset.
 
-Kimi K3.1's outputs are subject to its model license. A model adapter trained here is a derivative of Gemma 4 E4B, so its use is
-also subject to the base model's license and terms.
+Kimi K3.1's outputs are subject to its model license.
