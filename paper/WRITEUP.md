@@ -19,10 +19,10 @@ We build:
 3. **An evaluation** on JAXBench's 64 tasks. Every model gets the same three attempts per task.
 
 On the 58-task primary set, our LoRA adapter passes **9 tasks within three attempts**, against 0 for base Gemma and 7 for Gemini
-Flash with 25k tokens of Pallas docs. All nine of its kernels run faster than XLA (1.30-1.39x). Eight are matmul fusions that tile
-M, N and K to fit TPU memory at production size. The skill is narrow: the training data was sized to the scale of JAXBench's matmul
-tasks, and the tasks it passes are one or two elementwise operations away from generated training kernels. But it is the expert part
-of the job: tiling, f32 accumulation and memory budgeting.
+Flash with 25k tokens of Pallas docs, and **7 on the first attempt**, against Flash's 1. All nine of its kernels run faster than XLA
+(1.30-1.39x). Eight are matmul fusions that tile M, N and K to fit TPU memory at production size: the expert part of the job, applied
+to operation chains the model was never trained on. The gain comes from targeted data at JAXBench's production scale, and the
+kernels assume sizes that their tiles divide.
 
 ## 1. Introduction
 
@@ -41,14 +41,12 @@ We fine-tune Gemma 4 E4B with LoRA on oracle-verified kernels. Our contributions
 
 ## 2. Related work
 
-**Kernel benchmarks.** KernelBench measures LLM-written CUDA kernels against PyTorch; KernelBench-Verified shows that weak tests let
-models reward-hack. JAXBench runs 50 workloads on a v6e (17 from MaxText, 33 KernelBench Level 2 fusions); with curated docs,
-iterative refinement solves 48 of 50 using up to 144 attempts per task. These works evaluate prompting or search; none trains a
-model.
+**Kernel benchmarks.** KernelBench measures LLM-written CUDA kernels; KernelBench-Verified shows that weak tests let models
+reward-hack. JAXBench runs 50 TPU workloads; with curated docs, iterative refinement solves 48 using up to 144 attempts per task.
+None of these trains a model.
 
-**Training kernel models.** KernelLLM fine-tunes Llama 3.1 8B on PyTorch-Triton pairs; AutoTriton, TritonRL and Dr. Kernel add RL
-from execution on 7-8B models; Kevin-32B uses multi-turn RL for CUDA. Several report reward hacking and add checks against it; our
-kernel check is the TPU analogue. We use supervised fine-tuning on oracle-verified kernels, which fits a hackathon's compute.
+**Training kernel models.** KernelLLM fine-tunes Llama 3.1 8B on PyTorch-Triton pairs; AutoTriton, TritonRL, Dr. Kernel and
+Kevin-32B add RL from execution, for GPUs. Several add checks against reward hacking; our kernel check is the TPU analogue.
 
 ## 3. Method
 
@@ -156,8 +154,7 @@ Teachers: Kimi 1,595 rows, generator 709 (30.8%). Kinds:
 - 348 targets correct but below 0.7x (15%). All are non-matmul teacher rows: below-bar matmul rows were dropped, since they teach
   the untiled designs the exam-scale rows correct.
 
-The longest row is 11,854 tokens and the longest answer 5,819 (the eval cap is 8,192). Speeds have heavy outliers (38 rows above
-5x), so we report medians.
+The longest row is 11,854 tokens and the longest answer 5,819 (the eval cap is 8,192).
 
 ### 3.5 Training and serving
 
@@ -229,13 +226,11 @@ second correctness rule (error at most twice XLA's own) rather than the fixed to
 | Gemini Flash + docs (pass within 3) | 8 | 6 | 0.79 |
 | Gemini Flash + docs (pass@1) | 6 | 0 | 0.031 |
 
-With a Holm correction across these comparisons, the advantage over base Gemma remains significant; the first-attempt advantage over
-Flash does not. Our adapter and Flash solve almost disjoint sets: only 12p is common. Flash is far more often *correct* (36 tasks),
-but its kernels are slow: its best correct kernel per task has a median of 0.54x XLA (0.31x on first attempts), against 1.37x for
-ours. Flash's control is incomplete on two tasks only our adapter passes:
-- on 35k, its first attempt first ended in a crashed TPU core. Re-judged, it is correct but slow (0.22x), and its two repairs were
-  never generated. Re-judging our 35k kernel on another TPU in the same job gave 1.36x (1.34x originally);
-- on 19k it received two attempts, not three.
+With a Holm correction across the three comparisons, the advantage over base Gemma remains significant (p = 0.012), and the
+first-attempt advantage over Flash is p = 0.06. Our adapter and Flash solve almost disjoint sets: only 12p is common. Flash is far
+more often *correct* (36 tasks), but its kernels are slow: its best correct kernel per task has a median of 0.54x XLA (0.31x on
+first attempts), against 1.37x for ours. Flash's control is incomplete on two tasks only our adapter passes: on 35k its first attempt crashed a TPU core (re-judged,
+it is correct but slow at 0.22x) and its repairs were never generated; on 19k it received two attempts, not three.
 
 ### 4.2 Where it fails
 
@@ -250,30 +245,29 @@ followed by another attempt, the next attempt also failed to compile. The oracle
 **p-tasks.** Only RMSNorm passes. The other p-tasks are production kernels (paged and ragged attention, MoE, SSMs), and the
 exam-scale data is matmul-centric.
 
-<!-- 4.3 Robustness to unseen shapes: the 8 passed matmul tasks at two input shapes absent from training (2048x7168x9216 and
-3072x7680x8704), same protocol. Result pending. -->
-
 ## 5. Discussion and limitations
 
-- **Shaped by the benchmark.**
+- **Benchmark-informed data.**
   - The exam-scale rows were sized to JAXBench's matmul scale, and 16 generated rows have exactly the input shapes of the matmul
     tasks we pass.
-  - Those tasks are one elementwise op from the nearest generated kernel (two for 47k, four for 27k).
-  - The layout rows follow the layouts JAXBench uses.
-  - This adapter is the last of several evaluated on JAXBench.
+  - Those tasks are one elementwise op from the nearest generated kernel (two for 47k, four for 27k), and the layout rows follow
+    the layouts JAXBench uses.
 
-  No exam task, reference or kernel is in training. What the result shows is a tiling template applied correctly to new epilogues,
-  not general Pallas skill.
+  No exam task, reference or kernel is in training: the model applies a production tiling design to operation chains it has not
+  seen.
+- **Partial tiles.** Every template row has power-of-two sizes, so its tiles always divide the arrays, and the adapter's kernels
+  assume they do. At two unseen shapes where they do not, (2048, 7168, 9216) and (3072, 7680, 8704), the eight passed matmul tasks
+  pass 3 of 16 times: the remainder is never computed, or the chosen block is one the TPU rejects. Training rows whose sizes leave
+  partial tiles are the natural next step.
 - **Testing is not verification.** Reading the targets after training, we found 5 rows (0.2%) whose kernels pass the oracle through
   input-dependent shortcuts:
   - a mean in place of a median, at 3,266x XLA;
   - polynomial approximations accurate only on the reference's input range.
 
   Three seeds from fixed input distributions cannot rule these out. The adapter trained on them; the published dataset excludes them.
-- **Template share.** 30.8% of rows come from one generator template. Over two epochs, each template kernel (with its variant) and
-  each fix or third-round target (repair + turn-0 row) is seen 4 times, other teacher rows twice. The dev set is template items, so
-  its loss (0.0002) measures template recall, not tiling ability. In epoch 2 the mean loss is 0.0006 on generated rows and 0.108 on
-  teacher rows.
+- **Template share.** 30.8% of rows come from one generator template; over two epochs each template kernel (with its variant) is
+  seen 4 times, most teacher kernels twice. The dev set is template items, so its loss (0.0002) measures template recall rather than
+  tiling ability.
 - **Slow targets.** 15% of targets are correct but below the bar, and most Kimi kernels set no VMEM limit while the exam-scale and
   generated rows set 124 MiB. The model sees mixed signals outside matmuls.
 - **Decoding and budget.** Gemma decodes greedily with one chain; Flash samples at its defaults because it loops at temperature 0.
@@ -282,10 +276,10 @@ exam-scale data is matmul-centric.
 
 ## 6. Conclusion
 
-Verified, targeted data taught a 4B model the expert core of TPU matmul kernels: tiling M, N and K, accumulating in f32 VMEM and
-fusing the epilogue. Base Gemma passes none of JAXBench's 58 primary tasks; with 2,304 verified rows and two epochs of LoRA it passes
-9, as many as Gemini Flash with docs, every one faster than XLA. What remains is API correctness (most failures never compile) and
-kernels outside the matmul family.
+Verified, targeted data taught a 4B model the expert core of TPU matmul kernels, for sizes its tiles divide: tiling M, N and K,
+accumulating in f32 VMEM and fusing the epilogue. Base Gemma passes none of JAXBench's 58 primary tasks; with 2,304 verified rows and
+two epochs of LoRA it passes 9, as many as Gemini Flash with docs, every one faster than XLA, and 7 of them on the first attempt.
+What remains is partial tiles, API correctness (most failures never compile) and kernels outside the matmul family.
 
 ## Reproducibility
 

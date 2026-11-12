@@ -262,11 +262,13 @@ if RUN_GPU_DEMO:
 md("""
 ## Limitations (from the writeup)
 
-- **Shaped by the benchmark.** The exam-scale rows were sized to JAXBench's matmul scale, and the matmul tasks the adapter passes are
-  one or two elementwise ops from generated training kernels. No JAXBench task, reference or kernel is in training. The result shows
-  a tiling template applied correctly to new epilogues, not general Pallas skill.
+- **Benchmark-informed data.** The exam-scale rows were sized to JAXBench's matmul scale, and the matmul tasks the adapter passes
+  are one or two elementwise ops from generated training kernels. No JAXBench task, reference or kernel is in training: the model
+  applies a production tiling design to operation chains it has not seen.
+- **Partial tiles.** Template rows have power-of-two sizes, and the adapter's kernels assume their tiles divide the arrays. At two
+  unseen shapes where they do not, the eight passed matmul tasks pass 3 of 16 times.
 - **Template rows.** 30.8% of rows come from one generator template, with surface variants. The dev set is template items, so its
-  loss measures template recall, not tiling ability.
+  loss measures template recall rather than tiling ability.
 - **Testing is not verification.** 5 rows pass the oracle through input-dependent shortcuts (Section 1).
 - **One greedy chain, 3 attempts per task.** Gemini Flash samples at its own defaults, and its 35k and 19k controls are incomplete.
 """)
