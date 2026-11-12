@@ -16,9 +16,14 @@ uv run --with matplotlib python diagrams.py        # fig01 to fig05
 uv run --with matplotlib python charts.py          # fig06 to fig15
 ```
 
-`extract.py` needs these refs fetched: `hruday/kimi-k31` (`2efa6a5`, the training file), `hruday/v4-runs` (`487973d`,
-the scored run and the 64 references), `oracle-results/karthik-gen7` (TPU verdicts of the training candidates),
-`aarav/paper-v7` (`eadf22b`, the loss log) and `hruday/paper-v7` (`da04f91`, the frozen rows of the four arms). It asserts
+`extract.py` reads fixed commits, all kept by `archive/*` tags (`git fetch origin --tags`):
+- `2efa6a5`, the training file (tag `archive/hruday/kimi-k31`);
+- `487973d`, the scored run and the 64 references (tag `archive/hruday/v4-runs`);
+- the TPU verdicts of the training candidates (tag `archive/oracle-results/karthik-gen7`);
+- `eadf22b`, the loss log (tag `archive/aarav/paper-v7`);
+- `da04f91`, the frozen rows of the four arms (tag `archive/hruday/paper-v7`).
+
+It asserts
 each arm against `paper/analysis/results.json` (for example 9 of 58 for the adapter) and stops if a source has drifted.
 
 ## Pipeline diagrams
