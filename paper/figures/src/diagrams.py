@@ -28,7 +28,7 @@ def overview():
     top, h, w = 2.98, 1.15, 1.24
     spec = [("Reference problems", "Plain JAX functions from KernelBook, KernelBench, authored and GitHub sources, plus three generated families at exam scale", "data"),
             ("Candidate kernels", "The teacher, Kimi K3.1, writes a Pallas kernel per problem; a template generator instantiates tuned kernels", "step"),
-            ("Training set v7", f"{N(ROWS)} conversations: {N(KIMI_N)} from the teacher, {N(GEN_N)} generated. Every target was judged on a TPU", "data"),
+            ("Training set", f"{N(ROWS)} conversations: {N(KIMI_N)} from the teacher, {N(GEN_N)} generated. Every target was judged on a TPU", "data"),
             ("LoRA fine-tune", "Gemma 4 E4B, rank 64, 2 epochs. The adapter is folded into the 4-bit model that is served", "model"),
             ("JAXBench", "64 tasks at full size, 58 in the primary set. Up to 3 attempts per task, with oracle feedback", "data")]
     b = [box(ax, 0.1 + i * 1.44, top, w, t, body, kind, h=h) for i, (t, body, kind) in enumerate(spec)]
@@ -79,7 +79,7 @@ def dataset():
              "29 generated rows are held out by chain as the dev set.", "gate")
     f2 = box(ax, 5.3, f1.b - 0.3, 1.8, "Independent verifier", "A second script re-checks the assembled file: prompt format, drop lists, a TPU pass behind every generated row, "
              "alpha-equivalence of variants.", "step")
-    f3 = box(ax, 5.3, f2.b - 0.3, 1.8, "v7_final.jsonl", f"{N(ROWS)} conversations: {N(ONE_TURN)} one-turn rows and {CHAINS} repair chains. "
+    f3 = box(ax, 5.3, f2.b - 0.3, 1.8, "Training file", f"{N(ROWS)} conversations: {N(ONE_TURN)} one-turn rows and {CHAINS} repair chains. "
              f"{N(PASSED)} targets at 0.7x XLA or faster, {SLOW} correct but slower.", "data")
     arrow(ax, [(k[3].r, 4.2), (f1.l, 4.2)])
     arrow(ax, [(g[3].r, g[3].cy), (5.2, g[3].cy), (5.2, f1.b + 0.15), (f1.l, f1.b + 0.15)])
@@ -114,7 +114,7 @@ def oracle():
 def training():
     fig, ax = canvas(7.2, 3.25)
     top, h = 2.08, 1.5
-    d = box(ax, 0.1, top, 1.2, "Training file", f"v7_final.jsonl: {N(ROWS)} conversations in the benchmark's own prompt format, thinking off", "data", h=h)
+    d = box(ax, 0.1, top, 1.2, "Training file", f"{N(ROWS)} conversations in the benchmark's own prompt format, thinking off", "data", h=h)
     t = box(ax, 1.5, top, 1.5, "LoRA training", "Base: the 4-bit weights dequantised bit for bit, frozen. Rank 64, alpha 128 on the attention and MLP projections. "
             "Loss on the final assistant turn only. 2 epochs, lr 1e-4, accumulation 4. One A100 80 GB, 89 min.", "step", h=h)
     a = box(ax, 3.2, top, 0.95, "Adapter", "558 MB of LoRA weights, saved at the end of each epoch", "data", h=h)
