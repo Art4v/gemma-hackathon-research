@@ -23,11 +23,7 @@ ARMS = {
     "bare": ("gemma4_e4b-it-qat__modal", "bare", "Gemma 4 E4B (base), reference only"),
     "docs": ("gemma4_e4b-it-qat__modal", "docs", "Gemma 4 E4B (base) + 25k tokens of Pallas docs"),
     "flash_docs": ("gemini-3.6-flash", "docs", "Gemini Flash + docs"),
-    "pilot25": ("gemma4-e4b-lora_pilot25__modal", "bare", "LoRA pilot (25 rows)"),
-    "v1": ("gemma4-e4b-lora_v1__modal", "bare", "LoRA v1 (dataset-v1, Q4_0 fold)"),
-    "v4": ("gemma4-e4b-lora_v4final-e2__modal", "bare", "LoRA v4final-e2 (dataset-v4)"),
-    "v5": ("gemma4-e4b-lora_v5full__modal", "bare", "LoRA v5full (plan-before-code)"),
-    "v7": ("gemma4-e4b-lora_v7final__modal", "bare", "LoRA v7final (dataset v7, final)"),
+    "ours": ("gemma4-e4b-lora__modal", "bare", "Gemma 4 E4B + our LoRA"),
 }
 
 
@@ -105,17 +101,18 @@ def main():
                             "all": summ(list(oc)), "primary": summ(prim),
                             "primary_k": summ([t for t in prim if kind(t) == "k"]), "primary_p": summ([t for t in prim if kind(t) == "p"]),
                             "funnel_by_turn": {f"t{k}": dict(sorted(((v or "none"), n) for (kk, v), n in funnel.items() if kk == k)) for k in range(3)}}
-    prim_all = sorted(t for t in outcomes["v7"] if is_primary(t))
-    res["mcnemar_v7_vs"] = {arm: {"pass_within_3": mcnemar(outcomes["v7"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "pass"),
-                                  "correct_within_3": mcnemar(outcomes["v7"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "correct")}
-                            for arm in ARMS if arm != "v7"}
-    # v7 per task and turn-to-turn transitions
-    res["v7_per_task"] = {t: [(x["turn"], x["verdict"], round(x["speed"], 2) if x["speed"] else None) for x in raw["v7"][t]] for t in sorted(raw["v7"], key=lambda t: int("".join(c for c in num(t) if c.isdigit())))}
+    prim_all = sorted(t for t in outcomes["ours"] if is_primary(t))
+    res["mcnemar_ours_vs"] = {arm: {"pass_at_1": mcnemar(outcomes["ours"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "pass_at_1"),
+                                  "pass_within_3": mcnemar(outcomes["ours"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "pass"),
+                                  "correct_within_3": mcnemar(outcomes["ours"], outcomes[arm], [t for t in prim_all if t in outcomes[arm]], "correct")}
+                            for arm in ARMS if arm != "ours"}
+    # per-task verdicts of our adapter and turn-to-turn transitions
+    res["ours_per_task"] = {t: [(x["turn"], x["verdict"], round(x["speed"], 2) if x["speed"] else None) for x in raw["ours"][t]] for t in sorted(raw["ours"], key=lambda t: int("".join(c for c in num(t) if c.isdigit())))}
     tr = collections.Counter()
-    for t, turns in raw["v7"].items():
+    for t, turns in raw["ours"].items():
         for a, b in zip(turns, turns[1:]):
             tr[f"{a['verdict']} -> {b['verdict']}"] += 1
-    res["v7_transitions"] = dict(tr.most_common())
+    res["ours_transitions"] = dict(tr.most_common())
     (HERE / "results.json").write_text(json.dumps(res, indent=1))
     # markdown tables
     md.append("| Arm | pass within 3 (primary-58) | correct within 3 | pass@1 | parity within 3 | k-33 pass | S-p-25 pass | all-64 pass |")
@@ -124,8 +121,8 @@ def main():
         p = a["primary"]
         md.append(f"| {a['label']} | {p['pass_within_3']}/{p['n']} | {p['correct_within_3']}/{p['n']} | {p['pass_at_1']}/{p['n']} | {p['parity_within_3']}/{p['n']} | "
                   f"{a['primary_k']['pass_within_3']}/{a['primary_k']['n']} | {a['primary_p']['pass_within_3']}/{a['primary_p']['n']} | {a['all']['pass_within_3']}/{a['all']['n']} |")
-    md.append("\n| v7 vs | pass within 3: v7-only / other-only, p | correct within 3: v7-only / other-only, p |\n|---|---|---|")
-    for arm, m in res["mcnemar_v7_vs"].items():
+    md.append("\n| ours vs | pass within 3: ours-only / other-only, p | correct within 3: ours-only / other-only, p |\n|---|---|---|")
+    for arm, m in res["mcnemar_ours_vs"].items():
         a, c = m["pass_within_3"], m["correct_within_3"]
         md.append(f"| {arm} | {a['a_only']} / {a['b_only']}, p = {a['p_exact_two_sided']} | {c['a_only']} / {c['b_only']}, p = {c['p_exact_two_sided']} |")
     (HERE / "results.md").write_text("\n".join(md) + "\n")

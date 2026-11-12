@@ -213,256 +213,9 @@
     }
    }
   },
-  "pilot25": {
-   "label": "LoRA pilot (25 rows)",
-   "run_dir": "gemma4-e4b-lora_pilot25__modal",
-   "generated_rows": 192,
-   "all": {
-    "n": 64,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "primary": {
-    "n": 58,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "primary_k": {
-    "n": 33,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "primary_p": {
-    "n": 25,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "funnel_by_turn": {
-    "t0": {
-     "compile": 54,
-     "not_a_kernel": 10
-    },
-    "t1": {
-     "compile": 46,
-     "not_a_kernel": 18
-    },
-    "t2": {
-     "compile": 50,
-     "not_a_kernel": 14
-    }
-   }
-  },
-  "v1": {
-   "label": "LoRA v1 (dataset-v1, Q4_0 fold)",
-   "run_dir": "gemma4-e4b-lora_v1__modal",
-   "generated_rows": 192,
-   "all": {
-    "n": 64,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "primary": {
-    "n": 58,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "primary_k": {
-    "n": 33,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "primary_p": {
-    "n": 25,
-    "pass_within_3": 0,
-    "correct_within_3": 0,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": null,
-    "passed_tasks": []
-   },
-   "funnel_by_turn": {
-    "t0": {
-     "compile": 61,
-     "not_a_kernel": 3
-    },
-    "t1": {
-     "compile": 63,
-     "not_a_kernel": 1
-    },
-    "t2": {
-     "compile": 64
-    }
-   }
-  },
-  "v4": {
-   "label": "LoRA v4final-e2 (dataset-v4)",
-   "run_dir": "gemma4-e4b-lora_v4final-e2__modal",
-   "generated_rows": 190,
-   "all": {
-    "n": 64,
-    "pass_within_3": 1,
-    "correct_within_3": 3,
-    "pass_at_1": 1,
-    "parity_within_3": 1,
-    "median_best_correct_speed": 0.336,
-    "passed_tasks": [
-     "12p"
-    ]
-   },
-   "primary": {
-    "n": 58,
-    "pass_within_3": 1,
-    "correct_within_3": 3,
-    "pass_at_1": 1,
-    "parity_within_3": 1,
-    "median_best_correct_speed": 0.336,
-    "passed_tasks": [
-     "12p"
-    ]
-   },
-   "primary_k": {
-    "n": 33,
-    "pass_within_3": 0,
-    "correct_within_3": 1,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": 0.161,
-    "passed_tasks": []
-   },
-   "primary_p": {
-    "n": 25,
-    "pass_within_3": 1,
-    "correct_within_3": 2,
-    "pass_at_1": 1,
-    "parity_within_3": 1,
-    "median_best_correct_speed": 0.869,
-    "passed_tasks": [
-     "12p"
-    ]
-   },
-   "funnel_by_turn": {
-    "t0": {
-     "compile": 41,
-     "correct_slow": 2,
-     "pass": 1,
-     "vmem": 16,
-     "wrong": 4
-    },
-    "t1": {
-     "compile": 40,
-     "correct_slow": 1,
-     "not_a_kernel": 1,
-     "vmem": 16,
-     "wrong": 5
-    },
-    "t2": {
-     "compile": 40,
-     "correct_slow": 1,
-     "not_a_kernel": 1,
-     "vmem": 16,
-     "wrong": 5
-    }
-   }
-  },
-  "v5": {
-   "label": "LoRA v5full (plan-before-code)",
-   "run_dir": "gemma4-e4b-lora_v5full__modal",
-   "generated_rows": 191,
-   "all": {
-    "n": 64,
-    "pass_within_3": 1,
-    "correct_within_3": 2,
-    "pass_at_1": 0,
-    "parity_within_3": 1,
-    "median_best_correct_speed": 0.854,
-    "passed_tasks": [
-     "12p"
-    ]
-   },
-   "primary": {
-    "n": 58,
-    "pass_within_3": 1,
-    "correct_within_3": 2,
-    "pass_at_1": 0,
-    "parity_within_3": 1,
-    "median_best_correct_speed": 0.854,
-    "passed_tasks": [
-     "12p"
-    ]
-   },
-   "primary_k": {
-    "n": 33,
-    "pass_within_3": 0,
-    "correct_within_3": 1,
-    "pass_at_1": 0,
-    "parity_within_3": 0,
-    "median_best_correct_speed": 0.318,
-    "passed_tasks": []
-   },
-   "primary_p": {
-    "n": 25,
-    "pass_within_3": 1,
-    "correct_within_3": 1,
-    "pass_at_1": 0,
-    "parity_within_3": 1,
-    "median_best_correct_speed": 1.391,
-    "passed_tasks": [
-     "12p"
-    ]
-   },
-   "funnel_by_turn": {
-    "t0": {
-     "compile": 54,
-     "correct_slow": 1,
-     "vmem": 5,
-     "wrong": 4
-    },
-    "t1": {
-     "compile": 52,
-     "correct_slow": 1,
-     "pass": 1,
-     "vmem": 5,
-     "wrong": 5
-    },
-    "t2": {
-     "compile": 52,
-     "correct_slow": 1,
-     "vmem": 5,
-     "wrong": 5
-    }
-   }
-  },
-  "v7": {
-   "label": "LoRA v7final (dataset v7, final)",
-   "run_dir": "gemma4-e4b-lora_v7final__modal",
+  "ours": {
+   "label": "Gemma 4 E4B + our LoRA",
+   "run_dir": "gemma4-e4b-lora__modal",
    "generated_rows": 176,
    "all": {
     "n": 64,
@@ -558,8 +311,13 @@
    }
   }
  },
- "mcnemar_v7_vs": {
+ "mcnemar_ours_vs": {
   "bare": {
+   "pass_at_1": {
+    "a_only": 7,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0156
+   },
    "pass_within_3": {
     "a_only": 9,
     "b_only": 0,
@@ -572,6 +330,11 @@
    }
   },
   "docs": {
+   "pass_at_1": {
+    "a_only": 7,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0156
+   },
    "pass_within_3": {
     "a_only": 9,
     "b_only": 0,
@@ -584,6 +347,11 @@
    }
   },
   "flash_docs": {
+   "pass_at_1": {
+    "a_only": 6,
+    "b_only": 0,
+    "p_exact_two_sided": 0.0312
+   },
    "pass_within_3": {
     "a_only": 8,
     "b_only": 6,
@@ -594,57 +362,9 @@
     "b_only": 28,
     "p_exact_two_sided": 0.0
    }
-  },
-  "pilot25": {
-   "pass_within_3": {
-    "a_only": 9,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0039
-   },
-   "correct_within_3": {
-    "a_only": 9,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0039
-   }
-  },
-  "v1": {
-   "pass_within_3": {
-    "a_only": 9,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0039
-   },
-   "correct_within_3": {
-    "a_only": 9,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0039
-   }
-  },
-  "v4": {
-   "pass_within_3": {
-    "a_only": 8,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0078
-   },
-   "correct_within_3": {
-    "a_only": 8,
-    "b_only": 2,
-    "p_exact_two_sided": 0.1094
-   }
-  },
-  "v5": {
-   "pass_within_3": {
-    "a_only": 8,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0078
-   },
-   "correct_within_3": {
-    "a_only": 7,
-    "b_only": 0,
-    "p_exact_two_sided": 0.0156
-   }
   }
  },
- "v7_per_task": {
+ "ours_per_task": {
   "1p_Flash_Attention": [
    [
     0,
@@ -1654,7 +1374,7 @@
    ]
   ]
  },
- "v7_transitions": {
+ "ours_transitions": {
   "compile -> compile": 80,
   "wrong -> wrong": 18,
   "vmem -> wrong": 6,

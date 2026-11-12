@@ -156,11 +156,8 @@ def similarity():
 
 
 def attempts():
-    def within(m):
-        tasks = R["models"][m]["tasks"].values()
-        return [sum(1 for a in tasks if any(a.get(str(t), {}).get("verdict") == "pass" for t in range(k + 1))) for k in range(3)]
-    lines = [(f"LoRA {m}", within(m), VERSION[m], "-") for m in ("v7", "v5", "v4")]
-    lines += [(name, ys, INK2 if any(ys) else MUTED, DASH if any(ys) else "-") for name, ys in R["earlier_arms_within_k_of_64"].items()]
+    lines = [(f"LoRA {m}", R["models"][m]["within_k_of_64"], VERSION[m], "-") for m in ("v7", "v5", "v4")]
+    lines += [(name, ys, INK2 if any(ys) else MUTED, DASH if any(ys) else "-") for name, ys in R["other_arms_within_k_of_64"].items()]
     fig, ax = plt.subplots(figsize=(7.0, 2.9), layout="constrained")
     ends = {}
     for name, ys, col, ls in lines:

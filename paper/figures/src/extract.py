@@ -2,7 +2,7 @@
 
   python3 paper/figures/src/extract.py [REPO]      # REPO: a clone with the refs below fetched (default: this checkout)
 
-Nothing is typed in by hand except DOCUMENTED (numbers already published in V4_RESULTS.md, or recounted by
+Nothing is typed in by hand except DEV_LOSS, DOCUMENTED (numbers already published in V4_RESULTS.md, or recounted by
 oracle/tools/v7_audit/recount.py) and EXPECT. Each count is asserted against those, so a drifted source fails here
 instead of producing a wrong figure.
 """
@@ -18,8 +18,10 @@ ARMS = {"v4": "v4final-e2", "v5": "v5full", "v7": "v7final"}
 PRIMARY_L2 = "51p 53p 56p 57p 58p 61p 62p 63p".split()      # control/PROTOCOL.md, "Primary set"
 MATMUL_K = "19 20 21 23 24 26 27 29 30 31 32 35 36 37 38 40 41 42 43 44 45 47 48 49 50".split()
 DOCUMENTED = {"v4": {"b": 23, "c": 7, "d": 3, "e": 1}, "v5": {"b": 12, "d": 2, "e": 1}, "v7": {"d": 9, "e": 9}}  # primary-58
-# tasks of 64 passed within 1, 2, 3 attempts: control/stats.py for Flash (as in paper/make_figures.py @ a0475ab), the a/b/c/d/e table of control/runs/V4_RESULTS.md for the rest
-EARLIER_ARMS = {"Gemini Flash + docs": [1, 4, 8], "base Gemma 4 E4B (bare, + docs), LoRA v1, LoRA pilot25": [0, 0, 0]}
+PAPER = "2e7adce"                              # hruday/paper-v7: paper/data/runs, the frozen rows of all 8 arms, and paper/analysis/results.json
+OTHER_ARMS = {"flash_docs": ("Gemini 3.6 Flash + docs", "gemini-3.6-flash", "docs"), "bare": ("base", "gemma4_e4b-it-qat__modal", "bare"),
+              "docs": ("base + docs", "gemma4_e4b-it-qat__modal", "docs"), "pilot25": ("LoRA pilot", "gemma4-e4b-lora_pilot25__modal", "bare"),
+              "v1": ("LoRA v1", "gemma4-e4b-lora_v1__modal", "bare")}  # results.json key: (label, run dir, arm file)
 EXPECT = {"kimi_r3": (126, 41), "gen7": (281, 269), "gen7L": (111, 104), "gen7R": (61, 61), "gen7V": (91, 91)}  # (judged, pass)
 HALT = ("halted unexpectedly", "RuntimeUnexpectedCoreHalt")
 BEFORE_REF, AFTER_REF = "Here is the reference JAX function:", "Please convert this function into a Pallas TPU kernel."  # bench.py
@@ -133,6 +135,32 @@ def loss(rows):
             "generated": [int(teacher[r["task"]] == "generator-v7") for r in log], "dev_loss": DEV_LOSS}
 
 
+def within_k(by):
+    """Tasks with a pass within 1, 2 and 3 attempts; by maps task -> turn -> verdict."""
+    return [sum(1 for a in by.values() if any(a.get(t) == "pass" for t in range(k + 1))) for k in range(3)]
+
+
+def other_arms(lora):
+    """The same count for the arms scored before v4, from the paper's frozen copy of their rows. That copy must hold the three
+    LoRA runs byte for byte as RUNS does, and every arm must agree with the paper's own results.json."""
+    published = json.loads(git("show", f"{PAPER}:paper/analysis/results.json"))["arms"]
+    out = {}
+    for key, (label, d, arm) in OTHER_ARMS.items():
+        ver = {r["id"]: r["verdict"] for r in jsonl(f"{PAPER}:paper/data/runs/{d}/verdicts.jsonl")}
+        by = collections.defaultdict(dict)
+        for r in jsonl(f"{PAPER}:paper/data/runs/{d}/{arm}.jsonl"):
+            by[r["task"]][r["turn"]] = ver[r["id"]]
+        assert len(by) == 64, (key, len(by))
+        out[label] = within_k(by)
+        assert (out[label][0], out[label][2]) == (published[key]["all"]["pass_at_1"], published[key]["all"]["pass_within_3"]), key
+    for m, tag in ARMS.items():
+        for f in ("bare.jsonl", "verdicts.jsonl"):
+            path = f"gemma4-e4b-lora_{tag}__modal/{f}"
+            assert git("rev-parse", f"{PAPER}:paper/data/runs/{path}") == git("rev-parse", f"{RUNS}:control/runs/{path}"), path
+        assert (lora[m][0], lora[m][2]) == (published[m]["all"]["pass_at_1"], published[m]["all"]["pass_within_3"]), m
+    return out
+
+
 def results():
     level1 = sorted(p.split("/")[-1] for p in git("ls-tree", "-d", "--name-only", RUNS, "benchmarks/jaxbench/level1/").split())
     assert len(level1) == 50, len(level1)
@@ -152,18 +180,19 @@ def results():
                   "d": any_(lambda x: x["verdict"] in ("correct_slow", "pass")), "e": any_(lambda x: x["verdict"] == "pass")}
         for k, want in DOCUMENTED[m].items():
             assert funnel[k] == want, (m, k, funnel[k], want)
-        models[m] = {"funnel_primary58": funnel, "tasks": by}
+        models[m] = {"funnel_primary58": funnel, "tasks": by, "within_k_of_64": within_k({t: {int(k): c["verdict"] for k, c in a.items()} for t, a in by.items()})}
     num = lambda t: (int(re.match(r"\d+", t).group()), t)
     is_mk = lambda t: t.split("_")[0].endswith("k") and t.split("_")[0][:-1] in MATMUL_K
     tasks = sorted(models["v7"]["tasks"], key=num)
     assert sum(map(is_mk, tasks)) == 25
     return {"matmul_k_tasks": [t for t in tasks if is_mk(t)], "other_tasks": [t for t in tasks if not is_mk(t)],
-            "primary": [t for t in tasks if primary(t)], "earlier_arms_within_k_of_64": EARLIER_ARMS, "models": models}
+            "primary": [t for t in tasks if primary(t)], "models": models,
+            "other_arms_within_k_of_64": other_arms({m: models[m]["within_k_of_64"] for m in models})}
 
 
 if __name__ == "__main__":
     rows = jsonl(TRAIN)
-    data = {"sources": {"train": TRAIN, "loss": LOSS, "candidates": f"{RES}@{git('rev-parse', '--short', RES).strip()}", "runs": RUNS},
+    data = {"sources": {"train": TRAIN, "loss": LOSS, "paper_snapshot": PAPER, "candidates": f"{RES}@{git('rev-parse', '--short', RES).strip()}", "runs": RUNS},
             "train": train(rows), "candidates": candidates(), "sweep": sweep(), "similarity": similarity(rows), "loss": loss(rows), "results": results()}
     out = pathlib.Path(__file__).resolve().parent / "data.json"
     out.write_text(json.dumps(data, indent=1, sort_keys=True) + "\n")
