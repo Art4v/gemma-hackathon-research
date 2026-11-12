@@ -1,0 +1,89 @@
+{
+ "rule": "A6 rule 2 conservative: whole chain minus linear+layout ops (Aarav), also with log removed (log_softmax read as softmax, Karthik), plus Karthik's named LinearI_Neg_7695__kn",
+ "drops": {
+  "kb/l2/100_ConvTranspose3d_Clamp_Min_Divide": [
+   "18k_Conv2D_ReLU_BiasAdd"
+  ],
+  "kernelbook/AttentionConv_10307": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/AttentionPool_8898": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/AvgPoolHead_905__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/BiaffineScorer_3037": [
+   "21k_Gemm_Divide_Sum_Scaling"
+  ],
+  "kernelbook/GateLayer_1320__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/Hidden2Discrete_684__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/LinearAverage_18045__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/Linear_sigmoid_68__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/MergeLayer_2910__kn": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/Mfm_12447": [
+   "18k_Conv2D_ReLU_BiasAdd"
+  ],
+  "kernelbook/PartitionedLinear_4357__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/RNNCell_17042__kn": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/SLP_14144__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/SpatialGC_5230__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/AvgPoolHead_905__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/BiaffineScorer_7974__kn": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/CoreNetwork_10707__kn": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/GateLayer_1320__kn8": [
+   "37k_Matmul_Swish_Scaling"
+  ],
+  "kernelbook/Hidden2Discrete_684__kn8": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/LINEAR_LOGSOFTMAX_13817__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/Maxout_4302__kn": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "41k_Gemm_Add_ReLU"
+  ],
+  "kernelbook/MetaBilinear_9554": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/PartitionedLinear_4357__kn8": [
+   "30k_Matmul_Scaling_ResidualAdd"
+  ],
+  "kernelbook/ReadUnit_4676": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/Word2Vec_4253__kn": [
+   "38k_Matmul_Dropout_Softmax"
+  ],
+  "kernelbook/LinearI_Neg_7695__kn": [
+   "judgment: Karthik audit 6812828233, GEMM-dominant x@(-exp W)+b"
+  ]
+ }
+}
