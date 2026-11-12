@@ -14,7 +14,7 @@
 
 \begin{document}
 
-\title{Teaching a 4B Gemma to Write TPU Kernels:\\ LoRA Fine-Tuning on Oracle-Verified Pallas Code}
+\title{It Can Learn Anything: Execution-Verified Distillation of\\ Pallas TPU Kernels into Gemma 4 E4B}
 
 \author{\IEEEauthorblockN{Karthik Vattem, Hruday N., Aarav A.}
 \IEEEauthorblockA{Rough draft, November 12, 2026. Author names and affiliations to be completed.}}
@@ -42,38 +42,38 @@ code generation, fine-tuning, LoRA, accelerator kernels, TPU, Pallas, JAX, bench
 
 \section{Introduction}
 
-Most numerical code that runs on an accelerator is compiled automatically. In JAX, a function is traced and handed to XLA,
-which chooses how to schedule each operation on the device \cite{jax,mlir}. Decades of work on tensor compilers and schedule search \cite{halide,tvm,ansor} have narrowed the gap to hand-written code without closing it. When the automatic result is not fast enough, an expert
-writes a kernel by hand. On Google TPUs \cite{tpu} this is done in Pallas, a JAX extension in which the programmer states how arrays are
-cut into blocks, which blocks are loaded into the chip's small fast memory (VMEM) at each step, and what is computed on
-them \cite{pallas}. A good kernel keeps the matrix unit busy, never asks for more VMEM than exists, and fuses operations that
-XLA would run as separate passes over memory.
+Locally run language models are becoming increasingly popular, offering users greater privacy, security and customisability
+than cloud-hosted alternatives [citation to be added]. Small open models such as Gemma 4 E4B \cite{gemma4} can now run entirely
+on consumer hardware, allowing sensitive code and data to stay on the user's device. However, these models struggle to adapt to
+new APIs, libraries and technologies that are poorly represented in their training data
+\cite{codex,alphacode,codellama,starcoder}. Unlike frontier models, they cannot easily make up for this gap through long
+contexts or many repeated attempts.
 
-Writing such kernels is specialist work. Language models trained on code \cite{codex,alphacode,codellama,starcoder} write ordinary programs well, but they write kernels poorly. Pallas has little public code, its lowering rules for
-TPU are strict, and an error in a block shape is only discovered on the chip. JAXBench \cite{jaxbench} measures this directly:
-it gives a model a plain JAX function and asks for an equivalent Pallas kernel. Its authors report that most failed samples are
-API misuse or compile errors, and they name fine-tuning on curated Pallas corpora as future work. For GPUs, the analogous
-problem has received a benchmark \cite{kernelbench} and several trained models \cite{kernelllm,autotriton,kevin}. To our
-knowledge no fine-tuned Pallas model has been published, and no result on JAXBench exists for a small open model.
+One of the most difficult current examples is Pallas \cite{pallas}, Google's kernel language for Tensor Processing Units
+(TPUs) \cite{tpu}. JAX code is normally compiled automatically by XLA \cite{jax,mlir}, and tensor compilers have narrowed the
+gap to hand-written code without closing it \cite{halide,tvm,ansor}. Converting existing JAX code into Pallas kernels requires
+careful management of block shapes, memory tiling and limited on-chip memory, and even large frontier models need curated
+documentation and many attempts to do it reliably \cite{jaxbench}. Small open models perform considerably worse. In this
+study's baseline runs, base Gemma 4 E4B solved 0 of 64 JAXBench tasks, both with and without 25,000 tokens of Pallas
+documentation in its context.
 
-This paper tests whether a small model can acquire the skill through its weights. We fine-tune Gemma 4 E4B \cite{gemma4} with
-LoRA \cite{lora}, in the manner of distillation from a stronger teacher \cite{distill}, and compare it with the same model given an identical prompt, so that any difference is attributable to the
-adapter. We deliberately give the fine-tuned model no documentation or examples in its prompt. As a reference point we also run
-a much larger commercial model, Gemini Flash, with documentation.
-
-Our contributions are as follows.
+This study proposes a method for teaching a small local model an unfamiliar programming domain through distillation
+\cite{distill} with execution-based verification. Its contributions are:
 \begin{itemize}
-\item A TPU oracle with a static kernel check, full-size execution, three-seed correctness and a speed bar, used unchanged
-for both training-data admission and evaluation (Section~\ref{sec:oracle}).
-\item A training set of 2,304 conversations in which every target kernel was judged correct on a TPU, built without any
-closed-model output, and screened against the benchmark at the level of the computation rather than the text
-(Sections~\ref{sec:contam} and \ref{sec:data}).
-\item A serving finding: an adapter that will be served on 4-bit weights must be trained on, and folded into, those exact
-quantized weights (Section~\ref{sec:train}).
-\item An evaluation in which the adapter raises the base model from 0 to 9 of 58 JAXBench tasks, matching Gemini Flash with
-documentation on the pass metric, together with an account of what the adapter did and did not learn
-(Sections~\ref{sec:results} and \ref{sec:limits}).
+\item \textbf{A distillation pipeline with execution verification.} An open-weights teacher model and a template generator
+produce candidate solutions, and only those verified by running them on real hardware are kept as training data
+(Section~\ref{sec:data}).
+\item \textbf{A TPU v6e oracle.} A solution is accepted only if it is a genuine Pallas kernel, compiles and runs at full input
+size, is correct across multiple seeds, and runs at a competitive speed relative to XLA (Section~\ref{sec:oracle}).
+\item \textbf{A verified dataset} of 2,304 conversations with oracle-judged Pallas kernels, screened against the JAXBench
+evaluation tasks to prevent contamination (Section~\ref{sec:contam}).
+\item \textbf{A serving finding:} an adapter that will be served on 4-bit weights must be trained on, and folded into, those
+exact quantized weights (Section~\ref{sec:train}).
 \end{itemize}
+On the 58-task primary set, the fine-tuned model passes 9 of 58 JAXBench tasks within three attempts, compared with 0 of 58
+for base Gemma, and statistically ties Gemini Flash with documentation, which passes 7. The key finding is a split between
+correctness and speed: Flash writes a correct kernel for 36 tasks but most are too slow, while the fine-tuned model is correct
+on only 9 and every one of them runs faster than XLA (Sections~\ref{sec:results} and \ref{sec:limits}).
 
 \begin{figure*}[t]
 \centering
@@ -507,7 +507,7 @@ in \texttt{paper/data/runs/}, and \texttt{paper/analysis/jaxbench.py} recomputes
 \bibitem{jax} J. Bradbury \emph{et al.}, ``JAX: composable transformations of Python+NumPy programs,'' 2018. [Online].
 Available: \url{http://github.com/jax-ml/jax}
 \bibitem{pallas} The JAX authors, ``Pallas: a JAX kernel language,'' JAX documentation.
-\bibitem{jaxbench} JAXBench authors, ``JAXBench,'' 2026. [Full reference to be added.]
+\bibitem{jaxbench} Tschand, Hong \emph{et al.}, ``JAXBench,'' 2026. [Full reference to be added.]
 \bibitem{kernelbench} A. Ouyang \emph{et al.}, ``KernelBench: Can LLMs write efficient GPU kernels?'' in \emph{Proc. ICML}, 2025.
 \bibitem{kbverified} ``KernelBench-Verified.'' [Full reference to be added.]
 \bibitem{kernelllm} Meta, ``KernelLLM,'' model release, 2025.
