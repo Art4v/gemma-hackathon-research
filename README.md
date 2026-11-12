@@ -31,6 +31,7 @@ Pallas docs, and 7 on the first attempt against Flash's 1. Every kernel that pas
 | `oracle/` | The TPU oracle: kernel check, full-size run, 3-seed correctness, speed vs XLA. File hash `c9a07d9298a1` throughout. |
 | `control/` | The JAXBench harness. `bench.py` holds prompts, generation and repair turns, and asserts the served model's digest on every row. `PROTOCOL.md` is the evaluation protocol, and `control/scoring/` holds the LoRA fold (`fold_local.py`) and the Modal JAXBench runner. |
 | `kimi/` | The teacher pipeline: Kimi K3.1 generation and repair rounds (`scripts/`), TPU verdicts (`tpu/`), contamination lists and the adversarial-review evidence (`v6/`), and the final build and checks (`v7/`: `assemble_v7.py`, `check_v7.py`, rule-2 tracing in `a6r2/`, surface-variant proofs). |
+| `training/` | The LoRA trainer (`train_lora_exact_q4.py`, trains against the exact 4-bit weights Ollama serves) and the final run's settings. |
 | `dataset/` | The template generator (`v7_gen/`, `v7_gen_layout/`), its checker (`v7_check/`) and shared dataset scripts. |
 | `paper/` | The writeup, figures, `analysis/jaxbench.py` (every JAXBench table), `data/runs/` (raw rows of every arm) and the notebook. |
 
