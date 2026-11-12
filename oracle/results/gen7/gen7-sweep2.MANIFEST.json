@@ -1,0 +1,84 @@
+{
+ "job_id": "gen7-sweep2",
+ "owner": "karthik",
+ "step": "v7_tile_sweep",
+ "oracle_commit": "86c31a9",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 10,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "b2923e1adcc868a568641f3e215f6f85d768aec8571bd50db750ac4e477fbd9d",
+  "run.sh": "28fbeca7f5beb86f9be25df916d790e8af8c1dfdbda205b45de049eb840fe570",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "gen7/gen7__matmul_epilogue__00000__t2048_2048_512",
+   "task": "gen7__matmul_epilogue__00000",
+   "code_sha256": "ca5cf67bd587d24c2469c5e81a07676a44bab7d3f6c17ed62ac1af2e96c9adb4",
+   "ref_sha256": "b2e4115886402d9972588d82258ad882110366a865b4aaf2c4cc790a5f63b785"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00000__t2048_2048_256",
+   "task": "gen7__matmul_epilogue__00000",
+   "code_sha256": "d58f110ebe075cf0178c446c09760bd489936bf4a81647ec1f9ad143cd3125d9",
+   "ref_sha256": "b2e4115886402d9972588d82258ad882110366a865b4aaf2c4cc790a5f63b785"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00000__bf16dot_t1024_2048_2048",
+   "task": "gen7__matmul_epilogue__00000",
+   "code_sha256": "bcdc07431db5be4b9cdb3ed753b6e377ee68270e83b285c6bc4b1a1165306b37",
+   "ref_sha256": "b2e4115886402d9972588d82258ad882110366a865b4aaf2c4cc790a5f63b785"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00000__bf16dot_t2048_2048_1024",
+   "task": "gen7__matmul_epilogue__00000",
+   "code_sha256": "2b19c8013e5bb8191bbf3cb3fa4e663e249dd5d44357188905ad43dd324c2192",
+   "ref_sha256": "b2e4115886402d9972588d82258ad882110366a865b4aaf2c4cc790a5f63b785"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00002__t2048_2048_1024",
+   "task": "gen7__matmul_epilogue__00002",
+   "code_sha256": "16120e3d4596938c251a8a1410a69036c455bc70c19d251f11ccffa2d530d5fb",
+   "ref_sha256": "cdd2023f26b74e7762d1a6503af541865a39150a601a9e65682074d08da9bd90"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00002__t4096_1024_1024",
+   "task": "gen7__matmul_epilogue__00002",
+   "code_sha256": "a6e71228110c13a1ac0e7ac393308d4e8019ab05a873a6f447b73c6dbbd3a215",
+   "ref_sha256": "cdd2023f26b74e7762d1a6503af541865a39150a601a9e65682074d08da9bd90"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00002__t1024_2048_2048",
+   "task": "gen7__matmul_epilogue__00002",
+   "code_sha256": "e19b520dfa396bd7a99b87b3816e86aa6e88836c59a829df11c496cf98d72c3a",
+   "ref_sha256": "cdd2023f26b74e7762d1a6503af541865a39150a601a9e65682074d08da9bd90"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00005__t256_512",
+   "task": "gen7__row_reduction_matmul__00005",
+   "code_sha256": "6c29e2ec3317abd2a126143a14e05359c9bc445879e4652e96124cb9db830daf",
+   "ref_sha256": "af2262f564e79495865824222e863eca178999832beafdddf84c8df739814825"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00005__t512_512",
+   "task": "gen7__row_reduction_matmul__00005",
+   "code_sha256": "4e81535e1d9e4607a8df4cc84f4a39eac115667bec314f7bca6b6b2d1404f9cb",
+   "ref_sha256": "af2262f564e79495865824222e863eca178999832beafdddf84c8df739814825"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00005__t512_256",
+   "task": "gen7__row_reduction_matmul__00005",
+   "code_sha256": "0d2743433e57b56ebbb1235a9059a4559739bf1466438581c55312a5bb0285e2",
+   "ref_sha256": "af2262f564e79495865824222e863eca178999832beafdddf84c8df739814825"
+  }
+ ]
+}
