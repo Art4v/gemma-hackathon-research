@@ -1,27 +1,29 @@
-{"example_id": "gen7__row_reduction_matmul__00022.gen7", "task": "gen7__row_reduction_matmul__00022", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> logsumexp_keep over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00030.gen7", "task": "gen7__row_reduction_matmul__00030", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> logsumexp_keep over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00059.gen7", "task": "gen7__row_reduction_matmul__00059", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> logsumexp_keep over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00003.gen7", "task": "gen7__row_reduction_matmul__00003", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> hard_sigmoid -> gaussian -> max_keep -> hard_swish over the last axis"}
-{"example_id": "gen7__matmul_epilogue__00042.gen7", "task": "gen7__matmul_epilogue__00042", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> bias -> sigmoid -> shift -> clamp"}
-{"example_id": "gen7__matmul_epilogue__00157.gen7", "task": "gen7__matmul_epilogue__00157", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> sigmoid"}
-{"example_id": "gen7__matmul_epilogue__00151.gen7", "task": "gen7__matmul_epilogue__00151", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> bias -> hard_sigmoid -> scale"}
-{"example_id": "gen7__matmul_epilogue__00044.gen7", "task": "gen7__matmul_epilogue__00044", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> negate -> hard_swish -> shift -> sigmoid"}
-{"example_id": "gen7__row_reduction_matmul__00031.gen7", "task": "gen7__row_reduction_matmul__00031", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> hard_sigmoid -> logsumexp_keep -> square over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00038.gen7", "task": "gen7__row_reduction_matmul__00038", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> mish -> softmax over the last axis"}
-{"example_id": "gen7__matmul_epilogue__00115.gen7", "task": "gen7__matmul_epilogue__00115", "family": "bmm_epilogue", "chain": "matmul_epilogue:Matmul -> tanh -> soft_sign"}
-{"example_id": "gen7__row_reduction_matmul__00100.gen7", "task": "gen7__row_reduction_matmul__00100", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> leaky_relu -> normalize over the last axis"}
-{"example_id": "gen7__matmul_epilogue__00031.gen7", "task": "gen7__matmul_epilogue__00031", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> shift -> sigmoid -> soft_sign"}
-{"example_id": "gen7__matmul_epilogue__00171.gen7", "task": "gen7__matmul_epilogue__00171", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> hardtanh -> negate -> sigmoid -> softplus"}
-{"example_id": "gen7__matmul_epilogue__00127.gen7", "task": "gen7__matmul_epilogue__00127", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> bias -> clamp -> abs"}
-{"example_id": "gen7__matmul_epilogue__00061.gen7", "task": "gen7__matmul_epilogue__00061", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> relu -> scale"}
-{"example_id": "gen7__matmul_epilogue__00121.gen7", "task": "gen7__matmul_epilogue__00121", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> relu -> scale"}
-{"example_id": "gen7__matmul_epilogue__00079.gen7", "task": "gen7__matmul_epilogue__00079", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> gelu -> tanh -> sigmoid"}
-{"example_id": "gen7__matmul_epilogue__00041.gen7", "task": "gen7__matmul_epilogue__00041", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> bias -> relu -> abs"}
-{"example_id": "gen7__matmul_epilogue__00008.gen7", "task": "gen7__matmul_epilogue__00008", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> softplus -> swish -> gelu"}
-{"example_id": "gen7__matmul_epilogue__00069.gen7", "task": "gen7__matmul_epilogue__00069", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> bias -> elu -> clamp -> softplus -> soft_sign"}
-{"example_id": "gen7__matmul_epilogue__00049.gen7", "task": "gen7__matmul_epilogue__00049", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> leaky_relu -> elu -> abs -> negate"}
-{"example_id": "gen7__matmul_epilogue__00156.gen7", "task": "gen7__matmul_epilogue__00156", "family": "matmul_epilogue", "chain": "matmul_epilogue:Matmul -> mish -> relu -> shift"}
-{"example_id": "gen7__row_reduction_matmul__00051.gen7", "task": "gen7__row_reduction_matmul__00051", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> gelu -> max_keep over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00055.gen7", "task": "gen7__row_reduction_matmul__00055", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> mean_keep -> swish over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00046.gen7", "task": "gen7__row_reduction_matmul__00046", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> hard_sigmoid -> scale -> min_keep -> tanh over the last axis"}
-{"example_id": "gen7__row_reduction_matmul__00052.gen7", "task": "gen7__row_reduction_matmul__00052", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:Matmul -> swish -> mish -> logsumexp_keep over the last axis"}
+{"example_id": "gen7__matmul_epilogue__00048.gen7", "task": "gen7__matmul_epilogue__00048", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general max min max ne abs exp log1p select_n tanh"}
+{"example_id": "gen7__matmul_epilogue__00108.gen7", "task": "gen7__matmul_epilogue__00108", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general max min max ne abs exp log1p select_n tanh"}
+{"example_id": "gen7__row_reduction_matmul__00102.gen7", "task": "gen7__row_reduction_matmul__00102", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:dot_general max min max reduce_sum"}
+{"example_id": "gen7__matmul_epilogue__00149.gen7", "task": "gen7__matmul_epilogue__00149", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general max ne abs exp log1p select_n tanh"}
+{"example_id": "gen7__matmul_epilogue__00031.gen7", "task": "gen7__matmul_epilogue__00031", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general sigmoid abs"}
+{"example_id": "gen7__matmul_epilogue__00078.gen7", "task": "gen7__matmul_epilogue__00078", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general sigmoid abs"}
+{"example_id": "gen7__matmul_epilogue__00011.gen7", "task": "gen7__matmul_epilogue__00011", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general tanh max ne abs exp log1p select_n tanh square"}
+{"example_id": "gen7__row_reduction_matmul__00027.gen7", "task": "gen7__row_reduction_matmul__00027", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:dot_general ge select_n square reduce_max abs"}
+{"example_id": "gen7__matmul_epilogue__00013.gen7", "task": "gen7__matmul_epilogue__00013", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general sigmoid tanh max min max ne abs exp log1p select_n tanh"}
+{"example_id": "gen7__matmul_epilogue__00028.gen7", "task": "gen7__matmul_epilogue__00028", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general square exp"}
+{"example_id": "gen7__matmul_epilogue__00095.gen7", "task": "gen7__matmul_epilogue__00095", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general square exp"}
+{"example_id": "gen7__matmul_epilogue__00132.gen7", "task": "gen7__matmul_epilogue__00132", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general square exp"}
+{"example_id": "gen7__matmul_epilogue__00182.gen7", "task": "gen7__matmul_epilogue__00182", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general square exp"}
+{"example_id": "gen7__matmul_epilogue__00033.gen7", "task": "gen7__matmul_epilogue__00033", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general tanh max min"}
+{"example_id": "gen7__row_reduction_matmul__00113.gen7", "task": "gen7__row_reduction_matmul__00113", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:dot_general max min sigmoid reduce_max max stop_gradient exp reduce_sum log ge select_n"}
+{"example_id": "gen7__matmul_epilogue__00145.gen7", "task": "gen7__matmul_epilogue__00145", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general tanh pow tanh"}
+{"example_id": "gen7__matmul_epilogue__00010.gen7", "task": "gen7__matmul_epilogue__00010", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general max min max min tanh"}
+{"example_id": "gen7__matmul_epilogue__00094.gen7", "task": "gen7__matmul_epilogue__00094", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general max min max min tanh"}
+{"example_id": "gen7__matmul_epilogue__00060.gen7", "task": "gen7__matmul_epilogue__00060", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general max ne abs exp log1p select_n"}
+{"example_id": "gen7__matmul_epilogue__00112.gen7", "task": "gen7__matmul_epilogue__00112", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general max ne abs exp log1p select_n"}
+{"example_id": "gen7__matmul_epilogue__00009.gen7", "task": "gen7__matmul_epilogue__00009", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general abs max max min max ne abs exp log1p select_n"}
+{"example_id": "gen7__row_reduction_matmul__00042.gen7", "task": "gen7__row_reduction_matmul__00042", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:dot_general max min reduce_max max stop_gradient exp reduce_sum square"}
+{"example_id": "gen7__row_reduction_matmul__00048.gen7", "task": "gen7__row_reduction_matmul__00048", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:dot_general tanh reduce_max max stop_gradient exp reduce_sum"}
+{"example_id": "gen7__matmul_epilogue__00038.gen7", "task": "gen7__matmul_epilogue__00038", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general max min max min abs sigmoid"}
+{"example_id": "gen7__matmul_epilogue__00012.gen7", "task": "gen7__matmul_epilogue__00012", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general square ge select_n"}
+{"example_id": "gen7__row_reduction_matmul__00028.gen7", "task": "gen7__row_reduction_matmul__00028", "family": "row_reduction_matmul", "chain": "row_reduction_matmul:dot_general reduce_sum gt exp select_n"}
+{"example_id": "gen7__matmul_epilogue__00071.gen7", "task": "gen7__matmul_epilogue__00071", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general gt exp select_n"}
+{"example_id": "gen7__matmul_epilogue__00089.gen7", "task": "gen7__matmul_epilogue__00089", "family": "bmm_epilogue", "chain": "matmul_epilogue:dot_general gt exp select_n"}
+{"example_id": "gen7__matmul_epilogue__00178.gen7", "task": "gen7__matmul_epilogue__00178", "family": "matmul_epilogue", "chain": "matmul_epilogue:dot_general gt exp select_n"}

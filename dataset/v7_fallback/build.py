@@ -37,20 +37,25 @@ gen = read(D / "gen_rows.jsonl")
 # A6 rule 2 (k-task chain equal once constants, scales and bias are set aside): aarav/dataset-v4 dataset/v7_gen/a6_rule2_drops.json
 a6 = set(json.load(open(D / "a6_rule2_drops.json"))["drop_generated_training_example_ids"])
 gen_all = gen
+# dev split by NORMALISED chain (Karthik's agent's audit, #5 02:44 UTC): the reference's op_chain with constants, scales, bias and layout ops
+# set aside, the same reading as the A6 rule-2 check, so no training row shares a dev item's normalised chain. A6 matches are in neither.
+LIN = {"add", "sub", "mul", "div", "neg", "convert_element_type", "broadcast_in_dim", "reshape", "transpose", "squeeze", "expand_dims", "copy"}
+SIG = {r["id"]: r["signature"]["op_chain"] for r in read(D / "gen_full_verified.jsonl") if r.get("ok")}
 def chain(r):
-    ref = re.findall(r"```python\n(.*?)\n```", r["messages"][1]["content"], re.S)[0]
-    return r["family"].replace("bmm_epilogue", "matmul_epilogue") + ":" + ref.split('"""')[1].split(".")[0].replace("Batched matmul", "Matmul")
+    return r["family"].replace("bmm_epilogue", "matmul_epilogue") + ":" + " ".join(o for o in SIG[r["task"]] if o not in LIN)
+pool = [r for r in gen if r["example_id"] not in a6]
 by = collections.defaultdict(list)
-for r in gen:
+for r in pool:
     by[chain(r)].append(r)
 chains = sorted(by); random.Random("v7-dev").shuffle(chains)
+chains.sort(key=lambda c: len(by[c]) > 4)  # whole small groups first, so 27 items cover many chains without emptying a large one
 dev, dev_chains = [], []
 for c in chains:
     if len(dev) >= 27:
         break
     dev += by[c]; dev_chains.append(c)
 dev_ids = {r["example_id"] for r in dev}
-gen_train = [r for r in gen if r["example_id"] not in dev_ids and r["example_id"] not in a6]
+gen_train = [r for r in pool if r["example_id"] not in dev_ids]
 assert len(a6 - {r["example_id"] for r in gen}) == 0
 assert not {chain(r) for r in gen_train} & set(dev_chains)
 

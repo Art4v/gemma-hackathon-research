@@ -22,12 +22,16 @@
   "gen7__matmul_epilogue__00160.gen7",
   "gen7__matmul_epilogue__00161.gen7",
   "gen7__matmul_epilogue__00167.gen7",
+  "gen7__matmul_epilogue__00177.gen7",
   "gen7__matmul_epilogue__00180.gen7",
+  "gen7__row_reduction_matmul__00008.gen7",
   "gen7__row_reduction_matmul__00013.gen7",
+  "gen7__row_reduction_matmul__00054.gen7",
   "gen7__row_reduction_matmul__00056.gen7",
   "gen7__row_reduction_matmul__00058.gen7",
   "gen7__row_reduction_matmul__00067.gen7",
   "gen7__row_reduction_matmul__00078.gen7",
+  "gen7__row_reduction_matmul__00082.gen7",
   "gen7__row_reduction_matmul__00083.gen7",
   "gen7__row_reduction_matmul__00085.gen7"
  ],
@@ -42,10 +46,13 @@
   "gen7L/gen7L__matmul_layout__00064",
   "gen7L/gen7L__row_reduction_layout__00010",
   "gen7L/gen7L__row_reduction_layout__00016",
+  "gen7L/gen7L__row_reduction_layout__00017",
   "gen7L/gen7L__row_reduction_layout__00018",
   "gen7L/gen7L__row_reduction_layout__00029",
+  "gen7L/gen7L__row_reduction_layout__00041",
   "gen7L/gen7L__row_reduction_layout__00042",
   "gen7L/gen7L__row_reduction_layout__00043",
+  "gen7L/gen7L__row_reduction_layout__00044",
   "gen7L/gen7L__row_reduction_layout__00048",
   "gen7L/gen7L__row_reduction_layout__00050"
  ],
@@ -618,5 +625,14 @@
     ]
    }
   ]
+ },
+ "added_from_karthik_audit": {
+  "ids": [
+   "gen7__matmul_epilogue__00177.gen7",
+   "gen7__row_reduction_matmul__00008.gen7",
+   "gen7__row_reduction_matmul__00054.gen7",
+   "gen7__row_reduction_matmul__00082.gen7"
+  ],
+  "why": "00177: negate+clamp(hardtanh)+gelu = 35k's chain at 35k's shape; rr 00008/00054/00082: log_softmax ~ 38k/43k softmax (rule 4, unsure means out); #5 2026-11-12 02:44 UTC"
  }
 }
