@@ -1,0 +1,31 @@
+{
+ "job_id": "kimi-k31-r1-s1-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 44,
+ "n_rows": 38,
+ "missing": [
+  "kimi31r1/kernelbook/MaxPoolPad_5576",
+  "kimi31r1/kernelbook/SoftHistogram_8586",
+  "kimi31r1/kernelbook/LayerNorm_15097",
+  "kimi31r1/kernelbook/weighted_mae_windows_9647",
+  "kimi31r1/kernelbook/QueryEncoding_4551",
+  "kimi31r1/kernelbook/SelfAttnPooler_12096"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 9,
+  "correct_slow": 4,
+  "harness_oom": 7,
+  "mosaic": 1,
+  "pass": 11,
+  "runtime": 1,
+  "vmem": 4,
+  "wrong": 1
+ },
+ "n_correct": 15,
+ "median_speed_vs_xla_correct": 0.9696347076524037
+}

@@ -1,0 +1,54 @@
+{
+ "job_id": "kimi-a2-s6-p5",
+ "owner": "hruday",
+ "step": "kimi-a2-s6-p5",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 5,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "6583e8d27504bf3ac295278cba40cfd6a45e43bf31f1033bfd2817883d649572",
+  "run.sh": "d934dd609367225a49dc7257f99709948925a01e01720384d41b0ae494541a69",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/WeightedBDiceLoss_201",
+   "task": "kernelbook__WeightedBDiceLoss_201",
+   "code_sha256": "caf23d9344c19595dfaccfa07dffdaa783ac36b03e5dfa2d859c8ffea325dced",
+   "ref_sha256": "d551d5d425a7eba35a4b2500acccc84c311e946c7ef1ea9730bfb1915bc205b7"
+  },
+  {
+   "id": "kimi31a2/kernelbook/gumbel_sampler_16342",
+   "task": "kernelbook__gumbel_sampler_16342",
+   "code_sha256": "0c0145fd921740dd66ff2da81f54af0c0619bd3c6c3f29c4114af298447cbe1d",
+   "ref_sha256": "731d9f7aa51e1bb0111a07e26712887db34fc7a80d0fba6228c4b33b4696c8f9"
+  },
+  {
+   "id": "kimi31a2/kernelbook/rSoftMax_17292",
+   "task": "kernelbook__rSoftMax_17292",
+   "code_sha256": "6a105a7de2945e4e8a0705264abe733d011fd0bee4aa5cb6003966da3d584fb1",
+   "ref_sha256": "9eaea2df05c5278ecd5f468d4b9b2f66ac607ad03b2b10b1dcad032b2391a83f"
+  },
+  {
+   "id": "kimi31a2/kernelbook/backWarp_13450",
+   "task": "kernelbook__backWarp_13450",
+   "code_sha256": "fb89743d634936e54b3ea0a5be6b8728c736e228b9a509d51fe8229bab469f2d",
+   "ref_sha256": "ef16fc078d5fa4910d5b3ac61ad1e5b6f542a8d221f00344247c1274c6a1d4c3"
+  },
+  {
+   "id": "kimi31a2/kernelbook/WeightedPool_8066",
+   "task": "kernelbook__WeightedPool_8066",
+   "code_sha256": "2902f28432887d6a1990228fc3564e7a2883f0295b82cea372ddec8914b3af6b",
+   "ref_sha256": "d4ea6641fe69fd6dbf5000ed325af286a1c3a147bcc80a3b5b826990a94b793b"
+  }
+ ]
+}

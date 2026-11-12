@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r2-s2-x2",
+ "owner": "hruday",
+ "step": "kimi-k31-r2-s2-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "114256ca003b5e9becc01bb0ec16fe008c880a6bd2742e31300d83e8fb480c67",
+  "run.sh": "5cfe337076f6a3afb95126350caa171e1158568ca1fee53cf172f9d1e5eaeac3",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/TernaryTanh_5828",
+   "task": "kernelbook__TernaryTanh_5828",
+   "code_sha256": "06269635eee70281301d5c939ac5d2229ba45b9b930a3e30beec357ccf19b03a",
+   "ref_sha256": "bdb38e7f6b409db2f9d3484ce47390121f8606a6ff8617d7872ba2456343e937"
+  }
+ ]
+}

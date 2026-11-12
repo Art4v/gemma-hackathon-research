@@ -1,0 +1,43 @@
+{
+ "job_id": "kimi-n2-s7-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 34,
+ "n_rows": 14,
+ "missing": [
+  "kimiN2/kernelbook/ParameterOutput_11424",
+  "kimiN2/kernelbook/My_SmoothL1Loss_690",
+  "kimiN2/kernelbook/MLPAttention_9503",
+  "kimiN2/kernelbook/MLP_12940",
+  "kimiN2/kernelbook/HyperConv2d_7305",
+  "kimiN2/kernelbook/SoftJaccardLoss_17658",
+  "kimiN2/kernelbook/Spatial_Attention_layer_10594",
+  "kimiN2/kernelbook/Sinkhorn_Net_16387",
+  "kimiN2/kernelbook/SRCNN_350",
+  "kimiN2/kernelbook/InvConv_294",
+  "kimiN2/kernelbook/output_6021",
+  "kimiN2/kernelbook/SpatialAttentionLayer_18244",
+  "kimiN2/kernelbook/Decoder1_6814",
+  "kimiN2/kernelbook/Discriminator_6627",
+  "kimiN2/kernelbook/NormalLoss_719__scale",
+  "kimiN2/kernelbook/ConvBlock_3007",
+  "kimiN2/kernelbook/HighwayMaxoutNetwork_4005__scale",
+  "kimiN2/kernelbook/FM_17486__scale",
+  "kimiN2/kernelbook/WeightedPool_13858__scale",
+  "kimiN2/kernelbook/FusedUpsample_1656__scale"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 5,
+  "correct_slow": 3,
+  "harness_oom": 1,
+  "mosaic": 1,
+  "pass": 3,
+  "runtime": 1
+ },
+ "n_correct": 6,
+ "median_speed_vs_xla_correct": 0.8015910021658104
+}

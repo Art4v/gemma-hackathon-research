@@ -1,0 +1,174 @@
+{
+ "job_id": "kimi-k31-r1-s6-p2",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s6-p2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 25,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "574f8edc9d29136cc42afa555e7a5f292319dc3f5d752ee37a58c950fcb59be0",
+  "run.sh": "26dfe3772a52cacf834dfd22efd02b240b9f8e36b1381ed56c1206cc5712c042",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kb/l1/69_conv_transposed_2D__asymmetric_input__asymmetric_kernel",
+   "task": "kb__l1__69_conv_transposed_2D__asymmetric_input__asymmetric_kernel",
+   "code_sha256": "4192e1953a55efff2d52fd160e24abfbb158995dccaa090de175ec4dd0015f23",
+   "ref_sha256": "bdf4c2a7ded8aaae0b080b91169fd147ecdd1dc1b6ba8d021a5e7bc98f79b989"
+  },
+  {
+   "id": "kimi31r1/kb/l1/90_cumprod",
+   "task": "kb__l1__90_cumprod",
+   "code_sha256": "b77b1d1566e91b5542d11aa6ac51c7f24fe8c83a5dc5dbf2fb25e26c45f60f13",
+   "ref_sha256": "6fe290176cd03c802a771582cac3c6468c020dd557de03cc11cbf7bb1f2d7422"
+  },
+  {
+   "id": "kimi31r1/kb/l1/92_cumsum_exclusive",
+   "task": "kb__l1__92_cumsum_exclusive",
+   "code_sha256": "1b43cf0916dcf233cf63da30b2ff18eb4dfed032a852b54a274f7d622f591a9e",
+   "ref_sha256": "1c77c0d57b3f116fb466765223defd184195441e316699333b2e7d7903c00755"
+  },
+  {
+   "id": "kimi31r1/kb/l1/96_HuberLoss",
+   "task": "kb__l1__96_HuberLoss",
+   "code_sha256": "11f13b56cf5e7541b5b82e3c6fcb30aacdc7c671afb1e07f9d10b9fce2110166",
+   "ref_sha256": "21271ad4571890ad34b678453c4070c19001c8ca08fb266ba9902057a707af20"
+  },
+  {
+   "id": "kimi31r1/kb/l1/78_conv_transposed_2D_asymmetric_input_asymmetric_kernel___padded__",
+   "task": "kb__l1__78_conv_transposed_2D_asymmetric_input_asymmetric_kernel___padded__",
+   "code_sha256": "3ad9f2742148b59a132a86671da26b28b0066cae76e50cd911f377f1bf4aea14",
+   "ref_sha256": "a428d8c8d7bccbd9017d8f5a1d663c34e0f01e302cde3e07730dbe071650de2b"
+  },
+  {
+   "id": "kimi31r1/kb/l1/85_conv_depthwise_2D_asymmetric_input_asymmetric_kernel",
+   "task": "kb__l1__85_conv_depthwise_2D_asymmetric_input_asymmetric_kernel",
+   "code_sha256": "70d58c6f3e88c7744d2ea029bb28dfa6f429869f6bf12136a4e63e8e81a7304f",
+   "ref_sha256": "548c0732ac859604f26bc84671d5b7a7c07091e922899bf07304d63876013227"
+  },
+  {
+   "id": "kimi31r1/kb/l2/11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm",
+   "task": "kb__l2__11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm",
+   "code_sha256": "ca3fdb94dbd46a380a2f91c77855792b62dd3572399e8c9bda6a71d7dc827d36",
+   "ref_sha256": "6d3cee47e621e00dedbbaa5856a1123b7e52433c8115a0f8c57f11c3b788a872"
+  },
+  {
+   "id": "kimi31r1/kb/l2/16_ConvTranspose2d_Mish_Add_Hardtanh_Scaling",
+   "task": "kb__l2__16_ConvTranspose2d_Mish_Add_Hardtanh_Scaling",
+   "code_sha256": "6aefe8764bf21ce3b8a3f83155d0a86a83e998323ca38f8b7cab07a04403d3e4",
+   "ref_sha256": "5a66de62e155420472b762196b548948d0b992714791a508d75a4ee9287b410f"
+  },
+  {
+   "id": "kimi31r1/kb/l2/94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__bf16",
+   "task": "kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__bf16",
+   "code_sha256": "7d346495a74d96c1a5135abc68e282ff0e26e5856dd580c4c7da77822da70ee4",
+   "ref_sha256": "feec7149311dd201352d9074442532f35222124b4c60503ccdc16e13c0e1e37c"
+  },
+  {
+   "id": "kimi31r1/kb/l1/76_conv_standard_1D_dilated_strided____bf16",
+   "task": "kb__l1__76_conv_standard_1D_dilated_strided____bf16",
+   "code_sha256": "ddb3c536fb8288dd21ea346a87781e8738cb960ddded1fd00209840c4be7edef",
+   "ref_sha256": "44bc63667ee960ee0c99ae27af2ed028884713caaa49ecd928fae38882b1df08"
+  },
+  {
+   "id": "kimi31r1/kb/l2/20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__bf16",
+   "task": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__bf16",
+   "code_sha256": "a2412a40b6a0566c5f878d4fc7510fecfad81f308146c263774c18ee2bb7440e",
+   "ref_sha256": "13d255f9bb0693fadbcbe39eb7540422a59f6dad6c060653e6c1c1fe41a526f6"
+  },
+  {
+   "id": "kimi31r1/kb/l2/83_Conv3d_GroupNorm_Min_Clamp_Dropout__bf16",
+   "task": "kb__l2__83_Conv3d_GroupNorm_Min_Clamp_Dropout__bf16",
+   "code_sha256": "6fef74abb9dfb75bc494247351160cd86108ddf34e3bcbdb10da64fba88ed34c",
+   "ref_sha256": "838d257fb64f1a7cbe6313d81ee614928a51a802b81aa1ed9ae77ff32a6aa383"
+  },
+  {
+   "id": "kimi31r1/kb/l2/90_Conv3d_LeakyReLU_Sum_Clamp_GELU__bf16",
+   "task": "kb__l2__90_Conv3d_LeakyReLU_Sum_Clamp_GELU__bf16",
+   "code_sha256": "18c52d480ccdae897721492bf4386a67259f87b5a7bb1b3b74796cf17e6127de",
+   "ref_sha256": "1b7476a2b4a7180f80fa998a335adb69c6d2b4f91e1b6065b6dcb6f6a6710099"
+  },
+  {
+   "id": "kimi31r1/kernelbook/SmoothL1Loss_7106",
+   "task": "kernelbook__SmoothL1Loss_7106",
+   "code_sha256": "348e336d2de1f604d1ec5d5165d3a2e6c12a3399627952f694cfc56590231693",
+   "ref_sha256": "53ca41144af967889d26b143f3a97a63fcb37895127d5ccd9807dafb592acca0"
+  },
+  {
+   "id": "kimi31r1/kb/l2/5_ConvTranspose2d_Subtract_Tanh__bf16",
+   "task": "kb__l2__5_ConvTranspose2d_Subtract_Tanh__bf16",
+   "code_sha256": "347e7d2f4de202451875e241256acbfc2e8a371b38e09d9da0808554e4d0eebe",
+   "ref_sha256": "1bc2081c2bed5a439d1ecb88e7fbec80d683790bf6b1ff2f224d1afd8d02010e"
+  },
+  {
+   "id": "kimi31r1/kernelbook/GaussActivation_14572",
+   "task": "kernelbook__GaussActivation_14572",
+   "code_sha256": "37cb6be996cc2e2a8ed835edd630f41145647f4c5588b7caee1302a7f0a7e3f1",
+   "ref_sha256": "94ed3a8c7d4bd0d740b4f2a834e086683d0eaa6751889821c86cb74f2ef1dcc9"
+  },
+  {
+   "id": "kimi31r1/kernelbook/MaxPool2dDynamicSamePadding_72",
+   "task": "kernelbook__MaxPool2dDynamicSamePadding_72",
+   "code_sha256": "977e486c4f492e8b7032b03ae24cb7e7b7b8867d93a22d392e91a68ecd6fe418",
+   "ref_sha256": "f168ee3f5bf9c22daa7abda970b71e5a04a9baa66b38070f254288d0cf1b123c"
+  },
+  {
+   "id": "kimi31r1/kernelbook/PLU_6486",
+   "task": "kernelbook__PLU_6486",
+   "code_sha256": "6a3a782a7fb075c4dd6272cd23d6bc440b9232aff29762f27805f63a0cb309a4",
+   "ref_sha256": "3b0006cf7799cecd61dca727e9f5137aa4afd9b80d2812638b299cddffc8a3f8"
+  },
+  {
+   "id": "kimi31r1/kernelbook/SeriesDecomp_3732",
+   "task": "kernelbook__SeriesDecomp_3732",
+   "code_sha256": "41a277b7606feaf9745f1e299c40815ebe828016016ebd1e8689a929ad56de77",
+   "ref_sha256": "a18e5269ead26f8ffd2a38474785f97e86a82a8d89846ea7591d6e434765ff43"
+  },
+  {
+   "id": "kimi31r1/kb/l2/64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU__bf16",
+   "task": "kb__l2__64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU__bf16",
+   "code_sha256": "00dacd58a355cafaa73fa5349c31ae7654f9dd5e0652ba7c70c35c45a8cdec75",
+   "ref_sha256": "34c68e6531d24c338b4c58bacd6008a146f739265bd84833fbd40fb1e2a03324"
+  },
+  {
+   "id": "kimi31r1/kernelbook/MaxPoolPad_542",
+   "task": "kernelbook__MaxPoolPad_542",
+   "code_sha256": "f1524889d92924817220b038f16e5f41bdcc3f1c76ef20aa1bc221d910f72759",
+   "ref_sha256": "a55c78b5b96a53a7a36f12ba31b225601eacfc4d1c877d306550f034b6d9f7ae"
+  },
+  {
+   "id": "kimi31r1/kernelbook/ScaledL2Norm_6171",
+   "task": "kernelbook__ScaledL2Norm_6171",
+   "code_sha256": "aed27178e5c55a432420a3d571bc23cf56ff585a9fdf52ef71c2cc599b8b10ad",
+   "ref_sha256": "af3c5695bc91c28a3a90bb47c1f248e8fc9d855ebc186a485a4a600c52ed05a9"
+  },
+  {
+   "id": "kimi31r1/kernelbook/Discriminator2_5996",
+   "task": "kernelbook__Discriminator2_5996",
+   "code_sha256": "1ae479f30720c6f2a6176ecc8f37ced514eb4370fabf70d9725e6ca28a2b1891",
+   "ref_sha256": "b9c2194e0a2f7e6abda315a26be824c26f21cd5ee8645a4b5d7ef3cf75f33050"
+  },
+  {
+   "id": "kimi31r1/kernelbook/MultiHeadAttentionWithPooling_7846",
+   "task": "kernelbook__MultiHeadAttentionWithPooling_7846",
+   "code_sha256": "19e2ba4a10fcedb2c28a5ebb5e4f13a58ac6369e329cd75aabce3d7e4425aacb",
+   "ref_sha256": "5803df31933bab0bf8fc1d0e0e8f007db2035f53011f844bdea3fbe10963ce93"
+  },
+  {
+   "id": "kimi31r1/kernelbook/SE_layer_3d_4495",
+   "task": "kernelbook__SE_layer_3d_4495",
+   "code_sha256": "c2d59d589697facf02d871d5797072abd7b31c5cd46311aab3fa7126431d4d0d",
+   "ref_sha256": "57fd2de1f8be905ce7883211b11f5e10518a292bb362c8fc28b38ccf6460659a"
+  }
+ ]
+}

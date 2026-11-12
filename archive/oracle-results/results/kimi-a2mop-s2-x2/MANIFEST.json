@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-a2mop-s2-x2",
+ "owner": "hruday",
+ "step": "kimi-a2mop-s2-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "a9158f7719a5f9efad2958ac1b7d8a32142cb387986ee0d6b4482dd63e936eeb",
+  "run.sh": "99acec2235e212b119a3ccd94267f14c8ce3f7786bd5fbcda866b1790f66d867",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/Wang_18074",
+   "task": "kernelbook__Wang_18074",
+   "code_sha256": "ddf752d6fb5e28f20a4a0d728abae962baa96f05a5a897b22f81e840acec4c4f",
+   "ref_sha256": "be317c4b33ff50b44ffd5b43237647a3a711f32d56b906f821206212ecea45aa"
+  }
+ ]
+}

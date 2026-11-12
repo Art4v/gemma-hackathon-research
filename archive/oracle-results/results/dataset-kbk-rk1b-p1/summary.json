@@ -1,0 +1,20 @@
+{
+ "job_id": "dataset-kbk-rk1b-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 43,
+ "n_rows": 43,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "correct_slow": 15,
+  "mosaic": 3,
+  "not_a_kernel": 2,
+  "pass": 23
+ },
+ "n_correct": 38,
+ "median_speed_vs_xla_correct": 0.8266051255755543
+}

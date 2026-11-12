@@ -1,0 +1,34 @@
+{
+ "job_id": "kimi-n1-s8-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 82,
+ "n_rows": 71,
+ "missing": [
+  "kimiN1/kernelbook/SoftCrossEntropy_16792",
+  "kimiN1/kernelbook/TokenLabelSoftTargetCrossEntropy_2733",
+  "kimiN1/kernelbook/SVDBilinear_18156",
+  "kimiN1/kernelbook/SelfAttentionPooling_1698",
+  "kimiN1/kernelbook/StageBlock_5368",
+  "kimiN1/kernelbook/WeightedBCELoss_8181",
+  "kimiN1/kernelbook/TernaryTanh_5828__scale",
+  "kimiN1/kernelbook/SoftmaxAllocator_16672",
+  "kimiN1/kernelbook/distLinear_14902__scale",
+  "kimiN1/kernelbook/Softmax_12377__scale",
+  "kimiN1/kernelbook/Swish_13688__scale"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 17,
+  "correct_slow": 13,
+  "mosaic": 3,
+  "pass": 36,
+  "runtime": 1,
+  "wrong": 1
+ },
+ "n_correct": 49,
+ "median_speed_vs_xla_correct": 0.9973024729417469
+}

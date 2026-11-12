@@ -1,0 +1,28 @@
+{
+ "job_id": "kimi-n1-s6-p3",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 48,
+ "n_rows": 44,
+ "missing": [
+  "kimiN1/kernelbook/scSE_3996",
+  "kimiN1/kernelbook/moving_avg_17649__scale",
+  "kimiN1/kernelbook/predicates1_8277__scale",
+  "kimiN1/kernelbook/soft_L1_15480__scale"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 10,
+  "correct_slow": 7,
+  "harness_oom": 2,
+  "mosaic": 1,
+  "pass": 20,
+  "runtime": 1,
+  "wrong": 3
+ },
+ "n_correct": 27,
+ "median_speed_vs_xla_correct": 0.9729949000591558
+}

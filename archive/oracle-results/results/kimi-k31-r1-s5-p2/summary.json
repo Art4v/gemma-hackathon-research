@@ -1,0 +1,39 @@
+{
+ "job_id": "kimi-k31-r1-s5-p2",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 27,
+ "n_rows": 8,
+ "missing": [
+  "kimi31r1/kb/l2/89_ConvTranspose3d_MaxPool_Softmax_Subtract_Swish_Max",
+  "kimi31r1/kernelbook/ResHead_11605",
+  "kimi31r1/kernelbook/FC_Q_8974",
+  "kimi31r1/kernelbook/NegativeLearningLoss_16953",
+  "kimi31r1/kernelbook/SimpleTextClassifier_4040",
+  "kimi31r1/kernelbook/Net2_3500",
+  "kimi31r1/kernelbook/Decoder_17735",
+  "kimi31r1/kernelbook/stack_pool_6133",
+  "kimi31r1/kb/l2/81_Gemm_Swish_Divide_Clamp_Tanh_Clamp__bf16",
+  "kimi31r1/kernelbook/MonotonicMax_10863",
+  "kimi31r1/kernelbook/Decoder_10454",
+  "kimi31r1/kernelbook/MixLoss_15978",
+  "kimi31r1/kernelbook/MaxPoolTrinary_17131",
+  "kimi31r1/kernelbook/Swish_13688",
+  "kimi31r1/kernelbook/LinearCombine_4278",
+  "kimi31r1/kernelbook/MaxPoolStride1_264",
+  "kimi31r1/kernelbook/SEModule_8007",
+  "kimi31r1/kernelbook/resblock_3131",
+  "kimi31r1/kernelbook/DiceBCELoss_839"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "harness_oom": 6,
+  "runtime": 1,
+  "vmem": 1
+ },
+ "n_correct": 0,
+ "median_speed_vs_xla_correct": null
+}

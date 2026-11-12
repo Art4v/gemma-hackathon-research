@@ -1,0 +1,102 @@
+{
+ "job_id": "kimi-a2-s4-p5",
+ "owner": "hruday",
+ "step": "kimi-a2-s4-p5",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 13,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "7db769d4d37101104a6fc54358dc16713b1517ca5c68ec45c35dab88308b753e",
+  "run.sh": "c7e3ec0a90683f4f53edfd0e537a332cd6134e6c33b5d4544955578c2ca85508",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/TemporalBlock_16671",
+   "task": "kernelbook__TemporalBlock_16671",
+   "code_sha256": "7033530af65b79524c2de7969f5731b82fd8ea749344ad6a6aebf01325567f59",
+   "ref_sha256": "08f9230f0f8d619f659c553529e4964215968a1cf55bdd5be26a94e70db700bf"
+  },
+  {
+   "id": "kimi31a2/kernelbook/act_PRT_4984",
+   "task": "kernelbook__act_PRT_4984",
+   "code_sha256": "c4449e873c988d89f5237c216d72de524284eb167634b79ec6a28d71b2d27a7e",
+   "ref_sha256": "6dfb3ff5815a58c3d4b8defd2bc7c6e6f95b5cf811be9eb4e83f7987f6eb0e8e"
+  },
+  {
+   "id": "kimi31a2/kernelbook/SoftmaxDeepLiftModel_449",
+   "task": "kernelbook__SoftmaxDeepLiftModel_449",
+   "code_sha256": "d222f55692825394c9706f4311f303e6face9ce0ddd6f15ccec4013b9482c000",
+   "ref_sha256": "d505b0b3117bcebe1d744a2c34fb2da0ab8c80541fd1a71bf0f5441c8b9da318"
+  },
+  {
+   "id": "kimi31a2/kernelbook/SpatialAttention_9472",
+   "task": "kernelbook__SpatialAttention_9472",
+   "code_sha256": "8bfc37995d2d3719549d669650bdde733cc017c58b0124119ba28d5f8e94c16e",
+   "ref_sha256": "7a1a387256d33443fedd765cf6766f69b87ef807103ca160736d19021ba1ecf6"
+  },
+  {
+   "id": "kimi31a2/kernelbook/Vgg16_13529",
+   "task": "kernelbook__Vgg16_13529",
+   "code_sha256": "5e5fb2578b33c6128337a068c12e65910f3f90586212e2b1cbf882db3852ff34",
+   "ref_sha256": "7d0f5377d690a20ef659360b31eba3baa8cb9a294a27c01fff754a10c2fc0c2e"
+  },
+  {
+   "id": "kimi31a2/kernelbook/Transformer_9945",
+   "task": "kernelbook__Transformer_9945",
+   "code_sha256": "1cc647b6c8456ab1f45fde491a5f6a1758dfd0148d58e99563b0bfa128899914",
+   "ref_sha256": "9e764e93b2f22411943727baffd6f9ca3c36105cb013ffe837107e8edf757089"
+  },
+  {
+   "id": "kimi31a2/kernelbook/batch_hard_triplet_loss",
+   "task": "kernelbook__batch_hard_triplet_loss",
+   "code_sha256": "0712152228ad128a01100a6509d6db767e1c7b41585e958172d6cd38c4c53664",
+   "ref_sha256": "7e2098cb94219e63a050c0bdcba3612193ff90d707e1fb066a76c350a1f83755"
+  },
+  {
+   "id": "kimi31a2/kernelbook/WSConv2d_3729",
+   "task": "kernelbook__WSConv2d_3729",
+   "code_sha256": "904fb0d008b2d8e5c96a4911f47cf5b3d712d86bf90fb8f2aee512282ccca05d",
+   "ref_sha256": "5ae8902b4a07790c682e1ffe3eadf9bf5b6573c67e980145920186e5320de186"
+  },
+  {
+   "id": "kimi31a2/kernelbook/TSA_Fusion_1816",
+   "task": "kernelbook__TSA_Fusion_1816",
+   "code_sha256": "34a13b35d869997ccc8d3c4271f06e9a9f6975c42de6ccc807501316384890c5",
+   "ref_sha256": "a403bb3d804b8cd16ac1a57018c1e0cbfacc7cbaea6df208bc64819ece8c7862"
+  },
+  {
+   "id": "kimi31a2/kernelbook/softmaxtripletLoss_9327",
+   "task": "kernelbook__softmaxtripletLoss_9327",
+   "code_sha256": "2a2e99fac1d3c50da4ddc1deba0c21ceb7865dd9af35e6bee4e503b0c91568ae",
+   "ref_sha256": "79a7fa4d8dc6a6ec76e4ba7795a62d7f88c0eac8151d7897f252168c6306c3b8"
+  },
+  {
+   "id": "kimi31a2/kernelbook/loss_Textures_8291",
+   "task": "kernelbook__loss_Textures_8291",
+   "code_sha256": "9ad823878c788ee1d98c8a0a83f099b166b8ee96298919a009d3a37452e625b0",
+   "ref_sha256": "c8b75cea2fa61ef34f63d0d7b6586660d967f3bf59623dfad74f62bc4197d4da"
+  },
+  {
+   "id": "kimi31a2/kernelbook/WeightNormConv2d_17016",
+   "task": "kernelbook__WeightNormConv2d_17016",
+   "code_sha256": "2dbd7040029284f8e27df0b8cb7b25296a7c892acee815451d15a12335d29b88",
+   "ref_sha256": "a744eeb0cf2215713354ef55480aceb8ee58be9d33ae2c753b3c75bb8f8fdf63"
+  },
+  {
+   "id": "kimi31a2/kernelbook/self_attn_mini_1487",
+   "task": "kernelbook__self_attn_mini_1487",
+   "code_sha256": "127c18308f5de19af86324b1212282453806cc673cb02fcf9cad590a41dbf2b2",
+   "ref_sha256": "6cd0afa0711acbb5d7bc5af9f6479bb84ce1b36e7a6d51784297aeeac96a7828"
+  }
+ ]
+}

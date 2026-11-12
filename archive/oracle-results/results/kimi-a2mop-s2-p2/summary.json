@@ -1,0 +1,33 @@
+{
+ "job_id": "kimi-a2mop-s2-p2",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 54,
+ "n_rows": 45,
+ "missing": [
+  "kimi31a2/kernelbook/Wang_18074",
+  "kimi31a2/kernelbook/TransitionUp_9077",
+  "kimi31a2/kernelbook/ResBlock_10456",
+  "kimi31a2/kernelbook/SoftAttention_16399",
+  "kimi31a2/kernelbook/attention_11048",
+  "kimi31a2/kernelbook/TFBCELoss_7164",
+  "kimi31a2/kernelbook/VNMaxPool_14508",
+  "kimi31a2/kernelbook/SoftL1_14509",
+  "kimi31a2/kernelbook/UnderfitNet_17600"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 16,
+  "correct_slow": 10,
+  "harness_oom": 2,
+  "mosaic": 1,
+  "pass": 10,
+  "runtime": 1,
+  "vmem": 5
+ },
+ "n_correct": 20,
+ "median_speed_vs_xla_correct": 0.7150413832788758
+}

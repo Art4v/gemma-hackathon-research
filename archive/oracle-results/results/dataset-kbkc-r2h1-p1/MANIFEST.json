@@ -1,0 +1,36 @@
+{
+ "job_id": "dataset-kbkc-r2h1-p1",
+ "owner": "hruday",
+ "step": "dataset-kbkc-r2h1-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 2,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "76d08a5c1bdc9e36560cc3bca3a91281803b7714a7a40adf5a7418843baecca3",
+  "run.sh": "dca24d4413729765da68f6042e00662cee044a9f89b48ecddc4796a069fbc538",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__SDSDRLoss_15902.a2.s0",
+   "task": "kernelbook__SDSDRLoss_15902",
+   "code_sha256": "930e4cfb4eed6b6b3f8dd53d76e6cd0dab087c8fce209125176461e11f5cdc32",
+   "ref_sha256": "de72f89475c029ab06a5d195c85c0ad2d7b1e248fa78e9a8b2d1986dc1933a5e"
+  },
+  {
+   "id": "kernelbook__ValueNet_13110.a2.s0",
+   "task": "kernelbook__ValueNet_13110",
+   "code_sha256": "f66ddbcd50714e077f8af24bc4d44cc8a5b5f9fd3a7513ebd3677d98b90d34db",
+   "ref_sha256": "4074cc16ebde531c607d7c218de96124bbe83354c53678802a8d766305a62316"
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "job_id": "dataset-kbkd-r1w2c-p1",
+ "owner": "karthik",
+ "step": "dataset-kbkd-r1w2c-p1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 21,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "b45b56dd4df4629841a90942a80b3ebdd6bbd20cddf8ee9817aa51e6c37b6a78",
+  "run.sh": "e7678818477a06bf9dc93904b32466002de4b2dc8ba1c5a6e48dbdeb8c60fd23",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__BWCEWLoss_1630.a1.s0",
+   "task": "kernelbook__BWCEWLoss_1630",
+   "code_sha256": "6af1dd1adedb6f1583978d56b966ac55cd5291f1cbab1cb5b50e0b1edba84406",
+   "ref_sha256": "4d2d92ca91dcd0ea23fd87d66a672b37164973d7699d9d052ae3575a47220183"
+  },
+  {
+   "id": "kernelbook__Biaffine_10893.a1.s0",
+   "task": "kernelbook__Biaffine_10893",
+   "code_sha256": "1b7010987fa08ab73ad162e0757dbe572665954f7dcaea61a91ff393fd8a883d",
+   "ref_sha256": "a38a80472d06a1b88d64142d6e36e0e9b4142702e7c31ac7cbead28824539588"
+  },
+  {
+   "id": "kernelbook__ContrastiveEmbeddingLoss_16259.a1.s0",
+   "task": "kernelbook__ContrastiveEmbeddingLoss_16259",
+   "code_sha256": "91a51f30d8c8f67501b23cd73340899696d91de8a3e9de19314f8108f7cda03d",
+   "ref_sha256": "aab3278544bef59310537fab9e424bf0dd6ddc982f7358a0c3c35d7932cad09c"
+  },
+  {
+   "id": "kernelbook__Conv2dDynamicSamePadding_13660.a1.s0",
+   "task": "kernelbook__Conv2dDynamicSamePadding_13660",
+   "code_sha256": "f8c87e977f917f2e3aff3f795444f53429ebe2483cda35890a57123bff5f2bc7",
+   "ref_sha256": "5de7f57689f720a044d6c66fbbfd28a67bf6fe924d758b3d04c697134594c08f"
+  },
+  {
+   "id": "kernelbook__Copy_7863.a1.s0",
+   "task": "kernelbook__Copy_7863",
+   "code_sha256": "534f97f0c4602c55da3b5118d5e0f1778f781f3ccaf35c8b74938359147ce84c",
+   "ref_sha256": "f27431664d88de00d9a515035c3af08a809c7df8e002319c26bbd798860887c4"
+  },
+  {
+   "id": "kernelbook__DQN_3819.a1.s0",
+   "task": "kernelbook__DQN_3819",
+   "code_sha256": "07947420906772689bd389a2cd237a2b6765c09e8b5ab635b07e93580b3c310c",
+   "ref_sha256": "877439aa41529f5622f3e779536cb0c3bf8492ccdc30aaad87975ac64978d0da"
+  },
+  {
+   "id": "kernelbook__Encoding_2367.a1.s0",
+   "task": "kernelbook__Encoding_2367",
+   "code_sha256": "d7d64bb2b857c72651fa364bd9c14f0ccb73aab20a91d4f27fa9e6fb11a6494d",
+   "ref_sha256": "22b9127c184dfdb5f20c33ca7c77d18d8425b4e2bb0efb3a1c75bcdb92c80b0c"
+  },
+  {
+   "id": "kernelbook__Grad_hyper_15758.a1.s0",
+   "task": "kernelbook__Grad_hyper_15758",
+   "code_sha256": "73bac81f9d6ee4b40a632dd8b689b83adb518274997ddac51efe0b90f4ec88da",
+   "ref_sha256": "1a2ebee862c2a0ece8e238d6dee249fbcd7c3d0b9c705fa536d7b6667eaeb79a"
+  },
+  {
+   "id": "kernelbook__LNN_10373.a1.s0",
+   "task": "kernelbook__LNN_10373",
+   "code_sha256": "1095ebd7898fa5842ab3e8bd9448443bea658d37171224088e848c63a686719c",
+   "ref_sha256": "f0798977cc308700809671649bc897f9e7fafc5e2e1092cf008f045bddb7db12"
+  },
+  {
+   "id": "kernelbook__MLPAttention_9503.a1.s0",
+   "task": "kernelbook__MLPAttention_9503",
+   "code_sha256": "457ce0c053c5cbcba677f5860aa918234a892a170a043e2da670a6ffbd14f891",
+   "ref_sha256": "0f2c035d39a23c7331db49ff86993b44e8160275cc29f255a12d62ad707709fd"
+  },
+  {
+   "id": "kernelbook__Model1_9598.a1.s0",
+   "task": "kernelbook__Model1_9598",
+   "code_sha256": "8f7adb346319c3415f844df9da6db3883758531e06aafb2e580fbd87dba2c801",
+   "ref_sha256": "348ad75c81bf27d6dbb747f839d17e0740f32c006d9db4f76d6bfe1059e6635d"
+  },
+  {
+   "id": "kernelbook__PSNRLoss_7356.a1.s0",
+   "task": "kernelbook__PSNRLoss_7356",
+   "code_sha256": "be59785ec64557ef94bdb7333b475761dd9b8b19c18fa143d5998acc137b0fb2",
+   "ref_sha256": "ff0d6bd14c0cb9043f0cdbf960105d11a9e28a8279b96043d2b8d7359ba0132d"
+  },
+  {
+   "id": "kernelbook__PreActBlockNoBN_5846.a1.s0",
+   "task": "kernelbook__PreActBlockNoBN_5846",
+   "code_sha256": "a4407892b1ceee05f6b9831df07fc2cbe7a759084d1ee801df95d6731d1884dd",
+   "ref_sha256": "448064a88cdb6ee2e5a36294f95a9993e1ca652d656623852a67cf6010aa02cd"
+  },
+  {
+   "id": "kernelbook__ReduceDim_15580.a1.s0",
+   "task": "kernelbook__ReduceDim_15580",
+   "code_sha256": "3179ead746c17751ec2ace2a221ba8b84b79e25722f0294604cf896222891c5c",
+   "ref_sha256": "f9de071bc09388a77d744b8a35c42da6dc2f413f2cd91f5305437aeeb5c0356b"
+  },
+  {
+   "id": "kernelbook__ResizeConv1d_132.a1.s0",
+   "task": "kernelbook__ResizeConv1d_132",
+   "code_sha256": "3701463f3cfc1b37676c548c2fcad773f9cedeea425ca53584f17aa8e10b2e56",
+   "ref_sha256": "6a2588a0351ab10b1189f321b20a293e60c1da43a882f698c0dcf640209a46c0"
+  },
+  {
+   "id": "kernelbook__SLP_14144.a1.s0",
+   "task": "kernelbook__SLP_14144",
+   "code_sha256": "c147046cdd8819df6d4172d580979c16fd1bc144bba2a07b96aeb72fc5857de3",
+   "ref_sha256": "3120153eaf1fc37df03f37c155c50020cc9cd1c1d7f7121b32672f0152d2f47a"
+  },
+  {
+   "id": "kernelbook__SiamFC_5438.a1.s0",
+   "task": "kernelbook__SiamFC_5438",
+   "code_sha256": "8cdc5af876eed924db2d5722920c58b90f96892f975f2e78b99fa6c921a30626",
+   "ref_sha256": "0595a66b2cc90e6b6b744601de1e96066e74237e1790b4b2d6cb3a36668c3906"
+  },
+  {
+   "id": "kernelbook__SoftGeneratorAttention_2519.a1.s0",
+   "task": "kernelbook__SoftGeneratorAttention_2519",
+   "code_sha256": "1dd2ea6807835c3d4b78d127a7cd001aeaccda8831fdf3e25f0552678259ba05",
+   "ref_sha256": "e3f6a53ead687b1230c44bff157461d4a50b9512c871a6641e0c5942e875fdcb"
+  },
+  {
+   "id": "kernelbook__SpatialAttentionLayer_18244.a1.s0",
+   "task": "kernelbook__SpatialAttentionLayer_18244",
+   "code_sha256": "d586f6333f2253ad2896e6a14ef3f64b911808d62aa56403a49e865db9ac1ca7",
+   "ref_sha256": "f4ceed48ba233f2e2a3a1fe45619107c66e2737d4133f684142ea5c7e10259b5"
+  },
+  {
+   "id": "kernelbook__TimeEncode_18298.a1.s0",
+   "task": "kernelbook__TimeEncode_18298",
+   "code_sha256": "6c80e58bf92486ce2ce709ddefdbb10ec3bca1886c12b2af9a276c94b33e1eec",
+   "ref_sha256": "db1ceb9176656d63b7aff7e7e62d7c8949a46497caab96b312c16ac0c4d081a5"
+  },
+  {
+   "id": "kernelbook__depthwise_separable_conv_7238.a1.s0",
+   "task": "kernelbook__depthwise_separable_conv_7238",
+   "code_sha256": "3050b126bc343e9418254a3b132f1f0c2e83babee1344dd7ef8c93feeec4cfac",
+   "ref_sha256": "26581b1751eb5e8ed161ad776b9988c46411ffb0a75d90a41fae6ce9a8e7841a"
+  }
+ ]
+}

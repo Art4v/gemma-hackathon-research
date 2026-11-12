@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-n1-s6-x3",
+ "owner": "hruday",
+ "step": "kimi-n1-s6-x3",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "1e57b884432885f7dd8a050519fbff659f169844815b1543eb048a2a8a5341b8",
+  "run.sh": "c25efe40545b8ccb149ab73e16c67a8daea721b0542e03ebe5fc4abeb814be75",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN1/kernelbook/moving_avg_17649__scale",
+   "task": "kernelbook__moving_avg_17649__scale",
+   "code_sha256": "80fea5cec0aa61d4ea704060219ef9795987f6bb6f364e76ef1b92a9c68316e8",
+   "ref_sha256": "c7f394ac4d459779dfd53d37c38a62685f283a289b18476c2d2af7e77a433a1e"
+  }
+ ]
+}

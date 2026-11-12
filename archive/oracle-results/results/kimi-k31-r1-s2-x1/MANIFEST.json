@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r1-s2-x1",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s2-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "44184c11b58ca7abcefafbdcf34dca88c77fc915e7329672dace48a49bbf0a91",
+  "run.sh": "f04e62131d5225eaa29d40f29eb65cd8ccdab7dc49371f78a2312cac920a66a5",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kb/l2/30_Gemm_GroupNorm_Hardtanh",
+   "task": "kb__l2__30_Gemm_GroupNorm_Hardtanh",
+   "code_sha256": "025c2b2f70b2e049679110609fab5bc72009b221d308b9c225f2437837ccec13",
+   "ref_sha256": "9561464c56ca1b6a133ee53d3b8d0b3c7a7f6cd62dd20d65c9b4c64e0939ccbd"
+  }
+ ]
+}

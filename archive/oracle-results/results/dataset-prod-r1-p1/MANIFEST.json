@@ -1,0 +1,156 @@
+{
+ "job_id": "dataset-prod-r1-p1",
+ "owner": "aarav",
+ "step": "dataset-prod-r1-p1",
+ "oracle_commit": "6f1808d",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 22,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "161a5528888e2b99ac027f47e629ff1e418517170b18c079bf5b786f1b7f55ba",
+  "run.sh": "cbe75166031ace96649ed32b7dbedb607b1c86ac4bf94cf48b60f8b74f4e7370",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "github__beam_search_step.a1.s0",
+   "task": "github__beam_search_step",
+   "code_sha256": "6116ac55f772fcf04057a61d5762f3a4e0c2e8612a9b9ce510cb8ac4612772a9",
+   "ref_sha256": "d2da37779672fd28400838b2e8b1e9b52b54d36dca1883d665ff070328d7e638"
+  },
+  {
+   "id": "github__bitnet_ternary_bitlinear.a1.s0",
+   "task": "github__bitnet_ternary_bitlinear",
+   "code_sha256": "2a22af1a1641a924dbac9f605951737c2df2e9d99a5022f7edc9ec990c308a61",
+   "ref_sha256": "42604ad3d8164bc8dfdab7abad31edae8a655d7fca9000bdf5f538c5c3916cc4"
+  },
+  {
+   "id": "github__dynamic_conv1d.a1.s0",
+   "task": "github__dynamic_conv1d",
+   "code_sha256": "32be375cc48ec265ac7948166e5cc1795cdbeb8d1b2ee26cc093d6acbec07993",
+   "ref_sha256": "bd5f4d985ed499e0e3562e9bcacc951a384a49dd0bc3ae1a058142c3fc2076f7"
+  },
+  {
+   "id": "github__encodec_residual_vq.a1.s0",
+   "task": "github__encodec_residual_vq",
+   "code_sha256": "3f7fcb6caa8a4237a5f2d9b90f48ed73534a158fd63bc1b06248f8dfd8c03922",
+   "ref_sha256": "c4245e6ef354cca7c0d60f4165ac4cd0623b0debff953cbfe5979375138b7d80"
+  },
+  {
+   "id": "github__fsq_quantizer.a1.s0",
+   "task": "github__fsq_quantizer",
+   "code_sha256": "cd1ce12cd09b753e1f5dd000181712d7e4650f220fb50096e86f0213db961495",
+   "ref_sha256": "62ab48aa564b2fc42e4c4118f8c43eab48854f9c14588c802a5a2588f6ff37ce"
+  },
+  {
+   "id": "github__hadamard_rotation_int4_quant.a1.s0",
+   "task": "github__hadamard_rotation_int4_quant",
+   "code_sha256": "94a09dc091f3511c044ba316c784aa44c2ba54e8e32e9a380df69b38da5e7b9f",
+   "ref_sha256": "a6d4d99cbbaf21e7f0267180e60c9114fd1ae8e9a890773515a046f06f4018b8"
+  },
+  {
+   "id": "github__mesanet_cg_decode.a1.s0",
+   "task": "github__mesanet_cg_decode",
+   "code_sha256": "ee57000e31a993c18cfb854349f8c987b974955ca87f9b001f7793199295140d",
+   "ref_sha256": "edb2ec77a06262fb8abec47fcec65842a696d149b2ecbc9e1970cc74bce2614b"
+  },
+  {
+   "id": "github__multiscale_deformable_attention.a1.s0",
+   "task": "github__multiscale_deformable_attention",
+   "code_sha256": "f75817bee2d77500d1e185a2cba2b071b0c0009c1811ec43f8ecf89297cc19b9",
+   "ref_sha256": "78ff7f7ad4274b399a9d03e2cdd70e8374720f14fb6c12a6d90a83943d5c5dee"
+  },
+  {
+   "id": "github__muon_newton_schulz.a1.s0",
+   "task": "github__muon_newton_schulz",
+   "code_sha256": "4d4302f9b3b2675ddb7498b7fdbdb02cf237fdd4b28d8d36305acf6f2f7b6778",
+   "ref_sha256": "5f381e032b4365d5642955b4240759b52d97847428451cc21c43a125081b047c"
+  },
+  {
+   "id": "github__siglip_sigmoid_contrastive_loss.a1.s0",
+   "task": "github__siglip_sigmoid_contrastive_loss",
+   "code_sha256": "61cf070204678b3fe24bd011d61b367ec8926ab1ab6255d20077d756522e1df5",
+   "ref_sha256": "bb07017f56b62eb224fd6953fe6bd538daf8260627951d4e31395f66e738175e"
+  },
+  {
+   "id": "github__soft_moe.a1.s0",
+   "task": "github__soft_moe",
+   "code_sha256": "0be5945d1919472834d7f603b4f35c6eed82cbbf7fd2fd6db3e5fa5f5919f78e",
+   "ref_sha256": "a635890144e6951edc8f5b4bfbe880ec672a8039698fa07470ae9569e3a84cfe"
+  },
+  {
+   "id": "github__sparsemax.a1.s0",
+   "task": "github__sparsemax",
+   "code_sha256": "09ca4686e8b7a997fb5f917a31c8757fb98694647e639ff633d85f14fd9fa533",
+   "ref_sha256": "50c43a761f4fdf42e21b42df88af5d6e7946393d6eeff8c19339ed36ef571f0f"
+  },
+  {
+   "id": "github__stickbreaking_attention.a1.s0",
+   "task": "github__stickbreaking_attention",
+   "code_sha256": "b9d30a123f90be96b82dea91642d6f77b54033a95d1b4ff44c671a5e36fcd23a",
+   "ref_sha256": "08a2d24c4700fcad08375091c835a28eaacfefbc155d8d905479106f189c07a3"
+  },
+  {
+   "id": "github__wav2vec2_product_quantizer.a1.s0",
+   "task": "github__wav2vec2_product_quantizer",
+   "code_sha256": "a2a7c644f264c979976633b9a98b294a4f11ca4df3c6e775de3f3e104736e2c1",
+   "ref_sha256": "1c0c9dc0467be48fc92cba566652fcceedbfbe039ccc464b59676cc5bab5f647"
+  },
+  {
+   "id": "github__yarn_rope_partial.a1.s0",
+   "task": "github__yarn_rope_partial",
+   "code_sha256": "21593b65f22dfac93533363578f2ce8742f3451978b7b926db098161ec4b2295",
+   "ref_sha256": "7f183dfcd855190a815f572b95bbc3decbf8330327a2f11208c761520330df38"
+  },
+  {
+   "id": "kernelbook__aft_full.a1.s0",
+   "task": "kernelbook__aft_full",
+   "code_sha256": "458f33c07990fecac2ee9fc4265471ccdaf709d3226ce33275e511b90ae67fdb",
+   "ref_sha256": "694d8cdc5ec480d0c2d29b09bd82390cb738567403764c126e82bf9e47e454d2"
+  },
+  {
+   "id": "kernelbook__average_attention_network.a1.s0",
+   "task": "kernelbook__average_attention_network",
+   "code_sha256": "99dcad8442f6eff33c56e00502d40c6238def43c31db95add8535211d0c7e619",
+   "ref_sha256": "f2957893c7dbdc8a0d284a188399d3e1589e0f423ef9f5edde68fd28b22f2938"
+  },
+  {
+   "id": "kernelbook__batch_hard_triplet_loss.a1.s0",
+   "task": "kernelbook__batch_hard_triplet_loss",
+   "code_sha256": "b10790714a7a6ceff25d105d6e81eb8bf6b21572ee326d6f5704b07b078cef3d",
+   "ref_sha256": "7e2098cb94219e63a050c0bdcba3612193ff90d707e1fb066a76c350a1f83755"
+  },
+  {
+   "id": "kernelbook__capsule_dynamic_routing.a1.s0",
+   "task": "kernelbook__capsule_dynamic_routing",
+   "code_sha256": "a5207c3377950d456e1e67cda52d54ce1fee7ed64371aeb12586cd9dd610b1af",
+   "ref_sha256": "8e0646e08fa0ed3f316223595c8709d4eb28877973ca9bca635b64295dbcd648"
+  },
+  {
+   "id": "kernelbook__circle_loss.a1.s0",
+   "task": "kernelbook__circle_loss",
+   "code_sha256": "b9c97e5ca90df923e7daf734470d09c4a28d757f3927e0e602240540ae7b2b77",
+   "ref_sha256": "3e94b874ec8c921db3c9b3320596162345069fcc632aadaf96c58fffadce4e21"
+  },
+  {
+   "id": "kernelbook__efficient_attention_softmax_kernel.a1.s0",
+   "task": "kernelbook__efficient_attention_softmax_kernel",
+   "code_sha256": "008b21d8933d4b3257703bd28b981828e8b0767c331213518f320fe6eaaf7205",
+   "ref_sha256": "ecc3814da6b1dcdbd198d3c88c6a814d3115e30ee9a33eada964b6a7cad36a67"
+  },
+  {
+   "id": "kernelbook__mixture_of_attention_heads_gate.a1.s0",
+   "task": "kernelbook__mixture_of_attention_heads_gate",
+   "code_sha256": "ace4e437d19ce121de1dc868b8a4d932cdc78f6d835daac6269dc2ddfe91fe05",
+   "ref_sha256": "624878e733d61b8777463fb7adef8e0b101933e109a6b7d4ff5ab7be3e30782f"
+  }
+ ]
+}

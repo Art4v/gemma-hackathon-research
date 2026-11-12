@@ -1,0 +1,720 @@
+{
+ "job_id": "dataset-kbk-r1a2-p1",
+ "owner": "aarav",
+ "step": "dataset-kbk-r1a2-p1",
+ "oracle_commit": "24c3904",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 116,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "fa2e921734c327ccf200f0b4f758a9af39ca94d00bf34bafebfad981651c0b2f",
+  "run.sh": "519bc571c56dfa19913d28852390f686ca9a40a4aef8ab24f5f9e816cf7fdcf8",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__ConstractiveLoss_15791.a1.s0",
+   "task": "kernelbook__ConstractiveLoss_15791",
+   "code_sha256": "ad53e813c859c69b2fa36b98967898fdcdcaf28bc108436f2793f078ad4e46de",
+   "ref_sha256": "24cb250ceb4b97b25f7263307f69ac19340f94bdbcb248023cf453464897191e"
+  },
+  {
+   "id": "kernelbook__CnnViewModel_3186.a1.s0",
+   "task": "kernelbook__CnnViewModel_3186",
+   "code_sha256": "61cf403465ec2cdd6283d0e4b318029e44a1739edb8f92f73f25da16abd97cec",
+   "ref_sha256": "cab0f7b1ae54d071e9db35e8b5a16d037f4bbb768244e84979b3bbffb509954f"
+  },
+  {
+   "id": "kernelbook__ClampExp_10770.a1.s0",
+   "task": "kernelbook__ClampExp_10770",
+   "code_sha256": "67e10c56416ca911b3d10b1d71b0886379dceb6bb1e5d1c76b3cc661e79683a7",
+   "ref_sha256": "e7bf27bea0549f09b862f920db62cf69a2e82eaff88ceb1efe301776ad0c237d"
+  },
+  {
+   "id": "kernelbook__ConcatAvgMaxPooling_5794.a1.s0",
+   "task": "kernelbook__ConcatAvgMaxPooling_5794",
+   "code_sha256": "082c68ccf103b509a1e7707dc14ecd3511b937892a85b3a8c4c4e16f4728fa6e",
+   "ref_sha256": "63d59559ebc7d51f4e2229c7510c3953907a332bc41acff98921b6cc00567b64"
+  },
+  {
+   "id": "kernelbook__ChannelAttention_3965.a1.s0",
+   "task": "kernelbook__ChannelAttention_3965",
+   "code_sha256": "fcd41b97ad014f44def1cabbcbaaf140e31f8f04d3d3392691b6d757f69afb28",
+   "ref_sha256": "b569884e2a0bacf57d8ee89e469d03a9c2fcd645e1a79214379118e4c681459c"
+  },
+  {
+   "id": "kernelbook__ChannelPool_8251.a1.s0",
+   "task": "kernelbook__ChannelPool_8251",
+   "code_sha256": "247790a4d7c83d0eb1203d21bfd80ea6c9fe22378d185d2b6b09f76769e127f0",
+   "ref_sha256": "17d40fd7a947e5e6267a93974ffd82752ca37501295fbeae74aac164a875c021"
+  },
+  {
+   "id": "kernelbook__CharbonnierLoss_8288.a1.s0",
+   "task": "kernelbook__CharbonnierLoss_8288",
+   "code_sha256": "a98a16b5682ab4832e5a4236c15eb72d4a325f1be967371fe47282510012de43",
+   "ref_sha256": "a2195b6a571a8f3452b869dab6112370547a0f9c0662e211925e27107f178192"
+  },
+  {
+   "id": "kernelbook__ChannelPool_112.a1.s0",
+   "task": "kernelbook__ChannelPool_112",
+   "code_sha256": "d41dad32c056900d56d650f08bb943f8db0fd08cfdac9fccf5e82b39a371e456",
+   "ref_sha256": "6a45687c6672234959934fee65ae127d8b59061c70c4cd4d1b9a48861366dc3b"
+  },
+  {
+   "id": "kernelbook__DIAYNActionModel_14260.a1.s0",
+   "task": "kernelbook__DIAYNActionModel_14260",
+   "code_sha256": "a1e450324fb38a67f7891ea71e7537dc5893e6a1d6498df85ac3bb86b9ec9bc1",
+   "ref_sha256": "64e32da078fbd9d04ee87dbe9514fa43b52ab37f6785aee927246f9a2c667225"
+  },
+  {
+   "id": "kernelbook__DECLoss_368.a1.s0",
+   "task": "kernelbook__DECLoss_368",
+   "code_sha256": "0ce35f7f1fbc75b0673cb1f9caa80fb3b0d3aed8a5ed082a804b9ea1fb5edf76",
+   "ref_sha256": "ff3ce3ff7c6afb5fd552358ecaef4044aafe5eaebf57ace1284961488a20b730"
+  },
+  {
+   "id": "kernelbook__CoordConv_2416.a1.s0",
+   "task": "kernelbook__CoordConv_2416",
+   "code_sha256": "0e9db4fd620f990d939620702c4548f0f3af05e40388155d8493a023345baf2a",
+   "ref_sha256": "ea2dbf474eb4752213f973a6fea2f8ca3bf437e4e0da010f7ade0a6b60ffbe8c"
+  },
+  {
+   "id": "kernelbook__CriticNet_1789.a1.s0",
+   "task": "kernelbook__CriticNet_1789",
+   "code_sha256": "547ce75c68058b794cd92591b70a538e13e9fee48af9fc69a6dd80e0aa99eba3",
+   "ref_sha256": "8d51af295f7de4502182bbd57c464939bced7aa3f454ea73195b8f891a413c48"
+  },
+  {
+   "id": "kernelbook__ContrastiveLoss_4327.a1.s0",
+   "task": "kernelbook__ContrastiveLoss_4327",
+   "code_sha256": "31e521b87f53a8d21277f301e2130ac23147e8ae0ffbcc29cdb7cc3c06576b34",
+   "ref_sha256": "51d4637ec4ee1e29097305c985ea9d89b7d589c9483875d84d749de359580d06"
+  },
+  {
+   "id": "kernelbook__DCT_1372.a1.s0",
+   "task": "kernelbook__DCT_1372",
+   "code_sha256": "92bf9650025b1e37b1c17dba95ede1f86c09aa3c498330f5f3c46b23676ec502",
+   "ref_sha256": "3c77c3b3847626522217f5f22de1ceb2c3f38c87a117d36a69e7df348f0f5273"
+  },
+  {
+   "id": "kernelbook__ConvModel_3894.a1.s0",
+   "task": "kernelbook__ConvModel_3894",
+   "code_sha256": "80467ce6801904e84675bac73ba377089523bd0dee12643735f655e8b40227c8",
+   "ref_sha256": "0b053afd95642c81287e8b143b60d7c791d8fe2f0e0a8a555682e8b6a3a6a8fa"
+  },
+  {
+   "id": "kernelbook__ConvBlock_6744.a1.s0",
+   "task": "kernelbook__ConvBlock_6744",
+   "code_sha256": "5379f7373551d55b6a519b5b778154355c60d773e71bb4306d8ed0752d57b0af",
+   "ref_sha256": "9e7b2243ff01cc437b61bc412affdb9ef062ff65b2fe73017ab93e5326fdeefb"
+  },
+  {
+   "id": "kernelbook__Conv_ReLU_Block_13160.a1.s0",
+   "task": "kernelbook__Conv_ReLU_Block_13160",
+   "code_sha256": "30283728e08d0ba8190d334eaa99c01607dd719029215b7d115ae282e5255e64",
+   "ref_sha256": "e8e6e07fd08575d098208fe6c4e86d9dc17bdf2bfe2cd3330574b457913a23d8"
+  },
+  {
+   "id": "kernelbook__Critic_5653.a1.s0",
+   "task": "kernelbook__Critic_5653",
+   "code_sha256": "d7e277801c67d1b107880814478c30e26419b3e4b5d4b4419fc9a4a2c8a88b2b",
+   "ref_sha256": "bf00f256a905081d44193337122842e2adf8a58e2e9fd7b478a6ae61aca9415d"
+  },
+  {
+   "id": "kernelbook__Conv2dTransposeBlock_7928.a1.s0",
+   "task": "kernelbook__Conv2dTransposeBlock_7928",
+   "code_sha256": "ae2d482e6e25ad6cc4fe6e16418358f5980360813fa4d2afca9566c1c22a5a47",
+   "ref_sha256": "0eca9d40c574e9aa9260a317a1d307e79c6ba97e9e2c41be9315e11b48184137"
+  },
+  {
+   "id": "kernelbook__Copy_2209.a1.s0",
+   "task": "kernelbook__Copy_2209",
+   "code_sha256": "f289da835e4cdc545a47ed56dccc2d95ab430c4d675748af41a3ede4f1d377ba",
+   "ref_sha256": "ca62d8f79af9cae2bef580098cb0fcbfae3dca5d77b349845034cc1c531e72aa"
+  },
+  {
+   "id": "kernelbook__Dice_5301.a1.s0",
+   "task": "kernelbook__Dice_5301",
+   "code_sha256": "e1c404eb203f84982de1d608eab27e121c51ec55ed150dabda192a8d6933fa15",
+   "ref_sha256": "0a2df6d1dd2a856319e75d818e1688eb137c8385cceb6630b3068c249a39df28"
+  },
+  {
+   "id": "kernelbook__DiceBCELoss_9988.a1.s0",
+   "task": "kernelbook__DiceBCELoss_9988",
+   "code_sha256": "31d9d38d310cb45172ca7e05320fb39b8dcdc40753d83ff923849f1056692628",
+   "ref_sha256": "ea2cc65810e159ac8c6c5faa3a6ddf6bb66ad5daff9025abdb32ef88937491dd"
+  },
+  {
+   "id": "kernelbook__DataProcessor_15684.a1.s0",
+   "task": "kernelbook__DataProcessor_15684",
+   "code_sha256": "b6e56bc44875e7634b4fcd5ad27a7ac96fbed2c71399d1ea935d0bfb3d44f39e",
+   "ref_sha256": "ea6f398f3a99b13d0964676307314ee92e46784e72588522d8bca457397a892c"
+  },
+  {
+   "id": "kernelbook__Differencial_SMAPE_7462.a1.s0",
+   "task": "kernelbook__Differencial_SMAPE_7462",
+   "code_sha256": "8898d7599d1aacac6e9ac24532f925dda2a22a35c1638c5a3aaad0539a12681c",
+   "ref_sha256": "8b7bd3724803f86901de750f4421e39e4d069a4c6a14cd24b355a9cc84f76434"
+  },
+  {
+   "id": "kernelbook__DiceLoss_11039.a1.s0",
+   "task": "kernelbook__DiceLoss_11039",
+   "code_sha256": "f57f3c10b00b4cea7538a15ad8883983de4ad227315baabb334603843004b96a",
+   "ref_sha256": "38b70ad008061ecc353f0d97a93afc861e58a23bc0745a34ce990000fd1c4d5e"
+  },
+  {
+   "id": "kernelbook__Discriminator_1246.a1.s0",
+   "task": "kernelbook__Discriminator_1246",
+   "code_sha256": "ef225eda8c4311b2a8b3d0012eebb58b65894ad1d014022e926f2653f316da91",
+   "ref_sha256": "fbbb14cfec509a569a49e6af61c1f33911445d10df78a24b96455cc196de30f0"
+  },
+  {
+   "id": "kernelbook__DenseSAGEConv_7964.a1.s0",
+   "task": "kernelbook__DenseSAGEConv_7964",
+   "code_sha256": "e5953e40ecd8f403ddb1c6e0e6b31232f07f3af580693511f03c43df07470e2c",
+   "ref_sha256": "6146e973f4113a5d486ce9a2f65fb72ed39789e8c76a7cf1df1408d5a86754e8"
+  },
+  {
+   "id": "kernelbook__DenseSAGEConv_1831.a1.s0",
+   "task": "kernelbook__DenseSAGEConv_1831",
+   "code_sha256": "77dadf8f5449378cc4aa81cff4efb957a023dc0b593ef4500cd0a7c1eb5376c1",
+   "ref_sha256": "cfd624135d96858fb4c856378bcdb0627b509f6af938c8d39d02cabfbfcd667b"
+  },
+  {
+   "id": "kernelbook__DiscriminatorLoss_6129.a1.s0",
+   "task": "kernelbook__DiscriminatorLoss_6129",
+   "code_sha256": "651934d1c7fb2719727c21309c819d79cb8d8d86a4cc5db29a07b7711cb6ee5e",
+   "ref_sha256": "03606aba6d6cf1740f53004dfafc528e3f2bd4c19371edd756e1534464431ea6"
+  },
+  {
+   "id": "kernelbook__DQN_hot4_17173.a1.s0",
+   "task": "kernelbook__DQN_hot4_17173",
+   "code_sha256": "e98b9f715fb8fbda6056c012df73cf7c8f291a7008e20fff9e1cd22e3d6fc389",
+   "ref_sha256": "d8558027d7e88c6f4a9a2e0d6b12cb0f9817cb802c6e6dcd27af1b3705423972"
+  },
+  {
+   "id": "kernelbook__DilatedResidualLayer_8122.a1.s0",
+   "task": "kernelbook__DilatedResidualLayer_8122",
+   "code_sha256": "136a211392fc0eecbdb64a8d9e042c4dbea70e25e260a5569652369fc9a1d34a",
+   "ref_sha256": "025c93b84f2a77948c5cb6886ea9628ffe9fe206301aca512eb1f98da28a22fe"
+  },
+  {
+   "id": "kernelbook__Decoder_31.a1.s0",
+   "task": "kernelbook__Decoder_31",
+   "code_sha256": "4b66b2b7d51d01750a81a5804623c93b02b1a2442b57fa5703e8d758f5ccfde8",
+   "ref_sha256": "151aad9aba00a37927aefa5f4314332b13069f7f8678b33a25fccf95e409fc29"
+  },
+  {
+   "id": "kernelbook__FCNet_17088.a1.s0",
+   "task": "kernelbook__FCNet_17088",
+   "code_sha256": "209b42571ccae18b4b95c07cbf6a2ecb7dcebce7e3ff69cf1bcee8e86e205e7b",
+   "ref_sha256": "c114ca7048118e82efce4b116a950df8d8c5734765e3dab35c2b98547fce5e30"
+  },
+  {
+   "id": "kernelbook__FC_Q_12199.a1.s0",
+   "task": "kernelbook__FC_Q_12199",
+   "code_sha256": "f747e22f1b3b00c2bccced5afb78cdf67c19a05582db8ee9d8a319e7b1e850ab",
+   "ref_sha256": "0e91f2a05fb16c8f1e48c8c49da53e94be0762717ce1e9a25ce0d1c3c1f3ef0a"
+  },
+  {
+   "id": "kernelbook__FBetaLoss_10729.a1.s0",
+   "task": "kernelbook__FBetaLoss_10729",
+   "code_sha256": "e76d1c51786ae437f88c1d6373a4bacdd19b0cc300da5b5391b3d93db1d2f171",
+   "ref_sha256": "28f254597d1ad8932fcc035613d8dfbd1991c73f7d076c5f460890c2e8a5e03d"
+  },
+  {
+   "id": "kernelbook__EncModel_2849.a1.s0",
+   "task": "kernelbook__EncModel_2849",
+   "code_sha256": "d071238f3c34f8a9fd36846cf7762b9586268b95c015791cf4f34236a8af343f",
+   "ref_sha256": "d01db7b3266c21f4a7e2ddf05eda7ee997df7b27c7e702153025b970658fa7d5"
+  },
+  {
+   "id": "kernelbook__DistilledLoss_17311.a1.s0",
+   "task": "kernelbook__DistilledLoss_17311",
+   "code_sha256": "3ae6e5da04eafdd23b4b014bfac4174139b03c1ab1362c8e831dbc4ff3803f2f",
+   "ref_sha256": "d58287be405dace076caf12d548c4c0b65bd93c5ed8e6115147ba5b512b2f186"
+  },
+  {
+   "id": "kernelbook__DupCNN2_12006.a1.s0",
+   "task": "kernelbook__DupCNN2_12006",
+   "code_sha256": "8295d5a923a775eb7bc118ea56a3e2ddd3a4bb1d21d9a45f3f7e7050dcc887d4",
+   "ref_sha256": "07b2e862b39a169f548282e3307f14aa0c98cf91ae08376c3e4365d9b72952a9"
+  },
+  {
+   "id": "kernelbook__FFN_7153.a1.s0",
+   "task": "kernelbook__FFN_7153",
+   "code_sha256": "658372a991bff1509f7625bd7e916694010d81b966b7ec447c60b7203a59b31f",
+   "ref_sha256": "f904925ebe06433c21d22ccf953e37798b6bffec0baae0b4834d7ea2fc831e1e"
+  },
+  {
+   "id": "kernelbook__FGFunction_868.a1.s0",
+   "task": "kernelbook__FGFunction_868",
+   "code_sha256": "c6b7c2b6b00239375ada201624b347e65f852ea49aff8ecbf02c95da344ac7b4",
+   "ref_sha256": "bcad58b044f3bd1a9d576d629951d3cba94960c82c680102b121279ab5b8c6c2"
+  },
+  {
+   "id": "kernelbook__DuelDQNet_1507.a1.s0",
+   "task": "kernelbook__DuelDQNet_1507",
+   "code_sha256": "a880ce0bed71ea27faf0aae2016f371302b49ca01cabfc382b12d152ef1152ce",
+   "ref_sha256": "82d5a76ced04eafb26ff77b325ea81fb92df6a3683ce5b9be7052bca3ecc0637"
+  },
+  {
+   "id": "kernelbook__DownsampleB_15452.a1.s0",
+   "task": "kernelbook__DownsampleB_15452",
+   "code_sha256": "27a535b80f0c5044d55f743987e6ef8e269a83a44c90f1540ced81b36b3cbab7",
+   "ref_sha256": "94a6a326eb461224ed923dca9264f1687c3c176c330e5e9de48b931d67d37f5c"
+  },
+  {
+   "id": "kernelbook__EqualConv2dSame_8020.a1.s0",
+   "task": "kernelbook__EqualConv2dSame_8020",
+   "code_sha256": "ad32c92380376aa455bce858eb637d12219d8d6dd101ca3c56b38e1f82b49827",
+   "ref_sha256": "b7ad2e04b9c492a7148f630b99545d2896a3d848c9d7c62540e8c90226c0eca4"
+  },
+  {
+   "id": "kernelbook__FCDiscriminator_14426.a1.s0",
+   "task": "kernelbook__FCDiscriminator_14426",
+   "code_sha256": "6eae379eb082fec64ec703f72763fe429de484b1851c787d03256e1c5f376f1f",
+   "ref_sha256": "4734b7aad46e5c122fafb8b6977c37e6b4daec7a4d451aec641fcbe899bac20d"
+  },
+  {
+   "id": "kernelbook__GaborConstraint_15318.a1.s0",
+   "task": "kernelbook__GaborConstraint_15318",
+   "code_sha256": "2ab80b4b294505288e462390b83cf6bfaa79680d9422d4d0b0ba5894612f7635",
+   "ref_sha256": "2bbe052112eea315be7c27974f12cf767813653e512b811f0919c79f6b0d35ed"
+  },
+  {
+   "id": "kernelbook__GatedConvTranspose_736.a1.s0",
+   "task": "kernelbook__GatedConvTranspose_736",
+   "code_sha256": "7583245354c4a0ac73c2d5164a3996aef062719d1905fa8515ae37435700b175",
+   "ref_sha256": "fbcca30993343df0c9aee6fe09cdef0d154758b53369ff1732068235a739523d"
+  },
+  {
+   "id": "kernelbook__FilterResponseNorm_3200.a1.s0",
+   "task": "kernelbook__FilterResponseNorm_3200",
+   "code_sha256": "3b389a78cddf8e0f5f243148c51ca53428d9def04635857c42fdda46182aee01",
+   "ref_sha256": "e7b8ea36ec428c6756cc5087e4e76022a63f0452c7ba9d01ceb43ceea0cc3992"
+  },
+  {
+   "id": "kernelbook__FeatureDiscriminator_17427.a1.s0",
+   "task": "kernelbook__FeatureDiscriminator_17427",
+   "code_sha256": "577d3322b33477e3b5444e190443bb77328bc93ff75d5dae2f6e06f658d95bda",
+   "ref_sha256": "9e255e382a91373e7d080e3726cec874a8cccb16ffcd9fc359317c61563e27d9"
+  },
+  {
+   "id": "kernelbook__Fp32GroupNorm_263.a1.s0",
+   "task": "kernelbook__Fp32GroupNorm_263",
+   "code_sha256": "0fe259f128d23fe7aa55bf11abaaf5bc8ef5eeaf486261ba4ad61794f5bd232f",
+   "ref_sha256": "8212dad6166687b304f561355947a1f84588c9621f8c54bc6e7dd85837e53d9e"
+  },
+  {
+   "id": "kernelbook__FeatClassifier_12886.a1.s0",
+   "task": "kernelbook__FeatClassifier_12886",
+   "code_sha256": "0835641b02f23bfa7cbf4c46a36d6eec8db25808f1905c1c64ad091372ff25d8",
+   "ref_sha256": "2908f5b82ef8d3f62326087a3e36eac6a590ed4e580f74709c0e3e70c8cc375b"
+  },
+  {
+   "id": "kernelbook__FocalTiLoss_11047.a1.s0",
+   "task": "kernelbook__FocalTiLoss_11047",
+   "code_sha256": "8f27ed1727f8926ca6ccc50051475e7f45b83cc068c0fdd0518476df1188a938",
+   "ref_sha256": "400a9e5e9eb5e8ce5be3c0275314e06c3778d4cfe0b8e0fe664dd0e04c7e7350"
+  },
+  {
+   "id": "kernelbook__FlowfieldDiscountedLoss_8036.a1.s0",
+   "task": "kernelbook__FlowfieldDiscountedLoss_8036",
+   "code_sha256": "75194a95e16121efa6660a9c0b5db391e33df980e5a9487afc212a5ab8dbabdd",
+   "ref_sha256": "15a7043fa8c95a16a1190e01a84b1e49852e565b215d4189fc0b0f03afbd0d7e"
+  },
+  {
+   "id": "kernelbook__FusedUpsample_8450.a1.s0",
+   "task": "kernelbook__FusedUpsample_8450",
+   "code_sha256": "4b6e1b2d6575c6b9ce76938925d3a7158d03e00d7c5b70237604d7230d7c83c7",
+   "ref_sha256": "5556cd34df6cbfe2386b07731e97ad32c03211148470566e424547b73a86eb44"
+  },
+  {
+   "id": "kernelbook__GELU_4334.a1.s0",
+   "task": "kernelbook__GELU_4334",
+   "code_sha256": "3ee2f4a5a6d161a0b6615d4072c6ff5072bc301ebd55ab1a314cf8ea3c95f46d",
+   "ref_sha256": "202c6631c0d2f07bd93a04c0f897c7ec3d0c81af384d88d282ca66a1b39ca049"
+  },
+  {
+   "id": "kernelbook__GDiceLossV2_6295.a1.s0",
+   "task": "kernelbook__GDiceLossV2_6295",
+   "code_sha256": "0f30be87623e0143f7f0f8d13a6214557ce25452800219dc48f46b470e8c6cfd",
+   "ref_sha256": "bdfe7d694aba1765da4f569334d849fa4a4da070adad9709ddaf96d2232251a6"
+  },
+  {
+   "id": "kernelbook__GRUCell_17050.a1.s0",
+   "task": "kernelbook__GRUCell_17050",
+   "code_sha256": "953dc2895a7ad3652ca4f950bf6e9abd68fe3acf97f68d1daa6040c989ecd8e7",
+   "ref_sha256": "f65f0b132bb7ff6270fff18da8f43f1b7973fcc610d456646bc15f2118b25d6a"
+  },
+  {
+   "id": "kernelbook__Generative_Model_10069.a1.s0",
+   "task": "kernelbook__Generative_Model_10069",
+   "code_sha256": "064bd3a5a5d90ea3e303843f67245b9ec6f99301b0f0791af648ab056bae0170",
+   "ref_sha256": "9d3af2bd9613ad03e5fa02ceddd93f0f78419b369502a08b16f12686a603a5fb"
+  },
+  {
+   "id": "kernelbook__GroupScaling1D_73.a1.s0",
+   "task": "kernelbook__GroupScaling1D_73",
+   "code_sha256": "6c2731fa04b737e87fd9c827c6c75d198d6bb55785e3d1c2a3dc5950c35a0eb6",
+   "ref_sha256": "f704998fcca3228e2ed3ea533551c3843f833602f69eafc6eca79834b1fc36f9"
+  },
+  {
+   "id": "kernelbook__GeM_499.a1.s0",
+   "task": "kernelbook__GeM_499",
+   "code_sha256": "33aba47e6b6eff51dd041af03cb3bb9897aff47c276ca35c3ac30e9b9765ffc0",
+   "ref_sha256": "a059c4bb07a23010b664ac9a914cbb1ee99519099f0f1e37ca09e7e76fc8f0a3"
+  },
+  {
+   "id": "kernelbook__GeometricMean_1127.a1.s0",
+   "task": "kernelbook__GeometricMean_1127",
+   "code_sha256": "e854a6432cbd7968e996c0fbc5713812350c450beb7bf35f8560fb3f7c55c594",
+   "ref_sha256": "e4202aeb35e758aa9325e19ac4762e51bf5c649bd668aa84a68646cbfcd13e69"
+  },
+  {
+   "id": "kernelbook__GaussianParamNet_4116.a1.s0",
+   "task": "kernelbook__GaussianParamNet_4116",
+   "code_sha256": "25e6609bbc92096b7efe22fbd547a4eae75c4056ce3537af9d0fe0fb6b44f10f",
+   "ref_sha256": "1c3bc2f44701b7bd44848fce13e0c2fe4a03cd8c349dbb98d7a7c2549414d934"
+  },
+  {
+   "id": "kernelbook__HessianResp_16321.a1.s0",
+   "task": "kernelbook__HessianResp_16321",
+   "code_sha256": "5818088c8be3582606ef18edfaca89f684388088baa0fd7406842ede35ba9e9a",
+   "ref_sha256": "2b2296b31bb248d2dc27dc0ec01a56197c1b29439cb98e3e72671dd05318bd62"
+  },
+  {
+   "id": "kernelbook__Highway_2434.a1.s0",
+   "task": "kernelbook__Highway_2434",
+   "code_sha256": "5747651eed6187e8ec42298420241f58eb1e951fcd3a9330601c22ec7e07cc78",
+   "ref_sha256": "559ed016e3a1ae8e868a347f03c93509dcf13f3ff9295125f760628d8affd969"
+  },
+  {
+   "id": "kernelbook__GlobalAttention_2860.a1.s0",
+   "task": "kernelbook__GlobalAttention_2860",
+   "code_sha256": "a18eea0c192065f3a8b845f9f607186a71008f77c8b98e3ef52f89a65191c7db",
+   "ref_sha256": "8d85a22249ebf8df887511292f4bed97e8040957f7b60a00920580103d5eb9ac"
+  },
+  {
+   "id": "kernelbook__GaussActivation_6544.a1.s0",
+   "task": "kernelbook__GaussActivation_6544",
+   "code_sha256": "d434761476fa8ff4b8957d9d9209f0ae8150092ba36c4ff50fd9ebeb79da5f7a",
+   "ref_sha256": "5b59a237d9ba630505cc9e5d3d3e9efd3e0f4a217dbb5562746f0dd36d986dde"
+  },
+  {
+   "id": "kernelbook__GaussianSmearing_1703.a1.s0",
+   "task": "kernelbook__GaussianSmearing_1703",
+   "code_sha256": "feba2eda97f73b74e4a1342493b4390fe7d55725ca70fed3de1334899e17f7eb",
+   "ref_sha256": "5d36ff8d053b686fc0d1ebd023f51dd5973c93b730dfcd81c4422509df23702b"
+  },
+  {
+   "id": "kernelbook__GlobalWeightedAvgPool2d_6599.a1.s0",
+   "task": "kernelbook__GlobalWeightedAvgPool2d_6599",
+   "code_sha256": "15e234d4ba7d6a7663adc4eba926ced89b1885d19c4b7766850f868ce514dd31",
+   "ref_sha256": "95a3a513e2129ba3cda5eb60b9f9691e8c17c09c68197cf71685c5ed12ea6842"
+  },
+  {
+   "id": "kernelbook__HighwayLayer_8017.a1.s0",
+   "task": "kernelbook__HighwayLayer_8017",
+   "code_sha256": "f030538895973aaea831ff9529829d51469c1167f900a370c628594fc5045603",
+   "ref_sha256": "a3bf80ac11037b0e062959f2e7e5ab2ecb7634501625781e7b8ea56fddb5a1ad"
+  },
+  {
+   "id": "kernelbook__JointBoneLoss_14395.a1.s0",
+   "task": "kernelbook__JointBoneLoss_14395",
+   "code_sha256": "e4f2963fba5299e2f991d301b512a2120aa53e5fef883f27a54aa52be5ba921b",
+   "ref_sha256": "086c275f583864b74a0c2ad41477b39f545ac5fadf9d40b453eb34b609c797c8"
+  },
+  {
+   "id": "kernelbook__KeypointsMSESmoothLoss_16762.a1.s0",
+   "task": "kernelbook__KeypointsMSESmoothLoss_16762",
+   "code_sha256": "a8e4e0b3e0df15ea06a05ab36a4fc6bbf7c3a627fd9f81171d572918f232e082",
+   "ref_sha256": "14afb0643ca55ae2fdb55cb9c33f05712dbae15dc1d8b641ab537e5d59032e4c"
+  },
+  {
+   "id": "kernelbook__Hsigmoid_8048.a1.s0",
+   "task": "kernelbook__Hsigmoid_8048",
+   "code_sha256": "1b6813dd6ce1c174e15ff9848d153d60ba940ad4d093d1bbbce90b81fe6e461b",
+   "ref_sha256": "a7d3c6788f991e5439703c732645c01d9b289aa9fadaa3075303b7dd6e3b447d"
+  },
+  {
+   "id": "kernelbook__LNN_2986.a1.s0",
+   "task": "kernelbook__LNN_2986",
+   "code_sha256": "8f30e6af1380fe7c61dd74efbfa42bd98e4da82062d8dc8d47323f88c8a52e0d",
+   "ref_sha256": "1a5708920946f17f4ce3ca7726cee18616ab94b5d527f6a1089620f77b9ccdc5"
+  },
+  {
+   "id": "kernelbook__LDEPooling_6681.a1.s0",
+   "task": "kernelbook__LDEPooling_6681",
+   "code_sha256": "af6bc38b42b0c18c8a7425979c9feafbaa61622d817096999f782be9f04a7cee",
+   "ref_sha256": "f105ddfd84ad1ff97ba75977bf354297e15699606b73b963bba7c1cbc2118ac0"
+  },
+  {
+   "id": "kernelbook__L1Part_2362.a1.s0",
+   "task": "kernelbook__L1Part_2362",
+   "code_sha256": "e79772d3fdc5eade1d8f90ffd65948f2fb68beb150199eb6b6d570301e1cb118",
+   "ref_sha256": "1027e39b4b1d3d4417f635e4d6583e28dda5240466f589e486c43daa122b902a"
+  },
+  {
+   "id": "kernelbook__KLLoss_12819.a1.s0",
+   "task": "kernelbook__KLLoss_12819",
+   "code_sha256": "54c41d443de02e508ce23273bd2dde31504b3d2b4bd72b62842d855abf79efeb",
+   "ref_sha256": "5afb8f247ac8cfa5770de11348133772adebae4d1271164028a2b07456518291"
+  },
+  {
+   "id": "kernelbook__IdentityPadding_10476.a1.s0",
+   "task": "kernelbook__IdentityPadding_10476",
+   "code_sha256": "5622af2fd4dd13f1b25d980bea19ca362b42bf96756271b1aa6ae51a39af0e6a",
+   "ref_sha256": "fc1ebfe79c44edb03ef51279c10ea26def74fd055249347e43bcc6997824ccbf"
+  },
+  {
+   "id": "kernelbook__ImagenetNorm_6975.a1.s0",
+   "task": "kernelbook__ImagenetNorm_6975",
+   "code_sha256": "93b6770a1ef3e6d3f65f8ccabc5724ee6e09569880711a4011469f6a1bcaa56e",
+   "ref_sha256": "526ad6f472dd3d852f8e138f9d7d31a4717409df5b2c95277777a7f7e1e7d021"
+  },
+  {
+   "id": "kernelbook__L1_Charbonnier_loss_6002.a1.s0",
+   "task": "kernelbook__L1_Charbonnier_loss_6002",
+   "code_sha256": "f0a78514fb2265e94c2c3232c5b40e57d6bcabf816d5b567977b1185d3e63ee4",
+   "ref_sha256": "bf50bce176562d493f8631eef2be53fd8c39f36416aaf4ee1470a2766d109dc8"
+  },
+  {
+   "id": "kernelbook__KDLoss_14880.a1.s0",
+   "task": "kernelbook__KDLoss_14880",
+   "code_sha256": "931bebad307584f687e264a64329d8cc9518901f0df736fadf3e7a487a961c18",
+   "ref_sha256": "37e4828317d17365e9b3330b52702bb5c62ccdc946ee49654e908028d349e840"
+  },
+  {
+   "id": "kernelbook__Hswish_8080.a1.s0",
+   "task": "kernelbook__Hswish_8080",
+   "code_sha256": "8ee32deb4c515f111c3a756c844dcbaa769de1ed942b59acc9957f7ad872e53c",
+   "ref_sha256": "afa9b56a765dea9baaded945afaa3d2e78836707d9a3e9b10b3746c4e84ce2de"
+  },
+  {
+   "id": "kernelbook__LogCosh_12389.a1.s0",
+   "task": "kernelbook__LogCosh_12389",
+   "code_sha256": "252d2767aee7b8a99d179d0fc46336ecf3c693875af4eddbeee4bf81231bcbcc",
+   "ref_sha256": "c643ba74b9c0a3e896c3bd45d0c1170414be049d2bbe3fa9bf2ad8909c5827bf"
+  },
+  {
+   "id": "kernelbook__LeNetPP_16004.a1.s0",
+   "task": "kernelbook__LeNetPP_16004",
+   "code_sha256": "2e5083cd43cd2342061b94aeb39bc95d7dfb747d74e70ec15492fb94e9d2cdca",
+   "ref_sha256": "0be0ad513c1637976c62afcc0b07026bf48f328e77c19352be68dc7c2c20c84e"
+  },
+  {
+   "id": "kernelbook__LayerScaling_13515.a1.s0",
+   "task": "kernelbook__LayerScaling_13515",
+   "code_sha256": "d5b3ce3a47d997d6b0137f3b888455bedacf1b419a15992895fa9f469f8bf502",
+   "ref_sha256": "a12491c4ff2fa4e90377efda8fb5f98e67c877e572b2d600db01715c060d0378"
+  },
+  {
+   "id": "kernelbook__MSE_285.a1.s0",
+   "task": "kernelbook__MSE_285",
+   "code_sha256": "20503af166e684066162cef68b0ebf476e832e438b604c5aaad3c6f92063d2d0",
+   "ref_sha256": "63f055c10a29e6563ec00ff40ad3c47cd7f40251f737841858449027e1aff198"
+  },
+  {
+   "id": "kernelbook__Loss_fn_5943.a1.s0",
+   "task": "kernelbook__Loss_fn_5943",
+   "code_sha256": "f5909dcbeceaf5aa801ed6a170ae3f68ad42a3be2f5116f28ae75b88a17f3b9f",
+   "ref_sha256": "c9389649b8d48bc7c93411f603bfc56874bea9f43f26541e25c6cad34f011312"
+  },
+  {
+   "id": "kernelbook__LayerNorm_3679.a1.s0",
+   "task": "kernelbook__LayerNorm_3679",
+   "code_sha256": "ed17dcf9e8671f00d65f35d46a3b42da68b4e735fdd17baeaad1d217671f2a9e",
+   "ref_sha256": "e164dd85359146697a2a8ee77c82fa85c750dd9608e4eae1a15aca5b6e595b02"
+  },
+  {
+   "id": "kernelbook__LogitCond_8451.a1.s0",
+   "task": "kernelbook__LogitCond_8451",
+   "code_sha256": "bb21756f698a00c3555816afab0a56d0ca61ad38bda59b3dc0c4959421ec7f54",
+   "ref_sha256": "58a7efd9665562abb45089039c1c1e0266cf129be9b1f700118a0e7c54042aaf"
+  },
+  {
+   "id": "kernelbook__MRAE_17422.a1.s0",
+   "task": "kernelbook__MRAE_17422",
+   "code_sha256": "81d51131261ae6df77b01c948bc9e36b58dde17638805d6af89cbcc2335a1f79",
+   "ref_sha256": "af010f8ea83189bf6c29ef3db9bc040905b0066ae5c1395e40e90d937f6e6762"
+  },
+  {
+   "id": "kernelbook__L_2nd_18169.a1.s0",
+   "task": "kernelbook__L_2nd_18169",
+   "code_sha256": "57b7b0f031c3c341f48cd960892549655dcbdb81c7a0fae3047db1e45ef048ac",
+   "ref_sha256": "1c55e9443ed253233d9b9d0882155d9524b1b4868aea127c130ed1d00bae0028"
+  },
+  {
+   "id": "kernelbook__LossFunction_15572.a1.s0",
+   "task": "kernelbook__LossFunction_15572",
+   "code_sha256": "024a6f009e6a13cfb01a4bf521d0d8455fc6cc392edd0262e579be7d1bbdd4ab",
+   "ref_sha256": "48f614664ab9de471d608b8d806805f16595a52c95510a9e6a126fc56247ad24"
+  },
+  {
+   "id": "kernelbook__LunaBlock_688.a1.s0",
+   "task": "kernelbook__LunaBlock_688",
+   "code_sha256": "59ca188c569552912f9ed55743b81774f211ddcdb86012574064b04bbb0e1466",
+   "ref_sha256": "42998ef0033f6cda3f2f3fe7b350eb011aad8403ac9b19a0d3c3fc263bba1e01"
+  },
+  {
+   "id": "kernelbook__MADDPGActorVersion1_179.a1.s0",
+   "task": "kernelbook__MADDPGActorVersion1_179",
+   "code_sha256": "a1ce16c40014aab207e81f49d1976f350806b60de494bedb4134c1b89f751816",
+   "ref_sha256": "df9f3259882deb8cab120cd67dac6081641c795198fdc495623b6b82d32da5d3"
+  },
+  {
+   "id": "kernelbook__MaxPool2dDynamicSamePadding_13659.a1.s0",
+   "task": "kernelbook__MaxPool2dDynamicSamePadding_13659",
+   "code_sha256": "5251e63569802e687ec6e2359df36ac95b5ed39294b20fb297faf16c03494b02",
+   "ref_sha256": "2dec5116786d2655ddffcffff8f8645e6c4cee724283a7b3d13b7900bf6f3f57"
+  },
+  {
+   "id": "kernelbook__MeanEncoder_3851.a1.s0",
+   "task": "kernelbook__MeanEncoder_3851",
+   "code_sha256": "a4387910dd7355991e09e74a23bccdc6ec2bc6e9e5f944348b3bd2433a5f1204",
+   "ref_sha256": "787ec8921be7f656f3ee49cfa649a0453558a854612142d3177d153eb2f91feb"
+  },
+  {
+   "id": "kernelbook__MaskedSoftL1_11076.a1.s0",
+   "task": "kernelbook__MaskedSoftL1_11076",
+   "code_sha256": "4f3a49e532a5769b6e9900b80db7914f3239a83c5022e1f09e25cce3aff982c4",
+   "ref_sha256": "78c137a1e797bfee227eed67f92065a0fbcfd77a60ec9c6c406aa37ccf40f454"
+  },
+  {
+   "id": "kernelbook__MetaBilinear_9554.a1.s0",
+   "task": "kernelbook__MetaBilinear_9554",
+   "code_sha256": "9b0ad41e9a1603190ef949a94ad97390a91f50fd7436b27362364f55a618d1ca",
+   "ref_sha256": "f678e685e9a69803c1e75d7d4c1e995d9c9244460e7810753b4218fee2c23efc"
+  },
+  {
+   "id": "kernelbook__MainClassifier_12602.a1.s0",
+   "task": "kernelbook__MainClassifier_12602",
+   "code_sha256": "d3b2c455744844319f8e0a521a151e3514479e1721abdeb2eb5a30353dac769a",
+   "ref_sha256": "921e526aee4ca1fa2c6214c904205605215cc96590ba23187855e22693e818a5"
+  },
+  {
+   "id": "kernelbook__MatrixTree_919.a1.s0",
+   "task": "kernelbook__MatrixTree_919",
+   "code_sha256": "2bd6580c7aaabc53e1dcff0b8d3e0f56c3eafc9bd0d109220eea68d734ab7f7f",
+   "ref_sha256": "560a90d1b2d2f0fedcf41d18c36aa1c9b40670c3160e2b2660d9e6330f8f8239"
+  },
+  {
+   "id": "kernelbook__MaxPool_5158.a1.s0",
+   "task": "kernelbook__MaxPool_5158",
+   "code_sha256": "602c0bccbea60b9253a93e120a961c0d119706ecd5cf5a99bb08b33b8dcca89e",
+   "ref_sha256": "57f59b5daa4513767c67fe91ec552a15f5c795e30db807962bf2ffb8ce39242a"
+  },
+  {
+   "id": "kernelbook__MediatorNet_5379.a1.s0",
+   "task": "kernelbook__MediatorNet_5379",
+   "code_sha256": "4205b9ec6c44205c33d44ad3454f8882742dab7f0e8f2442a8ae9925cbcb2426",
+   "ref_sha256": "c373abc215068008651bd0dbe94d40b65a1dada9acc7209aa4d4ef02a5b9f8d4"
+  },
+  {
+   "id": "kernelbook__MaxPool_2276.a1.s0",
+   "task": "kernelbook__MaxPool_2276",
+   "code_sha256": "3557052f77bd65940b3cc453e3cf69db29262578355bd3717d86bc39624fc8bc",
+   "ref_sha256": "7500f1a50e02f45108415020bd1e8a7a7437bb3b3d03e3f6b70417054a787465"
+  },
+  {
+   "id": "kernelbook__MaxPool2d_9579.a1.s0",
+   "task": "kernelbook__MaxPool2d_9579",
+   "code_sha256": "3f724037ccbf6a236ee27a3cc600dfd94f67561a248c27529f94bcaf07281969",
+   "ref_sha256": "008b5c6eb234515947fb2efa7187a9a329fecdda11e0dcd0da3ae08b0b38f786"
+  },
+  {
+   "id": "kernelbook__MaxPool2dStaticSamePadding_269.a1.s0",
+   "task": "kernelbook__MaxPool2dStaticSamePadding_269",
+   "code_sha256": "c9edec6e36a14ad6e61c7468bd17bda3ba198ab32123f86fde52febb879cb938",
+   "ref_sha256": "a9dcd8a935f605e3ab9db4f39030d70cba51744d38b39a1ac7b1c1787d1acc6a"
+  },
+  {
+   "id": "kernelbook__MaskUpdate_17192.a1.s0",
+   "task": "kernelbook__MaskUpdate_17192",
+   "code_sha256": "93cdb60f3a630f2aa7c796b07db3f2b4bc20d600410d1b19e3f879370a9ec749",
+   "ref_sha256": "01b3cf827f6e2d38d759f906222ca635f4449fb3692723491c98b1a9b44b035d"
+  },
+  {
+   "id": "kernelbook__Net_11740.a1.s0",
+   "task": "kernelbook__Net_11740",
+   "code_sha256": "4f0daae1258fe8be9ba90b410b558486405c4c28b16ed6836e6f1810bd66d910",
+   "ref_sha256": "a011d4de1c4f67e5b9eded1dca8589aa7a1068674337ae66835b2838943e69a8"
+  },
+  {
+   "id": "kernelbook__NetWidth_3451.a1.s0",
+   "task": "kernelbook__NetWidth_3451",
+   "code_sha256": "f26cf1ac9931730abee1a2bb51163c4e6bb8cfa4f0db9368bab09aaf6f0b0aca",
+   "ref_sha256": "4d997fcff170d9200d8ff4f9d3b43ac9f4ce6769a9d260f241a62b44318fb852"
+  },
+  {
+   "id": "kernelbook__MixerBlock_6191.a1.s0",
+   "task": "kernelbook__MixerBlock_6191",
+   "code_sha256": "bef1041b59229e90006e34fd5cab41b7e5681e68922d2e2fa7d0592fdb7ec7b4",
+   "ref_sha256": "f0e0e8f3f062a1c2bfa50f60c9b87dbbbfa63c0d38d16a1fbf344495c153e7a1"
+  },
+  {
+   "id": "kernelbook__Net_10603.a1.s0",
+   "task": "kernelbook__Net_10603",
+   "code_sha256": "e08c55ff518cbce9bf703b1d79cc2d64ffc3accf692c9b66757a6e61d82062c3",
+   "ref_sha256": "5de9afa6d8c712fb257f447096713a22f1ea038c34439e9f9f518ff8604065c9"
+  },
+  {
+   "id": "kernelbook__Nloss_GD_17463.a1.s0",
+   "task": "kernelbook__Nloss_GD_17463",
+   "code_sha256": "be7e55862ee87622f3d67ba2a4b1d34ffd6cd797f97a16e083a1e2a2f0a93f25",
+   "ref_sha256": "5e32def36b196f3fe3de1458fba4d0208aebd45952718abfdf0bb5dbb3621e93"
+  },
+  {
+   "id": "kernelbook__MultiLabelCircleLoss_15281.a1.s0",
+   "task": "kernelbook__MultiLabelCircleLoss_15281",
+   "code_sha256": "129b462c6d30c080894a8c4a456a607d0be9812e2af6524c6f1f4ee14f9cf2ec",
+   "ref_sha256": "5cab2a8fe9deff7e000234b19735c73084b97342765d735adbe08c742c21fa93"
+  },
+  {
+   "id": "kernelbook__Net_36.a1.s0",
+   "task": "kernelbook__Net_36",
+   "code_sha256": "fdc975bd144a1824c59e6594a8529c7b0fda7784a63bf5f8fac8d945bc9da9da",
+   "ref_sha256": "5999ded403ce5a74766e48f6bd123a5e34e7e9830099fa511a39d2985bca94cd"
+  },
+  {
+   "id": "kernelbook__MiniBatchDiscrimination_3428.a1.s0",
+   "task": "kernelbook__MiniBatchDiscrimination_3428",
+   "code_sha256": "4dbf69e98597919e7396da1e9bfcaeeb898f3c61b6a8a224f718768293ec1a12",
+   "ref_sha256": "0f0dd3d4be4b66dc1aa943ef69c3b52324b5e58f10f3a8130d78129af6674d03"
+  },
+  {
+   "id": "kernelbook__MySoftmax_1369.a1.s0",
+   "task": "kernelbook__MySoftmax_1369",
+   "code_sha256": "41070311809e22df43eb27d05455830e021afa0eed8123ae00eabdefdcd00c95",
+   "ref_sha256": "98abe5d1deb64bbc56d78d692dabbd40da2a6028293e748b2b48369baf117c5f"
+  },
+  {
+   "id": "kernelbook__MonomialNN_5069.a1.s0",
+   "task": "kernelbook__MonomialNN_5069",
+   "code_sha256": "d5bc68a95d8c9f5a03b3c48da8ab17c5b6b0e4d462899ad547423613ef783605",
+   "ref_sha256": "26eab5ae0630ff368baacaa24cb5ede240dd54a9245250c9bdc39faa3092a1b9"
+  },
+  {
+   "id": "kernelbook__Noise_15349.a1.s0",
+   "task": "kernelbook__Noise_15349",
+   "code_sha256": "dc73d6b5fb5bcc1223e436c643d95b6d2b141b44b46545aec6b581b6a1fd7cad",
+   "ref_sha256": "b94d4bff44628d984584601cf1e39c2837df5312639f3ef57197d0c206c411d8"
+  },
+  {
+   "id": "kernelbook__NetworkExtension_12207.a1.s0",
+   "task": "kernelbook__NetworkExtension_12207",
+   "code_sha256": "d41427101e613b8e4abf612384a30ddf377fcd8af760fb26ea1a1cae8df49d13",
+   "ref_sha256": "c6c8def6b39b118d696ea0bd6e75d9255aa86fbf2c422b23a9436fea6189f759"
+  }
+ ]
+}

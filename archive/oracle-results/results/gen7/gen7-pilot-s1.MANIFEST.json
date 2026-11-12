@@ -1,0 +1,60 @@
+{
+ "job_id": "gen7-pilot-s1",
+ "owner": "karthik",
+ "step": "v7_gen",
+ "oracle_commit": "86c31a9",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 6,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "a5989759641a5673f7ad35bf132b507bc93966329d4a90ebf86acbb2bf8b221a",
+  "run.sh": "91070eabb6a81fb0cba8514577e6f73590c052770fa2e4cefdc0fd1bbaf1a17b",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "gen7/gen7__matmul_epilogue__00000",
+   "task": "gen7__matmul_epilogue__00000",
+   "code_sha256": "38d689c6dec611e6d7dad4ed0a25490288dba98b2e2c8e6e40978f4a9a0f2c58",
+   "ref_sha256": "b2e4115886402d9972588d82258ad882110366a865b4aaf2c4cc790a5f63b785"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00001",
+   "task": "gen7__matmul_epilogue__00001",
+   "code_sha256": "6d8b8814e4f9ee3b31fa237ed00e5e97bb1a41732acece0258bf34a30efb6f59",
+   "ref_sha256": "a1a2b12ba2f62d8f3c54bfdf0220b904fcc0fe267db2ec117bb5fa175ef7b558"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00003",
+   "task": "gen7__matmul_epilogue__00003",
+   "code_sha256": "f826c66e554ab4f3b6eca93325a5249477e61265e5309b58d86052f7774344b5",
+   "ref_sha256": "e6ba0380603a94947d4404092105551b8e54b79f4b4d5f90c290b3d8cc4d9ea4"
+  },
+  {
+   "id": "gen7/gen7__matmul_epilogue__00004",
+   "task": "gen7__matmul_epilogue__00004",
+   "code_sha256": "1dab925fcfa291b4a3a29812cc8d489608d73f81f91b5f3194b1c0356017c985",
+   "ref_sha256": "4652e330b665e964063adec6234406655fe348c1d0b06fe264b1518c137f3703"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00000",
+   "task": "gen7__row_reduction_matmul__00000",
+   "code_sha256": "c8294f0ed9ed13ff7d0dbe2bcc13f7d816db439530a3d0a0d79496a261d0792b",
+   "ref_sha256": "ba54673f8c5733501ddcaba7917f01a5f6820ab2a4e1a1aae7b2dab8b5ff2466"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00008",
+   "task": "gen7__row_reduction_matmul__00008",
+   "code_sha256": "2ba74a74c67c51f3f7f9c83a4786a9fe6bb2a098ed0129c2ce280cda22fb3ea4",
+   "ref_sha256": "f7d7d60e7d65b931214d613b6b4dd39968c578d34315918273d0ea4b25586b36"
+  }
+ ]
+}

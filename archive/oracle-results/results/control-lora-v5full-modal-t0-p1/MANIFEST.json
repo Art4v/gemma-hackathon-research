@@ -1,0 +1,84 @@
+{
+ "job_id": "control-lora-v5full-modal-t0-p1",
+ "owner": "hruday",
+ "step": "control-lora-v5full-modal-t0-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 10,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "f2dceb7a9448c9add43e26eb9bd059496b3c79dd3dc123faa37cc6fb4a8b76f7",
+  "run.sh": "13af13772ef3a90f813eb5ab49a94bdaf5f9cb76251247b6333c0d4b5f866f4f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "bare/9p_SwiGLU_MLP/t0",
+   "task": "9p_SwiGLU_MLP",
+   "code_sha256": "3b15cd2529ffd9b0ffa115b7f4a0b66f9a12bf3f1fd00a6d61b9a43823047315",
+   "ref_sha256": "0a08d8a55a72b55e714610e0c4e09092d2d18f7a44abfdda751eaa3a82d6b708"
+  },
+  {
+   "id": "bare/12p_RMSNorm/t0",
+   "task": "12p_RMSNorm",
+   "code_sha256": "423268b6943c79c29dc296fd0d86ac721f8a776bd5d2d621e4a7e7f35d620ff5",
+   "ref_sha256": "1ab768b9b50c457db4fc17ad0af0264751062b1bc1d032913310cce539056856"
+  },
+  {
+   "id": "bare/19k_Matmul_Subtract_Multiply_ReLU/t0",
+   "task": "19k_Matmul_Subtract_Multiply_ReLU",
+   "code_sha256": "6d28195b67367de4a885fdf26718de12e77bb826b7f91d6e6c8b64821cbe1abd",
+   "ref_sha256": "d7edde32d634be80859f6d6029751a5a0956e3a124af9e2b8f77a50b7ac7af00"
+  },
+  {
+   "id": "bare/21k_Gemm_Divide_Sum_Scaling/t0",
+   "task": "21k_Gemm_Divide_Sum_Scaling",
+   "code_sha256": "49df490b0e39d87146d99dd8d18f98028b0a61cd20a1c23ca0adb17b2cd37311",
+   "ref_sha256": "2d6595827ee682756b6f31ed07aa8693cc9f388443da13b9cb35473b709ea279"
+  },
+  {
+   "id": "bare/20k_Gemm_Multiply_LeakyReLU/t0",
+   "task": "20k_Gemm_Multiply_LeakyReLU",
+   "code_sha256": "a1061ee9537f4d4f3ce26791830b942980c978df9c3b94015c08cb612ea23369",
+   "ref_sha256": "5397987e28d0094e6cdc993c52ecf6a68de120937bc9b221568c479aa641de68"
+  },
+  {
+   "id": "bare/37k_Matmul_Swish_Scaling/t0",
+   "task": "37k_Matmul_Swish_Scaling",
+   "code_sha256": "d1c9eb66fac40898e5a34ad84086cb20e6b416496157f9e61498ca2e47d002f8",
+   "ref_sha256": "db7f764804925ae397683749fb6fec38e94b68d6b05180c08f11e8b45f6adab5"
+  },
+  {
+   "id": "bare/42k_Gemm_Max_Subtract_GELU/t0",
+   "task": "42k_Gemm_Max_Subtract_GELU",
+   "code_sha256": "9203cc0dc79850ff1d8428c3d65eadd77998fa226939f045ad678b5cb2955a19",
+   "ref_sha256": "4ed4129bf57adf52848a1fc31387fe059844c6296d30f542e28b6710e4ed752a"
+  },
+  {
+   "id": "bare/43k_Gemm_BatchNorm_Scaling_Softmax/t0",
+   "task": "43k_Gemm_BatchNorm_Scaling_Softmax",
+   "code_sha256": "56c7699453e71a6277edcb1980d6340a75569aa05d9b920b6a68fff448f69826",
+   "ref_sha256": "c56b44aa4ae0c80efd481a238adb4bd86668c41c446daf80d0434ed5b7ffdc3f"
+  },
+  {
+   "id": "bare/44k_Matmul_Divide_GELU/t0",
+   "task": "44k_Matmul_Divide_GELU",
+   "code_sha256": "692311378710bf98ccdd570d5a808a04e23b796ad636ee2aceee639a5cd7c379",
+   "ref_sha256": "dbacb22e1d148e5b8c6313dd5e6a0bb4ad93d01bf2117064bbf2660eb75fb0d9"
+  },
+  {
+   "id": "bare/50k_Matmul_GELU_Softmax/t0",
+   "task": "50k_Matmul_GELU_Softmax",
+   "code_sha256": "ab17b8d5e73f1ff72374257685aa0db2df79ebdb4b551a26f1703e99c5c16011",
+   "ref_sha256": "0083d2a3ad83bed1aa918295182b98cef583e4abf08868525682548729026dd0"
+  }
+ ]
+}

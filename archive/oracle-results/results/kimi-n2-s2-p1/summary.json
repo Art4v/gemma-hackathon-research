@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-n2-s2-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 33,
+ "n_rows": 27,
+ "missing": [
+  "kimiN2/kernelbook/ReduceBranch_15196",
+  "kimiN2/kernelbook/Simplenet_12042",
+  "kimiN2/kernelbook/_Residual_Block_16661",
+  "kimiN2/kernelbook/RMSELoss_17872",
+  "kimiN2/kernelbook/mfm_59",
+  "kimiN2/kernelbook/SeriesDecomp_3732__scale"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 6,
+  "correct_slow": 6,
+  "harness_oom": 5,
+  "mosaic": 1,
+  "pass": 6,
+  "runtime": 1,
+  "wrong": 2
+ },
+ "n_correct": 12,
+ "median_speed_vs_xla_correct": 0.7049749059822155
+}

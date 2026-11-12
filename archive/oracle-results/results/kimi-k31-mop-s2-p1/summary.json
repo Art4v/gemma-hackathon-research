@@ -1,0 +1,36 @@
+{
+ "job_id": "kimi-k31-mop-s2-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 41,
+ "n_rows": 25,
+ "missing": [
+  "kimi31r1/kernelbook/MaskedSoftmax_14127",
+  "kimi31r1/kernelbook/WeightedLoss_12047",
+  "kimi31r1/kernelbook/SoftDiceLossSquared_13375",
+  "kimi31r1/kernelbook/PermEqui2_max_15492",
+  "kimi31r1/kernelbook/SM_14472",
+  "kimi31r1/kernelbook/TwoLayerFCBodyWithAction_9096",
+  "kimi31r1/kernelbook/SoftIoU_12034",
+  "kimi31r1/kernelbook/SAM_15078",
+  "kimi31r1/kernelbook/SoftEntropy_2598",
+  "kimi31r1/kernelbook/MaxPool_3293",
+  "kimi31r1/kernelbook/ParentChildClassifier_18135",
+  "kimi31r1/kernelbook/WeightedPool_13858",
+  "kimi31r1/kernelbook/SirenLayer_7825",
+  "kimi31r1/kernelbook/Pool_2348",
+  "kimi31r1/kernelbook/ModifiedSmoothL1Loss_4777",
+  "kimi31r1/kernelbook/NaiveTorchNet_1836"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 7,
+  "correct_slow": 7,
+  "pass": 11
+ },
+ "n_correct": 18,
+ "median_speed_vs_xla_correct": 0.7561365800006178
+}

@@ -1,0 +1,42 @@
+{
+ "job_id": "dataset-kbk-r3h2-p1",
+ "owner": "hruday",
+ "step": "dataset-kbk-r3h2-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 3,
+ "shards": 8,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "9e5fa114fbfdcd917153f2b6afb781cff51cef6458ec58791753a639bb235d68",
+  "run.sh": "5792c663d81641fcc40f06e366b9a00afd3bd88f8e976f9c80b86980fcfe9f05",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__Cartesian_1484.a3.s0",
+   "task": "kernelbook__Cartesian_1484",
+   "code_sha256": "aa758f177e6d9b7e38e06b94f6fbcd3a9d48073e7e6929089a115e5a285eb3bb",
+   "ref_sha256": "51e138166937b79f380fd0fc3471768e8ee30fe1a0bcadc3759791dadcdd9e6e"
+  },
+  {
+   "id": "kernelbook__ChannelwiseAttention_3495.a3.s0",
+   "task": "kernelbook__ChannelwiseAttention_3495",
+   "code_sha256": "b3bc520a918d8bdc2f3014ad298b18640eb3343eba1b10676e30d8624b0838fa",
+   "ref_sha256": "53f2012299e1ee138aedac891beb90560bdbf519c384b7f04bf7434e1f0bd5ed"
+  },
+  {
+   "id": "kernelbook__MNIST_FC_7084.a3.s0",
+   "task": "kernelbook__MNIST_FC_7084",
+   "code_sha256": "4a203eda4810005ca5fa279cbd2d407c4efe02b1d75bb8a7fab6cb35727a1372",
+   "ref_sha256": "eeb8aa298b08ab697f091bd1fb105188bd9fd1ba3957a6f2800024486dee9d58"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "job_id": "kimi-k31-mop-s2-p3",
+ "owner": "hruday",
+ "step": "kimi-k31-mop-s2-p3",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 3,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "67114ff6794f9447c93d38787895cf9e04931d473be8917efb2391f2eb7ef5a2",
+  "run.sh": "bcc86dae1e63aaa65f87385f7247a3b906200172ef199697239006ffab2fe69f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/TwoLayerFCBodyWithAction_9096",
+   "task": "kernelbook__TwoLayerFCBodyWithAction_9096",
+   "code_sha256": "e41ff024326e0db8d743605a1be9eb1cddac08514cc0c1d1bf4e0948e5c43162",
+   "ref_sha256": "196f608f9081f30fda1a017eb919dd6b9ef5ea894b82b464c0ea1be3f835d380"
+  },
+  {
+   "id": "kimi31r1/kernelbook/SoftIoU_12034",
+   "task": "kernelbook__SoftIoU_12034",
+   "code_sha256": "0a4a2fd8b282013bcff000f2321a01f9762d6f7b44147b1f304849ae0c74984b",
+   "ref_sha256": "5f4e62645b6a407ee913a7032575b2591213e99623292877c0581eef9b55e1a1"
+  },
+  {
+   "id": "kimi31r1/kernelbook/WeightedPool_13858",
+   "task": "kernelbook__WeightedPool_13858",
+   "code_sha256": "9f6650dfd919e43b5e76bae6e62b395421c40b19a0d9ca46ea34bc98fc23fd7f",
+   "ref_sha256": "978ce194cdedc7f04b533c026abe57ba1bbf6c0e440aa6b1b8c560aef65ca8c0"
+  }
+ ]
+}

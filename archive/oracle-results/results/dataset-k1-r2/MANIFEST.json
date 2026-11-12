@@ -1,0 +1,48 @@
+{
+ "job_id": "dataset-k1-r2",
+ "owner": "aarav",
+ "step": "dataset-r2",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 4,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "c491bf8ddf2a54a08b49d79c199966199ed2f2ab040d859e222aef1b1d896405",
+  "run.sh": "a933fe13a41de792a29b111b394cab37eee92e23e0bbddfaac4074f7fbb0b842",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "authored__attention_gqa_sink__gqa_sink_sliding_window_specdecode.a2.s0",
+   "task": "authored__attention_gqa_sink__gqa_sink_sliding_window_specdecode",
+   "code_sha256": "551124d3e026fb4b0e3831b941cd2b715b92361ddbc2839bb4e9168457709c58",
+   "ref_sha256": "a9f7aa32f2138c63bd499fbb72a6466cf94547726ab16b231f7fb9e4c4d915aa"
+  },
+  {
+   "id": "kb__l2__100_ConvTranspose3d_Clamp_Min_Divide.a2.s0",
+   "task": "kb__l2__100_ConvTranspose3d_Clamp_Min_Divide",
+   "code_sha256": "f7fc28f420e1fa640f6ce10ccdc9218d4badf0c752223268a5b08e6bfea057ff",
+   "ref_sha256": "8378d1e3bbd4ab403a2eeaa50869277f053e436dd1c92e8aa3bffebe7fdd43d0"
+  },
+  {
+   "id": "kb__l2__78_ConvTranspose3d_Max_Max_Sum.a2.s0",
+   "task": "kb__l2__78_ConvTranspose3d_Max_Max_Sum",
+   "code_sha256": "b93c342d35b8e0d8535d62e01e0c806f53d8d21a109b38609779785ba28927f7",
+   "ref_sha256": "f1720f2ea43ba15934afdc711b089539d2ee1adccec6c453de6cb23d4d0f17f2"
+  },
+  {
+   "id": "kb__l2__93_ConvTranspose2d_Add_Min_GELU_Multiply.a2.s0",
+   "task": "kb__l2__93_ConvTranspose2d_Add_Min_GELU_Multiply",
+   "code_sha256": "effb85430445a7bea7b5a3b1dfcc96415fcf22119cce2477ec091197e37d6450",
+   "ref_sha256": "423691677e179a98e2398d20d21c68120509ff9ea666aee6254f29544a20c166"
+  }
+ ]
+}

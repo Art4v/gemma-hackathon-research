@@ -1,0 +1,93 @@
+{
+ "job_id": "dataset-b2-r3",
+ "owner": "aarav",
+ "step": "dataset-r3",
+ "oracle_commit": "a3ce08e",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 11,
+ "shards": 1,
+ "priority": 2,
+ "max_chip_minutes": 11,
+ "estimate_chip_minutes": 7.166,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "97140244f15766f7bf80aedd60186482b1f85908cf89112ffb340cbffc600b56",
+  "run.sh": "6156ce0a237416b054a9c0b8bdeea37c8453a06940f9d29fe6c082100667114c",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kb__l1__65_conv_transposed_2D__square_input__asymmetric_kernel.a3.s0",
+   "task": "kb__l1__65_conv_transposed_2D__square_input__asymmetric_kernel",
+   "code_sha256": "457fa5f1481b12d09fe69353b1e5a27cbe32469224a0915a8a55bc4f3a27f550",
+   "ref_sha256": "386a984b9f4baa9faae9b6be65b0804f513c51b5830e6bcdc26f44ef2d53a3b0"
+  },
+  {
+   "id": "kb__l1__69_conv_transposed_2D__asymmetric_input__asymmetric_kernel.a3.s0",
+   "task": "kb__l1__69_conv_transposed_2D__asymmetric_input__asymmetric_kernel",
+   "code_sha256": "b01fc7755c9dc8a10d7678824ae090fba671974b65ab14116a3a46e0f1f818e2",
+   "ref_sha256": "bdf4c2a7ded8aaae0b080b91169fd147ecdd1dc1b6ba8d021a5e7bc98f79b989"
+  },
+  {
+   "id": "kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_.a3.s0",
+   "task": "kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped_",
+   "code_sha256": "3003dc9abeeb7ca03f1f5f248f85264c836b667c4143cf79136b89972c365549",
+   "ref_sha256": "c4c703c6971084cd96fca791459a35da75ffb842e9567a3e55f3ae613765f7f5"
+  },
+  {
+   "id": "kb__l2__11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm.a3.s0",
+   "task": "kb__l2__11_ConvTranspose2d_BatchNorm_Tanh_MaxPool_GroupNorm",
+   "code_sha256": "1d2f9648bbdcb20f5cb339755eef2e0bdcb24740f9326f09212bee4f48393700",
+   "ref_sha256": "6d3cee47e621e00dedbbaa5856a1123b7e52433c8115a0f8c57f11c3b788a872"
+  },
+  {
+   "id": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd.a3.s0",
+   "task": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd",
+   "code_sha256": "84a473fc6b89c6f24fa9be24aded4f1989ae5b7bb8a5970bfc02b14ca065e426",
+   "ref_sha256": "7df31352301aa52292ec19f035bafada807aa2cc4ccc258f926bee3eb169cfa2"
+  },
+  {
+   "id": "kb__l2__57_Conv2d_ReLU_HardSwish.a3.s0",
+   "task": "kb__l2__57_Conv2d_ReLU_HardSwish",
+   "code_sha256": "95d4eff6869c95dc23aed9340824c6879c46a43ea0e57c41711ca06b2c1878eb",
+   "ref_sha256": "57aa7fa11e6f21885c6c29ad9d569c937eb1961f8b30fcfa196fc4ce32af577d"
+  },
+  {
+   "id": "kb__l2__5_ConvTranspose2d_Subtract_Tanh.a3.s0",
+   "task": "kb__l2__5_ConvTranspose2d_Subtract_Tanh",
+   "code_sha256": "41ea7e7c4803b9f48eb7be0bf3aac06dcd65503d956a28db8c804e6e2d11c7e4",
+   "ref_sha256": "71f361b22423d10605780f33aa8034afb584dc380ec547bbb6b16ed949420a24"
+  },
+  {
+   "id": "kb__l2__61_ConvTranspose3d_ReLU_GroupNorm.a3.s0",
+   "task": "kb__l2__61_ConvTranspose3d_ReLU_GroupNorm",
+   "code_sha256": "f9b6036d42b35149c51efd290327df6341733ee0d8e6bf3e1390ddfaf6f025a4",
+   "ref_sha256": "ec9970519e40b1529b523188f656207d8d39f2a9745882adac1cb3b38c61fad9"
+  },
+  {
+   "id": "kb__l2__69_Conv2d_HardSwish_ReLU.a3.s0",
+   "task": "kb__l2__69_Conv2d_HardSwish_ReLU",
+   "code_sha256": "2661bcd9ba92a910e8eed41a81e4d112774a1d7bbd3e109a853eef531196e7b1",
+   "ref_sha256": "d14f9c00ede6f1691df4b9a9894ea42928257378dd6ed7d00c3dcfeceea60d00"
+  },
+  {
+   "id": "kb__l2__71_Conv2d_Divide_LeakyReLU.a3.s0",
+   "task": "kb__l2__71_Conv2d_Divide_LeakyReLU",
+   "code_sha256": "de2d53cbb358711550c37f6af9e4beaa71eb360a05f012cb7ac2d01f76dafc82",
+   "ref_sha256": "6c1033f5c839717917820574f1422d1122019f4f56c105d6dca6100aef15fb8e"
+  },
+  {
+   "id": "kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid.a3.s0",
+   "task": "kb__l2__91_ConvTranspose2d_Softmax_BiasAdd_Scaling_Sigmoid",
+   "code_sha256": "a48ab540aa02331eded480027ff5fc0dbc221baeaf4dcca5ca13f7f8981f369f",
+   "ref_sha256": "319dbb10bcf2837386096b2c2647257b54f06d5d8cb40a2432b698f73456b504"
+  }
+ ]
+}

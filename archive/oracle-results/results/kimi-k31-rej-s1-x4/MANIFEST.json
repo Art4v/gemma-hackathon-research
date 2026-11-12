@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-rej-s1-x4",
+ "owner": "hruday",
+ "step": "kimi-k31-rej-s1-x4",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "d0ba104cf80b42c751d0f041dfcd5fa6859dadb8a38727f0ad19cc465b7eb8d3",
+  "run.sh": "9315ecb8e203ad5576284ca419855eefe92d4a4eefa1bce4fc770d231ac47a5f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/aeEncoder_1264",
+   "task": "kernelbook__aeEncoder_1264",
+   "code_sha256": "215e447ee45ceb363f0988903ec41ad07887594c9a2f65d27ce6e4f09c02c24c",
+   "ref_sha256": "629402c4f18249a5b4d787eddf518f88df20cff56376f039711352a87ca9bdb6"
+  }
+ ]
+}

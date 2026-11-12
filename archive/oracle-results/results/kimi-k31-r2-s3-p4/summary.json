@@ -1,0 +1,22 @@
+{
+ "job_id": "kimi-k31-r2-s3-p4",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 29,
+ "n_rows": 29,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "compile": 9,
+  "correct_slow": 9,
+  "mosaic": 2,
+  "pass": 7,
+  "runtime": 1,
+  "wrong": 1
+ },
+ "n_correct": 16,
+ "median_speed_vs_xla_correct": 0.583695105965452
+}

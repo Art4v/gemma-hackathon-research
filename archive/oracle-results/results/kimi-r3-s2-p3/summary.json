@@ -1,0 +1,43 @@
+{
+ "job_id": "kimi-r3-s2-p3",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 53,
+ "n_rows": 35,
+ "missing": [
+  "kimiR3/kernelbook/MetaBilinear_9554",
+  "kimiR3/kernelbook/MultinomialKLDivergenceLoss_7714",
+  "kimiR3/kernelbook/PitchShift_16402",
+  "kimiR3/kernelbook/ResBlock_2251",
+  "kimiR3/kernelbook/RewardCriterion_11442",
+  "kimiR3/kernelbook/RewardCriterion_14787",
+  "kimiR3/kernelbook/RmseBceLoss_17803",
+  "kimiR3/kernelbook/SIMSE_3952",
+  "kimiR3/kernelbook/SequenceClassifier_9371",
+  "kimiR3/kernelbook/SirenLayer_7825",
+  "kimiR3/kernelbook/Smooth_Loss_17740",
+  "kimiR3/kernelbook/StochasticPool2d_6401",
+  "kimiR3/kernelbook/TSA_Fusion_1816",
+  "kimiR3/kernelbook/Transformer_9945",
+  "kimiR3/kernelbook/TransitionUp_1083",
+  "kimiR3/kernelbook/VNMaxPool_3385",
+  "kimiR3/kernelbook/WeightedLoss_12047",
+  "kimiR3/kernelbook/resBlock_8744"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 11,
+  "correct_slow": 5,
+  "harness_oom": 3,
+  "mosaic": 1,
+  "pass": 10,
+  "runtime": 1,
+  "vmem": 3,
+  "wrong": 1
+ },
+ "n_correct": 15,
+ "median_speed_vs_xla_correct": 0.7548275940008772
+}

@@ -1,0 +1,66 @@
+{
+ "job_id": "dataset-m1-r2",
+ "owner": "karthik",
+ "step": "dataset-m1-r2",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 7,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "cac4dc9c422ff546e41fedc91e5487524a2bb711c61f8f0fd2d560f51e4caa37",
+  "run.sh": "905e34b72074a766f1e6e4632f0f94fc6b35b01e84ca8baa7a960e8bdad77aec",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "authored__norm_residual_fusion__fused_add_rmsnorm_residual__m1_ragged.a2.s0",
+   "task": "authored__norm_residual_fusion__fused_add_rmsnorm_residual__m1_ragged",
+   "code_sha256": "fa7c1e6929fb89f9c4b8309b28d47764823d480df4b8cf24fc0d2bfe217273af",
+   "ref_sha256": "48393b1f8451fc02214b03793d9825e2ab51bd82dd72854126273bbd74061d01"
+  },
+  {
+   "id": "authored__ssm_short_conv_gate__short_conv_silu_gate__m1_ragged.a2.s0",
+   "task": "authored__ssm_short_conv_gate__short_conv_silu_gate__m1_ragged",
+   "code_sha256": "3fb3d3ed06a56b8cabadd8377666135be8a6a2f76522abf8914f94d0d9a696fe",
+   "ref_sha256": "226a495facbe2d6b3b9085add1439bc7deca103ed7beccad5c29411bd6667ed7"
+  },
+  {
+   "id": "kb__l1__35_GroupNorm___m1_ragged.a2.s0",
+   "task": "kb__l1__35_GroupNorm___m1_ragged",
+   "code_sha256": "47b2d3b0018490d1413eb5012f5205bacf5a4d92ba1aad3c79bc963d5c607034",
+   "ref_sha256": "9b66300664563c92e0836cbba0cb996bbbdd1601dbbe18f4c0f6f64eef130120"
+  },
+  {
+   "id": "kb__l1__40_LayerNorm__m1_ragged.a2.s0",
+   "task": "kb__l1__40_LayerNorm__m1_ragged",
+   "code_sha256": "7bbd630d9e039f565cf82bd87d9a6f3f603e2f8cb73ab740ce9ac454ad13012e",
+   "ref_sha256": "3eb84b3954435250d13664b4016984ed35bcab3c0d3551f75f2832279d001988"
+  },
+  {
+   "id": "kb__l1__47_Sum_reduction_over_a_dimension__m1_ragged.a2.s0",
+   "task": "kb__l1__47_Sum_reduction_over_a_dimension__m1_ragged",
+   "code_sha256": "2c5317a61de93372bcb5145944914dbb6dd1c691a135143325b65f96e75e0176",
+   "ref_sha256": "b16e89b2ca6a3b17e0946401d81e97f91f39a1f29fad13a0bfd7766b99eb885c"
+  },
+  {
+   "id": "kb__l1__99_TripletMarginLoss__m1_ragged.a2.s0",
+   "task": "kb__l1__99_TripletMarginLoss__m1_ragged",
+   "code_sha256": "5a83e55dd77cfb9b23b3a2178a62b4c0c46fd89c232c671dbbc1e6308fe2cac2",
+   "ref_sha256": "380251d9ac88338cf15b7765736fe92b3f046872e861bf029a740978077ce852"
+  },
+  {
+   "id": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch.a2.s0",
+   "task": "kb__l2__46_Conv2d_Subtract_Tanh_Subtract_AvgPool__m1_batch",
+   "code_sha256": "3c542b1f83a57d4087f133287037a1722c37db645b0637d681f21183cd6ca7e9",
+   "ref_sha256": "b50e54d44ffd99a91d32e3a8be096d2aa4705a6ebe815ecb011a3cd2ce3d1ec4"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "job_id": "kimi-k31-r1-s2-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 42,
+ "n_rows": 20,
+ "missing": [
+  "kimi31r1/kb/l2/30_Gemm_GroupNorm_Hardtanh",
+  "kimi31r1/kb/l1/71_conv_transposed_2D__asymmetric_input__square_kernel",
+  "kimi31r1/kb/l2/73_Conv2d_BatchNorm_Scaling",
+  "kimi31r1/kb/l2/65_Conv2d_AvgPool_Sigmoid_Sum",
+  "kimi31r1/kb/l2/79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max",
+  "kimi31r1/kb/l1/80_conv_standard_2D_square_input_asymmetric_kernel___dilated____padded____bf16",
+  "kimi31r1/kb/l2/71_Conv2d_Divide_LeakyReLU__bf16",
+  "kimi31r1/kernelbook/TemporalRelation_4523",
+  "kimi31r1/kernelbook/ResNetModel_18279",
+  "kimi31r1/kernelbook/MSEloss_mod_11337",
+  "kimi31r1/kernelbook/CoPredictor_15291",
+  "kimi31r1/kernelbook/SimBasedLoss_3929",
+  "kimi31r1/kernelbook/DeepCritic_15236",
+  "kimi31r1/kernelbook/MSE_3948",
+  "kimi31r1/kernelbook/BCEDiceLoss_5703",
+  "kimi31r1/kernelbook/MultiAccuracy_12813",
+  "kimi31r1/kernelbook/BicubicUpsampler_8307",
+  "kimi31r1/kernelbook/Norm_5",
+  "kimi31r1/kernelbook/FilterResponseNorm_3200",
+  "kimi31r1/kernelbook/CReLU_6653",
+  "kimi31r1/kernelbook/ChannelNorm_8096",
+  "kimi31r1/kernelbook/JointBoneLoss_14395"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 7,
+  "correct_slow": 3,
+  "pass": 9,
+  "runtime": 1
+ },
+ "n_correct": 12,
+ "median_speed_vs_xla_correct": 0.8737000131993091
+}

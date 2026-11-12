@@ -1,0 +1,42 @@
+{
+ "job_id": "kimi-r3-s3-p6",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 36,
+ "n_rows": 19,
+ "missing": [
+  "kimiR3/kernelbook/QuadricLinearLoss_14407",
+  "kimiR3/kernelbook/ReadUnit_4676",
+  "kimiR3/kernelbook/SC_9643",
+  "kimiR3/kernelbook/SEBatch_18181",
+  "kimiR3/kernelbook/ShrinkageLoss_6501",
+  "kimiR3/kernelbook/TransitionUp_11466",
+  "kimiR3/kernelbook/TransitionUp_13641",
+  "kimiR3/kernelbook/TransitionUp_15856",
+  "kimiR3/kernelbook/TripletSoftmaxLoss_17721",
+  "kimiR3/kernelbook/TuckERLoss_5016",
+  "kimiR3/kernelbook/WRNBottleneck_17683",
+  "kimiR3/kernelbook/aeEncoder_1264",
+  "kimiR3/kernelbook/handpose_model_6201",
+  "kimiR3/kernelbook/lrBLock_l2_8758",
+  "kimiR3/kernelbook/mixture_of_attention_heads_gate",
+  "kimiR3/kernelbook/rSoftMax_2484",
+  "kimiR3/kernelbook/selfCrossEntropy_488"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 4,
+  "correct_slow": 3,
+  "harness_oom": 3,
+  "mosaic": 2,
+  "pass": 3,
+  "runtime": 1,
+  "vmem": 1,
+  "wrong": 2
+ },
+ "n_correct": 6,
+ "median_speed_vs_xla_correct": 0.7266315013322114
+}

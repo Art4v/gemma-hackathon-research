@@ -1,0 +1,60 @@
+{
+ "job_id": "kimi-n2-s4-p3",
+ "owner": "hruday",
+ "step": "kimi-n2-s4-p3",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 6,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "5ae64ad91c1f26ade615d16d682ebfccf353ea45424c5144142b15e22d4fa839",
+  "run.sh": "614e94e26e66903ae41ee78b350236aa90f6e0f2b4a3cb612b74dd72a25d851a",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN2/kernelbook/SoftTargetCrossEntropy_10953",
+   "task": "kernelbook__SoftTargetCrossEntropy_10953",
+   "code_sha256": "dc37b18610b28fbb6de2b880b5a37fc13b50dc752c34fed990856752dc6ca267",
+   "ref_sha256": "a5fa62985e26f84b55627782e57afc88af3fcdaa7ba631ecb4943b992acfdef9"
+  },
+  {
+   "id": "kimiN2/kernelbook/SelfAttentionGPT2_9334",
+   "task": "kernelbook__SelfAttentionGPT2_9334",
+   "code_sha256": "ab1170785c71e2c52bb2ebc462e826bd74f2ff6ca40a8f32c924e570019fdcad",
+   "ref_sha256": "102a035e360a6452e0c5b9a29a7ffa698fe1018e641cf176521666ca0e58bd3d"
+  },
+  {
+   "id": "kimiN2/kernelbook/grouped_token_attention",
+   "task": "kernelbook__grouped_token_attention",
+   "code_sha256": "507290b4385593ee6c73c3b87734d4ac594a0929d2da409ea48ce21d3d3c675c",
+   "ref_sha256": "61c56743366c3c2f10b22292e689a17423c165d7cd9513e9272ad23fbc190112"
+  },
+  {
+   "id": "kimiN2/kernelbook/music_transformer_skew_relattn",
+   "task": "kernelbook__music_transformer_skew_relattn",
+   "code_sha256": "1465bf50cfda6c2e0d92c20dceb8fbf390ee541e356d23f4b38eb579ccf940ec",
+   "ref_sha256": "e7f605293c2bd47093bad0b2d023dcc269d8230d07a7aa9ee60e6615ebfff2d8"
+  },
+  {
+   "id": "kimiN2/kernelbook/SEModule_13378",
+   "task": "kernelbook__SEModule_13378",
+   "code_sha256": "4c627719bf8c46c6c4ab9bad8a3e7036b2e2a51dacc4e10a11acc27e70e13639",
+   "ref_sha256": "1e7535ff07cfbfa04dc38264055cc897b9d4bece63ad90e75b25ffe96dbd5577"
+  },
+  {
+   "id": "kimiN2/kernelbook/offset_pos_9100__scale",
+   "task": "kernelbook__offset_pos_9100__scale",
+   "code_sha256": "45c125964b10cb55362292a6d52112eba314a862b98d56c39ec73ae6e6ea385a",
+   "ref_sha256": "145f2812c2bd962179ab43f93a68a845bbcd47a258a085878ca8f3eedf034286"
+  }
+ ]
+}

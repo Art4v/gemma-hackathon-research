@@ -1,0 +1,30 @@
+{
+ "job_id": "dataset-kbkc-r3h1-p1",
+ "owner": "hruday",
+ "step": "dataset-kbkc-r3h1-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "9a158923841530c37853f1328e92e8d376b2ccfc072b408ee253b75437e4d4a3",
+  "run.sh": "a5af0ddbedeb642a3b82f2fedf10875159cf29de7f8d833705bef53b1efb89c7",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__equalized_conv2d_7232.a3.s0",
+   "task": "kernelbook__equalized_conv2d_7232",
+   "code_sha256": "c379195106ea429f998d53b7f8b31ac7f541032f93f8de390fca4f2a617c6f4b",
+   "ref_sha256": "839f365e53c927d7fa91dd0e28ca2f689d7c3fff5b4ff061fcda448f0f795f06"
+  }
+ ]
+}

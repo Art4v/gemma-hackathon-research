@@ -1,0 +1,246 @@
+{
+ "job_id": "kimi-k31-r1-s4-p1",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s4-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 37,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "27ee25a3f8bd0fb30aeadddd1fc8ef7107220623872f5cc4a7f26af5779ed07f",
+  "run.sh": "dc118f2aa42f4977d2910a51256d43a0780994301219205e94d961ccf3931ad9",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/authored/kv_cache_update/paged_kv_cache_scatter_update",
+   "task": "authored__kv_cache_update__paged_kv_cache_scatter_update",
+   "code_sha256": "7f7e5f7bcb854b70b9f8d6c38eb8a989315554e708b3b5bfacbcdd9ba42ffb05",
+   "ref_sha256": "648e095affb085ca8aeaaa43a3e7ba32467716f44198c6dec0bb6f2e36a6bdc4"
+  },
+  {
+   "id": "kimi31r1/kb/l1/49_Max_reduction_over_a_dimension",
+   "task": "kb__l1__49_Max_reduction_over_a_dimension",
+   "code_sha256": "4c5098687431b3e5ab334f17d68daf437d6b79285c77f3f7683069db702e130c",
+   "ref_sha256": "bc271f4609e228f81f4a7e32e0bd99dd6f85b76b35577f077bbda8a69fdb745b"
+  },
+  {
+   "id": "kimi31r1/kb/l1/93_masked_cumsum",
+   "task": "kb__l1__93_masked_cumsum",
+   "code_sha256": "fc580c3ea5a234e3ee2e28ab92b2ceaf6e9828348688de5aa264fc8723e0527c",
+   "ref_sha256": "ddc6e3c3f6daf23f79b5541bbd66a05e80cc52c395ba5f8678dfc6d8b46115fc"
+  },
+  {
+   "id": "kimi31r1/kb/l1/80_conv_standard_2D_square_input_asymmetric_kernel___dilated____padded__",
+   "task": "kb__l1__80_conv_standard_2D_square_input_asymmetric_kernel___dilated____padded__",
+   "code_sha256": "64aacc8f012c29ee6e52d69b2dff6fc8d6340cd7d1e17ffb5261657a1705f49b",
+   "ref_sha256": "0f43a03759eab9a9a33aee5e2ff0b742ec12aae489607003d0bc9435b6a55c55"
+  },
+  {
+   "id": "kimi31r1/kb/l2/25_Conv2d_Min_Tanh_Tanh",
+   "task": "kb__l2__25_Conv2d_Min_Tanh_Tanh",
+   "code_sha256": "1f25d5477ee85406b9640fd63cfc978b8938a53939a47c085d762855cec35c91",
+   "ref_sha256": "7e6e10ba3a700a0b680922a0e24ae7cb995201856097903e64b9283e59a2b83b"
+  },
+  {
+   "id": "kimi31r1/kb/l2/36_ConvTranspose2d_Min_Sum_GELU_Add",
+   "task": "kb__l2__36_ConvTranspose2d_Min_Sum_GELU_Add",
+   "code_sha256": "c1231404954a3dd450d68a19fd8ccae728c2c6bf884371b181297f2e3ca1bffd",
+   "ref_sha256": "45a5080f06e602b0f35bc7bb6188b27fc2859540e0a2dec5418938ca13283c40"
+  },
+  {
+   "id": "kimi31r1/kb/l2/85_Conv2d_GroupNorm_Scale_MaxPool_Clamp",
+   "task": "kb__l2__85_Conv2d_GroupNorm_Scale_MaxPool_Clamp",
+   "code_sha256": "b1571eb0510a4bfec519c06398618617bb31c814dd4358d43e6aa22bf80681b6",
+   "ref_sha256": "aa7f109cd79b5e0135b6824a591384422e6a4b88776b1fc61bf191bd1247e532"
+  },
+  {
+   "id": "kimi31r1/authored/ssm_scan_step/mamba1_selective_scan_2",
+   "task": "authored__ssm_scan_step__mamba1_selective_scan_2",
+   "code_sha256": "7ca7f7526354491cd6bf304287a82a692b12f99854d569e95e9e5b582700d63b",
+   "ref_sha256": "ee9124eb6d412c140c1ecb93c286c84871dd5685eafc61ff7dbdcfdb8a2358fb"
+  },
+  {
+   "id": "kimi31r1/authored/attention_cross/padded_cross_attention",
+   "task": "authored__attention_cross__padded_cross_attention",
+   "code_sha256": "a68180de955d6e7569d13f7531f97e0145296aa776a4bf501bf05ac26363f86d",
+   "ref_sha256": "5ca901f2d6dcae99ecc31575e8df03a90f4e4a02af86b3010b58b9bb88b06b84"
+  },
+  {
+   "id": "kimi31r1/authored/attention_linear_elu/linear_attention_elu",
+   "task": "authored__attention_linear_elu__linear_attention_elu",
+   "code_sha256": "01b9a84a9fd368af01a29e56f4014d0626a6cc28bde6b7bae0f84ca5b9d658e0",
+   "ref_sha256": "dc8dc2a6f18fefe67c5cfff09fe2ca480554d1acb41e6077b9a380242303f392"
+  },
+  {
+   "id": "kimi31r1/authored/moe_expert_ffn_batched/moe_expert_ffn_capacity_gelu",
+   "task": "authored__moe_expert_ffn_batched__moe_expert_ffn_capacity_gelu",
+   "code_sha256": "1dceb5dddd66de18368db5853016ba497e0ef7adf1424fcb41784e364094165a",
+   "ref_sha256": "d86d6ea481247b17c5943a4c332016ab0bf9a05d85a65a8e122b7c7b71ce71f6"
+  },
+  {
+   "id": "kimi31r1/authored/quant_int4_packed_matmul/w4a16_int4_packed_group_matmul",
+   "task": "authored__quant_int4_packed_matmul__w4a16_int4_packed_group_matmul",
+   "code_sha256": "1dcdecaa27f2a4ce84b68a652872382cdbd8e8513c20c8bbb9014e35199ae3a9",
+   "ref_sha256": "de19da226e3c8edd2ff0cab54e66b77070ef9cb639eee35f06c7fb85cc6b2f63"
+  },
+  {
+   "id": "kimi31r1/authored/quant_fp8_amax_scaling/fp8_delayed_scaling_matmul_2",
+   "task": "authored__quant_fp8_amax_scaling__fp8_delayed_scaling_matmul_2",
+   "code_sha256": "2778313e9cf6e24f66a2aac408dc90b905f45a566997d3effc24dbacc5e3891d",
+   "ref_sha256": "f9397df3107417ff8709dce9eb1305114b38ce5b0bf65360412ed3bb704fba1c"
+  },
+  {
+   "id": "kimi31r1/kb/l2/7_Conv3d_ReLU_LeakyReLU_GELU_Sigmoid_BiasAdd",
+   "task": "kb__l2__7_Conv3d_ReLU_LeakyReLU_GELU_Sigmoid_BiasAdd",
+   "code_sha256": "7ee94006d5867090087959516080fdd8729318cda613a68a250e0a1bb55caf4a",
+   "ref_sha256": "cadc6e046addbd6e5e11c1ed3e3862ab8b38720bc630290291d779d9b384d994"
+  },
+  {
+   "id": "kimi31r1/authored/ssm_short_conv_gate/ssm_short_conv_silu_gate_2",
+   "task": "authored__ssm_short_conv_gate__ssm_short_conv_silu_gate_2",
+   "code_sha256": "b195eaaf402fdb60b06dff69f0cc60c9729b9ad6d0bfa979eee55633fe425793",
+   "ref_sha256": "dffd34409cb97c5ed036c743f312ee020ea7594a10c050295f199b5468727e28"
+  },
+  {
+   "id": "kimi31r1/kb/l1/19_ReLU__bf16",
+   "task": "kb__l1__19_ReLU__bf16",
+   "code_sha256": "5abf4be186a79828dc9e194d9eebd69a06c1d0c97d761b936d30e95f923f641d",
+   "ref_sha256": "995f07edd6df7aeb0e934143f8a8fe20fb2355cd3c5fc63655416daf8e28ed8e"
+  },
+  {
+   "id": "kimi31r1/authored/ssm_s4d_conv/s4d_long_conv",
+   "task": "authored__ssm_s4d_conv__s4d_long_conv",
+   "code_sha256": "3a9d733d3c9bdebfdd769525b0c7c5d62572c40e4b04ac81be95fe58e865c2dc",
+   "ref_sha256": "92e3e8941083918ce0d055c16b9763191f2044bdef30c1b6a5be5628fd019cba"
+  },
+  {
+   "id": "kimi31r1/authored/quantized_fp8_matmul/fp8_dynamic_act_quant_block_weight_matmul",
+   "task": "authored__quantized_fp8_matmul__fp8_dynamic_act_quant_block_weight_matmul",
+   "code_sha256": "18ba0108c076dda3fe5365d0ec9b0c3dad17345a1c43f10128033c058b76c03c",
+   "ref_sha256": "41995fdb7e069241615fac00ad5421d80ac837e5f902c6c8e85f43000a92b38e"
+  },
+  {
+   "id": "kimi31r1/authored/attention_softcap/gemma2_softcap_causal_attention",
+   "task": "authored__attention_softcap__gemma2_softcap_causal_attention",
+   "code_sha256": "31d8961205b712792f119bffb43570bfdc02755050b748c3a1dc0cce63f0ccb3",
+   "ref_sha256": "629583724138451165ce796e667f011866f82ecf64321d6dc362bc194cc577a6"
+  },
+  {
+   "id": "kimi31r1/authored/swiglu_variant_geglu/geglu_fused_gate_up_mlp",
+   "task": "authored__swiglu_variant_geglu__geglu_fused_gate_up_mlp",
+   "code_sha256": "2a644e273839039f97165f7c3701d6ae9789f1f332b651f1a7811816f3a2c2c8",
+   "ref_sha256": "2b59758cdcec5ca1d8a6054721e3142e0f6e403bc14ec225b8499b9e4690aa99"
+  },
+  {
+   "id": "kimi31r1/kb/l2/27_Conv3d_HardSwish_GroupNorm_Mean__bf16",
+   "task": "kb__l2__27_Conv3d_HardSwish_GroupNorm_Mean__bf16",
+   "code_sha256": "f4bbad31efc78598c10b40b128a47634c4488863d645ad0aa0e7938c236c62d6",
+   "ref_sha256": "7b385e66c80334e26379e3e1475b36a232eb50a060c5f34953a688751104a630"
+  },
+  {
+   "id": "kimi31r1/kb/l1/72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped___bf16",
+   "task": "kb__l1__72_conv_transposed_3D_asymmetric_input_asymmetric_kernel___strided_padded_grouped___bf16",
+   "code_sha256": "a8f81a10892f83f689fb1a19530109ecd8995da7fe75468653bf39a5d9807031",
+   "ref_sha256": "3ff3951f5a5572b940063bd606c3c24ca7b3e1cbc05ecad24f2fab116b5d06ca"
+  },
+  {
+   "id": "kimi31r1/kb/l2/35_Conv2d_Subtract_HardSwish_MaxPool_Mish__bf16",
+   "task": "kb__l2__35_Conv2d_Subtract_HardSwish_MaxPool_Mish__bf16",
+   "code_sha256": "d81a906e5f586b4002e5479a32d0520f5418c5eda9294a3d144f04fbbd0df045",
+   "ref_sha256": "d328de0a613598ef5a84c51943c3bc5181bf58259f28bea5ba16c60c66166ad6"
+  },
+  {
+   "id": "kimi31r1/authored/attention_decode_mqa/mqa_decode_padded_lengths_2",
+   "task": "authored__attention_decode_mqa__mqa_decode_padded_lengths_2",
+   "code_sha256": "898f1a08f046a54e39d960e4304aa5b13c6f302d7686bd950082d9c5c1c9acdb",
+   "ref_sha256": "14287eee86694f88afb73cf81b3a80d6068747cbe1c5249df38cb01dc045a1b4"
+  },
+  {
+   "id": "kimi31r1/authored/attention_local_global/hybrid_local_global_head_attention",
+   "task": "authored__attention_local_global__hybrid_local_global_head_attention",
+   "code_sha256": "569cb42a51eb80a4745168454ef84eb14845e985fadc1b5c0d02974f9b6ab67c",
+   "ref_sha256": "06fba04c7203a6740cede6031e3311413da6bb8be08aaf88ff1e04a38aea53c9"
+  },
+  {
+   "id": "kimi31r1/authored/moe_shared_plus_routed/qwen_moe_shared_routed_combine",
+   "task": "authored__moe_shared_plus_routed__qwen_moe_shared_routed_combine",
+   "code_sha256": "60f7f58dfd820081fccb72c5f6d1586ccad6604b739a434a20d43491580f7f6d",
+   "ref_sha256": "f3b33ee26189446d557caa66514e28b9834200ca4a6f4e01f5c24c5898940648"
+  },
+  {
+   "id": "kimi31r1/kb/l2/74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__bf16",
+   "task": "kb__l2__74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__bf16",
+   "code_sha256": "64e1b76ac8f331b07d29a85068de0b1deb3d6b28adcd2d763e981933031d81e5",
+   "ref_sha256": "38b6c5809f7fd6d05e6a925c044a176532ad32f9b7bb439d6f7733f15c6af374"
+  },
+  {
+   "id": "kimi31r1/kernelbook/SoftmaxAffineLayer_4235",
+   "task": "kernelbook__SoftmaxAffineLayer_4235",
+   "code_sha256": "4672bc9907f16af0a9d860f401d5342be6b3fed6ddef2f9da2a933213a62e48b",
+   "ref_sha256": "19db5559ae92c04f04594eec986819ca898a26cffe1994113fd247ab15d80c4f"
+  },
+  {
+   "id": "kimi31r1/kernelbook/DiscrimNet_10956",
+   "task": "kernelbook__DiscrimNet_10956",
+   "code_sha256": "5c6d33121d53275c2306395242887ee5218da65202b7cfa658bde7cc3ce4d5c6",
+   "ref_sha256": "614f1d32d209ac6723ccf93f7ea6af998019f63cb3cc7ec4c78ce08fa923a222"
+  },
+  {
+   "id": "kimi31r1/kernelbook/DiscriminatorLoss_18296",
+   "task": "kernelbook__DiscriminatorLoss_18296",
+   "code_sha256": "f9ad872883c6e5ed25d48c9a6ca69d2e3a62662dcc486ea3c29e2b9b254c23c8",
+   "ref_sha256": "519f0b76ba7de9721e5f053fe924aa083aab185b761f241a0345addf7a3d3b9c"
+  },
+  {
+   "id": "kimi31r1/kb/l1/24_LogSoftmax__bf16",
+   "task": "kb__l1__24_LogSoftmax__bf16",
+   "code_sha256": "68ba65b00ffc58144b0ff76246c46451b579c4c4e0ad2962d63199b15c9ef329",
+   "ref_sha256": "a08c47d1db4d360748f3f39c040c503d25af9a39b9316e514b1420f5e644b2fe"
+  },
+  {
+   "id": "kimi31r1/kernelbook/AffineConstantFlow_2648",
+   "task": "kernelbook__AffineConstantFlow_2648",
+   "code_sha256": "de567acbffb27f712c365a2aa2a67e7a2ed2f141dcde8d740b0918c7ffedb03a",
+   "ref_sha256": "b5272b385f9e281630249081e0cbcfe820c8b7e9df26aaa6780df01040461960"
+  },
+  {
+   "id": "kimi31r1/kernelbook/GaussianActivation_18109",
+   "task": "kernelbook__GaussianActivation_18109",
+   "code_sha256": "378d776b6933e93240cfdb3c2ce369f01c85275fd7bc4ac10b9e7a7e6cad7b72",
+   "ref_sha256": "d48a9d8056d950dbcd59cf8f85f3092236c511cebdcf9b32d1b9cae7f6e256e2"
+  },
+  {
+   "id": "kimi31r1/kernelbook/Sys_R_2630",
+   "task": "kernelbook__Sys_R_2630",
+   "code_sha256": "20781c81e1d6eda81f7b5b46d92c977c7bb464e46fa480394238bd031916bdf0",
+   "ref_sha256": "770e6a87d69a9de3f7a311c6e75fbbaa4fd1d3b676a084021495ca77afc1a3ac"
+  },
+  {
+   "id": "kimi31r1/authored/ragged_jagged_softmax/jagged_segment_softmax_2",
+   "task": "authored__ragged_jagged_softmax__jagged_segment_softmax_2",
+   "code_sha256": "ca16e40e62e59b3228e4fe5372f4ad94384026cd1392fb60d2e0f5d05a7e9ebd",
+   "ref_sha256": "fe7100b04335ee63d76d39e6de489be05664eecea16968a20c4079e550f54378"
+  },
+  {
+   "id": "kimi31r1/kernelbook/IntegrationModule_16384",
+   "task": "kernelbook__IntegrationModule_16384",
+   "code_sha256": "a7360e6d87634080eb11cc026248fb6b343d66343f0385d44965295fd37aea44",
+   "ref_sha256": "a29af183633071cb6849039b9ea46aa331ad5ce95a0d386c2131e3e28aee4594"
+  },
+  {
+   "id": "kimi31r1/kernelbook/PseudoCoord_13933",
+   "task": "kernelbook__PseudoCoord_13933",
+   "code_sha256": "75ca2292326ab8a2d5e6eb51628923f4a2e0a210bfc49804856bfa4529eac38d",
+   "ref_sha256": "8af4f6cbf28a150248311d17635175c71fd1e918a0ecc71b15831a178684a1c2"
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "job_id": "dataset-kbkc-r2h2-p1",
+ "owner": "hruday",
+ "step": "dataset-kbkc-r2h2-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 6,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "61a6499a7eded365f26e08539e545bc6568f041e6ddb1664dae09ffe70d048ca",
+  "run.sh": "4ca5ad0a07ceb660b786092a98f1a1be334f1ab702bc78c6d604b6c2f0c7d887",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__SeparableConv2d_6123.a2.s0",
+   "task": "kernelbook__SeparableConv2d_6123",
+   "code_sha256": "5c7022b8558b3af373d983083a8f5b85f7b14317b4a212565be7929891932fd5",
+   "ref_sha256": "df164a1c04816c8dc1ce7aca0a5dc49aad9ce685ae90b0084454fedc829ab38a"
+  },
+  {
+   "id": "kernelbook__SeparableConvBlock_7098.a2.s0",
+   "task": "kernelbook__SeparableConvBlock_7098",
+   "code_sha256": "d7bf13b55416151c633034c8228dec5daff6a637b9cae92350a60f3d0c6c08d2",
+   "ref_sha256": "205e7915c244adaea3f2fd205eb92b6ca37c97c06a105278b9a29a54da2a76a9"
+  },
+  {
+   "id": "kernelbook__SequenceBias_2178.a2.s0",
+   "task": "kernelbook__SequenceBias_2178",
+   "code_sha256": "722f77f184b502d9d14ee278c11dc5a4240e2f069f7ada1845c7921cc35fbf39",
+   "ref_sha256": "c831d6800a9d9da91aefa4bd8f55a59a6e976a25698e9fcc87216d9ddc35a687"
+  },
+  {
+   "id": "kernelbook__SimpleConvTranspose2dModule_14644.a2.s0",
+   "task": "kernelbook__SimpleConvTranspose2dModule_14644",
+   "code_sha256": "d074bedf114f69e08543b0c8c89f94dee531f394fd5565c0cf78002a2ebf202d",
+   "ref_sha256": "376e5dee40b1182cf3b674dfff49c5a18fbf9482faa19eca720e0704de3ecafe"
+  },
+  {
+   "id": "kernelbook__TopicEmbeddingAttention_1243.a2.s0",
+   "task": "kernelbook__TopicEmbeddingAttention_1243",
+   "code_sha256": "6bef55239b80553ffbe7eade283167933e3c8164d494108c047d07fe5bac4f1d",
+   "ref_sha256": "3e0c1663fcb0aa99cacaedefe86e3a08f0f820a76684da434c2d033a5ffa9586"
+  },
+  {
+   "id": "kernelbook__equalized_conv2d_7232.a2.s0",
+   "task": "kernelbook__equalized_conv2d_7232",
+   "code_sha256": "5e1f8b5a14f1c84dd74b2ee5ad538474c948f040d407ca436f47321aee2ce4d8",
+   "ref_sha256": "839f365e53c927d7fa91dd0e28ca2f689d7c3fff5b4ff061fcda448f0f795f06"
+  }
+ ]
+}

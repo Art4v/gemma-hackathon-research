@@ -1,0 +1,30 @@
+{
+ "job_id": "dataset-m1-r1c-x1",
+ "owner": "karthik",
+ "step": "dataset-m1-r1c-x1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "152b70d87b09f5197cd698be3cfcbe188046517ea2d3397ecf7d63619923ac9b",
+  "run.sh": "3a5e9c9eac0cacb2db14e2d62131afc5d9127bba8001528714c75bce75818847",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "authored__moe_capacity_dispatch__switch_capacity_dispatch_combine__m1_batch.a1.s0",
+   "task": "authored__moe_capacity_dispatch__switch_capacity_dispatch_combine__m1_batch",
+   "code_sha256": "fdc187dba3fe5bc4b1867bea9a8c44da74ad90520328f3e5348ba0de76b1015f",
+   "ref_sha256": "1b360f502ec71dd36e1ad6f45c7bf8165b4fbb26d36bbe3dca6b996e811cdafc"
+  }
+ ]
+}

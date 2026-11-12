@@ -1,0 +1,36 @@
+{
+ "job_id": "kimi-r3-s4-p3",
+ "owner": "hruday",
+ "step": "kimi-r3-s4-p3",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 2,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "d7b012a7660ea3eb311efecbb5f53f6073dab9036acd05f133cf968b974aa9f0",
+  "run.sh": "ae3b28a5ec7208f44a0d56787b4bca66bee7f85f63f9f587d72abfb5ef0b9dc7",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiR3/kernelbook/batch_hard_triplet_loss",
+   "task": "kernelbook__batch_hard_triplet_loss",
+   "code_sha256": "4a3d67a37855d2e19c52ef11b8ee0f8b9eb4463fcd473a628753eaf5849767b2",
+   "ref_sha256": "7e2098cb94219e63a050c0bdcba3612193ff90d707e1fb066a76c350a1f83755"
+  },
+  {
+   "id": "kimiR3/kernelbook/marginLoss_2121",
+   "task": "kernelbook__marginLoss_2121",
+   "code_sha256": "bfa08cfa5f0479a224bf7ba1d4d73d0bf640df21a8b6626299077808c25d1f18",
+   "ref_sha256": "6b4970481dd7f9e544adb523a18e606f857bf71ca225d95cdac166c1dccd3322"
+  }
+ ]
+}

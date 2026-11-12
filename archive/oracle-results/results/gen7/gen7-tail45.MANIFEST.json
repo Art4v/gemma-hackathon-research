@@ -1,0 +1,294 @@
+{
+ "job_id": "gen7-tail45",
+ "owner": "karthik",
+ "step": "v7_gen",
+ "oracle_commit": "86c31a9",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 45,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "470dd2a1e7c566e4562d976776264be437631608e015420a14396a7465f929ec",
+  "run.sh": "51ce942938e38c67f450b40a96503af037d41fdaf2482cc2a9b891461bac891a",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00113",
+   "task": "gen7__row_reduction_matmul__00113",
+   "code_sha256": "03cb622a30dc2d209669d131cea14b0811cdaae3e1ff927a73fabdf80085908d",
+   "ref_sha256": "6e927893acb4958d0bb8f3fc21ed0e7b6138bb2afc6a2e555dfa72470e23216f"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00112",
+   "task": "gen7__row_reduction_matmul__00112",
+   "code_sha256": "f2f3ecb8936d5bb05b59961278da663df8b595cb14ee87ec75e10e10d27a663c",
+   "ref_sha256": "bd7c026141cdc9dcbd13752c63768871d6acaca52d0d68db394941d75cdf3ac0"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00111",
+   "task": "gen7__row_reduction_matmul__00111",
+   "code_sha256": "bde1df493a065b999737bf94350bca3d9ddde12c16a0bab193ce11697c38c33e",
+   "ref_sha256": "d9ea77e63936e81819837acc9b8550aeeebfad36cc30fa52b8147b9189fabe32"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00110",
+   "task": "gen7__row_reduction_matmul__00110",
+   "code_sha256": "65ca11ed1ca196fda0e21c425b0d7e8adc568db02afc660d1b638b50cbdb8d62",
+   "ref_sha256": "629bd949ad03237d7afebe585e2d0e66a5cbb79f5bc552ad8650140a2f2ec282"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00109",
+   "task": "gen7__row_reduction_matmul__00109",
+   "code_sha256": "0640608480d98dc0585d849cbe3535767abf983a4b5bfa311b82343c89d474e5",
+   "ref_sha256": "0582910dae7093d8ae977995692b88a2c01a1df5be69c0b82b8dc70abdb1cc90"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00108",
+   "task": "gen7__row_reduction_matmul__00108",
+   "code_sha256": "5440c69b3082403e16fef68df07d340d7f07dd8a0e61effc54d3dd09edda6c44",
+   "ref_sha256": "dc8d3a210e2c274ac53cc14e5c5f47a909add0c3010abb9c33fd4dca57821f27"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00107",
+   "task": "gen7__row_reduction_matmul__00107",
+   "code_sha256": "720eca84919a554fb5d3c77bf46d52ced3fe25cb9df3eba5fd590c96feb8dd1f",
+   "ref_sha256": "82bdfb90b59286f8e287f9871d9e69b66626c77b09737e3a75a44fafdeca1ed1"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00106",
+   "task": "gen7__row_reduction_matmul__00106",
+   "code_sha256": "eb0889c5e6c8b51a0f19d7105b1d01cbeb2f7142b2986dd9e1b3eb6099e105f2",
+   "ref_sha256": "09cc0e8d7c206b76fa7642aa011531fd21f3ef7d3eb264d0aa5a7f3ea01d28f1"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00103",
+   "task": "gen7__row_reduction_matmul__00103",
+   "code_sha256": "92bbcc33c3707f6e61580289704b387b76d9a4322ba6a6e472043739679477a6",
+   "ref_sha256": "0a6832d4cfea1ad5a08f3d62367d8102c1c87f238ecf10805fa2e137375a10d3"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00102",
+   "task": "gen7__row_reduction_matmul__00102",
+   "code_sha256": "d94766004517aa96d2f607c7a1a761851a4e2ebd85d534f73f539f6b1461ccd2",
+   "ref_sha256": "108251c48a99746e3c55f9c9ee3fb825e4876939d91d009a86f8aa387483c13a"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00101",
+   "task": "gen7__row_reduction_matmul__00101",
+   "code_sha256": "eae0416617e2f49253c12d9d85f8b3201606bd0d39168f167d0b9adf2df1a721",
+   "ref_sha256": "680b70c11284f1fd1189c4dc9681454d9a6bb21343ac1789c3a70be41f4de642"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00100",
+   "task": "gen7__row_reduction_matmul__00100",
+   "code_sha256": "656d93f374d9cb32af1dae8d46e81ed61abbe91060c27c8ae6528f91f618019b",
+   "ref_sha256": "47fc08725aab192102b96b8497de5a657e0432530da6a6e103491abfe442bdd5"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00099",
+   "task": "gen7__row_reduction_matmul__00099",
+   "code_sha256": "217d142aaa7bc6bd0e1fe0d94bb66585820fc80441ba58f19bbfd1dd705bb472",
+   "ref_sha256": "52cfd572a33287036f7451ab13c23af34238146da7f35377e9a5ab9b6f366464"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00098",
+   "task": "gen7__row_reduction_matmul__00098",
+   "code_sha256": "0d3acd260e23b9ff463df5a313326c2247434b0e595c7dd4f4eaecd5995e4dc3",
+   "ref_sha256": "17194753c890aaa7853e691bdd7977562a8ca35ff5744e905c6fa1f5a788dd4a"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00097",
+   "task": "gen7__row_reduction_matmul__00097",
+   "code_sha256": "39f8ff7d762445bc384d1c9d72488f799590b34a110869c38f945c0317122f09",
+   "ref_sha256": "deff968c26f8e88b24bae6335b91844d670581d8ded4386497ebe24c41d09cd2"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00096",
+   "task": "gen7__row_reduction_matmul__00096",
+   "code_sha256": "ef47add0fa00cea33e3fd4be9c9db5967f1699da1923e93d7454093f28c8e3ba",
+   "ref_sha256": "e62164329c518a5471ca342f1ddfc538d4b5edfbef18f1bc737564cea326a177"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00095",
+   "task": "gen7__row_reduction_matmul__00095",
+   "code_sha256": "d1f322bc8e688ee89988da9d1ed08160416c5e98220ba40bcf2495d16d4b2543",
+   "ref_sha256": "fb7ca5bf104fd9c88ef1793c6e4e56676472a1b0ba8ea22525fe4ea313e3afe4"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00094",
+   "task": "gen7__row_reduction_matmul__00094",
+   "code_sha256": "ab340481839b0a205b84b55872b13d88c1b430622d95e6e423716ad63c89b193",
+   "ref_sha256": "6bef0216183ab0872aa560491baa3371884179614a4b4577f86bb831b09c28ba"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00092",
+   "task": "gen7__row_reduction_matmul__00092",
+   "code_sha256": "faed95644e272bfd907ee8cac6ccbf2addc7bb4a16925fe8966c3c26e6c23062",
+   "ref_sha256": "87e99681282153a6d6b8a35cddd06f11591862483ccf415492792bfaa5f719a8"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00091",
+   "task": "gen7__row_reduction_matmul__00091",
+   "code_sha256": "e04f41defb2c7043fb80df2d18cd57bc25ba99657372e22b3932c6b1ddac0df6",
+   "ref_sha256": "f743e6db8eca80ce2ab71d9ebb94344b4ba4ae7f639a546ce5b91dc8d91c205f"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00090",
+   "task": "gen7__row_reduction_matmul__00090",
+   "code_sha256": "0708ccd6cd202753a80924cb71c4e950bb5bafc2fd903baee5e00b883416edae",
+   "ref_sha256": "3ea327698a6542ff4eb9ce01d5b8cfabf9d441e4f18da569dddc9709404be242"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00089",
+   "task": "gen7__row_reduction_matmul__00089",
+   "code_sha256": "6fe82ce5424111affce3d4370f8769fab74abccae8ae060a01f669e4fe540fa9",
+   "ref_sha256": "d5bf83398e0abe16074715d275d41a5057d0e29ebaafce6f72f259bae1b87282"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00088",
+   "task": "gen7__row_reduction_matmul__00088",
+   "code_sha256": "d3874bc7d24d939404b925faf84f83baeb3a68d4695673f42b93149242376147",
+   "ref_sha256": "3b1719a2fe6d2a22371c4f6a7c6313e43c8f531b4e86481eb2ff7df925f0f384"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00087",
+   "task": "gen7__row_reduction_matmul__00087",
+   "code_sha256": "e707d099f214b682ec7460fc8f36715ef878cbb03462351b4575a17ff7325ab8",
+   "ref_sha256": "20379b18f2007d51ecb757889c2007acd0bcca1b32959a38f9ead9b7177b1d4c"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00086",
+   "task": "gen7__row_reduction_matmul__00086",
+   "code_sha256": "a8e7522017e588b9c530b3df740336579e5e33450bfbd7fae0c2727da9d9eb0f",
+   "ref_sha256": "21424a7965575bac99ca77b852f98ac58226c33e9ea07054f8a27a1523bcc88a"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00085",
+   "task": "gen7__row_reduction_matmul__00085",
+   "code_sha256": "32eb1e768e233d86744a4c1b1353eea69ca3bfff2870c3a779b9eff53bbe303b",
+   "ref_sha256": "9415de237f30fc0030f1c86c7588ad828dc275565fc60d54b53fc3e3d3f257c0"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00084",
+   "task": "gen7__row_reduction_matmul__00084",
+   "code_sha256": "f3784c314fb28892e24f552758f97ea5c79df340b66be07a485c175619c64b45",
+   "ref_sha256": "67925c77b1fea2fed23bd7a4a56744141621c5643b7f16073e00a21a717a0d87"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00083",
+   "task": "gen7__row_reduction_matmul__00083",
+   "code_sha256": "83bf3ebbbf87cd35fa18d62381578e0a646ce702ec840ea9b7aed12d36324508",
+   "ref_sha256": "092ad4ca7127549cb82c1ad81184cc1ca1c1a2db49c5bb366862426a9cf8cc7a"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00082",
+   "task": "gen7__row_reduction_matmul__00082",
+   "code_sha256": "07368c1fdd9724f65b8ba06cf60866592d22f5afaebeb5e47a20d94775a84699",
+   "ref_sha256": "0e00c4e5e7f1a53c23d2e63fe6064c5f2eea2c2f307329d9cdc1f96a3ffdad21"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00081",
+   "task": "gen7__row_reduction_matmul__00081",
+   "code_sha256": "4219764f88fe3931ada33be122d709e5fd94f47c2fcfc661a03ea0cc65ac4f6a",
+   "ref_sha256": "7be16e0fd205cd1a7f1e22927cdd37a8b81800da9e5ca5bbe89bb74087d76eae"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00080",
+   "task": "gen7__row_reduction_matmul__00080",
+   "code_sha256": "1c62c1ad6d043807956786ffe9a305b0d341660d9bae5b2ede523cf379857a34",
+   "ref_sha256": "d80e2f47e1ca5b6c1cc9028bbd3bb1e9a95619dbb5f7eacc7dbde0eb7219574b"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00079",
+   "task": "gen7__row_reduction_matmul__00079",
+   "code_sha256": "591dd7fbea6c7744dc20c84182d66fa55dc500e520fbf1616793e3c72a67eb7a",
+   "ref_sha256": "d5fa62d3d4f3b4b408b74f444c5ce2b34a39b60caf811b62f31799fc98d1c37d"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00078",
+   "task": "gen7__row_reduction_matmul__00078",
+   "code_sha256": "1f902eb6a8b970923bb83598f74000ef97f3b12aa144f16bc6c9fd46648c3ad3",
+   "ref_sha256": "29b3790e5ebca294d9b98e46804d7f2f1a15530402a63b124f0d7b596f52d65d"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00077",
+   "task": "gen7__row_reduction_matmul__00077",
+   "code_sha256": "e60c4b5f0accb0d072a8326ec0325d6d1dade9df0c1a21c41c0edf7d138d12ff",
+   "ref_sha256": "28a17c3c034ddb941c326b546c07d40f13825be8efdae153493414299a285cce"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00076",
+   "task": "gen7__row_reduction_matmul__00076",
+   "code_sha256": "676588129024a116743ade24de4c118dc74c951db63c29c1bd6c1d188942813f",
+   "ref_sha256": "fbb97e5663b980543602b9e75717b7289124ea81455e3da2770429d4125d8a4f"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00075",
+   "task": "gen7__row_reduction_matmul__00075",
+   "code_sha256": "04be278964f11f440e82b389e288a552db24074e44face32a97ad5d86bcd7efc",
+   "ref_sha256": "e6100f3d5f5b8747834287268c00f296eb8e0bb216f57871d3f59cde50a48a23"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00074",
+   "task": "gen7__row_reduction_matmul__00074",
+   "code_sha256": "b82d12e33a57d80f2e0b4487002690f507539dac9490224909cab11664b5feac",
+   "ref_sha256": "93c3a1ad0b54b62c6d5c93ae5f0d148b5cc7ee6bc73e4101e948ab6de181735a"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00073",
+   "task": "gen7__row_reduction_matmul__00073",
+   "code_sha256": "dc18e38cdcf605e3603d8e0a73ba8aa6a18ab10e95ac1393e115f5903abc53f4",
+   "ref_sha256": "2567017bed65684324b089b6cfa38deff4f1e818e28db79e2768b6f24fa645f8"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00072",
+   "task": "gen7__row_reduction_matmul__00072",
+   "code_sha256": "b6b7a93e2c6b3c5794dbb0f22daa5b24c50879400ffca8a61825b7da315ffece",
+   "ref_sha256": "509fbd4fc1d2ac7cd96da8c724299cb2e34edfb882e88e1ae6ca3d32bbbb06e0"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00071",
+   "task": "gen7__row_reduction_matmul__00071",
+   "code_sha256": "d3538b98a7a5d3d254b80b77dbc6691dff4cab5051a14872deda6d351e6b4099",
+   "ref_sha256": "2fd679d9561aae16e1eb15671d5b680573634f3a883789a172cca88b79d7c053"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00070",
+   "task": "gen7__row_reduction_matmul__00070",
+   "code_sha256": "903518770a5c87d988c311733e3202451fbb51b0db5befa49972160b4c96c5c7",
+   "ref_sha256": "19d06683410b7b60a0ca52d64808247a5f1daf14234db3b23a14979ec2eaa8a8"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00069",
+   "task": "gen7__row_reduction_matmul__00069",
+   "code_sha256": "adc5df116b95f1c2cdcb4012e54d1090346cf6984197386c16493e7abe419859",
+   "ref_sha256": "b70e0878b031e72088929a2b801d35c9201d60eddd854c495270e6b6d70a3f98"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00068",
+   "task": "gen7__row_reduction_matmul__00068",
+   "code_sha256": "9dc9a3cc175f0b1f6ae5b00db98f42b1e8a896fce3f72dce4dcb4af7bb4dbfef",
+   "ref_sha256": "a45d134d11e752547450d5192b545a52d151fd98c4fc7c4d91e00ac9228ce66c"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00067",
+   "task": "gen7__row_reduction_matmul__00067",
+   "code_sha256": "082197a039bf9b35bf8bd41fc9641dbcb9c669ea1652e6cafd7c962fe68f8e91",
+   "ref_sha256": "2b4ba705e92401f19fce3f3bdbaf0e49f2d77e411e826d7b21efe7b144040b33"
+  },
+  {
+   "id": "gen7/gen7__row_reduction_matmul__00066",
+   "task": "gen7__row_reduction_matmul__00066",
+   "code_sha256": "d5a719d2c04c79eea703453d728493400351b688bcf6f5faa7ea6b497de7980b",
+   "ref_sha256": "0d8d69978b0be34b13e1b71159211f243292e146beb6f4bbaf6d0ed41fdeb489"
+  }
+ ]
+}

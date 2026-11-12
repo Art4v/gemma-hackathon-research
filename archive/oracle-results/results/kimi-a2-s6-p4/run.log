@@ -1,0 +1,2 @@
+run.sh: line 55: 17528 Aborted                 (core dumped) env $CHIP "$PY" tpu_oracle.py pack.json "shards/${i}of$N.jsonl" --shard "$i/$N" --seeds 3 --speed-bar 0.7 --stack "${STACK:-cloud-tpu-vm}" $SMOKE > "logs/shard$i.log" 2>&1
+results/kimi-a2-s6-p4.jsonl: 62 rows of 68; a shard failed, see logs/, rerun to resume

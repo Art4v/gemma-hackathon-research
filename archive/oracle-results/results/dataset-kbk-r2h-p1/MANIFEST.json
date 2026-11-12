@@ -1,0 +1,78 @@
+{
+ "job_id": "dataset-kbk-r2h-p1",
+ "owner": "aarav",
+ "step": "dataset-kbk-r2h-p1",
+ "oracle_commit": "24c3904",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 9,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "d54ea6ae0a035e227a1835105d5c53abaf859a81e8d02397112627ce78f23f3c",
+  "run.sh": "f6aee22d225bc3ed77adbb64c54467c9e1fe3857b864178073c58db0fafc6bf6",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__AUXModule_17535.a2.s0",
+   "task": "kernelbook__AUXModule_17535",
+   "code_sha256": "37f3427d9e9ae13ef46dfd7d50f585fd37b21b9b1c4b98ff8275dd23baf83baa",
+   "ref_sha256": "62ec17d171f2bf5fb34689314e047724b2499b14f4cd5e49dcba53ad01ddfc15"
+  },
+  {
+   "id": "kernelbook__AdaIN_7467.a2.s0",
+   "task": "kernelbook__AdaIN_7467",
+   "code_sha256": "c02e3a09bdf63c8686fadc54081fb33d62dfca3318f807d54548847d3d113f4a",
+   "ref_sha256": "f3cfba319ccc537591966eaca258a94d0eee6b43d74256930f5c970e83883f81"
+  },
+  {
+   "id": "kernelbook__AttentiveNorm2d_4131.a2.s0",
+   "task": "kernelbook__AttentiveNorm2d_4131",
+   "code_sha256": "ecb3c5012e700f7d75b2308a3e985e1f4ad290c2e52ca1c29e4229c3fd23e1bd",
+   "ref_sha256": "dcff792cec5818a139f34fc3880aad0b27ffeb4cd5534d63142564a0245d4745"
+  },
+  {
+   "id": "kernelbook__AutoEncoder_10195.a2.s0",
+   "task": "kernelbook__AutoEncoder_10195",
+   "code_sha256": "a7c26098cff01fe6aa5aaa2f9200987c0ca43ad5c5248dced0e34a9e1c9c74e6",
+   "ref_sha256": "7b590990b50094c4118a623880a75d2b54702fcf35109f66e593fd57ec0f39a6"
+  },
+  {
+   "id": "kernelbook__BCEDiceLoss_1717.a2.s0",
+   "task": "kernelbook__BCEDiceLoss_1717",
+   "code_sha256": "5a2ae152ba6eca7266b961595885bf96a54b1ea78d0a0b26270c9afabf937af0",
+   "ref_sha256": "81c3e8e05ca966005f4cb62dfa10ae7b8d551645a8ae987d021817b080eadf78"
+  },
+  {
+   "id": "kernelbook__GatedActivation_6864.a2.s0",
+   "task": "kernelbook__GatedActivation_6864",
+   "code_sha256": "129c04c0b5e316f64f3ac2f1a3632c40e006c34a7dcccaff95e07597d3c34080",
+   "ref_sha256": "484ec573ffa49e2292324d86c3f55203f755f51d86aeb424e2be34f843ca6c8b"
+  },
+  {
+   "id": "kernelbook__GaussMembFunc_4261.a2.s0",
+   "task": "kernelbook__GaussMembFunc_4261",
+   "code_sha256": "6c10b4eb9642f3b979ad423d0bdc3b0c6960e16c8d0e8ab92fe541a001582508",
+   "ref_sha256": "e7530e5e038a8e3becf26d302b67642b4307da41a82938fe0a0ae1a002ab9686"
+  },
+  {
+   "id": "kernelbook__GeM_3478.a2.s0",
+   "task": "kernelbook__GeM_3478",
+   "code_sha256": "8dc06b7c828af1641fd3a453fb99d155da4e981ec7fa9e61401df2b568fb80c6",
+   "ref_sha256": "6f3812d2c3418bbd125a8e3c2034e1be7cdd9ef0a9a23600726c83950b6284eb"
+  },
+  {
+   "id": "kernelbook__PaddedMaxPool2d_2241.a2.s0",
+   "task": "kernelbook__PaddedMaxPool2d_2241",
+   "code_sha256": "5c7fa80f2968a139d027ac8516764ddbab2aa6f5347304bbeb893c78b6287eb5",
+   "ref_sha256": "c2dff30b42e400402cf36b4a97abc2e967d5495165772d899ad637dc58c03bd0"
+  }
+ ]
+}

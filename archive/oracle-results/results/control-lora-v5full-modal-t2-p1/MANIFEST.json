@@ -1,0 +1,30 @@
+{
+ "job_id": "control-lora-v5full-modal-t2-p1",
+ "owner": "hruday",
+ "step": "control-lora-v5full-modal-t2-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "0fe5e119f103b18ffab5b8776b31f745bd1bf6b388b82edf284856783558b30b",
+  "run.sh": "8e96c2eb1906be760e33882945c329691ae1caa1e2e412a93c3f98811fd8db9a",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "bare/9p_SwiGLU_MLP/t2",
+   "task": "9p_SwiGLU_MLP",
+   "code_sha256": "5d9a2401e42471ab233f286ec9a68cb4ed1d275e237a652562a95d58190c09dd",
+   "ref_sha256": "0a08d8a55a72b55e714610e0c4e09092d2d18f7a44abfdda751eaa3a82d6b708"
+  }
+ ]
+}

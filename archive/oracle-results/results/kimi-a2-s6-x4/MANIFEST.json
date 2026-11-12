@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-a2-s6-x4",
+ "owner": "hruday",
+ "step": "kimi-a2-s6-x4",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "e2a81272c4602468b6973244f6d91fd3136dfe1b1293638e87d3645cd090ffe6",
+  "run.sh": "3ee4dcbe518018ddfca65934265fd3626fb8193e76c9182f1336a0286ae5a528",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/WeightedLoss_12047",
+   "task": "kernelbook__WeightedLoss_12047",
+   "code_sha256": "b8554750042c59ea64b07b8aef8cf6bec65e86cb5b4dc181f289904527c8be69",
+   "ref_sha256": "8806df81e46153d3537da1a598cf6cee669378346305ebf0600584965c3a526d"
+  }
+ ]
+}

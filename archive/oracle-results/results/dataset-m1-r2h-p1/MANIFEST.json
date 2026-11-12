@@ -1,0 +1,60 @@
+{
+ "job_id": "dataset-m1-r2h-p1",
+ "owner": "aarav",
+ "step": "dataset-m1-r2h-p1",
+ "oracle_commit": "6f1808d",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 6,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "947fcea036710884a1793675d979b8059ae49443276de5aae598244449660c5a",
+  "run.sh": "0481a93de5d3098f224c58cf4e4f23154b19c0ee3b3e285a7942ae77b9ecda99",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_update__m1_batch.a2.s0",
+   "task": "authored__kv_cache_ring_buffer__sliding_window_kv_ring_update__m1_batch",
+   "code_sha256": "a89063b2c48750a16032a60adcd51720f057852dc86832c5d2bc200ab6e6e971",
+   "ref_sha256": "bc9dcfe18d2fcfb0b0a802ce50087be1472d1910f714602a9f383b98d319776b"
+  },
+  {
+   "id": "kb__l1__39_L2Norm___m1_ragged.a2.s0",
+   "task": "kb__l1__39_L2Norm___m1_ragged",
+   "code_sha256": "c0b09b7fccb1906d94ac5628e63a31d4df4c7ace7ec1109a4f65cca5804fd484",
+   "ref_sha256": "a5e1ff0d8c815c0952db62b703e1af53e52bef1ad323e4fac0d51b885129590a"
+  },
+  {
+   "id": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__m1_aux.a2.s0",
+   "task": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__m1_aux",
+   "code_sha256": "da795b1c0b82446a266d27dc87654db21f2d78285101548e5b2e45f7c4580aae",
+   "ref_sha256": "931d84bac402b3d63098f6746a8d9dbd87cf9227bc698f5a38b25d001ec9aad7"
+  },
+  {
+   "id": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged.a2.s0",
+   "task": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "d431686c6925bfbe8a06ffccda361a1a83d56c4a0a19339100dcb94b4399b4c0",
+   "ref_sha256": "e21dde55821e96ec3caa785b159000184eacf428b08aec872205ee2249b6f381"
+  },
+  {
+   "id": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged.a2.s0",
+   "task": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "e003c2ca5870677f0fec4041fd8e6ee51dfeac8f436e1d0f774ada08a687cc88",
+   "ref_sha256": "a98b33551e4d24b721d7f270446d03ecd6acddf08a914f672944c77a08b97d87"
+  },
+  {
+   "id": "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch.a2.s0",
+   "task": "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch",
+   "code_sha256": "8aac4d84339c376583ad5a47781e7e75b7335793040e87c460ab0c2726ec58c6",
+   "ref_sha256": "519aecf4dd3300626f389973a8513fdcdcb6896fb525383ae79d50b38585ba18"
+  }
+ ]
+}

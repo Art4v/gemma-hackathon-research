@@ -1,0 +1,10 @@
+run rows at 487973d
+v4: pass_within_3 1/58 | correct within 3 3/58 | pass at turn 0 1/58 | k-33 0/33 | p-25 1/25 | all tasks run 1/64
+v5: pass_within_3 1/58 | correct within 3 2/58 | pass at turn 0 0/58 | k-33 0/33 | p-25 1/25 | all tasks run 1/64
+v7: pass_within_3 9/58 | correct within 3 9/58 | pass at turn 0 7/58 | k-33 8/33 | p-25 1/25 | all tasks run 9/64
+v7 passes: ['12p', '19k', '20k', '27k', '35k', '37k', '41k', '44k', '47k']
+McNemar pass_within_3, v7 vs v4: 8 vs 0 discordant, exact two-sided p = 0.0078
+McNemar pass_within_3, v7 vs v5: 8 vs 0 discordant, exact two-sided p = 0.0078
+McNemar correct_within_3, v7 vs v4: 8 vs 2 discordant, exact two-sided p = 0.1094
+v7 rows: 176 attempts over 64 tasks (attempts per task {3: 55, 1: 7, 2: 2}), 55 judged on the TPU, 121 stopped at the CPU kernel check
+all checks passed

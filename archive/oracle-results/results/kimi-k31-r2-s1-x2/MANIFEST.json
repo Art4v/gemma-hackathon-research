@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r2-s1-x2",
+ "owner": "hruday",
+ "step": "kimi-k31-r2-s1-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "e48152b2c5edbf9ff6247e6a072f4a2f8f2c4867a9633693368689572203b5f2",
+  "run.sh": "84a305ea4f8d77db2835d014470616d08b95c06cd25dabf96b899acb90f8b8da",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/projection_model_17910",
+   "task": "kernelbook__projection_model_17910",
+   "code_sha256": "8c7adb50b1b37cda1d2a06e36ab070847c86471132682a1becf9067151559cad",
+   "ref_sha256": "1ce45810be3534330eb0a056c02ce8fcdfbc0561e17d8b16bc61b5447276adf4"
+  }
+ ]
+}

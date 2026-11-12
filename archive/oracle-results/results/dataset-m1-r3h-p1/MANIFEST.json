@@ -1,0 +1,36 @@
+{
+ "job_id": "dataset-m1-r3h-p1",
+ "owner": "aarav",
+ "step": "dataset-m1-r3h-p1",
+ "oracle_commit": "5b9c831",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 2,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "4c3a24fc2d60c7579b6dc2d5f8d8a9c14d95d546f85a0ec5f20b53b081fac9d1",
+  "run.sh": "a982cae57823aad3c8ee7112d67d8c09bef75410796a01538cbf9f730ae909c6",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kb__l1__39_L2Norm___m1_ragged.a3.s0",
+   "task": "kb__l1__39_L2Norm___m1_ragged",
+   "code_sha256": "12baa0c8fc2a925895aa5444688d5d6618f46f203899a5950c5a8cbe6b7f74c6",
+   "ref_sha256": "a5e1ff0d8c815c0952db62b703e1af53e52bef1ad323e4fac0d51b885129590a"
+  },
+  {
+   "id": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged.a3.s0",
+   "task": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "c8723ebad6ac6fec0f5225bf754cfd0f81bfc1bbf50a41c0f45353e45e1f92b7",
+   "ref_sha256": "e21dde55821e96ec3caa785b159000184eacf428b08aec872205ee2249b6f381"
+  }
+ ]
+}

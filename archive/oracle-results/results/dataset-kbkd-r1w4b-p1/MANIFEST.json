@@ -1,0 +1,180 @@
+{
+ "job_id": "dataset-kbkd-r1w4b-p1",
+ "owner": "karthik",
+ "step": "dataset-kbkd-r1w4b-p1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 26,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "46685870d97aa3b2ecfcc14985d4ec8bc636c49480399027d0b27a48b641a7ba",
+  "run.sh": "c8e3b22b45e6d7462be45b4ee1c2c9fc76aaf39e1cee87e3c7653a278eb8c9a1",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__BCEFocalLoss_16817.a1.s0",
+   "task": "kernelbook__BCEFocalLoss_16817",
+   "code_sha256": "d72957450354719fdc0fb26a236538c85527d595b55359d5ee54a38dacf386cd",
+   "ref_sha256": "01bb2b01e7f7e209cbed0c5db382523a16d20219ed4bb321998b234e59d91b30"
+  },
+  {
+   "id": "kernelbook__BasicModel_ConvNet_4090.a1.s0",
+   "task": "kernelbook__BasicModel_ConvNet_4090",
+   "code_sha256": "ccb5732699394ac465e7d7cc8193c17c9f8ed2767c91d2d55f913ee151015b50",
+   "ref_sha256": "77676127f15f9dad5e8a46bcbcb09d5f8f3b0ad1782688815d4a529324609689"
+  },
+  {
+   "id": "kernelbook__CNN_14901.a1.s0",
+   "task": "kernelbook__CNN_14901",
+   "code_sha256": "5b370287bb369c60e402230bb6ed99fd7f047700e74a9168136dc1de3e03aec0",
+   "ref_sha256": "2727d2e7e1234e1c1545bd8178cbffad17009d789f16fbbab5013b7bf6ceb46b"
+  },
+  {
+   "id": "kernelbook__ConcatBlock_8276.a1.s0",
+   "task": "kernelbook__ConcatBlock_8276",
+   "code_sha256": "28808f99829e422c257c29c88ee7861a2779d91e24e0fb308408a4fc01421a0a",
+   "ref_sha256": "0ad973452b2a8c7cf056fc9ade1f29e260a3418662ff3f790198b34aa68553d8"
+  },
+  {
+   "id": "kernelbook__ConvBlock_3007.a1.s0",
+   "task": "kernelbook__ConvBlock_3007",
+   "code_sha256": "754164950c39822f47a7ea529a39dc40563e9d4c5f79157391467f6c089b8d8f",
+   "ref_sha256": "deffdd05be558bb545bd15fcac7cc632a6510a3273a7e2ff75a8e0b275b1dd9f"
+  },
+  {
+   "id": "kernelbook__Critic_3777.a1.s0",
+   "task": "kernelbook__Critic_3777",
+   "code_sha256": "3385664179a2f3cfb3a6891c60cd79139e94e23caf704521232cfdd6d6160e2d",
+   "ref_sha256": "078ff406c3f1b97dc9873b7411609a73ee805952cc12d72c32e63a0aefd910b8"
+  },
+  {
+   "id": "kernelbook__Decoder_2633.a1.s0",
+   "task": "kernelbook__Decoder_2633",
+   "code_sha256": "cdd660f920e2f0f5da488aeed8c002a4d1f1e0f13d305e1b90ca347a26a821f0",
+   "ref_sha256": "0ec3b0950caba913e258620872d97283350dbf2dc478acb62c5dde0d4bcc53a0"
+  },
+  {
+   "id": "kernelbook__DurationMSELoss_15303.a1.s0",
+   "task": "kernelbook__DurationMSELoss_15303",
+   "code_sha256": "fb29eaa10bc8c50cf3c40ee7808e1d90e45e0bdd45310f356bf30288a080844b",
+   "ref_sha256": "71eca59af25e8393a668dabda671235626b78f504175329986b19383e1a260cc"
+  },
+  {
+   "id": "kernelbook__FixupBasicBlock_8321.a1.s0",
+   "task": "kernelbook__FixupBasicBlock_8321",
+   "code_sha256": "04716bc67c140667e7327781ceb7d8f75452943c9082e22619f61a139fdfedad",
+   "ref_sha256": "c9b0f45fe101069968f07dfdbcb8a62c045e9faa9c53ee1fb91f2b25e34a1262"
+  },
+  {
+   "id": "kernelbook__HyperConv2d_7305.a1.s0",
+   "task": "kernelbook__HyperConv2d_7305",
+   "code_sha256": "55322ec3ff6b5115e5b8518ae9dfb1e808acb160c7a9b3073e3b0d57d57da54a",
+   "ref_sha256": "e6d4fde05bd3d134a3dfa0cee1acf5af8d58c41ce781777faf8c4017c790a765"
+  },
+  {
+   "id": "kernelbook__L2LossWithLogit_16638.a1.s0",
+   "task": "kernelbook__L2LossWithLogit_16638",
+   "code_sha256": "24e7763770d41e5f9657f78b1f20b77be10483940d30df4628602e9f9d9c3c3c",
+   "ref_sha256": "4d68468732d9288d126389d4fdf5f04e34c9b97a4aa34ea5c8c0b80925fd3440"
+  },
+  {
+   "id": "kernelbook__LinearI_Neg_7695.a1.s0",
+   "task": "kernelbook__LinearI_Neg_7695",
+   "code_sha256": "5356743e1d0d8217fa35d5dde3b3a39018cd93601ba8986bea08edc8290444fb",
+   "ref_sha256": "dc6d12c1f4dca77f72e2d3095fd56cb7ca0c964beb4839811f8d9eb99a670fa8"
+  },
+  {
+   "id": "kernelbook__LossLoglikelihoodNb_3760.a1.s0",
+   "task": "kernelbook__LossLoglikelihoodNb_3760",
+   "code_sha256": "d5af180d38313be2dec7b28f662ae4669ee4f9c49a0ae0c39c2d49cf13a5e1c0",
+   "ref_sha256": "191d123a87df925b432b8c8ed295b9f33f202954b216a4fa2d376b846fd19645"
+  },
+  {
+   "id": "kernelbook__MSE_log_loss_18327.a1.s0",
+   "task": "kernelbook__MSE_log_loss_18327",
+   "code_sha256": "cf06d9a0327b35a9c2b7e645a32165824b553af7481b4a75b6f8d108572ab817",
+   "ref_sha256": "64b1ae5f8e45cb831ed52abf8380845052a4e35453e5f8d28afaf6ed34204ba8"
+  },
+  {
+   "id": "kernelbook__My_SmoothL1Loss_690.a1.s0",
+   "task": "kernelbook__My_SmoothL1Loss_690",
+   "code_sha256": "87bf0364933502139dbccf66013d0e132fe27ee9536466a1d5aeb6c106365e7e",
+   "ref_sha256": "e25372e6e05ef3fb47d83bcf83020e793a47833e73804a85caeb9f867107b820"
+  },
+  {
+   "id": "kernelbook__NeuralNet_4160.a1.s0",
+   "task": "kernelbook__NeuralNet_4160",
+   "code_sha256": "871f0922573552350e6a642fe95d650051902921eb507757e07c479dfd3d9e05",
+   "ref_sha256": "bd132c2f7c95aee5d2587e6da5d26f635dbc46380c4d8ba17da5b65de40ebda7"
+  },
+  {
+   "id": "kernelbook__QNetwork_13927.a1.s0",
+   "task": "kernelbook__QNetwork_13927",
+   "code_sha256": "ce4e70f8467260c011d4f839f3f467424a6180e2dde955ec0877d1f19c49673d",
+   "ref_sha256": "9b36c74b65ffa11ad8aff40262b3182dafe2bbbb7fdded4235e291377608c6b2"
+  },
+  {
+   "id": "kernelbook__RMSE_15778.a1.s0",
+   "task": "kernelbook__RMSE_15778",
+   "code_sha256": "eb7566e034eebc5e2fd5af897935056f7d6b9208b2a24a607e4ef70a5bd00bb3",
+   "ref_sha256": "eff4ba34183c4952e0e21a6c00b9ae294e2fa3630f101a4e6c672272c28b4aaf"
+  },
+  {
+   "id": "kernelbook__ResidualBlock_4932.a1.s0",
+   "task": "kernelbook__ResidualBlock_4932",
+   "code_sha256": "2b917f27572b2286b4772cc1a7a26bb36b4bb3fd4df5794b3dce3242895cec93",
+   "ref_sha256": "28d56f350d64fe72100e8bee5f93e73d05c7ad69f5739221ab1ae15750c48923"
+  },
+  {
+   "id": "kernelbook__SRCNN_350.a1.s0",
+   "task": "kernelbook__SRCNN_350",
+   "code_sha256": "7d96f7f481cc3ae5e0c57cb764c3a6fee6835e4d205959fdacea6113aa73b5d1",
+   "ref_sha256": "9d9b0b24f29ad1af84a5a65fe83bed5c0a5383f5e6803c51805fefc17a595303"
+  },
+  {
+   "id": "kernelbook__SamePadConv2d_6951.a1.s0",
+   "task": "kernelbook__SamePadConv2d_6951",
+   "code_sha256": "b0b597ae1a4b02b75076dccf3d5c5b5863b71247189ee71c7a3758e91c436743",
+   "ref_sha256": "1bb26fe713440969a003cbeda66528e71e33a01c04c07e20128b35cfd4f0c0d6"
+  },
+  {
+   "id": "kernelbook__Simplenet_12042.a1.s0",
+   "task": "kernelbook__Simplenet_12042",
+   "code_sha256": "8f09a2c63c3a5bcd7db46fcacc9ae1af127f8be4fe150bf8f975b6a8d31a0af7",
+   "ref_sha256": "c6b45124dd6158d01a60fd13d47837f53c5933a576c0443bdc0c7242e57fc9f0"
+  },
+  {
+   "id": "kernelbook__SpatialGC_5230.a1.s0",
+   "task": "kernelbook__SpatialGC_5230",
+   "code_sha256": "1ff0ecde39ebc9fc36cfbaa2e7c5eb4152b588ee31812f79f3f5efac83641e05",
+   "ref_sha256": "4a03a3cb2fe892ba731d5641cafdc09f17faf57b9a05268ce2b9d5d9c74223e3"
+  },
+  {
+   "id": "kernelbook__StdConv2d_13774.a1.s0",
+   "task": "kernelbook__StdConv2d_13774",
+   "code_sha256": "a51e622b4dc386a107f69de36b5ace2a9e2264ab999e8806d0f5683be977148f",
+   "ref_sha256": "93ea9883a49ff728f89ef8b34827cc3960c40f1272a7c017d38ed31b65ab8c44"
+  },
+  {
+   "id": "kernelbook__TopkMSELoss_18280.a1.s0",
+   "task": "kernelbook__TopkMSELoss_18280",
+   "code_sha256": "3cd818121f4e347d30486ddaafb9016051ba94364a43665971195010dfaa982f",
+   "ref_sha256": "2cb962274d1a8924bc592e860c4491724a09f9c5d7c9cf40c9ddd9ee95cdd3d2"
+  },
+  {
+   "id": "kernelbook__mfm_59.a1.s0",
+   "task": "kernelbook__mfm_59",
+   "code_sha256": "c4564251da74c6aae3b9c432b605710bde628ba76f606e105bbc59e3977f1ae8",
+   "ref_sha256": "347e8766e18e9939a712d9fbd3a5a0c2f375c5de5b7c1e4a7bf4c1b57434322f"
+  }
+ ]
+}

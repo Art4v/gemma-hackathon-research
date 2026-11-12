@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-a2-s3-x2",
+ "owner": "hruday",
+ "step": "kimi-a2-s3-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "6e7a7c12ad3cf3458f6adec71f78906bf4b3f3d9e2f53bf07d62d463ac895539",
+  "run.sh": "11b23ffa02bf115ec99b2b9ed483ebdbe007d7ddda1596d70d805fd07a54c7bf",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kb/l1/73_conv_transposed_3D_asymmetric_input_square_kernel__strided_padded__grouped",
+   "task": "kb__l1__73_conv_transposed_3D_asymmetric_input_square_kernel__strided_padded__grouped",
+   "code_sha256": "eebb23281b415f65590004ea4560dbfc32bf1796445101992efc2337dc5c4441",
+   "ref_sha256": "cb1a983352ec4971d4692a54553de64c6c60d80600708581a2cc579f5c3a6beb"
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "job_id": "kimi-r3-s2-p5",
+ "owner": "hruday",
+ "step": "kimi-r3-s2-p5",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 15,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "177ac698ac851a50a55e466c370293f5da8a9c0c682f463dad2af59ac2c56d60",
+  "run.sh": "8e435372ae2b38e914d7e25ed4364b1c8512c8e9cfaa1a36b9daa914a69a7e39",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiR3/kernelbook/ResBlock_2251",
+   "task": "kernelbook__ResBlock_2251",
+   "code_sha256": "496903f58505fd58b0b45b286384806e33f9f7123ac91235b4f7a24816f8e2d8",
+   "ref_sha256": "851bd20891df07e54e31a02942a143cbb250597056d22bee0d88ff3627cda75c"
+  },
+  {
+   "id": "kimiR3/kernelbook/RewardCriterion_11442",
+   "task": "kernelbook__RewardCriterion_11442",
+   "code_sha256": "5eaa2bc5164b796d854833fc3bcff5cf563923339fc3ca272b6ac45758c6b592",
+   "ref_sha256": "c32a02c1db2f1c57a8bd40d8c0959e90ff565b07623e264acdc41e14076bb51a"
+  },
+  {
+   "id": "kimiR3/kernelbook/RewardCriterion_14787",
+   "task": "kernelbook__RewardCriterion_14787",
+   "code_sha256": "b55cde683b9efa645461299c721d67a11468ebf3913cee6d7858a49b6efc6249",
+   "ref_sha256": "1e6dec9391a8757ea82d42c66de6b5afcce4d162520932f1335a588466a6bb11"
+  },
+  {
+   "id": "kimiR3/kernelbook/RmseBceLoss_17803",
+   "task": "kernelbook__RmseBceLoss_17803",
+   "code_sha256": "d2fc8078b844dde61681ea34b4294458587a687eca41824d39f2b95059e081c3",
+   "ref_sha256": "da950ea1d3cbef8ef64b1ea46b4f9daa0f4c3b2905e263e402c156478aef711c"
+  },
+  {
+   "id": "kimiR3/kernelbook/SIMSE_3952",
+   "task": "kernelbook__SIMSE_3952",
+   "code_sha256": "a346719a315f4cb5cea74abb7d434ef77ea238fd441fe62722c0a7173be2c406",
+   "ref_sha256": "4ffdb92fac801c545a53d27a05abb51737a9a2a1b0ea4b12c37e812aafe66f57"
+  },
+  {
+   "id": "kimiR3/kernelbook/SequenceClassifier_9371",
+   "task": "kernelbook__SequenceClassifier_9371",
+   "code_sha256": "a8364e465e793c120ef8c77ab2bea57adcb79cf976de36cab0d54e7178c9dd95",
+   "ref_sha256": "0123212ea6f76fae4628be2bef35d6b757656aad536ff8e783b38b8d84ccf179"
+  },
+  {
+   "id": "kimiR3/kernelbook/SirenLayer_7825",
+   "task": "kernelbook__SirenLayer_7825",
+   "code_sha256": "5774cbbccd3a87ff2d3f9f4266274f5f027a18d30af94e2f0a401dfd5a27fa69",
+   "ref_sha256": "6e1c187664f0b7d1d1a55eee579da2d3d2bad6a99d8d7cf4fbfb17d20b6c3959"
+  },
+  {
+   "id": "kimiR3/kernelbook/Smooth_Loss_17740",
+   "task": "kernelbook__Smooth_Loss_17740",
+   "code_sha256": "52d75433cba53582f8fe43387c840e41a334e6543a052b76b44ab656d549d2c5",
+   "ref_sha256": "a84d6b36f65e056d6dba3d227a0c363999aa118e2f7be88828d004f5479b083c"
+  },
+  {
+   "id": "kimiR3/kernelbook/StochasticPool2d_6401",
+   "task": "kernelbook__StochasticPool2d_6401",
+   "code_sha256": "8a4013af9adaf0c6e4c523ee5235d47ccbaa318b2cf658255af66866e15d44b4",
+   "ref_sha256": "633d3f6bd75c1edc1d98c41dadd223f7b83b13aa8cad0b9085007124bf903fa3"
+  },
+  {
+   "id": "kimiR3/kernelbook/TSA_Fusion_1816",
+   "task": "kernelbook__TSA_Fusion_1816",
+   "code_sha256": "83b55001e819a5546f21e2061633b2a6086026eaa9e6607da0c59b2d3f895b2e",
+   "ref_sha256": "a403bb3d804b8cd16ac1a57018c1e0cbfacc7cbaea6df208bc64819ece8c7862"
+  },
+  {
+   "id": "kimiR3/kernelbook/Transformer_9945",
+   "task": "kernelbook__Transformer_9945",
+   "code_sha256": "54919757e0cd2148dc9ca4e9a7211daf4b6e06c0f05c28bdd89f20945beffaa8",
+   "ref_sha256": "9e764e93b2f22411943727baffd6f9ca3c36105cb013ffe837107e8edf757089"
+  },
+  {
+   "id": "kimiR3/kernelbook/TransitionUp_1083",
+   "task": "kernelbook__TransitionUp_1083",
+   "code_sha256": "547f3cd0dc6b281a858a34baefaed36fa7b9cacfa0bb85d379736d8ec86abcff",
+   "ref_sha256": "6da83963cb87496f69245aafeb04ca87135fef3287a9937ad3b8881a3ffbe6f4"
+  },
+  {
+   "id": "kimiR3/kernelbook/VNMaxPool_3385",
+   "task": "kernelbook__VNMaxPool_3385",
+   "code_sha256": "81387c30952f5263d260b256dc4a0b6a927d5977980559cfc7fa522d7d52e778",
+   "ref_sha256": "f04e7098befaf9ad82f190e1a681e27b185a74c4d212625698f08dc9d3eb1500"
+  },
+  {
+   "id": "kimiR3/kernelbook/WeightedLoss_12047",
+   "task": "kernelbook__WeightedLoss_12047",
+   "code_sha256": "b4c79d82cc489c3d5e4aed198e86e38d742284aeaac651ddafe5c4798bc22d0a",
+   "ref_sha256": "8806df81e46153d3537da1a598cf6cee669378346305ebf0600584965c3a526d"
+  },
+  {
+   "id": "kimiR3/kernelbook/resBlock_8744",
+   "task": "kernelbook__resBlock_8744",
+   "code_sha256": "cd418fc68de253ada09377c117d55607e4aaf08685b4931a9c22028c87c4786c",
+   "ref_sha256": "31382d89de887dbd5d7047d0b5907c2cdf54027f96281e9fb2a02ff21697759c"
+  }
+ ]
+}

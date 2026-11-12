@@ -1,0 +1,32 @@
+{
+ "job_id": "dataset-kbk-r3b-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 25,
+ "n_rows": 14,
+ "missing": [
+  "kernelbook__SEModule_8007.a3.s0",
+  "kernelbook__SE_layer_3d_4495.a3.s0",
+  "kernelbook__Scale_13874.a3.s0",
+  "kernelbook__ScaledL2Norm_6171.a3.s0",
+  "kernelbook__SiameseMLP_391.a3.s0",
+  "kernelbook__TotalVariationLoss_6524.a3.s0",
+  "kernelbook__aeEncoder_1264.a3.s0",
+  "kernelbook__deepmind_17908.a3.s0",
+  "kernelbook__make_style_10035.a3.s0",
+  "kernelbook__make_style_12017.a3.s0",
+  "kernelbook__moving_avg_16583.a3.s0"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "correct_slow": 3,
+  "harness_oom": 4,
+  "pass": 6,
+  "runtime": 1
+ },
+ "n_correct": 9,
+ "median_speed_vs_xla_correct": 1.0592757542059466
+}

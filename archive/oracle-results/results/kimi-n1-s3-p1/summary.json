@@ -1,0 +1,40 @@
+{
+ "job_id": "kimi-n1-s3-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 67,
+ "n_rows": 51,
+ "missing": [
+  "kimiN1/kernelbook/SimpleAttention_60",
+  "kimiN1/kernelbook/SimpleMLPGen_with_meta_feature_13166",
+  "kimiN1/kernelbook/ResnetBlockFC_7838",
+  "kimiN1/kernelbook/SimpleAttention_14124",
+  "kimiN1/kernelbook/TestTimeIN_8582",
+  "kimiN1/kernelbook/SAB_8410",
+  "kimiN1/kernelbook/SelfAttention_8355",
+  "kimiN1/kernelbook/PreNet_7012",
+  "kimiN1/kernelbook/ResnetDecoder_17904__scale",
+  "kimiN1/kernelbook/SoftHistogram_8586__scale",
+  "kimiN1/kernelbook/ResidualBlock_11099",
+  "kimiN1/kernelbook/_TransitionUp_16449__scale",
+  "kimiN1/kernelbook/RollLayer_5620__scale",
+  "kimiN1/kernelbook/VAE_Kl_Loss_14456__scale",
+  "kimiN1/kernelbook/moving_avg_16583__scale",
+  "kimiN1/kernelbook/cSEmodule_2356__scale"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 19,
+  "correct_slow": 11,
+  "harness_oom": 3,
+  "mosaic": 2,
+  "pass": 14,
+  "runtime": 1,
+  "wrong": 1
+ },
+ "n_correct": 25,
+ "median_speed_vs_xla_correct": 0.7693209803939245
+}

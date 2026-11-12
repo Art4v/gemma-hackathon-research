@@ -1,0 +1,18 @@
+{
+ "job_id": "dataset-m1-r1c-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 33,
+ "n_rows": 33,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "correct_slow": 7,
+  "pass": 26
+ },
+ "n_correct": 33,
+ "median_speed_vs_xla_correct": 1.0000305944301235
+}

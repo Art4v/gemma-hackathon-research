@@ -1,0 +1,38 @@
+{
+ "job_id": "kimi-k31-r1-s7-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 35,
+ "n_rows": 20,
+ "missing": [
+  "kimi31r1/kb/l2/64_Gemm_LogSumExp_LeakyReLU_LeakyReLU_GELU_GELU",
+  "kimi31r1/kb/l1/91_cumsum_reverse",
+  "kimi31r1/kb/l2/77_ConvTranspose3d_Scale_BatchNorm_GlobalAvgPool",
+  "kimi31r1/kb/l2/82_Conv2d_Tanh_Scaling_BiasAdd_Max",
+  "kimi31r1/kb/l2/6_Conv3d_Softmax_MaxPool_MaxPool",
+  "kimi31r1/kb/l1/83_conv_depthwise_2D_square_input_asymmetric_kernel__bf16",
+  "kimi31r1/kb/l2/57_Conv2d_ReLU_HardSwish__bf16",
+  "kimi31r1/kernelbook/PixelNorm_16870",
+  "kimi31r1/kernelbook/SmoothL1LossWithIgnore_6607",
+  "kimi31r1/kernelbook/FM_2350",
+  "kimi31r1/kernelbook/AnyHead_9083",
+  "kimi31r1/kernelbook/ConvNet_16737",
+  "kimi31r1/kernelbook/FCNet_17088",
+  "kimi31r1/kernelbook/AddCoords_14011",
+  "kimi31r1/kernelbook/CatRepr_9939"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 7,
+  "correct_slow": 1,
+  "harness_oom": 2,
+  "mosaic": 1,
+  "pass": 8,
+  "runtime": 1
+ },
+ "n_correct": 9,
+ "median_speed_vs_xla_correct": 1.0035923429490674
+}

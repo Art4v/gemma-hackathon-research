@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-n1-s5-x1",
+ "owner": "hruday",
+ "step": "kimi-n1-s5-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "2053374a35635836d1eee7d3047aa8028ed1e36b84b91357034cfa4baa53ea4c",
+  "run.sh": "905dc4363db26fcac4a7f3f299ecc314fc7dbc7256a6603857cbb4d9be8cb25a",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN1/kernelbook/DCGanGenerator_15919",
+   "task": "kernelbook__DCGanGenerator_15919",
+   "code_sha256": "0f1cf7bd23785b700abe834084fb9cc4ac71e581653fb5181ec5aa25d273dc70",
+   "ref_sha256": "fe6f0f99849f92119140ff65f093eb266e47653d2a7ff412e270bc96140dd69d"
+  }
+ ]
+}

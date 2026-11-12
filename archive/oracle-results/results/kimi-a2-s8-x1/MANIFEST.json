@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-a2-s8-x1",
+ "owner": "hruday",
+ "step": "kimi-a2-s8-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "f2a0058ff26f716d1d67b5e64de5933f0b847a5368559cc4d25c7315d700ff19",
+  "run.sh": "190a509364a53597f44208fb46f592cd2618c25da83ee6d0764a0f1c2843c29f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/scraped/maxtext/ragged_attention_v2",
+   "task": "scraped__maxtext__ragged_attention_v2",
+   "code_sha256": "2c092f38d54020b9570e20ed6d79d1c2c0632498a68d5ad8b1afc4ee0b9383c8",
+   "ref_sha256": "d4417f90e358303770393e3fb20273ee52e9161354833d7bfaa2073c9aebcff8"
+  }
+ ]
+}

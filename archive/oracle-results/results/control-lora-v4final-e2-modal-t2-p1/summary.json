@@ -1,0 +1,20 @@
+{
+ "job_id": "control-lora-v4final-e2-modal-t2-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 23,
+ "n_rows": 23,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "compile": 1,
+  "correct_slow": 1,
+  "vmem": 16,
+  "wrong": 5
+ },
+ "n_correct": 1,
+ "median_speed_vs_xla_correct": 0.3358789003753482
+}

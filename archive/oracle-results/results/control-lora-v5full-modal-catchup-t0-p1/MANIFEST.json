@@ -1,0 +1,84 @@
+{
+ "job_id": "control-lora-v5full-modal-catchup-t0-p1",
+ "owner": "hruday",
+ "step": "control-lora-v5full-modal-catchup-t0-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 10,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "42af53877cef56dd89adf1e9fab3fb2111e0803dc705a2491bc8db292c19c602",
+  "run.sh": "7800428bfb1ffe86ac8ec02dcc048cdc8d950a0532cfad59059cf72b0b750d77",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "bare/19k_Matmul_Subtract_Multiply_ReLU/t2",
+   "task": "19k_Matmul_Subtract_Multiply_ReLU",
+   "code_sha256": "ec1472c9e9ff9950126159c39926fc6c5bd84d5d23446f6225a803b64f514046",
+   "ref_sha256": "d7edde32d634be80859f6d6029751a5a0956e3a124af9e2b8f77a50b7ac7af00"
+  },
+  {
+   "id": "bare/20k_Gemm_Multiply_LeakyReLU/t2",
+   "task": "20k_Gemm_Multiply_LeakyReLU",
+   "code_sha256": "a1061ee9537f4d4f3ce26791830b942980c978df9c3b94015c08cb612ea23369",
+   "ref_sha256": "5397987e28d0094e6cdc993c52ecf6a68de120937bc9b221568c479aa641de68"
+  },
+  {
+   "id": "bare/21k_Gemm_Divide_Sum_Scaling/t2",
+   "task": "21k_Gemm_Divide_Sum_Scaling",
+   "code_sha256": "49df490b0e39d87146d99dd8d18f98028b0a61cd20a1c23ca0adb17b2cd37311",
+   "ref_sha256": "2d6595827ee682756b6f31ed07aa8693cc9f388443da13b9cb35473b709ea279"
+  },
+  {
+   "id": "bare/30k_Matmul_Scaling_ResidualAdd/t2",
+   "task": "30k_Matmul_Scaling_ResidualAdd",
+   "code_sha256": "65bbda835dbe97b1b3b6a2218a761c45ba046bfdbac9318c779386d8a204486e",
+   "ref_sha256": "8b98f83a104ba5ba02cf616dc2e57deac4eb96678e33e9041431b5ab7081755b"
+  },
+  {
+   "id": "bare/37k_Matmul_Swish_Scaling/t2",
+   "task": "37k_Matmul_Swish_Scaling",
+   "code_sha256": "289325c8162135f0363c6484d25be2a2770a344a6f4c0a731eafbe3db2cda66c",
+   "ref_sha256": "db7f764804925ae397683749fb6fec38e94b68d6b05180c08f11e8b45f6adab5"
+  },
+  {
+   "id": "bare/42k_Gemm_Max_Subtract_GELU/t2",
+   "task": "42k_Gemm_Max_Subtract_GELU",
+   "code_sha256": "453159af3f56c2fd41ce836894d16ad79367cd89a3366c5cdf9cfd3d48399bac",
+   "ref_sha256": "4ed4129bf57adf52848a1fc31387fe059844c6296d30f542e28b6710e4ed752a"
+  },
+  {
+   "id": "bare/44k_Matmul_Divide_GELU/t2",
+   "task": "44k_Matmul_Divide_GELU",
+   "code_sha256": "c7bc0ad7431376ff591de6b8efa6ebfbbd89fd67df10284badaa3b1e67c4dc44",
+   "ref_sha256": "dbacb22e1d148e5b8c6313dd5e6a0bb4ad93d01bf2117064bbf2660eb75fb0d9"
+  },
+  {
+   "id": "bare/43k_Gemm_BatchNorm_Scaling_Softmax/t2",
+   "task": "43k_Gemm_BatchNorm_Scaling_Softmax",
+   "code_sha256": "56c7699453e71a6277edcb1980d6340a75569aa05d9b920b6a68fff448f69826",
+   "ref_sha256": "c56b44aa4ae0c80efd481a238adb4bd86668c41c446daf80d0434ed5b7ffdc3f"
+  },
+  {
+   "id": "bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t2",
+   "task": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+   "code_sha256": "e17cb06b8e7db9c371f3041a052e3a040269f6c9f6108e722716ad0f70e71ff3",
+   "ref_sha256": "b7afe86bcb22f284c8b0eab14c393d62337ef1bfba74a34cc345da13ca740f5c"
+  },
+  {
+   "id": "bare/50k_Matmul_GELU_Softmax/t2",
+   "task": "50k_Matmul_GELU_Softmax",
+   "code_sha256": "0dd9a546dd3988ba23a05d626b509d5b0be14c5929a7c2edf4dbf3672025c28d",
+   "ref_sha256": "0083d2a3ad83bed1aa918295182b98cef583e4abf08868525682548729026dd0"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-n1-s6-x1",
+ "owner": "hruday",
+ "step": "kimi-n1-s6-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "11de8bc9821c897290e8a6991640f33cba47067aa2548d9ff99b4b8740fbd9e3",
+  "run.sh": "ffbd8be98cd3253fe3fcfdaec65d4ee8254f5619f01213dbd2140cf4fdab135b",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN1/kernelbook/DenseSAGEConv_1760__scale",
+   "task": "kernelbook__DenseSAGEConv_1760__scale",
+   "code_sha256": "5acfe222f295d1bffc26e2323e4451b7d6d842d18cb8d1cedbcb44effd18732e",
+   "ref_sha256": "68ac9c186f5995a233d9ee12dccab1ae5954e126ebcf8bc0269d709ddc8aa985"
+  }
+ ]
+}

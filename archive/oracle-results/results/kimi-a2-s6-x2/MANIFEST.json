@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-a2-s6-x2",
+ "owner": "hruday",
+ "step": "kimi-a2-s6-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "d042e97ff52e6697861af8935779ac1af793e22e7b11d38c297ce7333e544349",
+  "run.sh": "d0889f868fa5d1a049b26476761a33ede8d059671e47b2420b44fb6bad5cf21c",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kb/l2/94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__bf16",
+   "task": "kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__bf16",
+   "code_sha256": "2169f035015123c0de6015fafda09e9161595772f2d2295e27fe9c8b528d4b8d",
+   "ref_sha256": "feec7149311dd201352d9074442532f35222124b4c60503ccdc16e13c0e1e37c"
+  }
+ ]
+}

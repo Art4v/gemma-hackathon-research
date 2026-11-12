@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r2-s1-x1",
+ "owner": "hruday",
+ "step": "kimi-k31-r2-s1-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "8979482b809de7cace7525d0f5103ea81a3360bb8e5902e095c9d61f5db1da4a",
+  "run.sh": "1b1a3190129fe90a0cfc29f30475bfd8978968220cae92e2a71a1ccbf0776c8d",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kb/l2/31_Conv2d_Min_Add_Multiply__bf16",
+   "task": "kb__l2__31_Conv2d_Min_Add_Multiply__bf16",
+   "code_sha256": "f2f26c786a143343d8ab781d8f796d835846154fee1735dc402416ef149d480f",
+   "ref_sha256": "05c2906d9a6be1463059f83cda34bab301d48806746824c9dede61525cd8087a"
+  }
+ ]
+}

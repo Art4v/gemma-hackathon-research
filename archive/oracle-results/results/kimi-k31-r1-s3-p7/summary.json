@@ -1,0 +1,21 @@
+{
+ "job_id": "kimi-k31-r1-s3-p7",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 10,
+ "n_rows": 8,
+ "missing": [
+  "kimi31r1/kernelbook/TransformerLinearXMCHead_3300",
+  "kimi31r1/kernelbook/LinearMaxPoolLinearModel_4351"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "harness_oom": 7,
+  "runtime": 1
+ },
+ "n_correct": 0,
+ "median_speed_vs_xla_correct": null
+}

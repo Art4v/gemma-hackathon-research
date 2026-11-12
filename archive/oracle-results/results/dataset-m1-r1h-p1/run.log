@@ -1,0 +1,3 @@
+ORACLE_ON_COLAB=1: Cloud VM security checks skipped (no project credentials in a Colab session); file check done above
+run.sh: line 55:  1340 Segmentation fault      (core dumped) env $CHIP "$PY" tpu_oracle.py pack.json "shards/${i}of$N.jsonl" --shard "$i/$N" --seeds 3 --speed-bar 0.7 --stack "${STACK:-cloud-tpu-vm}" $SMOKE > "logs/shard$i.log" 2>&1
+results/dataset-m1-r1h-p1.jsonl: 37 rows of 46; a shard failed, see logs/, rerun to resume

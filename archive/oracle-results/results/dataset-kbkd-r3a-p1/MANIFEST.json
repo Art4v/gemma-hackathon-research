@@ -1,0 +1,48 @@
+{
+ "job_id": "dataset-kbkd-r3a-p1",
+ "owner": "karthik",
+ "step": "dataset-kbkd-r3a-p1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 4,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "725b9c394bc2be6d06293414ccc1f35a05e2f780c3d4b6850e0cfea2ffa10f15",
+  "run.sh": "831902b48e01a610468d6b8a49786fde56437c1f369125f9e4157c97288d8f1a",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__BPR_12662.a3.s0",
+   "task": "kernelbook__BPR_12662",
+   "code_sha256": "47e27101eda6bb4435b917f1447530fa701296533019a5b31735c07364f6dd46",
+   "ref_sha256": "3745de97b6f7441f16e03c968fab16394afbb1f2a86114df7678d526e60c78e1"
+  },
+  {
+   "id": "kernelbook__SEModule_13378.a3.s0",
+   "task": "kernelbook__SEModule_13378",
+   "code_sha256": "6a70370fb66abab242bfa59be71ea1aa3b5231143ceb4a5b1b2d2619351f0072",
+   "ref_sha256": "1e7535ff07cfbfa04dc38264055cc897b9d4bece63ad90e75b25ffe96dbd5577"
+  },
+  {
+   "id": "kernelbook__UpsampleConvLayer_11372.a3.s0",
+   "task": "kernelbook__UpsampleConvLayer_11372",
+   "code_sha256": "9673cf5f78aaa48c33dd95f51fd0ce555f3f566c5a43bdcb5a7dd40a9d411959",
+   "ref_sha256": "80ab393db9df39768bdc71fb29874c098d9c4c5afdbd9956a0c9f1feb2251e4f"
+  },
+  {
+   "id": "kernelbook__depthwise_separable_conv_7238.a3.s0",
+   "task": "kernelbook__depthwise_separable_conv_7238",
+   "code_sha256": "c5f4206c26f3fc22a51e6a719a0018a0e096972626dcdd6a71c540a4d61d2736",
+   "ref_sha256": "26581b1751eb5e8ed161ad776b9988c46411ffb0a75d90a41fae6ce9a8e7841a"
+  }
+ ]
+}

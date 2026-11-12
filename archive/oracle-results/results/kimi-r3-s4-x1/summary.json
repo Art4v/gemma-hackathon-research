@@ -1,0 +1,17 @@
+{
+ "job_id": "kimi-r3-s4-x1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 1,
+ "n_rows": 0,
+ "missing": [
+  "kimiR3/kernelbook/backWarp_13450"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {},
+ "n_correct": 0,
+ "median_speed_vs_xla_correct": null
+}

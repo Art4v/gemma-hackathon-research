@@ -1,0 +1,78 @@
+{
+ "job_id": "dataset-kbk-r2h3-p1",
+ "owner": "hruday",
+ "step": "dataset-kbk-r2h3-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 9,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "ace86e03c34c3e224042766cd4a0fde5af0787a2d620649cab43cce0a459144f",
+  "run.sh": "36bb95c62e80fb87da2ecf51badc91252d53ea1c8635375bb4cde2ba7bc0fec8",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__BinaryReg_4134.a2.s0",
+   "task": "kernelbook__BinaryReg_4134",
+   "code_sha256": "108ee981bd05ccf23aff07c2a553ab83184b5f21a744c118f9104092d3bab5c2",
+   "ref_sha256": "6a4c798088a66c3721c6bb825f88f49f2eafa8248b4c95a120e3b8986d4bd7e4"
+  },
+  {
+   "id": "kernelbook__Cat_4702.a2.s0",
+   "task": "kernelbook__Cat_4702",
+   "code_sha256": "655204e748fbf7c9df4e09c44a985596f6381b43c7e954068a17c2053cd9ce81",
+   "ref_sha256": "747160c58918ce5f981d4bee8bdd67ba2be9cf6e17c796ecbec2dd7fbdc0fb4e"
+  },
+  {
+   "id": "kernelbook__GlobalpoolFC_1550.a2.s0",
+   "task": "kernelbook__GlobalpoolFC_1550",
+   "code_sha256": "d159d25bf3e94900b09b689ec8721bebcf0b37ad47ce84a7c8f7351a20998b5e",
+   "ref_sha256": "64e406d1fc140a7ebc052b930a437802b02b85f96662935e365e0f50fcc0b6e2"
+  },
+  {
+   "id": "kernelbook__InnerProductDecoder_2030.a2.s0",
+   "task": "kernelbook__InnerProductDecoder_2030",
+   "code_sha256": "2d1244529d74172729d5788e1147563c811ca700d7457829e2470d2a98e7a188",
+   "ref_sha256": "ce4913fcdaa72cd29ffc3f57a5e32286fbc445a1df527c5cc2ed24999f91f1b5"
+  },
+  {
+   "id": "kernelbook__InstanceNorm_4775.a2.s0",
+   "task": "kernelbook__InstanceNorm_4775",
+   "code_sha256": "43b7b49f36904d62710451ede82b8366cae05ffb526be9f39f510f78938d0d5b",
+   "ref_sha256": "742521c703f76f150a27eae377020fed3a168a7bedd08ea3e3f2b84c32f5745f"
+  },
+  {
+   "id": "kernelbook__Join_2706.a2.s0",
+   "task": "kernelbook__Join_2706",
+   "code_sha256": "f4943b30494b8c087201203d9686b42c646eef808125d15a4fd96a02d5c08e22",
+   "ref_sha256": "29cf71a89c48f5faa6f8180ef276b9cb0aa9979ad4467b5b549a2660924d36f5"
+  },
+  {
+   "id": "kernelbook__L2Norm_7890.a2.s0",
+   "task": "kernelbook__L2Norm_7890",
+   "code_sha256": "48d996e14f446110c210b75899f848dc31919e59479118609ce703ddf6a528a6",
+   "ref_sha256": "74724edb65cd06245c9350443e6f6c81b02cdc6931dffcead3120a9ec19b93eb"
+  },
+  {
+   "id": "kernelbook__L2PenaltyConstraintLoss_11013.a2.s0",
+   "task": "kernelbook__L2PenaltyConstraintLoss_11013",
+   "code_sha256": "ea0272f09d8a0a4aacb867aed410fb77066a3bac5aeb6e1762c99849524645ae",
+   "ref_sha256": "b32190e991b163caf9fc77636e52743150b4d16c8c178f383dfd9c12c8731e21"
+  },
+  {
+   "id": "kernelbook__SimpleConvTranspose2dModule_3325.a2.s0",
+   "task": "kernelbook__SimpleConvTranspose2dModule_3325",
+   "code_sha256": "2cbdcff267c8d05266faac264f6935333bc3f57904ba3f3173b7b782aaa85abf",
+   "ref_sha256": "9691760185f84fd306890fcefbc817038e435101a11d0c1cc3a052e5e19ab60b"
+  }
+ ]
+}

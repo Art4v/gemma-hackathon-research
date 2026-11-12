@@ -1,0 +1,168 @@
+{
+ "job_id": "control-lora-v4final-e2-modal-t0-p1",
+ "owner": "hruday",
+ "step": "control-lora-v4final-e2-modal-t0-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 24,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "5f641af6288ae15d96d0e665bbcd8f55cf0e5be74d8e750e7d2a65da594817c7",
+  "run.sh": "c253f909fd233126b2f8fd5df594894d9310b7a708026baa1668e2e5f2280399",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "bare/8p_GEMM/t0",
+   "task": "8p_GEMM",
+   "code_sha256": "c6cb80544709787d049f6fc60a1068c20060a4da29ed0770944f0c929c84fc2b",
+   "ref_sha256": "88d698bbbc254cc69fa1206801274247506711b8db48daef71b7c81b281ca442"
+  },
+  {
+   "id": "bare/12p_RMSNorm/t0",
+   "task": "12p_RMSNorm",
+   "code_sha256": "2832f15b51168aff9a4e4c035b696e30fbc2a0c2b85ed01644b587feb34059d3",
+   "ref_sha256": "1ab768b9b50c457db4fc17ad0af0264751062b1bc1d032913310cce539056856"
+  },
+  {
+   "id": "bare/14p_Ragged_Dot/t0",
+   "task": "14p_Ragged_Dot",
+   "code_sha256": "c126d16f8d06776c8f59bcab22e5473dc26b5dc7bd3f0ff77d3a3d393f1f3ce7",
+   "ref_sha256": "a8af545bc717df3d9e9657ca24b8144be87b8256b9951006f56a5db47acc8285"
+  },
+  {
+   "id": "bare/13p_Cross_Entropy/t0",
+   "task": "13p_Cross_Entropy",
+   "code_sha256": "5d80b70b3d07284d5f0fc74b70a83757f18fa50519326e468ec3a837c2e035ec",
+   "ref_sha256": "bf43cf63404a97b8277feefffbeac0ae918d4eaaa8ab4a987328040e7d229779"
+  },
+  {
+   "id": "bare/19k_Matmul_Subtract_Multiply_ReLU/t0",
+   "task": "19k_Matmul_Subtract_Multiply_ReLU",
+   "code_sha256": "1fa7f44590955e99ad22d3f9c5c7bfe08d6e6f6497f30f062cac4d069424cd10",
+   "ref_sha256": "d7edde32d634be80859f6d6029751a5a0956e3a124af9e2b8f77a50b7ac7af00"
+  },
+  {
+   "id": "bare/20k_Gemm_Multiply_LeakyReLU/t0",
+   "task": "20k_Gemm_Multiply_LeakyReLU",
+   "code_sha256": "acfcca451d2149e1e5e5331684579c60fd51b867d0ae97f8f7c5df6d8329f80e",
+   "ref_sha256": "5397987e28d0094e6cdc993c52ecf6a68de120937bc9b221568c479aa641de68"
+  },
+  {
+   "id": "bare/21k_Gemm_Divide_Sum_Scaling/t0",
+   "task": "21k_Gemm_Divide_Sum_Scaling",
+   "code_sha256": "d7dcb5d594efd3246da6089ffa3b25b870f992490b3853e65ce1db510471eb98",
+   "ref_sha256": "2d6595827ee682756b6f31ed07aa8693cc9f388443da13b9cb35473b709ea279"
+  },
+  {
+   "id": "bare/24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish/t0",
+   "task": "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish",
+   "code_sha256": "993bbea82d522df00e67ab2e3d607b41e9e85d868b8f21f8f28e361d3c1b72a6",
+   "ref_sha256": "43c090b5ec1733038760cf80fa95e217bb4f6dd6902ca3c9ffd9830c0623c497"
+  },
+  {
+   "id": "bare/27k_Matmul_Mish_Mish/t0",
+   "task": "27k_Matmul_Mish_Mish",
+   "code_sha256": "9eff5b2707a92421249c931095abb9d7686728f0c79c924976209b13076778fe",
+   "ref_sha256": "928b0f8d24ebced6bda4f6060932e17a1dc65229c0df01adebd304e5b567a48c"
+  },
+  {
+   "id": "bare/26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply/t0",
+   "task": "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply",
+   "code_sha256": "c60a7a7aa8873c85ac41678c3d265dcdee270143a3c3903761b03e7fe81199fe",
+   "ref_sha256": "92348bb64150e44a13a8aacb36339912ab8fa90dbd47d8fc5b44daad319c8c9a"
+  },
+  {
+   "id": "bare/29k_Matmul_Swish_Sum_GroupNorm/t0",
+   "task": "29k_Matmul_Swish_Sum_GroupNorm",
+   "code_sha256": "f5a7e28c48d5cf97d40306461e225c5a8569165d71a52a661117054858e8ee15",
+   "ref_sha256": "6116a158bee5613f8928683a5e227ca67fcc3e00fc83b6bd2e4701506b9551ba"
+  },
+  {
+   "id": "bare/30k_Matmul_Scaling_ResidualAdd/t0",
+   "task": "30k_Matmul_Scaling_ResidualAdd",
+   "code_sha256": "9736668b764a53d283e31048e86f0ea252fc0167a17b490829bf88ab51fa808e",
+   "ref_sha256": "8b98f83a104ba5ba02cf616dc2e57deac4eb96678e33e9041431b5ab7081755b"
+  },
+  {
+   "id": "bare/36k_Matmul_Sigmoid_Sum/t0",
+   "task": "36k_Matmul_Sigmoid_Sum",
+   "code_sha256": "407309f6bbf876981c67a35da704584820eb07782a07f146e2e2a7d78101af3d",
+   "ref_sha256": "4ce76676270cddbfbbdda34eef57a2f7bfd1980082fdcd2952f6ee29eb65fbf3"
+  },
+  {
+   "id": "bare/37k_Matmul_Swish_Scaling/t0",
+   "task": "37k_Matmul_Swish_Scaling",
+   "code_sha256": "bcf85981704a8148aa8bee4404bcf43daae37e38fc5a16904595490478368e8e",
+   "ref_sha256": "db7f764804925ae397683749fb6fec38e94b68d6b05180c08f11e8b45f6adab5"
+  },
+  {
+   "id": "bare/38k_Matmul_Dropout_Softmax/t0",
+   "task": "38k_Matmul_Dropout_Softmax",
+   "code_sha256": "fcd46f4453b2c264a1bbe96fd96c6621d9e092920929d4f7a55438a077c896af",
+   "ref_sha256": "a906f7a5d3baa6b0c660470eb7851811adfcef80089ac99aef732e925367e4ce"
+  },
+  {
+   "id": "bare/41k_Gemm_Add_ReLU/t0",
+   "task": "41k_Gemm_Add_ReLU",
+   "code_sha256": "dbac3106a484dbdb3baa5fe9e6e4781f22e6a07ce71d5c8ae01829dbbf422bd4",
+   "ref_sha256": "aabbb9f673167105402cee9f68a952bd032299f0c9c01b05cf8ee3185b99d220"
+  },
+  {
+   "id": "bare/42k_Gemm_Max_Subtract_GELU/t0",
+   "task": "42k_Gemm_Max_Subtract_GELU",
+   "code_sha256": "99433b2266101b3c88abb610f76d102c8952b3ad6ee5e083b5944215123f6dec",
+   "ref_sha256": "4ed4129bf57adf52848a1fc31387fe059844c6296d30f542e28b6710e4ed752a"
+  },
+  {
+   "id": "bare/44k_Matmul_Divide_GELU/t0",
+   "task": "44k_Matmul_Divide_GELU",
+   "code_sha256": "711ae654d6536bf8cdb5f4a6ccee8cf227bc7acfea55bb29255b41b907d7601e",
+   "ref_sha256": "dbacb22e1d148e5b8c6313dd5e6a0bb4ad93d01bf2117064bbf2660eb75fb0d9"
+  },
+  {
+   "id": "bare/47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh/t0",
+   "task": "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+   "code_sha256": "dd3c71225cfa3fc778e1ef588a86c7716884ce5e8e05bcdbcd79f3f00a22e5c7",
+   "ref_sha256": "b7afe86bcb22f284c8b0eab14c393d62337ef1bfba74a34cc345da13ca740f5c"
+  },
+  {
+   "id": "bare/49k_Matmul_AvgPool_GELU_Scale_Max/t0",
+   "task": "49k_Matmul_AvgPool_GELU_Scale_Max",
+   "code_sha256": "404a8c0aa9cb2aff170a493e317fa86614b4770fc33ff944581b779b27098c26",
+   "ref_sha256": "4125737a23ceed917538887099d351e4c62d9cd1c93039234d1ca6687cb41110"
+  },
+  {
+   "id": "bare/48k_Matmul_BatchNorm_BiasAdd_Divide_Swish/t0",
+   "task": "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish",
+   "code_sha256": "5293d9f72e3b9dade1ae168b87577442d8202507590ad728bbfe43214bfc7070",
+   "ref_sha256": "9420946d2629aebf42a4b9c006a768fc70d2a09edaa17114e99a7cee6ff343a2"
+  },
+  {
+   "id": "bare/50k_Matmul_GELU_Softmax/t0",
+   "task": "50k_Matmul_GELU_Softmax",
+   "code_sha256": "09cc6c16c24a15e04ff20617681501726f3f5b0a5389e4ab6cfa0407efda5e58",
+   "ref_sha256": "0083d2a3ad83bed1aa918295182b98cef583e4abf08868525682548729026dd0"
+  },
+  {
+   "id": "bare/57p_SparseCore_Ragged_Gather/t0",
+   "task": "57p_SparseCore_Ragged_Gather",
+   "code_sha256": "24ffcd065074f5459197bd42d37dcfce2431d3b7700cf458b81772b6e05ca3ce",
+   "ref_sha256": "135bd06f439dfa779d1bb82d318fbf9cdbe5dfce7e37f859a4c609b4d9561c33"
+  },
+  {
+   "id": "bare/64p_Linear_Softmax_Cross_Entropy/t0",
+   "task": "64p_Linear_Softmax_Cross_Entropy",
+   "code_sha256": "ff8f8952e3ba7515f713426481e78d0c7f507c5369f7d64c3182f35602fbd1b3",
+   "ref_sha256": "6d9d44389295f7ca2a0dd5dc2cebeba1c571f9889328053cf134c669ac64ad1d"
+  }
+ ]
+}

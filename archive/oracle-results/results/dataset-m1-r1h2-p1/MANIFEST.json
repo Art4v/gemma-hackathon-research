@@ -1,0 +1,78 @@
+{
+ "job_id": "dataset-m1-r1h2-p1",
+ "owner": "karthik",
+ "step": "dataset-m1-r1h2-p1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 9,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "1d0ad0173a24d82d45cfe28440b0fec31ba7b613cc5039a805425e4cc970c4e0",
+  "run.sh": "9c30ce29bb2a467a77829caa4d6fc31aedd7e3c0135d2a0fb4d42bb9ea612b2b",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__m1_aux.a1.s0",
+   "task": "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__m1_aux",
+   "code_sha256": "63c9ff04c99528e09c47b155e2518c863722db890e2e93ca3a00845a2547cbf9",
+   "ref_sha256": "931d84bac402b3d63098f6746a8d9dbd87cf9227bc698f5a38b25d001ec9aad7"
+  },
+  {
+   "id": "kb__l2__31_Conv2d_Min_Add_Multiply__m1_aux.a1.s0",
+   "task": "kb__l2__31_Conv2d_Min_Add_Multiply__m1_aux",
+   "code_sha256": "9d9106e8912846faede54461af1f40f7a0ae8555894e756c68130f5a6864e416",
+   "ref_sha256": "e941272c6a4c55ee026112f6629726a0c99c36a748fb089e53a3f1b92ff19e2e"
+  },
+  {
+   "id": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged.a1.s0",
+   "task": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "0b2d54ff4d8a2676348fad23d9d6f10e1de74d176bcce9826b518322a93b727f",
+   "ref_sha256": "e21dde55821e96ec3caa785b159000184eacf428b08aec872205ee2249b6f381"
+  },
+  {
+   "id": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged.a1.s0",
+   "task": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "958cc105a5806ecd01ee05acab7cff9239d7e40237da88222f455ddce6605e4e",
+   "ref_sha256": "a98b33551e4d24b721d7f270446d03ecd6acddf08a914f672944c77a08b97d87"
+  },
+  {
+   "id": "kb__l2__74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__m1_batch.a1.s0",
+   "task": "kb__l2__74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__m1_batch",
+   "code_sha256": "e0ebd33a509b8015eba81d84e14d08cff30767eb1c711700751ab02b99e27e22",
+   "ref_sha256": "d83e8fda147674ef0fc292db33f1fb3e74bd2a746eae8379a14151e4dd19ce8f"
+  },
+  {
+   "id": "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch.a1.s0",
+   "task": "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch",
+   "code_sha256": "70cc626f17f37003cb86074948d786d20262aea16cb709eeb12490d8ccc050bd",
+   "ref_sha256": "519aecf4dd3300626f389973a8513fdcdcb6896fb525383ae79d50b38585ba18"
+  },
+  {
+   "id": "kb__l2__87_Conv2d_Subtract_Subtract_Mish__m1_aux.a1.s0",
+   "task": "kb__l2__87_Conv2d_Subtract_Subtract_Mish__m1_aux",
+   "code_sha256": "0fa8442adf654e9e2265cd920c68d2aa74b1cb4435bfaa28f2905f682055ae35",
+   "ref_sha256": "cd40b064d39bed3a42cf4eb1678d8580791e109776b1ca8c0baf61b821c4704d"
+  },
+  {
+   "id": "kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__m1_batch.a1.s0",
+   "task": "kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__m1_batch",
+   "code_sha256": "af42bb1dbea27c068344dceed21e896f00c81789fc0f204291d792ffeacdf135",
+   "ref_sha256": "e109e473871d2809b862874d31c38f2b83d9c2837702578cdebe01b7519fc6e1"
+  },
+  {
+   "id": "scraped__maxtext__ragged_attention_v2__m1_batch.a1.s0",
+   "task": "scraped__maxtext__ragged_attention_v2__m1_batch",
+   "code_sha256": "aae305f294ed9a962a11bb6dd55ef598d57b8d529bd36e7ba7dbc05c6efd8039",
+   "ref_sha256": "27f96ff7740c4e5f5a87c04f4d86cff174c6b21eddf5a8b153567f6f10c79d33"
+  }
+ ]
+}

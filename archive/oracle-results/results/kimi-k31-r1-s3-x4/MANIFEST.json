@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r1-s3-x4",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s3-x4",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "de32a0379f1e30c4a42fe062e0f795e92c9640b72e9cb036f17d1e8e99b9c478",
+  "run.sh": "33dc0b71d6badd52eae3fcd3cbe3f55754cf5b4bb91be4755002cf55c3499bc4",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kb/l2/71_Conv2d_Divide_LeakyReLU",
+   "task": "kb__l2__71_Conv2d_Divide_LeakyReLU",
+   "code_sha256": "f4c1a3bb56675e9723ddee23ede60d8091e8a791576e59f1ab13b1019e048592",
+   "ref_sha256": "6c1033f5c839717917820574f1422d1122019f4f56c105d6dca6100aef15fb8e"
+  }
+ ]
+}

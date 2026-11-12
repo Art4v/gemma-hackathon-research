@@ -1,0 +1,30 @@
+{
+ "job_id": "dataset-kbk-r1a-x1",
+ "owner": "karthik",
+ "step": "dataset-kbk-r1a-x1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "afafb9439cc384e37fd4f8e059607f6dbbee279632ecd350e49989dd418641c9",
+  "run.sh": "0964320b8fa4e038f547ccf5111f58d840bb784d7046c8e3fb5fe5827b573d1f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__Decoder_3059.a1.s0",
+   "task": "kernelbook__Decoder_3059",
+   "code_sha256": "7d7891aab29392229bd01dee535e3447509579da2e5af430451645e60d8994ce",
+   "ref_sha256": "07262c63c503b988d91249a8458473cb03f31353a5d6c7abc6d762022956db5a"
+  }
+ ]
+}

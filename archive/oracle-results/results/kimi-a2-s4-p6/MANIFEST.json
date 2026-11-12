@@ -1,0 +1,48 @@
+{
+ "job_id": "kimi-a2-s4-p6",
+ "owner": "hruday",
+ "step": "kimi-a2-s4-p6",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 4,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "bf529183156e2883f39172f22000aef6cec64293557b91d7920bdc8c7e51ffc8",
+  "run.sh": "369efb92e6de4d4b48dfe8ea81e013a2c5fd21ef7488a6dc880d96b75075086c",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/batch_hard_triplet_loss",
+   "task": "kernelbook__batch_hard_triplet_loss",
+   "code_sha256": "0712152228ad128a01100a6509d6db767e1c7b41585e958172d6cd38c4c53664",
+   "ref_sha256": "7e2098cb94219e63a050c0bdcba3612193ff90d707e1fb066a76c350a1f83755"
+  },
+  {
+   "id": "kimi31a2/kernelbook/softmaxtripletLoss_9327",
+   "task": "kernelbook__softmaxtripletLoss_9327",
+   "code_sha256": "2a2e99fac1d3c50da4ddc1deba0c21ceb7865dd9af35e6bee4e503b0c91568ae",
+   "ref_sha256": "79a7fa4d8dc6a6ec76e4ba7795a62d7f88c0eac8151d7897f252168c6306c3b8"
+  },
+  {
+   "id": "kimi31a2/kernelbook/loss_Textures_8291",
+   "task": "kernelbook__loss_Textures_8291",
+   "code_sha256": "9ad823878c788ee1d98c8a0a83f099b166b8ee96298919a009d3a37452e625b0",
+   "ref_sha256": "c8b75cea2fa61ef34f63d0d7b6586660d967f3bf59623dfad74f62bc4197d4da"
+  },
+  {
+   "id": "kimi31a2/kernelbook/self_attn_mini_1487",
+   "task": "kernelbook__self_attn_mini_1487",
+   "code_sha256": "127c18308f5de19af86324b1212282453806cc673cb02fcf9cad590a41dbf2b2",
+   "ref_sha256": "6cd0afa0711acbb5d7bc5af9f6479bb84ce1b36e7a6d51784297aeeac96a7828"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r2-s7-x1",
+ "owner": "hruday",
+ "step": "kimi-k31-r2-s7-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "c483d2f5387e20fba0f9ccb5bc97754bb3fdabb11cc899ee4e7e33f5962c2900",
+  "run.sh": "78f4a2cb86d05ef4f5d06bec5b14ce1391d3362b4cdc37e83dc7c37150cddc5e",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/RawScale_5800",
+   "task": "kernelbook__RawScale_5800",
+   "code_sha256": "a849b41881fd9903918a8fc94edb6cf46c5f0d218996c6850b5dc163fcfa793e",
+   "ref_sha256": "6e531227e199d09c4ccc8a6adf421073e320d1fb3f157d7136d112760504f655"
+  }
+ ]
+}

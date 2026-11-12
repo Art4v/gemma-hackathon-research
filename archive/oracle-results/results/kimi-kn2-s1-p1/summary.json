@@ -1,0 +1,22 @@
+{
+ "job_id": "kimi-kn2-s1-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 44,
+ "n_rows": 44,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "compile": 8,
+  "correct_slow": 6,
+  "mosaic": 2,
+  "pass": 21,
+  "vmem": 5,
+  "wrong": 2
+ },
+ "n_correct": 27,
+ "median_speed_vs_xla_correct": 0.9584917166264778
+}

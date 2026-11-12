@@ -1,0 +1,72 @@
+{
+ "job_id": "kimi-a2-s3-p6",
+ "owner": "hruday",
+ "step": "kimi-a2-s3-p6",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 8,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "adadf6fa516941b4aa13155f5848bd73665841a91679482528ed3ad009b80709",
+  "run.sh": "40686506103ce656f00128bf0200345e71e15a1f1927e3088506c08e41aace8c",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/UsBlockRes_5564",
+   "task": "kernelbook__UsBlockRes_5564",
+   "code_sha256": "ae23e6ce390892437c628f6d4efda79401d26ac3394798552a63bd7f8c400ab6",
+   "ref_sha256": "12754fbae4ec4c75137da71935afcfd5188c962c51de1a5bb44312cad4750d2b"
+  },
+  {
+   "id": "kimi31a2/kernelbook/UpsamplingBilinear_6462",
+   "task": "kernelbook__UpsamplingBilinear_6462",
+   "code_sha256": "8a62f514433ac217735a616d32568ac8ab7259746a0f1b551eedc78a06cb4662",
+   "ref_sha256": "652e38f61457ab09907e36482b9b610a7fb2b0add3f67a73180fe380e6ceefd2"
+  },
+  {
+   "id": "kimi31a2/kernelbook/rSoftMax_2484",
+   "task": "kernelbook__rSoftMax_2484",
+   "code_sha256": "7455a03e25c05e9937ed1774dcdc7bd8d6de1386f85dd537338bf977452ae37d",
+   "ref_sha256": "301ca43d3dfcf4d773fd89ec6947c3d329f61ba0cdfc8d2804658c8e91a26b27"
+  },
+  {
+   "id": "kimi31a2/kernelbook/simple_decoder_7839",
+   "task": "kernelbook__simple_decoder_7839",
+   "code_sha256": "9db26e5f7b1992ac6dc29b4974f5ea18b5bca3e15ef9f2ddd8088f8fd89237d5",
+   "ref_sha256": "5e5e677800992e3a6ddaa1ecacd4f53edc7c163819f147aa82fc5ed1d5bffcef"
+  },
+  {
+   "id": "kimi31a2/kernelbook/TonemappedRelativeMSE_7497",
+   "task": "kernelbook__TonemappedRelativeMSE_7497",
+   "code_sha256": "786323f6c48a57773971ad8fe994fc1025eb7d3cc1e3ef798401a724e688794f",
+   "ref_sha256": "1a6c8e6a155c73d090d1d13ffa17b789626f5e2d0d89eb34adcbc2e7e5842eaa"
+  },
+  {
+   "id": "kimi31a2/kernelbook/TripletSoftmaxLoss_17721",
+   "task": "kernelbook__TripletSoftmaxLoss_17721",
+   "code_sha256": "4e692821fa935dd70f9cb6d8bace12df9412a63c4825623fef8dafd6e33d19f0",
+   "ref_sha256": "dafc5e673d6e689fbb7c12361c367a192821b02b5bc4105c33bde7b4d430c2bf"
+  },
+  {
+   "id": "kimi31a2/kernelbook/SuperSimpleSemSegNet_12146",
+   "task": "kernelbook__SuperSimpleSemSegNet_12146",
+   "code_sha256": "4be5b6b62c7e0ecba0d876f00c343a9a3ec2d2b925a7a1a125308e6e8bd84869",
+   "ref_sha256": "bb215ba0ba40d55fcaa3030ab645e565d94829d6aa89705ca902dc1053d11afa"
+  },
+  {
+   "id": "kimi31a2/kernelbook/TransitionUp_15856",
+   "task": "kernelbook__TransitionUp_15856",
+   "code_sha256": "b016332f40c87c77e05459c505741efa1081623936be08c03afcc8824ad831b7",
+   "ref_sha256": "03f339b31017b035d99863c873cc916029d25f54196fd995cfcb867c622c79d2"
+  }
+ ]
+}

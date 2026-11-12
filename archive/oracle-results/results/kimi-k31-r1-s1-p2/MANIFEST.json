@@ -1,0 +1,54 @@
+{
+ "job_id": "kimi-k31-r1-s1-p2",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s1-p2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 5,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "ad16a280f439e3f064e4bce5fcbb81a0eef5b6395061be101a30a552b4257612",
+  "run.sh": "5b24c7f561ba8d94dc566686aa330e1d0aa42124398ae19fcc524278b7e88a8d",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/SoftHistogram_8586",
+   "task": "kernelbook__SoftHistogram_8586",
+   "code_sha256": "7c729970deb27387063174038f1fac7d3d54dd27d1b4e53f543b7965072551e9",
+   "ref_sha256": "e2716aa21b0ba01f6e80d5b6f57cccdd66273f7e87ac5b4b477dd872f13ee481"
+  },
+  {
+   "id": "kimi31r1/kernelbook/LayerNorm_15097",
+   "task": "kernelbook__LayerNorm_15097",
+   "code_sha256": "b5c0a7b652592fb27932d0713046e54f076f832100f185e91c177a75d22fb44e",
+   "ref_sha256": "a57dd232af90a555e5f6c22e7686e804c1baf33c41347a73ae81d0d22b952cbe"
+  },
+  {
+   "id": "kimi31r1/kernelbook/weighted_mae_windows_9647",
+   "task": "kernelbook__weighted_mae_windows_9647",
+   "code_sha256": "72f602cdd960a868ec9810a16146507bf20df9c0bef82844fc796294f7fbefb7",
+   "ref_sha256": "df3fca011628a0ed29893bc8807abbd02673ab82b1ee200cf8fbb4b4dc5c43bc"
+  },
+  {
+   "id": "kimi31r1/kernelbook/QueryEncoding_4551",
+   "task": "kernelbook__QueryEncoding_4551",
+   "code_sha256": "89d9da1bcd31a24b9d40a044b8d71a96368b41b2852597e3dc7a3ac03b1b835f",
+   "ref_sha256": "40fc8a2a680fdf7553c0415e6ec52d1e9700c9147f174f8894851502954b6366"
+  },
+  {
+   "id": "kimi31r1/kernelbook/SelfAttnPooler_12096",
+   "task": "kernelbook__SelfAttnPooler_12096",
+   "code_sha256": "fdb8694300b6988219585d67d49a4dec653bdf8804af15248accf13fab272d02",
+   "ref_sha256": "e207602012a3d5451ffba1d39afb10677d7b4d9b83d9fe8f4b7a6db1e85c5291"
+  }
+ ]
+}

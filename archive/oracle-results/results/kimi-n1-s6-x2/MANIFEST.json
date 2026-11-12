@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-n1-s6-x2",
+ "owner": "hruday",
+ "step": "kimi-n1-s6-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "91b0746b6e6060b457695b45337bf883f2455ee5a8a2742b6b34bd5a1f7a05ae",
+  "run.sh": "efe32e8b5228f1dd710470b5fb3ebdef9bd0a01aa0615c8a70e736214e59bc7f",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN1/kernelbook/DecoderLayer_1082",
+   "task": "kernelbook__DecoderLayer_1082",
+   "code_sha256": "cf3620b1d0f67f39d107bcbae8050600aab173fa1d89b088ba71edc284bf329b",
+   "ref_sha256": "c25944e7d8be12b6a0b37082cf1f4bcd279e85ca7dba1d73bbe6241ff83d775b"
+  }
+ ]
+}

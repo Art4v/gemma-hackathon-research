@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-r3-s4-x1",
+ "owner": "hruday",
+ "step": "kimi-r3-s4-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "086a955a49abbdb5ba83c32381a1865d3a36ebb361b466e19b55b4a8434bae77",
+  "run.sh": "170c329efe91b924b1306b00e71f2453aa0e53c551a6a57435afe4dbfbdcff36",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiR3/kernelbook/backWarp_13450",
+   "task": "kernelbook__backWarp_13450",
+   "code_sha256": "bac75c29676e2e7537b941284fa1e2cc18d91146d8958686cff5255ea8fa3f23",
+   "ref_sha256": "ef16fc078d5fa4910d5b3ac61ad1e5b6f542a8d221f00344247c1274c6a1d4c3"
+  }
+ ]
+}

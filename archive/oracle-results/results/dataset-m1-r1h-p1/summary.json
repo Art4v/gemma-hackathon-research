@@ -1,0 +1,29 @@
+{
+ "job_id": "dataset-m1-r1h-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 46,
+ "n_rows": 37,
+ "missing": [
+  "kb__l2__20_ConvTranspose3d_Sum_ResidualAdd_Multiply_ResidualAdd__m1_aux.a1.s0",
+  "kb__l2__31_Conv2d_Min_Add_Multiply__m1_aux.a1.s0",
+  "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged.a1.s0",
+  "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged.a1.s0",
+  "kb__l2__74_ConvTranspose3d_LeakyReLU_Multiply_LeakyReLU_Max__m1_batch.a1.s0",
+  "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch.a1.s0",
+  "kb__l2__87_Conv2d_Subtract_Subtract_Mish__m1_aux.a1.s0",
+  "kb__l2__94_Gemm_BiasAdd_Hardtanh_Mish_GroupNorm__m1_batch.a1.s0",
+  "scraped__maxtext__ragged_attention_v2__m1_batch.a1.s0"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "correct_slow": 1,
+  "mosaic": 1,
+  "pass": 35
+ },
+ "n_correct": 36,
+ "median_speed_vs_xla_correct": 1.3879053053689479
+}

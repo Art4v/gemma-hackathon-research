@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-n1-s8-x1",
+ "owner": "hruday",
+ "step": "kimi-n1-s8-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "706dc8cfc2c062c2db3139d29f17d56e995dd143caeb5bc56b1228fb51b24e42",
+  "run.sh": "67f701ac8a9f8df1a097bb048da308fd0f0fb5cc05fdb9ed96db8b49d063b9a5",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN1/kernelbook/SVDBilinear_18156",
+   "task": "kernelbook__SVDBilinear_18156",
+   "code_sha256": "2914e276fb0b6155f9f586e6348c316091d084d00b1dd6c8bc580dd21c837d1a",
+   "ref_sha256": "d2de1bb8c89fffec070dd2ad0d19ada7f5d8bdb717c097ce97c88c50e5efe174"
+  }
+ ]
+}

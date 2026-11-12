@@ -1,0 +1,21 @@
+{
+ "job_id": "kimi-a2mop2-s1-p2",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 59,
+ "n_rows": 59,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "compile": 20,
+  "correct_slow": 11,
+  "mosaic": 5,
+  "pass": 17,
+  "wrong": 6
+ },
+ "n_correct": 28,
+ "median_speed_vs_xla_correct": 0.7683966589222342
+}

@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r1-s3-p8",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s3-p8",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "275175a165a54884bddd6cb8c3059e521471bc8f7ccf337c1246f1737bafda72",
+  "run.sh": "b4c12bd55c13a0b31a9f13680639d0f311f704b35ef63eae43198c94e5b2c684",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/LinearMaxPoolLinearModel_4351",
+   "task": "kernelbook__LinearMaxPoolLinearModel_4351",
+   "code_sha256": "951853e2d2eaad19779655714a5b3ed68dae09ccd00e122ef99beb320d67f121",
+   "ref_sha256": "24a4275d90d92b75d1c43b15be0ef5a83906c4e4421b43f0266153ff8e9ee320"
+  }
+ ]
+}

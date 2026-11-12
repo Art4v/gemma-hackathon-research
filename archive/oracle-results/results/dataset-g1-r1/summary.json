@@ -1,0 +1,35 @@
+{
+ "job_id": "dataset-g1-r1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 50,
+ "n_rows": 38,
+ "missing": [
+  "authored__rope_qk_norm__rope_qk_rmsnorm.a1.s0",
+  "authored__softcapped_logits__gemma2_softcapped_log_softmax_2.a1.s1",
+  "authored__softcapped_logits__gemma2_softcapped_log_softmax_3.a1.s0",
+  "authored__ssm_scan_step__mamba1_selective_scan.a1.s0",
+  "authored__ssm_scan_step__vim_bidirectional_selective_scan.a1.s0",
+  "authored__ssm_scan_step__vim_bidirectional_selective_scan_2.a1.s0",
+  "authored__swiglu_variant_geglu__gemma2_geglu_mlp.a1.s1",
+  "authored__swiglu_variant_geglu__gemma2_geglu_mlp_2.a1.s1",
+  "authored__swiglu_variant_geglu__gemma2_geglu_mlp_3.a1.s0",
+  "kb__l1__100_HingeLoss.a1.s1",
+  "kb__l1__14_Matmul_for_upper_triangular_matrices.a1.s1",
+  "kb__l1__19_ReLU.a1.s0"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 28,
+  "correct_slow": 1,
+  "harness_oom": 1,
+  "mosaic": 1,
+  "pass": 6,
+  "runtime": 1
+ },
+ "n_correct": 7,
+ "median_speed_vs_xla_correct": 1.2376378283556804
+}

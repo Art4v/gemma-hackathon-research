@@ -1,0 +1,624 @@
+{
+ "job_id": "v3-gen-sample",
+ "owner": "karthik",
+ "step": "v3-gen-sample",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 100,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "c9daeb9225e829cc71c88bafc04fca3264347b0c8c1d885d1ae909a6f9942303",
+  "run.sh": "696244b16977db95aacd1c81f1ac42a6e1504a4c59f1286c71aa5c6b4e6114e5",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "gen__matmul_epilogue__00757.generated",
+   "task": "gen__matmul_epilogue__00757",
+   "code_sha256": "2712084d20a2aa4a82af111d6683e06bb1f4af4f0febcc84d4c2d7e6f390d0b6",
+   "ref_sha256": "5630b293013dc2d84dd6f5808f6492e500b84972ee9d5e3e87fa59bb516f3709"
+  },
+  {
+   "id": "gen__matmul_epilogue__00602.generated",
+   "task": "gen__matmul_epilogue__00602",
+   "code_sha256": "2e2c0a6e45e9cd7341f922a4f541e7ed4dd4eee5d8c7db2d8c235e3a1d0ab3b8",
+   "ref_sha256": "cba5f5ba40627c6f7698e328cedaad1a79adc1336c977f3b6835ce2244a0c3b4"
+  },
+  {
+   "id": "gen__matmul_epilogue__00005.generated",
+   "task": "gen__matmul_epilogue__00005",
+   "code_sha256": "324575ea649adfa2d54b855dbe9c846f3e624f5fb0c9d59c62ac42a8d0026068",
+   "ref_sha256": "c4933ba19b2c2765c5856afd8bc325734fff498a718c736d325f4e375c2bcb34"
+  },
+  {
+   "id": "gen__elementwise__00131.generated",
+   "task": "gen__elementwise__00131",
+   "code_sha256": "822870cf2ebe2caeb8547eef53c88f4c011d2a98aff78f0a89be34a8b832b259",
+   "ref_sha256": "15a8cdf8d7455636b3a6b496502f1f0377db3b3ce2ac74c322dd582cc9d2bc1a"
+  },
+  {
+   "id": "gen__reduction__00281.generated",
+   "task": "gen__reduction__00281",
+   "code_sha256": "6052c5361ce44212377f98146b4c2536a6794b2dc324798e31fb6388d57ead32",
+   "ref_sha256": "2466b30118c519ec084596c391b50121df672e2b57392780183fe2adec8f2f9c"
+  },
+  {
+   "id": "gen__matmul_epilogue__00359.generated",
+   "task": "gen__matmul_epilogue__00359",
+   "code_sha256": "23f42548b8f65fede6a4af7c9e11b329b248a02fe36fbaa78011df1ee0be0ca0",
+   "ref_sha256": "d510312372962e0c02f178269529b4c9079a715020c95664c88bf9c03f2de9d4"
+  },
+  {
+   "id": "gen__matmul_epilogue__00582.generated",
+   "task": "gen__matmul_epilogue__00582",
+   "code_sha256": "f4b4309de7821cbc1178c8122ebbe8982eedfe812fcdaa8ca9406931263e4fdb",
+   "ref_sha256": "57acc1cf565ebfb083248c86938864ae477cf874f4dcc4e42ca78364d810c4df"
+  },
+  {
+   "id": "gen__elementwise__00205.generated",
+   "task": "gen__elementwise__00205",
+   "code_sha256": "202052c19b67ab512fba2211c20e55538768df5b506ff14c3370f5a0c79b8a79",
+   "ref_sha256": "a14dcc1c38b4b85a385c403a67a2841ae908a5e39981b14d99226a1fa28e1b82"
+  },
+  {
+   "id": "gen__matmul_epilogue__00307.generated",
+   "task": "gen__matmul_epilogue__00307",
+   "code_sha256": "f8b394c45d8e118de7aa40c93ac40b19cba418e2c1132929e03cd8b041b715f9",
+   "ref_sha256": "e8f2757499e166dc54576587cfccf098d513ea90b9431ef2ca8a991b03cf8921"
+  },
+  {
+   "id": "gen__matmul_epilogue__00021.generated",
+   "task": "gen__matmul_epilogue__00021",
+   "code_sha256": "6dff7b1a488090bfe87a13d9155c65bc0ada775b88cd84ba7fba30eabe7691b2",
+   "ref_sha256": "2b5a1b0f457049cfa406bede9907dbccb591ec8ce76fa95f8e25e38bf6e001c2"
+  },
+  {
+   "id": "gen__reduction__00088.generated",
+   "task": "gen__reduction__00088",
+   "code_sha256": "3845d14a199ed1aa760b6d1885bccae30e3438ef07f76288cdb9685cd4f2db68",
+   "ref_sha256": "20a78075045b5466410c1c4abdb06c217034910e93fbef8e9886ccb5efdcc978"
+  },
+  {
+   "id": "gen__elementwise__00246.generated",
+   "task": "gen__elementwise__00246",
+   "code_sha256": "fd7bd0dc59b26570150df7d6cf6b9b1d7512632a5df88205edce102ee0ddf1e9",
+   "ref_sha256": "3cfb6a505962a27b4fff4587af90312686305fb326253d70559734107f98885e"
+  },
+  {
+   "id": "gen__reduction__00099.generated",
+   "task": "gen__reduction__00099",
+   "code_sha256": "3ce30ecfd9f533ddb82c63e779817fb48e7b4a0823610e1ee8c1f2918daf1e3a",
+   "ref_sha256": "1d6fedcd4ab8aa911e4a8df4ebe4c936e51bac6da2b1a5ac94233b321fd03222"
+  },
+  {
+   "id": "gen__conv_im2col__00014.generated",
+   "task": "gen__conv_im2col__00014",
+   "code_sha256": "b1e9a09a6e49c5dcae2a45b4bed5b0ee441466f6e7b7e8a5fe97a732c59aad5e",
+   "ref_sha256": "9740cd6c7124a7f501716fe72c0a5b3943bbed366d2fd49c1e81fe476a5a7d37"
+  },
+  {
+   "id": "gen__elementwise__00198.generated",
+   "task": "gen__elementwise__00198",
+   "code_sha256": "129f4e7ebc203d44f585cbfbc5f03080993e5c757028f9f406f39752a6fb7e19",
+   "ref_sha256": "9fdb81a26def5b5783b829ac55fd86169e9b7c6b7317faed34b5433e6a18906e"
+  },
+  {
+   "id": "gen__conv_im2col__00126.generated",
+   "task": "gen__conv_im2col__00126",
+   "code_sha256": "f4d08c8ce1d61b13c701bbb013bab37e6124ea5d11924b8d93359484aed3f8c5",
+   "ref_sha256": "cffcdeaa661133781e7d222b291a931de8bd9c585d5f547d63a1129133377b69"
+  },
+  {
+   "id": "gen__conv_im2col__00247.generated",
+   "task": "gen__conv_im2col__00247",
+   "code_sha256": "58a6ea2c920e07c2bbac3ae2650cda8ae1eabdf202dc4d0fc9283a1b0c1a9a83",
+   "ref_sha256": "69a1796678f30d42da59ee41f4a82cbaf01a6aaebdfecf5601df8f64690dd7ea"
+  },
+  {
+   "id": "gen__reduction__00351.generated",
+   "task": "gen__reduction__00351",
+   "code_sha256": "82616a090d163e415aa138591a21a1698e0988e8dd21476287fc2a99fe96fe47",
+   "ref_sha256": "4ed6003d005cd9d1c0c8af58eadc10890dfdc3e8e35d5826473f526b0cd9863a"
+  },
+  {
+   "id": "gen__elementwise__00295.generated",
+   "task": "gen__elementwise__00295",
+   "code_sha256": "163a4abe357feb0ff0c170a0a45fba0ae598af741caa95dda410c17460dccf85",
+   "ref_sha256": "15a1a50e0be81892660d703f9ea7033f02b089894d1211798b43d91d6d8f99bd"
+  },
+  {
+   "id": "gen__reduction__00014.generated",
+   "task": "gen__reduction__00014",
+   "code_sha256": "17bdcf02038c9d75e161dde4b90df8e5d1fd118b04c47e3538f949b330109d27",
+   "ref_sha256": "4f428be023632d8218f7b9c2317418283ceb68ead95991bea0ad508ee64406ca"
+  },
+  {
+   "id": "gen__row_reduction__00048.generated",
+   "task": "gen__row_reduction__00048",
+   "code_sha256": "d6494c9a5eae9777408643fa1e1be8f024b8b584286d8ee0fae4782b7ec884ce",
+   "ref_sha256": "2b293b6ca31b8d162d75b13b944ec2d8eed654e2e45361cc38bc6342fff1c828"
+  },
+  {
+   "id": "gen__reduction__00371.generated",
+   "task": "gen__reduction__00371",
+   "code_sha256": "9af34bb4f0ceccded0ddb75c2d4ee6499e2f1515bba5c7c81d39f3f5d45c2aef",
+   "ref_sha256": "e7cadf745f98c696dec3a7d104847413e03320785f779d9ecee7e29356ebbfbb"
+  },
+  {
+   "id": "gen__conv_im2col__00041.generated",
+   "task": "gen__conv_im2col__00041",
+   "code_sha256": "9d91b28fba3228857e1cbf013d1212f832372465ec768fcfe8c032a5d2b5c277",
+   "ref_sha256": "5b23d0846137f3f15e28803549430813305a1214d54cba0e7be060f93c9486e2"
+  },
+  {
+   "id": "gen__elementwise__00092.generated",
+   "task": "gen__elementwise__00092",
+   "code_sha256": "73c08a36e810d840c206d2d681e24b2dd585c29c98ed38fb9a0943b660e79743",
+   "ref_sha256": "0c671304de02353d42b26c358c3e597ee52c429dc49314e40f824c69d8338a74"
+  },
+  {
+   "id": "gen__conv_im2col__00297.generated",
+   "task": "gen__conv_im2col__00297",
+   "code_sha256": "25c3ce9127c12a4e33a350e7575402d8d5b03046910062ab7572de74fa1597de",
+   "ref_sha256": "a42eda3a8b370982abedfa3d19fb290bae61b1b956491fd0f696ba73f456b77e"
+  },
+  {
+   "id": "gen__row_reduction__00050.generated",
+   "task": "gen__row_reduction__00050",
+   "code_sha256": "cd9d75faa89d9098f7c98912c65d54ad85cac306fd5717015f79768a1e17d300",
+   "ref_sha256": "c834389c9626bcf4d9173ab85a7e99ffe93f6085c835b8342af3a53cea1c82f8"
+  },
+  {
+   "id": "gen__matmul_epilogue__00725.generated",
+   "task": "gen__matmul_epilogue__00725",
+   "code_sha256": "a18993c2b33475eb8bbd35f2f9856ae668ee70d489a91cffb8566bcbe5565340",
+   "ref_sha256": "712b454bc9777fe1b507ff755ebf85acfc64fe7a997c69011956835ee1e8d64d"
+  },
+  {
+   "id": "gen__row_reduction__00091.generated",
+   "task": "gen__row_reduction__00091",
+   "code_sha256": "8b61e7e5a98f7a6252f2f80f91cf5a7f51abb7a94f78d5df1c7fbeafad006781",
+   "ref_sha256": "a235153402a0a5b05a9232d360212f9d1143049f810bf0abe36279ddc1e75ca0"
+  },
+  {
+   "id": "gen__matmul_epilogue__00089.generated",
+   "task": "gen__matmul_epilogue__00089",
+   "code_sha256": "5be7c16eca69a1f45c556775126a4558fde1d9e2a16a1499b84fca93625a57e5",
+   "ref_sha256": "6abe93d3507b79e00a45213b2e7e339d236d03078bcf0673e4bf85e928d0063d"
+  },
+  {
+   "id": "gen__matmul_epilogue__00583.generated",
+   "task": "gen__matmul_epilogue__00583",
+   "code_sha256": "efc97a79706078a85621c0da4bdfa9a12762b4a636903e1d2df5efbed85a707e",
+   "ref_sha256": "c9520a0f8300dc1e9bdb4491edad6d1a3db162d276b829aa16b12d2083d18097"
+  },
+  {
+   "id": "gen__reduction__00274.generated",
+   "task": "gen__reduction__00274",
+   "code_sha256": "85dc15391d482809528d9a3f6f39c0c90e3fee08c17c6b51d6a6f1d6fd370f2b",
+   "ref_sha256": "45a9b19a475867a516c82430e58b6a3f71606ca4eb8eae899f64430f22103b9d"
+  },
+  {
+   "id": "gen__conv_im2col__00057.generated",
+   "task": "gen__conv_im2col__00057",
+   "code_sha256": "bf573f6b0d36db587fef17d50063229149252305fbacf25de8e9e10b54436d2e",
+   "ref_sha256": "9e873001886097b271155c72627ea2f3910d08d6afc24ddec7aae35594031bb9"
+  },
+  {
+   "id": "gen__matmul_epilogue__00014.generated",
+   "task": "gen__matmul_epilogue__00014",
+   "code_sha256": "88a0950e3a3067bf9514b67d0100af366a6bfe54d702571645385c8c837031a1",
+   "ref_sha256": "a362d33813fa91401aa4ee781fdcb6803069282e742fb6070f539a2af2d8989e"
+  },
+  {
+   "id": "gen__matmul_epilogue__00833.generated",
+   "task": "gen__matmul_epilogue__00833",
+   "code_sha256": "450ff45234ec8ff468732711851d4648407d61a15ca5cecaf90bdaf581e3467e",
+   "ref_sha256": "70303b31acbd52a7e1e20326dff2c48f723a0406390836dcd4d115d3f3f96a5c"
+  },
+  {
+   "id": "gen__elementwise__00360.generated",
+   "task": "gen__elementwise__00360",
+   "code_sha256": "bf596880fb66c76509221273700217fd053ecd0c063014553ad94df5c086f53d",
+   "ref_sha256": "4835df5106c7cb8102863029b7f4ba64960381e193a6834f073fa2fef6fcfb3e"
+  },
+  {
+   "id": "gen__reduction__00049.generated",
+   "task": "gen__reduction__00049",
+   "code_sha256": "e5f150ef7e1e6a69a00523522412516e05ecbbc8cc9ab53be5a00acc288da0bd",
+   "ref_sha256": "a9b353b1f7e379370c8170dee58521bd20a51c151b102d342d36dd705064e200"
+  },
+  {
+   "id": "gen__row_reduction__00111.generated",
+   "task": "gen__row_reduction__00111",
+   "code_sha256": "c1ee175486ff21b01698f4b12bc76890ce5c74f86cfdbe471ffcd44c09c4e091",
+   "ref_sha256": "0121355427b793e3c35111d8c49f850d8b43e4697ebe1dbaf698377f96082af5"
+  },
+  {
+   "id": "gen__elementwise__00262.generated",
+   "task": "gen__elementwise__00262",
+   "code_sha256": "d1bc1db442a271757f628ff279d9a9e7b3e527123ed4c3affa9117346555dff6",
+   "ref_sha256": "4ce6d8207026480d46715fbc263eca8a420c0978599ebf576a9fe1468b53f879"
+  },
+  {
+   "id": "gen__reduction__00213.generated",
+   "task": "gen__reduction__00213",
+   "code_sha256": "09051d351a1d2ffecab42947aa40b93f57d02eb86864cab350212c4e2d6cb750",
+   "ref_sha256": "bbdcecbf8c7e8dafe9ef234674bd78878ab4adf1df141a4fb95574be44e2888e"
+  },
+  {
+   "id": "gen__matmul_epilogue__00570.generated",
+   "task": "gen__matmul_epilogue__00570",
+   "code_sha256": "abcdcfe0bb24fa3798f4e0c19cd19e4ed64743fe30651f49c48852f74a9c6876",
+   "ref_sha256": "66f1232ff2159beb48ac422566f79748a37046e2e9c4dd2c1c7baf9773f8088c"
+  },
+  {
+   "id": "gen__reduction__00060.generated",
+   "task": "gen__reduction__00060",
+   "code_sha256": "d953a58dcc68a027db2d550b09c8ff472fbc19a7b50b6d81bb626c0512d8e7ad",
+   "ref_sha256": "23efa4a77bbe7271078b911de9bf748edd5b449f5f9f00c1c2226a8a74c87fc3"
+  },
+  {
+   "id": "gen__elementwise__00304.generated",
+   "task": "gen__elementwise__00304",
+   "code_sha256": "9fce8a9a3b039fdb21f3274b6b1e5aff42cac695b08fbbebde3af826ecdba422",
+   "ref_sha256": "d7d6d444f7d6599055bd99657e3db8dea888ac3c576165e6a358382abe7b43d5"
+  },
+  {
+   "id": "gen__matmul_epilogue__00240.generated",
+   "task": "gen__matmul_epilogue__00240",
+   "code_sha256": "f719d3a3fac4886e2ea196bb98421122f38432adb6fb502c6fb99aa601a8f412",
+   "ref_sha256": "42554e615780d185868b718730eacaf2d54fdc0a0762bb9fe00e26131bbe6644"
+  },
+  {
+   "id": "gen__reduction__00248.generated",
+   "task": "gen__reduction__00248",
+   "code_sha256": "aeb2a511813aa1770bb351cefbe5b183bab26492febdeb2ffff04fc723911dad",
+   "ref_sha256": "805a33f83129f73d886ff43bac186a71ee91c42d40fecf1a88d09290f6392634"
+  },
+  {
+   "id": "gen__matmul_epilogue__00703.generated",
+   "task": "gen__matmul_epilogue__00703",
+   "code_sha256": "76a342d0bbb1f5b7eede3b6fd03e98b801c13a87f7122ffc3961af074cf50c67",
+   "ref_sha256": "5c82bdcd777dc8875abf5ed53b98afb16e5fd275994a5186b1cf6227c1957697"
+  },
+  {
+   "id": "gen__conv_im2col__00080.generated",
+   "task": "gen__conv_im2col__00080",
+   "code_sha256": "f8177b6739922002fb61e8f3b504e17ee7cc3ae7ba4785a149c91a19d58d8eb3",
+   "ref_sha256": "4576f7317c45a73d41a29a048f0efaff41528d0050e06547234e0e52c76083e0"
+  },
+  {
+   "id": "gen__row_reduction__00220.generated",
+   "task": "gen__row_reduction__00220",
+   "code_sha256": "9b0e19dbff78ef9da746b4686e9e23040b8771541903711ac4c33ac981f7d0b4",
+   "ref_sha256": "2871379abdaecc457f6adabfe78dfc6a0af1389698212b47abf465af03fe5350"
+  },
+  {
+   "id": "gen__matmul_epilogue__00407.generated",
+   "task": "gen__matmul_epilogue__00407",
+   "code_sha256": "353a970905c9a612912360fac4752ff3a4f0c308dbc24241f65136acbe1a176a",
+   "ref_sha256": "8719f8d4141842b6ad8c87742d89f1a98b3fb0f792aff356b189405aa29bea73"
+  },
+  {
+   "id": "gen__row_reduction__00071.generated",
+   "task": "gen__row_reduction__00071",
+   "code_sha256": "c12160e01aa6487685d6bdd8f85f334c2c0898e92e7237c91b6b58c5592f9981",
+   "ref_sha256": "be9a4e8d4f2fe5b60ee2c1889bb046d531697351881fdbedea3cd89374d16a09"
+  },
+  {
+   "id": "gen__row_reduction__00125.generated",
+   "task": "gen__row_reduction__00125",
+   "code_sha256": "4578437887f8e7dd36ca69b5c54f710722741fdf53957a4e6e3ed804952f45f3",
+   "ref_sha256": "679370195c24a815f978e700405f5909c6fa9d017b5497065b2b9e5f878c22ec"
+  },
+  {
+   "id": "gen__reduction__00009.generated",
+   "task": "gen__reduction__00009",
+   "code_sha256": "41b6aa960977655da18e390de3469c8f87a8bdbf6a4cea77cdce33a69f283245",
+   "ref_sha256": "abc118eeb3f4d9150a8edac0a37e161ed9671d08b4dcf5e86eee95413d6fe519"
+  },
+  {
+   "id": "gen__matmul_epilogue__00288.generated",
+   "task": "gen__matmul_epilogue__00288",
+   "code_sha256": "936f119c78f3a8dae3d1209381286851c469fb58b2521715c17a77bae14fd11f",
+   "ref_sha256": "b2e2b0cd90c46a7ed9be94b128f03f32421b51eaaacadf2786e99e646f130f56"
+  },
+  {
+   "id": "gen__reduction__00138.generated",
+   "task": "gen__reduction__00138",
+   "code_sha256": "ea171728107fa69612f74bfd5868518805ef96bb1f384ce806de1d480c1a5b6c",
+   "ref_sha256": "96798b48b5d9ba7cf45df880a3baadb66412f80502f4b662084daa3fa6d9575c"
+  },
+  {
+   "id": "gen__matmul_epilogue__00053.generated",
+   "task": "gen__matmul_epilogue__00053",
+   "code_sha256": "c46edd1776c6f2a27bc205f2c65c8b3e6bc802952389acae0a771d29c5eb8dca",
+   "ref_sha256": "95e8b8baf25fb4b8d48fca8df46890ac69aeb0285d347990ecf93531570c4a3a"
+  },
+  {
+   "id": "gen__matmul_epilogue__00424.generated",
+   "task": "gen__matmul_epilogue__00424",
+   "code_sha256": "cbee2a87da3159624af9fbbee719a38da90078803a3614b42194bb59f82d93bb",
+   "ref_sha256": "dcd55ec2098742db8fb522d79ead520e0137ff8eb053de6b751f0ccea229a533"
+  },
+  {
+   "id": "gen__elementwise__00346.generated",
+   "task": "gen__elementwise__00346",
+   "code_sha256": "102191c0180f927bc3a7347bcd8c2e664501b10c5e4a9e84188507a44cb4aab0",
+   "ref_sha256": "9e212429b124ed89100dd6d55ad141dc1545d46dc7b4a4b47138c7e91d55b93f"
+  },
+  {
+   "id": "gen__row_reduction__00198.generated",
+   "task": "gen__row_reduction__00198",
+   "code_sha256": "3566671a6bbaf3bcf2da29452ea4f19ced3923474b076b1893b1ddbad41b688f",
+   "ref_sha256": "8d403b5c11159cf02f8a23251e1f27877c3f1ed4acf2c9dc24802e97d7a74fa6"
+  },
+  {
+   "id": "gen__matmul_epilogue__00586.generated",
+   "task": "gen__matmul_epilogue__00586",
+   "code_sha256": "e62f75c6bd55c3269d7cfbab5a8b7a60f5d01cdef3c1337c6f678e8bb9244527",
+   "ref_sha256": "32e038c1c52c4deaf439035c624fd8be3bf0228606bb652a58a715b934386006"
+  },
+  {
+   "id": "gen__row_reduction__00207.generated",
+   "task": "gen__row_reduction__00207",
+   "code_sha256": "fbbdb76f706743864f7cbb2b894a2f6c3b86a532bafcfd9110f1c4ddfe4f7f8d",
+   "ref_sha256": "2c6df07a4bf5a85e9f47271a05930b9124c8856e4b236ff227bf62c8f9ec656c"
+  },
+  {
+   "id": "gen__matmul_epilogue__00287.generated",
+   "task": "gen__matmul_epilogue__00287",
+   "code_sha256": "89acf93b19f5356b3265df21a21eb0ac40475b049f27ac1f37e7c8a0619825a8",
+   "ref_sha256": "af1c9937eb3122299983af92a28c81bcefd27144c625c418ba951e700064f396"
+  },
+  {
+   "id": "gen__conv_im2col__00419.generated",
+   "task": "gen__conv_im2col__00419",
+   "code_sha256": "72c83f68e814043cd3b86dd25ce3d56fa051d4561655460a952e1a357bf341c2",
+   "ref_sha256": "5edd78293315016e858e3c405c3842520bb98c193a73853b54b7a00acaa84be0"
+  },
+  {
+   "id": "gen__reduction__00235.generated",
+   "task": "gen__reduction__00235",
+   "code_sha256": "a3442c7d8b6819912d7832572f5f6cf7d00691bf7870d9cc6ea1579e9ee1ad1d",
+   "ref_sha256": "48b8a03b601c717203736fc99c720892cce50e284b2cadde2c99e6eb4f6dc440"
+  },
+  {
+   "id": "gen__elementwise__00161.generated",
+   "task": "gen__elementwise__00161",
+   "code_sha256": "f93503e4358ab683f0ca24024aa0a2e61fbeab063f8fc32aa2679f4ca2903aca",
+   "ref_sha256": "c1f3df80c7fcac6e9c152241d206c4c6d485c5ea0138b49b4399d69e19400350"
+  },
+  {
+   "id": "gen__elementwise__00201.generated",
+   "task": "gen__elementwise__00201",
+   "code_sha256": "2f8b5703baf63d689bba9a51872247c25e0914d013ed09fb9dc300ea1af3a82c",
+   "ref_sha256": "995f9f51480084127e79ecd75b084a14084e981343890feabc2fe5e14fc597b1"
+  },
+  {
+   "id": "gen__conv_im2col__00318.generated",
+   "task": "gen__conv_im2col__00318",
+   "code_sha256": "60afe5523c14224a12bc06fa47ada6e3bcdac13a55b895c86bbcf88db47bc91b",
+   "ref_sha256": "7408bbbd4002590dadbc768d76a4a06317923bff7d23ecde91019acacd111166"
+  },
+  {
+   "id": "gen__reduction__00310.generated",
+   "task": "gen__reduction__00310",
+   "code_sha256": "50ebe2997a21f01c6cb00baed631960c57a5b8aad113584cb7bf422772f8e03c",
+   "ref_sha256": "c35c114876b8fdc9678504e535906854e1d0274bef8bb198ed5c3cfe86ac33b8"
+  },
+  {
+   "id": "gen__matmul_epilogue__00198.generated",
+   "task": "gen__matmul_epilogue__00198",
+   "code_sha256": "a6e24b6ab8616d9e4b3548f1aef189f6717489491f7f32756b817b24b2bb7809",
+   "ref_sha256": "7ce5f2de9ad2d7a23bd6691c51a5d0174beb2aabdbb2b4bdac12eff57a336d14"
+  },
+  {
+   "id": "gen__conv_im2col__00274.generated",
+   "task": "gen__conv_im2col__00274",
+   "code_sha256": "a119c84cfa9a9194b57c7f44537b1f6b160a10ecf3f9226201260fee470ee206",
+   "ref_sha256": "4f88269833268db1e86eb7c650f52ae1aa2919b44e358151d3372713308e6859"
+  },
+  {
+   "id": "gen__conv_im2col__00273.generated",
+   "task": "gen__conv_im2col__00273",
+   "code_sha256": "6cc33b5513a586f178925fd0d86f9c1769c6bb3f3a14ea6117740de23d82f448",
+   "ref_sha256": "08ea0ba77b5f7ca40e58523905b508fe55c38b1296950624cec63b2a9cdfb970"
+  },
+  {
+   "id": "gen__elementwise__00155.generated",
+   "task": "gen__elementwise__00155",
+   "code_sha256": "c5b795c1ef8376ea29dd5d9f114218a1da4090bfb2de356915f7d6f7cd240e4a",
+   "ref_sha256": "7e772b61c1ee0af428775de38343a23b5fb2b2cba66436e079d1fdd5e8513b0e"
+  },
+  {
+   "id": "gen__reduction__00196.generated",
+   "task": "gen__reduction__00196",
+   "code_sha256": "ebb9afb1da8e8383b02c8b093328957e30fd55b863ccd286e0f4a84dfbc0e67d",
+   "ref_sha256": "f13e3aa06da3064f932e4f0a002294287697a87c30c30e1ab5ee52e15d496699"
+  },
+  {
+   "id": "gen__matmul_epilogue__00790.generated",
+   "task": "gen__matmul_epilogue__00790",
+   "code_sha256": "b453ad01a9f00954a3129626e0278a2d3db7150b69ed4131c7ee977f1e75489d",
+   "ref_sha256": "1b950d9f00508e8a1215fae720ceb43e90e0e7a5da1a03f7a552d7edd9a865e8"
+  },
+  {
+   "id": "gen__conv_im2col__00393.generated",
+   "task": "gen__conv_im2col__00393",
+   "code_sha256": "b26e3284f90d25033e999e4a289214b227dbb119efc21f1832a2e91e12dd7292",
+   "ref_sha256": "78b597a54bf5d9611008d0d397d5dd8053c827b9621700fed81f55ee1d954126"
+  },
+  {
+   "id": "gen__elementwise__00264.generated",
+   "task": "gen__elementwise__00264",
+   "code_sha256": "0ea2015cdef5b0185e2107ecb145cc7cfe76cb77b6b191ec0f1707d94afdfa25",
+   "ref_sha256": "893e7f79cfab6df7b5e95f62f6ceaa47503b9fa9bae324c63f894e0eb250b0da"
+  },
+  {
+   "id": "gen__reduction__00175.generated",
+   "task": "gen__reduction__00175",
+   "code_sha256": "bb2d332ff047f09cef141e26a81395c242c92d912c7cf86eef336c18757783a8",
+   "ref_sha256": "dc0f2a0100b3d71667358260821f9c5278f7600e3b9995ccdd8e11d21e2f0dec"
+  },
+  {
+   "id": "gen__elementwise__00240.generated",
+   "task": "gen__elementwise__00240",
+   "code_sha256": "af7f2bc2e1faae6dcee824494d6f20d9237dcbd91832cf20aea4a2baec40212d",
+   "ref_sha256": "9477ff223832c61875cff44bed60ddfa7f96236e89d62ef859512f47d8a1fdc8"
+  },
+  {
+   "id": "gen__row_reduction__00177.generated",
+   "task": "gen__row_reduction__00177",
+   "code_sha256": "9e23353b689d47e4adf97e3cffc2f305d3777b1213908a7c6285ac5acdea19dc",
+   "ref_sha256": "ef86dd0b81973b61a5a34b91a1ae2bec96a149a4f192d64f0ff181048f9252a1"
+  },
+  {
+   "id": "gen__conv_im2col__00083.generated",
+   "task": "gen__conv_im2col__00083",
+   "code_sha256": "63ffec8e3e5317d6641c70e53e4a27173658490e0858c9df476f6f6ffc10be29",
+   "ref_sha256": "db94e2650d78795cd05294a1c4bc539b50bbd4653740c7fe78602d7e9e1043c1"
+  },
+  {
+   "id": "gen__reduction__00085.generated",
+   "task": "gen__reduction__00085",
+   "code_sha256": "6821d4493ec06f16e228029e9d97fe9bef789f4ca8f0226eace8c6df1e0bbf1f",
+   "ref_sha256": "581a44620c7b37154efd771f14839dd668c2c82da73e0fa0de875b2a200097fd"
+  },
+  {
+   "id": "gen__matmul_epilogue__00343.generated",
+   "task": "gen__matmul_epilogue__00343",
+   "code_sha256": "b753ea16efcc53f9cd0d4aea2df061b16e3f487f468e90baaecf55f2b9706d91",
+   "ref_sha256": "5d2d9a9fab5f942d20cb7a7cd63af62dd215ae0a3d67a9269124faea46438531"
+  },
+  {
+   "id": "gen__reduction__00349.generated",
+   "task": "gen__reduction__00349",
+   "code_sha256": "3c9a05e1a66ad942cf297a35fc79f5ccf3f3793040268f038561a9320d98b95d",
+   "ref_sha256": "58a8f6bf763ef0b3950a326658ece71e0df25b9b6e7fa142b2c059daaaeeb20a"
+  },
+  {
+   "id": "gen__elementwise__00082.generated",
+   "task": "gen__elementwise__00082",
+   "code_sha256": "e5dfdf23387465d7beba7f9228000274717cbb10efd91f4681c4ea8133109a2a",
+   "ref_sha256": "ca2d101fc7130409925080ab40810cd24cc105e0e3bb60d9942a86a3bc5fd480"
+  },
+  {
+   "id": "gen__reduction__00042.generated",
+   "task": "gen__reduction__00042",
+   "code_sha256": "44fda02a81c27b7cb32f73036df59c7ba2b8e681c0e2826b8f85667cfe3b48ee",
+   "ref_sha256": "e5ad43086b0bc391d95aa85449f7831745ce97842d77420433a3ec26a95809a7"
+  },
+  {
+   "id": "gen__reduction__00357.generated",
+   "task": "gen__reduction__00357",
+   "code_sha256": "aa78531e61a577b9398fc9b737bacb41e8a1b58a2969feeae61e48210ebd3397",
+   "ref_sha256": "e1247a3689c96cdab4ac3b9d0051f08241efe753c27129565e837f359026588a"
+  },
+  {
+   "id": "gen__reduction__00363.generated",
+   "task": "gen__reduction__00363",
+   "code_sha256": "90e77d7b18823054269a9f645bf307d467d69731013907a1e13b76e329db0d93",
+   "ref_sha256": "4888f01691bc31a1a98aba0e8ec397843350229753c809dec46762b5b7e129c8"
+  },
+  {
+   "id": "gen__elementwise__00381.generated",
+   "task": "gen__elementwise__00381",
+   "code_sha256": "c47571b7e82164b5a43436e354342c84b8525d82a12521a1878974be39fd922f",
+   "ref_sha256": "491c78d540db99d9ef5abca440f33ad8e40af975882ca89fc5097d10d86df0cd"
+  },
+  {
+   "id": "gen__matmul_epilogue__00507.generated",
+   "task": "gen__matmul_epilogue__00507",
+   "code_sha256": "d807d0b51a0e36bea38e507ef26555e5f30bd1c4fb1657c303c1fcdecb943f56",
+   "ref_sha256": "0cc9e8604419dd7481daec579b42465f2fa784a5c09ca7622021355449d8a4e4"
+  },
+  {
+   "id": "gen__conv_im2col__00114.generated",
+   "task": "gen__conv_im2col__00114",
+   "code_sha256": "6921ebd3c08f93ff09728dcb7ac9785e734fa8f1f4ba12f052f8f6214e675c3a",
+   "ref_sha256": "406dda2bf652bd4f794209d8d5308bdcbc08d67972cca83909fb5bd4a2999852"
+  },
+  {
+   "id": "gen__reduction__00056.generated",
+   "task": "gen__reduction__00056",
+   "code_sha256": "e2607f98fd7886463fd74ab6c6dfe2f7fd9baa0fa4a872402b99fc5781d5acbf",
+   "ref_sha256": "649f45416e8477ad9588c90969f32315d00c0e682a57099b62f0292e9e6e171f"
+  },
+  {
+   "id": "gen__elementwise__00023.generated",
+   "task": "gen__elementwise__00023",
+   "code_sha256": "99f212679bd2b872e2c0831df0287def630d5d3b4de367032168d88b069d37c1",
+   "ref_sha256": "0adbbbf96a4a94379e585271f559df2c679873f71c084d5a97e75f82a496de75"
+  },
+  {
+   "id": "gen__reduction__00220.generated",
+   "task": "gen__reduction__00220",
+   "code_sha256": "0552d377b0e883c521d4a10c176cf5ea7f1e0529448c10cf8d9ac3f78ad11b01",
+   "ref_sha256": "da0185e8422bc449c3bc962169c09d2de3027344f3e52cf9190b964323d5f24c"
+  },
+  {
+   "id": "gen__elementwise__00337.generated",
+   "task": "gen__elementwise__00337",
+   "code_sha256": "d890a444c4222f0f55d1306c525e527a86a2fe80efd01eae83d6a7a4aabacf39",
+   "ref_sha256": "2974dfb13b2176a4496d8f21e63206265fab82e380925530fc8461d311528bbd"
+  },
+  {
+   "id": "gen__elementwise__00236.generated",
+   "task": "gen__elementwise__00236",
+   "code_sha256": "efb998205116a3554321ec7603e891f7a1be2abd63ec440530ccab0f53d40045",
+   "ref_sha256": "a675d71fb0c8144e49813aa3f41c07f00c28d6c33d5fa0efeb58272469899448"
+  },
+  {
+   "id": "gen__conv_im2col__00063.generated",
+   "task": "gen__conv_im2col__00063",
+   "code_sha256": "6b79247f5d03bac739ce5fe6fff41411930cc8839a3ec04f623dde8238a69bbe",
+   "ref_sha256": "da9b9e881fd38a1a6d624f44ce35f2c2a991247f961188ce230e2612c476f9f7"
+  },
+  {
+   "id": "gen__conv_im2col__00205.generated",
+   "task": "gen__conv_im2col__00205",
+   "code_sha256": "5b1844f9a7c2e7c03128d103f8834bbd351b2e1b4228ba3e8e51a0a926d3fd55",
+   "ref_sha256": "28b5a2a82783367be54a2f184ea7efc1f467f72bc05cd717b7c512e1334f1672"
+  },
+  {
+   "id": "gen__conv_im2col__00284.generated",
+   "task": "gen__conv_im2col__00284",
+   "code_sha256": "29903804b1946de997857d270bf2b18566e2c29fbc60812f588107dae405b58f",
+   "ref_sha256": "d11534e9766fd50208316598c0c89f37223deaac3f893450b60765a3aaa15e66"
+  },
+  {
+   "id": "gen__matmul_epilogue__00090.generated",
+   "task": "gen__matmul_epilogue__00090",
+   "code_sha256": "abe980f14eb04c46921591396b581b40747f64a2ea8dbc3fa743933bd256354d",
+   "ref_sha256": "6bd1a42a3b0acf35a8ad398153f8db7852226636fef3047c62451446f34dbe1f"
+  },
+  {
+   "id": "gen__reduction__00309.generated",
+   "task": "gen__reduction__00309",
+   "code_sha256": "2b8080aaf716cd571a28058554498a5e13f096d7b0753bb0c9567529535b14e0",
+   "ref_sha256": "2fe1a0491a79709439cb00fbeb6eb3a7b00d5578ac8ab539f58f63af0f6f6e23"
+  },
+  {
+   "id": "gen__row_reduction__00161.generated",
+   "task": "gen__row_reduction__00161",
+   "code_sha256": "a7aabad9f1418acede3892bb3427ce143447c44847d90f34d22354fd0e18bea8",
+   "ref_sha256": "0be9033c6c0fa4d4ccdf16ca2e274ea518cee3b0a960341cdd540ad7383b359e"
+  },
+  {
+   "id": "gen__elementwise__00370.generated",
+   "task": "gen__elementwise__00370",
+   "code_sha256": "806285aa60b1263858cd234a7ae716c66519b8ca8554e17d1bbe3891604cef77",
+   "ref_sha256": "929e832e3fd9b8c79a1639295c7a6c466a18bf674a7068285173fad50b8b20f3"
+  }
+ ]
+}

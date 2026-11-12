@@ -1,0 +1,23 @@
+{
+ "job_id": "dataset-kbk-r1w2a-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 78,
+ "n_rows": 75,
+ "missing": [
+  "kernelbook__MaskedSoftmax_14127.a1.s0",
+  "kernelbook__MaxMin_1714.a1.s0",
+  "kernelbook__MaxPool2dDynamicSamePadding_72.a1.s0"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "correct_slow": 18,
+  "mosaic": 3,
+  "pass": 54
+ },
+ "n_correct": 72,
+ "median_speed_vs_xla_correct": 1.0141232417056705
+}

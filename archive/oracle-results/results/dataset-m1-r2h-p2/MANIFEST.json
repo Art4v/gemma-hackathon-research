@@ -1,0 +1,42 @@
+{
+ "job_id": "dataset-m1-r2h-p2",
+ "owner": "aarav",
+ "step": "dataset-m1-r2h-p2",
+ "oracle_commit": "6f1808d",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 3,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "90ca67ccc6c508e20330dfc0a48bc15d2c2967477e35dde7512dede2bbcd6139",
+  "run.sh": "c282b0e9b19b083b73a137ddccc99b841d1e9e3508e0f64a14206224e59572c9",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged.a2.s0",
+   "task": "kb__l2__33_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "d431686c6925bfbe8a06ffccda361a1a83d56c4a0a19339100dcb94b4399b4c0",
+   "ref_sha256": "e21dde55821e96ec3caa785b159000184eacf428b08aec872205ee2249b6f381"
+  },
+  {
+   "id": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged.a2.s0",
+   "task": "kb__l2__39_Gemm_Scale_BatchNorm__m1_ragged",
+   "code_sha256": "e003c2ca5870677f0fec4041fd8e6ee51dfeac8f436e1d0f774ada08a687cc88",
+   "ref_sha256": "a98b33551e4d24b721d7f270446d03ecd6acddf08a914f672944c77a08b97d87"
+  },
+  {
+   "id": "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch.a2.s0",
+   "task": "kb__l2__79_Conv3d_Multiply_InstanceNorm_Clamp_Multiply_Max__m1_batch",
+   "code_sha256": "8aac4d84339c376583ad5a47781e7e75b7335793040e87c460ab0c2726ec58c6",
+   "ref_sha256": "519aecf4dd3300626f389973a8513fdcdcb6896fb525383ae79d50b38585ba18"
+  }
+ ]
+}

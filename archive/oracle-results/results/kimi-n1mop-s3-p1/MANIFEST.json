@@ -1,0 +1,78 @@
+{
+ "job_id": "kimi-n1mop-s3-p1",
+ "owner": "hruday",
+ "step": "kimi-n1mop-s3-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 9,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "3c19f37c7c19cc845849fdde7b9adacaa43344902e6e6e907cc28a349e0a7217",
+  "run.sh": "5bcab81f6077b44345b1c3d67f35ba3f1377aee4aa208c589b2475c0384cbf51",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiN1/kernelbook/SoftTargetCrossEntropy_9484",
+   "task": "kernelbook__SoftTargetCrossEntropy_9484",
+   "code_sha256": "afd5576ea55f4db7b37246fa7ebce2e9e9804209a6872112cd74de688ca816b7",
+   "ref_sha256": "99dfcf3dcd1ee0b52313f9cddc33b1e947acd593f9de84dedb006e2d8e98b728"
+  },
+  {
+   "id": "kimiN1/kernelbook/partCE_8260",
+   "task": "kernelbook__partCE_8260",
+   "code_sha256": "af5ef6ea731f81f51ef0113474ae9c8547d32ccf6862fd18c7c4d4aac1281886",
+   "ref_sha256": "77ddb2947e933d8d6354ac1ba77b8ff4ea84c37519b283b29369dd1823224c8b"
+  },
+  {
+   "id": "kimiN1/kernelbook/AsymmetricLossOptimized_14732",
+   "task": "kernelbook__AsymmetricLossOptimized_14732",
+   "code_sha256": "cb2ce4cb4e482e14592de492a89aa402b7d6c57805fe847d94f626a68795ea78",
+   "ref_sha256": "1b5b5d2f7c6735625f055d2ff53867cba38215f049f3561f004c9db586dccb5d"
+  },
+  {
+   "id": "kimiN1/kernelbook/Temporal_Attention_layer_6065",
+   "task": "kernelbook__Temporal_Attention_layer_6065",
+   "code_sha256": "3e9544db0e5027aded4a2ce6679e034ec9aa781d053650181cecb98a1c2e6095",
+   "ref_sha256": "297c51f7d03020c8ca98b5f4233d66c48f7e8e77a82dbf1731062812a440c319"
+  },
+  {
+   "id": "kimiN1/kernelbook/ContrastiveEmbeddingLoss_16259",
+   "task": "kernelbook__ContrastiveEmbeddingLoss_16259",
+   "code_sha256": "9cee325e1128975517fe97663676dd2fe25251e39f253507120bf9acce23b583",
+   "ref_sha256": "aab3278544bef59310537fab9e424bf0dd6ddc982f7358a0c3c35d7932cad09c"
+  },
+  {
+   "id": "kimiN1/kernelbook/NeuralAccumulatorCell_7228__scale",
+   "task": "kernelbook__NeuralAccumulatorCell_7228__scale",
+   "code_sha256": "104b1802297e5d86b0119052339a4cedd45ae4754971ef9634b2dd8946643865",
+   "ref_sha256": "5574b796dca16235703c26c6123517c4544530440714fffb454814f77d57ace3"
+  },
+  {
+   "id": "kimiN1/kernelbook/SoftAttention_11380__scale",
+   "task": "kernelbook__SoftAttention_11380__scale",
+   "code_sha256": "9fe86024cd73300ecb5d38b34cf77f7bd4f35d2c37cbf1353f0d5c9a961cfed4",
+   "ref_sha256": "6500afc0c8483163c3d0491404a057d9d6e189d539abde8abe96491f86a1728d"
+  },
+  {
+   "id": "kimiN1/kernelbook/WDLoss_4016__scale",
+   "task": "kernelbook__WDLoss_4016__scale",
+   "code_sha256": "e64f4af6ac84e462e6f94d5b2b3ea021e32694e24adcdcf796dd885ebcab006a",
+   "ref_sha256": "c71739a51b00464ccf6ade9e6362ee7ac852693448632a4a560de3609b98c9cf"
+  },
+  {
+   "id": "kimiN1/kernelbook/Relu_Adpt_5968__scale",
+   "task": "kernelbook__Relu_Adpt_5968__scale",
+   "code_sha256": "561399bc34d634e28e49250875eea0c1c8c77827c868de904306cd4cf2530ed3",
+   "ref_sha256": "1bc0cfc17bce2edcc7a6fd3f4404c3ecef4ae6893f2ab1052d2aa04a9393f920"
+  }
+ ]
+}

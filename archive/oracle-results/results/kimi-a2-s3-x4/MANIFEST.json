@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-a2-s3-x4",
+ "owner": "hruday",
+ "step": "kimi-a2-s3-x4",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "f4186e35681b03262153a307ddb3c8d40d90b114f22945c9a5df969e0b435182",
+  "run.sh": "f2198a76648211d04ab1e43c05c888165c0e0561c8d6aac43600262917db2a10",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31a2/kernelbook/SpatialAttention_5798",
+   "task": "kernelbook__SpatialAttention_5798",
+   "code_sha256": "6034773f48b3b80391da1c71a855e02439d15f27a0dc2562efa76753ed9c04de",
+   "ref_sha256": "2dd6419028f41c2f6ca389fffce0839864715456db2599599af633336755e79d"
+  }
+ ]
+}

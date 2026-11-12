@@ -1,0 +1,37 @@
+{
+ "job_id": "kimi-a2-s4-p4",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 36,
+ "n_rows": 22,
+ "missing": [
+  "kimi31a2/kernelbook/Similarity_3272",
+  "kimi31a2/kernelbook/TemporalBlock_16671",
+  "kimi31a2/kernelbook/act_PRT_4984",
+  "kimi31a2/kernelbook/SoftmaxDeepLiftModel_449",
+  "kimi31a2/kernelbook/SpatialAttention_9472",
+  "kimi31a2/kernelbook/Vgg16_13529",
+  "kimi31a2/kernelbook/Transformer_9945",
+  "kimi31a2/kernelbook/batch_hard_triplet_loss",
+  "kimi31a2/kernelbook/WSConv2d_3729",
+  "kimi31a2/kernelbook/TSA_Fusion_1816",
+  "kimi31a2/kernelbook/softmaxtripletLoss_9327",
+  "kimi31a2/kernelbook/loss_Textures_8291",
+  "kimi31a2/kernelbook/WeightNormConv2d_17016",
+  "kimi31a2/kernelbook/self_attn_mini_1487"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 9,
+  "correct_slow": 5,
+  "harness_oom": 3,
+  "pass": 3,
+  "runtime": 1,
+  "vmem": 1
+ },
+ "n_correct": 8,
+ "median_speed_vs_xla_correct": 0.6176969670880806
+}

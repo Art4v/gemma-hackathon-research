@@ -1,0 +1,27 @@
+{
+ "job_id": "kimi-a2-s4-p5",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 13,
+ "n_rows": 8,
+ "missing": [
+  "kimi31a2/kernelbook/act_PRT_4984",
+  "kimi31a2/kernelbook/batch_hard_triplet_loss",
+  "kimi31a2/kernelbook/softmaxtripletLoss_9327",
+  "kimi31a2/kernelbook/loss_Textures_8291",
+  "kimi31a2/kernelbook/self_attn_mini_1487"
+ ],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": false,
+ "verdicts": {
+  "compile": 2,
+  "harness_oom": 2,
+  "mosaic": 1,
+  "pass": 2,
+  "runtime": 1
+ },
+ "n_correct": 2,
+ "median_speed_vs_xla_correct": 1.3996311563998145
+}

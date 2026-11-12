@@ -1,0 +1,42 @@
+{
+ "job_id": "dataset-kbkc-r1h7-p1",
+ "owner": "hruday",
+ "step": "dataset-kbkc-r1h7-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 3,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "a96c8a6f0fc503dfade4d73d1a7381cb4d96bafa809332a3c914f697efade4c0",
+  "run.sh": "6c752d6f45d84c60b65a47d78587af35548e334dfac7ac04f3d28d6d5b3a9b08",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__SimpleConvTranspose2dModule_14644.a1.s0",
+   "task": "kernelbook__SimpleConvTranspose2dModule_14644",
+   "code_sha256": "cc18e7cc1d6f5ca606706cf02907123fa43c4a9fbf8f77a27ecc1732eea3af11",
+   "ref_sha256": "376e5dee40b1182cf3b674dfff49c5a18fbf9482faa19eca720e0704de3ecafe"
+  },
+  {
+   "id": "kernelbook__TripletLoss_4328.a1.s0",
+   "task": "kernelbook__TripletLoss_4328",
+   "code_sha256": "3c3641771be391f77f9cdca8173572f9aecb9e466f7479140305e9f335b08436",
+   "ref_sha256": "87d8200353e5046205742ab9cf9ea792653d75ed0162dfe3d03c26b2720a0d8e"
+  },
+  {
+   "id": "kernelbook__reg_hw_pos_9101.a1.s0",
+   "task": "kernelbook__reg_hw_pos_9101",
+   "code_sha256": "0da3f9d0dd16b9474c2f133508d3e516c14721e0c936deb136d860c193544fee",
+   "ref_sha256": "4d341f647ab21bf8bfb2509c257e65ec6806f4639373600a385800458e4ba14a"
+  }
+ ]
+}

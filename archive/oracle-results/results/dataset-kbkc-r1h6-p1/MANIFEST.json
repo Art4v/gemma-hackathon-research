@@ -1,0 +1,96 @@
+{
+ "job_id": "dataset-kbkc-r1h6-p1",
+ "owner": "hruday",
+ "step": "dataset-kbkc-r1h6-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 12,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "a203a9abd68445ba55dfc8897492eade0b1c77a3607f10679bdf02bcef65941d",
+  "run.sh": "da1a557010ebb8a531ae70150246a78cd6b587c1e0ee63e26ee003aaa7508201",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__ShuffleConv_8174.a1.s0",
+   "task": "kernelbook__ShuffleConv_8174",
+   "code_sha256": "9630ac02b990e73752313773b58f3a1e2bf6da3fca6955a06e1a0bf2c0ff4cbf",
+   "ref_sha256": "b5ce59d900fa14d0d1afb33c6d8e43f7b58c9b6123d1b672fe7aa1cd87e938d2"
+  },
+  {
+   "id": "kernelbook__SimpleSpatialEmbedding_6274.a1.s0",
+   "task": "kernelbook__SimpleSpatialEmbedding_6274",
+   "code_sha256": "83a8dde29f0c99d8ca51b13886bc8ed7332939a657e5c05753fc55c952eb5474",
+   "ref_sha256": "47737ae70a0ede8338f3c48ef6877b120071bec4dec00d78611241bbca2a712e"
+  },
+  {
+   "id": "kernelbook__Simplenet_13543.a1.s0",
+   "task": "kernelbook__Simplenet_13543",
+   "code_sha256": "9683c57a080db874e7f3d5076d637c39560e3100f3131adbe5f842eccc4f21a6",
+   "ref_sha256": "c480c9d17ed94ec2f78256f4768e3b1d795f26bb40a44c6e9d7193d6f7b64bd4"
+  },
+  {
+   "id": "kernelbook__SineODE_1157.a1.s0",
+   "task": "kernelbook__SineODE_1157",
+   "code_sha256": "74a10cdfb64843334c75775a9bdc33b58d3b108e44a2d7b0af15042b01169c36",
+   "ref_sha256": "ddd123310355ba105dfc94c471b69d14b15ba8520d5f8552020069c0ad8766ae"
+  },
+  {
+   "id": "kernelbook__TransitionUp_13641.a1.s0",
+   "task": "kernelbook__TransitionUp_13641",
+   "code_sha256": "16565876ff45368ea6c6bc2503fae0f0a1d25a9e1a66b5cf8caba2604e267a8b",
+   "ref_sha256": "e1ecc7d2e3e653ec88560dfbed7314363f0388ed698bbafa66be3282ae822b28"
+  },
+  {
+   "id": "kernelbook__TuckERLoss_5016.a1.s0",
+   "task": "kernelbook__TuckERLoss_5016",
+   "code_sha256": "510bda19beec5a7dc26780227f3b2a7c529d78644046c3226e9d18fcb0997f4e",
+   "ref_sha256": "4fe2965a7f62723ae9d6dbb4748f7d765b0a2f1c61c4910942227a1ee8c09c8b"
+  },
+  {
+   "id": "kernelbook__TwoLayerFCBodyWithAction_585.a1.s0",
+   "task": "kernelbook__TwoLayerFCBodyWithAction_585",
+   "code_sha256": "abe74ce9cddcaa1d8104842ccafc6cb6b83be67e334d124e845d6e03fab22f81",
+   "ref_sha256": "6a08cc496f4cc81a3ce6d8263431996c1a6489f0cf72bcc30b47731a0f4d431b"
+  },
+  {
+   "id": "kernelbook__UNet_3564.a1.s0",
+   "task": "kernelbook__UNet_3564",
+   "code_sha256": "c01bdd6df73da846f7ffe9adabe24a8570d6e2d107be72df135db4785c051ff8",
+   "ref_sha256": "305aeb8274cb6bd0a57f9652181ed05f32758c1fc9cfb9b222349eb6b73b5d4e"
+  },
+  {
+   "id": "kernelbook__lrBLock_l2_8758.a1.s0",
+   "task": "kernelbook__lrBLock_l2_8758",
+   "code_sha256": "925bf5cca44f026ef4fd97d41cfd73be46720a3e1ea8d7345be57714ab02c325",
+   "ref_sha256": "fa58d643342998b39da8fc8993a01f894c2489ed913c9f20a561e1fdb5394647"
+  },
+  {
+   "id": "kernelbook__series_decomp_16588.a1.s0",
+   "task": "kernelbook__series_decomp_16588",
+   "code_sha256": "4f0c4ac65cacb03abe5e548091b7b148b34ab1ef5b0dfc4bee8ff304e850cfd9",
+   "ref_sha256": "03014aec3446cfa73cc19699830c603aaa068549e529444dcb43a9697a346b4c"
+  },
+  {
+   "id": "kernelbook__series_decomp_multi_17652.a1.s0",
+   "task": "kernelbook__series_decomp_multi_17652",
+   "code_sha256": "ae8e7b5fba1b28680499def912e28a8c93649f5009c1f86641b0c5e3a923356b",
+   "ref_sha256": "17a21c03dd3ca54836aa9857899d7512867c09e2008464e62c19a435cee2face"
+  },
+  {
+   "id": "kernelbook__soft_L1_15480.a1.s0",
+   "task": "kernelbook__soft_L1_15480",
+   "code_sha256": "72440bf49a400d24d4252770458e480a9044f0960ee839c4f8410be2e15ee6a9",
+   "ref_sha256": "3383132659354a4723ee592fa6c43e434b2b381c8c078fe00a32addc1b9516f1"
+  }
+ ]
+}

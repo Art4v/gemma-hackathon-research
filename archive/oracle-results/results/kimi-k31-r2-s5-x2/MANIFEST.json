@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r2-s5-x2",
+ "owner": "hruday",
+ "step": "kimi-k31-r2-s5-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "31d8854ae390803ada1cfef1e57126776cc9e4c5212bca250010774061d4207a",
+  "run.sh": "e9db3bb82369ed52d98e408563b8e5a7b3d5f1be7f0d8ae9a2d4d9169d831168",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/SimpleTextClassifier_4040",
+   "task": "kernelbook__SimpleTextClassifier_4040",
+   "code_sha256": "46507b18046f30421776654638762da27f9af222027985d5b35ef547e4bc982e",
+   "ref_sha256": "f67c798e8eba185fbf785e43896fa3ea8c1f5f8ab0f4285f71df733899e184dd"
+  }
+ ]
+}

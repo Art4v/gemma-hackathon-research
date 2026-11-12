@@ -1,0 +1,19 @@
+{
+ "job_id": "control-lora-v5full-modal-t0-p1",
+ "oracle_sha": "c9a07d9298a1",
+ "n_items": 10,
+ "n_rows": 10,
+ "missing": [],
+ "duplicate": [],
+ "unexpected": [],
+ "oracle_sha_mismatch": [],
+ "seeds_mismatch": [],
+ "valid": true,
+ "verdicts": {
+  "correct_slow": 1,
+  "vmem": 5,
+  "wrong": 4
+ },
+ "n_correct": 1,
+ "median_speed_vs_xla_correct": 0.31785632876560316
+}

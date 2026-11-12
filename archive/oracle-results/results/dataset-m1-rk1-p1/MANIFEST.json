@@ -1,0 +1,60 @@
+{
+ "job_id": "dataset-m1-rk1-p1",
+ "owner": "karthik",
+ "step": "dataset-m1-rk1-p1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 6,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "10a75ebf4efa874a09134e22df2202a87780a9f87b0f92a5844725c082cc3fb7",
+  "run.sh": "1539613780c8354117c9dbc28cbac13d2a52380bad54a4ec4c05538fca1f91e2",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "authored__norm_residual_fusion__fused_add_rmsnorm_residual__m1_ragged.a1.s1",
+   "task": "authored__norm_residual_fusion__fused_add_rmsnorm_residual__m1_ragged",
+   "code_sha256": "d16d3f3596717c385dca148b82a7cd8463c9af6269c45b70b8a72971bfd0d5b4",
+   "ref_sha256": "48393b1f8451fc02214b03793d9825e2ab51bd82dd72854126273bbd74061d01"
+  },
+  {
+   "id": "authored__ssm_short_conv_gate__short_conv_silu_gate__m1_ragged.a1.s1",
+   "task": "authored__ssm_short_conv_gate__short_conv_silu_gate__m1_ragged",
+   "code_sha256": "d612f017b721613e170a5d752ec8cdafc7970d14cff2142c2dabbb842d789131",
+   "ref_sha256": "226a495facbe2d6b3b9085add1439bc7deca103ed7beccad5c29411bd6667ed7"
+  },
+  {
+   "id": "kb__l1__35_GroupNorm___m1_ragged.a1.s1",
+   "task": "kb__l1__35_GroupNorm___m1_ragged",
+   "code_sha256": "f1f8814b5f5d54b7b5c761ea880c0a0c66095b3909db02929c3944b5b6fe9c01",
+   "ref_sha256": "9b66300664563c92e0836cbba0cb996bbbdd1601dbbe18f4c0f6f64eef130120"
+  },
+  {
+   "id": "kb__l1__40_LayerNorm__m1_ragged.a1.s1",
+   "task": "kb__l1__40_LayerNorm__m1_ragged",
+   "code_sha256": "747ec2c01ca03770f4cb37ba7c285de67402b764ee4295d6588e2490453590bd",
+   "ref_sha256": "3eb84b3954435250d13664b4016984ed35bcab3c0d3551f75f2832279d001988"
+  },
+  {
+   "id": "kb__l1__47_Sum_reduction_over_a_dimension__m1_ragged.a1.s1",
+   "task": "kb__l1__47_Sum_reduction_over_a_dimension__m1_ragged",
+   "code_sha256": "8ecd78879a1f458b8554390c09ffd235bebf2f6aeb980624c0ed0e749182431b",
+   "ref_sha256": "b16e89b2ca6a3b17e0946401d81e97f91f39a1f29fad13a0bfd7766b99eb885c"
+  },
+  {
+   "id": "kb__l1__99_TripletMarginLoss__m1_ragged.a1.s1",
+   "task": "kb__l1__99_TripletMarginLoss__m1_ragged",
+   "code_sha256": "eb73034ba889021fd209fe5db27797c5d9d05a6cbcb98a4a1633f8042aa118d6",
+   "ref_sha256": "380251d9ac88338cf15b7765736fe92b3f046872e861bf029a740978077ce852"
+  }
+ ]
+}

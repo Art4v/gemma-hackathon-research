@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-r3-s3-x2",
+ "owner": "hruday",
+ "step": "kimi-r3-s3-x2",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "efff12afc1a021b029242f2de185e078e6f276d43324773a300d7df80f2c5809",
+  "run.sh": "5043a3abdecda3d7cc5e033430f1d8217d640a33404de68737cfeadb1f07f530",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiR3/kb/l2/38_ConvTranspose3d_AvgPool_Clamp_Softmax_Multiply",
+   "task": "kb__l2__38_ConvTranspose3d_AvgPool_Clamp_Softmax_Multiply",
+   "code_sha256": "187d2858ec531c2a135878f6f7799d9223e1c82ba1544b09270ef30d5675c853",
+   "ref_sha256": "8ed4fb00596b85143ead6b74388a403c976304a6ef2bce60a7997e8f3f931216"
+  }
+ ]
+}

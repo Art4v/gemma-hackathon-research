@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r1-s3-x5",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s3-x5",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "95fe4cab2086618c1a3fce323026e3e0092f889cca3796af84d6ba6316b4256b",
+  "run.sh": "72e1faf74a1ec88c26bd1811df1a788abe970ee21c75c95f490901aad2b93a09",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/TransformerLinearXMCHead_3300",
+   "task": "kernelbook__TransformerLinearXMCHead_3300",
+   "code_sha256": "51bef250f21b83603eaffe5ca89d46fda2195b0cab5c36091494b0a29e887a31",
+   "ref_sha256": "f052cfbec13e64262cdaf7ceb7e4956772b52e04f7df89bb4a237e9582a1cfb6"
+  }
+ ]
+}

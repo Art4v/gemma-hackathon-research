@@ -1,0 +1,270 @@
+{
+ "job_id": "kimi-kn1-s2-p1",
+ "owner": "hruday",
+ "step": "kimi-kn1-s2-p1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 41,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "57122a3e2902af6f97918f2666c32a16553fb0b8d0298dfb7c71f7622cf76e31",
+  "run.sh": "ec121124d7a984d26b9904b10e04521e867c8596ae8fca349f04aead3a039f9d",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimiKN1/kernelbook/AUXModule_17535__kn",
+   "task": "kernelbook__AUXModule_17535__kn",
+   "code_sha256": "40390b32241e71483952ca3c36d08d93ecf6c90034e910ab610fe923c959923a",
+   "ref_sha256": "9b6c80a10fdacb9cb07fda7119f29dad937ef6574ab310749585235ab57f0080"
+  },
+  {
+   "id": "kimiKN1/kernelbook/AUXModule_2844__kn",
+   "task": "kernelbook__AUXModule_2844__kn",
+   "code_sha256": "e89d1c754bc760ce47e798c87100d7612644968b722eda37952160403e060539",
+   "ref_sha256": "74f614b372e9204d85c831010d4f341fedaa29284a0bcc4fc1f7e7ec0b8d3611"
+  },
+  {
+   "id": "kimiKN1/kernelbook/AdditiveAttention_640__kn",
+   "task": "kernelbook__AdditiveAttention_640__kn",
+   "code_sha256": "c9e6c2a27f61c6a2b1ca6d4754be320920b6024e5e91e1d4f8e570a751886201",
+   "ref_sha256": "d27dc9b0b60ed795234a17ef5696208b6fbec87eed8c021db1ff93b52ad14a99"
+  },
+  {
+   "id": "kimiKN1/kernelbook/BiaffineScorer_7974__kn",
+   "task": "kernelbook__BiaffineScorer_7974__kn",
+   "code_sha256": "2ff5b9f1b9d2d2ff7f18589d5027fc5f0000a8453a94b8494c6dea4f1933f24d",
+   "ref_sha256": "c0ddc011a958a09ab007568d080ec2237429e26835f987f1f8315298daeaabb6"
+  },
+  {
+   "id": "kimiKN1/kernelbook/CartpoleDQN_6356__kn",
+   "task": "kernelbook__CartpoleDQN_6356__kn",
+   "code_sha256": "e222d6a41edd3a8d378be152167546ba14d1fb98108ebf4e7d83d0b6f7cde700",
+   "ref_sha256": "62a47e7b38207052b07e4d0a31af93c33525ec64453d7c6d7c25308ad95940b0"
+  },
+  {
+   "id": "kimiKN1/kernelbook/ChannelAttention_3965__kn",
+   "task": "kernelbook__ChannelAttention_3965__kn",
+   "code_sha256": "e3bc466129e2ec4b206206b3b960fcead013f351944bcda97e23d65eb3787eb5",
+   "ref_sha256": "2dfaae2fa503f187b7ed5cf516e4f638870fbcd0ce973983fd1fce50252ddc9a"
+  },
+  {
+   "id": "kimiKN1/kernelbook/CoSirenModule_6257__kn",
+   "task": "kernelbook__CoSirenModule_6257__kn",
+   "code_sha256": "7b0ad0336cefb0e63306c0d4b655c38f2bbecce38f08693248298063b7270875",
+   "ref_sha256": "45ea1123ab32cb4210dfe317415ebf14e18d66b641d7ddf9e190d9cfb7466fac"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Copy_7863__kn",
+   "task": "kernelbook__Copy_7863__kn",
+   "code_sha256": "45b83fee766cd87ced88119eeebd7fc983a57786b188c8197884f260fe11faef",
+   "ref_sha256": "10e71fb62ec38fa0162892396e993c8ddeb6c35b7b53bdab26cfd9d8e9cfb103"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Copy_7863__kn8",
+   "task": "kernelbook__Copy_7863__kn8",
+   "code_sha256": "2ad40ed9a7c5cb07d151f634da35c233408e4d300d32783b9cd3830085f78728",
+   "ref_sha256": "e2815c3a0ba2650afe63e4e8df12a10b3be48726c7e6fcc02b514398ec5c5ce8"
+  },
+  {
+   "id": "kimiKN1/kernelbook/CosineLinear_17517__kn",
+   "task": "kernelbook__CosineLinear_17517__kn",
+   "code_sha256": "7a0bdb377b127bace3a9d2709dbd0fb6d4304a19725aeba9163186dc97e17b94",
+   "ref_sha256": "7b989937a0132a88d3f33b6b1355a66da722c08cdd0257be753e275e1609a17a"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Critic_4231__kn",
+   "task": "kernelbook__Critic_4231__kn",
+   "code_sha256": "9a1a1dd1f3e17a637bbccc467b4d7452f9e8aa21048a2d80279fe57a4f1d2dad",
+   "ref_sha256": "421634862937ed67e6ada7c330f46744ed95ec161fda5f90528d1a801c1478ac"
+  },
+  {
+   "id": "kimiKN1/kernelbook/DQN_3819__kn",
+   "task": "kernelbook__DQN_3819__kn",
+   "code_sha256": "4076809191cf39301a2c531e24c96cf612e0983c2c88fcb08396c07ff8bfcd43",
+   "ref_sha256": "4dc70c45c1b7531403414626b4bd858bc8c64c233b8f29b0463e42eee09fdeca"
+  },
+  {
+   "id": "kimiKN1/kernelbook/GlobalpoolFC_1550__kn",
+   "task": "kernelbook__GlobalpoolFC_1550__kn",
+   "code_sha256": "9473fff7932ffd233a61eaaa2ad659629a08235865c79f90c95bc012de7d33bb",
+   "ref_sha256": "347d9348b688c728568245c4d5cabb87c5605e8de8cc7b8a83c033a1e1b5596e"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Hidden2Discrete_684__kn8",
+   "task": "kernelbook__Hidden2Discrete_684__kn8",
+   "code_sha256": "62faabb28825301a30109f4f573c282bda48609879749217ea2e7a9fe28c5ab4",
+   "ref_sha256": "b9fbfad52e33b78bddb3575cef40ee0ff74d3a115e562f2af5582b69078d3892"
+  },
+  {
+   "id": "kimiKN1/kernelbook/HighwayCNN_10675__kn",
+   "task": "kernelbook__HighwayCNN_10675__kn",
+   "code_sha256": "7926e9ae003f3e3a29538ed17191d6ada1dd16e71cd9ee8577e7f7db54d5f7bf",
+   "ref_sha256": "deb519370413c530f6576639ab1846c9ca9232004e4a0d8b6935ab1ff5da46c6"
+  },
+  {
+   "id": "kimiKN1/kernelbook/LNN_2986__kn",
+   "task": "kernelbook__LNN_2986__kn",
+   "code_sha256": "ac03104b86112464f0737390784afefd2c649ecc759d9d65bdd23bb17e83a14f",
+   "ref_sha256": "a31437a0d3c11c60752977e36299df942c512748998958cb1ef37e108e0f3b1d"
+  },
+  {
+   "id": "kimiKN1/kernelbook/ME_6183__kn",
+   "task": "kernelbook__ME_6183__kn",
+   "code_sha256": "94f717952bfe2d6963b402da108b2d48a71d955fbc326e95286c2d86bc391886",
+   "ref_sha256": "55e54f720e7a6d9ede926c772739d44b3b77855dd9c783e374312e94de571394"
+  },
+  {
+   "id": "kimiKN1/kernelbook/MergeLayer_2910__kn",
+   "task": "kernelbook__MergeLayer_2910__kn",
+   "code_sha256": "ce06826a27e7edb952419908295c9de630a5e86ad7261e73627269cc6a2faeb9",
+   "ref_sha256": "b2d3355921271101112ba4f6702c7f2ddf5e8ae7b566d2532b0defe46e3c5465"
+  },
+  {
+   "id": "kimiKN1/kernelbook/NAC_188__kn8",
+   "task": "kernelbook__NAC_188__kn8",
+   "code_sha256": "4bde2e390e84e2294a1b734e178424db450eb243c0b0113af7e540423505ca70",
+   "ref_sha256": "25fc7cc0e648a9df75f916f8cbf02e9a94a7a477209bfa01c4bb02482fc28c7a"
+  },
+  {
+   "id": "kimiKN1/kernelbook/NLKDifferenceOffset_17364__kn",
+   "task": "kernelbook__NLKDifferenceOffset_17364__kn",
+   "code_sha256": "3d95bdff7e0442ae348009e70c1c584c990c4363f6db9e27da88671af977bf84",
+   "ref_sha256": "efb38bcfa644699bda268cb232d01b38edcf0a4e11ea449d7cc0ff3bfdb7cfcc"
+  },
+  {
+   "id": "kimiKN1/kernelbook/NaiveTorchNet_1836__kn",
+   "task": "kernelbook__NaiveTorchNet_1836__kn",
+   "code_sha256": "3504c2d468fb632fc5346ca17f4b6e51f97854f78176689ec2e8510aaef6a16a",
+   "ref_sha256": "d901a8711cd139b98a2814f8b969056c7550046ba681d18aebd37f7d8b319485"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Net16_3522__kn",
+   "task": "kernelbook__Net16_3522__kn",
+   "code_sha256": "b4cc3c9d66509740799feb78bd947bb5688b76ca9beca6fa084148610380e085",
+   "ref_sha256": "f6eb782613c05a21ed2bef55df6c577e1ad5bb748bcfafe84e43dd96a144b42a"
+  },
+  {
+   "id": "kimiKN1/kernelbook/NeuralNet_4160__kn",
+   "task": "kernelbook__NeuralNet_4160__kn",
+   "code_sha256": "e269a0d213e05573b9c6733cbccd649a593e434440c279b5427068374d8dcdbc",
+   "ref_sha256": "023baaa53dc5fe87e1a0e18b3b468f13313decbbba1ba27d278077acba7279f0"
+  },
+  {
+   "id": "kimiKN1/kernelbook/PatchMerging_12918__kn8",
+   "task": "kernelbook__PatchMerging_12918__kn8",
+   "code_sha256": "d6008e5d87d6535a97f17d2a24eee3041a4ebf4cfbde02b0228c7a247fd3704f",
+   "ref_sha256": "35b4ce24d87a75f2cfc9beb2c19e782faf2b2f617c31da15e70f2c13b9708edb"
+  },
+  {
+   "id": "kimiKN1/kernelbook/PatchMerging_3950__kn",
+   "task": "kernelbook__PatchMerging_3950__kn",
+   "code_sha256": "e563983f6da971a0cfa12890372fb46f9cc543a5989a4c42f729a19c8781f9db",
+   "ref_sha256": "16dabbf9b401d9460bc7c47cd14b1f3844463f4c6244994642a2dfcfaf7ceb6c"
+  },
+  {
+   "id": "kimiKN1/kernelbook/PermEqui2_max_15492__kn",
+   "task": "kernelbook__PermEqui2_max_15492__kn",
+   "code_sha256": "6a4e6cbc84356ca074fd0124ca39322acdec4271a244793cc1af739be0928831",
+   "ref_sha256": "ad3194349bc39e5652f2a248803c7902d6e6ed5b2ffdcf8ec15d53fef358fcb5"
+  },
+  {
+   "id": "kimiKN1/kernelbook/PermEqui2_max_15492__kn8",
+   "task": "kernelbook__PermEqui2_max_15492__kn8",
+   "code_sha256": "0733f835bf28e4f52cc3e63927aeaf0ac44166b4c02ac0a7091ed2c9dc5c4b19",
+   "ref_sha256": "805499a8f8a89c602ccc3af8e72992539ffd90b2464aae63d858555587f143d6"
+  },
+  {
+   "id": "kimiKN1/kernelbook/PointwiseConvolutionLayer_4360__kn",
+   "task": "kernelbook__PointwiseConvolutionLayer_4360__kn",
+   "code_sha256": "21d912d0a64c3a8e853650880710a8190ada7069ccb602eb214cb743090bd453",
+   "ref_sha256": "3fa59a2a02824a841cee5a24635b4748fe8e9c0a54903a72ec0636c95bee7bbd"
+  },
+  {
+   "id": "kimiKN1/kernelbook/ProjectExciteLayer_2703__kn",
+   "task": "kernelbook__ProjectExciteLayer_2703__kn",
+   "code_sha256": "dd53796a72bd81895ee8641c53ddea441e12c37a9a266ba29883995ecc7cb861",
+   "ref_sha256": "9ab23e9f78725d6d79a3db0ec22e0ff7492ff3eab4d271d2bfc7b088fc4ad54d"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Prototype_4528__kn",
+   "task": "kernelbook__Prototype_4528__kn",
+   "code_sha256": "4f9733cd6f3a615ddeba8e1ce276906cd7093743fe6f4fdd724523d6928160a0",
+   "ref_sha256": "b92670984629afbb35d8d142704bc217d605853a1850ca6a8c46c6e1289e59f1"
+  },
+  {
+   "id": "kimiKN1/kernelbook/RNN_10326__kn",
+   "task": "kernelbook__RNN_10326__kn",
+   "code_sha256": "fcdcaef81a1bc53d0fb5d5573c4179b999d219cd9e8f3761fdb4ec25b07fda77",
+   "ref_sha256": "a31621082327a47f51516fdf8a66f7d0df09ee9a6ae6546cdeaead08dce93f32"
+  },
+  {
+   "id": "kimiKN1/kernelbook/SELayer_17170__kn",
+   "task": "kernelbook__SELayer_17170__kn",
+   "code_sha256": "a3b8744180605a431c79665b6cb9b00d7eca0f09764b907712f508791f448433",
+   "ref_sha256": "33c8d397ba8d566c530f5d3f419835fe4ba6332fb844bd430fab1529c33209f2"
+  },
+  {
+   "id": "kimiKN1/kernelbook/SELayer_2477__kn",
+   "task": "kernelbook__SELayer_2477__kn",
+   "code_sha256": "cfd0b112129a71e52f349ea75895f5fc6416809f5013fd46eb7824789e38fe6b",
+   "ref_sha256": "af1c2f225b9ae5bc592760df22c827f37dafd8c85a84307f3d85bc4019e32fdc"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Similarity_3272__kn8",
+   "task": "kernelbook__Similarity_3272__kn8",
+   "code_sha256": "9687147b54852bda38cc239f2c447f3e1aa90fb57ac5525faa46f344e5eb4106",
+   "ref_sha256": "915d019d530d1a423498d57edb0549f4f4d2dcb899232960651fad594dca5e8c"
+  },
+  {
+   "id": "kimiKN1/kernelbook/SirenLayer_1356__kn",
+   "task": "kernelbook__SirenLayer_1356__kn",
+   "code_sha256": "48d244f4e6cb5ec9c5a2d9a302d389933a9bda4cb45046abc921b4115c787359",
+   "ref_sha256": "b51ad5a5d000fee5a15cbe943d8de28871b17777831f25ef32cede65912b33cd"
+  },
+  {
+   "id": "kimiKN1/kernelbook/TemporalDecay_9511__kn",
+   "task": "kernelbook__TemporalDecay_9511__kn",
+   "code_sha256": "868a5ecc693595f9260a03c92fb9fbb39d553a61bb82d47481e6570142090588",
+   "ref_sha256": "2c36d63dc4da86c1e60694776f3bb27010071b74d3693abcc2f4c461b6d8a813"
+  },
+  {
+   "id": "kimiKN1/kernelbook/VideoBoringModel_14403__kn",
+   "task": "kernelbook__VideoBoringModel_14403__kn",
+   "code_sha256": "f3efd0e2b2092523ec3af914cee56f7491e5bc20c080f69c54d3dc1fa3844336",
+   "ref_sha256": "c2936736da3fdd0f4a42bee9bcdc606aa2293cd3600129e5bec6c747841a669f"
+  },
+  {
+   "id": "kimiKN1/kernelbook/Word2Vec_4253__kn",
+   "task": "kernelbook__Word2Vec_4253__kn",
+   "code_sha256": "02f29f9054167daeb876e0c7fb95ee4876bc640e804bfac186c001fd79db8510",
+   "ref_sha256": "15b73a5079bbdb69eaafb27f5c7b001e73ee2a0c53ffae92c3534eecefa36b36"
+  },
+  {
+   "id": "kimiKN1/kernelbook/attention_11048__kn",
+   "task": "kernelbook__attention_11048__kn",
+   "code_sha256": "f059800afbb3b7bfb71176a977022661d833e8299e30cd5729273d4ba90bcf72",
+   "ref_sha256": "5f2e628cb227c4b132ae86f76636f6f35568d04668c2f904cf6b177b4ac1f356"
+  },
+  {
+   "id": "kimiKN1/kernelbook/distLinear_14902__kn",
+   "task": "kernelbook__distLinear_14902__kn",
+   "code_sha256": "090810466b30e84e439d8894ef9ae06941e1f744683d19d417a6f47cf7044e8e",
+   "ref_sha256": "bca562060dde0abdb2a14754cdf297f26283c5a93354463251d8b740a5301d30"
+  },
+  {
+   "id": "kimiKN1/kernelbook/piNetwork_12730__kn",
+   "task": "kernelbook__piNetwork_12730__kn",
+   "code_sha256": "e309da99d971cff5a747d90d4562b8cd8ddfd9a78fc53017ccfee92d8660c2ae",
+   "ref_sha256": "a3a0ff5bb9d7df469cc297e48d281b4ba41759d63077af1de03fc4d9aada208b"
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+PASS parse: 2304 rows parse
+PASS example_id_unique: 2304 unique example_ids
+FAIL task_unique: duplicated or missing task (trainer holds out by task) count=543 (['kb__l1__86_conv_depthwise_separable_2D__kn', 'kernelbook__HighwayCNN_10675__kn', 'kernelbook__SoftAttention_11380__kn', 'kernelbook__Lda2Vec_1287__kn', 'kernelbook__AttentiveStatsPooling_18096__kn'])
+PASS roles: system,user,assistant(+user,assistant)*
+PASS system_text: equals bench.SYSTEM
+PASS first_user: BEFORE_REF + fenced ref + AFTER_REF
+PASS repair_user_tail: later user turns end with the repair line
+PASS assistant_one_fence: every assistant turn is one ```python block
+PASS final_target: defines workload(, calls pl.pallas_call, parses
+PASS thinking_false: thinking is False, no reasoning fields
+PASS teacher: teacher in ['generator-v7', 'kimi-k3.1']
+PASS drops_absent: none of 393 drop keys present
+PASS dev_task_absent: 29 dev tasks absent
+PASS dev_chain_resolved: 29 dev items have a docstring chain (via --items)
+PASS dev_chain_absent: no generated row shares one of 20 dev chains
+PASS gen_chain_present: 1132 generated rows have a docstring chain
+PASS exam_chain_absent: no generated row has an exam chain
+PASS exam_name_absent: none of 50 level-1 task names (multi-word) in any row
+PASS exam_oneword_name: REPORT ONLY, one-word level-1 names count=20 (first 5: ['authored__norm_residual_fusion__fused_add_rmsnorm_residual.kimi.a1:RMSNorm', 'authored__rope_qk_norm__qk_rmsnorm_rope_gqa.kimi.a2:RMSNorm', 'authored__norm_residual_fusion__gemma_sandwich_norm_residual.kimi.a1:RMSNorm', 'authored__norm_residual_fusion__gemma_sandwich_norm_residual_2.kimi.a1:RMSNorm', 'authored__norm_gated__mamba2_gate_first_group_rmsnorm_outproj_2.kimi.a1:RMSNorm'])
+PASS exam_baseline_absent: no reference equals one of 50 baselines
+PASS e5_gen_matched: every e5_gen row has an item and a verdict
+FAIL e5_gen_target_verified:  count=200 (['gen7__matmul_epilogue__00001.gen7s:code/1.3404695789048153', 'gen7__matmul_epilogue__00002.gen7s:ref/1.3226776314459125', 'gen7__matmul_epilogue__00003.gen7s:code/0.9496381946411979', 'gen7__matmul_epilogue__00004.gen7s:code/1.0042564978182622', 'gen7__matmul_epilogue__00005.gen7s:code/0.9564616863921273'])
+PASS generator_item_found: all 709 generator rows name a judged item (290 are renamed variants)
+PASS generator_target_alpha_equal: every generator target is the judged kernel up to renaming of parameters and locals
+PASS generator_item_passed: every generator row's item passed on TPU at >= 0.7x
+PASS generator_ref_sizes: every generator reference has its item's sizes
+PASS nonbase_fast_pass: rows outside v6 base sets are pass and >= 0.7x
+PASS history_wrapper: 703 history turns have two newlines before the fence, as bench.conversation sends them
+PASS final_target_one_newline: every final target ends with one newline before the fence
+PASS base_slow_matmul: no base-set row below 0.7x has a matmul as its first heavy op
+PASS length: max 32511 chars <= 70000
+longest: kernelbook__BatchSpectralShrinkage_5680.kimi.a2=32511, github__multiscale_deformable_attention.kimi.a3=32430, kernelbook__Block_8949.kimi.a3=26743
+
+set           kind          teacher         rows
+e1_readmit    correct_slow  kimi-k3.1       6
+e1_readmit    repair        kimi-k3.1       13
+e1_readmit    repair_slow   kimi-k3.1       3
+e1_readmit    single        kimi-k3.1       27
+e2_kbkd       correct_slow  kimi-k3.1       21
+e2_kbkd       repair        kimi-k3.1       27
+e2_kbkd       repair_slow   kimi-k3.1       11
+e2_kbkd       single        kimi-k3.1       44
+e3_scale      correct_slow  kimi-k3.1       32
+e3_scale      repair        kimi-k3.1       31
+e3_scale      repair_slow   kimi-k3.1       16
+e3_scale      single        kimi-k3.1       120
+e4_fix        repair        kimi-k3.1       48
+e4_fix        single        kimi-k3.1       48
+e4_fix2       repair        kimi-k3.1       38
+e4_fix2       single        kimi-k3.1       38
+e4_kn         single        kimi-k3.1       45
+e5_gen        single        generator-v7    400
+e5_gen7r      single        generator-v7    118
+e5_gen_layout single        generator-v7    191
+pool          correct_slow  kimi-k3.1       149
+pool          repair        kimi-k3.1       184
+pool          repair_slow   kimi-k3.1       110
+pool          single        kimi-k3.1       378
+r3_gap        repair        kimi-k3.1       103
+r3_gap        single        kimi-k3.1       103
+total                                       2304
+sha256 10345461a48148d379f99c7d304180eff0d23bf9693568cbef99090db7abcda9 v7src/final/kimi/v7/v7_final.jsonl

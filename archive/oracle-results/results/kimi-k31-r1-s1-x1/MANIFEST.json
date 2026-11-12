@@ -1,0 +1,30 @@
+{
+ "job_id": "kimi-k31-r1-s1-x1",
+ "owner": "hruday",
+ "step": "kimi-k31-r1-s1-x1",
+ "oracle_commit": "748da03",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 1,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "4b29873ab51ccd669b34998985270318caea200a4185a32b3f791b0c73a0e6d5",
+  "run.sh": "b23e7ba31cea42d05c3b0ea7449140afbb9722c33c3de957a016cce160962f8c",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kimi31r1/kernelbook/MaxPoolPad_5576",
+   "task": "kernelbook__MaxPoolPad_5576",
+   "code_sha256": "701e78118c421ed2dfc00b17139520d16916f249e0428f63aaf89672d8c72ade",
+   "ref_sha256": "d5e57bf196b0d16ff984237eeca2793a85bb7b644c803d279e662697348f904c"
+  }
+ ]
+}

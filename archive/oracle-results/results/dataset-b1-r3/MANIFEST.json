@@ -1,0 +1,39 @@
+{
+ "job_id": "dataset-b1-r3",
+ "owner": "aarav",
+ "step": "dataset-r3",
+ "oracle_commit": "6c072fb",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 2,
+ "shards": 1,
+ "priority": 2,
+ "max_chip_minutes": 2,
+ "estimate_chip_minutes": 1.11,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "5a0c4c938d29fc76d880473c9e5b9393f76e9df114048a7ba081900c1ec887fc",
+  "run.sh": "03b9357911d9116677330382f96623f5d38b26483db2760e8622b2e249b6a5d9",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "authored__attention_gqa_sink__gqa_sink_ring_cache_spec_verify.a3.s0",
+   "task": "authored__attention_gqa_sink__gqa_sink_ring_cache_spec_verify",
+   "code_sha256": "75e9ba60e22bf0c5567c58502d25a6f6e48efdd0ecfa6b7292989f4ef1e41ed5",
+   "ref_sha256": "92bfbaf81b1f4b9cfb846aeef978add58430d24ca63f53a4c0bb7847e8763794"
+  },
+  {
+   "id": "kb__l1__41_Max_Pooling_1D.a3.s0",
+   "task": "kb__l1__41_Max_Pooling_1D",
+   "code_sha256": "022b0a258d79e62d28b036d2c5cbe174e02182350a1e5ed6f7f431ec1145b177",
+   "ref_sha256": "be26896b634a450cd9cdeefc4c86aa685067d942378c756c2b4f56da94ecc27c"
+  }
+ ]
+}

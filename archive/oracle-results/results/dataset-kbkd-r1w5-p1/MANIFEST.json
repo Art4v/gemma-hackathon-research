@@ -1,0 +1,84 @@
+{
+ "job_id": "dataset-kbkd-r1w5-p1",
+ "owner": "karthik",
+ "step": "dataset-kbkd-r1w5-p1",
+ "oracle_commit": "8500a5b",
+ "oracle_sha": "c9a07d9298a1",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "speed_bar": 0.7,
+ "n_items": 10,
+ "shards": 1,
+ "files": {
+  "outside_ops.py": "46faec30497f992b3a3c34e700ead6649caa608144d55babceaad15b38d7585a",
+  "pack.json": "da4ff6514ba57e53162d7311a9a7b081307ce089e53cc83a0df0ed96fcda51b4",
+  "run.sh": "91414e2a46f15ef1db655abcf9f3afb7298112d071844710be0dbe4e5caebf0a",
+  "tpu_check.py": "ea9499cc3026be6c7f374921cd0cccd9caf86c843b8ebee05673a15ee94619eb",
+  "tpu_oracle.py": "feb69dfc78a8188b0918f68fb8a06308a9fb384dcd3b17c820ab84f8c02c3eb3"
+ },
+ "items": [
+  {
+   "id": "kernelbook__Attention_12916.a1.s0",
+   "task": "kernelbook__Attention_12916",
+   "code_sha256": "d8d4a39d314bb1ab8393f52615ea74dc6a9ce7b897265f2ec899fe475a61cb20",
+   "ref_sha256": "b28ac821f15be04ad27738016df33abd8846e7643ab26cc64b38cc15e9fa21da"
+  },
+  {
+   "id": "kernelbook__ComplexCnnQAHead_16228.a1.s0",
+   "task": "kernelbook__ComplexCnnQAHead_16228",
+   "code_sha256": "e87ecd56d659a9b3deccaf03a82f13f6068740f61e43e3e67848c6549d1556df",
+   "ref_sha256": "a4d873007e0789e41f8fb25cccfdcb87a4bdb6b346f61f6582b33b4ffb2d7381"
+  },
+  {
+   "id": "kernelbook__CrossNet_523.a1.s0",
+   "task": "kernelbook__CrossNet_523",
+   "code_sha256": "fba2d74278b73313a24536f9a6a2716614d089c2576c06e23c9a34ecba21a961",
+   "ref_sha256": "00c5d2ae1863d7d0dd9d75e3273e6745fbc9aeb7e6c1bfa7e26f86c6a2819783"
+  },
+  {
+   "id": "kernelbook__FastRCNNPredictor_4630.a1.s0",
+   "task": "kernelbook__FastRCNNPredictor_4630",
+   "code_sha256": "56d6daaf82c9df4c3192c3eeab482104c1b04ee5569a33860a2645874ea0e624",
+   "ref_sha256": "afaa164d87ea78374c39c8842685c1b32192322391d765346a4dde05a0ad7eed"
+  },
+  {
+   "id": "kernelbook__GRU_8485.a1.s0",
+   "task": "kernelbook__GRU_8485",
+   "code_sha256": "55099ec99ccb6f2795510b46d96a67465984dccb0461eb5de633e52373e80d3e",
+   "ref_sha256": "d031287b273eece73b9d0d23e0b21f00918ee0f4793df8e4f8b610843f9ad15d"
+  },
+  {
+   "id": "kernelbook__ImageProcessingModule_6325.a1.s0",
+   "task": "kernelbook__ImageProcessingModule_6325",
+   "code_sha256": "b17071a1c997b4db3d3c5f0786beeb8628b2ec0adacd42a3df3f71489a1a4904",
+   "ref_sha256": "3277e81d20c400eb8380080b1be80b64217386b59fe5550d993a0d15d79ab68b"
+  },
+  {
+   "id": "kernelbook__ResidualBlock_11099.a1.s0",
+   "task": "kernelbook__ResidualBlock_11099",
+   "code_sha256": "0d1fa9c4ef1a84bdb369ac9e1015d4b6dbde1619260bd4f2f0f5add7a6a24be1",
+   "ref_sha256": "2497c743641c6979ed11209311ff97d815f00052efd026259ca8b9ff53889593"
+  },
+  {
+   "id": "kernelbook__SirenLayer_1356.a1.s0",
+   "task": "kernelbook__SirenLayer_1356",
+   "code_sha256": "17417cb3bb24ad94471ee3bfee9d26e5c005bbf9ec8ab71344b32300e75166ef",
+   "ref_sha256": "679a4bb2d23d2434edcb9bbc8a5f760bf727ffa30e10834d91f5df3e129f46da"
+  },
+  {
+   "id": "kernelbook__StageBlock_5368.a1.s0",
+   "task": "kernelbook__StageBlock_5368",
+   "code_sha256": "7959ed65d0995a904c949c19dde3f94ff305c6b8b69441d4a74a48d2fdbb6686",
+   "ref_sha256": "acb93c03ce869a9b45dc6dc5a1aab29ca2535132b4597dd9bf87280be5fa07f9"
+  },
+  {
+   "id": "kernelbook__output_6021.a1.s0",
+   "task": "kernelbook__output_6021",
+   "code_sha256": "520b9ae08f9dae35d93aedc7b3807430f1e4183e05838ebb2d600656edfd358e",
+   "ref_sha256": "66a62264e503d8786dedb19f5851ba471bb3875c739b6d43547b5df89ffa4b1a"
+  }
+ ]
+}
