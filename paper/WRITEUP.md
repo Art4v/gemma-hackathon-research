@@ -214,7 +214,7 @@ development.
 | Gemini Flash + docs | 7/58 | 36 | 1 | 4 | 5 | 2 |
 | **Gemma 4 E4B + our LoRA** | **9/58** | **9** | **7** | **9** | **8** | **1** |
 
-<!-- FIGURE: tasks passed within k attempts (bare, docs, Flash, ours) — Karthik's fig11 regenerated without other adapters -->
+![Figure 1: JAXBench tasks passed within k attempts (all 64 tasks)](figures/fig11_success_vs_attempts.png)
 
 Our adapter passes:
 - 12p (RMSNorm) and 19k, 20k, 27k, 37k, 41k, 44k on the first attempt;

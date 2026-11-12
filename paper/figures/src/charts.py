@@ -9,10 +9,12 @@ import numpy as np
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch, Rectangle
 
-from style import AXIS, GEN, GRID, HERE, INK, INK2, KIMI, MUTED, VERDICT, VERDICT_LABEL, VERSION, save
+from style import AXIS, GEN, GRID, HERE, INK, INK2, KIMI, MUTED, VERDICT, VERDICT_LABEL, save
 
 D = json.loads((HERE / "data.json").read_text())
 T, R = D["train"], D["results"]
+A = {k: R["arms"][k] for k in ("bare", "docs", "flash_docs", "ours")}
+ARM = {"bare": "#d5d4cc", "docs": "#a9a79f", "flash_docs": "#52514e", "ours": "#104281"}  # greys for the controls, one blue for the adapter
 BAR = 0.7  # the oracle's speed bar
 DASH = (0, (3, 2))
 CPU_STOP, CPU_LABEL = "#dddcd5", "stopped at the CPU kernel check"
@@ -80,7 +82,7 @@ def candidates():
     ax.set_xlim(0, 100)
     ax.set_xlabel("share of candidates judged on a TPU (%)")
     ax.tick_params(length=0)
-    ax.set_title("TPU verdicts of the v7 training candidates, by source")
+    ax.set_title("TPU verdicts of the training candidates, by source")
     ax.legend(handles=[Patch(color=VERDICT[v], label=VERDICT_LABEL[v]) for v in VERDICT if v in seen], ncols=3, loc="upper left", bbox_to_anchor=(0, -0.22))
     save(fig, "fig07_candidate_verdicts", tight=True)
 
@@ -156,15 +158,14 @@ def similarity():
 
 
 def attempts():
-    lines = [(f"LoRA {m}", R["models"][m]["within_k_of_64"], VERSION[m], "-") for m in ("v7", "v5", "v4")]
-    lines += [(name, ys, INK2 if any(ys) else MUTED, DASH if any(ys) else "-") for name, ys in R["other_arms_within_k_of_64"].items()]
     fig, ax = plt.subplots(figsize=(7.0, 2.9), layout="constrained")
     ends = {}
-    for name, ys, col, ls in lines:
-        ax.plot([1, 2, 3], ys, color=col, lw=2, ls=ls, marker="o", ms=6.5, mec="white", mew=1.6, zorder=3, clip_on=False)
-        ends.setdefault(ys[-1], []).append(name)
+    for key in ("ours", "flash_docs", "docs", "bare"):
+        ys = A[key]["within_k_of_64"]
+        ax.plot([1, 2, 3], ys, color=ARM[key], lw=2, ls=DASH if key == "flash_docs" else "-", marker="o", ms=6.5, mec="white", mew=1.6, zorder=3, clip_on=False)
+        ends.setdefault(ys[-1], []).append(A[key]["label"])
     for y, names in ends.items():
-        ax.annotate(f"{', '.join(names)}: {y} of 64", (3, y), xytext=(9, 0), textcoords="offset points", va="center", fontsize=7.5, color=INK)
+        ax.annotate(f"{' and '.join(names)}: {y} of 64", (3, y), xytext=(9, 0), textcoords="offset points", va="center", fontsize=7.5, color=INK)
     ax.set_xticks([1, 2, 3], ["1 attempt", "2 attempts", "3 attempts"])
     ax.set_xlim(0.85, 5.6)
     ax.set_ylim(-0.6, 10.5)
@@ -178,74 +179,73 @@ def attempts():
 
 def funnel():
     stages = [("b", "kernel check\npassed"), ("c", "compiles and\nruns on TPU"), ("d", "correct on\n3 seeds"), ("e", "pass at\n0.7x or faster")]
-    fig, ax = plt.subplots(figsize=(3.6, 2.6), layout="constrained")
-    width = 0.26
-    for mi, m in enumerate(VERSION):
-        f = R["models"][m]["funnel_primary58"]
-        xs = [si + (mi - 1) * width for si in range(len(stages))]
-        ax.bar(xs, [f[k] for k, _ in stages], width=width - 0.03, color=VERSION[m], label=f"LoRA {m}")
+    fig, ax = plt.subplots(figsize=(7.0, 2.7), layout="constrained")
+    width = 0.2
+    for i, key in enumerate(A):
+        f = A[key]["funnel_primary58"]
+        xs = [si + (i - 1.5) * width for si in range(len(stages))]
+        ax.bar(xs, [f[k] for k, _ in stages], width=width - 0.025, color=ARM[key], label=A[key]["label"])
         for x, (k, _) in zip(xs, stages):
-            ax.text(x, f[k] + 0.4, str(f[k]), ha="center", va="bottom", fontsize=7)
+            ax.text(x, f[k] + 0.6, str(f[k]), ha="center", va="bottom", fontsize=7)
     ax.set_xticks(range(len(stages)), [s for _, s in stages])
     ax.set_ylabel("tasks, of the 58 in the primary set")
-    ax.set_ylim(0, 30)
+    ax.set_ylim(0, 64)
     ax.tick_params(length=0)
     ax.grid(axis="y")
     ax.set_axisbelow(True)
     ax.set_title("Tasks reaching each oracle stage in 3 attempts")
-    ax.legend(loc="upper right")
+    ax.legend(loc="upper right", ncols=2)
     save(fig, "fig12_results_funnel", tight=True)
 
 
 def results_grid():
-    tasks, models, n = R["matmul_k_tasks"], ("v4", "v5", "v7"), len(R["matmul_k_tasks"])
+    tasks, cols, n = R["matmul_k_tasks"], ("docs", "flash_docs", "ours"), len(R["matmul_k_tasks"])
     fig, ax = plt.subplots(figsize=(7.0, 0.19 * n + 1.1))
     fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01)
-    for mi, m in enumerate(models):
+    for mi, m in enumerate(cols):
         x0, passed = mi * 3.6, 0
         for ti, task in enumerate(tasks):
-            for turn, cell in sorted(R["models"][m]["tasks"][task].items()):
+            for turn, cell in sorted(A[m]["tasks"][task].items()):
                 x = x0 + int(turn)
                 ax.add_patch(Rectangle((x + 0.05, ti + 0.1), 0.9, 0.8, fc=VERDICT[cls(cell["verdict"])] if cell["tpu"] else CPU_STOP, ec="none"))
                 if cell["verdict"] == "pass":
                     passed += 1
                     ax.text(x + 0.5, ti + 0.52, f"{cell['speed']:.2f}x", ha="center", va="center", fontsize=6.3, color="white", fontweight="bold")
-        ax.text(x0 + 1.5, -1.25, f"LoRA {m}", ha="center", va="center", fontsize=8.5, fontweight="bold")
+        ax.text(x0 + 1.5, -1.25, A[m]["label"], ha="center", va="center", fontsize=7.6, fontweight="bold")
         for turn in range(3):
             ax.text(x0 + turn + 0.5, -0.4, str(turn + 1), ha="center", va="center", fontsize=7, color=INK2)
         ax.text(x0 + 1.5, n + 0.55, f"{passed} of {n} pass", ha="center", va="center", fontsize=7.5, fontweight="bold")
     ax.text(-0.25, -0.4, "attempt", ha="right", va="center", fontsize=7, color=INK2)
     for ti, task in enumerate(tasks):
         ax.text(-0.25, ti + 0.5, task.replace("_", " "), ha="right", va="center", fontsize=7, color=INK2)
-    handles = [Patch(color=VERDICT[v], label=VERDICT_LABEL[v]) for v in VERDICT if v != "other"] + [Patch(color=CPU_STOP, label=CPU_LABEL)]
-    ax.legend(handles=handles, ncols=3, loc="upper center", bbox_to_anchor=(0.62, 0.085), fontsize=7)
+    handles = [Patch(color=VERDICT[v], label=VERDICT_LABEL[v]) for v in VERDICT] + [Patch(color=CPU_STOP, label=CPU_LABEL)]
+    ax.legend(handles=handles, ncols=3, loc="upper center", bbox_to_anchor=(0.58, 0.1), fontsize=7)
     ax.set_xlim(-7.4, 10.9)
-    ax.set_ylim(n + 3.9, -1.9)
+    ax.set_ylim(n + 4.4, -1.9)
     ax.axis("off")
     save(fig, "fig13_results_by_task", tight=True)
 
 
 def outcome_by_type():
-    """Final outcome per task (the first pass, else the last attempt), by task type and adapter."""
+    """Final outcome per task (the first pass, else the last attempt), by task type and arm."""
     is_k = lambda t: t.split("_")[0].endswith("k")
     types = [("Matmul-led k-tasks", R["matmul_k_tasks"]), ("Conv-led k-tasks", [t for t in R["other_tasks"] if is_k(t)]),
              ("p-tasks", [t for t in R["other_tasks"] if not is_k(t)])]
     assert all(t.split("_")[1].startswith("Conv") for t in types[1][1]), types[1][1]
     order = [*[v for v in VERDICT if v != "other"], "other", "cpu"]
     color, labels = {**VERDICT, "cpu": CPU_STOP}, {**VERDICT_LABEL, "cpu": CPU_LABEL}
-    models = list(VERSION)
 
     def final(a):
         cell = next((c for _, c in sorted(a.items()) if c["verdict"] == "pass"), a[max(a)])
         return cls(cell["verdict"]) if cell["tpu"] else "cpu"
 
-    fig, axs = plt.subplots(1, 3, figsize=(7.0, 1.95), sharey=True, layout="constrained")
+    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.2), sharey=True, layout="constrained")
     seen = set()
     for ax, (name, tasks) in zip(axs, types):
-        for i, m in enumerate(models):
+        for i, m in enumerate(A):
             c = {k: 0 for k in order}
             for t in tasks:
-                c[final(R["models"][m]["tasks"][t])] += 1
+                c[final(A[m]["tasks"][t])] += 1
             left = 0
             for k in order:
                 if c[k]:
@@ -258,9 +258,9 @@ def outcome_by_type():
         ax.set_xlim(0, len(tasks))
         ax.set_xlabel("tasks")
         ax.tick_params(length=0)
-    axs[0].set_yticks(range(len(models)), [f"LoRA {m}" for m in models])
+    axs[0].set_yticks(range(len(A)), [A[m]["label"] for m in A])
     axs[0].invert_yaxis()
-    fig.legend(handles=[Patch(color=color[k], label=labels[k]) for k in order if k in seen], ncols=3, loc="upper center", bbox_to_anchor=(0.5, 0.0))
+    fig.legend(handles=[Patch(color=color[k], label=labels[k]) for k in order if k in seen], ncols=4, loc="upper center", bbox_to_anchor=(0.5, 0.0))
     save(fig, "fig14_outcome_by_task_type", tight=True)
 
 

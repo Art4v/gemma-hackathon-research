@@ -13878,955 +13878,21 @@
   ]
  },
  "results": {
-  "matmul_k_tasks": [
-   "19k_Matmul_Subtract_Multiply_ReLU",
-   "20k_Gemm_Multiply_LeakyReLU",
-   "21k_Gemm_Divide_Sum_Scaling",
-   "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp",
-   "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish",
-   "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply",
-   "27k_Matmul_Mish_Mish",
-   "29k_Matmul_Swish_Sum_GroupNorm",
-   "30k_Matmul_Scaling_ResidualAdd",
-   "31k_Gemm_BatchNorm_GELU_ReLU",
-   "32k_Gemm_Sigmoid_LogSumExp",
-   "35k_Gemm_Scaling_Hardtanh_GELU",
-   "36k_Matmul_Sigmoid_Sum",
-   "37k_Matmul_Swish_Scaling",
-   "38k_Matmul_Dropout_Softmax",
-   "40k_Gemm_GroupNorm_Min_BiasAdd",
-   "41k_Gemm_Add_ReLU",
-   "42k_Gemm_Max_Subtract_GELU",
-   "43k_Gemm_BatchNorm_Scaling_Softmax",
-   "44k_Matmul_Divide_GELU",
-   "45k_Gemm_GroupNorm_Swish_Multiply_Swish",
-   "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
-   "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish",
-   "49k_Matmul_AvgPool_GELU_Scale_Max",
-   "50k_Matmul_GELU_Softmax"
-  ],
-  "models": {
-   "v4": {
+  "arms": {
+   "bare": {
     "funnel_primary58": {
-     "b": 23,
-     "c": 7,
-     "d": 3,
-     "e": 1
+     "b": 0,
+     "c": 0,
+     "d": 0,
+     "e": 0
     },
+    "label": "Gemma 4 E4B",
     "tasks": {
      "10p_Sparse_MoE": {
       "0": {
        "speed": null,
        "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "11p_Megablox_GMM": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "12p_RMSNorm": {
-      "0": {
-       "speed": 1.402,
-       "tpu": true,
-       "verdict": "pass"
-      }
-     },
-     "13p_Cross_Entropy": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "14p_Ragged_Dot": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "15p_RetNet_Retention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "16p_Mamba2_SSD": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "17p_Triangle_Multiplication": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "18k_Conv2D_ReLU_BiasAdd": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "19k_Matmul_Subtract_Multiply_ReLU": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "1p_Flash_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "20k_Gemm_Multiply_LeakyReLU": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "21k_Gemm_Divide_Sum_Scaling": {
-      "0": {
-       "speed": 1.321,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "1": {
-       "speed": 1.325,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "2": {
-       "speed": 1.322,
-       "tpu": true,
-       "verdict": "wrong"
-      }
-     },
-     "22k_Conv2d_InstanceNorm_Divide": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish": {
-      "0": {
-       "speed": 0.443,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "1": {
-       "speed": 0.438,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "2": {
-       "speed": 0.437,
-       "tpu": true,
-       "verdict": "wrong"
-      }
-     },
-     "25k_Conv3d_GroupNorm_Mean": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "27k_Matmul_Mish_Mish": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "28k_ConvTranspose3d_LayerNorm_GELU_Scaling": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "29k_Matmul_Swish_Sum_GroupNorm": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "2p_GQA_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "30k_Matmul_Scaling_ResidualAdd": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "31k_Gemm_BatchNorm_GELU_ReLU": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "32k_Gemm_Sigmoid_LogSumExp": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "33k_Conv3d_Mish_Tanh": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "34k_Conv2d_Activation_BatchNorm": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "35k_Gemm_Scaling_Hardtanh_GELU": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "36k_Matmul_Sigmoid_Sum": {
-      "0": {
-       "speed": 3.496,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "1": {
-       "speed": 3.469,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "2": {
-       "speed": 3.595,
-       "tpu": true,
-       "verdict": "wrong"
-      }
-     },
-     "37k_Matmul_Swish_Scaling": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "38k_Matmul_Dropout_Softmax": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "39k_Conv2d_GELU_GlobalAvgPool": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "3p_MLA_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "40k_Gemm_GroupNorm_Min_BiasAdd": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "41k_Gemm_Add_ReLU": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "42k_Gemm_Max_Subtract_GELU": {
-      "0": {
-       "speed": 4.277,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "1": {
-       "speed": 4.289,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "2": {
-       "speed": 4.347,
-       "tpu": true,
-       "verdict": "wrong"
-      }
-     },
-     "43k_Gemm_BatchNorm_Scaling_Softmax": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "44k_Matmul_Divide_GELU": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "45k_Gemm_GroupNorm_Swish_Multiply_Swish": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish": {
-      "0": {
-       "speed": 0.161,
-       "tpu": true,
-       "verdict": "correct_slow"
-      },
-      "1": {
-       "speed": 0.16,
-       "tpu": true,
-       "verdict": "wrong"
-      },
-      "2": {
-       "speed": 0.163,
-       "tpu": true,
-       "verdict": "wrong"
-      }
-     },
-     "49k_Matmul_AvgPool_GELU_Scale_Max": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "4p_Sparse_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "50k_Matmul_GELU_Softmax": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "51p_DeepSeek_V4_CSA": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "52p_DeepSeek_V4_HCA": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "53p_DeepSeek_V4_MLA_SWA": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "54p_DeepSeek_V4_Masked_Dense_MLA": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "56p_DeepSeek_V4_MHC": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "57p_SparseCore_Ragged_Gather": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "compile"
-      }
-     },
-     "58p_DeepSeek_V4_KV_Compressor": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "59p_Megablox_GMM_v2": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "5p_Flex_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "60p_RPAv3": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
+       "verdict": "not_a_kernel"
       },
       "1": {
        "speed": null,
@@ -14837,191 +13903,6 @@
        "speed": null,
        "tpu": false,
        "verdict": "not_a_kernel"
-      }
-     },
-     "61p_Batched_RPA": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "62p_Causal_Conv1d_GDN": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "63p_GDN": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "64p_Linear_Softmax_Cross_Entropy": {
-      "0": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "1": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      },
-      "2": {
-       "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
-      }
-     },
-     "65p_Quantized_Splash_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "6p_Paged_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "7p_Ragged_Paged_Attention": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     },
-     "8p_GEMM": {
-      "0": {
-       "speed": 0.204,
-       "tpu": true,
-       "verdict": "correct_slow"
-      },
-      "1": {
-       "speed": 0.336,
-       "tpu": true,
-       "verdict": "correct_slow"
-      },
-      "2": {
-       "speed": 0.336,
-       "tpu": true,
-       "verdict": "correct_slow"
-      }
-     },
-     "9p_SwiGLU_MLP": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      }
-     }
-    },
-    "within_k_of_64": [
-     1,
-     1,
-     1
-    ]
-   },
-   "v5": {
-    "funnel_primary58": {
-     "b": 12,
-     "c": 7,
-     "d": 2,
-     "e": 1
-    },
-    "tasks": {
-     "10p_Sparse_MoE": {
-      "0": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "1": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
-      },
-      "2": {
-       "speed": null,
-       "tpu": false,
-       "verdict": "compile"
       }
      },
      "11p_Megablox_GMM": {
@@ -15044,13 +13925,18 @@
      "12p_RMSNorm": {
       "0": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
-       "speed": 1.391,
-       "tpu": true,
-       "verdict": "pass"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "13p_Cross_Entropy": {
@@ -15157,19 +14043,19 @@
      },
      "19k_Matmul_Subtract_Multiply_ReLU": {
       "0": {
-       "speed": 0.318,
-       "tpu": true,
-       "verdict": "correct_slow"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
-       "speed": 0.315,
-       "tpu": true,
-       "verdict": "correct_slow"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
-       "speed": 0.306,
-       "tpu": true,
-       "verdict": "correct_slow"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "1p_Flash_Attention": {
@@ -15192,35 +14078,35 @@
      "20k_Gemm_Multiply_LeakyReLU": {
       "0": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "not_a_kernel"
       },
       "2": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "21k_Gemm_Divide_Sum_Scaling": {
       "0": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "22k_Conv2d_InstanceNorm_Divide": {
@@ -15288,7 +14174,7 @@
       "2": {
        "speed": null,
        "tpu": false,
-       "verdict": "compile"
+       "verdict": "not_a_kernel"
       }
      },
      "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply": {
@@ -15322,7 +14208,7 @@
       "2": {
        "speed": null,
        "tpu": false,
-       "verdict": "compile"
+       "verdict": "not_a_kernel"
       }
      },
      "28k_ConvTranspose3d_LayerNorm_GELU_Scaling": {
@@ -15384,13 +14270,13 @@
       },
       "1": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "31k_Gemm_BatchNorm_GELU_ReLU": {
@@ -15465,7 +14351,7 @@
       "0": {
        "speed": null,
        "tpu": false,
-       "verdict": "compile"
+       "verdict": "not_a_kernel"
       },
       "1": {
        "speed": null,
@@ -15497,19 +14383,19 @@
      },
      "37k_Matmul_Swish_Scaling": {
       "0": {
-       "speed": 0.317,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
-       "speed": 0.338,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
-       "speed": 0.306,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "38k_Matmul_Dropout_Softmax": {
@@ -15589,7 +14475,7 @@
       "1": {
        "speed": null,
        "tpu": false,
-       "verdict": "compile"
+       "verdict": "not_a_kernel"
       },
       "2": {
        "speed": null,
@@ -15599,53 +14485,53 @@
      },
      "42k_Gemm_Max_Subtract_GELU": {
       "0": {
-       "speed": 0.345,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
-       "speed": 0.341,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
-       "speed": 0.337,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "43k_Gemm_BatchNorm_Scaling_Softmax": {
       "0": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "44k_Matmul_Divide_GELU": {
       "0": {
-       "speed": 2.206,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
-       "speed": 2.246,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
-       "speed": 2.164,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "45k_Gemm_GroupNorm_Swish_Multiply_Swish": {
@@ -15662,7 +14548,7 @@
       "2": {
        "speed": null,
        "tpu": false,
-       "verdict": "compile"
+       "verdict": "not_a_kernel"
       }
      },
      "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp": {
@@ -15689,14 +14575,14 @@
        "verdict": "compile"
       },
       "1": {
-       "speed": 0.324,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
-       "speed": 0.332,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish": {
@@ -15752,19 +14638,19 @@
      },
      "50k_Matmul_GELU_Softmax": {
       "0": {
-       "speed": 0.365,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
-       "speed": 0.37,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
-       "speed": 0.377,
-       "tpu": true,
-       "verdict": "wrong"
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
       }
      },
      "51p_DeepSeek_V4_CSA": {
@@ -16076,34 +14962,2188 @@
      "9p_SwiGLU_MLP": {
       "0": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "1": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       },
       "2": {
        "speed": null,
-       "tpu": true,
-       "verdict": "vmem"
+       "tpu": false,
+       "verdict": "compile"
       }
      }
     },
     "within_k_of_64": [
      0,
-     1,
-     1
+     0,
+     0
     ]
    },
-   "v7": {
+   "docs": {
+    "funnel_primary58": {
+     "b": 6,
+     "c": 0,
+     "d": 0,
+     "e": 0
+    },
+    "label": "Gemma 4 E4B + docs",
+    "tasks": {
+     "10p_Sparse_MoE": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "11p_Megablox_GMM": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "12p_RMSNorm": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "13p_Cross_Entropy": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "14p_Ragged_Dot": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "15p_RetNet_Retention": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "16p_Mamba2_SSD": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      }
+     },
+     "17p_Triangle_Multiplication": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "18k_Conv2D_ReLU_BiasAdd": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "19k_Matmul_Subtract_Multiply_ReLU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "1p_Flash_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "20k_Gemm_Multiply_LeakyReLU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "21k_Gemm_Divide_Sum_Scaling": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "22k_Conv2d_InstanceNorm_Divide": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "25k_Conv3d_GroupNorm_Mean": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "27k_Matmul_Mish_Mish": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "28k_ConvTranspose3d_LayerNorm_GELU_Scaling": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "29k_Matmul_Swish_Sum_GroupNorm": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "2p_GQA_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "30k_Matmul_Scaling_ResidualAdd": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "31k_Gemm_BatchNorm_GELU_ReLU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "32k_Gemm_Sigmoid_LogSumExp": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "33k_Conv3d_Mish_Tanh": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "34k_Conv2d_Activation_BatchNorm": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "35k_Gemm_Scaling_Hardtanh_GELU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "36k_Matmul_Sigmoid_Sum": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "37k_Matmul_Swish_Scaling": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "38k_Matmul_Dropout_Softmax": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "39k_Conv2d_GELU_GlobalAvgPool": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "3p_MLA_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "40k_Gemm_GroupNorm_Min_BiasAdd": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "41k_Gemm_Add_ReLU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "42k_Gemm_Max_Subtract_GELU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "43k_Gemm_BatchNorm_Scaling_Softmax": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      }
+     },
+     "44k_Matmul_Divide_GELU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "45k_Gemm_GroupNorm_Swish_Multiply_Swish": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "49k_Matmul_AvgPool_GELU_Scale_Max": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "4p_Sparse_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "50k_Matmul_GELU_Softmax": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "51p_DeepSeek_V4_CSA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "52p_DeepSeek_V4_HCA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "53p_DeepSeek_V4_MLA_SWA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "54p_DeepSeek_V4_Masked_Dense_MLA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "56p_DeepSeek_V4_MHC": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "57p_SparseCore_Ragged_Gather": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "58p_DeepSeek_V4_KV_Compressor": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "59p_Megablox_GMM_v2": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "5p_Flex_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "60p_RPAv3": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "61p_Batched_RPA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "62p_Causal_Conv1d_GDN": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "63p_GDN": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "64p_Linear_Softmax_Cross_Entropy": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "65p_Quantized_Splash_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "6p_Paged_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "7p_Ragged_Paged_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "8p_GEMM": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "9p_SwiGLU_MLP": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     }
+    },
+    "within_k_of_64": [
+     0,
+     0,
+     0
+    ]
+   },
+   "flash_docs": {
+    "funnel_primary58": {
+     "b": 57,
+     "c": 37,
+     "d": 36,
+     "e": 7
+    },
+    "label": "Gemini 3.6 Flash + docs",
+    "tasks": {
+     "10p_Sparse_MoE": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "11p_Megablox_GMM": {
+      "0": {
+       "speed": 0.571,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 2.025,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "12p_RMSNorm": {
+      "0": {
+       "speed": 1.395,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "13p_Cross_Entropy": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": 0.232,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "14p_Ragged_Dot": {
+      "0": {
+       "speed": 0.561,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.506,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.562,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "15p_RetNet_Retention": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": 0.382,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "16p_Mamba2_SSD": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "17p_Triangle_Multiplication": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": 0.168,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      }
+     },
+     "18k_Conv2D_ReLU_BiasAdd": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "runtime"
+      },
+      "2": {
+       "speed": 0.038,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "19k_Matmul_Subtract_Multiply_ReLU": {
+      "0": {
+       "speed": 0.549,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.541,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "1p_Flash_Attention": {
+      "0": {
+       "speed": 0.252,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": 0.129,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "20k_Gemm_Multiply_LeakyReLU": {
+      "0": {
+       "speed": 0.394,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.534,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "21k_Gemm_Divide_Sum_Scaling": {
+      "0": {
+       "speed": 0.632,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": 0.966,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "22k_Conv2d_InstanceNorm_Divide": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp": {
+      "0": {
+       "speed": 0.203,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.415,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      }
+     },
+     "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish": {
+      "0": {
+       "speed": 0.179,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.304,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.743,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "25k_Conv3d_GroupNorm_Mean": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "timeout"
+      }
+     },
+     "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply": {
+      "0": {
+       "speed": 0.028,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 5.434,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "27k_Matmul_Mish_Mish": {
+      "0": {
+       "speed": 0.023,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.556,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.472,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "28k_ConvTranspose3d_LayerNorm_GELU_Scaling": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "29k_Matmul_Swish_Sum_GroupNorm": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": 0.773,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "2p_GQA_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": 0.204,
+       "tpu": true,
+       "verdict": "wrong"
+      }
+     },
+     "30k_Matmul_Scaling_ResidualAdd": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": 0.261,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.359,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "31k_Gemm_BatchNorm_GELU_ReLU": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": 0.512,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "32k_Gemm_Sigmoid_LogSumExp": {
+      "0": {
+       "speed": 0.528,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.517,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      }
+     },
+     "33k_Conv3d_Mish_Tanh": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "runtime"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "harness_oom"
+      }
+     },
+     "34k_Conv2d_Activation_BatchNorm": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "35k_Gemm_Scaling_Hardtanh_GELU": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "harness_oom"
+      }
+     },
+     "36k_Matmul_Sigmoid_Sum": {
+      "0": {
+       "speed": 0.351,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.679,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.49,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "37k_Matmul_Swish_Scaling": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": 0.553,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      }
+     },
+     "38k_Matmul_Dropout_Softmax": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": 0.107,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.211,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "39k_Conv2d_GELU_GlobalAvgPool": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "timeout"
+      }
+     },
+     "3p_MLA_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      }
+     },
+     "40k_Gemm_GroupNorm_Min_BiasAdd": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      }
+     },
+     "41k_Gemm_Add_ReLU": {
+      "0": {
+       "speed": 0.402,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": 0.549,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "42k_Gemm_Max_Subtract_GELU": {
+      "0": {
+       "speed": 0.176,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": 0.497,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "43k_Gemm_BatchNorm_Scaling_Softmax": {
+      "0": {
+       "speed": 0.188,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.349,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      }
+     },
+     "44k_Matmul_Divide_GELU": {
+      "0": {
+       "speed": 0.229,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.549,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.223,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "45k_Gemm_GroupNorm_Swish_Multiply_Swish": {
+      "0": {
+       "speed": 0.631,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      },
+      "2": {
+       "speed": 0.684,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": 1.171,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh": {
+      "0": {
+       "speed": 0.402,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.569,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.565,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": 0.393,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.55,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "49k_Matmul_AvgPool_GELU_Scale_Max": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": 0.12,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "4p_Sparse_Attention": {
+      "0": {
+       "speed": 0.252,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "50k_Matmul_GELU_Softmax": {
+      "0": {
+       "speed": 0.183,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      }
+     },
+     "51p_DeepSeek_V4_CSA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "52p_DeepSeek_V4_HCA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "53p_DeepSeek_V4_MLA_SWA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "54p_DeepSeek_V4_Masked_Dense_MLA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      }
+     },
+     "56p_DeepSeek_V4_MHC": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "vmem"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      }
+     },
+     "57p_SparseCore_Ragged_Gather": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "58p_DeepSeek_V4_KV_Compressor": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "59p_Megablox_GMM_v2": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "5p_Flex_Attention": {
+      "0": {
+       "speed": 0.268,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.134,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.322,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "60p_RPAv3": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      }
+     },
+     "61p_Batched_RPA": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "62p_Causal_Conv1d_GDN": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "63p_GDN": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      }
+     },
+     "64p_Linear_Softmax_Cross_Entropy": {
+      "0": {
+       "speed": null,
+       "tpu": false,
+       "verdict": "not_a_kernel"
+      },
+      "1": {
+       "speed": 0.849,
+       "tpu": true,
+       "verdict": "pass"
+      }
+     },
+     "65p_Quantized_Splash_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "harness_oom"
+      }
+     },
+     "6p_Paged_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "mosaic"
+      }
+     },
+     "7p_Ragged_Paged_Attention": {
+      "0": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "1": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      },
+      "2": {
+       "speed": null,
+       "tpu": true,
+       "verdict": "compile"
+      }
+     },
+     "8p_GEMM": {
+      "0": {
+       "speed": 0.496,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.137,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.217,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     },
+     "9p_SwiGLU_MLP": {
+      "0": {
+       "speed": 0.152,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "1": {
+       "speed": 0.601,
+       "tpu": true,
+       "verdict": "correct_slow"
+      },
+      "2": {
+       "speed": 0.363,
+       "tpu": true,
+       "verdict": "correct_slow"
+      }
+     }
+    },
+    "within_k_of_64": [
+     1,
+     4,
+     8
+    ]
+   },
+   "ours": {
     "funnel_primary58": {
      "b": 24,
      "c": 21,
      "d": 9,
      "e": 9
     },
+    "label": "Gemma 4 E4B + our LoRA",
     "tasks": {
      "10p_Sparse_MoE": {
       "0": {
@@ -17121,33 +18161,33 @@
     ]
    }
   },
-  "other_arms_within_k_of_64": {
-   "Gemini 3.6 Flash + docs": [
-    1,
-    4,
-    8
-   ],
-   "LoRA pilot": [
-    0,
-    0,
-    0
-   ],
-   "LoRA v1": [
-    0,
-    0,
-    0
-   ],
-   "base": [
-    0,
-    0,
-    0
-   ],
-   "base + docs": [
-    0,
-    0,
-    0
-   ]
-  },
+  "matmul_k_tasks": [
+   "19k_Matmul_Subtract_Multiply_ReLU",
+   "20k_Gemm_Multiply_LeakyReLU",
+   "21k_Gemm_Divide_Sum_Scaling",
+   "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp",
+   "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish",
+   "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply",
+   "27k_Matmul_Mish_Mish",
+   "29k_Matmul_Swish_Sum_GroupNorm",
+   "30k_Matmul_Scaling_ResidualAdd",
+   "31k_Gemm_BatchNorm_GELU_ReLU",
+   "32k_Gemm_Sigmoid_LogSumExp",
+   "35k_Gemm_Scaling_Hardtanh_GELU",
+   "36k_Matmul_Sigmoid_Sum",
+   "37k_Matmul_Swish_Scaling",
+   "38k_Matmul_Dropout_Softmax",
+   "40k_Gemm_GroupNorm_Min_BiasAdd",
+   "41k_Gemm_Add_ReLU",
+   "42k_Gemm_Max_Subtract_GELU",
+   "43k_Gemm_BatchNorm_Scaling_Softmax",
+   "44k_Matmul_Divide_GELU",
+   "45k_Gemm_GroupNorm_Swish_Multiply_Swish",
+   "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
+   "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish",
+   "49k_Matmul_AvgPool_GELU_Scale_Max",
+   "50k_Matmul_GELU_Softmax"
+  ],
   "other_tasks": [
    "1p_Flash_Attention",
    "2p_GQA_Attention",
@@ -17188,66 +18228,6 @@
    "63p_GDN",
    "64p_Linear_Softmax_Cross_Entropy",
    "65p_Quantized_Splash_Attention"
-  ],
-  "primary": [
-   "1p_Flash_Attention",
-   "2p_GQA_Attention",
-   "3p_MLA_Attention",
-   "4p_Sparse_Attention",
-   "5p_Flex_Attention",
-   "6p_Paged_Attention",
-   "7p_Ragged_Paged_Attention",
-   "8p_GEMM",
-   "9p_SwiGLU_MLP",
-   "10p_Sparse_MoE",
-   "11p_Megablox_GMM",
-   "12p_RMSNorm",
-   "13p_Cross_Entropy",
-   "14p_Ragged_Dot",
-   "15p_RetNet_Retention",
-   "16p_Mamba2_SSD",
-   "17p_Triangle_Multiplication",
-   "18k_Conv2D_ReLU_BiasAdd",
-   "19k_Matmul_Subtract_Multiply_ReLU",
-   "20k_Gemm_Multiply_LeakyReLU",
-   "21k_Gemm_Divide_Sum_Scaling",
-   "22k_Conv2d_InstanceNorm_Divide",
-   "23k_Matmul_Sum_Max_AvgPool_LogSumExp_LogSumExp",
-   "24k_Matmul_Scale_ResidualAdd_Clamp_LogSumExp_Mish",
-   "25k_Conv3d_GroupNorm_Mean",
-   "26k_BMM_InstanceNorm_Sum_ResidualAdd_Multiply",
-   "27k_Matmul_Mish_Mish",
-   "28k_ConvTranspose3d_LayerNorm_GELU_Scaling",
-   "29k_Matmul_Swish_Sum_GroupNorm",
-   "30k_Matmul_Scaling_ResidualAdd",
-   "31k_Gemm_BatchNorm_GELU_ReLU",
-   "32k_Gemm_Sigmoid_LogSumExp",
-   "33k_Conv3d_Mish_Tanh",
-   "34k_Conv2d_Activation_BatchNorm",
-   "35k_Gemm_Scaling_Hardtanh_GELU",
-   "36k_Matmul_Sigmoid_Sum",
-   "37k_Matmul_Swish_Scaling",
-   "38k_Matmul_Dropout_Softmax",
-   "39k_Conv2d_GELU_GlobalAvgPool",
-   "40k_Gemm_GroupNorm_Min_BiasAdd",
-   "41k_Gemm_Add_ReLU",
-   "42k_Gemm_Max_Subtract_GELU",
-   "43k_Gemm_BatchNorm_Scaling_Softmax",
-   "44k_Matmul_Divide_GELU",
-   "45k_Gemm_GroupNorm_Swish_Multiply_Swish",
-   "46k_Conv2d_GroupNorm_Tanh_HardSwish_ResidualAdd_LogSumExp",
-   "47k_Matmul_Add_Swish_Tanh_GELU_Hardtanh",
-   "48k_Matmul_BatchNorm_BiasAdd_Divide_Swish",
-   "49k_Matmul_AvgPool_GELU_Scale_Max",
-   "50k_Matmul_GELU_Softmax",
-   "51p_DeepSeek_V4_CSA",
-   "53p_DeepSeek_V4_MLA_SWA",
-   "56p_DeepSeek_V4_MHC",
-   "57p_SparseCore_Ragged_Gather",
-   "58p_DeepSeek_V4_KV_Compressor",
-   "61p_Batched_RPA",
-   "62p_Causal_Conv1d_GDN",
-   "63p_GDN"
   ]
  },
  "similarity": {
@@ -28844,7 +29824,7 @@
  "sources": {
   "candidates": "origin/oracle-results/karthik-gen7@7b574e4",
   "loss": "eadf22b:paper/parts/loss_v7.csv",
-  "paper_snapshot": "2e7adce",
+  "paper_snapshot": "da04f91",
   "runs": "487973d",
   "train": "2efa6a5:kimi/v7/v7_final.jsonl"
  },
