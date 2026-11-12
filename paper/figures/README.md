@@ -18,7 +18,7 @@ uv run --with matplotlib python charts.py          # fig06 to fig15
 
 `extract.py` needs these refs fetched: `hruday/kimi-k31` (`2efa6a5`, the training file), `hruday/v4-runs` (`487973d`,
 the run rows and the 64 references), `oracle-results/karthik-gen7` (TPU verdicts of the training candidates) and
-`aarav/paper-v7` (`eadf22b`, the loss log). It asserts each count against the published one (for example the v4
+`aarav/paper-v7` (`eadf22b`, the loss log) and `hruday/paper-v7` (`2e7adce`, the other arms' rows). It asserts each count against the published one (for example the v4
 funnel 23/7/3/1 and the v7 result 9 of 58) and stops if a source has drifted.
 
 ## Pipeline diagrams
@@ -51,7 +51,7 @@ funnel 23/7/3/1 and the v7 result 9 of 58) and stops if a source has drifted.
 
 | Figure | Draft caption |
 |---|---|
-| ![](fig11_success_vs_attempts.png) | **fig11_success_vs_attempts.** JAXBench tasks passed within 1, 2 and 3 attempts, all 64 tasks. LoRA v7 passes 7 on the first attempt and 9 within 3. Gemini Flash with documentation in the prompt is drawn dashed because it is a different, larger model. |
+| ![](fig11_success_vs_attempts.png) | **fig11_success_vs_attempts.** JAXBench tasks passed within 1, 2 and 3 attempts, all 64 tasks. LoRA v7 passes 7 on the first attempt and 9 within 3. Gemini 3.6 Flash with documentation in the prompt is drawn dashed because it is a different, larger model, run with thinking on. |
 | ![](fig12_results_funnel.png) | **fig12_results_funnel.** Tasks of the 58-task primary set that reach each oracle stage within 3 attempts. v7 gets 21 tasks to compile and run on the TPU (v4 and v5: 7 each) and 9 to a pass (v4 and v5: 1 each). |
 | ![](fig13_results_by_task.png) | **fig13_results_by_task.** Every attempt on the 25 matmul-led k-tasks. v7 passes 8 at 1.30x to 1.38x XLA, 6 of them on the first attempt; v4 and v5 pass none. Of v7's 8 first-attempt VMEM failures, 2 are repaired to a pass and 6 become wrong outputs. |
 | ![](fig14_outcome_by_task_type.png) | **fig14_outcome_by_task_type.** Final outcome per task by task type (the first pass, else the last attempt). The gain is confined to matmul-led k-tasks. No attempt on a conv-led k-task gets past the CPU kernel check in any adapter (0 of 24 attempts each), and each adapter passes exactly 1 of the 31 p-tasks. |
@@ -64,10 +64,12 @@ funnel 23/7/3/1 and the v7 result 9 of 58) and stops if a source has drifted.
 - v7's 8 new passes are all on matmul-led k-tasks, the family the generator's templates target. fig10 shows the
   prompts are not near-copies of JAXBench references as text, but it measures surface similarity only. Equality of
   the computation chain is handled by the A6 filter, not by this figure.
-- fig11's Flash and base-arm numbers are not recomputed here. Flash (1, 4, 8 of 64) is carried over from
-  `control/stats.py` as used by the previous `paper/make_figures.py`; the base arms, v1 and pilot25 (0 of 64) are from
-  the stage table in `control/runs/V4_RESULTS.md`.
-- The dev-loss points in fig15 are typed in from `paper/parts/training_v7.md` (`aarav/paper-v7` @ `eadf22b`); the
+- fig11 computes all 8 arms from raw rows: the three LoRA runs at `487973d`, the others from `paper/data/runs/` on
+  `hruday/paper-v7` @ `2e7adce`. `extract.py` asserts that both copies of the LoRA runs are byte-identical and that every
+  arm agrees with `paper/analysis/results.json`.
+- The Flash arm differs from the Gemma arms in more than size: default sampling, thinking on (median 5,518 thinking
+  tokens), up to 65,536 output tokens. On 19k it got two attempts, not three: an oracle crash ended the task.
+- The only typed-in values are the five dev-loss points in fig15, from `paper/parts/training_v7.md` (`aarav/paper-v7` @ `eadf22b`); the
   training-loss curves are computed from `loss_v7.csv` on the same commit.
 - 263 of the 354 exam-wording variants were not run on a TPU. They are alpha-equivalent to a judged kernel, and the
   91 sampled all pass (fig07).

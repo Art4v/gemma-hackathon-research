@@ -13878,18 +13878,6 @@
   ]
  },
  "results": {
-  "earlier_arms_within_k_of_64": {
-   "Gemini Flash + docs": [
-    1,
-    4,
-    8
-   ],
-   "base Gemma 4 E4B (bare, + docs), LoRA v1, LoRA pilot25": [
-    0,
-    0,
-    0
-   ]
-  },
   "matmul_k_tasks": [
    "19k_Matmul_Subtract_Multiply_ReLU",
    "20k_Gemm_Multiply_LeakyReLU",
@@ -15004,7 +14992,12 @@
        "verdict": "compile"
       }
      }
-    }
+    },
+    "within_k_of_64": [
+     1,
+     1,
+     1
+    ]
    },
    "v5": {
     "funnel_primary58": {
@@ -16097,7 +16090,12 @@
        "verdict": "vmem"
       }
      }
-    }
+    },
+    "within_k_of_64": [
+     0,
+     1,
+     1
+    ]
    },
    "v7": {
     "funnel_primary58": {
@@ -17115,8 +17113,40 @@
        "verdict": "wrong"
       }
      }
-    }
+    },
+    "within_k_of_64": [
+     7,
+     9,
+     9
+    ]
    }
+  },
+  "other_arms_within_k_of_64": {
+   "Gemini 3.6 Flash + docs": [
+    1,
+    4,
+    8
+   ],
+   "LoRA pilot": [
+    0,
+    0,
+    0
+   ],
+   "LoRA v1": [
+    0,
+    0,
+    0
+   ],
+   "base": [
+    0,
+    0,
+    0
+   ],
+   "base + docs": [
+    0,
+    0,
+    0
+   ]
   },
   "other_tasks": [
    "1p_Flash_Attention",
@@ -28814,6 +28844,7 @@
  "sources": {
   "candidates": "origin/oracle-results/karthik-gen7@7b574e4",
   "loss": "eadf22b:paper/parts/loss_v7.csv",
+  "paper_snapshot": "2e7adce",
   "runs": "487973d",
   "train": "2efa6a5:kimi/v7/v7_final.jsonl"
  },
