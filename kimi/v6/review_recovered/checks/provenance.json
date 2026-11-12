@@ -1,0 +1,312 @@
+{
+ "transcripts": {
+  "adversary": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   "56536647b33bc057a694cf1f6ff9a1937fefe105b6d80b212ce47867cbf94d1a"
+  ],
+  "filter_audit": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a42ffff3745e37008.jsonl",
+   "51245c915f1d4d4ecea20195a46769add22a042a801a035c109fef6b83437637"
+  ]
+ },
+ "files": {
+  "scripts/filter_audit_L361.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a42ffff3745e37008.jsonl",
+   361,
+   "toolu_013RdvCBV91m3ULNzBDnj7rQ"
+  ],
+  "scripts/filter_audit_L365.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a42ffff3745e37008.jsonl",
+   365,
+   "toolu_01PdxXYP6rV6WgBR37PTN3n7"
+  ],
+  "scripts/filter_audit_L368.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a42ffff3745e37008.jsonl",
+   368,
+   "toolu_017KygYPhrUt3MhY9Uevbjoa"
+  ],
+  "scripts/labels.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a42ffff3745e37008.jsonl",
+   [
+    361,
+    365,
+    368
+   ],
+   "heredoc bodies concatenated (cat >, cat >>, cat >>)"
+  ],
+  "scripts/build_table.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a42ffff3745e37008.jsonl",
+   372,
+   "toolu_01858gauUD4P4Jzz59Eqf6jX"
+  ],
+  "scripts/adv_L286.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   286,
+   "toolu_01V7ym5w2CQ1fVATtYYWXFfv",
+   "verdicts.py written + run"
+  ],
+  "scripts/adv_L286_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   286,
+   "toolu_01V7ym5w2CQ1fVATtYYWXFfv",
+   "heredoc #1"
+  ],
+  "scripts/adv_L290.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   290,
+   "toolu_01Gy5TAdUdgZEmRhebtriBMM",
+   "print safe list (pre-patch)"
+  ],
+  "scripts/adv_L290_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   290,
+   "toolu_01Gy5TAdUdgZEmRhebtriBMM",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L294.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   294,
+   "toolu_01LBcbVJYgkcUrppNfxLvgRc",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L294_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   294,
+   "toolu_01LBcbVJYgkcUrppNfxLvgRc",
+   "heredoc #1"
+  ],
+  "scripts/adv_L298.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   298,
+   "toolu_01AjjxbJjcCD4Z8v8R4rtLWx",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L298_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   298,
+   "toolu_01AjjxbJjcCD4Z8v8R4rtLWx",
+   "heredoc #1"
+  ],
+  "scripts/adv_L302.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   302,
+   "toolu_01ELLcHcATQQZwDSkmoyQiHf",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L302_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   302,
+   "toolu_01ELLcHcATQQZwDSkmoyQiHf",
+   "heredoc #1"
+  ],
+  "scripts/adv_L306.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   306,
+   "toolu_015My3Aq5CrpkZV2HijGtt6j",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L306_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   306,
+   "toolu_015My3Aq5CrpkZV2HijGtt6j",
+   "heredoc #1"
+  ],
+  "scripts/adv_L310.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   310,
+   "toolu_01CUVJd5XKjTKXWhpudJmsaF",
+   "pool_relu_stacks.json written"
+  ],
+  "scripts/adv_L310_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   310,
+   "toolu_01CUVJd5XKjTKXWhpudJmsaF",
+   "heredoc #1"
+  ],
+  "scripts/adv_L314.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   314,
+   "toolu_01FEpcNv7nrekhAMTVc7ZBVT",
+   "patch verdicts.py + rerun + check"
+  ],
+  "scripts/adv_L314_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   314,
+   "toolu_01FEpcNv7nrekhAMTVc7ZBVT",
+   "heredoc #1"
+  ],
+  "scripts/adv_L314_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   314,
+   "toolu_01FEpcNv7nrekhAMTVc7ZBVT",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L318.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   318,
+   "toolu_01NXFUspZPCxthJhY8krfweh",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L318_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   318,
+   "toolu_01NXFUspZPCxthJhY8krfweh",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L321.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   321,
+   "toolu_01TCAfVdamSGcx7LTrhxKqoP",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L321_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   321,
+   "toolu_01TCAfVdamSGcx7LTrhxKqoP",
+   "heredoc #1"
+  ],
+  "scripts/adv_L325.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   325,
+   "toolu_01GViAnQJxKDk3WBQrNfcvWR",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L325_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   325,
+   "toolu_01GViAnQJxKDk3WBQrNfcvWR",
+   "heredoc #1"
+  ],
+  "scripts/adv_L329.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   329,
+   "toolu_01VgzUaP2y72e4XXd5X5TvgD",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L329_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   329,
+   "toolu_01VgzUaP2y72e4XXd5X5TvgD",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L333.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   333,
+   "toolu_01XGeZ1KRaH7gD1DLPtBF7qe",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L333_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   333,
+   "toolu_01XGeZ1KRaH7gD1DLPtBF7qe",
+   "heredoc #1"
+  ],
+  "scripts/adv_L337.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   337,
+   "toolu_01YbgHTrjfzJRqpgGsTEdPUt",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L337_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   337,
+   "toolu_01YbgHTrjfzJRqpgGsTEdPUt",
+   "heredoc #1"
+  ],
+  "scripts/adv_L337_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   337,
+   "toolu_01YbgHTrjfzJRqpgGsTEdPUt",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L340.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   340,
+   "toolu_01LAmyV4biyURdDCuR1QXxFJ",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L340_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   340,
+   "toolu_01LAmyV4biyURdDCuR1QXxFJ",
+   "heredoc #1"
+  ],
+  "scripts/adv_L344.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   344,
+   "toolu_01AyGD6P36UTZ4CsAksbZkGC",
+   "analysis step (does not write any of the three files)"
+  ],
+  "scripts/adv_L348.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   348,
+   "toolu_013V6vQuAQC8QrnxV8LiFcB4",
+   "pool_contamination.json written"
+  ],
+  "scripts/adv_L348_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   348,
+   "toolu_013V6vQuAQC8QrnxV8LiFcB4",
+   "heredoc #1"
+  ],
+  "scripts/adv_L348_heredoc2.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   348,
+   "toolu_013V6vQuAQC8QrnxV8LiFcB4",
+   "heredoc #2"
+  ],
+  "scripts/adv_L352.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   352,
+   "toolu_01MzysE4iF9tpwyES1xLeUbm",
+   "final_safe_list.txt written"
+  ],
+  "scripts/adv_L352_heredoc1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   352,
+   "toolu_01MzysE4iF9tpwyES1xLeUbm",
+   "heredoc #1"
+  ],
+  "scripts/adv_L356.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   356,
+   "toolu_01H1LZHRENXG891itSPe5wAu",
+   "group counts + ls sizes"
+  ],
+  "scripts/adv_L356_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   356,
+   "toolu_01H1LZHRENXG891itSPe5wAu",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L360.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   360,
+   "toolu_01Mv9NrhWyF96TB8TgHuZ5oy",
+   "print final_safe_list.txt"
+  ],
+  "scripts/adv_L360_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   360,
+   "toolu_01Mv9NrhWyF96TB8TgHuZ5oy",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/adv_L364.sh": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   364,
+   "toolu_01CKfK2RZ9SNhPk2KcuQxsDc",
+   "print keep-excluded reasons"
+  ],
+  "scripts/adv_L364_python_c1.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   364,
+   "toolu_01CKfK2RZ9SNhPk2KcuQxsDc",
+   "python3 -c \"...\" #1"
+  ],
+  "scripts/verdicts.py": [
+   "/Users/hrudaynara/.claude/projects/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/subagents/workflows/wf_49512077-aae/agent-a155bcc295ec0cc51.jsonl",
+   286,
+   "heredoc body as first written (before the L314 patch)"
+  ]
+ }
+}

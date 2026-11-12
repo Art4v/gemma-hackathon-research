@@ -1,0 +1,33 @@
+PASS replay L286 stdout == transcript L287 tool_result (614 chars)
+PASS replay L290 stdout == transcript L291 tool_result (8664 chars)
+PASS replay L314 stdout == transcript L315 tool_result (3771 chars)
+PASS replay L352 stdout == transcript L353 tool_result (4655 chars)
+PASS replay L360 stdout == transcript L361 tool_result (6754 chars)
+PASS replay L364 stdout == transcript L365 tool_result (14421 chars)
+PASS replay L356 group counts == transcript L357 (8 lines)
+PASS size of regenerated adversarial_verdicts.jsonl = 83625 == L357 ls 83625
+PASS size of regenerated final_safe_list.txt = 6181 == L357 ls 6181
+PASS size of regenerated verdicts.py = 13676 == L357 ls 13676
+PASS size of regenerated pool_relu_stacks.json = 9557 == L357 ls 9557
+PASS size of regenerated pool_contamination.json = 12448 == L357 ls 12448
+PASS replay of L348 heredoc 2 prints '29 7' == last line of transcript L349
+PASS pool_contamination.json: json.dumps(value)[:400] of all 3 keys == main-session L21654 printout
+PASS pool_contamination.json keys 1-2: first two items == main-session L20877 printout
+PASS 273 rows: 191 safe / 43 keep-excluded instance / 39 unsure ({'keep excluded (instance)': 43, 'keep excluded (unsure, default)': 39, 'safe to re-admit': 191})
+PASS 87 class-B in Kimi pool: 45 out (29 copies + 16 unsure), 42 stay ({'keep excluded (instance)': 29, 'keep excluded (unsure, default)': 16, 'safe to re-admit': 42})
+PASS 149 safe problems not yet in the pool
+PASS v4 family drop: 42 of its 52 class-B stay out
+PASS StructuredOutput verdict_counts agree (273; in pool 42/29/16)
+PASS final_safe_list.txt == StructuredOutput details.final_safe_list (191, same order)
+PASS final_safe_list.txt == the list printed at L361 (json.dumps of the file, untruncated)
+PASS final_safe_list.txt == safe rows of adversarial_verdicts.jsonl
+FAIL all 82 keep-excluded/unsure in exclude_hard.txt U flag_unsure.txt (missing 37: ['kernelbook/CAModel_14148', 'kb/l1/97_ScaledDotProductAttention', 'kernelbook/AttentionUnit_13009', 'kernelbook/Attention_15176', 'kernelbook/GlobalNonLocal_17334', 'kernelbook/NLgate_13812', 'kernelbook/PAM_Module_15973', 'kernelbook/PAM_Module_4494', 'kernelbook/PositionalAttentionModule_7559', 'kernelbook/SANet_5899', 'kernelbook/ScaleDotProductAttention_8484', 'kernelbook/SelfAttention_10797', 'kernelbook/SelfAttention_2808', 'kernelbook/MultiHeadAttention_15184', 'prod/llama4_moe_input_scaled', 'prod/qwen2moe_shared_expert_gate', 'authored/norm_gated/mamba2_gated_rmsnorm_2', 'authored/norm_gated/mamba2_gated_rmsnorm_3', 'authored/attention_differential/diff_attention_causal_subln', 'authored/attention_differential/differential_attention__m1_aux', 'kernelbook/MultiHeadAttention_7344', 'kernelbook/Multihead_Attention_Layer_910', 'kernelbook/NonLocal_3178', 'kernelbook/SANet_8218', 'kernelbook/SelfAttention_1864', 'prod/parallax_attention', 'kernelbook/NetEnd_17238', 'kernelbook/LinearEncoder_2787', 'kernelbook/SetConv_1791', 'kernelbook/AttModel_10357', 'kernelbook/AttModel_13790', 'prod/forgetting_attention', 'prod/deltanet_chunk_wy', 'prod/jsd_distillation_loss', 'kb/l1/7_Matmul_with_small_K_dimension_', 'kb/l1/9_Tall_skinny_matrix_multiplication_', 'kernelbook/SelfAttention_5795'])
+info: instance verdicts not in exclude_hard.txt (14): ['kernelbook/CAModel_14148', 'kb/l1/97_ScaledDotProductAttention', 'kernelbook/AttentionUnit_13009', 'kernelbook/Attention_15176', 'kernelbook/GlobalNonLocal_17334', 'kernelbook/NLgate_13812', 'kernelbook/PAM_Module_15973', 'kernelbook/PAM_Module_4494', 'kernelbook/PositionalAttentionModule_7559', 'kernelbook/SANet_5899', 'kernelbook/ScaleDotProductAttention_8484', 'kernelbook/SelfAttention_10797', 'kernelbook/SelfAttention_2808', 'kernelbook/MultiHeadAttention_15184']
+info: unsure verdicts not in flag_unsure.txt (23): ['prod/llama4_moe_input_scaled', 'prod/qwen2moe_shared_expert_gate', 'authored/norm_gated/mamba2_gated_rmsnorm_2', 'authored/norm_gated/mamba2_gated_rmsnorm_3', 'authored/attention_differential/diff_attention_causal_subln', 'authored/attention_differential/differential_attention__m1_aux', 'kernelbook/MultiHeadAttention_7344', 'kernelbook/Multihead_Attention_Layer_910', 'kernelbook/NonLocal_3178', 'kernelbook/SANet_8218', 'kernelbook/SelfAttention_1864', 'prod/parallax_attention', 'kernelbook/NetEnd_17238', 'kernelbook/LinearEncoder_2787', 'kernelbook/SetConv_1791', 'kernelbook/AttModel_10357', 'kernelbook/AttModel_13790', 'prod/forgetting_attention', 'prod/deltanet_chunk_wy', 'prod/jsd_distillation_loss', 'kb/l1/7_Matmul_with_small_K_dimension_', 'kb/l1/9_Tall_skinny_matrix_multiplication_', 'kernelbook/SelfAttention_5795']
+info: safe verdicts that v6 excludes/flags (11): ['authored/moe_expert_ffn_batched/moe_expert_ffn_batched_2', 'kb/l2/70_Gemm_Sigmoid_Scaling_ResidualAdd', 'kernelbook/Hidden2DiscreteDeal_3790', 'kernelbook/GCN_14619', 'kernelbook/NeuralNetPartialNoGradModel_3264', 'kb/l2/51_Gemm_Subtract_GlobalAvgPool_LogSumExp_GELU_ResidualAdd', 'kb/l2/68_Matmul_Min_Subtract', 'kernelbook/DenseSAGEConv_2033', 'kernelbook/LinearEmbedder_13109', 'kernelbook/TemporalDecayRegression_3216', 'kernelbook/DQN_hot1_17174']
+info: a6_dependent_problem_ids.txt 81 ids; in final_safe_list 81; not in it: []
+sha256 adversarial_verdicts.jsonl f6e444dbef4a55be3b41c44c5b3abf9fefbd5a083f299228abbbbfccd174b822
+sha256 final_safe_list.txt b673026e8bc71a314c3059d38ea330ad3b2211538f3d2d842dd99bf52ad9525b
+sha256 verdicts.py c228195bf91b6d7024e779d8c7682e10f32efd56d43b5438412789682dc1a72d
+sha256 pool_contamination.json 1277f39c418b3c65611ee26825b2838e4b6397b30cd17596d6c97bd927cddb85
+sha256 pool_relu_stacks.json a3048aab566747dc219aff6c94ba3ff2382045d4d31687605fb44f92fa0b1ee4

@@ -1,0 +1,1 @@
+cd /private/tmp/claude-501/-Users-hrudaynara-Projects-gemma-hackathon-research/2c5e8742-e04c-4af6-a34a-5943a12b6e62/scratchpad/review; grep '"57p' exclusions.jsonl | cut -c1-400; grep -c "" ../kimi_pilot/full_problems.jsonl

@@ -1,0 +1,27 @@
+labels.py: entries 365 | class counts {'B': 273, 'A': 61, 'C': 31}
+PASS labels.py has 273 class-B problems (got 273)
+PASS algo-review sections hold 88 / 25 / 28 problems
+PASS section class mix equals filter-audit L377 layer stats (kbk+prod A17/B71, kbkc A4/B21, kbkd A9/B19)
+PASS L250 prints 25 kbkc + 28 kbkd algo-review excludes
+PASS L250 lists == labels.py kbkc/kbkd sections
+PASS 11 of the kbk+prod section are prod-batch per prod_selection.jsonl (got 11; L258: prod contamination:algorithm 11)
+PASS L266 prints 86 karthik/kbk score-filter rows (53 extra + 8 opchain + 7 neardup kbk, 16 + 2 kbkd per L258) (got 86)
+PASS L278/L282/L286 print all 122 score_ids.txt entries (L274 wc) (got 122)
+PASS first 86 score ids == L266 karthik rows, same order
+PASS remaining 36 == aarav/kbk-c kbkc rows (L262: extra 28 + neardup 4 + opchain 4)
+mtime /Users/hrudaynara/Projects/gemma-dataset-claude/dataset/problems/problems.jsonl 1794201916.5830526
+mtime /Users/hrudaynara/Projects/gemma-dataset-gen/dataset/problems/problems.jsonl 1794184426.1395757
+PASS labels.py prod-candidate section == on-disk prod_excluded_by_algorithm.jsonl (25 stems)
+PASS every class-B problem gets a source from steps 1-8 (missing: [])
+PASS B_list.txt had 306 lines
+PASS recovered all 306 B_list.txt lines (got 306)
+PASS B_list.txt problem set == labels.py class-B set (273)
+PASS closest_jaxbench_task matches B_list.txt for all 273
+PASS b_strength matches B_list.txt for all 273
+PASS justification[:150] matches B_list.txt for all 273
+PASS per-problem source + pool flag == adversary L283 for all 52 gemini/kb-l2-port/kbkd rows
+PASS source histogram over 273 == adversary L57 {'kernelbook (kbk)': 91, 'authored/scraped (dataset-v1) or m1 child': 52, 'kernelbook (kbkc)': 43, 'kernelbook (kbkd)': 33, 'prod candidate (never authored)': 20, 'gemini-era pool (gemma-dataset-gen)': 13, 'prod (github/authored-from-paper)': 11, 'kernelbench_l2 port (dataset-v1)': 6, 'kernelbench_l1 (never ported)': 4}
+PASS not-in-pool source histogram (186) == filter-audit L381 {'kernelbook (kbk)': 64, 'kernelbook (kbkc)': 43, 'kernelbook (kbkd)': 33, 'prod candidate (never authored)': 20, 'prod (github/authored-from-paper)': 11, 'kernelbench_l2 port (dataset-v1)': 6, 'kernelbench_l1 (never ported)': 4, 'gemini-era pool (gemma-dataset-gen)': 3, 'authored/scraped (dataset-v1) or m1 child': 2}
+PASS in-pool family histogram (87) == filter-audit L381 {'attention': 54, 'conv': 13, 'gemm_epilogue': 9, 'norm': 7, 'cross_entropy': 3, 'mlp': 1}
+PASS all 11 prod-batch problems are class B
+wrote 273 class-B rows
