@@ -1,0 +1,119 @@
+diff --git a/dataset/scripts/v7_gen.py b/dataset/scripts/v7_gen.py
+index 8c729ed..54e5bb0 100644
+--- a/dataset/scripts/v7_gen.py
++++ b/dataset/scripts/v7_gen.py
+@@ -72,10 +72,10 @@ def _dtype(rng) -> tuple:
+     return ("jnp.bfloat16", 2) if rng.random() < 0.4 else ("jnp.float32", 4)
+ 
+ 
+-def _sizes(rng, nbytes: int, batched: bool, ms: tuple = (1024, 2048, 4096)) -> tuple:
++def _sizes(rng, nbytes: int, batched: bool, ms: tuple = (1024, 2048, 4096), ns: tuple = (4096, 8192)) -> tuple:
+     """Inputs capped at 800 MB: larger ones overran the 6 GB host-memory cap of the CPU check (9 of 300 in the first run)."""
+     while True:
+-        K, N = rng.choice((4096, 8192)), rng.choice((4096, 8192))
++        K, N = rng.choice((4096, 8192)), rng.choice(ns)
+         M = rng.choice(ms)
+         B = rng.choice((2, 4)) if batched else 1
+         if K * N * nbytes >= 64 * 2 ** 20 and B * (M * K + K * N + M * N) * nbytes <= 800 * 2 ** 20:
+@@ -273,12 +273,66 @@ def row_reduction_layout(i: int, rng) -> dict:
+ LAYOUT_FAMILIES = [(matmul_layout, 0.55), (row_reduction_layout, 0.45)]
+ 
+ 
+-def candidates(n: int, seed: int, layout: bool = False) -> list:
++# --rowout: f32 at N = 8192 with a reduction whose output is the whole row. The scratch template above overflows v6e VMEM there (9 of 14
++# items, "VMEM out of memory"); the v6e sweep (rowsweep, Nov 11) found one design that passed on every chain tried: accumulate in the f32
++# output block (no scratch) and run the epilogue on 256-row slices of it on the last K step (1.05x to 1.42x). Same layouts as --layout.
++ROW_KEEPS = [r for r in sorted(REDUCE_KEEP) if REDUCE_KEEP[r].startswith("jax.nn") or r in ("normalize", "center")]
++
++
++def row_reduction_rowout(i: int, rng) -> dict:
++    transposed = rng.random() < 0.4
++    bias, scale = _vectors(rng, 0.6)
++    dtype, nb = "jnp.float32", 4
++    _, M, N, K = _sizes(rng, nb, False, ns=(8192,))
++    pre, post = epilogue(rng, 0, 2), epilogue(rng, 0, 1)
++    rname = rng.choice(ROW_KEEPS)
++    chain = pre + [(rname, REDUCE_KEEP[rname])] + post
++    bshape = "(c['n'], c['k'])" if transposed else "(c['k'], c['n'])"
++    inputs = [("a", "(c['m'], c['k'])", 0.05), ("b", bshape, 0.05)] + ([("s", "(c['n'],)", 0.5)] if scale else []) + ([("v", "(c['n'],)", 0.1)] if bias else [])
++    names = ["a", "b"] + (["s"] if scale else []) + (["v"] if bias else [])
++    sig = ", ".join(names)
++    body = f"    y = jnp.matmul(a, {'b.T' if transposed else 'b'})\n" + _vec_lines(bias, scale, "    ", False) + apply_lines(chain, "    ") + "    return y\n"
++    doc = f"Matmul{' with the weight stored (n, k)' if transposed else ''}{_vec_doc(bias, scale)} -> {_chain_names(chain)} over the last axis."
++    name = f"gen7R_rowreduce_{i}"
++    cfg = {"name": name, "m": M, "n": N, "k": K}
++    sn = min(N, 2048)
++    dims = _shrink({"m": M, "k": K}, rowred_prefs(sn))
++    _check_steps({"m": M, "k": K}, dims, rowred_prefs(sn))
++    stm = _tile(dims["m"], rowred_prefs(sn)["m"])
++    assert stm // _tile(stm, 256) >= 2, f"{stm} rows give one epilogue slice at the shrunken size"
++    small = {**cfg, **dims, "n": sn}
++    refs = ", ".join(f"{x}_ref" for x in names)
++    kern = (f"\n\ndef _kernel({refs}, o_ref):\n"
++            "    # f32 output at N = 8192: a (tm, N) scratch plus the reduction's temporaries exceed VMEM, so accumulate in the output block and run the epilogue on row slices\n"
++            "    @pl.when(pl.program_id(1) == 0)\n    def _():\n        o_ref[...] = jnp.zeros_like(o_ref)\n"
++            f"    o_ref[...] += {DOT_NT if transposed else _dot(dtype)}\n\n"
++            "    @pl.when(pl.program_id(1) == pl.num_programs(1) - 1)\n    def _():\n        ch = _tile(o_ref.shape[0], 256)\n"
++            "        for r in range(0, o_ref.shape[0], ch):\n            y = o_ref[pl.ds(r, ch), :]\n"
++            + _vec_lines(bias, scale, "            ", True) + apply_lines(chain, "            ") + "            o_ref[pl.ds(r, ch), :] = y.astype(o_ref.dtype)\n")
++    bspec = "pl.BlockSpec((N, tk), lambda i, l: (0, l))" if transposed else "pl.BlockSpec((tk, N), lambda i, l: (l, 0))"
++    vspecs = "".join(", pl.BlockSpec((N,), lambda i, l: (0,))" for _ in names[2:])
++    code = (f"{HEADER_K}{POLICY}{kern}\n\ndef workload({sig}):\n    M, K = a.shape\n    N = b.shape[{0 if transposed else 1}]\n"
++            f"    # rows per block decide the speed; at N = 8192 the whole-row blocks need a smaller K tile to fit\n"
++            f"    tm, tk = _tile(M, 1024), _tile(K, 512 if N <= 4096 else 256)\n"
++            f"    # the weight block and every per-feature vector span all of N: the row reduction must see whole rows\n"
++            f"    return pl.pallas_call(\n        _kernel,\n        out_shape=jax.ShapeDtypeStruct((M, N), a.dtype),\n        grid=(M // tm, K // tk),\n"
++            f"        in_specs=[pl.BlockSpec((tm, tk), lambda i, l: (i, l)), {bspec}{vspecs}],\n"
++            f"        out_specs=pl.BlockSpec((tm, N), lambda i, l: (i, 0)),\n"
++            f'        compiler_params=pltpu.CompilerParams(dimension_semantics=("parallel", "arbitrary"), vmem_limit_bytes=VMEM_LIMIT),\n    )({sig})\n')
++    return {"family": "row_reduction_matmul", "layout": {"transposed": transposed, "bias": bias, "scale": scale},
++            "name": name, "code": code, "ref_code": ref_module(doc, cfg, dtype, inputs, sig, body), "shrunk_ref_code": ref_module(doc, small, dtype, inputs, sig, body)}
++
++
++ROWOUT_FAMILIES = [(row_reduction_rowout, 1.0)]
++
++
++def candidates(n: int, seed: int, layout: bool = False, rowout: bool = False) -> list:
++    tag, fams = ("R", ROWOUT_FAMILIES) if rowout else ("L", LAYOUT_FAMILIES) if layout else ("", FAMILIES)
+     out = []
+-    for f, share in (LAYOUT_FAMILIES if layout else FAMILIES):
++    for f, share in fams:
+         for k in range(round(n * share)):
+-            c = f(k, random.Random(f"v7{'L' if layout else ''}/{seed}/{f.__name__}/{k}"))
+-            cid = f"gen7{'L' if layout else ''}__{f.__name__}__{k:05d}"
++            c = f(k, random.Random(f"v7{tag}/{seed}/{f.__name__}/{k}"))
++            cid = f"gen7{tag}__{f.__name__}__{k:05d}"
+             out.append({"id": cid, "task": cid, **c})
+     return out
+ 
+@@ -294,14 +348,20 @@ def main(argv=None) -> int:
+     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+     ap.add_argument("--n", type=int, default=300); ap.add_argument("--seed", type=int, default=0)
+     ap.add_argument("--layout", action="store_true", help="the f32 layout variants (weight.T, bias, scale and shift) into dataset/v7_gen_layout/")
++    ap.add_argument("--rowout", action="store_true", help="f32 whole-row reductions at N = 8192, accumulated in the output block, into dataset/v7_gen_rowout/")
+     ap.add_argument("--python", default=None); ap.add_argument("--max-mib", type=float, default=116.0, help="drop a kernel whose estimated VMEM exceeds this (114 MiB ran clean against the 124 MiB limit)")
+     a = ap.parse_args(argv)
++    if a.layout and a.rowout:
++        ap.error("--layout and --rowout are separate runs")
++    tag = "R" if a.rowout else "L" if a.layout else ""
+     log = lambda m: print(m, flush=True)
+     global OUT
+     if a.layout:
+         OUT = DATASET / "v7_gen_layout"
++    if a.rowout:
++        OUT = DATASET / "v7_gen_rowout"
+     OUT.mkdir(parents=True, exist_ok=True)
+-    cands = candidates(a.n, a.seed, a.layout)
++    cands = candidates(a.n, a.seed, a.layout, a.rowout)
+     write_jsonl(OUT / "candidates.jsonl", cands)
+     log(f"{len(cands)} candidates: {dict(collections.Counter(c['family'] for c in cands))}")
+ 
+@@ -331,7 +391,7 @@ def main(argv=None) -> int:
+     fits = [c for c in ok if (blocks.get(c["id"]) or {}).get("full_total") is not None and blocks[c["id"]]["full_total"] <= cap]
+     log(f"estimated VMEM <= {a.max_mib} MiB: {len(fits)} of {len(ok)}")
+ 
+-    items = [{"id": f"gen7{'L' if a.layout else ''}/{c['id']}", "task": c["task"], "set": "e5_gen", "family": c["family"], **({"layout": c["layout"]} if a.layout else {}), "ref_code": c["ref_code"], "code": c["code"],
++    items = [{"id": f"gen7{tag}/{c['id']}", "task": c["task"], "set": "e5_gen", "family": c["family"], **({"layout": c["layout"]} if "layout" in c else {}), "ref_code": c["ref_code"], "code": c["code"],
+               "vmem_estimate_mib": round(blocks[c["id"]]["full_total"] / 2 ** 20, 2), "verification": "cpu (full-size lowering, shrunken numerics)"} for c in fits]
+     write_jsonl(OUT / "items.jsonl", items)
+     log(f"items.jsonl: {len(items)} {dict(collections.Counter(i['family'] for i in items))}")
